@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/post/</link>
+    <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Mar 2015 22:09:33 +0100</lastBuildDate>
+    <atom:link href="http://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</title>
+      <link>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</link>
+      <pubDate>Tue, 03 Mar 2015 22:09:33 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
+      <description>
+
+&lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;http://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
+
+&lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;br /&gt;
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
+
+  
+  &lt;figcaption style=&#34;height: 1rem;&#34;&gt;
+    
+    &lt;span style=&#34;float: right;&#34;&gt;&lt;a href=&#34;http://www.kevinboone.net/black_pearl.html&#34;&gt;Kevin Boone&lt;/a&gt;&lt;/span&gt;
+  &lt;/figcaption&gt;
+  
+
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The most important upgrade of our second image is the support for Docker 1.5.0 which has been released just recently. Most noteworthy about Docker 1.5.0 is the new support for IPv6, read-only containers and advanced statistics for image resource consumption. We find the last one especially interesting for people like us who are running Docker on small devices.&lt;/p&gt;
+
+&lt;p&gt;One thing we already had in the last incarnation of our image is the support of OverlayFS. OverlayFS is one of several storage drivers for Docker. The biggest distinction to other storage options, like lvm or btrfs, is the performance it offers. See this &lt;a href=&#34;https://developerblog.redhat.com/2014/09/30/overview-storage-scalability-docker/&#34;&gt;website&lt;/a&gt; for an in-depth-look at the performance/advantages of different docker storage options.
+Needless to say that OverlayFS comes out at the top. Even the big players like &lt;a href=&#34;http://lwn.net/Articles/627232/&#34;&gt;CoreOS&lt;/a&gt; seem to be in the process of moving to OverlayFS. We can provide OverlayFS in our image because with 3.18.8 we are using the latest linux kernel version which already has built-in support for OverlayFS.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Raspberry Pi with Docker&lt;/div&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Modern Kernel build for Docker&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Modern Kernel build for Docker
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker version&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Output of &amp;#39;docker version&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker info&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Output of &amp;#39;docker info&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Output of &amp;#39;docker images&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+
+&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+
+&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+    
+    &lt;div class=&#34;pswp__container&#34;&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+    &lt;div class=&#34;pswp__top-bar&#34;&gt;
+      
+      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+      
+      
+      &lt;div class=&#34;pswp__preloader&#34;&gt;
+        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+    &lt;/button&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;pswp__caption&#34;&gt;
+      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .gallery {  }
+    .gallery img { width: 100%; height: auto; }
+    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
+    .gallery figcaption { display: none; }
+    .gallery div.title { font-weight: bold; }
+    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
+    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
+    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
+&lt;/style&gt;
+
+
+&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;summary-of-changes:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Summary of changes&lt;/h2&gt;
+
+&lt;p&gt;Here is a list of the most important changes to the SD card image.&lt;/p&gt;
+
+&lt;p&gt;We &amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;upgraded the linux kernel from 3.18.6 to &lt;em&gt;3.18.8&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;added kernel headers to support compilation of custom modules&lt;/li&gt;
+&lt;li&gt;upgraded from Docker 1.4.1 to &lt;em&gt;1.5.0&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;added support for using a &lt;a href=&#34;https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview&#34;&gt;USB to TTL serial console cable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;added bash completion for Docker commands&lt;/li&gt;
+&lt;li&gt;lots of smaller fixes and improvements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Besides that we kept some features which were already awesome&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the image is based on Raspbian Wheezy&lt;/li&gt;
+&lt;li&gt;support for OverlayFS by default&lt;/li&gt;
+&lt;li&gt;support for Raspberry Pi 1 &amp;amp; 2 with the same SD card image (dual kernel)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;download:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;The image can be downloaded here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;How to get started&lt;/h2&gt;
+
+&lt;p&gt;Download our SD card image and flash it on your own SD card. Here is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
+
+&lt;p&gt;At the boot prompt log in with user &amp;ldquo;pi&amp;rdquo; and password &amp;ldquo;raspberry&amp;rdquo; (or with a privileged user &amp;ldquo;root&amp;rdquo; and password &amp;ldquo;hypriot&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;One thing that is still worth mentioning is that you need special ARM-compatible Docker Images.
+Standard x86-64 Docker Images from the Docker Hub won&amp;rsquo;t work. That&amp;rsquo;s the reason why we&amp;rsquo;ve created a number of ARM compatible Docker Images to get you started. Wether you prefer Java, Python, Node.js or io.js - we have you covered!&lt;/p&gt;
+
+&lt;p&gt;You will find these images and more at our place on the Docker Hub. After booting our image on your Pi these base images are just a &amp;ldquo;docker pull&amp;rdquo; away. For example &amp;ldquo;docker pull hypriot/rpi-node&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;As you can see - getting started with Docker on your Raspberry Pi just got so much easier!&lt;/p&gt;
+
+&lt;h2 id=&#34;give-us-your-feedback:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Give us your feedback&lt;/h2&gt;
+
+&lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
+
+&lt;p&gt;Tell us via Twitter, HackerNews or in the comments!
+And please share this post with your friends.&lt;/p&gt;
+
+&lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hypriot on the Docker Website!</title>
+      <link>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</link>
+      <pubDate>Sun, 15 Feb 2015 22:09:33 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</guid>
+      <description>&lt;p&gt;We just had our short moment of fame when we were featured on the docker website.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://assets.hypriot.com/gallery/hypriot-on-the-docker-website/docker_community.jpg&#34; alt=&#34;Hypriot on the Docker Website&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kick-Ass Raspberry Pi 2 having a forbidden love affair with Docker 1.4.1</title>
+      <link>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</link>
+      <pubDate>Sun, 08 Feb 2015 22:09:33 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</guid>
+      <description>&lt;p&gt;If you have not been living under a rock last week you probably heard that the &lt;a href=&#34;http://www.raspberrypi.org/&#34;&gt;Raspberry Pi Foundation&lt;/a&gt; did release a second generation Raspberry Pi on the 2th of February.&lt;/p&gt;
+
+&lt;p&gt;The last generation being a huge success with 4 million devices sold at the end of 2014 the success story is likely to continue with a new Raspberry Pi 2 Model B in 2015.&lt;/p&gt;
+
+&lt;p&gt;Pi 2 has the same form factor as the previous Pi 1 Model B+ and is completely compatible with Pi 1 - which is good news for everybody who already owns a Pi 1. Your old equipment will most likely still work with the Pi 2.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Raspberry Pi 2 Images&lt;/div&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 front and its package&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2 front and its package
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 backside&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2 backside
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 front&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2 front
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Pi 2
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Looking at the Pi 2 the most obvious difference is that it features a 900MHz quad-core ARM Cortex-A7 CPU with 1 GB of RAM. Because it has an ARMv7 processor it can now run the full range of ARM GNU/Linux distributions. Early benchmarks promise a performance boost of 4 to 6 times faster compared to the old single core Pi.&lt;/p&gt;
+
+&lt;p&gt;The Pi 2 can be bought from various places like &lt;a href=&#34;http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8326274/&#34;&gt;RS Online&lt;/a&gt; in the UK or &lt;a href=&#34;http://www.pollin.de/shop/dt/Mzg1NzkyOTk-/Bausaetze_Module/Entwicklerboards/Raspberry_Pi_2_Model_B.html&#34;&gt;Pollin&lt;/a&gt; in Germany.&lt;/p&gt;
+
+&lt;p&gt;Luckily we have been able to get our hands on a brand new Pi 2 before the first charge was sold out. Being such a performance beast we were really curious how well it would play with one of our other passions - &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;. Docker really is a terrific way to easily deploy all kinds of applications on your device without the need of being a full-sized linux administrator.&lt;/p&gt;
+
+&lt;p&gt;Well - after some tinkering we got Pi 2 and Docker playing well together really fast. Based on the most recent Raspbian we compiled our own special kernel and Docker packages. We then combined these into a lean and sexy image that can be easily flashed to a SD-Card.&lt;/p&gt;
+
+&lt;p&gt;What is really awesome about this image is not only that it combines two of the hottest technologies in 2015 into a single package but that it uses the most recent versions of those technologies.&lt;/p&gt;
+
+&lt;p&gt;The image uses&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Raspbian &lt;strong&gt;Wheezy&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Linux Kernel &lt;strong&gt;3.18.6&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Docker &lt;strong&gt;1.4.1&lt;/strong&gt; with &lt;strong&gt;OverlayFS&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our first tests went really well and we could do all the basic Docker stuff with the image. Our first impression is that running Docker on the Pi 2 promises to be a much smoother experience than on the Pi 1. Certainly there will be some areas where we still need to iron out some kinks with the image but so far it seems to be pretty solid.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Docker in action with Raspberry Pi 2&lt;/div&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_uname.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_uname.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Command &amp;#39;docker images&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_info.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_info.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Command &amp;#39;docker images&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_images.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_images.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Command &amp;#39;docker images&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_run.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
+      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_run.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Command &amp;#39;docker images&amp;#39;
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+
+&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+
+&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+    
+    &lt;div class=&#34;pswp__container&#34;&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+    &lt;div class=&#34;pswp__top-bar&#34;&gt;
+      
+      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+      
+      
+      &lt;div class=&#34;pswp__preloader&#34;&gt;
+        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+    &lt;/button&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;pswp__caption&#34;&gt;
+      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .gallery {  }
+    .gallery img { width: 100%; height: auto; }
+    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
+    .gallery figcaption { display: none; }
+    .gallery div.title { font-weight: bold; }
+    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
+    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
+    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
+&lt;/style&gt;
+
+
+&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
+
+&lt;p&gt;Tell us what you like or dislike about this image!&lt;/p&gt;
+
+&lt;p&gt;We will gather your feedback and will try to make this image even better. Additionally we are also planning to publish our build scripts for the image soon.&lt;/p&gt;
+
+&lt;p&gt;Did I already tell you what the real kicker is?&lt;/p&gt;
+
+&lt;p&gt;Well - our image works for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; at the same time. How convenient is that?!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The credentials for logging in are &amp;ldquo;root&amp;rdquo; for the user and &amp;ldquo;hypriot&amp;rdquo; for the password.&lt;/strong&gt; Have fun!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

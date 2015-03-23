@@ -1,0 +1,36 @@
+.profile {
+  margin-bottom: 2rem;
+  height: 150px;
+}
+
+.profile p {
+  margin-bottom: 3px;
+}
+
+.profile img {
+  float: left;
+  margin-right: 10px;
+  width: 120px;
+  margin-top: 4px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#disqus_thread {
+margin-top: 3rem;
+}
+
+/* Social Sharing */
+.social-sharing {
+	padding-left: 2px;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.social-sharing-twitter > iframe {
+  vertical-align: bottom;
+}

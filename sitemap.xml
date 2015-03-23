@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://blog.hypriot.com/</loc>
+    <lastmod>2015-03-13T19:31:57+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/legal_notice/</loc>
+    <lastmod>2015-03-13T19:31:57+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</loc>
+    <lastmod>2015-03-03T22:09:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</loc>
+    <lastmod>2015-02-15T22:09:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</loc>
+    <lastmod>2015-02-08T22:09:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/downloads/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/crew/</loc>
+  </url>
+  
+</urlset>
