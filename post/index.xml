@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/post/</link>
+    <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Mar 2015 22:09:33 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</title>
-      <link>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</link>
+      <link>http://localhost:1313/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</link>
       <pubDate>Tue, 03 Mar 2015 22:09:33 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
+      <guid>http://localhost:1313/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
       <description>
 
 &lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;http://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
@@ -105,11 +105,11 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://localhost:1313/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://localhost:1313/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://localhost:1313/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -230,10 +230,10 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
     
     <item>
       <title>Hypriot on the Docker Website!</title>
-      <link>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</link>
+      <link>http://localhost:1313/post/hypriot-on-the-docker-website/</link>
       <pubDate>Sun, 15 Feb 2015 22:09:33 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</guid>
+      <guid>http://localhost:1313/post/hypriot-on-the-docker-website/</guid>
       <description>&lt;p&gt;We just had our short moment of fame when we were featured on the docker website.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://assets.hypriot.com/gallery/hypriot-on-the-docker-website/docker_community.jpg&#34; alt=&#34;Hypriot on the Docker Website&#34; /&gt;
@@ -243,10 +243,10 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
     
     <item>
       <title>Kick-Ass Raspberry Pi 2 having a forbidden love affair with Docker 1.4.1</title>
-      <link>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</link>
+      <link>http://localhost:1313/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</link>
       <pubDate>Sun, 08 Feb 2015 22:09:33 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</guid>
+      <guid>http://localhost:1313/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</guid>
       <description>&lt;p&gt;If you have not been living under a rock last week you probably heard that the &lt;a href=&#34;http://www.raspberrypi.org/&#34;&gt;Raspberry Pi Foundation&lt;/a&gt; did release a second generation Raspberry Pi on the 2th of February.&lt;/p&gt;
 
 &lt;p&gt;The last generation being a huge success with 4 million devices sold at the end of 2014 the success story is likely to continue with a new Raspberry Pi 2 Model B in 2015.&lt;/p&gt;
@@ -437,11 +437,11 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://localhost:1313/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://localhost:1313/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://localhost:1313/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
