@@ -373,6 +373,73 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 
 
 &lt;/div&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+
+&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+
+&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+    
+    &lt;div class=&#34;pswp__container&#34;&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+    &lt;div class=&#34;pswp__top-bar&#34;&gt;
+      
+      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+      
+      
+      &lt;div class=&#34;pswp__preloader&#34;&gt;
+        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+    &lt;/button&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;pswp__caption&#34;&gt;
+      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .gallery {  }
+    .gallery img { width: 100%; height: auto; }
+    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
+    .gallery figcaption { display: none; }
+    .gallery div.title { font-weight: bold; }
+    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
+    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
+    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
+&lt;/style&gt;
+
+
+&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Looking at the Pi 2 the most obvious difference is that it features a 900MHz quad-core ARM Cortex-A7 CPU with 1 GB of RAM. Because it has an ARMv7 processor it can now run the full range of ARM GNU/Linux distributions. Early benchmarks promise a performance boost of 4 to 6 times faster compared to the old single core Pi.&lt;/p&gt;
@@ -547,46 +614,6 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Pirate Crew</title>
-      <link>http://blog.hypriot.com/crew/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.hypriot.com/crew/</guid>
-      <description>&lt;p&gt;Our Hypriot crew currently consists of five guys who have to much spare time.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Govinda Fichtner&lt;/strong&gt; - &lt;i&gt;DevOps by day and ARM-Hacker by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/govinda_200px_bw_round.jpg&#34;&gt; Somehow suffering from not being fully engaged by my day-job as a DevOps, my wife &amp;amp; three kids and several outdoor activities I tend to dabble with ARM-devices and cutting edge cloud-technologies like Docker by night. I have been working in the IT industry for 15 years in many different roles such as developer, administrator, consultant, architect, trainer,  project manager, team lead and CTO.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Dieter Reuter&lt;/strong&gt; - &lt;i&gt;Senior Consultant by day and Rocket Man by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/dieter_200px_bw_round.jpg&#34;&gt; Senior Consultant with 30 years of enterprise IT experience and unquenchable curiosity is looking for new challenges. Dealing with cutting-edge cloud technologies like Docker and CoreOS, obsessed with the DevOps movement and its associated automation.  Am now in the process of moving Docker and LXC to ARM based gadgets with rocket-like speed.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Stefan Scherer&lt;/strong&gt; - &lt;i&gt;Software engineer by day and Automation Fanatic by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/stefan_200px_bw_round.jpg&#34;&gt; Working as Software Engineer for about 20 years. Automation obsessed. I like to exercise with small ARM devices and other tiny things to show that these little chips are more powerful than you might think.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Mathias Renner&lt;/strong&gt; - &lt;i&gt;Student of information systems by day and work-a-frolic by night.&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/none_200px_bw_round.jpg&#34;&gt; I consider myself a workafrolic since I enjoy doing lots of different things. I worked as Linux administrator, tester, developer and founded two small startups. I excessively use open source and follow DIY as often as possible because if you do it yourself you know how it works.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Andreas Eiermann&lt;/strong&gt; - &lt;i&gt;student of information systems by day and tinkerer by night.&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/andreas_200px_bw_round.jpg&#34;&gt; Is the jack of all trades of network and server administration. Interested in to many things and needs a reminder from time to time to focus again. Prefers dogs over cats.
-&lt;/div&gt;
-&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Downloads</title>
       <link>http://blog.hypriot.com/downloads/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -627,6 +654,34 @@ Start your Pi with the flashed SD card and enjoy instant Docker awesomeness.&lt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pirate Crew</title>
+      <link>http://blog.hypriot.com/crew/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.hypriot.com/crew/</guid>
+      <description>&lt;p&gt;Our Hypriot crew currently consists of three guys who have to much spare time.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Govinda Fichtner&lt;/strong&gt; - &lt;i&gt;DevOps by day and ARM-Hacker by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/govinda_200px_bw_round.jpg&#34;&gt; Somehow suffering from not being fully engaged by my day-job as a DevOps, my wife &amp;amp; three kids and several outdoor activities I tend to dabble with ARM-devices and cutting edge cloud-technologies like Docker by night. I have been working in the IT industry for 15 years in many different roles such as developer, administrator, consultant, architect, trainer,  project manager, team lead and CTO.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Dieter Reuter&lt;/strong&gt; - &lt;i&gt;Senior Consultant by day and Rocket Man by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/dieter_200px_bw_round.jpg&#34;&gt; Senior Consultant with 30 years of enterprise IT experience and unquenchable curiosity is looking for new challenges. Dealing with cutting-edge cloud technologies like Docker and CoreOS, obsessed with the DevOps movement and its associated automation.  Am now in the process of moving Docker and LXC to ARM based gadgets with rocket-like speed.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Stefan Scherer&lt;/strong&gt; - &lt;i&gt;Software engineer by day and Automation Fanatic by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/stefan_200px_bw_round.jpg&#34;&gt; Working as Software Engineer for about 20 years. Automation obsessed. I like to exercise with small ARM devices and other tiny things to show that these little chips are more powerful than you might think.
+&lt;/div&gt;
+&lt;/p&gt;
 </description>
     </item>
     

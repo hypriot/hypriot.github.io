@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/docker/</link>
-    <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
+    <title>Raspberry Pi on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/tags/raspberry-pi/</link>
+    <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Mar 2015 22:09:33 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</title>
@@ -225,19 +225,6 @@ And please share this post with your friends.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
 Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hypriot on the Docker Website!</title>
-      <link>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</link>
-      <pubDate>Sun, 15 Feb 2015 22:09:33 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</guid>
-      <description>&lt;p&gt;We just had our short moment of fame when we were featured on the docker website.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://assets.hypriot.com/gallery/hypriot-on-the-docker-website/docker_community.jpg&#34; alt=&#34;Hypriot on the Docker Website&#34; /&gt;
-&lt;/p&gt;
 </description>
     </item>
     
