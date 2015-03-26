@@ -34,3 +34,7 @@ margin-top: 3rem;
 .social-sharing-twitter > iframe {
   vertical-align: bottom;
 }
+
+.posts > .summary {
+  margin-bottom: 3rem;
+}

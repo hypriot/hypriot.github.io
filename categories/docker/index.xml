@@ -19,8 +19,9 @@
 
 &lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;http://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
 
-&lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;br /&gt;
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
+&lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
   &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
 
   
