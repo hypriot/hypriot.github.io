@@ -33,7 +33,7 @@ After contacting the support I was told that some theming support was in the pip
 &lt;p&gt;Another problem was that it was very difficult to add some no-blog-post-style pages like &amp;lsquo;About&amp;rsquo; or &amp;lsquo;legal notice&amp;rsquo;. One could create such pages but these had an empty author field which was shown to visitors.
 Not very satisfying.&lt;/p&gt;
 
-&lt;p&gt;Another nuisance what that the Google Analytics support was only very basic. It was not possible to add any custom analytics code to blog posts - for instance to track download links with custom tracking events.&lt;/p&gt;
+&lt;p&gt;Another nuisance was that the Google Analytics support was only very basic. It was not possible to add any custom analytics code to blog posts - for instance to track download links with custom tracking events.&lt;/p&gt;
 
 &lt;p&gt;And last but not least it was difficult to add syntax highlighted text to the blog. We found the advise to use Github Gists instead somewhere but we could not find out a way to honour the gists css styling after embedding the its link in our post.
 That was the final event that pushed us towards trying another solution.&lt;/p&gt;
