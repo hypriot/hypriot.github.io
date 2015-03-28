@@ -44,7 +44,7 @@ That was the final event that pushed us towards trying another solution.&lt;/p&g
 
 &lt;p&gt;Hugo is a so-called static-blog generator similar to &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;.
 It is able to generate a complete blog from text files you write with &lt;a href=&#34;http://daringfireball.net/projects/markdown&#34;&gt;Markdown&lt;/a&gt;.
-As markdown is just a text format it can easily managed with a revison control system as Git.&lt;/p&gt;
+As markdown is just a text format it can be easily managed with a revison control system like Git.&lt;/p&gt;
 
 &lt;p&gt;That comes in especially handy if you write blog posts as part of a team. Thus changes can easily be tracked and coordinated until a post is ready to be published.&lt;/p&gt;
 
