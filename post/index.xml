@@ -6,8 +6,30 @@
     <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Mar 2015 22:52:37 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2015 09:29:33 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Let&#39;s get physical with Docker on Raspberry Pi</title>
+      <link>http://blog.hypriot.com/post/lets-get-physical/</link>
+      <pubDate>Sat, 28 Mar 2015 09:29:33 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/lets-get-physical/</guid>
+      <description>
+
+&lt;p&gt;TBD: &lt;code&gt;gpio&lt;/code&gt; in Docker on Raspberry Pi&lt;/p&gt;
+
+&lt;h2 id=&#34;give-us-your-feedback:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Give us your feedback&lt;/h2&gt;
+
+&lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
+
+&lt;p&gt;Tell us via Twitter, HackerNews or in the comments!
+And please share this post with your friends.&lt;/p&gt;
+
+&lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>We moved our blog from Posthaven to Hugo after only three posts. Why?</title>
