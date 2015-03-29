@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arm on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/tags/arm/</link>
+    <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Mar 2015 17:45:04 +0200</lastBuildDate>
+    <atom:link href="http://blog.hypriot.com/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HypriotOS: Back Again and Better then Ever</title>
+      <link>http://blog.hypriot.com/post/back_again/</link>
+      <pubDate>Sun, 29 Mar 2015 17:45:04 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/back_again/</guid>
+      <description>
+
+&lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
+Listening to our users and having some ideas of our own we are back again with our latest version of HypriotOS.&lt;/p&gt;
+
+&lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary-of-changes:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Summary of Changes&lt;/h2&gt;
+
+&lt;p&gt;Jack brings along a host of new features&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;an upgrade of the Linux kernel from 3.18.8 to &lt;strong&gt;3.18.10&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;support for &lt;a href=&#34;http://openvswitch.org/&#34;&gt;Open vSwitch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;out of the box support for &lt;strong&gt;Wifi&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka Apple Bonjour)&lt;/li&gt;
+&lt;li&gt;more inodes to allow for more files in the filesystem&lt;/li&gt;
+&lt;li&gt;some smaller improvements/additions: fake-hwclock, usbutils, htop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some of these feature deserve a more thorough explanation.&lt;/p&gt;
+
+&lt;h3 id=&#34;open-vswitch-support:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Open vSwitch support&lt;/h3&gt;
+
+&lt;p&gt;Check out this cool video &lt;a href=&#34;https://www.youtube.com/watch?v=sBy0NVBPc9g&#34;&gt;Running Open vSwitch on Docker&lt;/a&gt; from Dave Tucker as an introduction to Docker and Open vSwitch.
+We added the foundation for using Open vSwitch by adding the necessary kernel support into our image.&lt;/p&gt;
+
+&lt;p&gt;You can see for yourself by typing the following&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+$ modprobe openvswitch
+HypriotOS: root@black-pearl in ~
+$ lsmod | grep openvswitch
+openvswitch            68194  0
+vxlan                  29211  1 openvswitch
+gre                     4069  1 openvswitch
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Be aware that you still need a working Open vSwitch Docker image that works for ARM.
+If nobody else is faster we might provide one soon ourselves!&lt;/p&gt;
+
+&lt;h3 id=&#34;improved-networking-support:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Improved Networking Support&lt;/h3&gt;
+
+&lt;h4 id=&#34;hotplug:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Hotplug&lt;/h4&gt;
+
+&lt;p&gt;To make the networking with our image a smoother experience we added hotplug support for networking devices.
+This allows you to add for instance a USB Wifi Dongle and it will be recognized by your Pi at once.&lt;/p&gt;
+
+&lt;p&gt;You can check if it worked by using &lt;strong&gt;lsusb&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ lsusb
+Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
+Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n WLAN Adapter
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;wifi:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Wifi&lt;/h4&gt;
+
+&lt;p&gt;One of the most asked for features regarding our SD image was the support of Wifi.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to get started with Wifi is on Mac with our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash script&lt;/a&gt;.
+This script does not only allow you to set Wifi configuration but it also allows you to fetch, configure and flash the SD card in one go.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;If you cannot use our nifty flash tool you have to first boot your Pi with a network cable attached.
+Then you can add your Wifi credentials in &lt;code&gt;/boot/occidentalis.txt&lt;/code&gt; as described in the &lt;a href=&#34;https://github.com/hypriot/flash#occidentalistxt&#34;&gt;Readme&lt;/a&gt; of the flash tool.
+Afterwards run &lt;code&gt;occi&lt;/code&gt; at the command line and reboot.&lt;/p&gt;
+
+&lt;p&gt;After rebooting you should see a wlan-interface with an ip address assigned similar to this:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ ip a
+1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu 1500 qdisc pfifo_fast state DOWN qlen 1000
+    link/ether b8:27:eb:c0:df:1a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.178.83/24 brd 192.168.178.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ba27:ebff:fec0:df1a/64 scope link
+       valid_lft forever preferred_lft forever
+3: wlan0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc mq state UP qlen 1000
+    link/ether e8:4e:06:0b:bf:d8 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.178.144/24 brd 192.168.178.255 scope global wlan0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ea4e:6ff:fe0b:bfd8/64 scope link
+       valid_lft forever preferred_lft forever
+4: docker0: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu 1500 qdisc noqueue state DOWN
+    link/ether 56:84:7a:fe:97:99 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.42.1/16 scope global docker0
+       valid_lft forever preferred_lft forever
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;support-for-avahi-bonjour:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
+
+&lt;p&gt;One of the major problems after booting your Pi always was how to find out its IP address.
+There are many approaches to solve this problem but one of the easiest is with the help of &lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;Avahi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now after booting up our SD card image you can just ssh into your Pi without finding out the IP address first.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ ssh root@black-pearl.local
+root@black-pearl.local&amp;#39;s password:
+Linux black-pearl 3.18.10-hypriotos-v7+ #2 SMP PREEMPT Sun Mar 29 13:13:41 UTC 2015 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Mar 29 23:49:43 2015 from macbook
+HypriotOS: root@black-pearl in ~
+$
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;black-pearl&lt;/strong&gt; is the standard hostname your Pi gets after booting with our image.&lt;/p&gt;
+
+&lt;p&gt;This out of the box experience is once again unfortunately only for Mac users.
+Linux and Windows users need to install additional software first.&lt;/p&gt;
+
+&lt;p&gt;Linux users need to install the Avahi daemon. For Ubuntu it works like this&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo apt-get install avahi-daemon&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Windows users need to install &lt;a href=&#34;https://www.apple.com/de/itunes/download/&#34;&gt;iTunes&lt;/a&gt; as Bonjour/Avahi comes bundles with it.&lt;/p&gt;
+
+&lt;h2 id=&#34;download:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;The new image can be downloaded here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~367MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-get-started:f7e90fc486c3821aa81f427636686fc7&#34;&gt;How to get started&lt;/h2&gt;
+
+&lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
+
+&lt;p&gt;At the boot prompt log in with user &amp;ldquo;&lt;strong&gt;pi&lt;/strong&gt;&amp;rdquo; and password &amp;ldquo;&lt;strong&gt;raspberry&lt;/strong&gt;&amp;rdquo; (or with a privileged user &amp;ldquo;root&amp;rdquo; and password &amp;ldquo;hypriot&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;One thing that is still worth mentioning is that you need special ARM-compatible Docker Images.
+&lt;strong&gt;Standard x86-64 Docker Images from the Docker Hub won&amp;rsquo;t work&lt;/strong&gt;. That&amp;rsquo;s the reason why we&amp;rsquo;ve created a number of ARM compatible Docker Images to get you started. Wether you prefer Java, Python, Node.js or io.js - we have you covered!&lt;/p&gt;
+
+&lt;p&gt;You can find these images and more at &lt;a href=&#34;https://registry.hub.docker.com/repos/hypriot/&#34;&gt;our place&lt;/a&gt; on the Docker Hub. After booting our image on your Pi these base images are just a &amp;ldquo;docker pull&amp;rdquo; away. For example &amp;ldquo;docker pull hypriot/rpi-node&amp;rdquo;.&lt;/p&gt;
+
+&lt;h2 id=&#34;give-us-your-feedback:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Give us your feedback&lt;/h2&gt;
+
+&lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
+
+&lt;p&gt;Tell us via Twitter, HackerNews or in the comments!
+And please share this post with your friends.&lt;/p&gt;
+
+&lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
