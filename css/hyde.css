@@ -34,12 +34,12 @@
 html {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
-@media (min-width: 48rem) {
+@media (min-device-width: 48rem) {
   html {
     font-size: 16px;
   }
 }
-@media (min-width: 58rem) {
+@media (min-device-width: 58rem) {
   html {
     font-size: 20px;
   }
