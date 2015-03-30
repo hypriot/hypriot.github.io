@@ -6,15 +6,15 @@
     <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Mar 2015 17:45:04 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2015 00:00:00 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>HypriotOS: Back Again and Better then Ever</title>
-      <link>http://blog.hypriot.com/post/back_again/</link>
-      <pubDate>Sun, 29 Mar 2015 17:45:04 +0200</pubDate>
+      <link>http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</link>
+      <pubDate>Mon, 30 Mar 2015 00:00:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/back_again/</guid>
+      <guid>http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</guid>
       <description>
 
 &lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
@@ -22,7 +22,7 @@ Listening to our users and having some ideas of our own we are back again with o
 
 &lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary-of-changes:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Summary of Changes&lt;/h2&gt;
+&lt;h2 id=&#34;summary-of-changes:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Summary of Changes&lt;/h2&gt;
 
 &lt;p&gt;Jack brings along a host of new features&lt;/p&gt;
 
@@ -38,7 +38,7 @@ Listening to our users and having some ideas of our own we are back again with o
 
 &lt;p&gt;Some of these feature deserve a more thorough explanation.&lt;/p&gt;
 
-&lt;h3 id=&#34;open-vswitch-support:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Open vSwitch support&lt;/h3&gt;
+&lt;h3 id=&#34;open-vswitch-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Open vSwitch support&lt;/h3&gt;
 
 &lt;p&gt;Check out this cool video &lt;a href=&#34;https://www.youtube.com/watch?v=sBy0NVBPc9g&#34;&gt;Running Open vSwitch on Docker&lt;/a&gt; from Dave Tucker as an introduction to Docker and Open vSwitch.
 We added the foundation for using Open vSwitch by adding the necessary kernel support into our image.&lt;/p&gt;
@@ -58,9 +58,9 @@ gre                     4069  1 openvswitch
 &lt;p&gt;Be aware that you still need a working Open vSwitch Docker image that works for ARM.
 If nobody else is faster we might provide one soon ourselves!&lt;/p&gt;
 
-&lt;h3 id=&#34;improved-networking-support:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Improved Networking Support&lt;/h3&gt;
+&lt;h3 id=&#34;improved-networking-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Improved Networking Support&lt;/h3&gt;
 
-&lt;h4 id=&#34;hotplug:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Hotplug&lt;/h4&gt;
+&lt;h4 id=&#34;hotplug:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Hotplug&lt;/h4&gt;
 
 &lt;p&gt;To make the networking with our image a smoother experience we added hotplug support for networking devices.
 This allows you to add for instance a USB Wifi Dongle and it will be recognized by your Pi at once.&lt;/p&gt;
@@ -75,7 +75,7 @@ Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n W
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
-&lt;h4 id=&#34;wifi:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Wifi&lt;/h4&gt;
+&lt;h4 id=&#34;wifi:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Wifi&lt;/h4&gt;
 
 &lt;p&gt;One of the most asked for features regarding our SD image was the support of Wifi.&lt;/p&gt;
 
@@ -118,7 +118,7 @@ Afterwards run &lt;code&gt;occi&lt;/code&gt; at the command line and reboot.&lt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
-&lt;h3 id=&#34;support-for-avahi-bonjour:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
+&lt;h3 id=&#34;support-for-avahi-bonjour:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
 
 &lt;p&gt;One of the major problems after booting your Pi always was how to find out its IP address.
 There are many approaches to solve this problem but one of the easiest is with the help of &lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;Avahi&lt;/a&gt;.&lt;/p&gt;
@@ -152,14 +152,14 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;Windows users need to install &lt;a href=&#34;https://www.apple.com/de/itunes/download/&#34;&gt;iTunes&lt;/a&gt; as Bonjour/Avahi comes bundles with it.&lt;/p&gt;
 
-&lt;h2 id=&#34;download:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Download&lt;/h2&gt;
+&lt;h2 id=&#34;download:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Download&lt;/h2&gt;
 
 &lt;p&gt;The new image can be downloaded here:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~367MB)&lt;br /&gt;
 &lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;how-to-get-started:f7e90fc486c3821aa81f427636686fc7&#34;&gt;How to get started&lt;/h2&gt;
+&lt;h2 id=&#34;how-to-get-started:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;How to get started&lt;/h2&gt;
 
 &lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
@@ -170,7 +170,7 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;You can find these images and more at &lt;a href=&#34;https://registry.hub.docker.com/repos/hypriot/&#34;&gt;our place&lt;/a&gt; on the Docker Hub. After booting our image on your Pi these base images are just a &amp;ldquo;docker pull&amp;rdquo; away. For example &amp;ldquo;docker pull hypriot/rpi-node&amp;rdquo;.&lt;/p&gt;
 
-&lt;h2 id=&#34;give-us-your-feedback:f7e90fc486c3821aa81f427636686fc7&#34;&gt;Give us your feedback&lt;/h2&gt;
+&lt;h2 id=&#34;give-us-your-feedback:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Give us your feedback&lt;/h2&gt;
 
 &lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
 
