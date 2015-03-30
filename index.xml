@@ -466,9 +466,11 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
 &lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Update (&lt;sup&gt;30&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h2 id=&#34;how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;How to get started&lt;/h2&gt;
 
-&lt;p&gt;Download our SD card image and flash it on your own SD card. Here is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
+&lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
 &lt;p&gt;At the boot prompt log in with user &amp;ldquo;pi&amp;rdquo; and password &amp;ldquo;raspberry&amp;rdquo; (or with a privileged user &amp;ldquo;root&amp;rdquo; and password &amp;ldquo;hypriot&amp;rdquo;).&lt;/p&gt;
 
@@ -772,6 +774,8 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Update (&lt;sup&gt;30&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
+
 &lt;p&gt;Tell us what you like or dislike about this image!&lt;/p&gt;
 
 &lt;p&gt;We will gather your feedback and will try to make this image even better. Additionally we are also planning to publish our build scripts for the image soon.&lt;/p&gt;
@@ -781,46 +785,6 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 &lt;p&gt;Well - our image works for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; at the same time. How convenient is that?!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The credentials for logging in are &amp;ldquo;root&amp;rdquo; for the user and &amp;ldquo;hypriot&amp;rdquo; for the password.&lt;/strong&gt; Have fun!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pirate Crew</title>
-      <link>http://blog.hypriot.com/crew/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.hypriot.com/crew/</guid>
-      <description>&lt;p&gt;Our Hypriot crew currently consists of five guys who have too much spare time.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Govinda Fichtner&lt;/strong&gt; - &lt;i&gt;DevOps by day and ARM-Hacker by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/govinda_200px_bw_round.jpg&#34;&gt; Somehow suffering from not being fully engaged by my day-job as a DevOps, my wife &amp;amp; three kids and several outdoor activities I tend to dabble with ARM-devices and cutting edge cloud-technologies like Docker by night. I have been working in the IT industry for 15 years in many different roles such as developer, administrator, consultant, architect, trainer,  project manager, team lead and CTO.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Dieter Reuter&lt;/strong&gt; - &lt;i&gt;Senior Consultant by day and Rocket Man by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/dieter_200px_bw_round.jpg&#34;&gt; Senior Consultant with 30 years of enterprise IT experience and unquenchable curiosity is looking for new challenges. Dealing with cutting-edge cloud technologies like Docker and CoreOS, obsessed with the DevOps movement and its associated automation.  Am now in the process of moving Docker and LXC to ARM based gadgets with rocket-like speed.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Stefan Scherer&lt;/strong&gt; - &lt;i&gt;Software engineer by day and Automation Fanatic by night&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/stefan_200px_bw_round.jpg&#34;&gt; Working as Software Engineer for about 20 years. Automation obsessed. I like to exercise with small ARM devices and other tiny things to show that these little chips are more powerful than you might think.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Mathias Renner&lt;/strong&gt; - &lt;i&gt;Student of information systems by day and work-a-frolic by night.&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/mathias_200px_bw_round.jpg&#34;&gt; I consider myself a workafrolic since I enjoy doing lots of different things. I worked as Linux administrator, tester, developer and founded two small startups. I excessively use open source and follow DIY as often as possible because if you do it yourself you know how it works.
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
-  &lt;p&gt;&lt;strong&gt;Andreas Eiermann&lt;/strong&gt; - &lt;i&gt;student of information systems by day and tinkerer by night.&lt;/i&gt;&lt;/p&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/andreas_200px_bw_round.jpg&#34;&gt; Is the jack of all trades of network and server administration. Interested in to many things and needs a reminder from time to time to focus again. Prefers dogs over cats.
-&lt;/div&gt;
-&lt;/p&gt;
 </description>
     </item>
     
@@ -872,6 +836,46 @@ Start your Pi with the flashed SD card and enjoy instant Docker awesomeness.&lt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pirate Crew</title>
+      <link>http://blog.hypriot.com/crew/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.hypriot.com/crew/</guid>
+      <description>&lt;p&gt;Our Hypriot crew currently consists of five guys who have too much spare time.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Govinda Fichtner&lt;/strong&gt; - &lt;i&gt;DevOps by day and ARM-Hacker by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/govinda_200px_bw_round.jpg&#34;&gt; Somehow suffering from not being fully engaged by my day-job as a DevOps, my wife &amp;amp; three kids and several outdoor activities I tend to dabble with ARM-devices and cutting edge cloud-technologies like Docker by night. I have been working in the IT industry for 15 years in many different roles such as developer, administrator, consultant, architect, trainer,  project manager, team lead and CTO.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Dieter Reuter&lt;/strong&gt; - &lt;i&gt;Senior Consultant by day and Rocket Man by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/dieter_200px_bw_round.jpg&#34;&gt; Senior Consultant with 30 years of enterprise IT experience and unquenchable curiosity is looking for new challenges. Dealing with cutting-edge cloud technologies like Docker and CoreOS, obsessed with the DevOps movement and its associated automation.  Am now in the process of moving Docker and LXC to ARM based gadgets with rocket-like speed.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Stefan Scherer&lt;/strong&gt; - &lt;i&gt;Software engineer by day and Automation Fanatic by night&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/stefan_200px_bw_round.jpg&#34;&gt; Working as Software Engineer for about 20 years. Automation obsessed. I like to exercise with small ARM devices and other tiny things to show that these little chips are more powerful than you might think.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Mathias Renner&lt;/strong&gt; - &lt;i&gt;Student of information systems by day and work-a-frolic by night.&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/mathias_200px_bw_round.jpg&#34;&gt; I consider myself a workafrolic since I enjoy doing lots of different things. I worked as Linux administrator, tester, developer and founded two small startups. I excessively use open source and follow DIY as often as possible because if you do it yourself you know how it works.
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;profile&#34;&gt;
+  &lt;p&gt;&lt;strong&gt;Andreas Eiermann&lt;/strong&gt; - &lt;i&gt;student of information systems by day and tinkerer by night.&lt;/i&gt;&lt;/p&gt;
+  &lt;img src=&#34;http://assets.hypriot.com/andreas_200px_bw_round.jpg&#34;&gt; Is the jack of all trades of network and server administration. Interested in to many things and needs a reminder from time to time to focus again. Prefers dogs over cats.
+&lt;/div&gt;
+&lt;/p&gt;
 </description>
     </item>
     

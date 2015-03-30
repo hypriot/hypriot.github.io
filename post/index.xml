@@ -441,9 +441,11 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
 &lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;Update (&lt;sup&gt;30&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h2 id=&#34;how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;How to get started&lt;/h2&gt;
 
-&lt;p&gt;Download our SD card image and flash it on your own SD card. Here is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
+&lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
 &lt;p&gt;At the boot prompt log in with user &amp;ldquo;pi&amp;rdquo; and password &amp;ldquo;raspberry&amp;rdquo; (or with a privileged user &amp;ldquo;root&amp;rdquo; and password &amp;ldquo;hypriot&amp;rdquo;).&lt;/p&gt;
 
@@ -746,6 +748,8 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 &lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update (&lt;sup&gt;30&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Tell us what you like or dislike about this image!&lt;/p&gt;
 
