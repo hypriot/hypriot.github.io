@@ -23,7 +23,7 @@
 
 &lt;p&gt;Docker 1.6 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
 
-&lt;p&gt;The ones that stand out the most for me are&lt;/p&gt;
+&lt;p&gt;The ones that stand out the most are&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;syslog support for the Docker logs&lt;/li&gt;
