@@ -6,8 +6,61 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Mar 2015 22:09:33 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2015 20:00:00 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Stay on the cutting edge with Docker 1.6 RC2 and test drive it on your Raspberry Pi today</title>
+      <link>http://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</link>
+      <pubDate>Tue, 31 Mar 2015 20:00:00 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</guid>
+      <description>
+
+&lt;p&gt;If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-do-you-get-with-docker-1-6:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;What do you get with Docker 1.6?&lt;/h3&gt;
+
+&lt;p&gt;Docker 1.6 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
+
+&lt;p&gt;The ones that stand out the most for me are&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syslog support for the Docker logs&lt;/li&gt;
+&lt;li&gt;setting of ulimits for container&lt;/li&gt;
+&lt;li&gt;building images from an image id&lt;/li&gt;
+&lt;li&gt;pulling images based on id&lt;/li&gt;
+&lt;li&gt;Windows client support (&lt;a href=&#34;https://kitematic.com&#34;&gt;Kitematic&lt;/a&gt; - &lt;em&gt;I finally see it coming together!&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;Labels for container and images&lt;/li&gt;
+&lt;li&gt;ability to set constraints on images - memory, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0-rc2/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
+
+&lt;p&gt;The only prerequisite to get started is that you are using our Hypriot SD card image for the Rasperry Pi. We pubished a new version just two days ago and you can the blog post about it here: &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-it-while-it-is-still-hot:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Get it while it is still hot&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc1-2_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc1-2_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc1-2_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+$ wget http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
+
+HypriotOS: root@black-pearl in ~
+$ dpkg -i docker-hypriot_1.6.0-rc2-1_armhf.deb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Afterwards you should be able to quench your curiosity by playing with this shiny new toy.
+This is not yet a stable release so let us know what you think! And by the way you can find older versions of Docker as Debian packages in our &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;Download-Area&lt;/a&gt;.
+Installing a new version replaces the existing one and thus makes it possible to switch versions without breaking a sweat.&lt;/p&gt;
+
+&lt;p&gt;Have fun.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</title>
