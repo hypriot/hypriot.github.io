@@ -41,8 +41,8 @@
 
 &lt;h3 id=&#34;get-it-while-it-is-still-hot:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Get it while it is still hot&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc1-2_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc1-2_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc1-2_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc2-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
@@ -59,6 +59,13 @@ This is not yet a stable release so let us know what you think! And by the way -
 Installing a new version replaces the existing one and thus makes it possible to switch versions without breaking a sweat.&lt;/p&gt;
 
 &lt;p&gt;Have fun.&lt;/p&gt;
+
+&lt;h3 id=&#34;update-get-docker-1-6-0-rc3:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update: Get Docker 1.6.0 RC3&lt;/h3&gt;
+
+&lt;p&gt;Two hours ago the Docker team released another release candidate, so we&amp;rsquo;ve cooked it for you.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc3-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
