@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> Let&#39;s get physical with Docker on Raspberry Pi &middot; Docker Pirates ARMed with explosive stuff </title>
+  <title> Let&#39;s get physical with Docker on the Raspberry Pi &middot; Docker Pirates ARMed with explosive stuff </title>
 
   
   <link rel="stylesheet" href="/css/poole.css">
@@ -66,13 +66,13 @@
 
 <div class="content container">
   <div class="post">
-    <h1>Let&#39;s get physical with Docker on Raspberry Pi</h1>
+    <h1>Let&#39;s get physical with Docker on the Raspberry Pi</h1>
     <span class="post-date">Thu, Apr 9, 2015</span>
     
 
-<p>With Docker on Raspberry Pi we connect the cloud tools with IoT. So how can we interact with the real world from inside a Docker container? Let&rsquo;s get physical&hellip;</p>
+<p>With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&rsquo;s see and get physical&hellip;</p>
 
-<p>To keep the tutorial simple we will use the binary from the <a href="http://wiringpi.com">wiringPi</a> project within Docker. This command line tool could be used to read and write the GPIO (General Purpose Input/Output) pins of the Raspberry Pi.</p>
+<p>To keep the tutorial simple we will use the binary from the <a href="http://wiringpi.com">wiringPi</a> project within a Docker container. This command line tool can be used to read and write the GPIO (General Purpose Input/Output) pins of the Raspberry Pi.</p>
 
 <p>We&rsquo;ve dockerized the wiringPi binary <code>gpio</code> in a very tiny Docker image of about 2 MByte, so pulling this image even on a Raspberry Pi B is still a fast experience.</p>
 
@@ -83,17 +83,17 @@
 
 <p>In a first little example we just want to turn an LED on and off. You need only a few components to try it yourself.</p>
 
-<p>See the wiring diagram how to connect the LED and the 220Ω resistor to your Raspberry Pi for the following examples. We use the 11th (BCM GPIO 17 / wiringPi Pin 0) and 9th (Ground) Pin of the Raspberry Pi B/B+ or Pi 2 B.</p>
+<p>See the wiring diagram on how to connect the LED and the 220Ω resistor to your Raspberry Pi for the following examples. We use the 11th (BCM GPIO 17 / wiringPi Pin 0) and 9th (Ground) Pin of the Raspberry Pi B/B+ or Pi 2 B.</p>
 
 <p><img src="/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg" alt="wiringPi LED Pin 0" />
 </p>
 
-<p>And the circuit diagram:</p>
+<p>And here is the circuit diagram:</p>
 
 <p><img src="/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg" alt="wiringPi LED Pin 0 circuit" />
 </p>
 
-<p>Now you can use these commands to play with:</p>
+<p>Now you can use these commands:</p>
 
 <h3 id="get-status-of-all-gpios:ea2b0cf3ad09b4d9c9d4cc88763964bd">Get status of all GPIOs</h3>
 
@@ -132,12 +132,12 @@
 
 <h3 id="set-mode-to-output:ea2b0cf3ad09b4d9c9d4cc88763964bd">Set mode to output</h3>
 
-<p>To turn on LED&rsquo;s or switch other outputs, you have to set the corresponding GPIO pin to output mode with</p>
+<p>To turn on LED&rsquo;s or switch other outputs you have to set the corresponding GPIO pin to output mode with</p>
 
 <pre><code class="language-bash">$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio mode 0 out
 </code></pre>
 
-<p>This has to be done only once after reboot, now we can turn the LED on with</p>
+<p>This has to be done only once after reboot.</p>
 
 <h3 id="turn-on-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd">Turn on the LED</h3>
 
@@ -148,19 +148,22 @@
 
 <h3 id="turn-off-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd">Turn off the LED</h3>
 
+<p>or off with</p>
+
 <pre><code class="language-bash">$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 off
 </code></pre>
 
 <h2 id="read-a-button-from-gpio:ea2b0cf3ad09b4d9c9d4cc88763964bd">Read a button from GPIO</h2>
 
-<p>In another example we attach a button to the Raspberry Pi and read the state from the 12th pin (BCM GPIO 18, wiringPi Pin 1). The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor is connected to 9th Pin (Ground).</p>
+<p>In another example we attach a button to the Raspberry Pi and read the state from the 12th pin (BCM GPIO 18, wiringPi Pin 1).
+The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor is connected to 9th Pin (Ground).</p>
 
 <p>The wiring diagram shows how to connect all parts. You need a push button, a 1kΩ resistor for pull down and a 10kΩ resistor to connect to the Raspberry Pi.</p>
 
 <p><img src="/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg" alt="wiringPi Button on Pin 1" />
 </p>
 
-<p>And the circuit diagram.</p>
+<p>And here is the corresponding circuit diagram:</p>
 
 <p><img src="/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg" alt="wiringPi Button on Pin 1 circuit" />
 </p>
@@ -177,13 +180,13 @@
 
 <h2 id="conclusion:ea2b0cf3ad09b4d9c9d4cc88763964bd">Conclusion</h2>
 
-<p>In this blog post we showed you how to get in touch with GPIO ports from a Docker container with a simple command line tool.</p>
+<p>In this blog post we showed you how easily you can use the GPIO ports of the Raspberry Pi from a Docker container with a simple command line tool.</p>
 
-<p>There also is a more complete Docker image <a href="https://registry.hub.docker.com/u/acencini/rpi-python-serial-wiringpi/">acencini/rpi-python-serial-wiringpi</a> on the Docker hub registry that contains Python and the complete wiringPi2 library to play with.</p>
+<p>There also is a more complete Docker image <a href="https://registry.hub.docker.com/u/acencini/rpi-python-serial-wiringpi/">acencini/rpi-python-serial-wiringpi</a> on the Docker Hub that contains Python and the complete wiringPi2 library to play with.</p>
 
 <p>If you want to learn more about the GPIO pins you can use the excellent <a href="http://pi.gadgetoid.com/pinout">interactive Raspberry Pi Pinout guide</a> from Gadgetoid.</p>
 
-<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+<p>As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.</p>
 
     <div class="social-sharing">
   
