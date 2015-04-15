@@ -883,6 +883,13 @@ Installing a new version replaces the existing one and thus makes it possible to
 
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc6-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
 &lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;update-15-04-2015-get-docker-1-6-0-rc7:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 15.04.2015: Get Docker 1.6.0 RC7&lt;/h3&gt;
+
+&lt;p&gt;OK, here is the next 1.6.0 release candidate.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc7-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
