@@ -48,6 +48,9 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0-rc5/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
 
+&lt;p&gt;Read some more details on the official Docker blog
+&lt;a href=&#34;https://blog.docker.com/2015/04/docker-release-1-6/&#34;&gt;DOCKER 1.6: ENGINE &amp;amp; ORCHESTRATION UPDATES, REGISTRY 2.0, &amp;amp; WINDOWS CLIENT PREVIEW&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
