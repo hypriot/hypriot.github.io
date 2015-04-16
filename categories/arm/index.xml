@@ -20,7 +20,7 @@
 &lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
 Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
 
-&lt;p&gt;Our Docker Debian packages are battle-tested with our HypriotOS Docker SD card image only.
+&lt;p&gt;Our Docker Debian packages are battle-tested only with our HypriotOS Docker SD card image.
 Use it to get the best Docker experience available for the Raspberry Pi. It is ridiculous easy to get up and running. Under 5 minutes - promised!&lt;/p&gt;
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
@@ -46,7 +46,7 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 &lt;li&gt;ability to set constraints on images - memory, etc.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Find out more details in the [CHANGELOG.md](&lt;a href=&#34;https://github.com/docker/docker/blob/master/CHANGELOG.md&#34;&gt;https://github.com/docker/docker/blob/master/CHANGELOG.md&lt;/a&gt; yourself.&lt;/p&gt;
+&lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
 
 &lt;p&gt;Read some more details on the official Docker blog
 &lt;a href=&#34;https://blog.docker.com/2015/04/docker-release-1-6/&#34;&gt;DOCKER 1.6: ENGINE &amp;amp; ORCHESTRATION UPDATES, REGISTRY 2.0, &amp;amp; WINDOWS CLIENT PREVIEW&lt;/a&gt;&lt;/p&gt;
