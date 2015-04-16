@@ -6,8 +6,74 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2015 06:35:55 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2015 22:06:11 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker 1.6.0 is finally released into the wild</title>
+      <link>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</link>
+      <pubDate>Thu, 16 Apr 2015 22:06:11 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
+      <description>
+
+&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
+Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
+
+&lt;p&gt;Our Docker Debian packages are battle-tested with our HypriotOS Docker SD card image only.
+Use it to get the best Docker experience available for the Raspberry Pi. It is ridiculous easy to get up and running. Under 5 minutes - promised!&lt;/p&gt;
+
+&lt;p&gt;The image can be downloaded here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~367MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
+
+&lt;h2 id=&#34;all-new-shiny-docker-1-6-0:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
+
+&lt;p&gt;Alright back to Docker&amp;hellip; version 1.6.0 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
+
+&lt;p&gt;The ones that stand out the most are&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syslog support for the Docker logs&lt;/li&gt;
+&lt;li&gt;setting of ulimits for container&lt;/li&gt;
+&lt;li&gt;building images from an image id&lt;/li&gt;
+&lt;li&gt;pulling images based on id&lt;/li&gt;
+&lt;li&gt;Windows client support (&lt;a href=&#34;https://kitematic.com&#34;&gt;Kitematic&lt;/a&gt; - &lt;em&gt;I finally see it coming together!&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;Labels for container and images&lt;/li&gt;
+&lt;li&gt;ability to set constraints on images - memory, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0-rc5/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
+
+&lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+$ wget http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
+
+HypriotOS: root@black-pearl in ~
+$ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;
+
+&lt;p&gt;And if you are especially daring today you might wanna try it together with Docker Compose:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&#34;&gt;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Connecting Kitematic to an external Docker Engine running on a Raspberry Pi</title>
