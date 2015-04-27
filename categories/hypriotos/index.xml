@@ -82,7 +82,7 @@ Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n W
 &lt;p&gt;The easiest way to get started with Wifi is on Mac with our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash script&lt;/a&gt;.
 This script does not only allow you to set Wifi configuration but it also allows you to fetch, configure and flash the SD card in one go.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
@@ -156,8 +156,8 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;The new image can be downloaded here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~367MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150329-140334.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~367MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;how-to-get-started:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;How to get started&lt;/h2&gt;
 

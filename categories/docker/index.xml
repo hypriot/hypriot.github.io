@@ -25,8 +25,8 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~369MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150416-201537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~369MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
 
@@ -53,13 +53,13 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
-$ wget http://assets.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
+$ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
 
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
@@ -908,13 +908,13 @@ Killing rpinodehaproxyexample_webb_1...
 
 &lt;h3 id=&#34;get-it-while-it-is-still-hot:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Get it while it is still hot&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc2-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc2-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
-$ wget http://assets.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
+$ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
 
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-rc2-1_armhf.deb
@@ -931,34 +931,34 @@ Installing a new version replaces the existing one and thus makes it possible to
 
 &lt;p&gt;Two hours ago the Docker team released another release candidate, so we&amp;rsquo;ve cooked it for you.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc3-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc3-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc3-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;update-03-04-2015-get-docker-1-6-0-rc4:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 03.04.2015: Get Docker 1.6.0 RC4&lt;/h3&gt;
 
 &lt;p&gt;Well, this time it is already 11 hours since it was published. But still here is the lastest and greatest.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc4-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc4-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc4-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc4-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc4-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc4-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;update-12-04-2015-get-docker-1-6-0-rc5:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 12.04.2015: Get Docker 1.6.0 RC5&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc5-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc5-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc5-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc5-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc5-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc5-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;update-14-04-2015-get-docker-1-6-0-rc6:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 14.04.2015: Get Docker 1.6.0 RC6&lt;/h3&gt;
 
 &lt;p&gt;Maybe this could be the last release candidate before a final 1.6.0 release.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc6-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc6-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc6-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;update-15-04-2015-get-docker-1-6-0-rc7:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 15.04.2015: Get Docker 1.6.0 RC7&lt;/h3&gt;
 
 &lt;p&gt;OK, here is the next 1.6.0 release candidate.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc7-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-rc7-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-rc7-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1154,8 +1154,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
-&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
+&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
@@ -1463,7 +1463,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
