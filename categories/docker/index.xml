@@ -1978,7 +1978,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;p&gt;Download our current SD card image using your browser by clicking &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Next go to your *Download *folder and extract the downloaded zip file by right-clicking on the file and then clicking on &lt;strong&gt;7-zip&lt;/strong&gt; -&amp;gt; &lt;strong&gt;extract here&amp;hellip;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Next go to your &lt;strong&gt;Download&lt;/strong&gt; folder and extract the downloaded zip file by right-clicking on the file and then clicking on &lt;strong&gt;7-zip&lt;/strong&gt; -&amp;gt; &lt;strong&gt;extract here&amp;hellip;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;After 7-zip is finished with extracting you will have a file with a &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
