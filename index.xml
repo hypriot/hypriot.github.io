@@ -1878,6 +1878,13 @@ Download and then install with &lt;code&gt;dpkg -i package_name.deb&lt;/code&gt;
 
 &lt;tbody&gt;
 &lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Docker 1.6.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.2-1_armhf.deb&#34;&gt;docker-hypriot_1.6.2-1_armhf.deb&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.2-1_armhf.deb.sha256&#34;&gt;Checksum&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15.05.2015&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Docker 1.6.1&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.1-1_armhf.deb&#34;&gt;docker-hypriot_1.6.1-1_armhf.deb&lt;/a&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.1-1_armhf.deb.sha256&#34;&gt;Checksum&lt;/a&gt;&lt;/td&gt;
