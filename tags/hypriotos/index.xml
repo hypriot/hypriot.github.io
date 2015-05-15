@@ -657,6 +657,8 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ipconfig getifaddr en1
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;If you do not get an IP address as result, try &lt;code&gt;en0&lt;/code&gt; instead of &lt;code&gt;en1&lt;/code&gt;.&lt;/p&gt;
+
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
