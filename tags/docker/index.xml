@@ -2041,7 +2041,7 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ipconfig getifaddr en1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;If you do not get an IP address as result, try &lt;code&gt;en0&lt;/code&gt; instead of &lt;code&gt;en1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If it does not report back an IP address, you are probably connected via cable to your network. Try &lt;code&gt;en0&lt;/code&gt; instead of &lt;code&gt;en1&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
