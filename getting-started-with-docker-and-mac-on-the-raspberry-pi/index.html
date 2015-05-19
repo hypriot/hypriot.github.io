@@ -149,7 +149,7 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 <li>replace the parameter after <code>of=</code> with the identifier of your SD card</li>
 </ul>
 
-<pre><code>sudo dd if=hypriot-rpi-20150416-201537.img of=mmcblk0 bs=1m
+<pre><code>sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/disk5 bs=1m
 </code></pre>
 
 <p>While this command is executed you won&rsquo;t get any information about its progress.
