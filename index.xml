@@ -1960,8 +1960,8 @@ Download and then install with &lt;code&gt;dpkg -i package_name.deb&lt;/code&gt;
 
 &lt;p&gt;Download these precompiled binaries, rename it to &lt;code&gt;docker-machine&lt;/code&gt; and create a &lt;code&gt;Docker Machine&lt;/code&gt; on your Raspberry Pi.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d hypriot --hypriot-ip-address=11.22.33.44 black-pearl
-docker-machine upgrade black-pearl
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-machine create -d hypriot --hypriot-ip-address=11.22.33.44 black-pearl
+$ docker-machine upgrade black-pearl
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;table&gt;
