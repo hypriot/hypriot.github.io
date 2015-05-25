@@ -1955,6 +1955,48 @@ Download and then install with &lt;code&gt;dpkg -i package_name.deb&lt;/code&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h3 id=&#34;tech-preview-docker-machine-for-using-docker-on-raspberry-pi:2a4af035d9e12b64c084b5e7cfb2c420&#34;&gt;Tech Preview: Docker Machine for using Docker on Raspberry Pi&lt;/h3&gt;
+
+&lt;p&gt;Download these precompiled binaries, rename it to &lt;code&gt;docker-machine&lt;/code&gt; and create a &lt;code&gt;Docker Machine&lt;/code&gt; on your Raspberry Pi.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d hypriot --hypriot-ip-address=11.22.33.44 black-pearl
+docker-machine upgrade black-pearl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Download Link&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;SHA256 Checksum&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Published&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Docker Machine 0.3.0-dev for Darwin/amd64&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_darwin-amd64&#34;&gt;docker-machine_0.3.0-dev_darwin-amd64&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_darwin-amd64.sha256&#34;&gt;Checksum&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;25.05.2015&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Docker Machine 0.3.0-dev for Linux/amd64&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_linux-amd64&#34;&gt;docker-machine_0.3.0-dev_linux-amd64&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_linux-amd64.sha256&#34;&gt;Checksum&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;25.05.2015&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Docker Machine 0.3.0-dev for Linux/arm&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_linux-arm&#34;&gt;docker-machine_0.3.0-dev_linux-arm&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-machine_0.3.0-dev_linux-arm.sha256&#34;&gt;Checksum&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;25.05.2015&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
     </item>
     
