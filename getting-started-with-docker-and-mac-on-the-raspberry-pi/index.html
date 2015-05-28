@@ -142,14 +142,14 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 
 <p>Now we are ready to flash the SD card. We are going to use the <code>dd</code> command for this.</p>
 
-<p>Before we start make sure you</p>
+<p>Before you execute the command below, make sure to</p>
 
 <ul>
 <li>replace the parameter after <code>if=</code> with the path to the downloaded image</li>
-<li>replace the parameter after <code>of=</code> with the identifier of your SD card</li>
+<li>replace the parameter after <code>of=</code> with the identifier of your SD card. Make sure you put a <code>r</code> in front of <code>disk</code> as you can see in the example</li>
 </ul>
 
-<pre><code>sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/disk5 bs=1m
+<pre><code>sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/rdisk5 bs=1m
 </code></pre>
 
 <p>While this command is executed you won&rsquo;t get any information about its progress.
