@@ -1511,16 +1511,16 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
       <guid>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</guid>
       <description>
 
-&lt;p&gt;Docker is a new technology that emerged in the last two years and took the software world by storm. What is Docker exactly and why did it became so popular in such short time?&lt;/p&gt;
+&lt;p&gt;Docker is a new technology that emerged in the last two years and took the software world by storm. What exactly is Docker and why did it became so popular in such short time?&lt;/p&gt;
 
 &lt;p&gt;The goal of this guide is to answer these questions and to get you started with Docker on a Raspberry Pi in no time.
 We are going to cover the procedure for Windows, OS X and Linux users.&lt;/p&gt;
 
 &lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
 
-&lt;p&gt;Docker basically simplifies the packaging, distribution, installation and execution of (complex) applications.&lt;/p&gt;
+&lt;p&gt;Docker simplifies the packaging, distribution, installation and execution of (complex) applications.&lt;/p&gt;
 
-&lt;p&gt;Applications in this sense for example are&lt;/p&gt;
+&lt;p&gt;In this context, applications are:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;blogging platforms like &lt;a href=&#34;https://wordpress.com&#34;&gt;Wordpress &lt;/a&gt; or &lt;a href=&#34;https://ghost.org/&#34;&gt;Ghost&lt;/a&gt;&lt;/li&gt;
@@ -1528,17 +1528,17 @@ We are going to cover the procedure for Windows, OS X and Linux users.&lt;/p&gt;
 &lt;li&gt;file synchronization platforms like &lt;a href=&#34;https://owncloud.org/&#34;&gt;OwnCloud&lt;/a&gt; or &lt;a href=&#34;http://seafile.com/en/home/&#34;&gt;Seafile&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This kind of applications usually consist of many components which need to be installed and configured. This is often a time consuming and frustrating experience for users.&lt;/p&gt;
+&lt;p&gt;These kinds of applications usually consist of many components which need to be installed and configured. This is often a time consuming and frustrating experience for users.&lt;/p&gt;
 
 &lt;p&gt;Docker allows administrators or developers to package these applications into something called containers.
-Containers are self-contained and preconfigured packages that a user can fetch and run with just a single command.
-By keeping these different software components separated in containers they can also be easily updated or removed. All of this without influencing each other.
-There are many more advantages by using Docker - however describing these in detail is out of scope of this guide. You can read more about these in the official &lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Documentation&lt;/a&gt;.&lt;/p&gt;
+Containers are self-contained, preconfigured packages that a user can fetch and run with just a single command.
+By keeping different software components separated in containers they can also be easily updated or removed without influencing each other.
+There are many more advantages of using Docker; the details of which can be found in the official &lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Documentation&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-raspberry-pi-an-easy-and-low-cost-way-of-getting-started-with-docker:397c66ef19f9f061b6711d2e296cb276&#34;&gt;The Raspberry Pi: An easy and low cost way of getting started with Docker&lt;/h2&gt;
+&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker:397c66ef19f9f061b6711d2e296cb276&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
 
-&lt;p&gt;If we just piqued your curiosity and you would like to dive into the magic world of Docker one of the easiest ways is by using Docker on a &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;.
-According to the creators of the Raspberry Pi it is&lt;/p&gt;
+&lt;p&gt;If we piqued your curiosity and you would like to dive into the magic world of Docker one of the easiest ways is by using Docker on a &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;.
+According to the creators of the Raspberry Pi it is:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;a low cost, credit-card sized computer that plugs into a computer monitor or TV, and uses a standard keyboard and mouse.
@@ -1546,7 +1546,7 @@ It is a capable little device that enables people of all ages to explore computi
 It’s capable of doing everything you’d expect a desktop computer to do, from browsing the internet and playing high-definition video, to making spreadsheets, word-processing, and playing games.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The goal is to show you the steps that are necessary to get you started with Docker on a Raspberry Pi. Please follow one the guide that covers the operating system you use and come back again when you are finished.&lt;/p&gt;
+&lt;p&gt;The goal of this guide is to show you the necessary steps to get you started with Docker on a Raspberry Pi. Please follow the guide that covers your operating system and continue below once you have finished.&lt;/p&gt;
 
 &lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi&#34;&gt;The Windows guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
@@ -1563,8 +1563,8 @@ It’s capable of doing everything you’d expect a desktop computer to do, from
 &lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This command will download the Docker image &lt;em&gt;hypriot/rpi-busybox-httpd&lt;/em&gt; which contains a tiny webserver and start it. Once an image is started it is called a &lt;em&gt;container&lt;/em&gt;. An image can be used to start up multiple containers, too.
-You can check if your container really runs by typing&lt;/p&gt;
+&lt;p&gt;This command will download and start the Docker image &lt;em&gt;hypriot/rpi-busybox-httpd&lt;/em&gt; which contains a tiny webserver. Once an image is started it is called a &lt;em&gt;container&lt;/em&gt;. An image can also be used to start multiple containers.
+You can check if your container is running by typing&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker ps
 &lt;/code&gt;&lt;/pre&gt;
@@ -1576,14 +1576,14 @@ You can check if your container really runs by typing&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;And the best part with running a Docker based app is that you can be sure that it just works. On every machine running Docker.&lt;/p&gt;
+&lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
 
-&lt;p&gt;Well, there is one exception: Here we run Docker on a Raspberry Pi. So the CPU architecture here is not x86/x64 by Intel or AMD like but &lt;strong&gt;ARM&lt;/strong&gt;. Thus the Docker apps you use have to be packaged specifically for the ARM architecture! Otherwise they will not work and you get an error similar to this one:&lt;/p&gt;
+&lt;p&gt;Here we run Docker on a Raspberry Pi. So the CPU architecture here is &lt;strong&gt;ARM&lt;/strong&gt; rather than x86/x64 by Intel or AMD. Thus, Docker-based apps you use have to be packaged specifically for ARM architecture! Docker-based apps packaged for x86/x64 will not work and will result in an error such as:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: Cannot start container 0f0fa3f8e510e53908e6a459e817d600b9649e621e7dede974d6a65761ad39e5: exec format error
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Keep this in mind when you search for apps on the &lt;a href=&#34;https://registry.hub.docker.com/search?q=library&#34;&gt;Docker Hub&lt;/a&gt; - &lt;strong&gt;the source&lt;/strong&gt; for Docker apps/images. If you see the keyword &lt;em&gt;RPI&lt;/em&gt; or &lt;em&gt;ARM&lt;/em&gt; in the heading or description then this app can be usually used for the Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;Keep this in mind when searching for apps on the &lt;a href=&#34;https://registry.hub.docker.com/search?q=library&#34;&gt;Docker Hub&lt;/a&gt; - &lt;strong&gt;the source&lt;/strong&gt; for Docker apps/images. If you see the keyword &lt;em&gt;RPI&lt;/em&gt; or &lt;em&gt;ARM&lt;/em&gt; in the heading or description, this app can usually be used for the Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;We prepared a couple of &lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;amp;searchfield=&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
