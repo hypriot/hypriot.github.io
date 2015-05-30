@@ -1052,7 +1052,7 @@ Copy and paste the path you see in your own &lt;em&gt;MOUNTPOINT&lt;/em&gt; colu
 &lt;li&gt;replace the parameter &lt;code&gt;of=/dev/mmcblk0&lt;/code&gt; with the identifier of your SD card&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/mmcblk0 bs=1m
+&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/mmcblk0 bs=1M
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;While this command is executed you won&amp;rsquo;t get any information about its progress.
