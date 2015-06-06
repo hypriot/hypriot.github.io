@@ -1,7 +1,6 @@
 {
   "recommended":[
     "hypriot/rpi-busybox-httpd",
-    "hypriot/rpi-ghost",
     "hypriot/rpi-redis",
     "hypriot/rpi-mysql",
     "hypriot/rpi-crate",
@@ -16,12 +15,6 @@
       "gradient_start": "#24B8EB",
       "gradient_end": "#218CF4",
       "img": "kitematic_html.png"
-    },
-    {
-      "repo": "hypriot/rpi-ghost",
-      "gradient_start": "#262A2D",
-      "gradient_end": "#14181C",
-      "img": "ghost.png"
     },
     {
       "repo": "hypriot/rpi-redis",
