@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Machine on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/docker-machine/</link>
-    <description>Recent content in Docker Machine on Docker Pirates ARMed with explosive stuff</description>
+    <title>Machine on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/tags/machine/</link>
+    <description>Recent content in Machine on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Apr 2015 06:35:55 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/docker-machine/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.hypriot.com/tags/machine/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Connecting Kitematic to an external Docker Engine running on a Raspberry Pi</title>

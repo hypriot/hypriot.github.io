@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Compose on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/docker-compose/</link>
-    <description>Recent content in Docker Compose on Docker Pirates ARMed with explosive stuff</description>
+    <title>Compose on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/tags/compose/</link>
+    <description>Recent content in Compose on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 16 Apr 2015 22:06:11 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.hypriot.com/tags/compose/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker 1.6.0 is finally released into the wild</title>

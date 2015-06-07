@@ -1,42 +1,107 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting Started on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/getting-started/</link>
-    <description>Recent content in Getting Started on Docker Pirates ARMed with explosive stuff</description>
+    <title>Getting_started on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/tags/getting_started/</link>
+    <description>Recent content in Getting_started on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 May 2015 12:35:44 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 May 2015 20:16:11 +0200</lastBuildDate>
+    <atom:link href="http://blog.hypriot.com/tags/getting_started/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Brand new Getting-Started guide for Docker on the Rasberry Pi</title>
-      <link>http://blog.hypriot.com/post/brand-new-getting-started-guide/</link>
-      <pubDate>Fri, 15 May 2015 12:35:44 +0200</pubDate>
+      <title>Getting started with Docker on your Raspberry Pi</title>
+      <link>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</link>
+      <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
-      <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
-Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.&lt;/p&gt;
+      <guid>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</guid>
+      <description>
 
-&lt;p&gt;Actually - in the end - we came up with three guides. :)&lt;/p&gt;
+&lt;p&gt;Docker is a new technology that emerged in the last two years and took the software world by storm. What exactly is Docker and why did it became so popular in such short time?&lt;/p&gt;
 
-&lt;p&gt;Based on our HypriotOS SD card image we show Mac, Linux and Windows users individually how to use it on their operating system.
-Downloading, flashing and booting up the SD card image on your Raspberry Pi is now easy as pie.&lt;/p&gt;
+&lt;p&gt;The goal of this guide is to answer these questions and to get you started with Docker on a Raspberry Pi in no time.
+We are going to cover the procedure for Windows, OS X and Linux users.&lt;/p&gt;
 
-&lt;p&gt;There are no excuses anymore not to try it - even for novice Raspberry Pi &amp;amp; Docker users.&lt;/p&gt;
+&lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
 
-&lt;p&gt;Hopefully we get lots of feedback to make the guides even better!&lt;/p&gt;
+&lt;p&gt;Docker simplifies the packaging, distribution, installation and execution of (complex) applications.&lt;/p&gt;
 
-&lt;p&gt;Have fun!&lt;/p&gt;
+&lt;p&gt;In this context, applications are:&lt;/p&gt;
 
-&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blogging platforms like &lt;a href=&#34;https://wordpress.com&#34;&gt;Wordpress &lt;/a&gt; or &lt;a href=&#34;https://ghost.org/&#34;&gt;Ghost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;tools for software collaboration like &lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt; or &lt;a href=&#34;http://gogs.io/&#34;&gt;Gogs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;file synchronization platforms like &lt;a href=&#34;https://owncloud.org/&#34;&gt;OwnCloud&lt;/a&gt; or &lt;a href=&#34;http://seafile.com/en/home/&#34;&gt;Seafile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These kinds of applications usually consist of many components which need to be installed and configured. This is often a time consuming and frustrating experience for users.&lt;/p&gt;
+
+&lt;p&gt;Docker allows administrators or developers to package these applications into something called containers.
+Containers are self-contained, preconfigured packages that a user can fetch and run with just a single command.
+By keeping different software components separated in containers they can also be easily updated or removed without influencing each other.
+There are many more advantages of using Docker; the details of which can be found in the official &lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker:397c66ef19f9f061b6711d2e296cb276&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
+
+&lt;p&gt;If we piqued your curiosity and you would like to dive into the magic world of Docker one of the easiest ways is by using Docker on a &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;.
+According to the creators of the Raspberry Pi it is:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;a low cost, credit-card sized computer that plugs into a computer monitor or TV, and uses a standard keyboard and mouse.
+It is a capable little device that enables people of all ages to explore computing, and to learn how to program in languages like Scratch and Python.
+It’s capable of doing everything you’d expect a desktop computer to do, from browsing the internet and playing high-definition video, to making spreadsheets, word-processing, and playing games.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The goal of this guide is to show you the necessary steps to get you started with Docker on a Raspberry Pi. Please follow the guide that covers your operating system and continue below once you have finished.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi&#34;&gt;The Windows guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi&#34;&gt;The Mac OS X guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi&#34;&gt;The Linux guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
+
+&lt;p&gt;As stated in the beginning Docker simplifies the way software is distributed and run. We even said that you would only need one command for that. It is time to prove it.&lt;/p&gt;
+
+&lt;p&gt;Just type &lt;code&gt;docker run&lt;/code&gt; into the terminal of your Raspberry Pi:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will download and start the Docker image &lt;em&gt;hypriot/rpi-busybox-httpd&lt;/em&gt; which contains a tiny webserver. Once an image is started it is called a &lt;em&gt;container&lt;/em&gt;. An image can also be used to start multiple containers.
+You can check if your container is running by typing&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker ps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see the container you just started in the container list.&lt;/p&gt;
+
+&lt;p&gt;Now you can open up your browser on your workstation and type in the IP address of your Raspberry Pi to see that it really works!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
+
+&lt;p&gt;Here we run Docker on a Raspberry Pi. So the CPU architecture here is &lt;strong&gt;ARM&lt;/strong&gt; rather than x86/x64 by Intel or AMD. Thus, Docker-based apps you use have to be packaged specifically for ARM architecture! Docker-based apps packaged for x86/x64 will not work and will result in an error such as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FATA[0003] Error response from daemon: Cannot start container 0f0fa3f8e510e53908e6a459e817d600b9649e621e7dede974d6a65761ad39e5: exec format error
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Keep this in mind when searching for apps on the &lt;a href=&#34;https://registry.hub.docker.com/search?q=library&#34;&gt;Docker Hub&lt;/a&gt; - &lt;strong&gt;the source&lt;/strong&gt; for Docker apps/images. If you see the keyword &lt;em&gt;RPI&lt;/em&gt; or &lt;em&gt;ARM&lt;/em&gt; in the heading or description, this app can usually be used for the Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;We prepared a couple of &lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;amp;searchfield=&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>How to get Docker running on your Raspberry Pi using Linux</title>
       <link>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</guid>
       <description>
@@ -214,7 +279,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
     <item>
       <title>How to get Docker running on your Raspberry Pi using Mac OS X</title>
       <link>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</guid>
       <description>
@@ -385,7 +450,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
     <item>
       <title>How to get Docker running on your Raspberry Pi using Windows</title>
       <link>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</guid>
       <description>
@@ -538,6 +603,30 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 &lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Have fun!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Brand new Getting-Started guide for Docker on the Rasberry Pi</title>
+      <link>http://blog.hypriot.com/post/brand-new-getting-started-guide/</link>
+      <pubDate>Fri, 15 May 2015 12:35:44 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
+      <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
+Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;Actually - in the end - we came up with three guides. :)&lt;/p&gt;
+
+&lt;p&gt;Based on our HypriotOS SD card image we show Mac, Linux and Windows users individually how to use it on their operating system.
+Downloading, flashing and booting up the SD card image on your Raspberry Pi is now easy as pie.&lt;/p&gt;
+
+&lt;p&gt;There are no excuses anymore not to try it - even for novice Raspberry Pi &amp;amp; Docker users.&lt;/p&gt;
+
+&lt;p&gt;Hopefully we get lots of feedback to make the guides even better!&lt;/p&gt;
+
+&lt;p&gt;Have fun!&lt;/p&gt;
+
+&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;
 </description>
     </item>
     
