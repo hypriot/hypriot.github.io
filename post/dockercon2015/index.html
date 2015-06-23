@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Hypriot-Demo and challenge at DockerCon 2015 &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2015 Hypriot - all rights reserved. </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Hypriot-Demo and challenge at DockerCon 2015</h1>
+    <span class="post-date">Wed, Jun 24, 2015</span>
+    
+
+<p>Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Franciscon/US.
+The goal of the demo was to show that Docker is a really lightweight &ldquo;virtualization&rdquo; solution that can be easily run on small IoT devices.</p>
+
+<p>As preparation for this demo we only had to make some small <a href="https://github.com/docker/docker/compare/master...hypriot:optional_userland_proxy">tweaks</a> to Docker and its environment.
+These changes allowed us to start up hundreds of containers on a Raspberry Pi in just a couple of minutes. How awesome is that?
+If that is possible on a small device imagine how Docker runs on a big server&hellip; :)</p>
+
+<h3 id="the-hypriot-docker-challenge:08dbaaf64a7259b7390848cf1e42575f">The Hypriot-Docker-Challenge</h3>
+
+<p>Even with this jaw-dropping result we think there is room for improvement.
+That is why <strong>we challenge you</strong> to help us to improve the performance even more and remove remaining roadblocks!</p>
+
+<p>The pull request that replicable enables Docker to run 1.000 of <a href="https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/">our webserver containers</a> on a Raspberry Pi 2 will be awarded a DockerCON-EU Ticket.
+Furthermore the winner has the opportunity to give a talk/live demo about this achievement at the next DockerCON-EU.</p>
+
+<p>To get you started for this challenge we prepared a couple of links for you:</p>
+
+<ul>
+<li><a href="http://blog.hypriot.com/getting-started">Getting started with our Docker Hypriot SD-card image on Raspberry Pi</a></li>
+<li><a href="https://github.com/hypriot/rpi-busybox-httpd">Rasberry Pi Docker Image for HTTPd</a></li>
+<li><a href="https://github.com/hypriot/rpi-busybox-httpd/blob/master/start-webservers.sh">Start-Script for running lots of containers on the Raspberry Pi</a></li>
+</ul>
+
+<p>Hope we did wet your appetite. Happy hacking and have fun!</p>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/dockercon2015/"
+    data-lang="en"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook">
+  <div id="fb-root"></div>
+  <div class="social-sharing-facebook">
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/dockercon2015/" data-layout="button_count"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

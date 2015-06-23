@@ -6,8 +6,45 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 May 2015 20:16:11 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2015 01:30:34 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hypriot-Demo and challenge at DockerCon 2015</title>
+      <link>http://blog.hypriot.com/post/dockercon2015/</link>
+      <pubDate>Wed, 24 Jun 2015 01:30:34 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/dockercon2015/</guid>
+      <description>
+
+&lt;p&gt;Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Franciscon/US.
+The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;virtualization&amp;rdquo; solution that can be easily run on small IoT devices.&lt;/p&gt;
+
+&lt;p&gt;As preparation for this demo we only had to make some small &lt;a href=&#34;https://github.com/docker/docker/compare/master...hypriot:optional_userland_proxy&#34;&gt;tweaks&lt;/a&gt; to Docker and its environment.
+These changes allowed us to start up hundreds of containers on a Raspberry Pi in just a couple of minutes. How awesome is that?
+If that is possible on a small device imagine how Docker runs on a big server&amp;hellip; :)&lt;/p&gt;
+
+&lt;h3 id=&#34;the-hypriot-docker-challenge:08dbaaf64a7259b7390848cf1e42575f&#34;&gt;The Hypriot-Docker-Challenge&lt;/h3&gt;
+
+&lt;p&gt;Even with this jaw-dropping result we think there is room for improvement.
+That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve the performance even more and remove remaining roadblocks!&lt;/p&gt;
+
+&lt;p&gt;The pull request that replicable enables Docker to run 1.000 of &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;our webserver containers&lt;/a&gt; on a Raspberry Pi 2 will be awarded a DockerCON-EU Ticket.
+Furthermore the winner has the opportunity to give a talk/live demo about this achievement at the next DockerCON-EU.&lt;/p&gt;
+
+&lt;p&gt;To get you started for this challenge we prepared a couple of links for you:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting started with our Docker Hypriot SD-card image on Raspberry Pi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd&#34;&gt;Rasberry Pi Docker Image for HTTPd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd/blob/master/start-webservers.sh&#34;&gt;Start-Script for running lots of containers on the Raspberry Pi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hope we did wet your appetite. Happy hacking and have fun!&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Getting started with Docker on your Raspberry Pi</title>
