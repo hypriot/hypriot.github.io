@@ -29,8 +29,8 @@ If that is possible on a small device imagine how Docker runs on a big server&am
 &lt;p&gt;Even with this jaw-dropping result we think there is room for improvement.
 That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve the performance even more and remove remaining roadblocks!&lt;/p&gt;
 
-&lt;p&gt;The pull request that replicable enables Docker to run 1.000 of &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;our webserver containers&lt;/a&gt; on a Raspberry Pi 2 will be awarded a DockerCON-EU Ticket.
-Furthermore the winner has the opportunity to give a talk/live demo about this achievement at the next DockerCON-EU.&lt;/p&gt;
+&lt;p&gt;The pull request that replicable enables Docker to run 1.000 of &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;our webserver containers&lt;/a&gt; on a Raspberry Pi 2 will be awarded a &lt;a href=&#34;http://europe.dockercon.com/&#34;&gt;DockerCON Europe&lt;/a&gt; Ticket.
+Furthermore the winner has the opportunity to give a talk/live demo about this achievement at the next DockerCON Europe in Barcelona/Spain.&lt;/p&gt;
 
 &lt;p&gt;To get you started for this challenge we prepared a couple of links for you:&lt;/p&gt;
 
