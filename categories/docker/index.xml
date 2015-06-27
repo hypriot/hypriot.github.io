@@ -6,8 +6,205 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2015 01:30:34 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2015 22:19:55 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Run your own Github-like service with the help of Docker</title>
+      <link>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</link>
+      <pubDate>Sat, 27 Jun 2015 22:19:55 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt; and &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt; have taken the world by storm.
+No serious developer today can not afford not to &lt;a href=&#34;https://www.atlassian.com/git/tutorials/&#34;&gt;know how to work with Git&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But what if you do not want to have your code in the cloud? What if you want to host your code repositories yourself?&lt;/p&gt;
+
+&lt;p&gt;For most of us this meant to go with &lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;. The biggest downside in the past was that Gitlab had so many different parts that the installation could be very tedious.
+With the &lt;a href=&#34;https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md&#34;&gt;Omnibus Gitlab Installer&lt;/a&gt; the installation did get a lot easier but this does not change the fact that Gitlab is compromised of so many different parts.&lt;/p&gt;
+
+&lt;p&gt;Why does this matter?&lt;/p&gt;
+
+&lt;p&gt;It really starts to matter when you want to put your apps/services into something like Docker.
+Putting all parts of Gitlab (Postgres, Ruby, Ruby on Rails, Redis, Git, etc.) into one container is certainly not the Docker way of doing things, but puttings these parts into different containers makes it really complicated and involved to set up, too.&lt;/p&gt;
+
+&lt;p&gt;Fortunately we did find another solution for your Git needs - one that really works well with Docker.
+It is called &lt;a href=&#34;http://gogs.io/&#34;&gt;Gogs&lt;/a&gt; and is written in Go and has no additional dependencies with the exception of a SSH server.
+Gogs is such a lightweight solution that it only needs about 5 MB of RAM and very few CPU resources while running.
+This makes it a perfect candidate for a home-grown Github alternative that can easily run on a - you guessed it - Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;In this post, we show you how to set up &lt;em&gt;Gogs&lt;/em&gt; in just a couple of minutes. Thanks to Docker it will be fast and easy.&lt;/p&gt;
+
+&lt;p&gt;To follow along you gonna need a Raspberry Pi with Docker.
+In case you do not have Docker running on your Raspberry Pi our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; will cover everything you need to know to get up and running in a snap.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://gogs.qiniudn.com/gogs_demo.gif&#34; alt=&#34;Gogs Screenshots&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;If you wanna dive more deeply into &lt;em&gt;Gogs&lt;/em&gt; there is a &lt;a href=&#34;http://gogs.io/docs/intro/&#34;&gt;official &lt;em&gt;Gogs&lt;/em&gt; documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-set-up-gogs:dc7018a7890c20895bf31528a8ab5dea&#34;&gt;How to set up Gogs&lt;/h2&gt;
+
+&lt;p&gt;First, log into your Raspberry Pi via SSH.
+Please refer to our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; if you are not sure about how to do this.&lt;/p&gt;
+
+&lt;p&gt;After logging in successfully pull and run &lt;em&gt;Gogs&lt;/em&gt; by executing the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d --name my-go-git-server --publish 8022:22 --publish 3000:3000 --volume `pwd`/gogs-data/:/data hypriot/rpi-gogs-raspbian
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see what each of these options means&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;ndash;name&lt;/strong&gt; gives the Docker container a name&lt;br /&gt;
+  &lt;strong&gt;&amp;ndash;publish&lt;/strong&gt; (first) instructs Docker to open port &lt;code&gt;8022&lt;/code&gt;. We will use this port to access Gogs via git/ssh.&lt;br /&gt;
+  &lt;strong&gt;&amp;ndash;publish&lt;/strong&gt; (second) defines &lt;code&gt;3000&lt;/code&gt; as the port at which you will be able to access the web interface of &lt;em&gt;Gogs&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;When the &lt;em&gt;Gogs&lt;/em&gt; container is running you can point your browser to the IP address of your Pi. Make sure you use the port you defined in the &lt;code&gt;docker run&lt;/code&gt; command.
+In our example we have to type the following address into the browser:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://172.16.254.149:3000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As a result you should see the setup page of &lt;em&gt;Gogs&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;In this setup page we need to adapt the default settings to the settings we defined in the &lt;code&gt;docker run&lt;/code&gt; command we executed previously. Thus, please change the input fields according to this table:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Input field&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Domain&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Replace &lt;code&gt;localhost&lt;/code&gt; with the IP address of your Raspberry Pi&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Application URL&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;In the predefined string, replace only &lt;code&gt;localhost&lt;/code&gt; with the IP address of your Raspberry Pi, such that you have e.g. &lt;code&gt;http://172.16.254.149:3000/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Username&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set an your username&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Password&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set an your password with at least 8 characters&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;E-mail&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set your email adress&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;After you filled all required fields, it should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs_user-input-combined.png&#34; alt=&#34;frist-run-gogs_user-input-combined.png&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;To finish the setup, click on &lt;strong&gt;install&lt;/strong&gt; at the bottom of the page. Afterwards you will be forwarded to the login page of &lt;em&gt;Gogs&lt;/em&gt;.
+Please login with the credentials you just specified.&lt;/p&gt;
+
+&lt;p&gt;After logging in you should see the start page of the &lt;em&gt;Gogs&lt;/em&gt; service.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nice, you successfully installed Gogs!&lt;/strong&gt; Now let&amp;rsquo;s start using it! Please continue with the next section to learn &lt;em&gt;how&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-create-a-git-repository-in-gogs:dc7018a7890c20895bf31528a8ab5dea&#34;&gt;How to create a Git repository in &lt;em&gt;Gogs&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;Before we will be able to &lt;code&gt;git push&lt;/code&gt;, we need to&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;create a Git repository in &lt;em&gt;Gogs&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;configure your public SSH key in &lt;em&gt;Gogs&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;clone the Git repository in &lt;em&gt;Gogs&lt;/em&gt; to your local workstation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start by creating a new repository. Click on the &lt;strong&gt;green button&lt;/strong&gt; in the top right corner of the page and choose &lt;strong&gt;New Repository&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/start-with-green-button_with-marker.png&#34; alt=&#34;start-with-green-button&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;You should see a setup page for your new repository. Please fill out the two text input fields.&lt;/p&gt;
+
+&lt;p&gt;At the bottom of the page you will find a checkbox. We recommend to enable this checkbox since it automatically will initialize this repository with a &lt;em&gt;README.md&lt;/em&gt;.
+The following screenshot shows an example of how the setup page might look like after you provided all the necessary information.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/new-repo.png&#34; alt=&#34;new-repo&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Finish the setup by clicking on &lt;strong&gt;Create Repository&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Before you can actually use the new repository, you need to add your SSH key. Click on The &lt;strong&gt;settings button&lt;/strong&gt; in the top right corner of the page. Then, go to &lt;strong&gt;SSH Keys&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Add Key&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/add-private-key2_with-markers.png&#34; alt=&#34;add-private-key2&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Paste your public SSH key into this field and set an arbitrary &lt;em&gt;Key Name&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t know where to find your SSH key, execute the following command in your terminal.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see in the following screenshot, you should see your SSH key as result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/ssh-key-export.png&#34; alt=&#34;ssh-key-export.png&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Finally, back in the &lt;em&gt;Gogs&lt;/em&gt; website, click the green button &lt;strong&gt;Add Key&lt;/strong&gt; to add your public SSH key. Afterwards you should see a message confirming that the key has been added successfully.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;At this point, &lt;em&gt;Gogs&lt;/em&gt; should be set up properly to receive your first commit!&lt;/strong&gt; As a last step, we will &lt;code&gt;git clone&lt;/code&gt; the new repo to your workstation.&lt;/p&gt;
+
+&lt;h2 id=&#34;start-using-git-with-the-new-repository:dc7018a7890c20895bf31528a8ab5dea&#34;&gt;Start using Git with the new repository&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Gogs&lt;/em&gt; helps us in constructing the proper &lt;code&gt;git clone&lt;/code&gt; command.
+Navigate inside your new repository in the Gogs Web-GUI and click on the &lt;strong&gt;black cloud symbol&lt;/strong&gt;.
+Make sure that the &lt;strong&gt;SSH&lt;/strong&gt; button in front of the command is activated and copy the string in the text field via the &lt;strong&gt;black copy button&lt;/strong&gt; on the right edge.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/in-repo-get-ssh-link-for-git-remote_with-markers.png&#34; alt=&#34;in-repo-get-ssh-link-for-git-remote&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now open a terminal at your workstation and navigate to the location where you want to create the folder for the repository.&lt;/p&gt;
+
+&lt;p&gt;Paste the command you just copied from Gogs Web-GUI. Before executing add &lt;code&gt;git clone ssh://&lt;/code&gt; in front of the command and put port &lt;code&gt;8022&lt;/code&gt; in front of your user name.
+In our case &lt;code&gt;8022&lt;/code&gt; is the port Gogs listens on for SSH.&lt;/p&gt;
+
+&lt;p&gt;In the end the command should look similar to this one:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone ssh://git@172.16.254.149:8022/my-name/demo-hypriot.git
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After this command has been executed confirm the fingerprint prompt and navigate into the new directory that has been created by this command.&lt;/p&gt;
+
+&lt;p&gt;Within the repository folder execute a &lt;code&gt;git pull&lt;/code&gt;. If the command returns &lt;code&gt;Already up-to-date&lt;/code&gt; the repository is properly set up.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Congratulations!! You now have your own Git service running on your Raspberry Pi!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: Gogs will only be available within your local network.
+To make your Git service available outside of your home you need to do use a Dynamic DNS service like &lt;a href=&#34;http://www.noip.com/&#34;&gt;no-ip&lt;/a&gt; and configure some port forwarding in your router.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We hope setting up your own Gogs has been a painless experience for you.&lt;br /&gt;
+As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Mathias, Andreas &amp;amp; Govinda&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hypriot-Demo and challenge at DockerCon 2015</title>
@@ -1974,288 +2171,6 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://assets.hypriot.com/gallery/hypriot-on-the-docker-website/docker_community.jpg&#34; alt=&#34;Hypriot on the Docker Website&#34; /&gt;
 &lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Kick-Ass Raspberry Pi 2 having a forbidden love affair with Docker 1.4.1</title>
-      <link>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</link>
-      <pubDate>Sun, 08 Feb 2015 22:09:33 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</guid>
-      <description>&lt;p&gt;If you have not been living under a rock last week you probably heard that the &lt;a href=&#34;http://www.raspberrypi.org/&#34;&gt;Raspberry Pi Foundation&lt;/a&gt; did release a second generation Raspberry Pi on the 2th of February.&lt;/p&gt;
-
-&lt;p&gt;The last generation being a huge success with 4 million devices sold at the end of 2014 the success story is likely to continue with a new Raspberry Pi 2 Model B in 2015.&lt;/p&gt;
-
-&lt;p&gt;Pi 2 has the same form factor as the previous Pi 1 Model B+ and is completely compatible with Pi 1 - which is good news for everybody who already owns a Pi 1. Your old equipment will most likely still work with the Pi 2.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Raspberry Pi 2 Images&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 front and its package&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2 front and its package
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 backside&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2 backside
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2 front&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2 front
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi2_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x900&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi2_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi 2&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Pi 2
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Looking at the Pi 2 the most obvious difference is that it features a 900MHz quad-core ARM Cortex-A7 CPU with 1 GB of RAM. Because it has an ARMv7 processor it can now run the full range of ARM GNU/Linux distributions. Early benchmarks promise a performance boost of 4 to 6 times faster compared to the old single core Pi.&lt;/p&gt;
-
-&lt;p&gt;The Pi 2 can be bought from various places like &lt;a href=&#34;http://uk.rs-online.com/web/p/processor-microcontroller-development-kits/8326274/&#34;&gt;RS Online&lt;/a&gt; in the UK or &lt;a href=&#34;http://www.pollin.de/shop/dt/Mzg1NzkyOTk-/Bausaetze_Module/Entwicklerboards/Raspberry_Pi_2_Model_B.html&#34;&gt;Pollin&lt;/a&gt; in Germany.&lt;/p&gt;
-
-&lt;p&gt;Luckily we have been able to get our hands on a brand new Pi 2 before the first charge was sold out. Being such a performance beast we were really curious how well it would play with one of our other passions - &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;. Docker really is a terrific way to easily deploy all kinds of applications on your device without the need of being a full-sized linux administrator.&lt;/p&gt;
-
-&lt;p&gt;Well - after some tinkering we got Pi 2 and Docker playing well together really fast. Based on the most recent Raspbian we compiled our own special kernel and Docker packages. We then combined these into a lean and sexy image that can be easily flashed to a SD-Card.&lt;/p&gt;
-
-&lt;p&gt;What is really awesome about this image is not only that it combines two of the hottest technologies in 2015 into a single package but that it uses the most recent versions of those technologies.&lt;/p&gt;
-
-&lt;p&gt;The image uses&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Raspbian &lt;strong&gt;Wheezy&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Linux Kernel &lt;strong&gt;3.18.6&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Docker &lt;strong&gt;1.4.1&lt;/strong&gt; with &lt;strong&gt;OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Our first tests went really well and we could do all the basic Docker stuff with the image. Our first impression is that running Docker on the Pi 2 promises to be a much smoother experience than on the Pi 1. Certainly there will be some areas where we still need to iron out some kinks with the image but so far it seems to be pretty solid.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Docker in action with Raspberry Pi 2&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_uname.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_uname.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Command &amp;#39;docker images&amp;#39;
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_info.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_info.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Command &amp;#39;docker images&amp;#39;
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_images.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_images.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Command &amp;#39;docker images&amp;#39;
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/hypriot_pi_docker_run.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;986x540&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/forbidden-love-affair/thumbnails/thumb_hypriot_pi_docker_run.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Command &amp;#39;docker images&amp;#39;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Command &amp;#39;docker images&amp;#39;
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Tell us what you like or dislike about this image!&lt;/p&gt;
-
-&lt;p&gt;We will gather your feedback and will try to make this image even better. Additionally we are also planning to publish our build scripts for the image soon.&lt;/p&gt;
-
-&lt;p&gt;Did I already tell you what the real kicker is?&lt;/p&gt;
-
-&lt;p&gt;Well - our image works for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; at the same time. How convenient is that?!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The credentials for logging in are &amp;ldquo;root&amp;rdquo; for the user and &amp;ldquo;hypriot&amp;rdquo; for the password.&lt;/strong&gt; Have fun!&lt;/p&gt;
 </description>
     </item>
     
