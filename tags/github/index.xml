@@ -10,14 +10,14 @@
     <atom:link href="http://blog.hypriot.com/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Run your own Github-like service with the help of Docker</title>
+      <title>Run your own GitHub-like service with the help of Docker</title>
       <link>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</link>
       <pubDate>Sat, 27 Jun 2015 22:19:55 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt; and &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt; have taken the world by storm.
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt; and &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; have taken the world by storm.
 No serious developer today can not afford not to &lt;a href=&#34;https://www.atlassian.com/git/tutorials/&#34;&gt;know how to work with Git&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;But what if you do not want to have your code in the cloud? What if you want to host your code repositories yourself?&lt;/p&gt;
@@ -33,7 +33,7 @@ Putting all parts of Gitlab (Postgres, Ruby, Ruby on Rails, Redis, Git, etc.) in
 &lt;p&gt;Fortunately we did find another solution for your Git needs - one that really works well with Docker.
 It is called &lt;a href=&#34;http://gogs.io/&#34;&gt;Gogs&lt;/a&gt; and is written in Go and has no additional dependencies with the exception of a SSH server.
 Gogs is such a lightweight solution that it only needs about 5 MB of RAM and very few CPU resources while running.
-This makes it a perfect candidate for a home-grown Github alternative that can easily run on a - you guessed it - Raspberry Pi.&lt;/p&gt;
+This makes it a perfect candidate for a home-grown GitHub alternative that can easily run on a - you guessed it - Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;In this post, we show you how to set up &lt;em&gt;Gogs&lt;/em&gt; in just a couple of minutes. Thanks to Docker it will be fast and easy.&lt;/p&gt;
 
