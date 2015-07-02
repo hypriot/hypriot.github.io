@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2015-06-30T09:03:12+02:00</lastmod>
+    <lastmod>2015-07-03T00:30:45+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</loc>
+    <lastmod>2015-07-03T00:30:45+01:00</lastmod>
   </url>
   
   <url>
@@ -28,12 +33,12 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
