@@ -151,14 +151,33 @@ If that is possible on a small device imagine how Docker runs on a big server&am
 &lt;p&gt;Even with this jaw-dropping result we think there is room for improvement.
 That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve the performance even more and remove remaining roadblocks!&lt;/p&gt;
 
-&lt;p&gt;The pull request that replicable enables Docker to run 1.000 of &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;our webserver containers&lt;/a&gt; on a Raspberry Pi 2 will be awarded a &lt;a href=&#34;http://europe.dockercon.com/&#34;&gt;DockerCon Europe&lt;/a&gt; Ticket.
-Furthermore the winner has the opportunity to give a talk/live demo about this achievement at the next DockerCON Europe in Barcelona/Spain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prize:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The person who successfully manage to get the highest number of these &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;Docker containers&lt;/a&gt; to run concurrently on a Raspberry Pi 2 will be awarded a &lt;a href=&#34;http://europe.dockercon.com&#34;&gt;DockerCon Europe&lt;/a&gt; ticket and a speaking / demo slot during the conference.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rules:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Use a single Raspberry Pi 2 with a HypriotOS release (a Raspi 1 would work too, but you’ll have a big disadvantage with 512MByte only)&lt;/li&gt;
+&lt;li&gt;Use Docker Engine to start the containers (see technical hint #3 below)&lt;/li&gt;
+&lt;li&gt;Use the webserver container “hypriot/rpi-busybox-httpd” as a starting point – you can use whatever webserver you like, but you have to serve the static website with the same index.html + .jpg&lt;/li&gt;
+&lt;li&gt;Challenge ends on Monday, October 19th, 2015 at 17:00 PDT – winner will be announced on Tuesday, October 20th&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Technical Hints:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Reduce the stack size used for starting Docker subprocesses (see /etc/init.d/docker)&lt;/li&gt;
+&lt;li&gt;Optimize the httpd container in order to use less memory&lt;/li&gt;
+&lt;li&gt;Optimize the Docker daemon itself (Participants must submit any changes made to docker engine with appropriate tests back to the docker project or must be independently reproducible with the stock docker engine release.) Optimizations must be general optimizations, useful outside of the scope of this specific benchmark.&lt;/li&gt;
+&lt;li&gt;Ask Hypriot for help, they’ll offer new hints and tips publicly through comments on the blog and &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;To get you started for this challenge we prepared a couple of links for you:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting started with our Docker Hypriot SD-card image on Raspberry Pi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd&#34;&gt;Rasberry Pi Docker Image for HTTPd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd&#34;&gt;Raspberry Pi Docker Image for HTTPd&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd/blob/master/start-webservers.sh&#34;&gt;Start-Script for running lots of containers on the Raspberry Pi&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
