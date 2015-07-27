@@ -17,7 +17,7 @@
       <guid>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</guid>
       <description>
 
-&lt;p&gt;&lt;strong&gt;What’s even better then Wheezy - yes, your right - that’s Jessie.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What’s even better then Wheezy? Yes, your right - that’s Jessie.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;And that’s not only because we very much like what crazy stuff &lt;em&gt;&lt;a href=&#34;https://blog.jessfraz.com/&#34;&gt;Jessie&lt;/a&gt;&lt;/em&gt; is doing with Docker.
 No, it’s because &lt;em&gt;Jessie&lt;/em&gt; is &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;the next version of the Debian operating system&lt;/a&gt; that forms the foundation of our SD card image.&lt;/p&gt;
