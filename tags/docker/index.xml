@@ -17,7 +17,7 @@
       <guid>http://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/</guid>
       <description>
 
-&lt;p&gt;If you followed our guides about &lt;a href=&#34;http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;setting up a git service&lt;/a&gt; or about &lt;a href=&#34;http://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/&#34;&gt;setting up a blog&lt;/a&gt; on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires two steps to be done. We will show how to take them successfully.&lt;/p&gt;
+&lt;p&gt;If you followed our guides about &lt;a href=&#34;http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;setting up a git service&lt;/a&gt; or about &lt;a href=&#34;http://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/&#34;&gt;setting up a blog&lt;/a&gt; on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.&lt;/p&gt;
 
 &lt;p&gt;First check, which of the following two cases match your network environment:&lt;/p&gt;
 
@@ -28,11 +28,12 @@
 
 &lt;p&gt;Since you have access to your router, this prerequisite is met and we can make your Raspberry Pi accessible from the internet! There&amp;rsquo;s just one thing more to mention upfront: The instructions we provide are not always as step-by-step as we would like to offer them. It&amp;rsquo;s just that the hardware you use and your network topology probably differ a lot among other readers&amp;rsquo; setup. Thus at some point we rather explain the overall concepts and ask you to adapt the concepts to your environment. We do our best to make it a painless experience for you, of course!&lt;/p&gt;
 
-&lt;p&gt;The two steps we gonna take in the following, are:&lt;/p&gt;
+&lt;p&gt;The three steps we gonna take in the following, are:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Step 1: Register at a Dynamic DNS service.&lt;/li&gt;
-&lt;li&gt;Step 2: Define port forwarding rules in your router.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/#step-1-setup-dynamic-dns:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 1: Register at a Dynamic DNS service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/#step-2-configure-port-forwarding-in-your-router:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 2: Define port forwarding rules in your router&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/#step-3-docker-run-your-containers-with-published-ports:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 3: Docker run your containers with published ports&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;So, hands on!&lt;/p&gt;
@@ -54,7 +55,7 @@
 &lt;li&gt;In the list on the main page, you should see a table showing a domain name and an IP address. The domain name will be the one you will reach your home with.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Next, you need to install virtual-ip.org as Dynamic DNS provider in your router. First you need to &lt;strong&gt;login to your router&lt;/strong&gt;. To do so, point your browser to the IP address of your router. If you are not sure about the IP address of your router, try to figure out your own IP address, which is e.g. &lt;code&gt;192.168.0.20&lt;/code&gt;. Then, exchange the last number of your own IP address by &lt;code&gt;1&lt;/code&gt;. The resulting IP address is often assigned to your router. Point your browser to this IP address and you should see your router&amp;rsquo;s web interface:&lt;/p&gt;
+&lt;p&gt;Next, you need to install &lt;em&gt;virtual-ip.org&lt;/em&gt; as Dynamic DNS provider in your router. First you need to &lt;strong&gt;login to your router&lt;/strong&gt;. To do so, point your browser to the IP address of your router. If you are not sure about the IP address of your router, try to figure out your own IP address, which is e.g. &lt;code&gt;192.168.0.20&lt;/code&gt;. Then, exchange the last number of your own IP address by &lt;code&gt;1&lt;/code&gt;. The resulting IP address is often assigned to your router. Point your browser to this IP address and you should see your router&amp;rsquo;s web interface:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/access_service_from_internet/fritzbox_login.png&#34; alt=&#34;fritzbox_login&#34; /&gt;
 &lt;/p&gt;
@@ -70,7 +71,7 @@
 
 &lt;p&gt;&lt;code&gt;https://update.virtual-ip.org/nic/update?system=dyndns&amp;amp;hostname=&amp;lt;your-domain&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;After you have set the configuration for Dynamic DNS in your router, **login to &lt;a href=&#34;https://virtual-ip.org/&#34;&gt;virtual-ip.org&lt;/a&gt;&lt;strong&gt;. Now, the IP address of your router should be displayed in the column **IP Address&lt;/strong&gt; next to your new domain as in the following screenshot. You can double check if this really is your IP address with a service like &lt;a href=&#34;https://www.whatismyip.com/&#34;&gt;whatismyip.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After you have set the configuration for Dynamic DNS in your router, &lt;strong&gt;login to virtual-ip.org&lt;/strong&gt;. Now, the IP address of your router should be displayed in the column &lt;strong&gt;IP Address&lt;/strong&gt; next to your new domain as in the following screenshot. You can double check if this really is your IP address with a service like &lt;a href=&#34;https://www.whatismyip.com/&#34;&gt;whatismyip.com&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/access_service_from_internet/virtual_ip_domain-list.png&#34; alt=&#34;virtual_ip_domain-list.png&#34; /&gt;
 &lt;/p&gt;
@@ -139,11 +140,11 @@
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-see-config.png&#34; alt=&#34;fritzbox_port-forwarding-see-config.png&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Congratulations!&lt;/strong&gt; You managed to configure everything to reach your Raspberry Pi from the internet. Jump to the final chapter in this blog post to test if everything works fine! – Wait! We are working with Docker, aren&amp;rsquo;t we? So where is Docker now? Well, you will find it in the next chapter. We will cover how to bring Docker into this game. If you do not use Docker, you can directly jump to the final chapter to test your setup, of course.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Congratulations!&lt;/strong&gt; You managed to configure everything to reach your Raspberry Pi from the internet. Next, we will see how to bring Docker into this game.&lt;/p&gt;
 
-&lt;h3 id=&#34;example-how-to-create-port-forwarding-rules-for-docker-containers:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Example: How to create port forwarding rules for Docker containers&lt;/h3&gt;
+&lt;h2 id=&#34;step-3-docker-run-your-containers-with-published-ports:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 3: Docker run your containers with published ports&lt;/h2&gt;
 
-&lt;p&gt;Before we get down to Docker, we put some technical introduction about how port forwarding works upfront. Skip it if you are familiar with this stuff.&lt;/p&gt;
+&lt;p&gt;Before we get down to Docker, we will put some technical details about how port forwarding works upfront.&lt;/p&gt;
 
 &lt;p&gt;Incoming requests from the internet to your router will always include a port number, e.g. &lt;code&gt;my-home.domain-of-provider.org:8080&lt;/code&gt;. This port number (here: &lt;code&gt;8080&lt;/code&gt;)  tells the router, that this request wants to be forwarded to a device in your local network that is specified as the receiver for all requests to port &lt;code&gt;8080&lt;/code&gt;. This specification has to be done manually by creating &lt;em&gt;port forwarding rules&lt;/em&gt; in your router. Doing so, you tell the router, which requests it should forward to which device in your local network.&lt;/p&gt;
 
@@ -163,9 +164,9 @@
 
 &lt;p&gt;your container will be available at port &lt;code&gt;8080&lt;/code&gt;. For us, only the first port number is relevant. Just specify the port twice, like &lt;code&gt;8080:8080&lt;/code&gt; and you will be fine. Now, you can specify port forwarding rules in your router that forwards requests to port &lt;code&gt;8080&lt;/code&gt; to the IP address of your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;You need to create one port forwarding rule for each port you publish when creating a new Docker container.&lt;/strong&gt; Doing so, make sure that you always use one port only once. You cannot bind the same port to two different Docker containers. However, some Docker containers might require to publish several ports on your Raspberry Pi. This is true e.g. when setting up the &lt;a href=&#34;http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;Gogs Git service&lt;/a&gt;. Then, you need to create rules in your router saying that all requests to these ports shall be forwarded to the Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note (1)! You need to create one port forwarding rule for each port you publish when creating a new Docker container.&lt;/strong&gt; Doing so, make sure that you always use one port only once. You cannot bind the same port to two different Docker containers. However, some Docker containers might require to publish several ports on your Raspberry Pi. This is true e.g. when setting up the &lt;a href=&#34;http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;Gogs Git service&lt;/a&gt;. Then, you need to create rules in your router saying that all requests to these ports shall be forwarded to the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;In case you already started a container and want to know which port a container has published, execute&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note (2)! In case you already started a container and want to know which port a container has published, execute&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;docker ps&lt;/code&gt;&lt;/p&gt;
 
@@ -178,7 +179,7 @@
 
 &lt;p&gt;To test your setup, we recommend to use a simple webserver you make available to the internet. In the terminal on your Raspberry Pi, execute as root:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
+&lt;pre&gt;&lt;code&gt;docker run -d --publish 80:80 hypriot/rpi-busybox-httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Then, point your browser to the domain name you registered at the Dynamic DNS service. If everything has been configured properly, a small website from our team should appear.&lt;/p&gt;
