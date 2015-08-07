@@ -83,7 +83,7 @@
 <li>Else if you cannot login into your router or if you sit behind a firewall, you need to use solutions that implement the so called <em><a href="https://en.wikipedia.org/wiki/Hole_punching_%28networking%29">hole punching technique</a></em>. In this case, you may wait for the blog post covering that at some day in the future :-) If you are curious already today, have a look at <a href="https://ngrok.com/">ngrok</a>, <a href="http://localtunnel.me/">localtunnel</a> or <a href="https://pagekite.net/">pagekite</a>, and ping us if you need help to set them up!</li>
 </ul>
 
-<p>Since you have access to your router, this prerequisite is met and we can make your Raspberry Pi accessible from the internet! There&rsquo;s just one thing more to mention upfront: The instructions we provide are not always as step-by-step as we would like to offer them. It&rsquo;s just that the hardware you use and your network topology probably differ a lot among other readers&rsquo; setup. Thus at some point we rather explain the overall concepts and ask you to adapt the concepts to your environment. We do our best to make it a painless experience for you, of course!</p>
+<p>Since you have access to your router, this prerequisite is met and we can start to make your Raspberry Pi accessible from the internet! There&rsquo;s just one thing more to mention upfront: The instructions we provide are not always as step-by-step as we would like to offer them. It&rsquo;s just that the hardware you use and your network topology probably differ a lot among other readers&rsquo; setup. Thus at some point we rather explain the overall concepts and ask you to adapt the concepts to your environment. We do our best to make it a painless experience for you, of course!</p>
 
 <p>The three steps we gonna take in the following, are:</p>
 
@@ -219,7 +219,7 @@
 
 <p><code>docker run --publish 8080:8080</code>,</p>
 
-<p>your container will be available at port <code>8080</code>. For us, only the first port number is relevant. Just specify the port twice, like <code>8080:8080</code> and you will be fine. Now, you can specify port forwarding rules in your router that forwards requests to port <code>8080</code> to the IP address of your Raspberry Pi.</p>
+<p>your container will be available at port <code>8080</code>. For us, only the first port number is relevant. Just specify the port twice, like <code>8080:8080</code> and you will be fine. Now, you can specify a port forwarding rule in your router that forwards requests to port <code>8080</code> to the IP address of your Raspberry Pi.</p>
 
 <p><strong>Note (1)! You need to create one port forwarding rule for each port you publish when creating a new Docker container.</strong> Doing so, make sure that you always use one port only once. You cannot bind the same port to two different Docker containers. However, some Docker containers might require to publish several ports on your Raspberry Pi. This is true e.g. when setting up the <a href="/post/run-your-own-github-like-service-with-docker/">Gogs Git service</a>. Then, you need to create rules in your router saying that all requests to these ports shall be forwarded to the Raspberry Pi.</p>
 
