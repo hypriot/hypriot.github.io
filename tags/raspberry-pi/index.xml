@@ -6,8 +6,162 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Aug 2015 09:55:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2015 02:55:55 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to prepare for the ARMed IoT flood by porting apps to ARM</title>
+      <link>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</link>
+      <pubDate>Wed, 26 Aug 2015 02:55:55 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
+      <description>
+
+&lt;p&gt;The great ARMed flood has started. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
+
+&lt;p&gt;In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&amp;rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&amp;rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.&lt;/p&gt;
+
+&lt;p&gt;Speaking of the number of devices: Some say we will have 20, some say 50 billion connected IoT devices by 2020, where most of them will be ARMed. Well, least let&amp;rsquo;s conclude: It will be a flooding number of them.&lt;/p&gt;
+
+&lt;p&gt;Fair enough, so let&amp;rsquo;s start making apps compatible to ARM. To do so, you only need to make sure that the binaries of your apps are compiled explicitly for the ARM architecture. Thus, porting an app to ARM basically means to change the binaries to ARM compatible ones. Let&amp;rsquo;s do it!&lt;/p&gt;
+
+&lt;h2 id=&#34;get-started-with-docker-for-an-easy-porting-example:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Get started with Docker for an easy porting example&lt;/h2&gt;
+
+&lt;p&gt;Of course, we use &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;. And in the world of Docker, apps are described by Dockerfiles, like recipes for making cakes. Thus, when we wanna ARM an app, we only change its recipe, i.e. its Dockerfile. So make sure you know about the commands in Dockerfiles with the help of the &lt;a href=&#34;https://docs.docker.com/reference/builder/&#34;&gt;Dockerfile reference at Docker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;From now on, let&amp;rsquo;s better refer to an app as a &lt;strong&gt;service&lt;/strong&gt; because often a Dockerfile or a docker-compose file is a recipe for a collection of apps which are combined to a service. Thus a service is described by one or many apps.&lt;/p&gt;
+
+&lt;p&gt;In order to directly apply the necessary steps, we go through an example. In this example, we wanna port the &lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache webserver&lt;/a&gt; to ARM.&lt;/p&gt;
+
+&lt;p&gt;As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;SD Card image&lt;/a&gt; that provides Docker on the Raspberry Pi by just &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flashing it to a SD card and booting it&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;let-s-arm-it:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
+
+&lt;p&gt;First, search for a Dockerfile that describes the service you wanna ARM. In most cases, Dockerfiles reside on the &lt;a href=&#34;https://hub.docker.com/explore/&#34;&gt;Dockerhub&lt;/a&gt; or on &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When choosing a Dockerfile, make sure you can check the following three prerequisites:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Take the one with the most stars, the most popular one, or the ones tagged with  &amp;ldquo;official&amp;rdquo;. In addition, prefer the less complex ones if possible.&lt;/li&gt;
+&lt;li&gt;Take a Dockerfile that is based on Ubuntu or a Debian based image. To evaluated this, check what&amp;rsquo;s in the Dockerfile after the &lt;code&gt;FROM&lt;/code&gt; command. Any of &lt;code&gt;debian&lt;/code&gt; or &lt;code&gt;ubuntu&lt;/code&gt; is fine.&lt;/li&gt;
+&lt;li&gt;Pay attention to the license. Some licenses forbid to copy and change a Dockerfile.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For Apache, we found a small and popular Dockerfile &lt;a href=&#34;https://hub.docker.com/r/eboraas/apache/~/dockerfile/&#34;&gt;here&lt;/a&gt;. We check the Dockerfile if the three prerequisites in the list we above are met. Here, the Dockerfile is based on Debian, it seems clean and there&amp;rsquo;s no license given that restricts the usage of this work.&lt;/p&gt;
+
+&lt;p&gt;Note that every now and then there are mistakes in Dockerfiles. Therefore we recommend to test the Docker images on your x86 machine before porting it. In case you encounter any errors, the performance advantage of an x86 machine makes debugging much faster than on your ARM machine. See the &lt;a href=&#34;http://docs.docker.com/installation/&#34;&gt;Docker docs to install Docker&lt;/a&gt; on your machine. It&amp;rsquo;s fast and painless.&lt;/p&gt;
+
+&lt;p&gt;Thus, we test the chosen Dockerfile for Apache on a x86 machine. The &lt;code&gt;docker run&lt;/code&gt; command to do this is given in the repo description on the Dockerhub. In advance we had to add the tag &lt;code&gt;wheezy&lt;/code&gt; (read the next chapter when you are curious about the &lt;code&gt;wheezy&lt;/code&gt; here).&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker run -p 80:80 -p 443:443 -d eboraas/apache:wheezy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When the Docker command terminated, point your browser to &lt;code&gt;http://localhost:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next, let&amp;rsquo;s move to the target machine running on ARM. Copy the content of the Dockerfile as is to your ARM machine.&lt;/p&gt;
+
+&lt;p&gt;In our case, we log into the Raspberry Pi (&lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;get help from our getting started guide&lt;/a&gt;) and copy the content of the Dockerfile to the machine. For this, on the machine, we use the &lt;code&gt;vim&lt;/code&gt; editor by executing&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vim Dockerfile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Paste the content.&lt;/p&gt;
+
+&lt;p&gt;Then make sure that the content is formatted as it is on the website, e.g. any command should be at the beginning of a new line etc.&lt;/p&gt;
+
+&lt;p&gt;After formatting, this is how the Dockerfile should look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM eboraas/debian:stable
+MAINTAINER Ed Boraas &amp;lt;ed@boraas.ca&amp;gt;
+
+RUN apt-get update &amp;amp;&amp;amp; apt-get -y install apache2 &amp;amp;&amp;amp; apt-get clean
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+
+RUN /bin/ln -sf ../sites-available/default-ssl /etc/apache2/sites-enabled/001-default-ssl
+RUN /bin/ln -sf ../mods-available/ssl.conf /etc/apache2/mods-enabled/
+RUN /bin/ln -sf ../mods-available/ssl.load /etc/apache2/mods-enabled/
+
+EXPOSE 80
+EXPOSE 443
+CMD [&amp;quot;/usr/sbin/apache2ctl&amp;quot;, &amp;quot;-D&amp;quot;, &amp;quot;FOREGROUND&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we need to change all binaries that are used in this Dockerfile to ARM compatible ones. In general, there are two locations that need to be adjusted:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;FROM field in the Dockerfile&lt;/strong&gt;, which defines the software layer our service will inherit from. Here we change &lt;code&gt;debian:jessie&lt;/code&gt; to &lt;code&gt;resin/rpi-raspbian:wheezy&lt;/code&gt;. Then of course, replace the &lt;code&gt;MAINTAINER&lt;/code&gt; with your name and email address.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;binaries of the apps that are being downloaded&lt;/strong&gt;. In our case, we do not need to change anything because the binary, which is &lt;code&gt;apache2&lt;/code&gt; is downloaded via the &lt;code&gt;apt-get install&lt;/code&gt; command. This command is already architecture sensitive, i.e. it downloads only compatible binaries to the target machine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, save the Dockerfile. Try if the Dockerfile works by creating &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker build -t rpi-apache .&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip; and starting a Docker image:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker run -p 80:80 -d rpi-apache&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, when you point your browser to the IP address of your ARM machine, you should see the same default page of Apache&amp;rsquo;s as when you started the image on x86 before.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CONGRATULATIONS! You ARMed your first service!&lt;/strong&gt; Now you have the basic understanding to ARM more services! In case you encounter any error, get help in the next chapter. We cross our fingers for you!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: After you successfully ported a service, you can push it to the Dockerhub, so that other people can use it. In addition make sure to put &lt;code&gt;rpi-&lt;/code&gt; in front of the Docker image&amp;rsquo;s name. This declares it as a Raspberry Pi compatible image and therefore also as an ARM compatible service. It will make the life easier for people looking for ARMed services on the Dockerhub.&lt;/p&gt;
+
+&lt;h2 id=&#34;debugging-hints-to-arm-a-service:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Debugging hints to ARM a service&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Remove any command you do not need to run the service&lt;/strong&gt;. In our Apache example, you can delete everything regarding SSL if you do not need it. This already might solve some problems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make sure, that all binaries used are pointing to ARM compatible ones&lt;/strong&gt;. If there is no compiled ARM binary available, you might need to compile it yourself.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Check other tags&lt;/strong&gt;. You may have noticed that in the porting example above we explicitly defined the tag &lt;code&gt;wheezy&lt;/code&gt; in the &lt;code&gt;Docker run&lt;/code&gt; command. Why? With the tag &lt;code&gt;stable&lt;/code&gt; as it was defined in the original Dockerfile, the Docker image will not work. The reason for this is a common problem, which arises when Dockerfiles are not updated regularly: At the time the author created this Dockerfile, &lt;code&gt;stable&lt;/code&gt; pointed to Debian Wheezy. This worked out fine. However, meanwhile Debian Jessy has been released which ships updated versions of software as well. This invisibly changes the Dockerfile, because &lt;code&gt;apt-get install apache2&lt;/code&gt; now installs the latest version of Apache. This updated version of Apache is controlled by commands other than the ones given in the Dockerfile. This causes Apache to crash. So this Dockerfile simply has not been updated yet to the newer commands of the updated version of Apache. Thus, try other tags in your Dockerfile – they might just work!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search for ADD commands&lt;/strong&gt; that copy files from the host into the container. Sometimes you need to download these files in advance. Refer to the instructions of the repository, especially look for links to the authors code base , e.g. at Github&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Check the &amp;lsquo;docker run&amp;rsquo; command in the Dockerhub repo info&lt;/strong&gt;. If there are any depending containers (defined via &lt;code&gt;--link&lt;/code&gt; parameter), you need porting these images to ARM too. Also check if someone else already ported the depending images you look for.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Try to resolve any other errors by asking an online search engine&lt;/strong&gt;. Often, you are not the first one having this problem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;optimize-the-dockerfile-optional:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Optimize the Dockerfile (optional)&lt;/h2&gt;
+
+&lt;p&gt;Optimizing the Dockerfile does have several advantages: It often makes it smaller, i.e. you need less time to download packages and less disk space on your machine. Further, you gain a better overview over the Dockerfile&amp;rsquo;s structure which simplifies debugging. In the following, we give some recommendations of how to optimize a Dockerfile:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Format it nicely.&lt;/strong&gt; Put commands only at the beginning of a line. Add line breaks with &lt;code&gt;\&lt;/code&gt; and combine commands if possible. See this example:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;RUN  	apt-get update &amp;amp;&amp;amp; \
+	apt-get -y install apache2 &amp;amp;&amp;amp; \
+	apt-get clean
+
+...
+
+EXPOSE 80,443
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Again, remove any commands that are not needed&lt;/strong&gt;, i.e. avoid downloading and installing packages that will not be used.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;At the end of a Dockerfile, remove any files that are useless&lt;/strong&gt;, e.g. execute &lt;code&gt;apt-get autoremove &amp;amp;&amp;amp; apt-get clean&lt;/code&gt; after installing several packages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Also, refer to these blog posts that provide more hints (advanced)&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.xebia.com/2015/06/30/how-to-create-the-smallest-possible-docker-container-of-any-image/&#34;&gt;How to create the smallest possible docker image&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If you have a service in Go:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.atlassian.com/blog/2015/07/osx-static-golang-binaries-with-docker/&#34;&gt;Static Go binaries with Docker on OSX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aerofs/gockerize&#34;&gt;Automatically build static Go binaries and put them into containers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://joeshaw.org/smaller-docker-containers-for-go-apps/&#34;&gt;Smaller Docker containers for Go apps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Use the comments below to share your experiences. Also, join the discussions in the &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;community channel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We wish &lt;strong&gt;happy porting parties&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;Mathias &amp;amp; Andreas&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Access your Docker-based Raspberry Pi at home from the internet</title>
