@@ -10,14 +10,14 @@
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>How to prepare for the ARMed IoT flood by porting apps to ARM</title>
+      <title>Better be prepared for the ARMed IoT flood and port Docker apps to ARM</title>
       <link>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</link>
       <pubDate>Wed, 26 Aug 2015 02:55:55 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
       <description>
 
-&lt;p&gt;The great ARMed flood has started. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
+&lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
 
 &lt;p&gt;In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&amp;rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&amp;rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;&lt;code&gt;docker run -p 80:80 -p 443:443 -d eboraas/apache:wheezy&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;When the Docker command terminated, point your browser to &lt;code&gt;http://localhost:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
+&lt;p&gt;When the Docker command completed, point your browser to &lt;code&gt;http://&amp;lt;IP OF YOUR PI&amp;gt;:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
 &lt;/p&gt;

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> How to prepare for the ARMed IoT flood by porting apps to ARM &middot; Docker Pirates ARMed with explosive stuff </title>
+  <title> Better be prepared for the ARMed IoT flood and port Docker apps to ARM &middot; Docker Pirates ARMed with explosive stuff </title>
 
   
   <link rel="stylesheet" href="/css/poole.css">
@@ -70,11 +70,11 @@
 
 <div class="content container">
   <div class="post">
-    <h1>How to prepare for the ARMed IoT flood by porting apps to ARM</h1>
+    <h1>Better be prepared for the ARMed IoT flood and port Docker apps to ARM</h1>
     <span class="post-date">Wed, Aug 26, 2015</span>
     
 
-<p>The great ARMed flood has started. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&rsquo;s basically just one step to take.</p>
+<p>The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&rsquo;s basically just one step to take.</p>
 
 <p>In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.</p>
 
@@ -112,7 +112,7 @@
 
 <p><code>docker run -p 80:80 -p 443:443 -d eboraas/apache:wheezy</code></p>
 
-<p>When the Docker command terminated, point your browser to <code>http://localhost:80/</code>. You should see the default page of Apache:</p>
+<p>When the Docker command completed, point your browser to <code>http://&lt;IP OF YOUR PI&gt;:80/</code>. You should see the default page of Apache:</p>
 
 <p><img src="/images/port_dockerfiles_to_arm/apache_default_x86.png" alt="port_dockerfiles_to_arm" />
 </p>
