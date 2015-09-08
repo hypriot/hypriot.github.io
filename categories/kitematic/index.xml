@@ -6,8 +6,37 @@
     <description>Recent content in Kitematic on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2015 06:35:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2015 00:07:37 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/kitematic/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kitematic meets Windows Docker</title>
+      <link>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</link>
+      <pubDate>Wed, 09 Sep 2015 00:07:37 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</guid>
+      <description>&lt;p&gt;I just want to share some screenshots with you. Today I have played with Kitematic on a Windows Server 2016 TP3 and made it talk to the Windows Docker Engine. Yes, no VirtualBox in between. Just starting native Windows Containers from the Kitematic interface.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-win2016tp3.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;A closer look at the left column shows a running &lt;strong&gt;mongo&lt;/strong&gt; container. Yes, I know, you cannot pull docker images with the Windows Docker Engine at the moment. But I have built a mongo Docker image for Windows with this &lt;a href=&#34;https://github.com/StefanScherer/dockerfiles-windows/blob/master/mongo/3.0/Dockerfile&#34;&gt;Dockerfile&lt;/a&gt; and created the container by pressing the &lt;strong&gt;Create&lt;/strong&gt; button in the Kitematic UI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-mongo.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And to show that this is no fake you can see some windows paths in the container logs view:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-list.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s all for now.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Connecting Kitematic to an external Docker Engine running on a Raspberry Pi</title>

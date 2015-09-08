@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2015-08-26T02:55:55+02:00</lastmod>
+    <lastmod>2015-09-09T00:07:37+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</loc>
+    <lastmod>2015-09-09T00:07:37+02:00</lastmod>
   </url>
   
   <url>
@@ -48,12 +53,12 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
