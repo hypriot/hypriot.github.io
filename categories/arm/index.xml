@@ -6,8 +6,58 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jul 2015 20:37:38 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2015 21:30:00 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>RC1: Jessie with brand new Linux Kernel and Docker</title>
+      <link>http://blog.hypriot.com/post/rc1-jessie-with-brand-new-kernel-and-docker/</link>
+      <pubDate>Thu, 10 Sep 2015 21:30:00 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/rc1-jessie-with-brand-new-kernel-and-docker/</guid>
+      <description>
+
+&lt;p&gt;Here comes &lt;strong&gt;Release Candiate 1&lt;/strong&gt; of our brand new &lt;em&gt;Get-Docker-Running-in-under-5-Minutes Hypriot SD card image&lt;/em&gt;.
+It is the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2.&lt;/p&gt;
+
+&lt;p&gt;This image builds on the &lt;a href=&#34;http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/&#34;&gt;Beta Version we published six weeks ago&lt;/a&gt; and fixes a couple of issues that were reported by our community.
+The positiv feedback we got spurred us on to make this release even better.&lt;/p&gt;
+
+&lt;p&gt;And by the way - keep this kind of positiv feedback coming - it really makes a difference and pushes us to be the best we can&amp;hellip; :)&lt;/p&gt;
+
+&lt;p&gt;So we updated Docker from &lt;strong&gt;1.7.1&lt;/strong&gt; to &lt;strong&gt;1.8.1&lt;/strong&gt;.
+We also had the impression that our current version of the Linux Kernel - &lt;strong&gt;3.18.11&lt;/strong&gt; - did need some kind of a refresher - so we added the 4.1.6 version it.&lt;/p&gt;
+
+&lt;p&gt;So here again the list of features that make this release really awesome.&lt;/p&gt;
+
+&lt;h3 id=&#34;battle-tested-docker-jessie-with-some-sugar:0cbf622673eabe9849be13a37f374c36&#34;&gt;Battle-Tested Docker-Jessie with some sugar&lt;/h3&gt;
+
+&lt;p&gt;On top of &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;Jessie&lt;/a&gt; we added all the battle-tested ingredients of our previous &lt;em&gt;Get-Docker-Running-in-under-5-Minutes Hypriot SD card image&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a kernel optimised for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.6 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;the most recent &lt;strong&gt;Docker 1.8.1&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same image&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;out of the box support for &lt;strong&gt;Wifi&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka Apple Bonjour)&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;During the next two weeks we want to improve the SD card image and gather more feedback to make it a great out-of-the-box experience for our users.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-it-while-it-is-still-hot:0cbf622673eabe9849be13a37f374c36&#34;&gt;Get it while it is still hot&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150909-070022.img.zip&#34;&gt;hypriot-rpi-20150909-070022.img.zip&lt;/a&gt; (~ 398 MB)
+&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150909-070022.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share this post on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Govinda &amp;amp; Stefan&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Moving Docker from Wheezy to Jessie</title>
