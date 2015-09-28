@@ -25,7 +25,7 @@ It is the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2.&lt;/p&g
 &lt;p&gt;We also upgraded the included firmware as well as the Linux-Kernel- and the Docker-Version.&lt;/p&gt;
 
 &lt;p&gt;We finally managed to add out-of-the-box support for &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker-Compose&lt;/a&gt; and &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;Docker-Swarm&lt;/a&gt; in our image.
-Docker-Compose helps you manage a group of containers that make up your application. And if working on one server/device is not enought for you you might wanna look into Docker-Swarm as it allows you to manage a cluster of Docker-Engines on multiple servers/devices.&lt;/p&gt;
+Docker-Compose helps you manage a group of containers that make up your application. And if working on one server/device is not enough for you you might wanna look into Docker-Swarm as it allows you to manage a cluster of Docker-Engines on multiple servers/devices.&lt;/p&gt;
 
 &lt;p&gt;Another noteably thing that we now support is the &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;official 7&amp;rdquo; display of the Raspberry PI foundation&lt;/a&gt;.
 Just attach it to your PI and you should be able to use Docker together with the awesomeness of a beautiful GUI at once.
