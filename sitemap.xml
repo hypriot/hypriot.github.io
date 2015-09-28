@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2015-09-10T21:30:00+02:00</lastmod>
+    <lastmod>2015-09-28T21:00:00+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/rc2-jessie-with-brand-new-kernel-and-docker-and-display-support/</loc>
+    <lastmod>2015-09-28T21:00:00+02:00</lastmod>
   </url>
   
   <url>
@@ -53,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
@@ -63,7 +68,7 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
