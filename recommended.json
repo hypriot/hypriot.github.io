@@ -1,6 +1,7 @@
 {
   "recommended":[
     "hypriot/rpi-busybox-httpd",
+    "hypriot/rpi-nano-httpd",
     "hypriot/rpi-redis",
     "hypriot/rpi-mysql",
     "hypriot/rpi-crate",
@@ -12,6 +13,12 @@
   "repos": [
     {
       "repo": "hypriot/rpi-busybox-httpd",
+      "gradient_start": "#24B8EB",
+      "gradient_end": "#218CF4",
+      "img": "kitematic_html.png"
+    },
+    {
+      "repo": "hypriot/rpi-nano-httpd",
       "gradient_start": "#24B8EB",
       "gradient_end": "#218CF4",
       "img": "kitematic_html.png"
