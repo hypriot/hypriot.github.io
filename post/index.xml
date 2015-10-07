@@ -33,7 +33,7 @@ Thus it was an obvious choice for us to start our mission on the Raspberry Pi.&l
 
 &lt;p&gt;The standard way to provide software for the Raspberry Pi is by using a SD card that includes the operating system with all necessary user software.
 So our first step was to provide a SD card image that included an operating system that was optimized for the use of Docker.
-And that was exactly what we did when we published the first version of our &lt;strong&gt;Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time&lt;/strong&gt; SD card image.
+And that was exactly what we did when we published the &lt;a href=&#34;http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/&#34;&gt;first version&lt;/a&gt; of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
 It allowed even novice users to get a working Docker environment running in minutes.&lt;/p&gt;
 
 &lt;p&gt;Besides the ease of use there was another important &amp;ldquo;feature&amp;rdquo; for us when we started publishing our SD card image.
