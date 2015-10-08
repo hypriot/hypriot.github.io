@@ -23,6 +23,9 @@
 
 &lt;p&gt;It is - more than ever - &lt;strong&gt;the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt;.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/jessie-release/one-to-rule-them-all_blog.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
 &lt;p&gt;We have been coming a long way since we started in February 2015. Then Docker was not easily available for ARM-based devices.
 By following long - often outdated - tutorials, only technically well-versed people had a chance to eventually get Docker running on ARM.
 It also didn&amp;rsquo;t help that Docker wasn&amp;rsquo;t offically supported on ARM and 32-bit systems.&lt;/p&gt;
