@@ -57,7 +57,7 @@ To allow upgrading of individual components, without reflashing the SD card, we 
 
 &lt;p&gt;We also massively improved the out-of-the-box support for different hardware extensions that are available for the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;To achieve that we upgraded to the lastest Raspberry Pi firmware and added support for &lt;a href=&#34;www.devicetree.org&#34;&gt;Device Tree&lt;/a&gt;.
+&lt;p&gt;To achieve that we upgraded to the lastest Raspberry Pi firmware and added support for &lt;a href=&#34;http://www.devicetree.org/&#34;&gt;Device Tree&lt;/a&gt;.
 With the help of Device Tree many hardware devices like displays and Pi Hats should just work&amp;trade; now.
 One great example is &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;The official 7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.
 Just attach it to your Pi and you can use it right away.
