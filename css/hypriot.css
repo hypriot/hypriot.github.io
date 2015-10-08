@@ -35,6 +35,11 @@ margin-top: 3rem;
   vertical-align: bottom;
 }
 
+.fb-share-button {
+  padding-top: 10px;
+  padding-left: 100px;
+}
+
 .posts > .summary {
   margin-bottom: 3rem;
 }
