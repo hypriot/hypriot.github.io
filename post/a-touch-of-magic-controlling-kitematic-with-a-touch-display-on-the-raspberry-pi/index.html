@@ -294,6 +294,11 @@ If you want to do it manually, just skip this step.</p>
 <pre><code>echo &quot;xhost +&quot; &gt; /etc/X11/Xsession.d/36x11-xhost-docker
 </code></pre>
 
+<p>To fix the orientation of the 7&rdquo; touch display we have to add <code>lcd_rotate=2</code> into the <code>/boot/config.txt</code>. If you just use an HDMI monitor you should skip this step.</p>
+
+<pre><code>echo &quot;lcd_rotate=2&quot; &gt;&gt; /boot/config.txt
+</code></pre>
+
 <p>Now reboot your Pi to start the X11 server on your 7&rdquo; touch display or HDMI monitor.</p>
 
 <pre><code>reboot
