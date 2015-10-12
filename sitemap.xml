@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2015-10-07T17:30:00+02:00</lastmod>
+    <lastmod>2015-10-12T00:15:00+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</loc>
+    <lastmod>2015-10-12T00:15:00+02:00</lastmod>
   </url>
   
   <url>
@@ -63,17 +68,17 @@
   </url>
   
   <url>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
+    <lastmod>2015-05-15T20:16:11+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
-    <lastmod>2015-05-15T20:16:11+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
