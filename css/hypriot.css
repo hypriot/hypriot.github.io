@@ -39,6 +39,11 @@ margin-top: 3rem;
   padding-left: 10px;
 }
 
+.social-sharing-google iframe {
+  padding-left: 10px;
+  margin-top: 10px !important;
+}
+
 .posts > .summary {
   margin-bottom: 3rem;
 }
