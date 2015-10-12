@@ -10,7 +10,7 @@
     <atom:link href="http://blog.hypriot.com/tags/arm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>A touch of magic: Controlling Kitematic with a touch display on the Raspberry Pi</title>
+      <title>A touch of magic: Controlling Kitematic &amp; Docker with a touch display on the Raspberry Pi</title>
       <link>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</link>
       <pubDate>Mon, 12 Oct 2015 00:15:00 +0200</pubDate>
       
@@ -275,7 +275,8 @@ But running a GUI application in a Docker container was something we wanted to t
 
 &lt;p&gt;What do you think would be the best approach? How should we provide Kitematic on a Raspberry Pi without putting to much bloat into our SD card image by default?&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.
+You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10374271&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
 &lt;p&gt;Stefan&lt;/p&gt;
 </description>
