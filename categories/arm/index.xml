@@ -17,7 +17,7 @@
       <guid>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</guid>
       <description>
 
-&lt;p&gt;Hard on the heels of Docker announcing &lt;a href=&#34;https://blog.docker.com/2015/11/docker-1-9-production-ready-swarm-multi-host-networking/&#34;&gt;major changes with Docker 1.9&lt;/a&gt; were are making the newest Docker goodies available on HypriotOS.
+&lt;p&gt;Hard on the heels of Docker announcing &lt;a href=&#34;https://blog.docker.com/2015/11/docker-1-9-production-ready-swarm-multi-host-networking/&#34;&gt;major changes with Docker 1.9&lt;/a&gt; we are making the newest Docker goodies available on HypriotOS.
 We are really happy that we were able to finish our new release called &amp;ldquo;Hector&amp;rdquo; just in time for DockerCon EU.&lt;/p&gt;
 
 &lt;p&gt;If you like a personal demo of what&amp;rsquo;s in store for &amp;ldquo;Hector&amp;rdquo; just ping @Quintus23M on Twitter and meet him in person at DockerCon EU.
@@ -28,7 +28,7 @@ Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsq
 
 &lt;p&gt;And if you are not lucky enough to attend DockerCon you might as well read on.&lt;/p&gt;
 
-&lt;p&gt;To name just a few of the highlights, there is now &lt;a href=&#34;http://blog.docker.com/2015/11/docker-multi-host-networking-ga/&#34;&gt;multi-host networking&lt;/a&gt;, totaly improved volume management and a production-ready &lt;a href=&#34;http://blog.docker.com/2015/11/swarm-1-0/&#34;&gt;Swarm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To name just a few of the highlights, there is now &lt;a href=&#34;http://blog.docker.com/2015/11/docker-multi-host-networking-ga/&#34;&gt;multi-host networking&lt;/a&gt;, extensively improved volume management and a production-ready &lt;a href=&#34;http://blog.docker.com/2015/11/swarm-1-0/&#34;&gt;Swarm&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;HypriotOS - the ultimate Docker playground for your Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt; has you covered once again: all the cool &amp;amp; latest Docker tools in one convenient package.&lt;/p&gt;
 
@@ -42,10 +42,10 @@ Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsq
 &lt;/ul&gt;
 
 &lt;p&gt;Besides that we enabled some missing cgroup kernel settings for better Docker support.
-We also added a default /boot/config.txt which for instance allows for a better out-of-the-box HDMI display experience (hdmi_force_hotplug=1).&lt;/p&gt;
+We also added a default &lt;code&gt;/boot/config.txt&lt;/code&gt;, which for instance allows for a better out-of-the-box HDMI display experience (&lt;code&gt;hdmi_force_hotplug=1&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;There is no easier way to get started with Docker on ARM.
-Just give it a try and download our &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;latest image&lt;/a&gt; and get started in less than 5 minutes.&lt;/p&gt;
+Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;latest image&lt;/a&gt; and get started in less than 5 minutes.&lt;/p&gt;
 
 &lt;h3 id=&#34;detailed-features-of-hypriotos-hector:02d83c62817c8a33766342f7f05756e9&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Hector&amp;rdquo;&lt;/h3&gt;
 
@@ -53,7 +53,7 @@ Just give it a try and download our &lt;a href=&#34;http://downloads.hypriot.com
 &lt;li&gt;a modern operating system based on &lt;strong&gt;Raspbian Jessie&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;a recent Raspberry Pi firmware and Device Tree to &lt;strong&gt;support a huge range of hardware add-ons&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;a kernel optimized for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.12 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
+&lt;li&gt;support for &lt;strong&gt;Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Docker Engine 1.9.0&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Docker Compose 1.5.1&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Docker Machine 0.4.1&lt;/strong&gt;&lt;/li&gt;
@@ -70,7 +70,7 @@ Just give it a try and download our &lt;a href=&#34;http://downloads.hypriot.com
 &lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;hypriot-rpi-20151115-132854.img.zip&lt;/a&gt; (~ 438 MB)
 &lt;a href=&#34;hypriot-rpi-20151115-132854.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Pi.&lt;/p&gt;
+&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google+ or Facebook.&lt;/p&gt;
 
