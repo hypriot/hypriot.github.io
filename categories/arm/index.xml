@@ -6,13 +6,13 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2015 21:30:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2015 21:40:00 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Just in time for DockerCon EU: a shipload of new Docker ARM goodies</title>
       <link>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</link>
-      <pubDate>Sun, 15 Nov 2015 21:30:00 +0100</pubDate>
+      <pubDate>Sun, 15 Nov 2015 21:40:00 +0100</pubDate>
       
       <guid>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</guid>
       <description>
@@ -21,7 +21,7 @@
 We are really happy that we were able to finish our new release called &amp;ldquo;Hector&amp;rdquo; just in time for DockerCon EU.&lt;/p&gt;
 
 &lt;p&gt;If you like a personal demo of what&amp;rsquo;s in store for &amp;ldquo;Hector&amp;rdquo; just ping @Quintus23M on Twitter and meet him in person at DockerCon EU.
-Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsquo;s and are eager to show off a bit.&lt;/p&gt;
+Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsquo;s to Barcelona and are eager to show off a bit.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hector-release/testing.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
