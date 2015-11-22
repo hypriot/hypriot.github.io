@@ -1573,7 +1573,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our current SD card image using your browser by clicking &lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After the download is completed open a terminal window. To do this use the search function of your Linux distribution and type &lt;em&gt;terminal&lt;/em&gt; and press &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;
 
@@ -1584,7 +1584,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;p&gt;Extract the zip file with&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-20150416-201537.img.zip
+&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-201???.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
@@ -1626,7 +1626,7 @@ Copy and paste the path you see in your own &lt;em&gt;MOUNTPOINT&lt;/em&gt; colu
 &lt;li&gt;replace the parameter &lt;code&gt;of=/dev/mmcblk0&lt;/code&gt; with the identifier of your SD card&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/mmcblk0 bs=1M
+&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-201???.img of=/dev/mmcblk0 bs=1M
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;While this command is executed you won&amp;rsquo;t get any information about its progress.
@@ -1752,7 +1752,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our current SD card image using your browser by clicking &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After the download is completed open a terminal window. To do this press &lt;strong&gt;CMD&lt;/strong&gt; + &lt;strong&gt;Whitespace&lt;/strong&gt; and type &lt;em&gt;terminal&lt;/em&gt;.&lt;/p&gt;
 
@@ -1763,7 +1763,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;p&gt;Now extract the zip file with&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-20150416-201537.img.zip
+&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-201???.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
@@ -1805,7 +1805,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 &lt;li&gt;replace the parameter after &lt;code&gt;of=&lt;/code&gt; with the identifier of your SD card. Make sure you put a &lt;code&gt;r&lt;/code&gt; in front of &lt;code&gt;disk&lt;/code&gt; as you can see in the example&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/rdisk5 bs=1m
+&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-201???.img of=/dev/rdisk5 bs=1m
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;While this command is executed you won&amp;rsquo;t get any information about its progress.
@@ -1953,7 +1953,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our current SD card image using your browser by clicking &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Next go to your &lt;strong&gt;Download&lt;/strong&gt; folder and extract the downloaded zip file by right-clicking on the file and then clicking on &lt;strong&gt;7-zip&lt;/strong&gt; -&amp;gt; &lt;strong&gt;extract here&amp;hellip;&lt;/strong&gt;.&lt;/p&gt;
 

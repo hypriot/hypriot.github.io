@@ -96,7 +96,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 <h3 id="download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5">Download the Hypriot Docker SD card image</h3>
 
-<p>Download our current SD card image using your browser by clicking <a href="http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip">here</a>.</p>
+<p>Download our latest SD card image from the <a href="http://blog.hypriot.com/downloads/">download page</a>.</p>
 
 <p>After the download is completed open a terminal window. To do this press <strong>CMD</strong> + <strong>Whitespace</strong> and type <em>terminal</em>.</p>
 
@@ -107,7 +107,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 <p>Now extract the zip file with</p>
 
-<pre><code>unzip hypriot-rpi-20150416-201537.img.zip
+<pre><code>unzip hypriot-rpi-201???.img.zip
 </code></pre>
 
 <p>After the file is unzipped you will have a new file with an <strong>.img</strong> extension.
@@ -149,7 +149,7 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 <li>replace the parameter after <code>of=</code> with the identifier of your SD card. Make sure you put a <code>r</code> in front of <code>disk</code> as you can see in the example</li>
 </ul>
 
-<pre><code>sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/rdisk5 bs=1m
+<pre><code>sudo dd if=hypriot-rpi-201???.img of=/dev/rdisk5 bs=1m
 </code></pre>
 
 <p>While this command is executed you won&rsquo;t get any information about its progress.

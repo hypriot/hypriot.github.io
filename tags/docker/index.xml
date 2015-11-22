@@ -1911,7 +1911,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our current SD card image using your browser by clicking &lt;a href=&#34;http://assets.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After the download is completed open a terminal window. To do this use the search function of your Linux distribution and type &lt;em&gt;terminal&lt;/em&gt; and press &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;
 
@@ -1922,7 +1922,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;p&gt;Extract the zip file with&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-20150416-201537.img.zip
+&lt;pre&gt;&lt;code&gt;unzip hypriot-rpi-201???.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
@@ -1964,7 +1964,7 @@ Copy and paste the path you see in your own &lt;em&gt;MOUNTPOINT&lt;/em&gt; colu
 &lt;li&gt;replace the parameter &lt;code&gt;of=/dev/mmcblk0&lt;/code&gt; with the identifier of your SD card&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-20150416-201537.img of=/dev/mmcblk0 bs=1M
+&lt;pre&gt;&lt;code&gt;sudo dd if=hypriot-rpi-201???.img of=/dev/mmcblk0 bs=1M
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;While this command is executed you won&amp;rsquo;t get any information about its progress.
