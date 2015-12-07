@@ -61,7 +61,7 @@ sudo apt-get update
 sudo apt-get -y install --no-install-recommends docker-hypriot
 sudo apt-get -y install cgroupfs-mount
 
-# Add your user to group &#39;Docker&#39; to not need to always type `sudo` before Docker commands.  
+# Add your user to group &#39;Docker&#39; so you do not need to type `sudo` before each Docker command. 
 sudo usermod -aG docker $(whoami)
 &lt;/code&gt;&lt;/pre&gt;
 
