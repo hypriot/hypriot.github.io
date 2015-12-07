@@ -6,8 +6,109 @@
     <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2015 21:40:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 07 Dec 2015 19:55:55 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Family of ARM Hardware for Docker got two more children – at least!</title>
+      <link>http://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</link>
+      <pubDate>Mon, 07 Dec 2015 19:55:55 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</guid>
+      <description>
+
+&lt;p&gt;Today we are proud to present a guest contribution from the community. Marcel Großmann, a research assistant at the University of Bamberg, Germany, shows in a short test that the hardware family on which our ARMed Docker runs is probably much larger than we ever thought. But rather than anticipating the punch line, let&amp;rsquo;s give the word to him!&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-docker-on-new-platforms:b445d62276b06d5ff303032c7603f78a&#34;&gt;Testing Docker on new platforms&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;(Marcel is now speaking)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello everyone!
+First of all, thanks to Hypriot for porting Docker to the ARM Platform!&lt;/p&gt;
+
+&lt;p&gt;Recently, I tested their port of Docker (v 1.9.1) on two platforms different from the Raspberry Pi and HypriotOS. This time, I had a look at  &lt;strong&gt;&lt;a href=&#34;http://www.armbian.com/&#34;&gt;armbian&lt;/a&gt;&lt;/strong&gt; as operating system, which ships a Linux image based on Debian Wheezy and includes the Vanilla kernel 4.2.6. As hardware I picked the &lt;strong&gt;Cubietruck&lt;/strong&gt; and &lt;strong&gt;Lamobo R1&lt;/strong&gt; board. The first one, Cubietruck, has e.g. a S-ATA port to attach hard drives and an integrated WiFi and Bluetooth controller:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.armbian.com/wp-content/uploads/2013/12/cubietruck1.png&#34; alt=&#34;&#34; width=&#34;600&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The second one, the Lamobo R1, is also called BananaPi R1. It comes with an integrated 5-port switch fabric and a WiFi modul.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.armbian.com/wp-content/uploads/2015/08/lamobo-r1.png&#34; alt=&#34;&#34; width=&#34;600&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The configuration of both devices shows for &lt;code&gt;uname -a&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Linux XXX 4.2.6-sunxi #1 SMP Sun Nov 29 10:33:44 CET 2015 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Debian release depicted by &lt;code&gt;lsb_release -a&lt;/code&gt; shows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Distributor ID:	Debian
+Description:	Debian GNU/Linux 7.9 (wheezy)
+Release:	7.9
+Codename:	wheezy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To install &lt;code&gt;docker-hypriot&lt;/code&gt;, I added the Debian package repository of Hypriot to my package manager:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl https://packagecloud.io/gpg.key | sudo apt-key add -
+
+sudo bash -c &#39;cat &amp;gt; /etc/apt/sources.list.d/Hypriot_Schatzkiste.list&#39; &amp;lt;&amp;lt; EOF
+deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main
+EOF
+
+sudo apt-get update
+sudo apt-get -y --no-install-recommends docker-hypriot
+sudo apt-get -y install cgroupfs-mount
+
+# Add your user to group &#39;Docker&#39; so you do not need to type `sudo` before each Docker command.  
+sudo usermod -aG docker $(whoami)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nevertheless, Docker is not running, if your glibc version is &amp;lt; &lt;strong&gt;2.15&lt;/strong&gt;. Test your version with &lt;code&gt;ldd --version&lt;/code&gt;. To update glibc, execute these commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo bash -c &#39;echo &amp;quot;deb http://ftp.debian.org/debian sid main&amp;quot; &amp;gt;&amp;gt; /etc/apt/sources.list&#39;
+sudo apt-get update
+sudo apt-get -yqq -t sid install libc6 libc6-dev libc6-dbg
+sudo sed -i &amp;quot;/sid main/s/^/#/g&amp;quot; /etc/sources.list
+sudo apt-get clean
+sudo apt-get update
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After the reboot, &lt;code&gt;docker version&lt;/code&gt; should show a Docker 1.9.1:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Client:
+Version:      1.9.1
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In addition, check if your armbian is capable of running Docker with the &lt;code&gt;check-config.sh&lt;/code&gt; script provided by Docker. Execute the following lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh
+sudo chmod +x check-config.sh
+./check-config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As output you should see all items in section &lt;strong&gt;Generally Necessary&lt;/strong&gt; as &lt;strong&gt;enabled&lt;/strong&gt;. Even many options of section &lt;strong&gt;Optional Features&lt;/strong&gt; are enabled and thus available. If you wanna see my full output of the script, see &lt;a href=&#34;https://gist.github.com/hypriot/5d1236bb9c63f7ef7be8&#34;&gt;these lines of code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you may want to install docker-compose, docker-machine or swarm provided by the Hypriot package repository.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-armed-family-for-docker-is-probably-bigger-than-that:b445d62276b06d5ff303032c7603f78a&#34;&gt;The ARMed Family for Docker is probably bigger than that&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;(Andreas &amp;amp; Mathias speaking again)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Many thanks, Marcel. So what&amp;rsquo;s the punch line now? Well, this test makes us believe that &lt;strong&gt;our Docker probably runs on all devices supported by armbian, which is a total of 19 ARM boards!&lt;/strong&gt; &lt;a href=&#34;http://www.armbian.com/download/&#34;&gt;See the compatibility list here&lt;/a&gt;. We now have it safe for two of them. Of course, we are curious who of you has one of the remaining boards at hand and could test it! So, this is our call to the community:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Who can confirm another ARM board running Docker?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Get in touch with us via the comments below, on &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;Twitter&lt;/a&gt;, in the &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;community chat&lt;/a&gt; and spread the word using the buttons below.&lt;/p&gt;
+
+&lt;p&gt;Andreas, Mathias and Marcel Großmann (&lt;a href=&#34;https://www.uni-bamberg.de/en/ktr/staff/grossmann-marcel/&#34;&gt;University of Bamberg&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Just in time for DockerCon EU: a shipload of new Docker ARM goodies</title>
@@ -1813,75 +1914,6 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
 &lt;p&gt;Have fun!&lt;/p&gt;
 
 &lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Docker 1.6.0 is finally released into the wild</title>
-      <link>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</link>
-      <pubDate>Thu, 16 Apr 2015 22:06:11 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
-      <description>
-
-&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
-Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
-
-&lt;p&gt;Our Docker Debian packages are battle-tested only with our HypriotOS Docker SD card image.
-Use it to get the best Docker experience available for the Raspberry Pi. It is ridiculous easy to get up and running. Under 5 minutes - promised!&lt;/p&gt;
-
-&lt;p&gt;The image can be downloaded here:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~369MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
-
-&lt;h2 id=&#34;all-new-shiny-docker-1-6-0:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
-
-&lt;p&gt;Alright back to Docker&amp;hellip; version 1.6.0 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
-
-&lt;p&gt;The ones that stand out the most are&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syslog support for the Docker logs&lt;/li&gt;
-&lt;li&gt;setting of ulimits for container&lt;/li&gt;
-&lt;li&gt;building images from an image id&lt;/li&gt;
-&lt;li&gt;pulling images based on id&lt;/li&gt;
-&lt;li&gt;Windows client support (&lt;a href=&#34;https://kitematic.com&#34;&gt;Kitematic&lt;/a&gt; - &lt;em&gt;I finally see it coming together!&lt;/em&gt;)&lt;/li&gt;
-&lt;li&gt;Labels for container and images&lt;/li&gt;
-&lt;li&gt;ability to set constraints on images - memory, etc.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
-
-&lt;p&gt;Read some more details on the official Docker blog
-&lt;a href=&#34;https://blog.docker.com/2015/04/docker-release-1-6/&#34;&gt;DOCKER 1.6: ENGINE &amp;amp; ORCHESTRATION UPDATES, REGISTRY 2.0, &amp;amp; WINDOWS CLIENT PREVIEW&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
-$ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
-
-HypriotOS: root@black-pearl in ~
-$ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;
-
-&lt;p&gt;And if you are especially daring today you might wanna try it together with Docker Compose:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&#34;&gt;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Have fun!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and like this post on Twitter or Facebook.&lt;/p&gt;
 </description>
     </item>
     
