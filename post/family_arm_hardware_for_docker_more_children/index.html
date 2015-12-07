@@ -115,7 +115,7 @@ deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main
 EOF
 
 sudo apt-get update
-sudo apt-get -y --no-install-recommends docker-hypriot
+sudo apt-get -y install --no-install-recommends docker-hypriot
 sudo apt-get -y install cgroupfs-mount
 
 # Add your user to group 'Docker' so you do not need to type `sudo` before each Docker command.  
