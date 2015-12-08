@@ -78,7 +78,7 @@
 It is based on our beloved <a href="http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/">HypriotOS</a> and makes it dead simple to build Docker clusters.</p>
 
 <p>Until now it was not exactly easy to get started with Docker clustering.
-You would have needed specific knowledge and lot&rsquo;s of time to manually configure the cluster and its individual nodes.</p>
+You would have needed specific knowledge and lots of time to manually configure the cluster and its individual nodes.</p>
 
 <p>Well, that&rsquo;s now a thing of the past.</p>
 
@@ -97,7 +97,7 @@ Everything else is taken care of automatically by our Cluster Lab.</p>
 
 <p><strong>Docker Clustering as easy as it gets!</strong></p>
 
-<p>When we started out to create the Cluster Lab we wanted to be able to create complex Raspberry Pi based clusters with an arbitrary number of nodes.
+<p>When we started out to develop the Cluster Lab we wanted to be able to create complex Raspberry Pi based clusters with an arbitrary number of nodes.
 We wanted to directly jump to deploying all kind of interesting services on top of the cluster instead of being concerned with setting up the cluster itself.</p>
 
 <p>And well - we managed to pull this off by combining a number of great technologies.
@@ -117,7 +117,7 @@ We want to make this possible by providing a kind of plugin-mechanism so that th
 It can be used to teach about Linux, Networking, Clustering, Microservices and so much more!</p>
 
 <p>And with the latest member of the Raspberry Pi family - the <a href="http://swag.raspberrypi.org/collections/pi-zero/products/pi-zero">Pi Zero</a> - it got really cheap to have your own cluster. For about 50 bucks you are able to have a two to three node physical cluster.
-And believe me - having physical nodes and being able to pull the network or power to simulate different cluster scenarios makes all the difference.
+And believe us - having physical nodes and being able to pull the network or power to simulate different cluster scenarios makes all the difference.
 Working with <strong>real hardware</strong> compared to a virtual environment (e.g. Vagrant) <strong>has a certain raw and primal feel about it</strong> that we really like. :)</p>
 
 <p>So enough talking - let&rsquo;s get our hands dirty - shall we?</p>
@@ -151,9 +151,9 @@ $ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot-rpi-20151128-1
 
 <p><strong>4.</strong> Power on <strong>only one</strong> node. This node will automatically become the master node of the cluster. It might take up to two minutes until the master node is fully functional.</p>
 
-<p><strong>5.</strong> Find out the IP address of your master node. One way to do this is via <a href="https://nmap.org/">nmap</a> and is described <a href="http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/">here</a>.</p>
+<p><strong>5.</strong> Find out the IP address of your master node. One way to do this is via <a href="https://nmap.org/">nmap</a> and is described <a href="http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/#ensure-everything-works:8814904f208dcaade82991443c7514e0">here</a>.</p>
 
-<p><strong>6.</strong> Use the IP (from step 5) or the hostname (from step 2) to point your browser to <code>http://{IP or name of the master node}:8500</code>. In our case <code>http://cl-master:8500</code> opens the Consul web interface and our cluster master node is displayed:</p>
+<p><strong>6.</strong> Use the IP (from step 5) or the hostname (from step 2) to point your browser to <code>http://{IP or hostname of the master node}:8500</code>. In our case <code>http://cl-master:8500</code> opens the Consul web interface and our cluster master node is displayed:</p>
 
 <p><img src="/images/cluster-lab-release-v01/consul_cl_master.png" alt="" />
 </p>
