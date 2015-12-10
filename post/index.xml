@@ -73,10 +73,7 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 &lt;li&gt;a &lt;strong&gt;network switch&lt;/strong&gt; that is somehow connected to the Internet and a DHCP server; both is usually provided by your typical off-the-shelf home router&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Additionally, the switch should not filter IEEE 802.1Q VLAN flags out of network packets.
-Usually this feature is provided even by cheap switches. You can test if your switch supports this feature by building a cluster of two nodes:
-On the node you started second execute &lt;code&gt;ping 192.168.200.1&lt;/code&gt;.
-If this ping fails, but you can still login into the first node via SSH, your switch probably does filter VLAN flags and is therefore not suitable for the Cluster Lab.&lt;/p&gt;
+&lt;p&gt;Additionally, the switch should not filter IEEE 802.1Q VLAN flags out of network packets. Usually this feature is provided even by cheap switches. If you wanna be safe, go through a small &lt;a href=&#34;https://github.com/hypriot/cluster-lab/blob/master/README.md#troubleshooting&#34;&gt;test to figure this out&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;download-flash-boot-enjoy:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
 
