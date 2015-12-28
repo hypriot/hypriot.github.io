@@ -52,7 +52,7 @@ For fast and efficient graphics, Nvidia has included 256 Maxwell GPU cores as we
 
 &lt;p&gt;Looking at the Tegra X1 chip, it&amp;rsquo;s dominated by the 256x CUDA GPU cores. Can you find the CPU cores? They are pretty hard to find. ;-)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpeg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;All in all, this device has a lot of CPU power and an incredible amount of GPU power as well - especially for a low-cost device &lt;a href=&#34;http://www.amazon.com/NVIDIA-SHIELD-Remote/dp/B013HJ13V0/ref=sr_1_3?ie=UTF8&amp;amp;qid=1451218402&amp;amp;sr=8-3&amp;amp;keywords=nvidia+shield&#34;&gt;at just $199.99&lt;/a&gt;.
