@@ -6,8 +6,444 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Dec 2015 09:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2015 18:47:24 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to compile Go on any ARM device</title>
+      <link>http://blog.hypriot.com/post/how-to-compile-go-on-arm/</link>
+      <pubDate>Thu, 31 Dec 2015 18:47:24 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/how-to-compile-go-on-arm/</guid>
+      <description>
+
+&lt;p&gt;As for today, up to the latest Go version 1.5.2 there is no official binary release
+of the Go runtime available for ARM devices. Maybe you can install it as
+a package from your operating system, but these packages are almost outdated.&lt;/p&gt;
+
+&lt;p&gt;For this reason, anyone who wants to use GOLANG (or Go for short) on an ARM device has to compile
+it by himself. This is a cumbersome and time consuming task, which sometimes leads
+to bad results.&lt;/p&gt;
+
+&lt;p&gt;To cover these issues, we&amp;rsquo;ll explain in this short and basic tutorial how to compile
+and test the Go compiler runtime by yourself. We&amp;rsquo;d like to cover all the details you&amp;rsquo;ll
+need from the ground up. And with having this basic understanding then it&amp;rsquo;s easier
+for everybody to build and use the Go compiler in a consistent and reproducible way.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s get started with building your own Go environment on ARM&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;let-s-go-on-arm:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Let&amp;rsquo;s Go on ARM&lt;/h3&gt;
+
+&lt;p&gt;As a member of the Hypriot team I&amp;rsquo;ll show you all the necessary steps on a
+Raspberry Pi 2 board. Together we&amp;rsquo;ll first install the operating system with
+flashing a SD card with HypriotOS and then installing all the build tools we&amp;rsquo;ll
+need to bootstrap a complete Go development environment.&lt;/p&gt;
+
+&lt;p&gt;These steps are quite similar for almost every other Linux distro, so I&amp;rsquo;m assuming you&amp;rsquo;ll
+need just a short time to adjust the build steps for any Ubuntu, Debian, ArchLinux
+or other Linux OS on your ARM device of choice.&lt;/p&gt;
+
+&lt;h3 id=&#34;bootstrap-the-building-system:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Bootstrap the building system&lt;/h3&gt;
+
+&lt;p&gt;We need the following parts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a Raspberry Pi 2 Model B&lt;/li&gt;
+&lt;li&gt;a SD card with 4Gbyte or larger&lt;/li&gt;
+&lt;li&gt;a power adapter or an USB cable to power the Raspberry Pi&lt;/li&gt;
+&lt;li&gt;an ethernet cable to connect the Raspberry Pi to the internet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As soon as you have setup the hardware, we can start to install the OS and login
+to our fresh and clean build system.&lt;/p&gt;
+
+&lt;h4 id=&#34;a-flash-a-new-sd-card-with-hypriotos-0-6-1:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Flash a new SD card with HypriotOS 0.6.1&lt;/h4&gt;
+
+&lt;p&gt;I&amp;rsquo;m using a Mac to flash the SD card, so maybe you have to look for specific
+instructions for your OS in one of our other posts.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip
+$ tar -xvf hypriot-rpi-20151115-132854.img.zip
+$ flash --hostname golang-nutshell hypriot-rpi-20151115-132854.img
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;b-boot-the-raspberry-pi-2-with-hypriotos:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Boot the Raspberry Pi 2 with HypriotOS&lt;/h4&gt;
+
+&lt;p&gt;Just insert the SD card into your Raspberry Pi 2, connect the Ethernet cable
+between the Raspi and your Internet router/switch and power on the Raspi.&lt;/p&gt;
+
+&lt;p&gt;Within one or two minutes the Raspi is booted and has already configured the SD card
+for the first time to it&amp;rsquo;s full size. We defined the specific hostname &lt;code&gt;golang-nutshell&lt;/code&gt;
+for the Raspi, so we can lookup the device on our network.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ping -c 3 golang-nutshell.local
+
+PING golang-nutshell.local (192.168.2.116): 56 data bytes
+64 bytes from 192.168.2.116: icmp_seq=0 ttl=64 time=5.337 ms
+64 bytes from 192.168.2.116: icmp_seq=1 ttl=64 time=6.142 ms
+64 bytes from 192.168.2.116: icmp_seq=2 ttl=64 time=6.781 ms
+
+--- golang-nutshell.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 5.337/6.087/6.781/0.591 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;c-prepare-ssh-for-login:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Prepare SSH for login&lt;/h4&gt;
+
+&lt;p&gt;In case you used the same hostname or IP address before, you should clean your
+SSH cache with the following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -R golang-nutshell.local
+$ ssh-keygen -R 192.168.2.116
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, login to your Raspi with the standard username=&lt;code&gt;pi&lt;/code&gt; and password=&lt;code&gt;raspberry&lt;/code&gt;,
+or you can optionally just setup SSH with your SSH credentials.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh-copy-id pi@golang-nutshell.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;d-login-to-your-raspberry-pi:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;d) Login to your Raspberry Pi&lt;/h4&gt;
+
+&lt;p&gt;Once the Raspi and SSH access is configured, we can login and start working on
+our task to compile Go from the source code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh pi@golang-nutshell.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;e-install-all-the-required-build-dependencies:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;e) Install all the required build dependencies&lt;/h4&gt;
+
+&lt;p&gt;In order to build Go 1.5 we need first a running Go 1.4 compiler on our system.
+So, we&amp;rsquo;ll start our journey with building the Go 1.4 compiler first.&lt;/p&gt;
+
+&lt;p&gt;Next we have to consider that Go 1.4.x has to be built with a &lt;code&gt;gcc&lt;/code&gt; compiler,
+because the Go 1.4 compiler is written in C code.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s install all the necessary build dependencies. Some of these packages are
+already pre-installed with HypriotOS, but I&amp;rsquo;d like to list all of them here so you
+can easily replay this tutorial on a different Linux distro as well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install -y curl gcc git-core
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;download-go-1-4-3-source-tarball-and-compile-it:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Download Go 1.4.3 source tarball and compile it&lt;/h3&gt;
+
+&lt;p&gt;The GOLANG team provides all the Go sources for all the different versions as
+easy to download and install tarballs. But it&amp;rsquo;s not clearly documented how to compile
+and package it the right way to get a package for a binary release later on.&lt;/p&gt;
+
+&lt;p&gt;Ok, so let&amp;rsquo;s explain these steps in detail and you&amp;rsquo;ll get to know all the important
+parts. After all it&amp;rsquo;s just easy to make some mistakes and so we&amp;rsquo;ll try to break
+the steps down for easy understanding.&lt;/p&gt;
+
+&lt;h4 id=&#34;a-download-the-go-1-4-3-source-code:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Download the Go 1.4.3 source code&lt;/h4&gt;
+
+&lt;p&gt;Maybe some of you will be asking, why I&amp;rsquo;m extracting the Go source code into the
+directory &lt;code&gt;/usr/local/go&lt;/code&gt; and running the gcc compiler as a &lt;code&gt;root&lt;/code&gt; user.
+I&amp;rsquo;m coming back later on to the reasons behind, but for now you should know it&amp;rsquo;s just
+important for creating the binary package.&lt;/p&gt;
+
+&lt;p&gt;You can see, I&amp;rsquo;m downloading the source tarball and extract it right away in a
+single step, but if you like you can break this into two steps as well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ curl -sSL https://storage.googleapis.com/golang/go1.4.3.src.tar.gz | sudo tar -xz -C /usr/local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively using two steps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ curl -O https://storage.googleapis.com/golang/go1.4.3.src.tar.gz
+$ sudo tar -xzf go1.4.3.src.tar.gz -C /usr/local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;b-compile-go-1-4-3-without-running-the-tests:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Compile Go 1.4.3 without running the tests&lt;/h4&gt;
+
+&lt;p&gt;We compile Go now from within this installation directory and please we warned
+it will take some time. On a Raspberry Pi 2 with it&amp;rsquo;s four ARMv7 cores it&amp;rsquo;s quite fast
+enough, but on a slower machine it can take hours!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /usr/local/go/src
+$ time sudo ./make.bash
+
+# Building C bootstrap tool.
+cmd/dist
+...
+---
+Installed Go for linux/arm in /usr/local/go
+Installed commands in /usr/local/go/bin
+
+real	10m41.755s
+user	12m8.140s
+sys	0m46.860s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As soon as we can read the message &lt;code&gt;Installed Go for linux/arm in /usr/local/go&lt;/code&gt;
+we know the build was successful and we can use the Go compiler right away.&lt;/p&gt;
+
+&lt;h4 id=&#34;c-test-running-the-go-1-4-3-locally:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Test running the Go 1.4.3 locally&lt;/h4&gt;
+
+&lt;p&gt;According to the fact that we used the standard installation path in &lt;code&gt;/usr/local/go&lt;/code&gt;,
+we are now able to use Go 1.4.3 directly on our Raspi. The only thing we need is
+to define the PATH variable in order that all the Go tools and programs can be used
+from the command line.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ export PATH=/usr/local/go/bin:$PATH
+$ go version
+
+go version go1.4.3 linux/arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Great, we do have successfully compiled Go 1.4.3 on our Raspberry Pi and can
+use it now right away. This process lasts some time and we don&amp;rsquo;t like to repeat
+this much often, right? And on the other side, did you recognized that we didn&amp;rsquo;t
+run any tests at all?&lt;/p&gt;
+
+&lt;p&gt;Running the Go tests at compile time is quite easy, just run &lt;code&gt;./all.bash&lt;/code&gt; instead
+of &lt;code&gt;./make.bash&lt;/code&gt;. But this will take way much longer and typically the tests will
+fail on a Raspberry Pi 2 and maybe on other similar devices too. In this case it&amp;rsquo;s
+better to compile Go an run the tests on a reliable machine like the
+&lt;a href=&#34;https://www.scaleway.com&#34;&gt;Scaleway&lt;/a&gt; cloud servers.&lt;/p&gt;
+
+&lt;h3 id=&#34;package-go-1-4-3-as-a-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Package Go 1.4.3 as a binary tarball&lt;/h3&gt;
+
+&lt;p&gt;Maybe some of you already know, that the GOLANG team is providing Go binary releases
+for the most common operating systems. But unfortunately not for ARM.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s create our own Go binary tarball in the exact same way like the originals,
+because then it&amp;rsquo;s easier for us using the exact same ways and scripts when
+we&amp;rsquo;d like to install it on our new ARM machines as well.&lt;/p&gt;
+
+&lt;h4 id=&#34;a-analyse-the-original-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Analyse the original Go binary tarball&lt;/h4&gt;
+
+&lt;p&gt;We can find the official GOLANG binary releases on their download page.
+So let&amp;rsquo;s just google for &amp;ldquo;golang download&amp;rdquo; and we&amp;rsquo;ll get to their website
+&lt;a href=&#34;https://golang.org/dl/&#34;&gt;Downloads - The Go Programming Language&lt;/a&gt; and select
+Go 1.4.3 for a Linux on Intel 64-bit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -O https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s analyze the structure of this tarball in more detail.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar -vtf go1.4.3.linux-amd64.tar.gz | head -10
+drwxr-xr-x 0/0               0 2015-09-23 06:43 go/
+-rw-r--r-- 0/0           17575 2015-09-23 06:37 go/AUTHORS
+-rw-r--r-- 0/0           24564 2015-09-23 06:37 go/CONTRIBUTORS
+-rw-r--r-- 0/0            1479 2015-09-23 06:37 go/LICENSE
+-rw-r--r-- 0/0            1303 2015-09-23 06:37 go/PATENTS
+-rw-r--r-- 0/0            1112 2015-09-23 06:37 go/README
+-rw-r--r-- 0/0               7 2015-09-23 06:38 go/VERSION
+drwxr-xr-x 0/0               0 2015-09-23 06:37 go/api/
+-rw-r--r-- 0/0             524 2015-09-23 06:37 go/api/README
+-rw-r--r-- 0/0           19302 2015-09-23 06:37 go/api/except.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This tarball has some special settings we should really keep care about it.
+First of all, the user and group id&amp;rsquo;s &lt;code&gt;0/0&lt;/code&gt; are all numeric and showing this
+is a &lt;code&gt;root/root&lt;/code&gt; user.
+Next to notice is that the directory name is always starting with &lt;code&gt;go/&lt;/code&gt; and
+without any leading slash &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;These are all just small details, but we have to
+make sure, we create our own tarball the same way - otherwise it will work on some
+machines and on some we&amp;rsquo;ll get some wired issues, because we don&amp;rsquo;t know which
+command a different user will use to install the binary tarball on his machine.&lt;/p&gt;
+
+&lt;h4 id=&#34;b-create-our-own-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Create our own Go binary tarball&lt;/h4&gt;
+
+&lt;p&gt;With this details in mind we can create our own binary release tarball easily.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar -czf ~/go1.4.3.linux-armv7.tar.gz -C /usr/local go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or alternatively, if your &lt;code&gt;tar&lt;/code&gt; command does not support the &lt;code&gt;-C&lt;/code&gt; flag:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /usr/local
+$ tar -czf ~/go1.4.3.linux-armv7.tar.gz go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;c-prove-our-own-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Prove our own Go binary tarball&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar -vtf go1.4.3.linux-armv7.tar.gz | head -10
+drwxr-xr-x root/root         0 2015-12-31 14:06 go/
+drwxr-xr-x root/root         0 2015-12-31 14:16 go/bin/
+-rwxr-xr-x root/root   7659728 2015-12-31 14:16 go/bin/go
+-rwxr-xr-x root/root   2899312 2015-12-31 14:16 go/bin/gofmt
+-rw-r--r-- root/root      1303 2015-09-23 06:37 go/PATENTS
+-rw-r--r-- root/root      1479 2015-09-23 06:37 go/LICENSE
+drwxr-xr-x root/root         0 2015-09-23 06:38 go/test/
+-rw-r--r-- root/root       722 2015-09-23 06:37 go/test/sinit_run.go
+-rw-r--r-- root/root      2280 2015-09-23 06:37 go/test/nil.go
+-rw-r--r-- root/root       716 2015-09-23 06:37 go/test/typeswitch3.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok, not exactly the same as the original. The user and group id&amp;rsquo;s are not in numerical form, but all the other details seems to be correct. We just have to include the &lt;code&gt;--numeric-owner&lt;/code&gt; flag and we&amp;rsquo;ll get a perfect result.&lt;/p&gt;
+
+&lt;h4 id=&#34;d-recommended-way-to-package-the-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;d) Recommended way to package the Go binary tarball&lt;/h4&gt;
+
+&lt;p&gt;With all the details proved well, we do have now a way how we should package the
+Go pre-compiled binary tarball. As long as your ARM Linux system supports the &lt;code&gt;tar&lt;/code&gt;
+command with all the necessary flags, we can use this single command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar --numeric-owner -czf ~/go1.4.3.linux-armv7.tar.gz -C /usr/local go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It can happen that your &lt;code&gt;tar&lt;/code&gt; version doesn&amp;rsquo;t support the &lt;code&gt;--numeric-owner&lt;/code&gt; flag,
+so just leave this out. When your &lt;code&gt;tar&lt;/code&gt; doesn&amp;rsquo;t support the &lt;code&gt;-z&lt;/code&gt; compresssion flag,
+it can be done in two steps as well. And if &lt;code&gt;-C&lt;/code&gt; flag isn&amp;rsquo;t supported, we can
+work around this too.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /usr/local
+$ tar --numeric-owner -cf ~/go1.4.3.linux-armv7.tar go
+$ gzip ~/go1.4.3.linux-armv7.tar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally, here is our almost perfect own-built pre-compiled Go tarball, which
+we could install within just seconds on any of our ARM devices.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar -vtf go1.4.3.linux-armv7.tar.gz | head -10
+drwxr-xr-x 0/0               0 2015-12-31 14:06 go/
+drwxr-xr-x 0/0               0 2015-12-31 14:16 go/bin/
+-rwxr-xr-x 0/0         7659728 2015-12-31 14:16 go/bin/go
+-rwxr-xr-x 0/0         2899312 2015-12-31 14:16 go/bin/gofmt
+-rw-r--r-- 0/0            1303 2015-09-23 06:37 go/PATENTS
+-rw-r--r-- 0/0            1479 2015-09-23 06:37 go/LICENSE
+drwxr-xr-x 0/0               0 2015-09-23 06:38 go/test/
+-rw-r--r-- 0/0             722 2015-09-23 06:37 go/test/sinit_run.go
+-rw-r--r-- 0/0            2280 2015-09-23 06:37 go/test/nil.go
+-rw-r--r-- 0/0             716 2015-09-23 06:37 go/test/typeswitch3.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;install-and-test-the-go-1-4-3-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Install and test the Go 1.4.3 binary tarball&lt;/h3&gt;
+
+&lt;p&gt;Honestly, this was a long and dirty road, just to get a Go 1.4.3 compiler so that
+we can start developing our Go code and compiling our real world tasks on an
+ARM device. But with all these details we know now exactly how to create and package
+a Go binary release as a pre-compiled tarball.&lt;/p&gt;
+
+&lt;p&gt;And finally, let&amp;rsquo;s see how easy we do have it now, when we have a Go binary release
+for our ARM device available. It&amp;rsquo;s really that damn simple to install Go and just using it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ sudo tar -xzf go1.4.3.linux-armv7.tar.gz -C /usr/local
+$ export PATH=/usr/local/go/bin:$PATH
+$ go version
+
+go version go1.4.3 linux/arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;compiling-testing-and-packaging-go-1-5-2:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Compiling, testing and packaging Go 1.5.2&lt;/h3&gt;
+
+&lt;p&gt;With all our previous detailed work this part is now a really easy task.&lt;/p&gt;
+
+&lt;p&gt;As the first step, before we&amp;rsquo;re able to compile Go 1.5.2 on our ARM board, we have
+to install a Go 1.4.3 compiler. Luckily we have already a pre-compiled Go 1.4.3
+which we can use here. But we should install it in a different location, which is
+the recommended way according to the GOLANG team.&lt;/p&gt;
+
+&lt;p&gt;Install the Go 1.4.3 binary release from our own tarball:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rm -fr $HOME/go1.4
+$ mkdir -p $HOME/go1.4
+$ tar -xzf go1.4.3.linux-armv7.tar.gz -C $HOME/go1.4 --strip-components=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can download the Go 1.5.2 source tarball and bootstrap/compile it with Go 1.4.3:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ curl -sSL https://storage.googleapis.com/golang/go1.5.2.src.tar.gz | sudo tar -xz -C /usr/local
+
+$ cd /usr/local/go/src
+$ time sudo GOROOT_BOOTSTRAP=/home/pi/go1.4 ./make.bash
+
+##### Building Go bootstrap tool.
+...
+---
+Installed Go for linux/arm in /usr/local/go
+Installed commands in /usr/local/go/bin
+
+real	11m14.203s
+user	26m29.730s
+sys	1m18.470s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s package Go 1.5.2 as a binary tarball, using our recommended way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar --numeric-owner -czf ~/go1.5.2.linux-armv7.tar.gz -C /usr/local go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prove the Go 1.5.2 binary package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tar -vtf go1.5.2.linux-armv7.tar.gz | head -10
+drwxr-xr-x 0/0               0 2015-12-31 17:08 go/
+drwxr-xr-x 0/0               0 2015-12-31 17:18 go/bin/
+-rwxr-xr-x 0/0         9004984 2015-12-31 17:18 go/bin/go
+-rwxr-xr-x 0/0         3163768 2015-12-31 17:17 go/bin/gofmt
+-rw-r--r-- 0/0            1519 2015-12-03 01:52 go/README.md
+-rw-r--r-- 0/0            1303 2015-12-03 01:52 go/PATENTS
+-rw-r--r-- 0/0            1479 2015-12-03 01:52 go/LICENSE
+drwxr-xr-x 0/0               0 2015-12-03 01:53 go/test/
+-rw-r--r-- 0/0             595 2015-12-03 01:53 go/test/sinit_run.go
+-rw-r--r-- 0/0            2280 2015-12-03 01:53 go/test/nil.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install and test the Go 1.5.2 binary tarball&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ sudo tar -xzf go1.5.2.linux-armv7.tar.gz -C /usr/local
+$ export PATH=/usr/local/go/bin:$PATH
+$ go version
+
+go version go1.5.2 linux/arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wow, this time it was pretty easy and completed with a few commands only.
+But we didn&amp;rsquo;t run any tests at all. And honestly, as a developer I just like
+to install and use the Go compiler - I don&amp;rsquo;t like to compile it by myself,
+so I recommend using a Go binary release would be the best way!&lt;/p&gt;
+
+&lt;h3 id=&#34;key-takeaways:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Key takeaways&lt;/h3&gt;
+
+&lt;p&gt;As you can clearly see, it&amp;rsquo;s really the easiest and preferred way to install a
+Go binary release instead of compiling the Go compiler every time from source.
+Especially for some slow ARM devices it can take hours and will sometimes lead
+to some confusing problems too.&lt;/p&gt;
+
+&lt;p&gt;When you prefer to use a completely tested Go binary release it&amp;rsquo;s even more desired
+to use pre-compiled and successfully tested Go versions for ARMv6, ARMv7 and
+even later for the 64-bit ARM devices as well.&lt;/p&gt;
+
+&lt;p&gt;The really great news here is, that  the GOLANG team has acknowleged to build
+and deliver the future Go releases from version 1.6 on with pre-compiled tarballs - at least
+for ARMv6. The difference between ARMv6 and ARMv7 are absolutely marginal for Go,
+because the generated machine code doesn&amp;rsquo;t use any advanced instructions from the
+ARMv7 instruction set at all and ARMv7 just uses a few more registers - that&amp;rsquo;s all.&lt;/p&gt;
+
+&lt;p&gt;And in the meantime, we&amp;rsquo;ve already done all the hard work for you and created the
+Go binary releases for 1.4.3, 1.5.1 and 1.5.2. Everything is open source and
+available on our GitHub repo at &lt;a href=&#34;https://github.com/hypriot/golang-armbuilds&#34;&gt;https://github.com/hypriot/golang-armbuilds&lt;/a&gt;. From
+here you can easily install a Go binary release within a few minutes with the following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo rm -fr /usr/local/go
+$ curl -sSL https://github.com/hypriot/golang-armbuilds/releases/download/v1.5.2/go1.5.2.linux-armv7.tar.gz | sudo tar -xz -C /usr/local
+$ export PATH=/usr/local/go/bin:$PATH
+$ go version
+
+go version go1.5.2 linux/arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is already a work in progress and we&amp;rsquo;re happy to get comments and pull-request
+to improve the build task even more.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Feedback please!&lt;/h3&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this tutorial at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Getting Docker running on a high-end 64-bit ARM gaming console for fun and profit</title>
@@ -2020,416 +2456,6 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;&amp;ndash;
 Dieter Reuter&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>How to use Docker Compose to run complex multi container apps on your Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</link>
-      <pubDate>Mon, 06 Apr 2015 00:18:47 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</guid>
-      <description>
-
-&lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
-
-&lt;p&gt;To demonstrate the benefits of Docker Compose we are going to create a simple Node.js &amp;ldquo;Hello World&amp;rdquo; application which will run on three Docker Node.js containers.
-HTTP requests will be distributed to these Node.js nodes by an HAProxy instance running on another Docker container.&lt;/p&gt;
-
-&lt;p&gt;If you haven&amp;rsquo;t heard about Docker Compose its docs have a neat description of what it is all about:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Compose is a tool for defining and running complex applications with Docker.
-With Compose, you define a multi-container application in a single file,
-then spin your application up in a single command which does everything that needs to be done to get it running.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;a-hello-world-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;A Hello-World application&lt;/h2&gt;
-
-&lt;p&gt;We start by creating a simple Hello-World &lt;a href=&#34;https://nodejs.org&#34;&gt;Node.js&lt;/a&gt; web application based on &lt;a href=&#34;http://expressjs.com/&#34;&gt;Express.js&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To keep it simple we are only going to show a &amp;ldquo;Hello World&amp;rdquo; message and the hostname of the container.  This will be useful later on.&lt;/p&gt;
-
-&lt;h3 id=&#34;src-index-js:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/index.js&lt;/h3&gt;
-
-&lt;p&gt;First we create a &lt;code&gt;src/index.js&lt;/code&gt; file for the web application:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var express = require(&#39;express&#39;);
-var os = require(&amp;quot;os&amp;quot;);
-
-var app = express();
-var hostname = os.hostname();
-
-app.get(&#39;/&#39;, function (req, res) {
-  res.send(&#39;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container &#39; + hostname + &#39;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&#39;);
-});
-
-app.listen(80);
-console.log(&#39;Running on http://localhost&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;src-package-json:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/package.json&lt;/h3&gt;
-
-&lt;p&gt;Then we need to create a &lt;code&gt;src/package.json&lt;/code&gt; file with the dependencies we need to build and start the Node.js application:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
-  &amp;quot;name&amp;quot;: &amp;quot;node-hello-world&amp;quot;,
-  &amp;quot;private&amp;quot;: true,
-  &amp;quot;version&amp;quot;: &amp;quot;0.0.1&amp;quot;,
-  &amp;quot;description&amp;quot;: &amp;quot;Node.js Hello world app on docker&amp;quot;,
-  &amp;quot;author&amp;quot;: &amp;quot;hypriot.com&amp;quot;,
-  &amp;quot;dependencies&amp;quot;: {
-    &amp;quot;express&amp;quot;: &amp;quot;4.12.0&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that is all that is need to set up this small Hello-World application from the nods.js side of things.&lt;/p&gt;
-
-&lt;h3 id=&#34;dockerfile:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Dockerfile&lt;/h3&gt;
-
-&lt;p&gt;As we want to run our web application in a Docker container we now need to create a &lt;code&gt;Dockerfile&lt;/code&gt; for that.
-The Dockerfile is simple and straightforward.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# use our prepared Raspberry Pi compatible Docker base image with Node.js
-FROM hypriot/rpi-node:0.12.0
-
-# make the src folder available in the docker image
-ADD src/ /src
-WORKDIR /src
-
-# install the dependencies from the package.json file
-RUN npm install
-
-# make port 80 available outside of the image
-EXPOSE 80
-
-# start node with the index.js file of our hello-world application
-CMD [&amp;quot;node&amp;quot;, &amp;quot;index.js&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;running-one-container:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running one container&lt;/h2&gt;
-
-&lt;p&gt;We can now test if our Node.js web server works by building a Docker application image first and then spinning it up as a new container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker build -t node-hello .
-
-$ docker run -p 80:80 --name web -d node-hello
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then we can check if the server is running with the following command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ curl http://localhost
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container 38f69acbdf13&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As we have published the port 80 to the host we also can access our web application from another machine.&lt;/p&gt;
-
-&lt;h3 id=&#34;benchmarking-our-web-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application&lt;/h3&gt;
-
-&lt;p&gt;As we are curious guys we want to know how well our Hello-World application performs on a Docker-Raspberry-Pi-Combo.&lt;/p&gt;
-
-&lt;p&gt;So we are going to use &lt;a href=&#34;http://httpd.apache.org/docs/2.2/programs/ab.html&#34;&gt;Apache Bench&lt;/a&gt; to do some benchmarking from another machine in the network.
-To install Apache Bench on Debian/Ubuntu use &lt;code&gt;sudo apt-get install apache2-utils&lt;/code&gt;. On Mac OS X &lt;code&gt;ab&lt;/code&gt; usually comes preinstalled.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ab -n 10000 -c 10 http://ip-of-your-rpi/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This runs 10.000 HTTP requests with a concurrency of 10. The CPU load while running the benchmark test shows that only one CPU core of the Raspberry Pi 2 is used. The reason is that Node.js is a single threaded process.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And here are the results of the Apache Bench test. As you can see a single web server can handle &lt;strong&gt;338&lt;/strong&gt; Requests per second.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ab -n 10000 -c 10 http://192.168.33.200/
-This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking 192.168.33.200 (be patient)
-Completed 1000 requests
-Completed 2000 requests
-Completed 3000 requests
-Completed 4000 requests
-Completed 5000 requests
-Completed 6000 requests
-Completed 7000 requests
-Completed 8000 requests
-Completed 9000 requests
-Completed 10000 requests
-Finished 10000 requests
-
-
-Server Software:
-Server Hostname:        192.168.33.200
-Server Port:            80
-
-Document Path:          /
-Document Length:        67 bytes
-
-Concurrency Level:      10
-Time taken for tests:   29.499 seconds
-Complete requests:      10000
-Failed requests:        0
-Write errors:           0
-Total transferred:      2480000 bytes
-HTML transferred:       670000 bytes
-Requests per second:    338.99 [#/sec] (mean)
-Time per request:       29.499 [ms] (mean)
-Time per request:       2.950 [ms] (mean, across all concurrent requests)
-Transfer rate:          82.10 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        1    1   2.0      1      78
-Processing:    10   28   5.6     26     108
-Waiting:        9   28   5.4     26     106
-Total:         13   29   5.8     27     109
-
-Percentage of the requests served within a certain time (ms)
-  50%     27
-  66%     27
-  75%     28
-  80%     28
-  90%     38
-  95%     39
-  98%     47
-  99%     53
- 100%    109 (longest request)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;cleaning-up:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Cleaning up&lt;/h3&gt;
-
-&lt;p&gt;That&amp;rsquo;s it for our first test drive. We can now stop the web server container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker stop web
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;running-multiple-container-with-docker-compose:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running multiple container with Docker Compose&lt;/h2&gt;
-
-&lt;p&gt;To run more of these web servers we now use Docker Compose to create a farm of web servers which are running behind a &lt;a href=&#34;http://www.haproxy.org&#34;&gt;HAProxy&lt;/a&gt; load balancer.&lt;/p&gt;
-
-&lt;p&gt;As our mission is to make Docker and its toolset available on ARM we created a &lt;code&gt;docker-compose&lt;/code&gt; binary ready to run on your Raspberry Pi.&lt;/p&gt;
-
-&lt;h3 id=&#34;installation:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Installation&lt;/h3&gt;
-
-&lt;p&gt;First we have to install Docker Compose for the ARM-based Raspberry Pi from our fork at &lt;a href=&#34;https://github.com/hypriot/compose&#34;&gt;https://github.com/hypriot/compose&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo sh -c &amp;quot;curl -L https://github.com/hypriot/compose/releases/download/1.1.0-raspbian/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;docker-compose-yml:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;docker-compose.yml&lt;/h3&gt;
-
-&lt;p&gt;To get our four container configuration set up we first need to create a &lt;code&gt;docker-compose.yml&lt;/code&gt; file.
-We will need three containers &lt;code&gt;weba&lt;/code&gt;, &lt;code&gt;webb&lt;/code&gt; and &lt;code&gt;webc&lt;/code&gt; based on our web application image and one &lt;code&gt;haproxy&lt;/code&gt; container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;weba:
-  build: .
-  expose:
-    - 80
-
-webb:
-  build: .
-  expose:
-    - 80
-
-webc:
-  build: .
-  expose:
-    - 80
-
-haproxy:
-  image: hypriot/rpi-haproxy
-  volumes:
-   - haproxy:/haproxy-override
-  links:
-   - weba
-   - webb
-   - webc
-  ports:
-   - &amp;quot;80:80&amp;quot;
-   - &amp;quot;70:70&amp;quot;
-
-  expose:
-   - &amp;quot;80&amp;quot;
-   - &amp;quot;70&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Each of the three web application containers exposes port 80.
-Additionally the HAProxy container will have (network) links to each of the three web application containers.
-Furthermore the HAProxy container will exposes port 80 as a central entry point to our Hello-World application webserver farm and its admin interface on port 70.&lt;/p&gt;
-
-&lt;h3 id=&#34;haproxy-haproxy-cfg:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;haproxy/haproxy.cfg&lt;/h3&gt;
-
-&lt;p&gt;HAProxy needs a configuration file that is mapped into the container. Create a file &lt;code&gt;haproxy/haproxy.cfg&lt;/code&gt; with the following content.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;global
-  log 127.0.0.1 local0
-  log 127.0.0.1 local1 notice
-
-defaults
-  log global
-  mode http
-  option httplog
-  option dontlognull
-  timeout connect 5000
-  timeout client 10000
-  timeout server 10000
-
-listen stats :70
-  stats enable
-  stats uri /
-
-frontend balancer
-  bind 0.0.0.0:80
-  mode http
-  default_backend aj_backends
-
-backend aj_backends
-  mode http
-  option forwardfor
-  # http-request set-header X-Forwarded-Port %[dst_port]
-  balance roundrobin
-  server weba weba:80 check
-  server webb webb:80 check
-  server webc webc:80 check
-  # option httpchk OPTIONS * HTTP/1.1\r\nHost:\ localhost
-  option httpchk GET /
-  http-check expect status 200
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;HAProxy does a health check for each of our three web servers.&lt;/p&gt;
-
-&lt;h3 id=&#34;running-our-webserver-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running our webserver farm&lt;/h3&gt;
-
-&lt;p&gt;Now that we have set up all the necessary parts it is time to spin up all our Docker containers at once. Just run the command &lt;code&gt;docker-compose up&lt;/code&gt; interactively to see what is happening or use option &lt;code&gt;-d&lt;/code&gt; to start all containers in the background.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-compose up -d
-Recreating rpinodehaproxyexample_webb_1...
-Recreating rpinodehaproxyexample_webc_1...
-Recreating rpinodehaproxyexample_weba_1...
-Recreating rpinodehaproxyexample_haproxy_1...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will spin up all of our three web application servers and one HAProxy instance. Only the HAProxy container can be reached from the outside and each request will be load balanced by HAProxy to one of our web servers.&lt;/p&gt;
-
-&lt;p&gt;You can watch the logs of all our containers by running the following command.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-compose logs
-Attaching to rpinodehaproxyexample_haproxy_1, rpinodehaproxyexample_weba_1, rpinodehaproxyexample_webc_1, rpinodehaproxyexample_webb_1
-weba_1    | Running on http://localhost
-webc_1    | Running on http://localhost
-webb_1    | Running on http://localhost
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we can use &lt;code&gt;curl&lt;/code&gt; again to test our Hello-World application farm as whole.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# on your Rasberry Pi
-$ curl http://localhost
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container fa05496d9ce7&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
-$ curl http://localhost
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container 1167459cdacc&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
-$ curl http://localhost
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container 660840416a84&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
-$ curl http://localhost
-&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container fa05496d9ce7&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see the container name is different for each &lt;code&gt;curl&lt;/code&gt; request.
-And the fourth request has the same container name as the first one.
-The HAProxy container forwards each request in a round robin fashion, so each web server gets only one third of the load.&lt;/p&gt;
-
-&lt;h3 id=&#34;benchmarking-our-web-application-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application farm&lt;/h3&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see how our web server farm fares compared to our single web application container instance from our first benchmark.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ab -n 10000 -c 30 http://ip-or-your-rpi/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we run 10.000 HTTP requests with a concurrency of 30. The CPU load while running the benchmark test now shows that all four CPU cores of the Raspberry Pi 2 are used.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And here are the results of the benchmark test itself.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ab -n 10000 -c 30 http://192.168.33.200/
-This is ApacheBench, Version 2.3 &amp;lt;$Revision: 655654 $&amp;gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking 192.168.33.200 (be patient)
-Completed 1000 requests
-Completed 2000 requests
-Completed 3000 requests
-Completed 4000 requests
-Completed 5000 requests
-Completed 6000 requests
-Completed 7000 requests
-Completed 8000 requests
-Completed 9000 requests
-Completed 10000 requests
-Finished 10000 requests
-
-
-Server Software:
-Server Hostname:        192.168.33.200
-Server Port:            80
-
-Document Path:          /
-Document Length:        67 bytes
-
-Concurrency Level:      30
-Time taken for tests:   23.353 seconds
-Complete requests:      10000
-Failed requests:        0
-Write errors:           0
-Total transferred:      2480000 bytes
-HTML transferred:       670000 bytes
-Requests per second:    428.22 [#/sec] (mean)
-Time per request:       70.058 [ms] (mean)
-Time per request:       2.335 [ms] (mean, across all concurrent requests)
-Transfer rate:          103.71 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        1    2   1.4      2      15
-Processing:     5   68  59.5     51     259
-Waiting:        4   67  59.3     51     259
-Total:          5   70  59.5     54     260
-
-Percentage of the requests served within a certain time (ms)
-  50%     54
-  66%     77
-  75%     94
-  80%    108
-  90%    163
-  95%    210
-  98%    231
-  99%    234
- 100%    260 (longest request)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see the cluster can handle &lt;strong&gt;428&lt;/strong&gt; Requests per second. Strangely enough we do not get three times the requests per second that we might have expected.
-Right now we are not really sure what the reason for this behaviour is. This may or may not be due to the fact that the NIC of the Raspberry Pi is sharing its IO bandwidth via the USB2 port.&lt;/p&gt;
-
-&lt;p&gt;Stopping our little webfarm is also easily done with&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-compose stop
-Killing rpinodehaproxyexample_haproxy_1...
-Killing rpinodehaproxyexample_weba_1...
-Killing rpinodehaproxyexample_webc_1...
-Killing rpinodehaproxyexample_webb_1...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you want to learn more about Docker Compose, just head over to the official documentation at &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;https://docs.docker.com/compose/&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can find the code of this example on GitHub at &lt;a href=&#34;https://github.com/hypriot/rpi-node-haproxy-example&#34;&gt;https://github.com/hypriot/rpi-node-haproxy-example&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We hope you enjoyed this little tour of Docker Compose!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;
 </description>
     </item>
     
