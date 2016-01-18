@@ -102,7 +102,7 @@ While I know that this might prove to be a difficult task - especially in regard
 &lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv/releases&#34;&gt;HypriotOS for the NVIDIA ShieldTV&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1/releases&#34;&gt;HypriotOS for the ODROID C1+&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Hopefully you have a lot fun trying out what HypriotOS has to offer!&lt;br /&gt;
+&lt;p&gt;Hopefully you have a lot of fun trying out what HypriotOS has to offer!&lt;br /&gt;
 &lt;strong&gt;Note:&lt;/strong&gt; We changed the default username to &lt;code&gt;pirate&lt;/code&gt; (password &lt;code&gt;hypriot&lt;/code&gt;) and disabled the &lt;code&gt;root&lt;/code&gt; user for security reasons.&lt;/p&gt;
 
 &lt;p&gt;By adding support for many more boards we think HypriotOS gets a lot more attractive! What do you think?&lt;br /&gt;
