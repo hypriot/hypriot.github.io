@@ -10,20 +10,19 @@
     <atom:link href="http://blog.hypriot.com/categories/shieldtv/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>How xXx makes HypriotOS a lot more attractive</title>
-      <link>http://blog.hypriot.com/post/how-xxx-makes-hypriotos-a-lot-more-attractive/</link>
+      <title>How to get Docker working on your favourite ARM board with HypriotOS</title>
+      <link>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</link>
       <pubDate>Mon, 18 Jan 2016 16:00:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/how-xxx-makes-hypriotos-a-lot-more-attractive/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;What does Vin Diesel and xXx have to do with HypriotOS? Well, the short version of it is: it is all about the xXx&lt;/strong&gt;.&lt;br /&gt;
-But more on that later.&lt;/p&gt;
+      <guid>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</guid>
+      <description>&lt;p&gt;It all began when Dieter aka &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; started to experiment with the NVIDIA ShieldTV.
+The ShieldTV is a curious little thing. Sold as a media hub for your living room it does deliver one teraflop of processing power.
+On top of that it is one of the first 64-bit ARM boards that can be bought for a reasonable price.&lt;/p&gt;
 
-&lt;p&gt;It all began when Dieter aka &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; started to experiment with the NVIDIA ShieldTV.&lt;/p&gt;
+&lt;p&gt;Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
+Read on to learn what happened next&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;The ShieldTV is a curious little thing. Sold as a media hub for your living room it does deliver one teraflop of processing power.
-On top of that it is one of the first 64-bit ARM boards that can be bought for a reasonable price.
-Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
-Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
+&lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
 The gist of it is that it was quite an involved process of creating his own custom Debian based operating system that supported building Go and Docker for ARM64.&lt;/p&gt;
 
 &lt;p&gt;The work of Dieter on the ShieldTV inspired our team to revisit the way we were building our beloved HypriotOS for the Raspberry Pi.
@@ -104,10 +103,7 @@ While I know that this might prove to be a difficult task - especially in regard
 &lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1/releases&#34;&gt;HypriotOS for the ODROID C1+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Hopefully you have a lot fun trying out what HypriotOS has to offer!&lt;br /&gt;
-&lt;strong&gt;Note:&lt;/strong&gt; we changed the default username to &lt;code&gt;pirate&lt;/code&gt; (password &lt;code&gt;hypriot&lt;/code&gt;) and disabled the &lt;code&gt;root&lt;/code&gt; user for security reasons.&lt;/p&gt;
-
-&lt;p&gt;And you might have guessed the connection between this post and xXx. Each x stands for one of our initially supported devices.
-Hopefully HypriotOS develops the same momentum as Vin Diesel when he is hunting down his enemies. ;-)&lt;/p&gt;
+&lt;strong&gt;Note:&lt;/strong&gt; We changed the default username to &lt;code&gt;pirate&lt;/code&gt; (password &lt;code&gt;hypriot&lt;/code&gt;) and disabled the &lt;code&gt;root&lt;/code&gt; user for security reasons.&lt;/p&gt;
 
 &lt;p&gt;By adding support for many more boards we think HypriotOS gets a lot more attractive! What do you think?&lt;br /&gt;
 And for which board would you want to see support next?
