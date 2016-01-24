@@ -822,14 +822,14 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 
 &lt;h3 id=&#34;download-flash-boot-enjoy:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Download the &lt;a href=&#34;https://github.com/hypriot/cluster-lab/releases/&#34;&gt;latest Hypriot Cluster Lab SD card image&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; &lt;strong&gt;Download&lt;/strong&gt; the &lt;a href=&#34;http://downloads.hypriot.com/hypriot_20160121-235123_clusterlab.img.zip&#34;&gt;Hypriot Cluster Lab SD card image&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; Flash the image to your SD cards your way or use &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;our funky flash script&lt;/a&gt; which makes flashing the SD cards so much easier.&lt;/p&gt;
 
-&lt;p&gt;See the following example: Using our flash script you can assign unique hostnames to your cluster nodes. In terms of the download link, please update it to the latest download in advance.&lt;/p&gt;
+&lt;p&gt;Another advantage of our flash script is that it also allows you to give your cluster nodes unique hostnames:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ flash --hostname cl-master https://github.com/hypriot/cluster-lab/releases/download/v0.1.1/hypriot-rpi-20160121-235123.img.zip
-$ flash --hostname cl-node-1 https://github.com/hypriot/cluster-lab/releases/download/v0.1.1/hypriot-rpi-20160121-235123.img.zip
+&lt;pre&gt;&lt;code&gt;$ flash --hostname cl-master http://downloads.hypriot.com/hypriot_20160121-235123_clusterlab.img.zip
+$ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot_20160121-235123_clusterlab.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; Put the freshly flashed SD cards in each node&amp;rsquo;s SD card slot.&lt;/p&gt;
