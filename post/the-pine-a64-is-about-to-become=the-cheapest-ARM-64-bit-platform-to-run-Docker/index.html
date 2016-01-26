@@ -308,7 +308,7 @@ The Pine makers assured us that Linux support will come, too. Still for us it is
 <p>Impatient as we are, once we got the device, we immediately started out to rectify this by getting HypriotOS to run on it.
 Relatively soon it became obvious that this would not be an easy task.</p>
 
-<p>Why? Well, the relationship between <a href="http://www.allwinnertech.com/index.html">Allwinner Technology</a> and the Open-Source community seems not always been the best in the past.
+<p>Why? Well, it seems that the relationship between <a href="http://www.allwinnertech.com/index.html">Allwinner Technology</a> and the Open-Source community has not always been the best in the past.
 That basically meant that the existing <a href="http://linux-sunxi.org/">friendly and supportive Open-Source community</a> for the Allwinner related SoC&rsquo;s often had to work
 with limited information and support when they tried to come up with proper Linux support for Allwinner based devices.
 Still despite that some members of the Linux Sunxi Community are already busy working with the Pine A64.</p>
@@ -350,15 +350,15 @@ The location of each can be seen on the following images. Consult the <a href="h
 <p>Don&rsquo;t be surprised that there is absolutely no sign of booting on your console screen when you connect the UART-to-USB cable to the Pine.
 The only thing you will see is that the power LED on the board has turned green.</p>
 
-<p>This is due to the fact that the A64 SOC is reading it&rsquo;s initial bootloader from the microSD card into memory and starts it.
-This among other things initializes the UART0 port and prints out the first boot messages.</p>
+<p>This is due to the fact that the A64 SOC is reading its initial bootloader from the microSD card into memory and starts it.
+Among other things this initializes the UART0 port and prints out the first boot messages.</p>
 
 <p>There might be two reasons if your Pine stays silent: either there is no SD card present or there is no working bootloader program found on the SD card.</p>
 
 <p>So let&rsquo;s make sure that we have both.</p>
 
-<p>Grab a working SD card and and flash an appropriate image on it.
-Thanks to Andre Przywara there already exists <a href="https://github.com/apritzel/pine64">a first experimental Linux image</a> that we can use.</p>
+<p>Grab a working SD card and flash an appropriate image on it.
+Thanks to Andre Przywara there already is <a href="https://github.com/apritzel/pine64">a first experimental Linux image</a> that we can use.</p>
 
 <pre><code># replace sdx with the name of your SD card device file
 
@@ -391,7 +391,7 @@ devtmpfs                381.8M         0    381.8M   0% /dev
 </code></pre>
 
 <p>Okay, that was the first step, but now we would like to see, if it&rsquo;s really possible to boot into a HypriotOS root filesystem.
-So let&rsquo;s reboot the Pine. As soon as the U-Boot messages appear hit a random key to stop the automatic boot process.
+So let&rsquo;s reboot the Pine. As soon as the U-Boot messages appear, hit a random key to stop the automatic boot process.
 This drops us into an interactive U-Boot prompt.</p>
 
 <p>Next we just have to follow Andre&rsquo;s documentation and tell U-Boot to boot into the root filesystem on <code>/dev/sda10</code>, which contains our <a href="https://github.com/hypriot/os-rootfs/releases/tag/v0.6.0">generic HypriotOS for ARM64</a>:</p>
@@ -410,7 +410,7 @@ sunxi# run boot_kernel
 </p>
 
 <p>Here are a few snippets of the boot log from the UART0 console.
-We have stored the complete bootlog for you as a <a href="https://gist.github.com/DieterReuter/93a5d10dae6a62911b71">GitHub gist</a>.</p>
+We have stored the complete boot log for you as a <a href="https://gist.github.com/DieterReuter/93a5d10dae6a62911b71">GitHub gist</a>.</p>
 
 <pre><code>HELLO! BOOT0 is starting!
 boot0 commit : 045061a8bb2580cb3fa02e301f52a015040c158f
@@ -476,37 +476,37 @@ HypriotOS/arm64: root@black-pearl in ~
 
 <p><strong>Success!</strong> The first boot of HypriotOS/arm64 on a Pine A64 board.</p>
 
-<h3 id="even-deeper-into-the-rabbit-hole-using-the-fel-mode-to-communicate-with-the-the-pine-a66:7983295b98b0feead04ba41a7de6ce9d">Even deeper into the rabbit hole: Using the FEL mode to communicate with the the Pine A66</h3>
+<h3 id="even-deeper-into-the-rabbit-hole-using-the-fel-mode-to-communicate-with-the-the-pine-a64:7983295b98b0feead04ba41a7de6ce9d">Even deeper into the rabbit hole: Using the FEL mode to communicate with the the Pine A64</h3>
 
-<p>OK. That was fun, was it? Our small experiment with the UART-to-USB connector cable and the SD card image from Andre did give us a first taste of Linux on the Pine.
+<p>OK. That was fun, wasn&rsquo;t it? Our small experiment with the UART-to-USB connector cable and the SD card image from Andre did give us a first taste of Linux on the Pine.
 But that of course is not the real deal. There is still a rocky path to walk before we will have proper Linux support.</p>
 
-<p>Our path towards more knowledge does lead us even deeper into the rabbit hole.</p>
+<p>Our path towards more knowledge leads us even deeper into the rabbit hole.</p>
 
 <p>In order to gain that deeper knowledge we will introduce you to another powerful tool called <a href="http://linux-sunxi.org/FEL">FEL</a> mode.
-The FEL mode is a low-level subroutine in the Boot ROM of all Allwinner devices that ca be used to gather valuable insights about the Pine.
+The FEL mode is a low-level subroutine in the Boot ROM of all Allwinner devices that can be used to gather valuable insights about the Pine.
 We will show you shortly how this works.</p>
 
 <p>Besides gathering intel FEL has another useful application. It allows you to directly boot images via an USB cable from your development computer.
 As such it makes the annoying process of flashing and inserting SD cards over and over again obsolete.</p>
 
-<p>Booting the Pine A64 into FEL mode is really easy. Just leave the SD card slot empty and connect an appropriate USB cable between the Pine A64 and your computer.
+<p>Booting the Pine A64 into FEL mode is really easy. Just leave the SD card slot empty and connect the Pine A64 with an appropriate USB cable  to your computer.
 Then power on the Pine. It&rsquo;s important to know that you have to connect to the Pine with a special USB cable to the upper USB port.
 That is because only this USB port is wired for using the FEL signals.</p>
 
 <p><img src="/images/pine-a64/upper_usb_port.jpg" alt="" />
 </p>
 
-<p>You can buy such a special USB A-male/A-male cable at <a href="http://www.amazon.com/Monoprice-1-5-Feet-24AWG-Plated-105441/dp/B009GUXG92">Amazon</a> or you can build <a href="http://www.instructables.com/id/Male-to-Male-A-to-A-USB-Cable/">your own</a>.
+<p>You can buy such a special USB A-male/A-male cable at <a href="http://www.amazon.com/Monoprice-1-5-Feet-24AWG-Plated-105441/dp/B009GUXG92">Amazon</a> or <a href="http://www.instructables.com/id/Male-to-Male-A-to-A-USB-Cable/">build it on your own</a>.
 Once the Pine A64 is booted, it can be discovered on your host computer as a new USB device with the <code>USB ID 1f3a:efe8</code>.</p>
 
-<p>Simply run <code>lsusb</code> and it should be there:</p>
+<p>Running <code>lsusb</code> should show the device:</p>
 
 <pre><code>$ lsusb
 Bus 001 Device 004: ID 1f3a:efe8
 </code></pre>
 
-<p>For further access via FEL mode, we do need to install and compile the very latest version of the sunxi-tools.
+<p>For further access via FEL mode, we need to install and compile the very latest version of the sunxi-tools.
 As our development computer we are using a Raspberry Pi running <a href="http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/">HypriotOS</a>.
 So let&rsquo;s install all the development dependencies we need and then clone the sunxi-tools repo and compile them from source.</p>
 
@@ -526,11 +526,9 @@ $ sudo make install
 AWUSBFEX soc=00001689(unknown) 00000001 ver=0001 44 08 scratchpad=00017e00 00000000 00000000
 </code></pre>
 
-<p>Bingo!</p>
-
-<p>The Pine A64 board is connected and we are already getting some basic version info.
+<p>Bingo! The Pine A64 board is connected and we are already getting some basic version info.
 The the SOC ID #1689 tells us it is an Allwinner A64 SOC.
-The device itself is classified as &ldquo;unknown&rdquo; because it is too new and the A64 support is not yet merged upstream into the <code>sunxi-fel</code> tool.</p>
+The device itself is classified as &ldquo;unknown&rdquo; because it is too new to be recognized by the <code>sunxi-fel</code> tool.</p>
 
 <p>What can we do now with this low-level access via FEL mode?</p>
 
@@ -565,7 +563,7 @@ $ hexdump -C memory-dump.bin
 
 <p>As we already explained, the Allwinner SOC is starting it&rsquo;s boot process by loading the Boot ROM (<a href="http://linux-sunxi.org/BROM">BROM</a>)
 and detects wether it should run a normal boot or start the FEL subroutine.
-With the help of FEL mode and the <code>sunxi-fel</code> tool we can also copy and analyse the BROM boot code itself.</p>
+With the help of FEL mode and the <code>sunxi-fel</code> tool we can also copy and analyze the BROM boot code itself.</p>
 
 <p>So, let&rsquo;s download the BROM directly from the Pine and save it into a local file on our development computer for later inspection.
 In order to do so, we need to know the memory address where the BROM starts.</p>
@@ -574,7 +572,7 @@ In order to do so, we need to know the memory address where the BROM starts.</p>
 But there is an important clue in the <a href="http://linux-sunxi.org/EGON">Linux-Sunxi wiki</a> that tells us
 that we need to search for a unique string <code>eGON.BRM</code> near the starting address of the BROM.</p>
 
-<p>Armed with this knowlegde and the <code>sunxi-fel hexdump</code> command we can now scan the memory until we will find this string.
+<p>Armed with this knowledge and the <code>sunxi-fel hexdump</code> command we can now scan the memory until we will find this string.
 And luckily we were able to locate the BROM starting at address <strong>0x2c00</strong>:</p>
 
 <pre><code>$ sudo sunxi-fel hexdump 0x2c00 128
@@ -588,7 +586,7 @@ And luckily we were able to locate the BROM starting at address <strong>0x2c00</
 00002c70: 00 00 00 1a f0 ff ff ea 50 00 a0 e3 01 00 50 e2  ........P.....P.
 </code></pre>
 
-<p>Now let&rsquo;s download the complete 32 kByte of the BROM binary blob and have a look at it:</p>
+<p>Now let&rsquo;s download the complete 32 KByte of the BROM binary blob and have a look at it:</p>
 
 <pre><code>$ sudo sunxi-fel dump 0x2c00 32768 &gt; pine64-a64-brom.bin
 $ head -c 128 pine64-a64-brom.bin | hexdump -C
@@ -606,8 +604,7 @@ $ head -c 128 pine64-a64-brom.bin | hexdump -C
 <p>All these examples were based on the FEL mode and the <code>sunxi-fel</code> tool.
 They illustrated how to gather information about a device.</p>
 
-<p>In the introduction about the FEL mode we did mention another application of the FEL mode.
-It was about using the FEL mode to have a faster development cycle where one does not have to flash and boot SD cards.</p>
+<p>In the introduction about the FEL mode we did mention another application of the FEL mode: You can have a faster development cycle where one does not have to flash and boot SD cards.</p>
 
 <p>To make this mode work for the Pine we first have to patch the <code>sunix-fel</code> tool.
 Thanks to the work of <a href="https://github.com/ssvb">Siarhei Siamashka</a> from Linux-Sunxi community this is easy:</p>
@@ -632,7 +629,7 @@ AWUSBFEX soc=00001689(A64) 00000001 ver=0001 44 08 scratchpad=00017e00 00000000 
 
 <h3 id="inside-wonderland-combining-uart0-console-and-fel-mode:7983295b98b0feead04ba41a7de6ce9d">Inside wonderland: Combining UART0 console and FEL mode</h3>
 
-<p>Now it is about time to put the various things we already learned together.
+<p>Now it is time to put the various things together we have learned thus far.
 Using both an USB A-male/A-male cable and an UART-to-USB connector cable at the same time we are able to send software to the Pine and see how it gets executed.
 This allows for fast feedback cycles.</p>
 
@@ -645,7 +642,7 @@ It is located at sector 16 (or 8 KByte) and has a total size of 64 sectors or 32
 </code></pre>
 
 <p>Let&rsquo;s double-check if this file is really the correct boot0 binary blob we&rsquo;re looking for.
-The file should start with the string &ldquo;eGON.BT0&rdquo; at byte #5.</p>
+The file should start with the string &ldquo;eGON.BT0&rdquo; at byte #5. Here we are:</p>
 
 <pre><code>$ hexdump -C pine64-boot0.bin
 00000000  cc 00 00 ea 65 47 4f 4e  2e 42 54 30 31 7a f6 a8  |....eGON.BT01z..|
@@ -709,13 +706,13 @@ Fail in Init sdmmc.
 Ready to disable icache.
 </code></pre>
 
-<p>By verifing that we can send code to the Pine and execute it, we opened up the door for further steps.
+<p>By verifying that we can send code to the Pine and execute it, we opened up the door for further steps.
 For instance working on a new U-Boot bootloader.</p>
 
 <p>A few days ago Siarhei was able to create a first working U-Boot for the A64 SOC and could upload and start it on his Pine A64 board.
-He published the full bootlog of this <a href="https://gist.github.com/ssvb/67ebb38e8f8f2b9b5ee6">work-in-progress U-Boot bootloader</a>.</p>
+He published the full boot log of this <a href="https://gist.github.com/ssvb/67ebb38e8f8f2b9b5ee6">work-in-progress U-Boot bootloader</a>.</p>
 
-<p>Here you can see a snippet from the bootlog that shows what is already working:</p>
+<p>Here you can see a snippet from the boot log that shows what is already working:</p>
 
 <pre><code>U-Boot SPL 2016.01-00352-ge77e0e4-dirty (Jan 24 2016 - 10:26:33)
 DRAM:DRAM driver version: V1.0
@@ -745,7 +742,7 @@ MMC:   SUNXI SD/MMC: 0
 And we also wanted to give you an introduction to the tools and knowledge that are necessary to make it happen.</p>
 
 <p>This blogpost would not be possible without the great guys from the Linux-Sunxi community.
-Especially the help of <a href="https://github.com/apritzel">Andre Przywara</a>(apritzel) and <a href="https://github.com/ssvb">Siarhei Siamashka</a>(ssvb) was invaluable.
+Especially the help of <a href="https://github.com/apritzel">Andre Przywara</a> (apritzel) and <a href="https://github.com/ssvb">Siarhei Siamashka</a> (ssvb) was invaluable.
 It demands lots of respect seeing how they have to reverse engineer this stuff with only little support from Allwinner Technology.
 We really hope that the <a href="http://forum.pine64.org/forumdisplay.php?fid=17">announced support</a> from the Pine team will help to move things forward.</p>
 
