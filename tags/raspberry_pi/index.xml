@@ -607,7 +607,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
     </item>
     
     <item>
-      <title>Brand new Getting-Started guide for Docker on the Rasberry Pi</title>
+      <title>Brand new Getting-Started guide for Docker on the Raspberry Pi</title>
       <link>http://blog.hypriot.com/post/brand-new-getting-started-guide/</link>
       <pubDate>Fri, 15 May 2015 12:35:44 +0200</pubDate>
       
@@ -1389,7 +1389,7 @@ webb_1    | Running on http://localhost
 
 &lt;p&gt;Now we can use &lt;code&gt;curl&lt;/code&gt; again to test our Hello-World application farm as whole.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# on your Rasberry Pi
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# on your Raspberry Pi
 $ curl http://localhost
 &amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container fa05496d9ce7&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
 $ curl http://localhost

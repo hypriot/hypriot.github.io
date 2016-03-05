@@ -6,8 +6,102 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Mar 2016 15:59:56 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 05 Mar 2016 16:04:12 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Run Docker on a Raspberry Pi 3 with onboard WiFi</title>
+      <link>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</link>
+      <pubDate>Sat, 05 Mar 2016 16:04:12 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</guid>
+      <description>
+
+&lt;p&gt;Today morning we finally got our Raspberry Pi 3&amp;rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/thepihut-delivery.jpg&#34; alt=&#34;ThePiHut delivery&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.&lt;/p&gt;
+
+&lt;p&gt;But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.&lt;/p&gt;
+
+&lt;p&gt;In the meantime for all the impatient out there I&amp;rsquo;ll give you a short intro how to run the latest Docker Engine on the standard Raspbian SD image.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-raspbian-lite:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Download Raspbian LITE&lt;/h2&gt;
+
+&lt;p&gt;Just download and flash the Raspbian LITE image from &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt; or use our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;&lt;code&gt;flash&lt;/code&gt; script&lt;/a&gt; with this command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flash https://downloads.raspberrypi.org/raspbian_lite_latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now boot your Raspberry Pi 3 and log into it with user &lt;code&gt;pi&lt;/code&gt; and the password &lt;code&gt;raspberry&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pi@raspberrypi.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The standard Raspbian image does not resize the SD filesystem automatically.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-the-overlay-kernel-module:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Add the overlay kernel module&lt;/h2&gt;
+
+&lt;p&gt;Before we resize and reboot the Pi we also customize a little bit. The overlay kernel module must be loaded automatically while booting, so we just add it with the next command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;overlay&amp;quot; | sudo tee -a /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;customize-wifi:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Customize WiFi&lt;/h2&gt;
+
+&lt;p&gt;If you want to run your Docker with the onboard WiFi, just add your SSID and pre-shared key with the next command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;network={
+  ssid=&amp;quot;your-ssid&amp;quot;
+  psk=&amp;quot;your-psk&amp;quot;
+}&#39; | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;resize-filesystem:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Resize filesystem&lt;/h2&gt;
+
+&lt;p&gt;Now we have to resize the filesystem to install Docker and have space for Docker images and containers. Start &lt;code&gt;raspi-config&lt;/code&gt; and follow the steps to resize your filesystem.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that let raspi-config reboot your Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&#34;cut-the-wires:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Cut the wires&lt;/h2&gt;
+
+&lt;p&gt;If you have added your WiFi settings, remove your network cable while rebooting. From now on you can connect to your Raspberry Pi 3 over the air.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-docker:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Install Docker&lt;/h2&gt;
+
+&lt;p&gt;After rebooting, eventually unplugging the network cable we have to install Docker. The Raspbian Jessie distribution also has a Docker package, but it is only Version 1.3.3. So we install the Hypriot&amp;rsquo;s Docker 1.10.2 instead.&lt;/p&gt;
+
+&lt;p&gt;Just log into your Raspberry Pi 3 again and install Docker with these commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh pi@raspberrypi.local
+sudo apt-get install -y apt-transport-https
+wget -q https://packagecloud.io/gpg.key -O - | sudo apt-key add -
+echo &#39;deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main&#39; | sudo tee /etc/apt/sources.list.d/hypriot.list
+sudo apt-get update
+sudo apt-get install -y docker-hypriot
+sudo systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you have a good setup until the next HypriotOS release is coming.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png&#34; alt=&#34;docker version&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And with the onboard WiFi it is now very easy to build some mobile Docker IoT projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg&#34; alt=&#34;docker over the air&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Getting Docker running on a high-density ARMv8 development board from HiSilicon</title>
@@ -3666,51 +3760,6 @@ We also had the impression that our current version of the Linux Kernel - &lt;st
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Stefan&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Moving Docker from Wheezy to Jessie</title>
-      <link>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</link>
-      <pubDate>Mon, 27 Jul 2015 20:37:38 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;What’s even better then Wheezy? Yes, your right - that’s Jessie.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;And that’s not only because we very much like what crazy stuff &lt;em&gt;&lt;a href=&#34;https://blog.jessfraz.com/&#34;&gt;Jessie&lt;/a&gt;&lt;/em&gt; is doing with Docker.
-No, it’s because &lt;em&gt;Jessie&lt;/em&gt; is &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;the next version of the Debian operating system&lt;/a&gt; that forms the foundation of our SD card image.&lt;/p&gt;
-
-&lt;p&gt;Jessie updates all the included software to much more recent versions. And most notably it switches the old sys-v-init startup system to systemd.&lt;/p&gt;
-
-&lt;h3 id=&#34;battle-tested-docker-jessie-with-some-sugar:4fe06647c823b8256063c23fed15f529&#34;&gt;Battle-Tested Docker-Jessie with some sugar&lt;/h3&gt;
-
-&lt;p&gt;On top of that we added all the battle-tested ingredients of our previous Get-Docker-Running-in-under-5-Minutes SD card image:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a kernel optimised for Docker-awesomeness: &lt;strong&gt;Kernel 3.18.11 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;the most recent &lt;strong&gt;Docker 1.7.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same image&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out of the box support for &lt;strong&gt;Wifi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We consider this new version of our SD card image still as &lt;strong&gt;beta quality&lt;/strong&gt;.
-During the next two weeks we want to improve it step by step and gather feedback to make it a great out-of-the-box experience for our users.&lt;/p&gt;
-
-&lt;h3 id=&#34;get-it-while-it-is-still-hot:4fe06647c823b8256063c23fed15f529&#34;&gt;Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150727-151455.img.zip&#34;&gt;hypriot-rpi-20150727-151455.img.zip&lt;/a&gt; (~ 424 MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150727-151455.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda&lt;/p&gt;
 </description>
     </item>
     

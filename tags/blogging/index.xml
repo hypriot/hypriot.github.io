@@ -48,7 +48,7 @@ And - surprise - that is exactly what we did. You can find the prepared image on
 &lt;p&gt;To get started with Hugo you need a Raspberry Pi with a running Docker engine.
 The best way to get there is with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;After logging into your Rasberry Pi via SSH do a&lt;/p&gt;
+&lt;p&gt;After logging into your Raspberry Pi via SSH do a&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker pull hypriot/rpi-hugo
 &lt;/code&gt;&lt;/pre&gt;

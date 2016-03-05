@@ -380,7 +380,7 @@ webb_1    | Running on http://localhost
 
 &lt;p&gt;Now we can use &lt;code&gt;curl&lt;/code&gt; again to test our Hello-World application farm as whole.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# on your Rasberry Pi
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# on your Raspberry Pi
 $ curl http://localhost
 &amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello from Node.js container fa05496d9ce7&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;~
 $ curl http://localhost

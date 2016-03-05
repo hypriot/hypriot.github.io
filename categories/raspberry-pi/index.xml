@@ -6,8 +6,102 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jan 2016 23:55:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 05 Mar 2016 16:04:12 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Run Docker on a Raspberry Pi 3 with onboard WiFi</title>
+      <link>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</link>
+      <pubDate>Sat, 05 Mar 2016 16:04:12 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</guid>
+      <description>
+
+&lt;p&gt;Today morning we finally got our Raspberry Pi 3&amp;rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/thepihut-delivery.jpg&#34; alt=&#34;ThePiHut delivery&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.&lt;/p&gt;
+
+&lt;p&gt;But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.&lt;/p&gt;
+
+&lt;p&gt;In the meantime for all the impatient out there I&amp;rsquo;ll give you a short intro how to run the latest Docker Engine on the standard Raspbian SD image.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-raspbian-lite:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Download Raspbian LITE&lt;/h2&gt;
+
+&lt;p&gt;Just download and flash the Raspbian LITE image from &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt; or use our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;&lt;code&gt;flash&lt;/code&gt; script&lt;/a&gt; with this command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flash https://downloads.raspberrypi.org/raspbian_lite_latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now boot your Raspberry Pi 3 and log into it with user &lt;code&gt;pi&lt;/code&gt; and the password &lt;code&gt;raspberry&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pi@raspberrypi.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The standard Raspbian image does not resize the SD filesystem automatically.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-the-overlay-kernel-module:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Add the overlay kernel module&lt;/h2&gt;
+
+&lt;p&gt;Before we resize and reboot the Pi we also customize a little bit. The overlay kernel module must be loaded automatically while booting, so we just add it with the next command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;overlay&amp;quot; | sudo tee -a /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;customize-wifi:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Customize WiFi&lt;/h2&gt;
+
+&lt;p&gt;If you want to run your Docker with the onboard WiFi, just add your SSID and pre-shared key with the next command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;network={
+  ssid=&amp;quot;your-ssid&amp;quot;
+  psk=&amp;quot;your-psk&amp;quot;
+}&#39; | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;resize-filesystem:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Resize filesystem&lt;/h2&gt;
+
+&lt;p&gt;Now we have to resize the filesystem to install Docker and have space for Docker images and containers. Start &lt;code&gt;raspi-config&lt;/code&gt; and follow the steps to resize your filesystem.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that let raspi-config reboot your Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&#34;cut-the-wires:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Cut the wires&lt;/h2&gt;
+
+&lt;p&gt;If you have added your WiFi settings, remove your network cable while rebooting. From now on you can connect to your Raspberry Pi 3 over the air.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-docker:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Install Docker&lt;/h2&gt;
+
+&lt;p&gt;After rebooting, eventually unplugging the network cable we have to install Docker. The Raspbian Jessie distribution also has a Docker package, but it is only Version 1.3.3. So we install the Hypriot&amp;rsquo;s Docker 1.10.2 instead.&lt;/p&gt;
+
+&lt;p&gt;Just log into your Raspberry Pi 3 again and install Docker with these commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh pi@raspberrypi.local
+sudo apt-get install -y apt-transport-https
+wget -q https://packagecloud.io/gpg.key -O - | sudo apt-key add -
+echo &#39;deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main&#39; | sudo tee /etc/apt/sources.list.d/hypriot.list
+sudo apt-get update
+sudo apt-get install -y docker-hypriot
+sudo systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you have a good setup until the next HypriotOS release is coming.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png&#34; alt=&#34;docker version&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And with the onboard WiFi it is now very easy to build some mobile Docker IoT projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg&#34; alt=&#34;docker over the air&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>The Pine A64 is about to become the cheapest ARM 64-bit platform to run Docker</title>
@@ -2668,7 +2762,7 @@ And - surprise - that is exactly what we did. You can find the prepared image on
 &lt;p&gt;To get started with Hugo you need a Raspberry Pi with a running Docker engine.
 The best way to get there is with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;After logging into your Rasberry Pi via SSH do a&lt;/p&gt;
+&lt;p&gt;After logging into your Raspberry Pi via SSH do a&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker pull hypriot/rpi-hugo
 &lt;/code&gt;&lt;/pre&gt;
@@ -2958,184 +3052,6 @@ To make your Git service available outside of your home you need to do use a Dyn
 As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Mathias, Andreas &amp;amp; Govinda&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hypriot-Demo and challenge at DockerCon 2015</title>
-      <link>http://blog.hypriot.com/post/dockercon2015/</link>
-      <pubDate>Wed, 24 Jun 2015 01:30:34 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/dockercon2015/</guid>
-      <description>
-
-&lt;p&gt;Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Francisco,CA (USA).
-The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;virtualization&amp;rdquo; solution that can be easily run on small IoT devices.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Dieter Reuter from the Hypriot team at DockerCon 2015&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/dieter_hypriot_dockercon_2015_1.png&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1426x804&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/thumbnails/thumb_dieter_hypriot_dockercon_2015_1.png&#34; itemprop=&#34;thumbnail&#34; alt=&#34;It&amp;#39;s fun because the demo actually works fine :-)&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    It&amp;#39;s fun because the demo actually works fine :-)
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Docker Inc.&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/dieter_hypriot_dockercon_2015_2.png&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1430x802&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/thumbnails/thumb_dieter_hypriot_dockercon_2015_2.png&#34; itemprop=&#34;thumbnail&#34; alt=&#34;7 minutes have passed and 250 container have been started...&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    7 minutes have passed and 250 container have been started...
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Docker Inc.&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/dieter_hypriot_dockercon_2015_3.png&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1428x806&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dieter_at_dockercon/thumbnails/thumb_dieter_hypriot_dockercon_2015_3.png&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Get on our blog and start with the #hypriot_docker_challenge!&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Get on our blog and start with the #hypriot_docker_challenge!
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Docker Inc.&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/131966874&#34; width=&#34;600&#34; height=&#34;450&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt; &lt;p&gt;&lt;a href=&#34;https://vimeo.com/131966874&#34;&gt;DockerCon2015 - Scale down to the minimum&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user38425431&#34;&gt;hypriot&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;As preparation for this demo we only had to make some small &lt;a href=&#34;https://github.com/docker/docker/compare/master...hypriot:optional_userland_proxy&#34;&gt;tweaks&lt;/a&gt; to Docker and its environment.
-These changes allowed us to start up hundreds of containers on a Raspberry Pi in just a couple of minutes. How awesome is that?
-If that is possible on a small device imagine how Docker runs on a big server&amp;hellip; :)&lt;/p&gt;
-
-&lt;h3 id=&#34;the-hypriot-dockercon-challenge:08dbaaf64a7259b7390848cf1e42575f&#34;&gt;The Hypriot-DockerCon-Challenge&lt;/h3&gt;
-
-&lt;p&gt;Even with this jaw-dropping result we think there is room for improvement.
-That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve the performance even more and remove remaining roadblocks!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Prize:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The person who successfully manage to get the highest number of these &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-busybox-httpd/&#34;&gt;Docker containers&lt;/a&gt; to run concurrently on a Raspberry Pi 2 will be awarded a &lt;a href=&#34;http://europe.dockercon.com&#34;&gt;DockerCon Europe&lt;/a&gt; ticket and a speaking / demo slot during the conference.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Rules:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Use a single Raspberry Pi 2 with a HypriotOS release (a Raspi 1 would work too, but you’ll have a big disadvantage with 512MByte only)&lt;/li&gt;
-&lt;li&gt;Use Docker Engine to start the containers (see technical hint #3 below)&lt;/li&gt;
-&lt;li&gt;Use the webserver container “hypriot/rpi-busybox-httpd” as a starting point – you can use whatever webserver you like, but you have to serve the static website with the same index.html + .jpg&lt;/li&gt;
-&lt;li&gt;Challenge ends on Monday, October 19th, 2015 at 17:00 PDT – winner will be announced on Tuesday, October 20th&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Technical Hints:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Reduce the stack size used for starting Docker subprocesses (see /etc/init.d/docker)&lt;/li&gt;
-&lt;li&gt;Optimize the httpd container in order to use less memory&lt;/li&gt;
-&lt;li&gt;Optimize the Docker daemon itself (Participants must submit any changes made to docker engine with appropriate tests back to the docker project or must be independently reproducible with the stock docker engine release.) Optimizations must be general optimizations, useful outside of the scope of this specific benchmark.&lt;/li&gt;
-&lt;li&gt;Ask Hypriot for help, they’ll offer new hints and tips publicly through comments on the blog and &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;To get you started for this challenge we prepared a couple of links for you:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting started with our Docker Hypriot SD-card image on Raspberry Pi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd&#34;&gt;Raspberry Pi Docker Image for HTTPd&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-busybox-httpd/blob/master/start-webservers.sh&#34;&gt;Start-Script for running lots of containers on the Raspberry Pi&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hope we did wet your appetite. Happy hacking and have fun!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 </description>
     </item>
     

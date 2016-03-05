@@ -6,8 +6,102 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Mar 2016 15:59:56 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 05 Mar 2016 16:04:12 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Run Docker on a Raspberry Pi 3 with onboard WiFi</title>
+      <link>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</link>
+      <pubDate>Sat, 05 Mar 2016 16:04:12 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</guid>
+      <description>
+
+&lt;p&gt;Today morning we finally got our Raspberry Pi 3&amp;rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/thepihut-delivery.jpg&#34; alt=&#34;ThePiHut delivery&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.&lt;/p&gt;
+
+&lt;p&gt;But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.&lt;/p&gt;
+
+&lt;p&gt;In the meantime for all the impatient out there I&amp;rsquo;ll give you a short intro how to run the latest Docker Engine on the standard Raspbian SD image.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-raspbian-lite:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Download Raspbian LITE&lt;/h2&gt;
+
+&lt;p&gt;Just download and flash the Raspbian LITE image from &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt; or use our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;&lt;code&gt;flash&lt;/code&gt; script&lt;/a&gt; with this command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flash https://downloads.raspberrypi.org/raspbian_lite_latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now boot your Raspberry Pi 3 and log into it with user &lt;code&gt;pi&lt;/code&gt; and the password &lt;code&gt;raspberry&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pi@raspberrypi.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The standard Raspbian image does not resize the SD filesystem automatically.&lt;/p&gt;
+
+&lt;h2 id=&#34;add-the-overlay-kernel-module:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Add the overlay kernel module&lt;/h2&gt;
+
+&lt;p&gt;Before we resize and reboot the Pi we also customize a little bit. The overlay kernel module must be loaded automatically while booting, so we just add it with the next command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;overlay&amp;quot; | sudo tee -a /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;customize-wifi:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Customize WiFi&lt;/h2&gt;
+
+&lt;p&gt;If you want to run your Docker with the onboard WiFi, just add your SSID and pre-shared key with the next command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;network={
+  ssid=&amp;quot;your-ssid&amp;quot;
+  psk=&amp;quot;your-psk&amp;quot;
+}&#39; | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;resize-filesystem:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Resize filesystem&lt;/h2&gt;
+
+&lt;p&gt;Now we have to resize the filesystem to install Docker and have space for Docker images and containers. Start &lt;code&gt;raspi-config&lt;/code&gt; and follow the steps to resize your filesystem.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo raspi-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that let raspi-config reboot your Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&#34;cut-the-wires:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Cut the wires&lt;/h2&gt;
+
+&lt;p&gt;If you have added your WiFi settings, remove your network cable while rebooting. From now on you can connect to your Raspberry Pi 3 over the air.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-docker:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Install Docker&lt;/h2&gt;
+
+&lt;p&gt;After rebooting, eventually unplugging the network cable we have to install Docker. The Raspbian Jessie distribution also has a Docker package, but it is only Version 1.3.3. So we install the Hypriot&amp;rsquo;s Docker 1.10.2 instead.&lt;/p&gt;
+
+&lt;p&gt;Just log into your Raspberry Pi 3 again and install Docker with these commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh pi@raspberrypi.local
+sudo apt-get install -y apt-transport-https
+wget -q https://packagecloud.io/gpg.key -O - | sudo apt-key add -
+echo &#39;deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main&#39; | sudo tee /etc/apt/sources.list.d/hypriot.list
+sudo apt-get update
+sudo apt-get install -y docker-hypriot
+sudo systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you have a good setup until the next HypriotOS release is coming.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png&#34; alt=&#34;docker version&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And with the onboard WiFi it is now very easy to build some mobile Docker IoT projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg&#34; alt=&#34;docker over the air&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Getting Docker running on a high-density ARMv8 development board from HiSilicon</title>
@@ -3738,35 +3832,6 @@ We also had the impression that our current version of the Linux Kernel - &lt;st
 &lt;p&gt;As always use the comments below to give us feedback and share this post on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Govinda &amp;amp; Stefan&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Kitematic meets Windows Docker</title>
-      <link>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</link>
-      <pubDate>Wed, 09 Sep 2015 00:07:37 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</guid>
-      <description>&lt;p&gt;I just want to share some screenshots with you. Today I have played with Kitematic on a Windows Server 2016 TP3 and made it talk to the Windows Docker Engine. Yes, no VirtualBox in between. Just starting native Windows Containers from the Kitematic interface.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-win2016tp3.png-shadow.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;A closer look at the left column shows a running &lt;strong&gt;mongo&lt;/strong&gt; container. Yes, I know, you cannot pull docker images with the Windows Docker Engine at the moment. But I have built a mongo Docker image for Windows with this &lt;a href=&#34;https://github.com/StefanScherer/dockerfiles-windows/blob/master/mongo/3.0/Dockerfile&#34;&gt;Dockerfile&lt;/a&gt; and created the container by pressing the &lt;strong&gt;Create&lt;/strong&gt; button in the Kitematic UI.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-mongo.png-shadow.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And to show that this is no fake you can see some windows paths in the container logs view:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-list.png-shadow.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s all for now.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Stefan&lt;/p&gt;
 </description>
     </item>
     
