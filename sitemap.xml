@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2016-03-05T16:04:12+01:00</lastmod>
+    <lastmod>2016-03-07T09:03:23+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</loc>
+    <lastmod>2016-03-07T09:03:23+01:00</lastmod>
   </url>
   
   <url>
@@ -208,11 +213,11 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/crew/</loc>
+    <loc>http://blog.hypriot.com/downloads/</loc>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/downloads/</loc>
+    <loc>http://blog.hypriot.com/crew/</loc>
   </url>
   
 </urlset>

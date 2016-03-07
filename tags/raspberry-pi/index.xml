@@ -6,8 +6,46 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Mar 2016 16:04:12 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 07 Mar 2016 09:03:23 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HypriotOS 0.7.0 Berry - the Raspberry Pi Birthday release</title>
+      <link>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</link>
+      <pubDate>Mon, 07 Mar 2016 09:03:23 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve just prepared a new beta release of HypriotOS 0.7.0 Berry which is based upon an updated 0.6.1 Hector. Feel free to check it out: &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;http://blog.hypriot.com/downloads/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-berry-rpi3/IMG_0763.jpeg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;basic support for Raspberry Pi 3 B (internal WiFi/BT is currently not supported)&lt;/li&gt;
+&lt;li&gt;Linux kernel 4.1.17&lt;/li&gt;
+&lt;li&gt;Docker Engine 1.10.2&lt;/li&gt;
+&lt;li&gt;Docker Compose 1.6.2&lt;/li&gt;
+&lt;li&gt;Swarm 1.1.3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This SD image still works on all available Raspberry Pi models (really!)&lt;/p&gt;
+
+&lt;p&gt;We included all the latest Docker tools for you and especially the new Docker Swarm 1.1.3. Together with the brand-new powerful Raspberry Pi 3 B it makes to much fun to run Docker containers.&lt;/p&gt;
+
+&lt;p&gt;Don’t forget, this week is Docker &lt;a href=&#34;https://twitter.com/hashtag/SwarmWeek?src=hash&#34;&gt;#SwarmWeek&lt;/a&gt;. Head over to &lt;a href=&#34;https://blog.docker.com/2016/02/swarmweek-is-coming/&#34;&gt;https://blog.docker.com/2016/02/swarmweek-is-coming/&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-berry-rpi3/IMG_0766.jpeg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And with the help of Docker Swarm it’s just awesome to control a fleet of Raspberry Pi’s running your awesome distributed applications.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/quintus23m&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Run Docker on a Raspberry Pi 3 with onboard WiFi</title>
@@ -2798,51 +2836,6 @@ EXPOSE 80,443
 &lt;p&gt;We cross our fingers so that it will work for you! Please use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash; Mathias&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Moving Docker from Wheezy to Jessie</title>
-      <link>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</link>
-      <pubDate>Mon, 27 Jul 2015 20:37:38 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;What’s even better then Wheezy? Yes, your right - that’s Jessie.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;And that’s not only because we very much like what crazy stuff &lt;em&gt;&lt;a href=&#34;https://blog.jessfraz.com/&#34;&gt;Jessie&lt;/a&gt;&lt;/em&gt; is doing with Docker.
-No, it’s because &lt;em&gt;Jessie&lt;/em&gt; is &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;the next version of the Debian operating system&lt;/a&gt; that forms the foundation of our SD card image.&lt;/p&gt;
-
-&lt;p&gt;Jessie updates all the included software to much more recent versions. And most notably it switches the old sys-v-init startup system to systemd.&lt;/p&gt;
-
-&lt;h3 id=&#34;battle-tested-docker-jessie-with-some-sugar:4fe06647c823b8256063c23fed15f529&#34;&gt;Battle-Tested Docker-Jessie with some sugar&lt;/h3&gt;
-
-&lt;p&gt;On top of that we added all the battle-tested ingredients of our previous Get-Docker-Running-in-under-5-Minutes SD card image:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a kernel optimised for Docker-awesomeness: &lt;strong&gt;Kernel 3.18.11 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;the most recent &lt;strong&gt;Docker 1.7.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same image&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out of the box support for &lt;strong&gt;Wifi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We consider this new version of our SD card image still as &lt;strong&gt;beta quality&lt;/strong&gt;.
-During the next two weeks we want to improve it step by step and gather feedback to make it a great out-of-the-box experience for our users.&lt;/p&gt;
-
-&lt;h3 id=&#34;get-it-while-it-is-still-hot:4fe06647c823b8256063c23fed15f529&#34;&gt;Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150727-151455.img.zip&#34;&gt;hypriot-rpi-20150727-151455.img.zip&lt;/a&gt; (~ 424 MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150727-151455.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda&lt;/p&gt;
 </description>
     </item>
     
