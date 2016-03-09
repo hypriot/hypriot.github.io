@@ -44,7 +44,7 @@ flash --hostname swarm-dc2-pi04 https://downloads.hypriot.com/hypriot-rpi-201603
 
 &lt;p&gt;After that, insert the SD cards and boot all the Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;h3 id=&#34;prepare-your-pi-s-for-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Prepare your Pi&amp;rsquo;s for docker-machine&lt;/h3&gt;
+&lt;h2 id=&#34;prepare-your-pi-s-for-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Prepare your Pi&amp;rsquo;s for docker-machine&lt;/h2&gt;
 
 &lt;p&gt;We want to create the Docker Swarm with the standard &lt;code&gt;docker-machine&lt;/code&gt; binary. To make this work we need to prepare the Raspberry Pi&amp;rsquo;s a little bit. The next steps are adding your SSH public key to all of your Pi&amp;rsquo;s as well as fixing the ID in &lt;code&gt;/etc/os-release&lt;/code&gt; to &lt;code&gt;debian&lt;/code&gt;.&lt;/p&gt;
 
@@ -60,7 +60,7 @@ ssh root@$IP_ADDRESS sed -i \&#39;s/ID=raspbian/ID=debian/g\&#39; /etc/os-releas
 
 &lt;p&gt;Repeat this for all the eight Raspberry Pi&amp;rsquo;s. You will prompted for the root password which is &lt;code&gt;hypriot&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-swarm-token:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Create Swarm Token&lt;/h3&gt;
+&lt;h2 id=&#34;create-swarm-token:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Create Swarm Token&lt;/h2&gt;
 
 &lt;p&gt;A Docker Swarm cluster uses a unique Cluster ID to enable all swarm agents find each other. We need such a Cluster ID to build our Docker Swarm. This can be done in your shell with this command&lt;/p&gt;
 
