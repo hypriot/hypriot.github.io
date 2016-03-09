@@ -73,6 +73,7 @@ ssh root@$IP_ADDRESS sed -i \&#39;s/ID=raspbian/ID=debian/g\&#39; /etc/os-releas
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d generic \
   --engine-storage-driver=overlay --swarm --swarm-master \
+  --swarm-image hypriot/rpi-swarm:latest \
   --swarm-discovery=&amp;quot;token://$TOKEN&amp;quot; \
   --generic-ip-address=$(getip swarm-dc1-pi01.local) \
   swarm-dc1-pi01
@@ -82,6 +83,7 @@ ssh root@$IP_ADDRESS sed -i \&#39;s/ID=raspbian/ID=debian/g\&#39; /etc/os-releas
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d generic \
   --engine-storage-driver=overlay --swarm \
+  --swarm-image hypriot/rpi-swarm:latest \
   --swarm-discovery=&amp;quot;token://$TOKEN&amp;quot; \
   --generic-ip-address=$(getip swarm-dc1-pi02.local) \
   swarm-dc1-pi02
