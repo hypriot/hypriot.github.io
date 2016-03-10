@@ -6,8 +6,213 @@
     <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Mar 2016 17:27:58 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 10 Mar 2016 23:00:00 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Exciting Docker Swarm experiments in the Hypriot Cluster Lab</title>
+      <link>http://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</link>
+      <pubDate>Thu, 10 Mar 2016 23:00:00 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</guid>
+      <description>&lt;p&gt;This post is - like the &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;last one&lt;/a&gt; - dedicated to the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/&#34;&gt;Docker #SwarmWeek&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you thought that it was pretty easy to set up a Swarm Cluster after our last post - you are going to be pretty surprised to find out that there is still room for improvement.&lt;/p&gt;
+
+&lt;p&gt;With our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; it is possible to get up a Swarm Cluster with just one command.
+Follow along to learn how this is possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The Hypriot Cluster Lab has already been there for while as an easy way to set up a Swarm Cluster on Raspberry Pi&amp;rsquo;s.
+The basic idea was to have a SD card image that can be used to boot up a couple of Pi&amp;rsquo;s who then automatically form a Swarm Cluster.
+As with any Lab the Cluster Lab provides a place to run all kind of experiments and gain new insights.&lt;/p&gt;
+
+&lt;p&gt;As part of our recent refactoring efforts to make the Cluster Lab more reliable we have been searching for ways to test the Cluster Lab as a whole.
+The idea we came up was to use &lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt; for our integration testing efforts.&lt;/p&gt;
+
+&lt;p&gt;Vagrant is a tool that makes it really easy to manage Virtual Machines. It allows us to describe a multi-machine setup in an easy to read text-based configuration file:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/hypriot/cluster-lab/raw/master/vagrant/Vagrantfile?slice=14:40&amp;footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;One of the big advantages of Vagrant is that it is available for Mac, Linux and Windows users. This means that you can run the Cluster Lab on all those operating systems, too.&lt;/p&gt;
+
+&lt;p&gt;To get started with the Hypriot Cluster Lab you need to ensure that you have a recent version of Vagrant installed.
+If not you can download it &lt;a href=&#34;https://www.vagrantup.com/downloads.html&#34;&gt;here&lt;/a&gt;. Under the hood Vagrant uses a so-called provider to run the virtual machines.
+For the Cluster Lab the recommended way is to use &lt;a href=&#34;https://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;. Make sure it is already there or download and install it.&lt;/p&gt;
+
+&lt;p&gt;The next step is to clone the Hypriot Cluster Lab repository like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/hypriot/cluster-lab.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Afterwards change into the &lt;code&gt;cluster-lab/vagrant&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd cluster-lab/vagrant
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And now comes the single command you need to boot up a whole working Swarm Cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant up --provider virtualbox --no-color
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will create three virtual machines based on Ubuntu Wily, install a recent Docker Engine and install and configure the Cluster Lab.
+As this command will download Ubuntu Wily and lots of other software, too, it might take while. Please be patient.&lt;/p&gt;
+
+&lt;p&gt;While the Cluster Lab is booting it will run a number of self-tests to ensure that it is working properly.
+You should see output similar to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Internet Connection
+  [PASS]   eth1 exists
+  [PASS]   eth1 has an ip address
+  [PASS]   Internet is reachable
+  [PASS]   DNS works
+
+Networking
+  [PASS]   eth1 exists
+  [PASS]   vlan os package exists
+  [PASS]   Avahi os package exists
+  [PASS]   Avahi-utils os package exists
+  [PASS]   Avahi process exists
+  [PASS]   Avahi cluster-leader.service file is absent
+
+Configure basic networking
+
+Networking
+  [PASS]   eth1.200 exists
+  [PASS]   eth1.200 has correct IP from vlan network
+  [PASS]   Cluster leader is reachable
+  [PASS]   eth1.200 has exactly one IP
+  [PASS]   eth1.200 has no local link address
+  [PASS]   Avahi process exists
+  [PASS]   Avahi is using eth1.200
+  [PASS]   Avahi cluster-leader.service file exists
+
+This node is Leader
+
+DHCP is enabled
+
+DNSmasq
+  [PASS]   dnsmasq os package exists
+  [PASS]   dnsmasq process exists
+  [PASS]   /etc/dnsmasq.conf backup file is absent
+
+Configure DNSmasq
+
+DNSmasq
+  [PASS]   dnsmasq process exists
+  [PASS]   /etc/dnsmasq.conf backup file exists
+
+Docker
+  [PASS]   docker is installed
+  [PASS]   Docker process exists
+  [PASS]   /etc/default/docker backup file is absent
+
+Configure Docker
+
+Docker
+  [PASS]   Docker is running
+  [PASS]   Docker is configured to use Consul as key-value store
+  [PASS]   Docker is configured to listen via tcp at port 2375
+  [PASS]   Docker listens on 192.168.200.30 via tcp at port 2375 (Docker-Engine)
+
+Consul
+  [PASS]   Consul Docker image exists
+  [PASS]   Consul Docker container is running
+  [PASS]   Consul is listening on port 8300
+  [PASS]   Consul is listening on port 8301
+  [PASS]   Consul is listening on port 8302
+  [PASS]   Consul is listening on port 8400
+  [PASS]   Consul is listening on port 8500
+  [PASS]   Consul is listening on port 8600
+  [PASS]   Consul API works
+  [PASS]   Cluster-Node is pingable with IP 192.168.200.30
+  [PASS]   Cluster-Node is pingable with IP 192.168.200.45
+  [PASS]   Cluster-Node is pingable with IP 192.168.200.1
+  [PASS]   No Cluster-Node is in status &#39;failed&#39;
+  [PASS]   Consul is able to talk to Docker-Engine on port 7946 (Serf)
+
+Swarm
+  [PASS]   Swarm-Join Docker container is running
+  [PASS]   Swarm-Manage Docker container is running
+  [PASS]   Number of Swarm and Consul nodes is equal which means our cluster is healthy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If everything worked all tests should be [PASS]ing.
+In case that there were [FAIL]ing tests you can fix it with the help of our &lt;a href=&#34;https://github.com/hypriot/cluster-lab#troubleshooting&#34;&gt;troubleshooting&lt;/a&gt; guide.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;vagrant up&lt;/code&gt; command creates three cluster nodes called &lt;strong&gt;leader&lt;/strong&gt;, &lt;strong&gt;follower1&lt;/strong&gt; and &lt;strong&gt;follower2&lt;/strong&gt;.
+To work with the Swarm Cluster we need to log into one of the cluster nodes and elevate ourself to root:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vagrant ssh leader
+$ sudo su
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can use the Swarm Cluster by exporting the TCP address of the Swarm Cluster with the DOCKER_HOST environment variable:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ export DOCKER_HOST=tcp://192.168.200.1:3278
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all our Docker commands will work against the Swarm Cluster instead of the local Docker Engine.&lt;/p&gt;
+
+&lt;p&gt;Lets check if we really have a 3-Node-Swarm Cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker info
+Containers: 9
+ Running: 9
+ Paused: 0
+ Stopped: 0
+Images: 6
+Role: primary
+Strategy: spread
+Filters: health, port, dependency, affinity, constraint
+Nodes: 3
+ follower1: 192.168.200.46:2375
+  └ Status: Healthy
+  └ Containers: 3
+  └ Reserved CPUs: 0 / 1
+  └ Reserved Memory: 0 B / 1.018 GiB
+  └ Labels: executiondriver=native-0.2, hypriot.arch=x86_64, hypriot.hierarchy=follower, kernelversion=4.2.0-30-generic, operatingsystem=Ubuntu 15.10, storagedriver=overlay
+  └ Error: (none)
+  └ UpdatedAt: 2016-03-10T21:24:07Z
+ follower2: 192.168.200.44:2375
+  └ Status: Healthy
+  └ Containers: 3
+  └ Reserved CPUs: 0 / 1
+  └ Reserved Memory: 0 B / 1.018 GiB
+  └ Labels: executiondriver=native-0.2, hypriot.arch=x86_64, hypriot.hierarchy=follower, kernelversion=4.2.0-30-generic, operatingsystem=Ubuntu 15.10, storagedriver=overlay
+  └ Error: (none)
+  └ UpdatedAt: 2016-03-10T21:24:35Z
+ leader: 192.168.200.1:2375
+  └ Status: Healthy
+  └ Containers: 3
+  └ Reserved CPUs: 0 / 1
+  └ Reserved Memory: 0 B / 1.018 GiB
+  └ Labels: executiondriver=native-0.2, hypriot.arch=x86_64, hypriot.hierarchy=leader, kernelversion=4.2.0-30-generic, operatingsystem=Ubuntu 15.10, storagedriver=overlay
+  └ Error: (none)
+  └ UpdatedAt: 2016-03-10T21:24:04Z
+Plugins:
+ Volume:
+ Network:
+Kernel Version: 4.2.0-30-generic
+Operating System: linux
+Architecture: amd64
+CPUs: 3
+Total Memory: 3.054 GiB
+Name: 9c2606252982
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see we really have a working Swarm Cluster running.
+That was easy, was it?&lt;/p&gt;
+
+&lt;p&gt;For more information about Docker Swarm you can follow the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/&#34;&gt;#SwarmWeek: Introduction to container orchestration with Docker Swarm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>How to setup a Docker Swarm cluster with Raspberry Pi&#39;s</title>
@@ -3859,97 +4064,6 @@ But running a GUI application in a Docker container was something we wanted to t
 You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10374271&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
 &lt;p&gt;Stefan&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Get your all-in-one Docker playground now: HypriotOS reloaded!</title>
-      <link>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</link>
-      <pubDate>Wed, 07 Oct 2015 17:30:00 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</guid>
-      <description>
-
-&lt;p&gt;We are happy to announce that after months of hard work we are now releasing a new major version of HypriotOS called &lt;a href=&#34;https://en.wikipedia.org/wiki/Will_Turner&#34;&gt;&amp;ldquo;Will&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Highlights are the upgrade from Raspberry Wheezy to Jessie, the upgrade of the included Raspberry Pi firmware, support for Device Tree and the addition of the most recent versions of Docker Compose, Docker Swarm and Docker Machine to the image.&lt;/p&gt;
-
-&lt;p&gt;It is - more than ever - &lt;strong&gt;the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/jessie-release/one-to-rule-them-all_blog.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We have been coming a long way since we started in February 2015. Then Docker was not easily available for ARM-based devices.
-By following long - often outdated - tutorials, only technically well-versed people had a chance to eventually get Docker running on ARM.
-It also didn&amp;rsquo;t help that Docker wasn&amp;rsquo;t offically supported on ARM and 32-bit systems.&lt;/p&gt;
-
-&lt;p&gt;As avid Docker users and owners of various ARM devices our mission from the beginning was to make Docker a first-class citizen in the ARM world.
-The most popular ARM device that is easily available at reasonable costs is the &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;. More than 5 millions devices have been sold until now.
-Thus it was an obvious choice for us to start our mission on the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;The standard way to provide software for the Raspberry Pi is by using a SD card that includes the operating system with all necessary user software.
-So our first step was to provide a SD card image that included an operating system that was optimized for the use of Docker.
-And that was exactly what we did when we published the &lt;a href=&#34;http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/&#34;&gt;first version&lt;/a&gt; of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
-It allowed even novice users to get a working Docker environment running in minutes.&lt;/p&gt;
-
-&lt;p&gt;Besides the ease of use there was another important &amp;ldquo;feature&amp;rdquo; for us when we started publishing our SD card image.
-We wanted to provide our users with new Docker versions as soon as they were available.
-And that&amp;rsquo;s exactly what we did: Sometimes within minutes after a new Docker version was released you would find it on our website ready to be downloaded.&lt;/p&gt;
-
-&lt;p&gt;Following this approach we did not only update the Docker Engine on a regular basis, but also the included Linux kernel and various other components that made the work with our image easier or more interesting.
-The positive feedback we got, spurred us on to tackle a new challenge at the end of July: upgrading the foundation of our SD card image from Raspbian Wheezy to Jessie.
-Since August we had three preview releases and we now have not only upgraded HypriotOS from Raspbian Wheezy to &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;Jessie&lt;/a&gt;, but we also have upgraded the Linux kernel from 3.18.11 to 4.1.8.
-And that&amp;rsquo;s not all: the most exciting addition is that we now support most of the Docker tools besides the Docker Engine.
-This includes the most recent versions of &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker Compose&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;Docker Swarm&lt;/a&gt; and &lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;Docker Machine&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;We believe this makes our SD card image one of the easiest and straightforward ways to get started with Docker and its ecosystem!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We also improved the way how upgrades can be done. In the past, upgrading basically meant to reflash your SD card with the newest version of HypriotOS.
-To allow upgrading of individual components, without reflashing the SD card, we now have set up our own package repository.
-&lt;code&gt;apt&lt;/code&gt; in our new image is configured to use it by default - thus an upgrade is just an &lt;code&gt;apt-get update &amp;amp;&amp;amp; apt-get install docker-compose&lt;/code&gt; away.&lt;/p&gt;
-
-&lt;p&gt;We also massively improved the out-of-the-box support for different hardware extensions that are available for the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;To achieve that we upgraded to the lastest Raspberry Pi firmware and added support for &lt;a href=&#34;http://www.devicetree.org/&#34;&gt;Device Tree&lt;/a&gt;.
-With the help of Device Tree many hardware devices like displays and Pi Hats should just work&amp;trade; now.
-One great example is &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;The official 7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.
-Just attach it to your Pi and you can use it right away.
-Besides adding Device Tree we also added support for more WiFi-Dongles from Ralink, Realtec and Atheros.
-We hope that all these measures contribute to a much smoother out-of-the-box hardware experience for our users.&lt;/p&gt;
-
-&lt;p&gt;All in all we think that this release is a major step forward and we hope, you enjoy it as much as we do!
-Rest assured that we still have some more major improvements in our release pipeline which we will announce soon.&lt;/p&gt;
-
-&lt;h3 id=&#34;detailed-features-of-hypriotos-will:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Will&amp;rdquo;&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a modern operating system based on &lt;strong&gt;Raspbian Jessie&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a recent Raspberry Pi firmware and Device Tree to &lt;strong&gt;support a huge range of hardware add-ons&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a kernel optimized for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.8 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Engine 1.8.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Compose 1.4.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Machine 0.4.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Swarm 0.4.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out-of-the-box support for &lt;strong&gt;WiFi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka mDNS aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;our own package repository to easily update individual components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;download-get-it-while-it-is-still-hot:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Download: Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip&#34;&gt;hypriot-rpi-20151004-132414.img.zip&lt;/a&gt; (~ 438 MB)
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter or Facebook.
-You also might wanna discuss this release on &lt;a href=&#34;https://news.ycombinator.com/item?id=10351792&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
-
-&lt;p&gt;Your Hypriot-Team -
-Stefan, Dieter, Mathias, Andreas, Govinda&lt;/p&gt;
 </description>
     </item>
     
