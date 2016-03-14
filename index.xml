@@ -6,8 +6,355 @@
     <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Mar 2016 23:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 13 Mar 2016 17:31:10 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to build a traffic light</title>
+      <link>http://blog.hypriot.com/post/traffic-light/</link>
+      <pubDate>Sun, 13 Mar 2016 17:31:10 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/traffic-light/</guid>
+      <description>
+
+&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - is running dockerized on a Raspberry Pi 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;the-hardware:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The hardware&lt;/h2&gt;
+
+&lt;p&gt;First we have to build the curcuit. To follow this tutorial you need these parts&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi 3, but any other is also good for this tutorial&lt;/li&gt;
+&lt;li&gt;Adafruit T-Cobbler Plus&lt;/li&gt;
+&lt;li&gt;Breadboard&lt;/li&gt;
+&lt;li&gt;2x Red, 1x yellow and 2x green LEDs&lt;/li&gt;
+&lt;li&gt;5x 220Ω resistors&lt;/li&gt;
+&lt;li&gt;1x 1kΩ resistor&lt;/li&gt;
+&lt;li&gt;1x 10kΩ resistor&lt;/li&gt;
+&lt;li&gt;1x push button&lt;/li&gt;
+&lt;li&gt;1x USB power for the Raspberry Pi&lt;/li&gt;
+&lt;li&gt;cables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-software:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The software&lt;/h2&gt;
+
+&lt;p&gt;The application is written in Python and it is based on the blog post &lt;a href=&#34;http://www.bobrathbone.com/pi_traffic_led.htm&#34;&gt;Raspberry PI Traffic Lights&lt;/a&gt; by Bob Rathbone. I have added some more LEDs and changed it to our local traffic light scheme.&lt;/p&gt;
+
+&lt;h3 id=&#34;defining-the-gpio-pins:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Defining the GPIO pins&lt;/h3&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=16:30&amp;footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;h3 id=&#34;initializing-the-gpio-ports:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Initializing the GPIO ports&lt;/h3&gt;
+
+&lt;p&gt;At the beginning of the app we initialize the GPIO ports and turn off all LEDs. They may turned on from aborting a previous run.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=31:48&amp;footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;h3 id=&#34;main-loop:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Main loop&lt;/h3&gt;
+
+&lt;p&gt;The main loop begins with green lights for the cars. In this state the button for the pedestrian crossing is checked.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=49:64&amp;footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;h3 id=&#34;pedestrian-crossing:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pedestrian crossing&lt;/h3&gt;
+
+&lt;p&gt;After the button has been pressed the next code block just changes the LEDs for the cars to red, green for pedestrians and back again.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=64:&amp;footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;That completes the whole app. I could explain how a traffic light works and my daughter could play with it for a while. This could be the whole story, but as I&amp;rsquo;ve deployed my app with Docker there is another story behind the story.&lt;/p&gt;
+
+&lt;h1 id=&#34;dockerize-all-the-things:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerize all the things&lt;/h1&gt;
+
+&lt;p&gt;I want to save my work and make it reproducible for me and others. So beside putting the source code into a GitHub repo I also dockerized the application development and deployment. With the help of Docker and the Docker tools it is very easy to develop from eg. a MacBook.&lt;/p&gt;
+
+&lt;p&gt;Even after months and other projects it is easy to spin up that application again as there is a standardized way. There also is no need to backup the SD image and write down what you had to install on your Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As shown in the diagram your Notebook should have the following tools installed.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;&lt;/strong&gt; to flash the SD card image with HypriotOS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com/machine/overview/&#34;&gt;Docker Machine&lt;/a&gt;&lt;/strong&gt; to build a secured connection to the Raspberry Pi Docker Engine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com/compose/overview/&#34;&gt;Docker Compose&lt;/a&gt;&lt;/strong&gt; to easily start dockerized apps with a single command&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Client&lt;/a&gt;&lt;/strong&gt; to run other Docker commands&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I don&amp;rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;previous blog post&lt;/a&gt; how to use docker-machine for that.&lt;/p&gt;
+
+&lt;h2 id=&#34;dockerfile:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerfile&lt;/h2&gt;
+
+&lt;p&gt;To build the Docker image we need a Dockerfile. We use a Python base image and install the needed tools and dependencies. Then we add the application source code and define the command to execute.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/Dockerfile?footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;docker-compose-yml:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;docker-compose.yml&lt;/h2&gt;
+
+&lt;p&gt;Docker Compose can be used to simplify running the container. With the docker-compose.yml we can document all the parameters needed to start the container. The file is versioned in Git so we do not forget how to run this container.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/docker-compose.yml?footer=minimal&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;developing-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Developing the app&lt;/h2&gt;
+
+&lt;p&gt;When you develop the app or want to modify the source code the Docker image has to be rebuilt with the new code. To do this just run this command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;running-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running the app&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to stop the app again, just press &lt;code&gt;CTRL+C&lt;/code&gt;. You may have to press it twice to kill the app.&lt;/p&gt;
+
+&lt;h2 id=&#34;running-permanently:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running permanently&lt;/h2&gt;
+
+&lt;p&gt;You can run the application automatically by adding &lt;code&gt;-d&lt;/code&gt;. The docker-compose.yml also sets the restart policy to always, so the container is starting right after booting the Raspberry Pi. This is very useful for such hardware projects which should start automatically after turning on your Pi.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to stop the app again, just use this command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose kill
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;sharing-the-dockerized-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing the dockerized app&lt;/h2&gt;
+
+&lt;p&gt;The advantage of using Docker is to easily share the dockerized app with others. As the developer of an app you just push the Docker image with to the Docker Hub. Others can pull this Docker image from there and run it without to know which tools and dependencies to install.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;pushing-the-docker-image:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pushing the Docker image&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;docker images
+docker tag dockerrpitrafficlight_trafficlight stefanscherer/rpi-traffic-light
+docker push stefanscherer/rpi-traffic-light
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Docker image is send sent to the Docker Hub. My example is available as image &lt;a href=&#34;https://hub.docker.com/r/stefanscherer/rpi-traffic-light/&#34;&gt;stefanscherer/rpi-traffic-light&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sharing-with-others:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing with Others&lt;/h2&gt;
+
+&lt;p&gt;If someone else wants to build the traffic light and run your application, she has to use this little modified docker-compose.yml to pull the published Docker image instead of building it herself.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;version: &#39;2&#39;
+services:
+  trafficlight:
+    image: stefanscherer/rpi-traffic-light
+    devices:
+      - &amp;quot;/dev/mem:/dev/mem&amp;quot;
+    cap_add:
+      - SYS_RAWIO
+    restart: always
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And then run the application with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or use the docker command with all the parameters&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run --rm --cap-add SYS_RAWIO --device /dev/mem stefanscherer/rpi-traffic-light
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command pulls the Docker image from the Docker hub if it isn&amp;rsquo;t available locally on the Raspberry Pi. After that it runs a Docker container with the application.&lt;/p&gt;
+
+&lt;p&gt;In this way any app can be published in the same way, regardless the programming language used.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Building a traffic light with Raspberry Pi 3&lt;/div&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/hardwired.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_hardwired.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;First hardwired setup. Pull the wires to switch lights.&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    First hardwired setup. Pull the wires to switch lights.
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/cars-green.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_cars-green.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have green, pedestrians have to wait.&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Cars have green, pedestrians have to wait.
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/push-button.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_push-button.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Push the button!&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Push the button!
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/walk.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_walk.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have to stop, pedestrian may cross the road.&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Cars have to stop, pedestrian may cross the road.
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/drive.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_drive.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Safely crossed the street. Cars driving again.&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Safely crossed the street. Cars driving again.
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/raspberry-pi3-edimax.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_raspberry-pi3-edimax.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Raspberry Pi 3 running traffic light app. Edimax as workaround, soon onboard WiFi support.&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Raspberry Pi 3 running traffic light app. Edimax as workaround, soon onboard WiFi support.
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/development.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_development.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Build, Ship and Run from a Mac&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Build, Ship and Run from a Mac
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+
+&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+
+&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+    
+    &lt;div class=&#34;pswp__container&#34;&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+    &lt;div class=&#34;pswp__top-bar&#34;&gt;
+      
+      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+      
+      
+      &lt;div class=&#34;pswp__preloader&#34;&gt;
+        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+    &lt;/button&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;pswp__caption&#34;&gt;
+      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .gallery {  }
+    .gallery img { width: 100%; height: auto; }
+    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
+    .gallery figcaption { display: none; }
+    .gallery div.title { font-weight: bold; }
+    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
+    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
+    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
+&lt;/style&gt;
+
+
+&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Exciting Docker Swarm experiments in the Hypriot Cluster Lab</title>
@@ -3792,279 +4139,6 @@ Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hy
 
 &lt;p&gt;Your Hypriot-Team -
 Stefan, Dieter, Mathias, Andreas, Govinda&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A touch of magic: Controlling Kitematic &amp; Docker with a touch display on the Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</link>
-      <pubDate>Mon, 12 Oct 2015 00:15:00 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</guid>
-      <description>&lt;p&gt;We have recently released our &lt;a href=&#34;http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;new SD card image&lt;/a&gt; called &lt;strong&gt;Will&lt;/strong&gt;.
-It is the ultimate Docker playground with Docker Engine, Docker Compose, Docker Swarm and Docker Machine preinstalled.
-This image now also supports the new 7&amp;rdquo; Raspberry Pi Touch Display out-of-the-box. So we thought, wouldn&amp;rsquo;t it be cool to have Kitematic running directly on your Raspberry Pi? And yes, we did it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/teaser.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;While polishing and testing &lt;strong&gt;Will&lt;/strong&gt; the idea came up that it would be awesome to be able to use Kitematic on the new great &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We started using the &lt;a href=&#34;https://github.com/zedtux/kitematic/tree/linux-support&#34;&gt;Linux support branch&lt;/a&gt; of Kitematic (&lt;a href=&#34;https://github.com/kitematic/kitematic/pull/696&#34;&gt;PR #696&lt;/a&gt;) and tried to compile it.
-After some fiddling we got the first build working. Still in the team we were not satisfied with installing Kitematic directly on the host - we wanted a better way.
-This was the time for the next crazy idea. We thought, let us write a &lt;code&gt;Dockerfile&lt;/code&gt; to build Kitematic and run it within a Docker container.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Kitematic running on the Raspberry Pi&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/docker-toolbox.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_docker-toolbox.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Unboxing the Docker Toolbox&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Unboxing the Docker Toolbox
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/display-back.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_display-back.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The RPi 2 is attached to 7 inch Raspberry Pi Display&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    The RPi 2 is attached to 7 inch Raspberry Pi Display
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/connect-to-docker-hub.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_connect-to-docker-hub.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Connect to the Docker Hub&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Connect to the Docker Hub
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/kitematic.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_kitematic.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;List of Docker Images&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    List of Docker Images
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/create.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_create.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Download and create a Docker Container&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Download and create a Docker Container
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/web-preview.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_web-preview.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;A running a container with web preview&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    A running a container with web preview
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbs-up.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_thumbs-up.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Thumbs up! All is running well&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Thumbs up! All is running well
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You can find the &lt;code&gt;Dockerfile&lt;/code&gt; in a new GitHub repo at &lt;a href=&#34;https://github.com/hypriot/rpi-kitematic&#34;&gt;hypriot/rpi-kitematic&lt;/a&gt;. If you like you can follow along and try it out with your own display.&lt;/p&gt;
-
-&lt;p&gt;We made a small video to demonstrate how Kitematic looks and feels controlling your containers with a touch display:&lt;/p&gt;
-
-&lt;div class=&#34;video-container&#34;&gt;&lt;iframe src=&#34;https://www.youtube.com/embed/HVyQeCqE_4A&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
-
-&lt;p&gt;As you can see this is still a work-in-progress. But we believe we can make it available soon in an easy and convenient way to be used by everyone.&lt;/p&gt;
-
-&lt;p&gt;If you are one of the lucky owners of the new Raspberry 7&amp;rdquo; touch screen display, you may wanna try out the following steps to run it on your own Pi as well.&lt;/p&gt;
-
-&lt;p&gt;First log in to your Raspberry Pi and install X11. We have created a small helper script that installs everything you need.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -sSL https://github.com/hypriot/x11-on-HypriotOS/raw/master/install-x11-basics.sh | bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you have to enable the X11 server to listen on a TCP socket (port 6000). Just insert the line &lt;code&gt;xserver-allow-tcp=true&lt;/code&gt; in the file &lt;code&gt;/etc/lightdm/lightdm.conf&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;xserver-allow-tcp=true&amp;quot; &amp;gt;&amp;gt; /etc/lightdm/lightdm.conf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next you have to enable X11 server to accept external TCP access from inside of a Docker container.
-This is a network connection coming from another TCP/IP address because the container is running in it&amp;rsquo;s own network name space.&lt;/p&gt;
-
-&lt;p&gt;If you want to automate this step, you can add a start script so the TCP connections are allowed after the next reboot.
-If you want to do it manually, just skip this step.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;xhost +&amp;quot; &amp;gt; /etc/X11/Xsession.d/36x11-xhost-docker
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To fix the orientation of the 7&amp;rdquo; touch display we have to add &lt;code&gt;lcd_rotate=2&lt;/code&gt; into the &lt;code&gt;/boot/config.txt&lt;/code&gt;. If you just use an HDMI monitor you should skip this step.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;lcd_rotate=2&amp;quot; &amp;gt;&amp;gt; /boot/config.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now reboot your Pi to start the X11 server on your 7&amp;rdquo; touch display or HDMI monitor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;reboot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you haven&amp;rsquo;t enabled the TCP connection yet, run the following command to enable it now.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DISPLAY=:0.0 xhost +
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If it works you see a message like &lt;code&gt;access control disabled, clients can connect from any host&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now you have to build the Kitematic container.
-We haven&amp;rsquo;t uploaded it to the Docker Hub yet as it is still a work-in-progress.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/hypriot/rpi-kitematic
-cd rpi-kitematic
-docker build -t hypriot/rpi-kitematic .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now it&amp;rsquo;s time to run the Kitematic container with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock -e DISPLAY=172.17.42.1:0.0 hypriot/rpi-kitematic
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The container runs Kitematic in development mode. Because of this the first start-up may take some minutes until the user interface finally shows up.
-But once it is started, it feels pretty smooth to use.&lt;/p&gt;
-
-&lt;p&gt;I hope you enjoyed this demonstration. We currently think of how to best deploy Kitematic for the Pi - whether we should run it in a container or natively on the host.
-But running a GUI application in a Docker container was something we wanted to try out anyhow. :)&lt;/p&gt;
-
-&lt;p&gt;What do you think would be the best approach? How should we provide Kitematic on a Raspberry Pi without putting to much bloat into our SD card image by default?&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.
-You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10374271&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
-
-&lt;p&gt;Stefan&lt;/p&gt;
 </description>
     </item>
     
