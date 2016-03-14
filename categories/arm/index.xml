@@ -6,8 +6,254 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Mar 2016 17:31:10 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 14 Mar 2016 23:38:42 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Introducing the new ClearFog Pro Router Board from SolidRun</title>
+      <link>http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</link>
+      <pubDate>Mon, 14 Mar 2016 23:38:42 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</guid>
+      <description>
+
+&lt;p&gt;Could you imagine to run a standard Linux OS and your applications of choice securely
+within Docker containers on a beefy WiFi router at home?&lt;/p&gt;
+
+&lt;p&gt;We think this will be possible soon with this new ARM-based router board from SolidRun.
+Thus we&amp;rsquo;ll spent a whole blog post series to install our Debian-based HypriotOS
+and get Docker running on this Marvell ARMADA powered Single Board Computer (SBC).&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s get started and for our first episode in this series we&amp;rsquo;ll dive deep into
+the technical specifications of the ClearFog Pro in order to get to know this neat
+little device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;But be prepared, this one is really a powerful beast&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview-01.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;technical-specifications:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;Technical specifications&lt;/h3&gt;
+
+&lt;p&gt;The ClearFog is based upon the Marvell ARMADA 380 or 388 processors. The CPU is a
+single or dual core ARMv7 processor (Cortex A9) @ up to 1.6 GHz with 1MB L2 cache,
+NEON and FPU.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Features&lt;/th&gt;
+&lt;th&gt;ClearFog Base*&lt;/th&gt;
+&lt;th&gt;ClearFog Pro&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.solid-run.com/marvell-armada-family/armada-som-system-on-module/&#34;&gt;SoC Model&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;ARMADA based A380/A388&lt;/td&gt;
+&lt;td&gt;ARMADA based A380/A388&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Memory &amp;amp; Storage&lt;/td&gt;
+&lt;td&gt;256MB (A380)/1GB (A388)&lt;/td&gt;
+&lt;td&gt;256MB (A380)/1GB (A388)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;M.2**&lt;/td&gt;
+&lt;td&gt;M.2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;8GB microSD&lt;/td&gt;
+&lt;td&gt;8GB microSD&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB eMMC (optional)&lt;/td&gt;
+&lt;td&gt;4GB eMMC (optional)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Connectivity&lt;/td&gt;
+&lt;td&gt;1x mSATA/mPCIE&lt;/td&gt;
+&lt;td&gt;2x mSATA/mPCIE&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1x USB 3.0 port&lt;/td&gt;
+&lt;td&gt;1x USB 3.0 port&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2x Port dedicated Ethernet&lt;/td&gt;
+&lt;td&gt;1x Port dedicated Ethernet&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1x SFP (A388 Only)&lt;/td&gt;
+&lt;td&gt;6x Port switched Ethernet&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1x SFP Ethernet&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;I/O and Misc.&lt;/td&gt;
+&lt;td&gt;Analog Audio&lt;/td&gt;
+&lt;td&gt;Analog Audio/TDM module support&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;GPIO Header (mikroBUS)&lt;/td&gt;
+&lt;td&gt;GPIO Header (mikroBUS)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Indication LEDs&lt;/td&gt;
+&lt;td&gt;Indication LEDs&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;User Push Buttons&lt;/td&gt;
+&lt;td&gt;User Push Buttons&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;PoE expansion header&lt;/td&gt;
+&lt;td&gt;PoE expansion header&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;RTC Battery&lt;/td&gt;
+&lt;td&gt;RTC Battery&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;FTDI (console only), Debug Header&lt;/td&gt;
+&lt;td&gt;FTDI (console only), Debug Header&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;JTAG Header&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;OS Support&lt;/td&gt;
+&lt;td&gt;Linux Kernel 3.x, OpenWrt, Yocto&lt;/td&gt;
+&lt;td&gt;Linux Kernel 3.x, OpenWrt, Yocto&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Power&lt;/td&gt;
+&lt;td&gt;Wide range 9-32V&lt;/td&gt;
+&lt;td&gt;Wide range 9-32V&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Advanced Power Control&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Fan Control&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Dimensions&lt;/td&gt;
+&lt;td&gt;100mm x 74mm&lt;/td&gt;
+&lt;td&gt;225mm x 100mm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;*available soon&lt;br /&gt;
+**M.2 includes USB 3.0 support (in carrier Base only)&lt;/p&gt;
+
+&lt;p&gt;More details can be found at the
+&lt;a href=&#34;https://www.solid-run.com/marvell-armada-family/clearfog/&#34;&gt;ClearFog Pro&lt;/a&gt; product page.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ClearFog Pro (top view)&lt;/em&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-top-view-1.jpg&#34; alt=&#34;ClearFog Pro Top View&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ClearFog Pro (buttom view)&lt;/em&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-bottom-view.jpg&#34; alt=&#34;ClearFog Pro Buttom View&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;technical-highlights:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;Technical highlights&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;passive cooling&lt;/li&gt;
+&lt;li&gt;all Ethernet ports supporting up to 1GBit/s at least&lt;/li&gt;
+&lt;li&gt;the SFP Ethernet port supports up to 2.5GBit/s&lt;/li&gt;
+&lt;li&gt;mSATA or miniPCIe mode can be configured&lt;/li&gt;
+&lt;li&gt;M.2 slot supports a 2242 form factor M.2 card (22mm x 42mm)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;first-impressions:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;First impressions&lt;/h3&gt;
+
+&lt;p&gt;We think you&amp;rsquo;ll get it now - this device is somewhat special.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s not a real end-user product and it&amp;rsquo;s therefore called a development board. But the
+ClearFog Pro is already equipped with some best-in-class components and has a superior
+build quality - once you see it in person you&amp;rsquo;ll gonna know what we&amp;rsquo;re talking about.&lt;/p&gt;
+
+&lt;h3 id=&#34;lot-s-of-possibilities:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;Lot&amp;rsquo;s of possibilities&lt;/h3&gt;
+
+&lt;p&gt;As you now know some of the technical details of the ClearFog Pro, you can clearly
+imagine what could be possible with such a board.&lt;/p&gt;
+
+&lt;p&gt;So, we&amp;rsquo;re listing here only a few possibilities to start the brain storming&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a high-speed WiFi router with a 802.11n or 802.11ac miniPCIe card&lt;/li&gt;
+&lt;li&gt;a NAS system with mSATA or M.2 SSD disks&lt;/li&gt;
+&lt;li&gt;a personal router and firewall&lt;/li&gt;
+&lt;li&gt;an ownCloud server&lt;/li&gt;
+&lt;li&gt;a streaming server for audio and video tracks&lt;/li&gt;
+&lt;li&gt;or maybe all this above at once&lt;/li&gt;
+&lt;li&gt;a powerful Docker host with insane network performance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;hellip;and finally we&amp;rsquo;d like to ask you:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;ldquo;What would you like to build with a ClearFog Pro?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;P.S. this ClearFog Pro (ARMADA A388 w/ 1GByte memory) is already hooked up for testing in our labs
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-cabled.jpg&#34; alt=&#34;ClearFog Pro Cabled&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>How to build a traffic light</title>
@@ -4105,97 +4351,6 @@ But running a GUI application in a Docker container was something we wanted to t
 You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10374271&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
 &lt;p&gt;Stefan&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Get your all-in-one Docker playground now: HypriotOS reloaded!</title>
-      <link>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</link>
-      <pubDate>Wed, 07 Oct 2015 17:30:00 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</guid>
-      <description>
-
-&lt;p&gt;We are happy to announce that after months of hard work we are now releasing a new major version of HypriotOS called &lt;a href=&#34;https://en.wikipedia.org/wiki/Will_Turner&#34;&gt;&amp;ldquo;Will&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Highlights are the upgrade from Raspberry Wheezy to Jessie, the upgrade of the included Raspberry Pi firmware, support for Device Tree and the addition of the most recent versions of Docker Compose, Docker Swarm and Docker Machine to the image.&lt;/p&gt;
-
-&lt;p&gt;It is - more than ever - &lt;strong&gt;the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/jessie-release/one-to-rule-them-all_blog.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We have been coming a long way since we started in February 2015. Then Docker was not easily available for ARM-based devices.
-By following long - often outdated - tutorials, only technically well-versed people had a chance to eventually get Docker running on ARM.
-It also didn&amp;rsquo;t help that Docker wasn&amp;rsquo;t offically supported on ARM and 32-bit systems.&lt;/p&gt;
-
-&lt;p&gt;As avid Docker users and owners of various ARM devices our mission from the beginning was to make Docker a first-class citizen in the ARM world.
-The most popular ARM device that is easily available at reasonable costs is the &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;. More than 5 millions devices have been sold until now.
-Thus it was an obvious choice for us to start our mission on the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;The standard way to provide software for the Raspberry Pi is by using a SD card that includes the operating system with all necessary user software.
-So our first step was to provide a SD card image that included an operating system that was optimized for the use of Docker.
-And that was exactly what we did when we published the &lt;a href=&#34;http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/&#34;&gt;first version&lt;/a&gt; of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
-It allowed even novice users to get a working Docker environment running in minutes.&lt;/p&gt;
-
-&lt;p&gt;Besides the ease of use there was another important &amp;ldquo;feature&amp;rdquo; for us when we started publishing our SD card image.
-We wanted to provide our users with new Docker versions as soon as they were available.
-And that&amp;rsquo;s exactly what we did: Sometimes within minutes after a new Docker version was released you would find it on our website ready to be downloaded.&lt;/p&gt;
-
-&lt;p&gt;Following this approach we did not only update the Docker Engine on a regular basis, but also the included Linux kernel and various other components that made the work with our image easier or more interesting.
-The positive feedback we got, spurred us on to tackle a new challenge at the end of July: upgrading the foundation of our SD card image from Raspbian Wheezy to Jessie.
-Since August we had three preview releases and we now have not only upgraded HypriotOS from Raspbian Wheezy to &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;Jessie&lt;/a&gt;, but we also have upgraded the Linux kernel from 3.18.11 to 4.1.8.
-And that&amp;rsquo;s not all: the most exciting addition is that we now support most of the Docker tools besides the Docker Engine.
-This includes the most recent versions of &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker Compose&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;Docker Swarm&lt;/a&gt; and &lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;Docker Machine&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;We believe this makes our SD card image one of the easiest and straightforward ways to get started with Docker and its ecosystem!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We also improved the way how upgrades can be done. In the past, upgrading basically meant to reflash your SD card with the newest version of HypriotOS.
-To allow upgrading of individual components, without reflashing the SD card, we now have set up our own package repository.
-&lt;code&gt;apt&lt;/code&gt; in our new image is configured to use it by default - thus an upgrade is just an &lt;code&gt;apt-get update &amp;amp;&amp;amp; apt-get install docker-compose&lt;/code&gt; away.&lt;/p&gt;
-
-&lt;p&gt;We also massively improved the out-of-the-box support for different hardware extensions that are available for the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;To achieve that we upgraded to the lastest Raspberry Pi firmware and added support for &lt;a href=&#34;http://www.devicetree.org/&#34;&gt;Device Tree&lt;/a&gt;.
-With the help of Device Tree many hardware devices like displays and Pi Hats should just work&amp;trade; now.
-One great example is &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;The official 7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.
-Just attach it to your Pi and you can use it right away.
-Besides adding Device Tree we also added support for more WiFi-Dongles from Ralink, Realtec and Atheros.
-We hope that all these measures contribute to a much smoother out-of-the-box hardware experience for our users.&lt;/p&gt;
-
-&lt;p&gt;All in all we think that this release is a major step forward and we hope, you enjoy it as much as we do!
-Rest assured that we still have some more major improvements in our release pipeline which we will announce soon.&lt;/p&gt;
-
-&lt;h3 id=&#34;detailed-features-of-hypriotos-will:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Will&amp;rdquo;&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a modern operating system based on &lt;strong&gt;Raspbian Jessie&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a recent Raspberry Pi firmware and Device Tree to &lt;strong&gt;support a huge range of hardware add-ons&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a kernel optimized for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.8 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Engine 1.8.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Compose 1.4.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Machine 0.4.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Swarm 0.4.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out-of-the-box support for &lt;strong&gt;WiFi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka mDNS aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;our own package repository to easily update individual components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;download-get-it-while-it-is-still-hot:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Download: Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip&#34;&gt;hypriot-rpi-20151004-132414.img.zip&lt;/a&gt; (~ 438 MB)
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter or Facebook.
-You also might wanna discuss this release on &lt;a href=&#34;https://news.ycombinator.com/item?id=10351792&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
-
-&lt;p&gt;Your Hypriot-Team -
-Stefan, Dieter, Mathias, Andreas, Govinda&lt;/p&gt;
 </description>
     </item>
     
