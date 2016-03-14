@@ -17,7 +17,7 @@
       <guid>http://blog.hypriot.com/post/traffic-light/</guid>
       <description>
 
-&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - is running dockerized on a Raspberry Pi 3.&lt;/p&gt;
+&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
 &lt;/p&gt;
