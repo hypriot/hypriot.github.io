@@ -15,7 +15,7 @@
       <pubDate>Tue, 15 Mar 2016 23:02:30 +0100</pubDate>
       
       <guid>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</guid>
-      <description>&lt;p&gt;For many people it comes as suprise that one can access all the hardware of an IoT device from within a Docker container.
+      <description>&lt;p&gt;For many people it comes as a suprise that one can access all the hardware of an IoT device from within a Docker container.
 Interstingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.&lt;/p&gt;
 
 &lt;p&gt;To illustrate this use case we are going to create a Docker image that allows use to read the data from a temperature sensor.&lt;/p&gt;
