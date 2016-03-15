@@ -6,8 +6,165 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Mar 2016 23:38:42 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 15 Mar 2016 23:02:30 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker Sensor Fu on a Raspberry Pi</title>
+      <link>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</link>
+      <pubDate>Tue, 15 Mar 2016 23:02:30 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</guid>
+      <description>&lt;p&gt;For many people it comes as suprise that one can access all the hardware of an IoT device from within a Docker container.
+Interstingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.&lt;/p&gt;
+
+&lt;p&gt;To illustrate this use case we are going to create a Docker image that allows use to read the data from a temperature sensor.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+
+&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/tmib/3336410263/in/photolist-65PYwT-hKwdXx-6Gvfse-8sZyde-hKwe8n-bsrVBM-aTuQm-suTVL-4keeLT-9HAaQv-6owaBS-pcKw75-ktYU9-7fCvHx-aMp4hZ-9CJPmM-5kQCwW-9uhoBD-i6h8R-8eACxB-73fGHE-ecUmhW-4ayKHW-coQnPs-x2g2w-qTtWEg-6afv15-7zQM2j-coQoDf-6uLDRM-5srT3L-hpQH9p-q1QZca-9S8ygg-mHCs1e-aZ3SJT-b3ejpi-qvDRpB-mBUjjp-mJTYFr-nhZUoo-6dRUnb-9tuUnt-eMRL2K-6K6ars-dhBwB7-5Cr4jF-5rq6uU-yzubv-q7g6xP&#34;&gt;tmib_seattle&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;To follow along you gonna need:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a Raspberry Pi 1, 2 or 3&lt;/li&gt;
+&lt;li&gt;our HypriotOS &lt;a href=&#34;https://downloads.hypriot.com/hypriot-rpi-20160306-192317.img.zip&#34;&gt;SD card image&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a DHT22 temperature sensor, which you can buy at &lt;a href=&#34;http://www.amazon.de/gp/product/B00LHJUU1M?psc=1&amp;amp;redirect=true&amp;amp;ref_=oh_aui_detailpage_o02_s00&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;From the hardware side we need to first attach the sensor to our Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature_sensor.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/sensor_connected_to_pi.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Looking at the picture of the sensor from left to right we need to attach&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the yellow cable to the 3,3V Pin of the RPi (Pin 1)&lt;/li&gt;
+&lt;li&gt;the green cable (data) to one of the many GPIO; here it is GPIO2 (Pin 3)&lt;/li&gt;
+&lt;li&gt;and finally the blue cable to GND (Pin 6)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The information in brackets corresponds to the pin numbers in this &lt;a href=&#34;http://raspi.tv/wp-content/uploads/2013/07/Rev2-GPIO-bold.jpg&#34;&gt;GPIO overview image&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After our hardware is settled we need to look at the software side of things.&lt;/p&gt;
+
+&lt;p&gt;As foundation for our next steps we will use the &lt;a href=&#34;http://wiringpi.com/&#34;&gt;WiringPi&lt;/a&gt; project.
+WiringPi is a library that allows to access the GPIO (General Purpose Input Output) connectors of the Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s put WiringPi into a Docker image, shall we?&lt;/p&gt;
+
+&lt;p&gt;The Dockerfile for this looks like this:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/Govinda-Fichtner/1d48543a6b9c2e21b7c1.js?file=Dockerfile.start&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Using this Dockerfile we can now build our image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t hypriot/wiringpi:latest .
+...
+$ docker images
+REPOSITORY                            TAG                 IMAGE ID            CREATED             SIZE
+hypriot/wiringpi                      latest              599e98bd4c20        30 seconds ago      302.2 MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now the image has everything that we need to compile software. On top of that it also has the WiringPi libaries on board.&lt;/p&gt;
+
+&lt;p&gt;Next we can run this image to build the software that actually reads the senor:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run --device /dev/ttyAMA0:/dev/ttyAMA0 --device /dev/mem:/dev/mem --privileged -ti hypriot/wiringpi bash
+root@84f66e14df05:/data#
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To test if we can access the GPIO&amp;rsquo;s we can run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@84f66e14df05:/data# gpio readall
+ +-----+-----+---------+------+---+---Pi 2---+---+------+---------+-----+-----+
+ | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
+ +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
+ |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     |
+ |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5V      |     |     |
+ |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     |
+ |   4 |   7 | GPIO. 7 |   IN | 1 |  7 || 8  | 1 | ALT0 | TxD     | 15  | 14  |
+ |     |     |      0v |      |   |  9 || 10 | 1 | ALT0 | RxD     | 16  | 15  |
+ |  17 |   0 | GPIO. 0 |   IN | 0 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  |
+ |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     |
+ |  22 |   3 | GPIO. 3 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO. 4 | 4   | 23  |
+ |     |     |    3.3v |      |   | 17 || 18 | 0 | IN   | GPIO. 5 | 5   | 24  |
+ |  10 |  12 |    MOSI |   IN | 0 | 19 || 20 |   |      | 0v      |     |     |
+ |   9 |  13 |    MISO |   IN | 0 | 21 || 22 | 0 | IN   | GPIO. 6 | 6   | 25  |
+ |  11 |  14 |    SCLK |   IN | 0 | 23 || 24 | 1 | IN   | CE0     | 10  | 8   |
+ |     |     |      0v |      |   | 25 || 26 | 1 | IN   | CE1     | 11  | 7   |
+ |   0 |  30 |   SDA.0 |   IN | 1 | 27 || 28 | 1 | IN   | SCL.0   | 31  | 1   |
+ |   5 |  21 | GPIO.21 |   IN | 1 | 29 || 30 |   |      | 0v      |     |     |
+ |   6 |  22 | GPIO.22 |   IN | 1 | 31 || 32 | 0 | IN   | GPIO.26 | 26  | 12  |
+ |  13 |  23 | GPIO.23 |   IN | 0 | 33 || 34 |   |      | 0v      |     |     |
+ |  19 |  24 | GPIO.24 |   IN | 0 | 35 || 36 | 0 | IN   | GPIO.27 | 27  | 16  |
+ |  26 |  25 | GPIO.25 |   IN | 0 | 37 || 38 | 0 | IN   | GPIO.28 | 28  | 20  |
+ |     |     |      0v |      |   | 39 || 40 | 0 | IN   | GPIO.29 | 29  | 21  |
+ +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
+ | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
+ +-----+-----+---------+------+---+---Pi 2---+---+------+---------+-----+-----+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So far so good.&lt;/p&gt;
+
+&lt;p&gt;Now we need to clone the source of our sensor reading software:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@84f66e14df05:/data# git clone https://github.com/technion/lol_dht22
+root@84f66e14df05:/data# cd lol_dht22
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To compile the lol_dht22 software we do the usual &lt;code&gt;./configure &amp;amp;&amp;amp; make&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@84f66e14df05:/data/lol_dht22# ./configure
+...
+root@84f66e14df05:/data/lol_dht22# make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This should produce a small executable that we can now test.&lt;/p&gt;
+
+&lt;p&gt;If you followed the wiring instructions above closely you should now be able to read the temperature:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@84f66e14df05:/data/lol_dht22# ./loldht 8
+Raspberry Pi wiringPi DHT22 reader
+www.lolware.net
+Humidity = 34.00 % Temperature = 22.80 *
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Awesome. We just have been accessing the hardware sensor that is attached to our Pi from inside a Docker container.&lt;/p&gt;
+
+&lt;p&gt;So why is this so exciting? Well, it basically allows us to deploy our sensor reading software easily and realiably to every device that is running a Docker-Engine.
+No installation hassle. No dependency hell.&lt;/p&gt;
+
+&lt;p&gt;For that we need to extend our Dockerfile and add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RUN git clone https://github.com/technion/lol_dht22
+RUN cd lol_dht22 &amp;amp;&amp;amp; ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; mv ./lol_dht22 /usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The finished file looks like this:&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/Govinda-Fichtner/1d48543a6b9c2e21b7c1.js?file=Dockerfile.final&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;After rebuilding the image with this updated Dockerfile we can now run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run --device /dev/ttyAMA0:/dev/ttyAMA0 --device /dev/mem:/dev/mem --privileged -ti hypriot/wiringpi /loldht 8
+Raspberry Pi wiringPi DHT22 reader
+www.lolware.net
+Data not good, skip
+Humidity = 35.00 % Temperature = 22.00 *C
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and it just works&amp;trade;.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Introducing the new ClearFog Pro Router Board from SolidRun</title>
@@ -4214,76 +4371,6 @@ We will write more about those in some future blog posts.&lt;/p&gt;
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=10696752&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Andreas &amp;amp; Mathias&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Just in time for DockerCon EU: a shipload of new Docker ARM goodies</title>
-      <link>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</link>
-      <pubDate>Sun, 15 Nov 2015 21:40:00 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</guid>
-      <description>
-
-&lt;p&gt;Hard on the heels of Docker announcing &lt;a href=&#34;https://blog.docker.com/2015/11/docker-1-9-production-ready-swarm-multi-host-networking/&#34;&gt;major changes with Docker 1.9&lt;/a&gt; we are making the newest Docker goodies available on HypriotOS.
-We are really happy that we were able to finish our new release called &amp;ldquo;Hector&amp;rdquo; just in time for DockerCon EU.&lt;/p&gt;
-
-&lt;p&gt;If you like a personal demo of what&amp;rsquo;s in store for &amp;ldquo;Hector&amp;rdquo; just ping @Quintus23M on Twitter and meet him in person at DockerCon EU.
-Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsquo;s to Barcelona and are eager to show off a bit.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hector-release/testing.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And if you are not lucky enough to attend DockerCon you might as well read on.&lt;/p&gt;
-
-&lt;p&gt;To name just a few of the highlights, there is now &lt;a href=&#34;http://blog.docker.com/2015/11/docker-multi-host-networking-ga/&#34;&gt;multi-host networking&lt;/a&gt;, extensively improved volume management and a production-ready &lt;a href=&#34;http://blog.docker.com/2015/11/swarm-1-0/&#34;&gt;Swarm&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HypriotOS - the ultimate Docker playground for your Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt; has you covered once again: all the cool &amp;amp; latest Docker tools in one convenient package.&lt;/p&gt;
-
-&lt;p&gt;Compared with HypriotOS &amp;ldquo;Will&amp;rdquo; we updated&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;the &lt;strong&gt;Linux Kernel&lt;/strong&gt; from 4.1.8 to &lt;strong&gt;4.1.12&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;the &lt;strong&gt;Docker Engine&lt;/strong&gt; from 1.8.2 to &lt;strong&gt;1.9.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Compose&lt;/strong&gt; from 1.4.2 to &lt;strong&gt;1.5.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Swarm&lt;/strong&gt; from 0.4.0 to &lt;strong&gt;1.0.0&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Besides that we enabled some missing cgroup kernel settings for better Docker support.
-We also added a default &lt;code&gt;/boot/config.txt&lt;/code&gt;, which for instance allows for a better out-of-the-box HDMI display experience (&lt;code&gt;hdmi_force_hotplug=1&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;There is no easier way to get started with Docker on ARM.
-Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;latest image&lt;/a&gt; and get started in less than 5 minutes.&lt;/p&gt;
-
-&lt;h3 id=&#34;detailed-features-of-hypriotos-hector:02d83c62817c8a33766342f7f05756e9&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Hector&amp;rdquo;&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a modern operating system based on &lt;strong&gt;Raspbian Jessie&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a recent Raspberry Pi firmware and Device Tree to &lt;strong&gt;support a huge range of hardware add-ons&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a kernel optimized for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.12 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Engine 1.9.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Compose 1.5.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Machine 0.4.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Swarm 1.0.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out-of-the-box support for &lt;strong&gt;WiFi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka mDNS aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;our own package repository to easily update individual components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;download-get-it-while-it-is-still-hot:02d83c62817c8a33766342f7f05756e9&#34;&gt;Download: Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;hypriot-rpi-20151115-132854.img.zip&lt;/a&gt; (~ 438 MB)
-&lt;a href=&#34;hypriot-rpi-20151115-132854.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google+ or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Your Hypriot-Team -
-Stefan, Dieter, Mathias, Andreas, Govinda&lt;/p&gt;
 </description>
     </item>
     
