@@ -72,10 +72,10 @@
   <div class="post">
     <h1>Docker Sensor Fu on a Raspberry Pi</h1>
     <span class="post-date">Tue, Mar 15, 2016</span>
-    <p>For many people it comes as a suprise that one can access all the hardware of an IoT device from within a Docker container.
-Interstingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.</p>
+    <p>For many people it comes as a surprise that one can access all the hardware of an IoT device from within a Docker container.
+Interestingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.</p>
 
-<p>To illustrate this use case we are going to create a Docker image that allows use to read the data from a temperature sensor.</p>
+<p>To illustrate this use case we are going to create a Docker image that allows us to read the data from a temperature sensor.</p>
 
 <p><img src="/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg" alt="Docker Swarm" />
 
@@ -127,9 +127,9 @@ REPOSITORY                            TAG                 IMAGE ID            CR
 hypriot/wiringpi                      latest              599e98bd4c20        30 seconds ago      302.2 MB
 </code></pre>
 
-<p>Now the image has everything that we need to compile software. On top of that it also has the WiringPi libaries on board.</p>
+<p>Now the image has everything that we need to compile software. On top of that it also has the WiringPi libraries on board.</p>
 
-<p>Next we can run this image to build the software that actually reads the senor:</p>
+<p>Next we can run this image to build the software that actually reads the sensor:</p>
 
 <pre><code>$ docker run --device /dev/ttyAMA0:/dev/ttyAMA0 --device /dev/mem:/dev/mem --privileged -ti hypriot/wiringpi bash
 root@84f66e14df05:/data#
@@ -193,7 +193,7 @@ Humidity = 34.00 % Temperature = 22.80 *
 
 <p>Awesome. We just have been accessing the hardware sensor that is attached to our Pi from inside a Docker container.</p>
 
-<p>So why is this so exciting? Well, it basically allows us to deploy our sensor reading software easily and realiably to every device that is running a Docker-Engine.
+<p>So why is this so exciting? Well, it basically allows us to deploy our sensor reading software easily and reliably to every device that is running a Docker Engine.
 No installation hassle. No dependency hell.</p>
 
 <p>For that we need to extend our Dockerfile and add</p>

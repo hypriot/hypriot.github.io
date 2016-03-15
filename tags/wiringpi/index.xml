@@ -15,10 +15,10 @@
       <pubDate>Tue, 15 Mar 2016 23:02:30 +0100</pubDate>
       
       <guid>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</guid>
-      <description>&lt;p&gt;For many people it comes as a suprise that one can access all the hardware of an IoT device from within a Docker container.
-Interstingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.&lt;/p&gt;
+      <description>&lt;p&gt;For many people it comes as a surprise that one can access all the hardware of an IoT device from within a Docker container.
+Interestingly enough Docker is a perfect tool for managing and distributing IoT development and production environments.&lt;/p&gt;
 
-&lt;p&gt;To illustrate this use case we are going to create a Docker image that allows use to read the data from a temperature sensor.&lt;/p&gt;
+&lt;p&gt;To illustrate this use case we are going to create a Docker image that allows us to read the data from a temperature sensor.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
@@ -70,9 +70,9 @@ REPOSITORY                            TAG                 IMAGE ID            CR
 hypriot/wiringpi                      latest              599e98bd4c20        30 seconds ago      302.2 MB
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now the image has everything that we need to compile software. On top of that it also has the WiringPi libaries on board.&lt;/p&gt;
+&lt;p&gt;Now the image has everything that we need to compile software. On top of that it also has the WiringPi libraries on board.&lt;/p&gt;
 
-&lt;p&gt;Next we can run this image to build the software that actually reads the senor:&lt;/p&gt;
+&lt;p&gt;Next we can run this image to build the software that actually reads the sensor:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ docker run --device /dev/ttyAMA0:/dev/ttyAMA0 --device /dev/mem:/dev/mem --privileged -ti hypriot/wiringpi bash
 root@84f66e14df05:/data#
@@ -136,7 +136,7 @@ Humidity = 34.00 % Temperature = 22.80 *
 
 &lt;p&gt;Awesome. We just have been accessing the hardware sensor that is attached to our Pi from inside a Docker container.&lt;/p&gt;
 
-&lt;p&gt;So why is this so exciting? Well, it basically allows us to deploy our sensor reading software easily and realiably to every device that is running a Docker-Engine.
+&lt;p&gt;So why is this so exciting? Well, it basically allows us to deploy our sensor reading software easily and reliably to every device that is running a Docker Engine.
 No installation hassle. No dependency hell.&lt;/p&gt;
 
 &lt;p&gt;For that we need to extend our Dockerfile and add&lt;/p&gt;
