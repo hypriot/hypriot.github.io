@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>http://blog.hypriot.com/post/docker-on-arm-workshops/</loc>
+    <lastmod>2016-03-16T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</loc>
     <lastmod>2016-03-15T23:02:30+01:00</lastmod>
   </url>
@@ -248,10 +253,6 @@
   
   <url>
     <loc>http://blog.hypriot.com/downloads/</loc>
-  </url>
-  
-  <url>
-    <loc>http://blog.hypriot.com/post/docker-on-arm-workshops/</loc>
   </url>
   
 </urlset>
