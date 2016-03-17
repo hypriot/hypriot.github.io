@@ -209,13 +209,17 @@ Even days after the event Dieter was still raving about the cool event and the a
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
 &lt;/p&gt;
 
+&lt;p&gt;Special thanks for making the workshop possible need to go to Damien Duportal.
+His workshop presentation can be found &lt;a href=&#34;http://dduportal.github.io/presentations/docker-meetup-brussels-20160210/#1&#34;&gt;here&lt;/a&gt;.
+The example app that was used during the workshop was ported to ARM and can be found &lt;a href=&#34;https://github.com/jmMeessen/rpi-voting-app/commits/master&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
 &lt;p&gt;We - at the Hypriot team - are really excited to see how more and more people start to see the potential in Docker on ARM.&lt;/p&gt;
 
 &lt;p&gt;Last week I was approached by Bastiaan Schaap from the DevOps Oost-Nederland Meetup Group to help organize a similar workshop.
 It will take place on &lt;strong&gt;June, 1st in Wageningen in the Netherlands&lt;/strong&gt;. You can read more about the agenda on the &lt;a href=&#34;http://www.meetup.com/de-DE/DevOps-OostNL/events/229287742/?eventId=229287742&#34;&gt;Meetup-Website&lt;/a&gt;.
 Make sure to RSVP early as there will only be a limited number of seats available.&lt;/p&gt;
 
-&lt;p&gt;We plan to do some more workshops in the next couple of month. So if you like to see one happen in your area - please come and talk to us.
+&lt;p&gt;We plan to do some more workshops in the next couple of months. So if you like to see one happen in your area - please come and talk to us.
 We really have a lot of fun organizing and conducting these kind of events and can come up with a ton of different workshop topics.&lt;/p&gt;
 
 &lt;p&gt;So in this sense - hope to see you soon in person.
