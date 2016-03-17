@@ -259,7 +259,7 @@ MacBookPro and powering this thing up&amp;hellip;&lt;/p&gt;
 &lt;p&gt;We can connect the ClearFog Pro to a MacBookPro with a standard USB cable, because
 SolidRun added a FTDI chip on the board (Note: you&amp;rsquo;ll need to install the appropriate
 FTDI device drivers).
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-serial-console.png&#34; alt=&#34;ClearFog Pro Serial Console&#34; /&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg&#34; alt=&#34;ClearFog Pro Serial Console&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The microUSB connector acts as a debugging console and gives us access to the
@@ -385,7 +385,7 @@ Serial          : 0000000000000000
 
 &lt;p&gt;Here is a detailed picture of the SOM (System On Module), which includes the CPU
 and the DDR3 memory chips.
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.png&#34; alt=&#34;ClearFog Pro MicroSOM&#34; /&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg&#34; alt=&#34;ClearFog Pro MicroSOM&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Once we attach an ethernet cable to the ethernet connector next to the USB plug,
@@ -663,7 +663,7 @@ from the MacBookPro.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Or, we just point our web browser with &lt;code&gt;open http://192.168.2.108/&lt;/code&gt; to the main web page.
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-webbrowser.png&#34; alt=&#34;ClearFog Pro WebBrowser&#34; /&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg&#34; alt=&#34;ClearFog Pro WebBrowser&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;current-status-and-key-takeaways:df574ad27518dffc38341295be8d9782&#34;&gt;Current status and key takeaways&lt;/h3&gt;
