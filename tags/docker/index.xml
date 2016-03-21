@@ -15,9 +15,7 @@
       <pubDate>Mon, 21 Mar 2016 00:00:00 +0100</pubDate>
       
       <guid>http://blog.hypriot.com/post/docker-birthday-party-announcement/</guid>
-      <description>
-
-&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
+      <description>&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;We will celebrate the 3rd Docker birthday.&lt;/strong&gt;&lt;/p&gt;
 
@@ -42,7 +40,7 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;We thank &lt;strong&gt;SEAL Systems AG&lt;/strong&gt; for the pizza:&lt;/p&gt;
+&lt;p&gt;We thank &lt;strong&gt;Seal Systems&lt;/strong&gt; AG for the drinks:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
@@ -126,6 +124,36 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;/figure&gt;
 
 
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-whale.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-whale.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Here comes the main act - guess Docker will take a deep dive at the bar...&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Here comes the main act - guess Docker will take a deep dive at the bar...
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-pirate.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-pirate.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And of course there is no Docker party without at least one Docker Pirate ...&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    And of course there is no Docker party without at least one Docker Pirate ...
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
 &lt;/div&gt;
 &lt;/p&gt;
 
@@ -197,9 +225,7 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
 &lt;/p&gt;
 
-&lt;h2 id=&#34;join-the-docker-bamberg-meetup:6518e7e8108f06aa4add69ce96f55bcc&#34;&gt;Join the Docker Bamberg Meetup&lt;/h2&gt;
-
-&lt;p&gt;So come and join us tomorrow. RSVP now at our &lt;strong&gt;&lt;a href=&#34;http://www.meetup.com/de-DE/Docker-Bamberg/events/228784029/&#34;&gt;Docker Bamberg Meetup Page&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So come and join us tomorrow. RSVP now at our &lt;a href=&#34;http://www.meetup.com/de-DE/Docker-Bamberg/events/228784029/&#34;&gt;Docker Meetup Page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
