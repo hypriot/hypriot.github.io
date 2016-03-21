@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker Birthday on Docker Pirates ARMed with explosive stuff</title>
+    <link>http://blog.hypriot.com/categories/docker-birthday/</link>
+    <description>Recent content in Docker Birthday on Docker Pirates ARMed with explosive stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Mar 2016 00:00:00 +0100</lastBuildDate>
+    <atom:link href="http://blog.hypriot.com/categories/docker-birthday/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Come to our Docker Birthday Party</title>
+      <link>http://blog.hypriot.com/post/docker-birthday-party-announcement/</link>
+      <pubDate>Mon, 21 Mar 2016 00:00:00 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/docker-birthday-party-announcement/</guid>
+      <description>&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We will celebrate the 3rd Docker birthday.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;And of course we from Hypriot are in the thick of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake-cover.jpg&#34; alt=&#34;Come to the Docker Birthday Party 2016&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We had to find a suitable location (we now have space for 450 people), prepare the location and computers for all the attendees,
+make a birthday cake, learn all about Docker so we could be mentors and finally we had to find sponsors &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;And we actually found some and want to say thank you here for their support:&lt;/p&gt;
+
+&lt;p&gt;We thank &lt;strong&gt;Paessler AG&lt;/strong&gt; for the Birthday Cake:
+&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We thank &lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
+&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We thank &lt;strong&gt;Seal Systems&lt;/strong&gt; AG for the drinks:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
+
+&lt;p&gt;So we mostly finished our preparations and are super excited.&lt;/p&gt;
+
+&lt;p&gt;If you have not yet decided if you want to come, here are some reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a totally free Docker Training&lt;/li&gt;
+&lt;li&gt;the best Mentors you can find in good old Germany&lt;/li&gt;
+&lt;li&gt;a special kind of Pizza that you usually will only get in Italy&lt;/li&gt;
+&lt;li&gt;a really one-of-its-kind birthday cake&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And to wet your appetite some more we have prepared some pictures:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;title&#34;&gt;Docker Birthday Party Warm-Up&lt;/div&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-mini-cake.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Come to the Docker Birthday Party!&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Come to the Docker Birthday Party!
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+
+
+&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-gopher.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-gopher.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Go is coming...&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Go is coming...
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+
+&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+
+&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+    
+    &lt;div class=&#34;pswp__container&#34;&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+    &lt;div class=&#34;pswp__top-bar&#34;&gt;
+      
+      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+      
+      
+      &lt;div class=&#34;pswp__preloader&#34;&gt;
+        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+    &lt;/button&gt;
+    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;pswp__caption&#34;&gt;
+      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .gallery {  }
+    .gallery img { width: 100%; height: auto; }
+    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
+    .gallery figcaption { display: none; }
+    .gallery div.title { font-weight: bold; }
+    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
+    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
+    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
+&lt;/style&gt;
+
+
+&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So come and join us tomorrow. RSVP now at our &lt;a href=&#34;http://www.meetup.com/de-DE/Docker-Bamberg/events/228784029/&#34;&gt;Docker Meetup Page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

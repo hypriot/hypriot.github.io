@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2016-03-20T23:00:00+01:00</lastmod>
+    <lastmod>2016-03-21T00:00:00+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/docker-birthday-party-announcement/</loc>
+    <lastmod>2016-03-21T00:00:00+01:00</lastmod>
   </url>
   
   <url>
