@@ -15,7 +15,9 @@
       <pubDate>Mon, 21 Mar 2016 00:00:00 +0100</pubDate>
       
       <guid>http://blog.hypriot.com/post/docker-birthday-party-announcement/</guid>
-      <description>&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;We will celebrate the 3rd Docker birthday.&lt;/strong&gt;&lt;/p&gt;
 
@@ -195,7 +197,9 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
 &lt;/p&gt;
 
-&lt;p&gt;So come and join us tomorrow. RSVP now at our &lt;a href=&#34;http://www.meetup.com/de-DE/Docker-Bamberg/events/228784029/&#34;&gt;Docker Meetup Page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;join-the-docker-bamberg-meetup:6518e7e8108f06aa4add69ce96f55bcc&#34;&gt;Join the Docker Bamberg Meetup&lt;/h2&gt;
+
+&lt;p&gt;So come and join us tomorrow. RSVP now at our &lt;strong&gt;&lt;a href=&#34;http://www.meetup.com/de-DE/Docker-Bamberg/events/228784029/&#34;&gt;Docker Bamberg Meetup Page&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
