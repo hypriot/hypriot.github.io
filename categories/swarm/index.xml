@@ -82,7 +82,7 @@ Even if those two offerings are not 100% comparable I find the pricing of the Sc
 
 &lt;p&gt;After introducing the new Scaleway C2 server let&amp;rsquo;s get started by setting up a couple of the C2 servers.&lt;/p&gt;
 
-&lt;p&gt;If you do not have an accout with Scaleway you need to &lt;a href=&#34;https://cloud.scaleway.com/#/signup&#34;&gt;sign up&lt;/a&gt; with them first.
+&lt;p&gt;If you do not have an account with Scaleway you need to &lt;a href=&#34;https://cloud.scaleway.com/#/signup&#34;&gt;sign up&lt;/a&gt; with them first.
 Afterwards you can use the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli&#34;&gt;Scaleway Command Line Interface&lt;/a&gt; to create the servers.&lt;/p&gt;
 
 &lt;p&gt;Download the latest version for your operating system from the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli/releases/tag/v1.8.0&#34;&gt;release page&lt;/a&gt;.
@@ -457,8 +457,17 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;So to wrap it up I can say that the combination of the Scaleway Servers, Hypriot Cluster Lab and Docker-Compose allowed me to get the Jenkins Cluster running in a really short time.
-It might not be 10 minutes for you - especially if you first need to set up the Scaleway account and the CLI tool. But if everything is in place it can be done in 5 to 10 minutes.&lt;/p&gt;
+&lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the on-demand Scaleway Servers&lt;/li&gt;
+&lt;li&gt;the Hypriot Cluster Lab&lt;/li&gt;
+&lt;li&gt;Docker-Compose&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;allowed me to get the Jenkins Cluster running in a really short time.&lt;/p&gt;
+
+&lt;p&gt;It might not be 10 minutes for you - especially if you first need to set up the Scaleway account and the CLI tool. But if everything is in place it can be done in 5 to 10 minutes.&lt;/p&gt;
 
 &lt;p&gt;Hope you had some fun following along&amp;hellip;.&lt;/p&gt;
 
