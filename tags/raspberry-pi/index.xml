@@ -6,8 +6,206 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Mar 2016 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 23 Mar 2016 18:40:04 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Let&#39;s build a PicoCluster for Docker Swarm</title>
+      <link>http://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</link>
+      <pubDate>Wed, 23 Mar 2016 18:40:04 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</guid>
+      <description>
+
+&lt;p&gt;As we love to use Docker Swarm on a cluster of Raspberry Pi&amp;rsquo;s, we&amp;rsquo;d like to cover
+in this hands-on tutorial how to build such a cluster easily with a hardware kit
+from &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;All you need is a PicoCluster kit for a 3-node or 5-node cluster, a couple of
+Raspberry Pi&amp;rsquo;s and the time to assemble all the parts together. The project can be
+completed within an hour only, and makes so much fun, too - especially when you can
+share this as quality time with your kids.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;PicoCluster had just sent us two different kits of their cool Raspberry Pi
+clusters. Of course, we are eager to build these new clusters so you can get a first impression.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-s-in-the-box:098640bbbda183ea709087a458ce9550&#34;&gt;What&amp;rsquo;s in the box&lt;/h3&gt;
+
+&lt;p&gt;3-node PicoCluster kit:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;acrylic case, all parts&lt;/li&gt;
+&lt;li&gt;PDU (12V input, 4x USB 5V output), including all wires&lt;/li&gt;
+&lt;li&gt;wiring for 3x microUSB power&lt;/li&gt;
+&lt;li&gt;case wiring for 1x HDMI&lt;/li&gt;
+&lt;li&gt;case wiring for 1x 12V power plug&lt;/li&gt;
+&lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;5-node PicoCluster kit:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;acrylic case, all parts&lt;/li&gt;
+&lt;li&gt;internal 8-port Ethernet switch&lt;/li&gt;
+&lt;li&gt;PDU (12V input, 5x USB 5V output), including all wires&lt;/li&gt;
+&lt;li&gt;wiring for 5x microUSB power&lt;/li&gt;
+&lt;li&gt;wiring for network (Raspberry Pi to Ethernet switch)&lt;/li&gt;
+&lt;li&gt;case wiring for 1x Ethernet&lt;/li&gt;
+&lt;li&gt;case wiring for 1x HDMI&lt;/li&gt;
+&lt;li&gt;case wiring for 2x USB&lt;/li&gt;
+&lt;li&gt;case wiring for 1x 12V power plug&lt;/li&gt;
+&lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Not included in the kits: (so you have to buy it separately)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi’s and microSD cards&lt;/li&gt;
+&lt;li&gt;AC adapter (12V, 1.5A, barrel plug 5.5x2.1mm)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally we&amp;rsquo;ll need some common tools for the mechanical assembling:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;philips screw driver&lt;/li&gt;
+&lt;li&gt;7mm wrench (or a pliers)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;assembling-the-3-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 3-node PicoCluster&lt;/h3&gt;
+
+&lt;h4 id=&#34;towering-the-raspberry-pi-s:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
+
+&lt;p&gt;First we take the mounting plate for the Pi tower and stack all
+three Raspberry Pi&amp;rsquo;s with the help of the included spacers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;wiring-all-together:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s easy to mount the PDU on top of the Pi tower with 4 screws and attaching
+the USB power cables to the three Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next we mount the tower on the base plate, which makes our new cluster look even better.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
+the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
+to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
+
+&lt;h4 id=&#34;assembling-the-case:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
+
+&lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
+Mounting with nuts &amp;amp; bolts and the PicoCluster is ready.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Don&amp;rsquo;t forget to flash your microSD cards and insert them into the Pi&amp;rsquo;s,
+because as soon as we close the cluster case, it&amp;rsquo;s a little bit harder to change
+the SD cards.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;assembling-the-5-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 5-node PicoCluster&lt;/h3&gt;
+
+&lt;h4 id=&#34;towering-the-raspberry-pi-s-1:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
+
+&lt;p&gt;With the 5-node cluster we start similar as with the 3-node. We take
+the mounting plate for the Pi tower and stack all five Raspberry Pi&amp;rsquo;s with the
+spacers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+
+&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;wiring-all-together-1:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
+
+&lt;p&gt;Next, we mount the PDU on top of the Pi tower with 4 screws and attach
+the USB power cables to the five Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As soon as we mount the tower on the base plate, we see that we do have a lot more
+parts left.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;For the 5-node cluster we have an internal dedicated 8-port switch, which we&amp;rsquo;ll
+install inside the case and wire all the ethernet cables to the Pi&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
+the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
+to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;ll also find two USB cables in the kit, which you can connect to one or two
+different Pi&amp;rsquo;s and mount the plug to the front panel as well. Attaching HDMI and USB
+plugs to the case is really optional.&lt;/p&gt;
+
+&lt;h4 id=&#34;assembling-the-case-1:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
+
+&lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
+Mounting with nuts &amp;amp; bolts and our second PicoCluster is almost ready. As there are a
+few more parts to assemble the 5-node cluster, it will take a little bit longer than
+building the smaller cluster.&lt;/p&gt;
+
+&lt;h3 id=&#34;finally-we-have-two-new-clusters:098640bbbda183ea709087a458ce9550&#34;&gt;Finally, we have two new clusters&lt;/h3&gt;
+
+&lt;p&gt;At the end we have now built two new Raspberry Pi clusters, a 3-node and a 5-node
+from PicoCluster. Both are looking really neat and everything is stowed away in
+a perfect way. Only accessing the microSD cards is not optimal once after the case
+is closed. You just have to remove only a few screws and dismounting the rear side
+panel of the case and then you can easily access the SD card slots.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Because the 5-node cluster includes an integrated 8-port Ethernet switch, we&amp;rsquo;d recommend
+it to use as a standalone Pi cluster for experimenting with Docker Swarm and other
+cluster related tutorials and demos. You just have to attach a 12V power source and
+a single network link. This is all you need to start playing with it right away.&lt;/p&gt;
+
+&lt;p&gt;Now, you can go ahead and install software on your new PicoCluster.
+However, this isn&amp;rsquo;t within the scope of this hands-on project, so we&amp;rsquo;ll point you to one of our
+latest tutorials where you learn &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;how to setup a Docker Swarm cluster with Raspberry Pi&amp;rsquo;s&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;where-can-you-get-it:098640bbbda183ea709087a458ce9550&#34;&gt;Where can you get it ?&lt;/h3&gt;
+
+&lt;p&gt;You can order your own ready-to-use and tiny data center directly at &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;
+with the Raspberry Pi&amp;rsquo;s included. The hardware kits we used in this post should be available soon, too.
+PicoCluster is currently optimizing a few parts like the PDU to get more power for the new Raspberry Pi 3,
+so we expect the next version will get some changes and improvements compared to these
+beta units.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker on Raspberry Pi Workshop in Brussels</title>
@@ -3215,97 +3413,6 @@ But running a GUI application in a Docker container was something we wanted to t
 You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10374271&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
 &lt;p&gt;Stefan&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Get your all-in-one Docker playground now: HypriotOS reloaded!</title>
-      <link>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</link>
-      <pubDate>Wed, 07 Oct 2015 17:30:00 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</guid>
-      <description>
-
-&lt;p&gt;We are happy to announce that after months of hard work we are now releasing a new major version of HypriotOS called &lt;a href=&#34;https://en.wikipedia.org/wiki/Will_Turner&#34;&gt;&amp;ldquo;Will&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Highlights are the upgrade from Raspberry Wheezy to Jessie, the upgrade of the included Raspberry Pi firmware, support for Device Tree and the addition of the most recent versions of Docker Compose, Docker Swarm and Docker Machine to the image.&lt;/p&gt;
-
-&lt;p&gt;It is - more than ever - &lt;strong&gt;the ultimate Docker playground for the Raspberry Pi 1 &amp;amp; 2&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/jessie-release/one-to-rule-them-all_blog.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We have been coming a long way since we started in February 2015. Then Docker was not easily available for ARM-based devices.
-By following long - often outdated - tutorials, only technically well-versed people had a chance to eventually get Docker running on ARM.
-It also didn&amp;rsquo;t help that Docker wasn&amp;rsquo;t offically supported on ARM and 32-bit systems.&lt;/p&gt;
-
-&lt;p&gt;As avid Docker users and owners of various ARM devices our mission from the beginning was to make Docker a first-class citizen in the ARM world.
-The most popular ARM device that is easily available at reasonable costs is the &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;. More than 5 millions devices have been sold until now.
-Thus it was an obvious choice for us to start our mission on the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;The standard way to provide software for the Raspberry Pi is by using a SD card that includes the operating system with all necessary user software.
-So our first step was to provide a SD card image that included an operating system that was optimized for the use of Docker.
-And that was exactly what we did when we published the &lt;a href=&#34;http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/&#34;&gt;first version&lt;/a&gt; of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
-It allowed even novice users to get a working Docker environment running in minutes.&lt;/p&gt;
-
-&lt;p&gt;Besides the ease of use there was another important &amp;ldquo;feature&amp;rdquo; for us when we started publishing our SD card image.
-We wanted to provide our users with new Docker versions as soon as they were available.
-And that&amp;rsquo;s exactly what we did: Sometimes within minutes after a new Docker version was released you would find it on our website ready to be downloaded.&lt;/p&gt;
-
-&lt;p&gt;Following this approach we did not only update the Docker Engine on a regular basis, but also the included Linux kernel and various other components that made the work with our image easier or more interesting.
-The positive feedback we got, spurred us on to tackle a new challenge at the end of July: upgrading the foundation of our SD card image from Raspbian Wheezy to Jessie.
-Since August we had three preview releases and we now have not only upgraded HypriotOS from Raspbian Wheezy to &lt;a href=&#34;http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/&#34;&gt;Jessie&lt;/a&gt;, but we also have upgraded the Linux kernel from 3.18.11 to 4.1.8.
-And that&amp;rsquo;s not all: the most exciting addition is that we now support most of the Docker tools besides the Docker Engine.
-This includes the most recent versions of &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker Compose&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;Docker Swarm&lt;/a&gt; and &lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;Docker Machine&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;We believe this makes our SD card image one of the easiest and straightforward ways to get started with Docker and its ecosystem!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We also improved the way how upgrades can be done. In the past, upgrading basically meant to reflash your SD card with the newest version of HypriotOS.
-To allow upgrading of individual components, without reflashing the SD card, we now have set up our own package repository.
-&lt;code&gt;apt&lt;/code&gt; in our new image is configured to use it by default - thus an upgrade is just an &lt;code&gt;apt-get update &amp;amp;&amp;amp; apt-get install docker-compose&lt;/code&gt; away.&lt;/p&gt;
-
-&lt;p&gt;We also massively improved the out-of-the-box support for different hardware extensions that are available for the Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;To achieve that we upgraded to the lastest Raspberry Pi firmware and added support for &lt;a href=&#34;http://www.devicetree.org/&#34;&gt;Device Tree&lt;/a&gt;.
-With the help of Device Tree many hardware devices like displays and Pi Hats should just work&amp;trade; now.
-One great example is &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;The official 7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.
-Just attach it to your Pi and you can use it right away.
-Besides adding Device Tree we also added support for more WiFi-Dongles from Ralink, Realtec and Atheros.
-We hope that all these measures contribute to a much smoother out-of-the-box hardware experience for our users.&lt;/p&gt;
-
-&lt;p&gt;All in all we think that this release is a major step forward and we hope, you enjoy it as much as we do!
-Rest assured that we still have some more major improvements in our release pipeline which we will announce soon.&lt;/p&gt;
-
-&lt;h3 id=&#34;detailed-features-of-hypriotos-will:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Will&amp;rdquo;&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a modern operating system based on &lt;strong&gt;Raspbian Jessie&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a recent Raspberry Pi firmware and Device Tree to &lt;strong&gt;support a huge range of hardware add-ons&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;a kernel optimized for Docker-awesomeness: &lt;strong&gt;Kernel 4.1.8 with support for OverlayFS&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Pi 1 &amp;amp; 2&lt;/strong&gt; with the same SD card image&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Engine 1.8.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Compose 1.4.2&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Machine 0.4.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Docker Swarm 0.4.0&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;network hotplugging&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;out-of-the-box support for &lt;strong&gt;WiFi&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Avahi&lt;/strong&gt; (aka mDNS aka Apple Bonjour)&lt;/li&gt;
-&lt;li&gt;support for &lt;strong&gt;Open vSwitch&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;our own package repository to easily update individual components&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;download-get-it-while-it-is-still-hot:0ebc29021394a433fb8d656202bccf5e&#34;&gt;Download: Get it while it is still hot&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip&#34;&gt;hypriot-rpi-20151004-132414.img.zip&lt;/a&gt; (~ 438 MB)
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151004-132414.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on our Pi.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter or Facebook.
-You also might wanna discuss this release on &lt;a href=&#34;https://news.ycombinator.com/item?id=10351792&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
-
-&lt;p&gt;Your Hypriot-Team -
-Stefan, Dieter, Mathias, Andreas, Govinda&lt;/p&gt;
 </description>
     </item>
     
