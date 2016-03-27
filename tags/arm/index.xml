@@ -6,8 +6,306 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Mar 2016 18:40:04 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 27 Mar 2016 18:30:29 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>First Touch Down with Docker for Mac</title>
+      <link>http://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/</link>
+      <pubDate>Sun, 27 Mar 2016 18:30:29 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/</guid>
+      <description>
+
+&lt;p&gt;A few days ago, Docker has just announced a closed BETA program for their new
+applications &amp;ldquo;Docker for Mac&amp;rdquo; and &amp;ldquo;Docker for Windows&amp;rdquo;. These apps are meant to
+simplify the usage of Docker containers for every developer even more. They try
+to lower the barrier to install and use Docker on your desktop and laptop computers
+for both Mac and Windows users.&lt;/p&gt;
+
+&lt;p&gt;As soon as I received the first rumors that there is a special feature built-in,
+which should also simplify the developers workflow for IoT applications, I was getting
+totally thrilled and registered immediately for the BETA program. It was really hard
+to wait for, but luckily I&amp;rsquo;ve received an email with my BETA invitation and access
+token within a few hours only.&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;d like to give you a first insight view how to install and use &amp;ldquo;Docker for Mac&amp;rdquo;
+with a basic walk-through on my MacBook Pro running the very latest OS X 10.11.4.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So, please join me on this journey&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;access-to-the-beta-program:10b72799563d55724d4550d1181f06ee&#34;&gt;Access to the BETA program&lt;/h2&gt;
+
+&lt;p&gt;You can easily register to the Docker BETA program at &lt;a href=&#34;https://beta.docker.com&#34;&gt;https://beta.docker.com&lt;/a&gt;. Once
+you&amp;rsquo;re logged in with your Docker ID (which is literally your Docker Hub user account)
+you can apply for testing &amp;ldquo;Docker for Mac&amp;rdquo; and &amp;ldquo;Docker for Windows&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-apply-for-beta.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As this is a closed BETA, you&amp;rsquo;ll get on a waiting list and hopefully will be selected
+soon. So, please be patient until you&amp;rsquo;ll receive an invitation email with some more
+detailed instructions and a personal access key.&lt;/p&gt;
+
+&lt;p&gt;For this blog post, I&amp;rsquo;ll show you how easy it is to install and use Docker on OS X.
+And I guess, we&amp;rsquo;ll write another post later for all the curious Windows users too.&lt;/p&gt;
+
+&lt;h2 id=&#34;download-and-install-docker-for-mac:10b72799563d55724d4550d1181f06ee&#34;&gt;Download and install &amp;ldquo;Docker for Mac&amp;rdquo;&lt;/h2&gt;
+
+&lt;p&gt;When you&amp;rsquo;re selected for the BETA, you&amp;rsquo;ll receive an email titled &amp;ldquo;Docker Private Beta&amp;rdquo;
+with a link to the download page and an access key.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-download-page.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Download the installer package called &amp;ldquo;Docker.dmg&amp;rdquo; to your Mac and double click it,
+drag and drop the &amp;ldquo;Docker beta&amp;rdquo; app to your Applications folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now, from your Lauchpad you can start the &amp;ldquo;Docker beta&amp;rdquo; app directly the first time
+and you can begin right away using Docker on your Mac.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-start-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Once you start the BETA Docker app the first time you&amp;rsquo;ll be asked to enter your
+personal invite token.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-01-insert-key.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Token has been accepted.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-02-key-accepted.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The Docker app needs to additionally install a network helper and requests for privileges
+to install it.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Enter your credentials to grant privileged access.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Success, the Docker app is installed and you can easily find and access it with
+clicking on the little neat whale icon.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;using-docker-for-mac-the-first-time:10b72799563d55724d4550d1181f06ee&#34;&gt;Using &amp;ldquo;Docker for Mac&amp;rdquo; the first time&lt;/h2&gt;
+
+&lt;p&gt;To use Docker we&amp;rsquo;ll just start a terminal window and using the Docker CLI to access
+the local Docker Engine.&lt;/p&gt;
+
+&lt;p&gt;Getting the version of the Docker command.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Determine the versions of the Docker Client and the Docker Engine.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Display some more detailed informations about the installed Docker software.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;let-s-start-a-real-docker-container:10b72799563d55724d4550d1181f06ee&#34;&gt;Let&amp;rsquo;s start a real Docker container&lt;/h2&gt;
+
+&lt;p&gt;First, we&amp;rsquo;ll check how our host operating system looks like.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uname -a
+Darwin demo.local 15.4.0 Darwin Kernel Version 15.4.0: Fri Feb 26 22:08:05 PST 2016; root:xnu-3248.40.184~3/RELEASE_X86_64 x86_64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As already expected we see our host OS is OS X or &lt;code&gt;Darwin&lt;/code&gt; with a kernel version &lt;code&gt;15.4.0&lt;/code&gt;
+and our CPU architecture is &lt;code&gt;x86_64&lt;/code&gt; which indicates we&amp;rsquo;re running on an Intel-based
+64-bit CPU.&lt;/p&gt;
+
+&lt;p&gt;Second, let&amp;rsquo;s start a basic Linux container and here we&amp;rsquo;re using a Debian standard distro
+for now. This will take a few second because the Docker Engine have to fetch/download
+the Docker image &lt;code&gt;debian&lt;/code&gt; from the Docker Hub.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run --rm -ti debian
+Unable to find image &#39;debian:latest&#39; locally
+latest: Pulling from library/debian
+fdd5d7827f33: Pull complete
+a3ed95caeb02: Pull complete
+Digest: sha256:e7d38b3517548a1c71e41bffe9c8ae6d6d29546ce46bf62159837aad072c90aa
+Status: Downloaded newer image for debian:latest
+root@9473484ea965:/#
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, we do have now an interactive bash prompt within a running Debian
+Linux container.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@9473484ea965:/# uname -a
+Linux 9473484ea965 4.1.19 #1 SMP Sun Mar 20 22:13:39 UTC 2016 x86_64 GNU/Linux
+
+root@9473484ea965:/# cat /etc/os-release
+PRETTY_NAME=&amp;quot;Debian GNU/Linux 8 (jessie)&amp;quot;
+NAME=&amp;quot;Debian GNU/Linux&amp;quot;
+VERSION_ID=&amp;quot;8&amp;quot;
+VERSION=&amp;quot;8 (jessie)&amp;quot;
+ID=debian
+HOME_URL=&amp;quot;http://www.debian.org/&amp;quot;
+SUPPORT_URL=&amp;quot;http://www.debian.org/support&amp;quot;
+BUG_REPORT_URL=&amp;quot;https://bugs.debian.org/&amp;quot;
+root@9473484ea965:/#
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to start a really tiny Linux container next, which is starting even
+faster than Debian. Alpine Linux is meant to be super-small and it brings a lot
+of advantages into the container world too.&lt;/p&gt;
+
+&lt;p&gt;Starting an interactive Alpine container is pretty much the same as Debian, but we
+have to use a Bourne shell instead of bash.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run --rm -ti alpine sh
+Unable to find image &#39;alpine:latest&#39; locally
+latest: Pulling from library/alpine
+4d06f2521e4f: Pull complete
+Digest: sha256:7739b19a213f3a0aa8dacbd5898c8bd467e6eaf71074296a3d75824e76257396
+Status: Downloaded newer image for alpine:latest
+/ #
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can see, this container is running on the same kernel version like before, but
+uses a completely different Linux distribution.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/ # uname -a
+Linux 411883bd07d3 4.1.19 #1 SMP Sun Mar 20 22:13:39 UTC 2016 x86_64 Linux
+
+/ # cat /etc/os-release
+NAME=&amp;quot;Alpine Linux&amp;quot;
+ID=alpine
+VERSION_ID=3.3.1
+PRETTY_NAME=&amp;quot;Alpine Linux v3.3&amp;quot;
+HOME_URL=&amp;quot;http://alpinelinux.org&amp;quot;
+BUG_REPORT_URL=&amp;quot;http://bugs.alpinelinux.org&amp;quot;
+/ #
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s look at the details of these both Docker containers. Both are completes
+Linux systems, but with a substantial difference in size.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+alpine              latest              70c557e50ed6        3 weeks ago         4.798 MB
+debian              latest              f50f9524513f        3 weeks ago         125.1 MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alpine Linux is damn small in size and thus the Docker images built upon Alpine
+are extremely small too and really faster to download. Another major advantage is the
+security model of Alpine Linux, which reduces the attack vector dramatically and
+provides faster and easier security updates as well.&lt;/p&gt;
+
+&lt;p&gt;With this first experiments with &amp;ldquo;Docker for Mac&amp;rdquo; we clearly see, we can run Linux
+commands inside the Docker containers with a Linux OS and a recent kernel version 4.1.19,
+which is indeed different to our host operating system OS X.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s pure Docker container magic: running a Linux container seamlessly on our
+development machine, here on a MacBook Pro (Retina, 15-inch, Mid 2014).&lt;/p&gt;
+
+&lt;h2 id=&#34;the-magic-behind-the-scenes:10b72799563d55724d4550d1181f06ee&#34;&gt;The Magic behind the scenes&lt;/h2&gt;
+
+&lt;p&gt;As I shown you in the screenshots above, our host operating system where the Docker
+Client is running is &lt;code&gt;darwin/amd64&lt;/code&gt; or OS X, but the Docker Engine runs on &lt;code&gt;linux/amd64&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Maybe you&amp;rsquo;re wondering how this even can be possible, right?&lt;br /&gt;
+The answer is quite easy, &amp;ldquo;Docker for Mac&amp;rdquo; is shipping it&amp;rsquo;s own lightweight hyperviser
+called &lt;a href=&#34;http://www.xhyve.org/&#34;&gt;xhyve&lt;/a&gt; which itself is a port of the BSD hyperviser
+&lt;a href=&#34;http://www.bhyve.org/&#34;&gt;bhyve&lt;/a&gt; to OS X.&lt;/p&gt;
+
+&lt;p&gt;The engineers at Docker have greatly enhanced xhyve to enable an optimized usage
+for running Docker containers efficiently on OS X. Inside of the xhyve hyperviser
+the Docker Engine is running in a tiny small Linux VM which is based upon the
+&lt;a href=&#34;http://www.alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; distribution. With this great combination
+of outstanding technologies we as users get the feeling to run Docker containers
+natively on our Mac.&lt;/p&gt;
+
+&lt;p&gt;Honestly there are even more great technical details packed into the new &amp;ldquo;Docker for Mac&amp;rdquo;
+release, but we&amp;rsquo;ll keep this for a later more advanced technical blog post.&lt;/p&gt;
+
+&lt;h2 id=&#34;there-is-another-big-arm-surprise:10b72799563d55724d4550d1181f06ee&#34;&gt;There is another big ARM surprise&lt;/h2&gt;
+
+&lt;p&gt;With the public announcement of &amp;ldquo;Docker for Mac&amp;rdquo; I received an &lt;a href=&#34;https://twitter.com/avsm/status/713010884596080640&#34;&gt;Easter Egg tweet&lt;/a&gt; from one
+of the Docker engineers, Anil Madhavapeddy, that they&amp;rsquo;ve just included another cool
+feature which attracts me most. He promised I could even run the Docker images which
+I built for an IoT device like a Raspberry Pi on my Mac now!&lt;/p&gt;
+
+&lt;p&gt;No way, that sounds to good to be true. And mainly because the Raspberry Pi uses
+an ARM CPU, which cannot be executed on an Intel-based Mac, right?&lt;/p&gt;
+
+&lt;p&gt;But let&amp;rsquo;s test this too and I&amp;rsquo;ll select one of my most famous Docker containers,
+the webserver I&amp;rsquo;ve shown at DockerCon 2015 San Francisco,CA last year in June.
+More details can be found in a dedicated blog post about the &lt;a href=&#34;http://blog.hypriot.com/post/dockercon2015/&#34;&gt;Hypriot-Demo and challenge at DockerCon 2015&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ok, here we go. Let&amp;rsquo;s run an ARM container on a Mac.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As you can see, it doesn&amp;rsquo;t work that way, but&amp;hellip;&lt;br /&gt;
+&amp;hellip;hmmm, but maybe with some more magic Docker spells it could be done.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And this is were all the magic happens. We&amp;rsquo;re just bind-mounting a special binary
+into our original ARM-based container. Again, we don&amp;rsquo;t change the original Docker
+image at all to get this done. In the end we are really able to run an ARM container
+which was built on a Raspberry Pi now on an Intel-based Mac - just with the help
+of some &lt;a href=&#34;https://twitter.com/quintus23m/status/713523016836231171&#34;&gt;fantastic Docker fu&lt;/a&gt;
+embedded in &amp;ldquo;Docker for Mac&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;On a last proof, we clearly see we&amp;rsquo;re running the original ARM container from June 2015.
+&lt;img src=&#34;http://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;This is possible because the Docker engineers have already included the Linux kernel support
+for &lt;code&gt;binfmt&lt;/code&gt; into &amp;ldquo;Docker for Mac&amp;rdquo;. And as long as there is the right Qemu interpreter
+&lt;code&gt;qemu-arm-static&lt;/code&gt; (which is an Intel binary itself) placed in the ARM container,
+this container can be executed, or better emulated, even an a foreign CPU architecture.&lt;/p&gt;
+
+&lt;p&gt;Now I can clearly imagine to use &amp;ldquo;Docker for Mac&amp;rdquo; as part of a new Docker-centric workflow
+to build IoT containers directly on my Mac. Development and testing can be done fast and
+efficiently on the developers machine and then deploying and running the IoT containers
+on the target device. A few months ago such an idea sounds pretty crazy and unbelievable -
+but now it&amp;rsquo;s coming true soon.&lt;/p&gt;
+
+&lt;p&gt;Special thanks to Anil, Justin and all the other great guys at the Docker engineering
+team to make this magic true.&lt;/p&gt;
+
+&lt;h2 id=&#34;key-takeaways:10b72799563d55724d4550d1181f06ee&#34;&gt;Key Takeaways&lt;/h2&gt;
+
+&lt;p&gt;After this first and fast walk-through, I guess you&amp;rsquo;re even more curious and you&amp;rsquo;d
+like to use &amp;ldquo;Docker for Mac&amp;rdquo; by yourself. So in the meantime I&amp;rsquo;ll just summarize the
+key points what impressed me most about this great new release.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;installing &amp;ldquo;Docker for Mac&amp;rdquo; was pretty easy and slick&lt;/li&gt;
+&lt;li&gt;a single .dmg media with 90 MByte only&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Docker for Mac&amp;rdquo; is a real native OS X application&lt;/li&gt;
+&lt;li&gt;there are absolutely no other external resources or dependencies to install&lt;/li&gt;
+&lt;li&gt;integrates perfectly into your development workflow&lt;/li&gt;
+&lt;li&gt;downloading, installing and running the first Docker container takes a few minutes only&lt;/li&gt;
+&lt;li&gt;Alpine Linux is one of the best Linux distros for containers&lt;/li&gt;
+&lt;li&gt;ARM IoT containers can be developed and run even on a Mac&lt;/li&gt;
+&lt;li&gt;&amp;hellip;much more will be revealed in later blog posts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Let&#39;s build a PicoCluster for Docker Swarm</title>
@@ -4489,148 +4787,6 @@ to improve the build task even more.&lt;/p&gt;
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this tutorial at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Getting Docker running on a high-end 64-bit ARM gaming console for fun and profit</title>
-      <link>http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</link>
-      <pubDate>Mon, 28 Dec 2015 09:00:00 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</guid>
-      <description>
-
-&lt;p&gt;I don&amp;rsquo;t really know how this happened. Again. :(&lt;br /&gt;
-Somehow over and over again these little ARM devices and maker devboards end up on my desk.&lt;/p&gt;
-
-&lt;p&gt;So what is it this time?&lt;/p&gt;
-
-&lt;p&gt;Well, look at this beauty because words cannot even begin to describe it:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Alright, start breathing again.&lt;/p&gt;
-
-&lt;p&gt;It is called the &lt;a href=&#34;http://shield.nvidia.com&#34;&gt;Nvidia ShieldTV&lt;/a&gt; and it&amp;rsquo;s meant to be a media center.
-Besides, it is one of the first Android gaming consoles that actually is worthy of the name.&lt;/p&gt;
-
-&lt;p&gt;It would be a really great Christmas present for my son. But that is purely hypothetical and he is totally out of luck here.&lt;/p&gt;
-
-&lt;p&gt;Why? Well, because the Nvidia Tegra X1 CPU is one of the first &lt;strong&gt;64-bit ARM CPU&amp;rsquo;s&lt;/strong&gt; that can be bought &lt;strong&gt;now&lt;/strong&gt; and it is even &lt;strong&gt;affordable&lt;/strong&gt; with a price tag well under 200 bucks.&lt;/p&gt;
-
-&lt;p&gt;Being both Dieter and part of the Hypriot crew it should be clear now where this is heading, right?
-As you all know Docker pirates love to be ARMed with little explosive stuff - and it doesn&amp;rsquo;t get more explosive than the Nvidia ShieldTV.&lt;/p&gt;
-
-&lt;p&gt;So my son won&amp;rsquo;t get to play any games soon because &lt;strong&gt;I need&lt;/strong&gt; to get Docker running on this little beauty.
-A device engineered for performance and made to game. So, let&amp;rsquo;s start playing&amp;hellip;&lt;/p&gt;
-
-&lt;h3 id=&#34;how-it-all-started:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;How it all started&lt;/h3&gt;
-
-&lt;p&gt;This spring, I was really happy to see Jen-Hsun Huang, CEO of Nvidia Corp. announcing a great new &lt;a href=&#34;https://www.youtube.com/watch?v=1q30y_pfz5Q&#34;&gt;gaming console&lt;/a&gt; - the &lt;a href=&#34;http://shield.nvidia.com/android-tv&#34;&gt;Nvidia ShieldTV&lt;/a&gt;.
-It&amp;rsquo;s basically a 4K AndroidTV gaming machine and SmartTV device for the living room that easily connects to your big TV screen.&lt;/p&gt;
-
-&lt;p&gt;This device has some remarkable features and performance specs. The hardware is based upon the new &lt;a href=&#34;http://www.nvidia.com/object/tegra-x1-processor.html&#34;&gt;Nvidia Tegra X1&lt;/a&gt; chip with an incredible CPU/GPU power of more than 1 TeraFLOPs of performance. This is an ARMv8 (64-bit) processor with eight cores in a big-little configuration (4x A57 1.9GHz + 4x A53) and 3 Gbyte of memory.
-For fast and efficient graphics, Nvidia has included 256 Maxwell GPU cores as well.&lt;/p&gt;
-
-&lt;p&gt;Looking at the Tegra X1 chip, it&amp;rsquo;s dominated by the 256x CUDA GPU cores. Can you find the CPU cores? They are pretty hard to find. ;-)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;All in all, this device has a lot of CPU power and an incredible amount of GPU power as well - especially for a low-cost device &lt;a href=&#34;http://www.amazon.com/NVIDIA-SHIELD-Remote/dp/B013HJ13V0/ref=sr_1_3?ie=UTF8&amp;amp;qid=1451218402&amp;amp;sr=8-3&amp;amp;keywords=nvidia+shield&#34;&gt;at just $199.99&lt;/a&gt;.
-It is easy to imagine that the ShieldTV could be used for so much more than just simple media streaming and gaming.&lt;/p&gt;
-
-&lt;p&gt;But how?&lt;/p&gt;
-
-&lt;h3 id=&#34;in-the-beginning-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;In the beginning there was &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;hellip; Android&lt;/strong&gt;. Yeah, that is the strange operating system from Google that comes preinstalled with the Nvidia ShieldTV.&lt;/p&gt;
-
-&lt;p&gt;Android is OK for running the ShieldTV as a media center or gaming console, but for using it as general purpose desktop computer, another operating system would be much more convenient.
-Linux for instance - if we were only able to hack the ShieldTV and install a Linux system on it, we would open it up for a much broader range of use cases.&lt;/p&gt;
-
-&lt;p&gt;Alright, I would be content with Docker for a start.&lt;/p&gt;
-
-&lt;p&gt;It turned out that this is everything but easy.&lt;/p&gt;
-
-&lt;h3 id=&#34;then-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;Then there was &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;hellip; Ubuntu&lt;/strong&gt;. A few weeks ago I was able to install a basic Ubuntu 14.04 provided by Nvidia for their development boards.
-This so called &lt;a href=&#34;https://developer.nvidia.com/embedded/linux-tegra&#34;&gt;Nvidia Linux For Tegra (L4T)&lt;/a&gt; is running a 64-bit kernel, but does only provide a 32-bit root file system.
-Nvidia really? What a bummer. Hopefully they will change this in the future.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Later on, I created a Debian Jessie root file system directly from upstream, which is compiled for the ARM64 architecture.
-Combining the standard Nvidia 64-bit kernel and a Debian Jessie root file system, I am able to boot the ShieldTV into a pure 64-bit Linux system - HELL YEAH, that&amp;rsquo;s it!&lt;/p&gt;
-
-&lt;p&gt;Building the basic root file system was easy, but fixing all the network issues and Systemd settings was a real challenge.
-Fortunately I got a lot of help from Andreas (another member of our Hypriot crew), who managed to fix them all.&lt;/p&gt;
-
-&lt;h3 id=&#34;and-after-some-more-hard-work-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;And after some more hard work there was &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;hellip; HypriotOS&lt;/strong&gt;. As a result the ShieldTV is now booting into a pure 64-bit environment in less than ten seconds.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;As you can see the Nvidia ShieldTV is running our new 64-bit HypriotOS system on four CPU cores and has almost three gigabyte of memory available.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&#34;in-the-end-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;In the end there was &amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;hellip; Docker&lt;/strong&gt;. This is the final piece that I wanted to get running. A first step in this direction is to get &lt;strong&gt;Go 1.5.1&lt;/strong&gt; and its build dependencies compiled.
-After that it was a walk in the park to get the latest &lt;strong&gt;Docker v1.10.0-dev&lt;/strong&gt; compiled.&lt;/p&gt;
-
-&lt;p&gt;The only annoying thing that remains right now is that we still have an old 3.10.61 kernel that is not optimized for running Docker.&lt;/p&gt;
-
-&lt;h3 id=&#34;damn-it-the-last-20-are-always-the-toughest:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;Damn it! The last 20% are always the toughest&amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;The last few days I tried to build a custom Linux kernel for the ShieldTV that has all the right kernel settings for Docker enabled.
-But I had no luck at all.&lt;/p&gt;
-
-&lt;p&gt;I was able to cross-compile a lot of different generic kernels for ARM64, but none of them were able to boot successfully on the ShieldTV.
-And as you can imagine, debugging some kernel and boot issues without having a serial or UART console to get early boot messages, one is easily lost.&lt;/p&gt;
-
-&lt;p&gt;Enabling different kernel settings, building the kernel, flashing it and then trying to boot it was a really difficult and time consuming process.
-Yesterday I was finally lucky enough to get almost all of the important kernel settings for Docker working im my custom 3.10.61 Linux kernel.
-Honestly, this is quite an old kernel version and far from being perfect for Docker but it works for now and the Docker Engine is running the first time on this great device!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;So let&amp;rsquo;s spin up a Docker image or two! Funny enough even a Docker image that was built for the Raspberry Pi can run on ARM64.
-Who can remember it? This is exactly the same web server container I was demoing live on stage at &lt;a href=&#34;http://blog.hypriot.com/post/dockercon2015/&#34;&gt;DockerCon 2015 in San Francisco&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Maybe it is more interesting to run a real ARM64 Docker image to proof that our ARM 64-bit Docker engine is working just fine.
-So here we go&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;That is already pretty impressive, but there is still a lot to do.&lt;/p&gt;
-
-&lt;p&gt;In the spirit of HypriotOS we want to deliver an easy out-of-the-box experience with the latest and greatest of software components.
-This means we need a really easy way to flash and install HypriotOS on the ShieldTV similar to how we do it for the Raspberry Pi.
-And all the included components should be really up-to-date: the Linux kernel (4.x) and of course all of the Docker tools as well.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Maybe there are some of you who - after reading this article - want to get started hacking on the ShieldTV, too.
-We really would appreciate getting some help here to move faster.
-That&amp;rsquo;s why we will publish the technical details in the coming weeks, so you can have a look and start hacking yourself.&lt;/p&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Andreas &lt;a href=&#34;https://twitter.com/firecyberice&#34;&gt;@firecyberice&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
