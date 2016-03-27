@@ -270,9 +270,9 @@ embedded in &amp;ldquo;Docker for Mac&amp;rdquo;.&lt;/p&gt;
 &lt;/p&gt;
 
 &lt;p&gt;This is possible because the Docker engineers have already included the Linux kernel support
-for &lt;code&gt;binfmt&lt;/code&gt; into &amp;ldquo;Docker for Mac&amp;rdquo;. And as long as there is the right Qemu interpreter
+for &lt;code&gt;binfmt_misc&lt;/code&gt; into &amp;ldquo;Docker for Mac&amp;rdquo;. And as long as there is the right Qemu interpreter
 &lt;code&gt;qemu-arm-static&lt;/code&gt; (which is an Intel binary itself) placed in the ARM container,
-this container can be executed, or better emulated, even an a foreign CPU architecture.&lt;/p&gt;
+this container can be executed, or better emulated, even on a foreign CPU architecture.&lt;/p&gt;
 
 &lt;p&gt;Now I can clearly imagine to use &amp;ldquo;Docker for Mac&amp;rdquo; as part of a new Docker-centric workflow
 to build IoT containers directly on my Mac. Development and testing can be done fast and
