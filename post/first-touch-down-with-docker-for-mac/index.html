@@ -74,7 +74,7 @@
     <span class="post-date">Sun, Mar 27, 2016</span>
     
 
-<p>A few days ago, Docker has just announced a closed BETA program for their new
+<p>A few days ago, Docker has announced a closed BETA program for their new
 applications &ldquo;Docker for Mac&rdquo; and &ldquo;Docker for Windows&rdquo;. These apps are meant to
 simplify the usage of Docker containers for every developer even more. They try
 to lower the barrier to install and use Docker on your desktop and laptop computers
@@ -108,7 +108,7 @@ soon. So, please be patient until you&rsquo;ll receive an invitation email with 
 detailed instructions and a personal access key.</p>
 
 <p>For this blog post, I&rsquo;ll show you how easy it is to install and use Docker on OS X.
-And I guess, we&rsquo;ll write another post later for all the curious Windows users too.</p>
+And I guess, we&rsquo;ll write another post later for all the curious Windows users,  too.</p>
 
 <h2 id="download-and-install-docker-for-mac:10b72799563d55724d4550d1181f06ee">Download and install &ldquo;Docker for Mac&rdquo;</h2>
 
@@ -140,7 +140,7 @@ personal invite token.
 </p>
 
 <p>The Docker app needs to additionally install a network helper and requests for privileges
-to install it.
+to do so.
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg" alt="Docker for Mac" />
 </p>
 
@@ -148,42 +148,41 @@ to install it.
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg" alt="Docker for Mac" />
 </p>
 
-<p>Success, the Docker app is installed and you can easily find and access it with
+<p>Success, the Docker app is installed and you can easily find and access it by
 clicking on the little neat whale icon.
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg" alt="Docker for Mac" />
 </p>
 
 <h2 id="using-docker-for-mac-the-first-time:10b72799563d55724d4550d1181f06ee">Using &ldquo;Docker for Mac&rdquo; the first time</h2>
 
-<p>To use Docker we&rsquo;ll just start a terminal window and using the Docker CLI to access
+<p>To use Docker we&rsquo;ll just start a terminal window and use the Docker CLI to access
 the local Docker Engine.</p>
 
-<p>Getting the version of the Docker command.
+<p>First, get the version of the Docker command:
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg" alt="Docker for Mac" />
 </p>
 
-<p>Determine the versions of the Docker Client and the Docker Engine.
+<p>Determine the versions of the Docker Client and the Docker Engine:
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg" alt="Docker for Mac" />
 </p>
 
-<p>Display some more detailed informations about the installed Docker software.
+<p>Display some more detailed informations about the installed Docker software:
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg" alt="Docker for Mac" />
 </p>
 
 <h2 id="let-s-start-a-real-docker-container:10b72799563d55724d4550d1181f06ee">Let&rsquo;s start a real Docker container</h2>
 
-<p>First, we&rsquo;ll check how our host operating system looks like.</p>
+<p>First, we&rsquo;ll check how our host operating system looks like:</p>
 
 <pre><code>uname -a
 Darwin demo.local 15.4.0 Darwin Kernel Version 15.4.0: Fri Feb 26 22:08:05 PST 2016; root:xnu-3248.40.184~3/RELEASE_X86_64 x86_64
 </code></pre>
 
-<p>As already expected we see our host OS is OS X or <code>Darwin</code> with a kernel version <code>15.4.0</code>
-and our CPU architecture is <code>x86_64</code> which indicates we&rsquo;re running on an Intel-based
+<p>As already expected we see our host OS is OS X or <code>Darwin</code> with a kernel version <code>15.4.0</code>. Our CPU architecture is <code>x86_64</code>, which indicates that we&rsquo;re running on an Intel-based
 64-bit CPU.</p>
 
 <p>Second, let&rsquo;s start a basic Linux container and here we&rsquo;re using a Debian standard distro
-for now. This will take a few second because the Docker Engine have to fetch/download
+for now. This will take a few second because the Docker Engine has to fetch/download
 the Docker image <code>debian</code> from the Docker Hub.</p>
 
 <pre><code>docker run --rm -ti debian
@@ -196,7 +195,7 @@ Status: Downloaded newer image for debian:latest
 root@9473484ea965:/#
 </code></pre>
 
-<p>As you can see, we do have now an interactive bash prompt within a running Debian
+<p>As you can see, we now do have an interactive bash prompt within a running Debian
 Linux container.</p>
 
 <pre><code>root@9473484ea965:/# uname -a
@@ -214,9 +213,9 @@ BUG_REPORT_URL=&quot;https://bugs.debian.org/&quot;
 root@9473484ea965:/#
 </code></pre>
 
-<p>I&rsquo;d like to start a really tiny Linux container next, which is starting even
+<p>I&rsquo;d like to start a really tiny Linux container next, which starts even
 faster than Debian. Alpine Linux is meant to be super-small and it brings a lot
-of advantages into the container world too.</p>
+of advantages into the container world, too.</p>
 
 <p>Starting an interactive Alpine container is pretty much the same as Debian, but we
 have to use a Bourne shell instead of bash.</p>
@@ -230,7 +229,7 @@ Status: Downloaded newer image for alpine:latest
 / #
 </code></pre>
 
-<p>You can see, this container is running on the same kernel version like before, but
+<p>As you can see, this container is running on the same kernel version like before, but
 uses a completely different Linux distribution.</p>
 
 <pre><code>/ # uname -a
@@ -246,7 +245,7 @@ BUG_REPORT_URL=&quot;http://bugs.alpinelinux.org&quot;
 / #
 </code></pre>
 
-<p>Now, let&rsquo;s look at the details of these both Docker containers. Both are completes
+<p>Now, let&rsquo;s look at the details of these both Docker containers. Both are complete
 Linux systems, but with a substantial difference in size.</p>
 
 <pre><code>docker images
@@ -256,73 +255,71 @@ debian              latest              f50f9524513f        3 weeks ago         
 </code></pre>
 
 <p>Alpine Linux is damn small in size and thus the Docker images built upon Alpine
-are extremely small too and really faster to download. Another major advantage is the
-security model of Alpine Linux, which reduces the attack vector dramatically and
+are extremely small as well, and much faster to download. Another major advantage is the
+security model of Alpine Linux, which reduces the attack surface dramatically and
 provides faster and easier security updates as well.</p>
 
-<p>With this first experiments with &ldquo;Docker for Mac&rdquo; we clearly see, we can run Linux
-commands inside the Docker containers with a Linux OS and a recent kernel version 4.1.19,
-which is indeed different to our host operating system OS X.</p>
+<p>This experiment with &ldquo;Docker for Mac&rdquo; clearly demonstrates that we can run Linux
+commands inside Docker containers with a Linux OS and a recent kernel version 4.1.19. This is indeed different to our host operating system OS X.</p>
 
 <p>That&rsquo;s pure Docker container magic: running a Linux container seamlessly on our
 development machine, here on a MacBook Pro (Retina, 15-inch, Mid 2014).</p>
 
 <h2 id="the-magic-behind-the-scenes:10b72799563d55724d4550d1181f06ee">The Magic behind the scenes</h2>
 
-<p>As I shown you in the screenshots above, our host operating system where the Docker
-Client is running is <code>darwin/amd64</code> or OS X, but the Docker Engine runs on <code>linux/amd64</code>.</p>
+<p>As I&rsquo;ve shown you in the screenshots above, our host operating system, where the Docker
+Client is running, is <code>darwin/amd64</code> or OS X, but the Docker Engine runs on <code>linux/amd64</code>.</p>
 
 <p>Maybe you&rsquo;re wondering how this even can be possible, right?<br />
-The answer is quite easy, &ldquo;Docker for Mac&rdquo; is shipping it&rsquo;s own lightweight hyperviser
-called <a href="http://www.xhyve.org/">xhyve</a> which itself is a port of the BSD hyperviser
+The answer is quite easy, &ldquo;Docker for Mac&rdquo; is shipping it&rsquo;s own lightweight hypervisor
+called <a href="http://www.xhyve.org/">xhyve</a>, which itself is a port of the BSD hypervisor
 <a href="http://www.bhyve.org/">bhyve</a> to OS X.</p>
 
 <p>The engineers at Docker have greatly enhanced xhyve to enable an optimized usage
-for running Docker containers efficiently on OS X. Inside of the xhyve hyperviser
-the Docker Engine is running in a tiny small Linux VM which is based upon the
+to efficiently run Docker containers on OS X. Inside of the xhyve hypervisor,
+the Docker Engine is running in a tiny small Linux VM, which is based upon the
 <a href="http://www.alpinelinux.org">Alpine Linux</a> distribution. With this great combination
 of outstanding technologies we as users get the feeling to run Docker containers
 natively on our Mac.</p>
 
-<p>Honestly there are even more great technical details packed into the new &ldquo;Docker for Mac&rdquo;
-release, but we&rsquo;ll keep this for a later more advanced technical blog post.</p>
+<p>Honestly, there are even more great technical details packed into the new &ldquo;Docker for Mac&rdquo;
+release, but we&rsquo;ll keep them for a later more advanced technical blog post.</p>
 
 <h2 id="there-is-another-big-arm-surprise:10b72799563d55724d4550d1181f06ee">There is another big ARM surprise</h2>
 
-<p>With the public announcement of &ldquo;Docker for Mac&rdquo; I received an <a href="https://twitter.com/avsm/status/713010884596080640">Easter Egg tweet</a> from one
+<p>With the public announcement of &ldquo;Docker for Mac&rdquo;, I received an <a href="https://twitter.com/avsm/status/713010884596080640">Easter Egg tweet</a> from one
 of the Docker engineers, Anil Madhavapeddy, that they&rsquo;ve just included another cool
-feature which attracts me most. He promised I could even run the Docker images which
+feature, which attracts me most. He promised I could even run the Docker images, which
 I built for an IoT device like a Raspberry Pi on my Mac now!</p>
 
 <p>No way, that sounds to good to be true. And mainly because the Raspberry Pi uses
 an ARM CPU, which cannot be executed on an Intel-based Mac, right?</p>
 
-<p>But let&rsquo;s test this too and I&rsquo;ll select one of my most famous Docker containers,
-the webserver I&rsquo;ve shown at DockerCon 2015 San Francisco,CA last year in June.
-More details can be found in a dedicated blog post about the <a href="http://blog.hypriot.com/post/dockercon2015/">Hypriot-Demo and challenge at DockerCon 2015</a>.</p>
+<p>To test this, I&rsquo;ll select one of my most famous Docker containers:
+the webserver I&rsquo;ve presented at DockerCon 2015 San Francisco, CA, last year in June (more details can be found in a dedicated blog post about the <a href="http://blog.hypriot.com/post/dockercon2015/">Hypriot-Demo and challenge at DockerCon 2015</a>).</p>
 
-<p>Ok, here we go. Let&rsquo;s run an ARM container on a Mac.</p>
+<p>Ok, here we go. Let&rsquo;s run an ARM container on a Mac:</p>
 
 <p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg" alt="Docker for Mac" />
 </p>
 
-<p>As you can see, it doesn&rsquo;t work that way, but&hellip;<br />
+<p>As you can see, it doesn&rsquo;t work that way&hellip;<br />
 &hellip;hmmm, but maybe with some more magic Docker spells it could be done.</p>
 
 <p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg" alt="Docker for Mac" />
 </p>
 
-<p>And this is were all the magic happens. We&rsquo;re just bind-mounting a special binary
+<p>And this is where all the magic happens. We&rsquo;re just bind-mounting a special binary
 into our original ARM-based container. Again, we don&rsquo;t change the original Docker
-image at all to get this done. In the end we are really able to run an ARM container
-which was built on a Raspberry Pi now on an Intel-based Mac - just with the help
+image to get this done. In the end we are really able to run an ARM container,
+which was built on a Raspberry Pi, now on an Intel-based Mac - just with the help
 of some <a href="https://twitter.com/quintus23m/status/713523016836231171">fantastic Docker fu</a>
 embedded in &ldquo;Docker for Mac&rdquo;.</p>
 
 <p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg" alt="Docker for Mac" />
 </p>
 
-<p>On a last proof, we clearly see we&rsquo;re running the original ARM container from June 2015.
+<p>As a last proof, we check with <code>docker ps</code> that we&rsquo;re running the original ARM container from June 2015:
 <img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg" alt="Docker for Mac" />
 </p>
 
@@ -334,7 +331,7 @@ this container can be executed, or better emulated, even on a foreign CPU archit
 <p>Now I can clearly imagine to use &ldquo;Docker for Mac&rdquo; as part of a new Docker-centric workflow
 to build IoT containers directly on my Mac. Development and testing can be done fast and
 efficiently on the developers machine and then deploying and running the IoT containers
-on the target device. A few months ago such an idea sounds pretty crazy and unbelievable -
+on the target device. A few months ago such an idea has sound pretty crazy and unbelievable -
 but now it&rsquo;s coming true soon.</p>
 
 <p>Special thanks to Anil, Justin and all the other great guys at the Docker engineering
@@ -348,12 +345,12 @@ key points what impressed me most about this great new release.</p>
 
 <ul>
 <li>installing &ldquo;Docker for Mac&rdquo; was pretty easy and slick</li>
-<li>a single .dmg media with 90 MByte only</li>
+<li>a single <code>.dmg</code> media with 90 MByte only</li>
 <li>&ldquo;Docker for Mac&rdquo; is a real native OS X application</li>
 <li>there are absolutely no other external resources or dependencies to install</li>
-<li>integrates perfectly into your development workflow</li>
+<li>&ldquo;Docker for Mac&rdquo; integrates perfectly into your development workflow</li>
 <li>downloading, installing and running the first Docker container takes a few minutes only</li>
-<li>Alpine Linux is one of the best Linux distros for containers</li>
+<li>for tiny containers, Alpine Linux is one of the best Linux distros</li>
 <li>ARM IoT containers can be developed and run even on a Mac</li>
 <li>&hellip;much more will be revealed in later blog posts</li>
 </ul>
