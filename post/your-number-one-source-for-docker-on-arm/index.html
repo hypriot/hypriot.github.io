@@ -86,13 +86,13 @@ Installing or updating Docker or other Docker goodies like Docker-Compose from t
 <p><img src="/images/packagecloud/packagecloud_io_wide.jpg" alt="Raspberry Pi Workshop in Brussels" />
 </p>
 
-<p>Packagecloud.io is a really great service for hosting different types of packages (DEBs, RPM, Ruby Gems).
+<p>Packagecloud.io is a really great service for hosting different types of packages (DEBs, RPMs, Ruby Gems).
 You get detailed download/usage statistics and can manage all your packages easily with a Web-GUI or with an API.</p>
 
 <p>The last point was what convinced us to use packagecloud.io as it allows us to upload our packages directly from our Continuous Integration systems.
 Many popular CI systems offer build-in packagecloud support - for instance Travis or Circle-CI.</p>
 
-<p>Our packagecloud repository is conveniently names &ldquo;Schatzkiste&rdquo; and supports Debian-based Linux distributions.</p>
+<p>Our packagecloud repository is conveniently named &ldquo;Schatzkiste&rdquo; and supports Debian-based Linux distributions.</p>
 
 <p>To use it you need to configure &lsquo;apt&rsquo; first by executing:</p>
 
@@ -101,7 +101,7 @@ Many popular CI systems offer build-in packagecloud support - for instance Travi
 
 <p>If you want to know what this script does you can look up the <a href="https://packagecloud.io/Hypriot/Schatzkiste/install">source of this script</a>.</p>
 
-<p>It installs &lsquo;apt-transport-https&rsquo; for connecting securely to our repository, adds the packagecloud gpg key to &lsquo;apt&rsquo; and then adds our &lsquo;Schatzkiste&rsquo;-repository sources to &lsquo;/etc/apt/sources.list.d/Hypriot_Schatzkiste.list&rsquo;.<br />
+<p>It installs &lsquo;apt-transport-https&rsquo; for connecting securely to our repository, adds the packagecloud GPG key to &lsquo;apt&rsquo; and then adds our &lsquo;Schatzkiste&rsquo;-repository sources to &lsquo;/etc/apt/sources.list.d/Hypriot_Schatzkiste.list&rsquo;.<br />
 Afterwards it updates the package sources via &lsquo;apt-get update&rsquo;.</p>
 
 <p>From there you are ready to search for the latest Docker via</p>
@@ -134,7 +134,7 @@ docker-hypriot |    1.5.0-7 | https://packagecloud.io/Hypriot/Schatzkiste/debian
 
 <p>So I want to close this blog post with a huge thank you to the packagecloud.io guys as they are hosting our packages for free.</p>
 
-<p>I can really recommend their service as it can be really tedious and time-consuming process to setup your own repository properly - I have been there myself.</p>
+<p>I highly recommend their service as it can be so tedious and time-consuming to setup your own repository properly - I have been there myself.</p>
 
 <p>As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.</p>
 
