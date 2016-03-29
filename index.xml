@@ -6,8 +6,106 @@
     <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Mar 2016 22:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 29 Mar 2016 17:20:34 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Close Encounters of the Third Kind, or Microsoft Windows meets Docker ARM Containers for IoT</title>
+      <link>http://blog.hypriot.com/post/close-encounters-of-the-third-kind/</link>
+      <pubDate>Tue, 29 Mar 2016 17:20:34 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/close-encounters-of-the-third-kind/</guid>
+      <description>
+
+&lt;p&gt;Running an ARM-based Docker container for IoT applications directly on Microsoft Windows
+looks like an unbelievable &lt;strong&gt;extraterrestrial technology&lt;/strong&gt; from outer space.&lt;/p&gt;
+
+&lt;p&gt;This cannot be true, it must be a fake, right?&lt;br /&gt;
+Or, is this maybe just a &lt;strong&gt;cheap magic trick&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/close-encounters-of-the-third-kind/docker4win-arm-webpage.jpg&#34; alt=&#34;Docker for Windows&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Nope, believe me, that&amp;rsquo;s really true&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;behind-the-scenes:41ce06d9c70eae57025ae829633db5ae&#34;&gt;Behind the scenes&lt;/h2&gt;
+
+&lt;p&gt;As I showed in my last blog post about the &lt;a href=&#34;http://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/&#34;&gt;First Touch Down with Docker for Mac&lt;/a&gt;,
+&amp;ldquo;Docker for Mac&amp;rdquo; uses an Alpine Linux VM under the hood with the capability of emulating
+ARM binaries on Intel CPUs. Because of &amp;ldquo;Docker for Windows&amp;rdquo; uses exactly the same
+Alpine Linux in a Hyper-V virtual machine, this should work on Windows 10, too.&lt;/p&gt;
+
+&lt;p&gt;The only problem here is, that the bind-mounting of a single binary doesn&amp;rsquo;t work
+right now on Windows. I guess this will be fixed in a later release for sure. But
+we can easily prepare an ARM-based Docker container to make the magic happen.&lt;/p&gt;
+
+&lt;p&gt;We just have to put the &lt;a href=&#34;https://en.wikipedia.org/wiki/QEMU&#34;&gt;QEMU&lt;/a&gt; emulator binary
+into the Docker container, and as long as we
+place it at the correct path &lt;code&gt;/usr/bin/qemu-arm-static&lt;/code&gt;, this should work. The easiest
+way to include the binary to the correct folder is to create a tar archive and use
+the ADD command in the Dockerfile.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tar vtf qemu-arm-static.tar
+drwxr-xr-x  0 dieter staff       0 Mar 28 18:34 usr/
+drwxr-xr-x  0 dieter staff       0 Mar 28 18:34 usr/bin/
+-rwxr-xr-x  0 dieter staff 2899840 Mar 28 18:34 usr/bin/qemu-arm-static
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;dockerfile:41ce06d9c70eae57025ae829633db5ae&#34;&gt;Dockerfile&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM hypriot/rpi-busybox-httpd
+ADD qemu-arm-static.tar /
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this easy preparation we&amp;rsquo;re able to start an ARM-based Docker container on
+Windows 10 with two steps only.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt; Create the modified Docker image&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker build -t rpi-busybox-httpd .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt; Start the QEMU-enabled Docker container&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 rpi-busybox-httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here in this screenshot you can see all the necessary steps we need, there is really
+nothing else to do.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/close-encounters-of-the-third-kind/docker4win-arm-container.jpg&#34; alt=&#34;Docker for Windows&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Voilà&lt;/strong&gt; - that was the magic trick which can be applied to almost all ARM-based Docker
+images to make them run in &amp;ldquo;Docker for Windows&amp;rdquo; and &amp;ldquo;Docker for Mac&amp;rdquo; even on an Intel-based
+CPU architecture.&lt;/p&gt;
+
+&lt;h2 id=&#34;watch-the-results:41ce06d9c70eae57025ae829633db5ae&#34;&gt;Watch the results&lt;/h2&gt;
+
+&lt;p&gt;&amp;ldquo;Docker for Windows&amp;rdquo; publishes the Docker Engine network with the local network name
+&lt;code&gt;docker&lt;/code&gt;. Thus to access the ARM web server, which is running inside of a Linux container,
+ we just have to point our preferred web browser to &lt;code&gt;http://docker/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/close-encounters-of-the-third-kind/docker4win-arm-webpage2.jpg&#34; alt=&#34;Docker for Windows&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;key-takeaways:41ce06d9c70eae57025ae829633db5ae&#34;&gt;Key Takeaways&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Docker for Windows&amp;rdquo; uses Windows native hypervisor Hyper-V&lt;/li&gt;
+&lt;li&gt;the Docker Engine is running in a tiny Alpine Linux VM&lt;/li&gt;
+&lt;li&gt;ARM-based Docker containers can be easily enabled with QEMU emulator&lt;/li&gt;
+&lt;li&gt;Docker works great on Windows 10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Are you curious now and want to get in touch with &amp;ldquo;Docker for Windows&amp;rdquo; by yourself?
+Then you can register for the Docker BETA program at &lt;a href=&#34;https://beta.docker.com&#34;&gt;https://beta.docker.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Your No. 1 source for Docker on ARM</title>
@@ -3683,100 +3781,6 @@ Name: d90d49c65205
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/quintus23m&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Run Docker on a Raspberry Pi 3 with onboard WiFi</title>
-      <link>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</link>
-      <pubDate>Sat, 05 Mar 2016 16:04:12 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</guid>
-      <description>
-
-&lt;p&gt;Today morning we finally got our Raspberry Pi 3&amp;rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/thepihut-delivery.jpg&#34; alt=&#34;ThePiHut delivery&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.&lt;/p&gt;
-
-&lt;p&gt;But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.&lt;/p&gt;
-
-&lt;p&gt;In the meantime for all the impatient out there I&amp;rsquo;ll give you a short intro how to run the latest Docker Engine on the standard Raspbian SD image.&lt;/p&gt;
-
-&lt;h2 id=&#34;download-raspbian-lite:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Download Raspbian LITE&lt;/h2&gt;
-
-&lt;p&gt;Just download and flash the Raspbian LITE image from &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt; or use our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;&lt;code&gt;flash&lt;/code&gt; script&lt;/a&gt; with this command.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flash https://downloads.raspberrypi.org/raspbian_lite_latest
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now boot your Raspberry Pi 3 and log into it with user &lt;code&gt;pi&lt;/code&gt; and the password &lt;code&gt;raspberry&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh pi@raspberrypi.local
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The standard Raspbian image does not resize the SD filesystem automatically.&lt;/p&gt;
-
-&lt;h2 id=&#34;add-the-overlay-kernel-module:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Add the overlay kernel module&lt;/h2&gt;
-
-&lt;p&gt;Before we resize and reboot the Pi we also customize a little bit. The overlay kernel module must be loaded automatically while booting, so we just add it with the next command.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;overlay&amp;quot; | sudo tee -a /etc/modules
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;customize-wifi:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Customize WiFi&lt;/h2&gt;
-
-&lt;p&gt;If you want to run your Docker with the onboard WiFi, just add your SSID and pre-shared key with the next command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;network={
-  ssid=&amp;quot;your-ssid&amp;quot;
-  psk=&amp;quot;your-psk&amp;quot;
-}&#39; | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;resize-filesystem:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Resize filesystem&lt;/h2&gt;
-
-&lt;p&gt;Now we have to resize the filesystem to install Docker and have space for Docker images and containers. Start &lt;code&gt;raspi-config&lt;/code&gt; and follow the steps to resize your filesystem.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo raspi-config
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that let raspi-config reboot your Raspberry Pi.&lt;/p&gt;
-
-&lt;h2 id=&#34;cut-the-wires:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Cut the wires&lt;/h2&gt;
-
-&lt;p&gt;If you have added your WiFi settings, remove your network cable while rebooting. From now on you can connect to your Raspberry Pi 3 over the air.&lt;/p&gt;
-
-&lt;h2 id=&#34;install-docker:41cd8e8b967fec6fd9b7dfd6fb7de44e&#34;&gt;Install Docker&lt;/h2&gt;
-
-&lt;p&gt;After rebooting, eventually unplugging the network cable we have to install Docker. The Raspbian Jessie distribution also has a Docker package, but it is only Version 1.3.3. So we install the Hypriot&amp;rsquo;s Docker 1.10.2 instead.&lt;/p&gt;
-
-&lt;p&gt;Just log into your Raspberry Pi 3 again and install Docker with these commands.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh pi@raspberrypi.local
-sudo apt-get install -y apt-transport-https
-wget -q https://packagecloud.io/gpg.key -O - | sudo apt-key add -
-echo &#39;deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main&#39; | sudo tee /etc/apt/sources.list.d/hypriot.list
-sudo apt-get update
-sudo apt-get install -y docker-hypriot
-sudo systemctl enable docker
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you have a good setup until the next HypriotOS release is coming.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png&#34; alt=&#34;docker version&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And with the onboard WiFi it is now very easy to build some mobile Docker IoT projects.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg&#34; alt=&#34;docker over the air&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
