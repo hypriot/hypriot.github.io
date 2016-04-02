@@ -255,7 +255,7 @@ f6b11e9e4f07        hypriot/rpi-consul                                          
 
 &lt;p&gt;Everything so far looks good. So let&amp;rsquo;s get the final piece working by starting a web client that talks to our webserver.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ docker -H cl-master:2378 run -it --rm --net=my-net --env=&amp;quot;contraint:node==cl-node-2&amp;quot; hypriot/armhf-busybox wget -O- http://webserver/index.html
+&lt;pre&gt;&lt;code&gt;$ docker -H cl-master:2378 run -it --rm --net=my-net --env=&amp;quot;constraint:node==cl-node-2&amp;quot; hypriot/armhf-busybox wget -O- http://webserver/index.html
 Connecting to webserver (10.0.0.2:80)
 &amp;lt;html&amp;gt;
 &amp;lt;head&amp;gt;&amp;lt;title&amp;gt;Pi armed with Docker by Hypriot&amp;lt;/title&amp;gt;
