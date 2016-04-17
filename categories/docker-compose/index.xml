@@ -58,12 +58,14 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+&lt;p&gt;
+
+HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
 
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
-&lt;/pre&gt;&lt;/div&gt;
+
 &lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;

@@ -679,12 +679,14 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+&lt;p&gt;
+
+HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
 
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
-&lt;/pre&gt;&lt;/div&gt;
+
 &lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;
@@ -1534,12 +1536,14 @@ Killing rpinodehaproxyexample_webb_1...
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+&lt;p&gt;
+
+HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
 
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-rc2-1_armhf.deb
-&lt;/pre&gt;&lt;/div&gt;
+
 &lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with this shiny new toy.
@@ -1619,14 +1623,15 @@ We added the foundation for using Open vSwitch by adding the necessary kernel su
 
 &lt;p&gt;You can see for yourself by typing the following&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;HypriotOS: root@black-pearl in ~
+&lt;p&gt;
+HypriotOS: root@black-pearl in ~
 $ modprobe openvswitch
 HypriotOS: root@black-pearl in ~
 $ lsmod | grep openvswitch
 openvswitch            68194  0
 vxlan                  29211  1 openvswitch
 gre                     4069  1 openvswitch
-&lt;/pre&gt;&lt;/div&gt;
+
 &lt;/p&gt;
 
 &lt;p&gt;Be aware that you still need a working Open vSwitch Docker image that works for ARM.
@@ -1641,12 +1646,13 @@ This allows you to add for instance a USB Wifi Dongle and it will be recognized 
 
 &lt;p&gt;You can check if it worked by using &lt;strong&gt;lsusb&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ lsusb
+&lt;p&gt;
+
+$ lsusb
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n WLAN Adapter
-&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
 &lt;h4 id=&#34;wifi:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Wifi&lt;/h4&gt;
@@ -1656,8 +1662,10 @@ Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n W
 &lt;p&gt;The easiest way to get started with Wifi is on Mac with our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash script&lt;/a&gt;.
 This script does not only allow you to set Wifi configuration but it also allows you to fetch, configure and flash the SD card in one go.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip
-&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+
+flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip
+
 &lt;/p&gt;
 
 &lt;p&gt;If you cannot use our nifty flash tool you have to first boot your Pi with a network cable attached.
@@ -1666,30 +1674,32 @@ Afterwards run &lt;code&gt;occi&lt;/code&gt; at the command line and reboot.&lt;
 
 &lt;p&gt;After rebooting you should see a wlan-interface with an ip address assigned similar to this:&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ ip a
-1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN
+&lt;p&gt;
+
+$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
-2: eth0: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu 1500 qdisc pfifo_fast state DOWN qlen 1000
+2: eth0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc pfifo_fast state DOWN qlen 1000
     link/ether b8:27:eb:c0:df:1a brd ff:ff:ff:ff:ff:ff
     inet 192.168.178.83/24 brd 192.168.178.255 scope global eth0
        valid_lft forever preferred_lft forever
     inet6 fe80::ba27:ebff:fec0:df1a/64 scope link
        valid_lft forever preferred_lft forever
-3: wlan0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc mq state UP qlen 1000
+3: wlan0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP qlen 1000
     link/ether e8:4e:06:0b:bf:d8 brd ff:ff:ff:ff:ff:ff
     inet 192.168.178.144/24 brd 192.168.178.255 scope global wlan0
        valid_lft forever preferred_lft forever
     inet6 fe80::ea4e:6ff:fe0b:bfd8/64 scope link
        valid_lft forever preferred_lft forever
-4: docker0: &amp;lt;NO-CARRIER,BROADCAST,MULTICAST,UP&amp;gt; mtu 1500 qdisc noqueue state DOWN
+4: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN
     link/ether 56:84:7a:fe:97:99 brd ff:ff:ff:ff:ff:ff
     inet 172.17.42.1/16 scope global docker0
        valid_lft forever preferred_lft forever
-&lt;/pre&gt;&lt;/div&gt;
+
 &lt;/p&gt;
 
 &lt;h3 id=&#34;support-for-avahi-bonjour:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
@@ -1699,8 +1709,9 @@ There are many approaches to solve this problem but one of the easiest is with t
 
 &lt;p&gt;Now after booting up our SD card image you can just ssh into your Pi without finding out the IP address first.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$ ssh root@black-pearl.local
-root@black-pearl.local&amp;#39;s password:
+&lt;p&gt;
+$ ssh root@black-pearl.local
+root@black-pearl.local&#39;s password:
 Linux black-pearl 3.18.10-hypriotos-v7+ #2 SMP PREEMPT Sun Mar 29 13:13:41 UTC 2015 armv7l
 
 The programs included with the Debian GNU/Linux system are free software;
@@ -1712,7 +1723,6 @@ permitted by applicable law.
 Last login: Sun Mar 29 23:49:43 2015 from macbook
 HypriotOS: root@black-pearl in ~
 $
-&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;black-pearl&lt;/strong&gt; is the standard hostname your Pi gets after booting with our image.&lt;/p&gt;
