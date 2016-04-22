@@ -287,15 +287,15 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/crew/</loc>
-  </url>
-  
-  <url>
     <loc>http://blog.hypriot.com/downloads/</loc>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/crew/</loc>
   </url>
   
 </urlset>
