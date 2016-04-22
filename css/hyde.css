@@ -39,6 +39,13 @@ html {
     font-size: 16px;
   }
 }
+
+@media (max-device-width: 48rem) {
+  .edit-github {
+      visibility: hidden;
+  }
+}
+
 @media (min-device-width: 58rem) {
   html {
     font-size: 20px;
