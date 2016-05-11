@@ -445,7 +445,7 @@ Or there is a problem with the SD card which prevents the Raspberry Pi from boot
 &lt;p&gt;After you found out the IP address establish a connection to the Raspberry Pi with the ssh command.
 Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your Raspberry Pi.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ssh root@192.168.178.10
+&lt;pre&gt;&lt;code&gt;ssh pirate@192.168.178.10
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;When you are asked for the password type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;

@@ -270,7 +270,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 &lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;In the new window which just opened type &lt;code&gt;root&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
+&lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 

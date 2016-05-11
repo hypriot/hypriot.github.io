@@ -353,7 +353,7 @@ Or there is a problem with the SD card which prevents the Raspberry Pi from boot
 &lt;p&gt;After you found out the IP address establish a connection to the Raspberry Pi with the ssh command.
 Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your Raspberry Pi.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ssh root@192.168.0.27
+&lt;pre&gt;&lt;code&gt;ssh pirate@192.168.0.27
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;When you are asked for the password type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;
@@ -524,7 +524,7 @@ Or there is a problem with the SD card which prevents the Raspberry Pi from boot
 &lt;p&gt;After you found out the IP address establish a connection to the Raspberry Pi with the ssh command.
 Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your Raspberry Pi.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ssh root@192.168.178.10
+&lt;pre&gt;&lt;code&gt;ssh pirate@192.168.178.10
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;When you are asked for the password type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;
@@ -688,7 +688,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 &lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;In the new window which just opened type &lt;code&gt;root&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
+&lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 
