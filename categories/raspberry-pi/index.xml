@@ -17,7 +17,7 @@
       <guid>http://blog.hypriot.com/post/making-of-hypriotos/</guid>
       <description>
 
-&lt;p&gt;We recently released a new version of HypriotOS &amp;ldquo;Barbossa&amp;rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&amp;rsquo;s. Beginning with this release we have &lt;strong&gt;open sourced every step&lt;/strong&gt; to build each parts, from the kernel and root filesystem up to the SD card image.&lt;/p&gt;
+&lt;p&gt;Today we have released a new version of HypriotOS &amp;ldquo;Barbossa&amp;rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&amp;rsquo;s. Beginning with this release we have &lt;strong&gt;open sourced every step&lt;/strong&gt; to build each parts, from the kernel and root filesystem up to the SD card image.&lt;/p&gt;
 
 &lt;p&gt;We have also moved every build step out in the cloud to use the &amp;ldquo;programmable internet&amp;rdquo; to build and test everything with just a &lt;strong&gt;git push&lt;/strong&gt;.&lt;/p&gt;
 
