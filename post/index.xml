@@ -41,8 +41,8 @@ We also integrated the Hypriot Cluster-Lab into this release, which makes it rea
 &lt;li&gt;Docker Compose 1.7.1&lt;/li&gt;
 &lt;li&gt;Docker Machine 0.7.0&lt;/li&gt;
 &lt;li&gt;Docker Swarm 1.2.2&lt;/li&gt;
-&lt;li&gt;Cluster-Lab 0.2.8&lt;/li&gt;
-&lt;li&gt;device-init 0.1.5&lt;/li&gt;
+&lt;li&gt;Cluster-Lab 0.2.12&lt;/li&gt;
+&lt;li&gt;device-init 0.1.7&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;updated-docker-and-docker-tools:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Updated Docker and Docker-Tools&lt;/h2&gt;
