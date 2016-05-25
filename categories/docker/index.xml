@@ -6,8 +6,123 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2016 17:20:34 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 16 May 2016 04:00:00 +0000</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HypriotOS 0.8.0 Barbossa for Raspberry Pi 3</title>
+      <link>http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</link>
+      <pubDate>Mon, 16 May 2016 04:00:00 +0000</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</guid>
+      <description>
+
+&lt;p&gt;While it is quite hard to make something better that is already good, we feel that we were able to just do that with our latest release of HypriotOS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS is the easiest and fastest way to get you started with Docker on ARM and IoT devices.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is the perfect playground for your first steps with Docker and it allows you to move to advanced stuff like Docker Clustering without breaking a sweat, too.&lt;/p&gt;
+
+&lt;p&gt;This is possible because we included a lot of the tools that make the Docker ecosystem awesome - for instance Docker Compose or Docker Swarm - out of the box.
+We also integrated the Hypriot Cluster-Lab into this release, which makes it really easy and painless to set up complex Docker Clusters.&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &amp;hellip; :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-barbossa/iceberg.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
+
+&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/davidw/&#34;&gt;David&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;features-at-a-glance:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Features at a glance&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;support for Raspberry Pi Zero, 1, 2 and 3&lt;/li&gt;
+&lt;li&gt;Linux kernel 4.4.10&lt;/li&gt;
+&lt;li&gt;Docker Engine 1.11.1&lt;/li&gt;
+&lt;li&gt;Docker Compose 1.7.1&lt;/li&gt;
+&lt;li&gt;Docker Machine 0.7.0&lt;/li&gt;
+&lt;li&gt;Docker Swarm 1.2.2&lt;/li&gt;
+&lt;li&gt;Cluster-Lab 0.2.8&lt;/li&gt;
+&lt;li&gt;device-init 0.1.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;updated-docker-and-docker-tools:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Updated Docker and Docker-Tools&lt;/h2&gt;
+
+&lt;p&gt;Compared to our latest HypriotOS Berry 0.7 we did upgrade the Docker Engine to v1.11 which now has several binaries instead of one.
+Besides the original Docker binary there is now also a Containerd and a runC binary. Containerd is basically a supervisor for individual containers that are run by runC.&lt;/p&gt;
+
+&lt;p&gt;The main reasons for splitting up the Docker binary were the efforts of Docker to support the &lt;a href=&#34;https://www.opencontainers.org/&#34;&gt;standardization of container technology&lt;/a&gt; and to make it easier to maintain the existing technology stack.
+You can get a good overview about these changes in the &lt;a href=&#34;https://blog.docker.com/2016/04/docker-engine-1-11-runc/&#34;&gt;blog post&lt;/a&gt; announcing the release of Docker 1.11.&lt;/p&gt;
+
+&lt;p&gt;And there is also a very interesting deep dive into the details of those changes:&lt;/p&gt;
+
+&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/QL8F2MLCybo&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;full-raspberry-pi-3-support:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Full Raspberry Pi 3 Support&lt;/h2&gt;
+
+&lt;p&gt;Noteworthy is also that we now have full support for the Raspberry Pi 3.&lt;/p&gt;
+
+&lt;p&gt;With the help of our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash-tool&lt;/a&gt; it is really easy to bring a Raspberry Pi 3 online with only WiFi network connectivity:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash --ssid MyNetworkName --password SomeSecret https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that you can usually connect to your Pi by:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &amp;lsquo;hypriot&amp;rsquo;. And that&amp;rsquo;s it.&lt;/p&gt;
+
+&lt;p&gt;By the way this also works if you attach an external WiFi adapter to a Raspberry Pi Zero, 1 and 2.&lt;/p&gt;
+
+&lt;h2 id=&#34;customizing-your-raspberry-pi-configuration:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Customizing your Raspberry Pi Configuration&lt;/h2&gt;
+
+&lt;p&gt;The ability to customize the hostname of your Pi, to add WiFi credentials and more is made possible by a small tool of ours called &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In previous versions we used a tool called &lt;a href=&#34;https://github.com/adafruit/Adafruit-Occi&#34;&gt;occi&lt;/a&gt; from Adafruit to allow hostname and WiFi customization.&lt;/p&gt;
+
+&lt;p&gt;In this release we removed it and replaced it with device-init.&lt;/p&gt;
+
+&lt;p&gt;device-init is a small programm that is started when your Raspberry Pi boots and it allows to customize a couple of settings.
+It takes its configuration from a file called &amp;lsquo;device-init.yaml&amp;rsquo; which is located in the /boot directory.&lt;/p&gt;
+
+&lt;p&gt;This /boot directory is basically a small FAT partition on the SD card that contains HypriotOS.
+It can be easily accessed from your host computer before you boot your Pi. You can edit the &amp;lsquo;device-init.yaml&amp;rsquo; file directly with a text editor or by using the flash tool as demonstrated above.&lt;/p&gt;
+
+&lt;p&gt;We are going to add more features - like adding public ssh keys, setting the locale or timezone - to device-init step by step in the next weeks.&lt;/p&gt;
+
+&lt;h2 id=&#34;hypriot-cluster-lab:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Hypriot Cluster-Lab&lt;/h2&gt;
+
+&lt;p&gt;We added the Hypriot Cluster-Lab to the image, too.&lt;/p&gt;
+
+&lt;p&gt;It is disabled by default, but can easily be enabled when you flash the image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash --clusterlab true https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting this options starts the Cluster-Lab on boot.&lt;/p&gt;
+
+&lt;p&gt;By flashing a couple of SD cards with different hostnames and Cluster-Lab enabled you can get a fully working Docker Swarm cluster up and running in minutes.
+The individual machines will find themselves automatically and form a Swarm cluster.&lt;/p&gt;
+
+&lt;p&gt;You can read more about the Hypriot Cluster-Lab and why it is awesome on &lt;a href=&#34;https://github.com/hypriot/cluster-lab/&#34;&gt;its website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can download the new release in our &lt;a href=&#34;http://blog.hypriot.com/downloads&#34;&gt;download section&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you encounter any problems with this new release please open up issues in one of the following repositories:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;https://github.com/hypriot/image-builder-rpi&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;https://github.com/hypriot/cluster-lab&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;https://github.com/hypriot/device-init&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There is also our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter-Chat&lt;/a&gt; were you&amp;rsquo;ll find a very friendly community that always likes to help.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
+
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Close Encounters of the Third Kind, or Microsoft Windows meets Docker ARM Containers for IoT</title>
@@ -3739,44 +3854,6 @@ Name: d90d49c65205
 &lt;/p&gt;
 
 &lt;p&gt;For more information about Docker Swarm you can follow the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/&#34;&gt;#SwarmWeek: Introduction to container orchestration with Docker Swarm&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/quintus23m&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>HypriotOS 0.7.0 Berry - the Raspberry Pi Birthday release</title>
-      <link>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</link>
-      <pubDate>Mon, 07 Mar 2016 09:03:23 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</guid>
-      <description>&lt;p&gt;We&amp;rsquo;ve just prepared a new beta release of HypriotOS 0.7.0 Berry which is based upon an updated 0.6.1 Hector. Feel free to check it out: &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;http://blog.hypriot.com/downloads/&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-berry-rpi3/IMG_0763.jpeg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Features:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;basic support for Raspberry Pi 3 B (internal WiFi/BT is currently not supported)&lt;/li&gt;
-&lt;li&gt;Linux kernel 4.1.17&lt;/li&gt;
-&lt;li&gt;Docker Engine 1.10.2&lt;/li&gt;
-&lt;li&gt;Docker Compose 1.6.2&lt;/li&gt;
-&lt;li&gt;Swarm 1.1.3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This SD image still works on all available Raspberry Pi models (really!)&lt;/p&gt;
-
-&lt;p&gt;We included all the latest Docker tools for you and especially the new Docker Swarm 1.1.3. Together with the brand-new powerful Raspberry Pi 3 B it makes to much fun to run Docker containers.&lt;/p&gt;
-
-&lt;p&gt;Don’t forget, this week is Docker &lt;a href=&#34;https://twitter.com/hashtag/SwarmWeek?src=hash&#34;&gt;#SwarmWeek&lt;/a&gt;. Head over to &lt;a href=&#34;https://blog.docker.com/2016/02/swarmweek-is-coming/&#34;&gt;https://blog.docker.com/2016/02/swarmweek-is-coming/&lt;/a&gt; for more details.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-berry-rpi3/IMG_0766.jpeg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And with the help of Docker Swarm it’s just awesome to control a fleet of Raspberry Pi’s running your awesome distributed applications.&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 

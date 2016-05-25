@@ -6,8 +6,123 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2016 17:20:34 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 16 May 2016 04:00:00 +0000</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HypriotOS 0.8.0 Barbossa for Raspberry Pi 3</title>
+      <link>http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</link>
+      <pubDate>Mon, 16 May 2016 04:00:00 +0000</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</guid>
+      <description>
+
+&lt;p&gt;While it is quite hard to make something better that is already good, we feel that we were able to just do that with our latest release of HypriotOS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS is the easiest and fastest way to get you started with Docker on ARM and IoT devices.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is the perfect playground for your first steps with Docker and it allows you to move to advanced stuff like Docker Clustering without breaking a sweat, too.&lt;/p&gt;
+
+&lt;p&gt;This is possible because we included a lot of the tools that make the Docker ecosystem awesome - for instance Docker Compose or Docker Swarm - out of the box.
+We also integrated the Hypriot Cluster-Lab into this release, which makes it really easy and painless to set up complex Docker Clusters.&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &amp;hellip; :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-barbossa/iceberg.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
+
+&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/davidw/&#34;&gt;David&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;features-at-a-glance:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Features at a glance&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;support for Raspberry Pi Zero, 1, 2 and 3&lt;/li&gt;
+&lt;li&gt;Linux kernel 4.4.10&lt;/li&gt;
+&lt;li&gt;Docker Engine 1.11.1&lt;/li&gt;
+&lt;li&gt;Docker Compose 1.7.1&lt;/li&gt;
+&lt;li&gt;Docker Machine 0.7.0&lt;/li&gt;
+&lt;li&gt;Docker Swarm 1.2.2&lt;/li&gt;
+&lt;li&gt;Cluster-Lab 0.2.8&lt;/li&gt;
+&lt;li&gt;device-init 0.1.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;updated-docker-and-docker-tools:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Updated Docker and Docker-Tools&lt;/h2&gt;
+
+&lt;p&gt;Compared to our latest HypriotOS Berry 0.7 we did upgrade the Docker Engine to v1.11 which now has several binaries instead of one.
+Besides the original Docker binary there is now also a Containerd and a runC binary. Containerd is basically a supervisor for individual containers that are run by runC.&lt;/p&gt;
+
+&lt;p&gt;The main reasons for splitting up the Docker binary were the efforts of Docker to support the &lt;a href=&#34;https://www.opencontainers.org/&#34;&gt;standardization of container technology&lt;/a&gt; and to make it easier to maintain the existing technology stack.
+You can get a good overview about these changes in the &lt;a href=&#34;https://blog.docker.com/2016/04/docker-engine-1-11-runc/&#34;&gt;blog post&lt;/a&gt; announcing the release of Docker 1.11.&lt;/p&gt;
+
+&lt;p&gt;And there is also a very interesting deep dive into the details of those changes:&lt;/p&gt;
+
+&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/QL8F2MLCybo&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;full-raspberry-pi-3-support:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Full Raspberry Pi 3 Support&lt;/h2&gt;
+
+&lt;p&gt;Noteworthy is also that we now have full support for the Raspberry Pi 3.&lt;/p&gt;
+
+&lt;p&gt;With the help of our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash-tool&lt;/a&gt; it is really easy to bring a Raspberry Pi 3 online with only WiFi network connectivity:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash --ssid MyNetworkName --password SomeSecret https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that you can usually connect to your Pi by:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &amp;lsquo;hypriot&amp;rsquo;. And that&amp;rsquo;s it.&lt;/p&gt;
+
+&lt;p&gt;By the way this also works if you attach an external WiFi adapter to a Raspberry Pi Zero, 1 and 2.&lt;/p&gt;
+
+&lt;h2 id=&#34;customizing-your-raspberry-pi-configuration:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Customizing your Raspberry Pi Configuration&lt;/h2&gt;
+
+&lt;p&gt;The ability to customize the hostname of your Pi, to add WiFi credentials and more is made possible by a small tool of ours called &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In previous versions we used a tool called &lt;a href=&#34;https://github.com/adafruit/Adafruit-Occi&#34;&gt;occi&lt;/a&gt; from Adafruit to allow hostname and WiFi customization.&lt;/p&gt;
+
+&lt;p&gt;In this release we removed it and replaced it with device-init.&lt;/p&gt;
+
+&lt;p&gt;device-init is a small programm that is started when your Raspberry Pi boots and it allows to customize a couple of settings.
+It takes its configuration from a file called &amp;lsquo;device-init.yaml&amp;rsquo; which is located in the /boot directory.&lt;/p&gt;
+
+&lt;p&gt;This /boot directory is basically a small FAT partition on the SD card that contains HypriotOS.
+It can be easily accessed from your host computer before you boot your Pi. You can edit the &amp;lsquo;device-init.yaml&amp;rsquo; file directly with a text editor or by using the flash tool as demonstrated above.&lt;/p&gt;
+
+&lt;p&gt;We are going to add more features - like adding public ssh keys, setting the locale or timezone - to device-init step by step in the next weeks.&lt;/p&gt;
+
+&lt;h2 id=&#34;hypriot-cluster-lab:77d190f6290bd80a7b0b949a77766fb9&#34;&gt;Hypriot Cluster-Lab&lt;/h2&gt;
+
+&lt;p&gt;We added the Hypriot Cluster-Lab to the image, too.&lt;/p&gt;
+
+&lt;p&gt;It is disabled by default, but can easily be enabled when you flash the image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash --clusterlab true https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting this options starts the Cluster-Lab on boot.&lt;/p&gt;
+
+&lt;p&gt;By flashing a couple of SD cards with different hostnames and Cluster-Lab enabled you can get a fully working Docker Swarm cluster up and running in minutes.
+The individual machines will find themselves automatically and form a Swarm cluster.&lt;/p&gt;
+
+&lt;p&gt;You can read more about the Hypriot Cluster-Lab and why it is awesome on &lt;a href=&#34;https://github.com/hypriot/cluster-lab/&#34;&gt;its website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can download the new release in our &lt;a href=&#34;http://blog.hypriot.com/downloads&#34;&gt;download section&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you encounter any problems with this new release please open up issues in one of the following repositories:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;https://github.com/hypriot/image-builder-rpi&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;https://github.com/hypriot/cluster-lab&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;https://github.com/hypriot/device-init&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There is also our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter-Chat&lt;/a&gt; were you&amp;rsquo;ll find a very friendly community that always likes to help.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
+
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Close Encounters of the Third Kind, or Microsoft Windows meets Docker ARM Containers for IoT</title>
@@ -4211,113 +4326,6 @@ By this Docker will gain access to a really powerful developer board - and we wi
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=10973751&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; and Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>How to get Docker working on your favourite ARM board with HypriotOS</title>
-      <link>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</link>
-      <pubDate>Mon, 18 Jan 2016 16:00:00 +0200</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</guid>
-      <description>&lt;p&gt;It all began when Dieter aka &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; started to experiment with the NVIDIA ShieldTV.
-The ShieldTV is a curious little thing. Sold as a media hub for your living room it does deliver one teraflop of processing power.
-On top of that it is one of the first 64-bit ARM boards that can be bought for a reasonable price.&lt;/p&gt;
-
-&lt;p&gt;Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
-Read on to learn what happened next&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
-The gist of it is that it was quite an involved process of creating his own custom Debian based operating system that supported building Go and Docker for ARM64.&lt;/p&gt;
-
-&lt;p&gt;The work of Dieter on the ShieldTV inspired our team to revisit the way we were building our beloved HypriotOS for the Raspberry Pi.
-Longing to publish the way we build it for quite some time we had been ashamed to actually do it because it was such a complicated mess.
-Don&amp;rsquo;t get me wrong - it worked well enough and was completely automated with our CI system and even tested, but ultimately it was difficult to understand and change.&lt;/p&gt;
-
-&lt;p&gt;So Dieter&amp;rsquo;s work got us thinking:
-What if we could restructure the build process of HypriotOS in such a way that it would be built in distinct layers that would create distinct build artifacts on their own.
-What if those artifacts could be tested and published on their own, too? Only to be assembled in a final step at the end to create a fully working SD card image.
-What if those distinct steps were self-contained and easy to understand?&lt;/p&gt;
-
-&lt;p&gt;Last week we had some time at our hands and we started working on a build process that would be the answer to all those questions.
-It is certainly still a little rough around the edges and needs further tweaking but it produces a working SD card image for the Raspberry Pi.
-We consider it beta quality and it is not yet completely on par with our stable HypriotOS Hector image, but it already runs very well.&lt;/p&gt;
-
-&lt;p&gt;The main repository for building HypriotOS SD card image for the Raspberry Pi can be found at GitHub in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;Image-Builder-Rpi Repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So what happens in this repository?&lt;/p&gt;
-
-&lt;p&gt;Basically it just assembles prepared artifacts into a working SD card image which then can be &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;easily flashed&lt;/a&gt; onto a SD card.&lt;/p&gt;
-
-&lt;p&gt;The artifacts that are combined here are produced elsewhere each in their own GitHub repository:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/os-rootfs&#34;&gt;a basic filesystem that is based on Debian Jessie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/rpi-kernel&#34;&gt;a Raspberry Pi compatible Linux kernel and firmware&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-raw&#34;&gt;a Raspberry Pi image file that contains the necessary partitions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://packagecloud.io/Hypriot/Schatzkiste&#34;&gt;a couple of Debian packages with software like Docker, Docker-Machine and Docker-Compose&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The basic idea is that all these artifacts can be build and tested with the help of Docker.
-For instance if you look into the &lt;a href=&#34;https://github.com/hypriot/os-rootfs&#34;&gt;os-rootfs&lt;/a&gt; repository you will find a &lt;code&gt;Dockerfile&lt;/code&gt; in the root of the project that will allow you to create a build and test environment for the root filesystem.&lt;/p&gt;
-
-&lt;p&gt;This makes two important things possible: Firstly it allows others to build the rootfs locally on their own computer and fix or extend the rootfs with ease.
-And secondly the rootfs is build and tested on &lt;a href=&#34;https://travis-ci.org/hypriot/os-rootfs&#34;&gt;Travis CI&lt;/a&gt; everytime somebody creates - for instance - a pull request.
-Combined these two points create a transparent development process with instant feedback.&lt;/p&gt;
-
-&lt;p&gt;It turned out that this approach is generic and powerful enough to be applied - you probably already guessed it - to the NVIDIA ShieldTV, too.
-By publishing the &lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv&#34;&gt;Image-Builder-NVIDIA-ShieldTV&lt;/a&gt; repository we are making good on Dieter&amp;rsquo;s promise to publish the sources for Dieter&amp;rsquo;s journey with the ShieldTV.&lt;/p&gt;
-
-&lt;p&gt;But hold on - that&amp;rsquo;s not all. To proof to ourselves that this process allows to easily port HypriotOS to different development boards we created &lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1&#34;&gt;another Github repository&lt;/a&gt;.
-It builds a SD card image for the very capable &lt;a href=&#34;http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143703355573&#34;&gt;ODROID C1+&lt;/a&gt; development board.
-Similar to the Raspberry Pi 2 the ODROID C1+ features a quad core ARMv7 CPU with 1 GB of memory. Distinct from the Raspberry Pi 2 it features a gigabit ethernet port.
-A highlevel comparision of both devices can be found at &lt;a href=&#34;http://www.cnx-software.com/2015/02/02/raspberry-pi-2-odroid-c1-development-boards-comparison/&#34;&gt;CNX-Software&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;With this third supported board for HypriotOS we proofed to ourselves that this new build process makes it not only feasible but actually quite easy to extend the support of HypriotOS to new development boards.&lt;/p&gt;
-
-&lt;p&gt;Overall the relation of the different repositories now looks like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;All these changes also redefined for us what HypriotOS is all about.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Our old mission statement for HypriotOS was:&lt;/strong&gt;&lt;br /&gt;
-&lt;em&gt;&amp;ldquo;HypriotOS is a minimal operating system for the Raspberry Pi 1 &amp;amp; 2 that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Our new mission statement is:&lt;/strong&gt;&lt;br /&gt;
-&lt;em&gt;&amp;ldquo;HypriotOS is a minimal Debian-based operating system for &lt;strong&gt;many popular IoT devices&lt;/strong&gt; that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;It is just a small change but it will have big implications.&lt;/p&gt;
-
-&lt;p&gt;One of the biggest downsides of having an ever increasing amount of IoT devices to choose from is fragmentation. Each device comes with varying support for existing operating systems.
-Take Linux for instance. Even if a vendor provides Linux support for a device from the start - it is often based on an outdated Linux kernel.
-This in turn often enough means that you can only use old software on top of it. Docker with OverlayFS is such an example. It can only be used with a Linux kernel greater than 3.18.
-And that&amp;rsquo;s not only a problem of the small vendors, it even happens with big vendors like NVIDIA. The NVIDIA ShieldTV is provided only with a 3.10 Linux kernel while the latest stable Linux kernel is 4.4.
-Not to mention that the 3.10 kernel is &lt;a href=&#34;https://www.kernel.org/category/releases.html&#34;&gt;not supported any more by the kernel maintainers&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;With this background in mind a major goal of HypriotOS is to provide an operating system that behaves as similar as possible on &lt;strong&gt;different&lt;/strong&gt; IoT devices.
-While I know that this might prove to be a difficult task - especially in regards to support for recent Linux kernels - I think it might prove to be a worthwhile effort that provides much value.&lt;/p&gt;
-
-&lt;p&gt;Providing a beta version of HypriotOS that supports three different development boards is a first step into that direction.&lt;/p&gt;
-
-&lt;p&gt;Being just able to flash HypriotOS on a SD card and get going in minutes is one of the basic promises of HypriotOS, so without further ado you can download it here:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;HypriotOS for the Raspberry Pi&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv/releases&#34;&gt;HypriotOS for the NVIDIA ShieldTV&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1/releases&#34;&gt;HypriotOS for the ODROID C1+&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hopefully you have a lot of fun trying out what HypriotOS has to offer!&lt;br /&gt;
-&lt;strong&gt;Note:&lt;/strong&gt; We changed the default username to &lt;code&gt;pirate&lt;/code&gt; (password &lt;code&gt;hypriot&lt;/code&gt;) and disabled the &lt;code&gt;root&lt;/code&gt; user for security reasons.&lt;/p&gt;
-
-&lt;p&gt;By adding support for many more boards we think HypriotOS gets a lot more attractive! What do you think?&lt;br /&gt;
-And for which board would you want to see support next?
-Help us to get your favourite ARM board supported by HypriotOS!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.
-You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10926502&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
-
-&lt;p&gt;Govinda aka &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@&lt;em&gt;beagile&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

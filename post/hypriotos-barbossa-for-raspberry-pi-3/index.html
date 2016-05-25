@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> HypriotOS 0.8.0 Barbossa for Raspberry Pi 3 &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>HypriotOS 0.8.0 Barbossa for Raspberry Pi 3</h1>
+    <span class="post-date">Mon, May 16, 2016</span>
+    
+
+<p>While it is quite hard to make something better that is already good, we feel that we were able to just do that with our latest release of HypriotOS.</p>
+
+<p><strong>HypriotOS is the easiest and fastest way to get you started with Docker on ARM and IoT devices.</strong></p>
+
+<p>It is the perfect playground for your first steps with Docker and it allows you to move to advanced stuff like Docker Clustering without breaking a sweat, too.</p>
+
+<p>This is possible because we included a lot of the tools that make the Docker ecosystem awesome - for instance Docker Compose or Docker Swarm - out of the box.
+We also integrated the Hypriot Cluster-Lab into this release, which makes it really easy and painless to set up complex Docker Clusters.</p>
+
+<p>And that&rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &hellip; :)</p>
+
+<p><img src="/images/hypriotos-barbossa/iceberg.jpg" alt="Raspberry Pi 3" />
+
+<div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/davidw/">David</a></div></p>
+
+<h2 id="features-at-a-glance:77d190f6290bd80a7b0b949a77766fb9">Features at a glance</h2>
+
+<ul>
+<li>support for Raspberry Pi Zero, 1, 2 and 3</li>
+<li>Linux kernel 4.4.10</li>
+<li>Docker Engine 1.11.1</li>
+<li>Docker Compose 1.7.1</li>
+<li>Docker Machine 0.7.0</li>
+<li>Docker Swarm 1.2.2</li>
+<li>Cluster-Lab 0.2.8</li>
+<li>device-init 0.1.5</li>
+</ul>
+
+<h2 id="updated-docker-and-docker-tools:77d190f6290bd80a7b0b949a77766fb9">Updated Docker and Docker-Tools</h2>
+
+<p>Compared to our latest HypriotOS Berry 0.7 we did upgrade the Docker Engine to v1.11 which now has several binaries instead of one.
+Besides the original Docker binary there is now also a Containerd and a runC binary. Containerd is basically a supervisor for individual containers that are run by runC.</p>
+
+<p>The main reasons for splitting up the Docker binary were the efforts of Docker to support the <a href="https://www.opencontainers.org/">standardization of container technology</a> and to make it easier to maintain the existing technology stack.
+You can get a good overview about these changes in the <a href="https://blog.docker.com/2016/04/docker-engine-1-11-runc/">blog post</a> announcing the release of Docker 1.11.</p>
+
+<p>And there is also a very interesting deep dive into the details of those changes:</p>
+
+<iframe id="ytplayer" type="text/html" width="1000" height="560" src="http://www.youtube.com/embed/QL8F2MLCybo" frameborder="0"></iframe>
+
+<h2 id="full-raspberry-pi-3-support:77d190f6290bd80a7b0b949a77766fb9">Full Raspberry Pi 3 Support</h2>
+
+<p>Noteworthy is also that we now have full support for the Raspberry Pi 3.</p>
+
+<p>With the help of our <a href="https://github.com/hypriot/flash">flash-tool</a> it is really easy to bring a Raspberry Pi 3 online with only WiFi network connectivity:</p>
+
+<pre><code>flash --ssid MyNetworkName --password SomeSecret https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+</code></pre>
+
+<p>After that you can usually connect to your Pi by:</p>
+
+<pre><code>ssh pirate@black-pearl.local
+</code></pre>
+
+<p>The password is &lsquo;hypriot&rsquo;. And that&rsquo;s it.</p>
+
+<p>By the way this also works if you attach an external WiFi adapter to a Raspberry Pi Zero, 1 and 2.</p>
+
+<h2 id="customizing-your-raspberry-pi-configuration:77d190f6290bd80a7b0b949a77766fb9">Customizing your Raspberry Pi Configuration</h2>
+
+<p>The ability to customize the hostname of your Pi, to add WiFi credentials and more is made possible by a small tool of ours called <a href="https://github.com/hypriot/device-init">device-init</a>.</p>
+
+<p>In previous versions we used a tool called <a href="https://github.com/adafruit/Adafruit-Occi">occi</a> from Adafruit to allow hostname and WiFi customization.</p>
+
+<p>In this release we removed it and replaced it with device-init.</p>
+
+<p>device-init is a small programm that is started when your Raspberry Pi boots and it allows to customize a couple of settings.
+It takes its configuration from a file called &lsquo;device-init.yaml&rsquo; which is located in the /boot directory.</p>
+
+<p>This /boot directory is basically a small FAT partition on the SD card that contains HypriotOS.
+It can be easily accessed from your host computer before you boot your Pi. You can edit the &lsquo;device-init.yaml&rsquo; file directly with a text editor or by using the flash tool as demonstrated above.</p>
+
+<p>We are going to add more features - like adding public ssh keys, setting the locale or timezone - to device-init step by step in the next weeks.</p>
+
+<h2 id="hypriot-cluster-lab:77d190f6290bd80a7b0b949a77766fb9">Hypriot Cluster-Lab</h2>
+
+<p>We added the Hypriot Cluster-Lab to the image, too.</p>
+
+<p>It is disabled by default, but can easily be enabled when you flash the image:</p>
+
+<pre><code>flash --clusterlab true https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
+</code></pre>
+
+<p>Setting this options starts the Cluster-Lab on boot.</p>
+
+<p>By flashing a couple of SD cards with different hostnames and Cluster-Lab enabled you can get a fully working Docker Swarm cluster up and running in minutes.
+The individual machines will find themselves automatically and form a Swarm cluster.</p>
+
+<p>You can read more about the Hypriot Cluster-Lab and why it is awesome on <a href="https://github.com/hypriot/cluster-lab/">its website</a>.</p>
+
+<p>You can download the new release in our <a href="/downloads">download section</a>.</p>
+
+<p>If you encounter any problems with this new release please open up issues in one of the following repositories:</p>
+
+<p><a href="https://github.com/hypriot/image-builder-rpi">https://github.com/hypriot/image-builder-rpi</a><br />
+<a href="https://github.com/hypriot/cluster-lab">https://github.com/hypriot/cluster-lab</a><br />
+<a href="https://github.com/hypriot/device-init">https://github.com/hypriot/device-init</a><br />
+<a href="https://github.com/hypriot/flash">https://github.com/hypriot/flash</a></p>
+
+<p>There is also our <a href="https://gitter.im/hypriot/talk">Gitter-Chat</a> were you&rsquo;ll find a very friendly community that always likes to help.</p>
+
+<p>As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.</p>
+
+<p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
