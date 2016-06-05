@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Learning about Cloud Computing with Hypriot Cluster Lab at ICT 2016 &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Learning about Cloud Computing with Hypriot Cluster Lab at ICT 2016</h1>
+    <span class="post-date">Mon, Jun 6, 2016</span>
+    
+
+<p>Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at <a href="http://ict-2016.org/">ICT 2016</a>, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.</p>
+
+<p><img src="/images/ict-2016-greece/ict_logo.jpg" alt="IoT-requirements" />
+</p>
+
+<p>We built the Hypriot Cluster Lab as lab environment that allows to easily teach about clustering and cloud computing. At the conference, the Hypriot Cluster Lab piqued lots of interest, so we are confident that it will be used more and more in educational institutions.</p>
+
+<p>Now, after the show, we are publishing the <a href="/images/ict-2016-greece/ICT-Presentation.pdf">presentation slides</a>. However, the slides are not throughout self-explanatory, so we&rsquo;ve also written down what we&rsquo;ve presented to the audience back in Greece.</p>
+
+<h2 id="iot-requires-expansion-to-small:e2e346a019a074ac80ebae91f71aeae5">IoT requires &ldquo;Expansion to small&rdquo;</h2>
+
+<p>Building cloud computing infrastructures with big servers is well understood. Even large cloud infrastructures powered by container technology are commonly in use. One of the pioneers to mention here is Google with its container-based cloud platform <a href="http://kubernetes.io/">Kubernetes</a>.</p>
+
+<p>However, the uprising Internet of Things (IoT) will not allow to equip the edge of the network such as sensor networks in smart home/grid/production environments with big servers only. There, you especially need small devices with less computational power and energy demand. These devices require to be small and cheap enough to install up to several thousands of them in a smart environment, thereby creating sensor networks. For example think of sensor networks on wind farms:</p>
+
+<p><img src="/images/ict-2016-greece/wind.jpg" alt="IoT-requirements" />
+
+<div style="padding-left:34.4em; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/ewea/16577911487/in/photolist-rfW8w8-ipD2tM-ipC49q-7d8FqR-ipCNzR-ipC1dU-ipBRBC-ipCGWN-ipCkFm-njeuG6-ipCC31-ipCnPv-ayYLge-ipCJ61-ayYMmc-ipBGVN-ayYHLH-9mZuNi-ayYMzX-oWbzp6-ayYK6n-7ZaHBQ-q8T7wm-az2p4W-8LowiB-az2o8s-ayYJJt-az2p2f-3euhCb-ayYMWD-ayYNgZ-ayYL48-az2riu-6YiWvR-az2qkC-ayYMev-az2rxU-az2on1-ayYK2V-ayYHrz-az2oru-az2ov7-az2oeW-qQMUJN-auVRqy-az2oDm-ayYM8Z-i5kW85-ayYJTV-az2rCE">European Wind Energy Association</a></div></p>
+
+<p>At this point, Hypriot Cluster Lab (HCL) comes into play:</p>
+
+<blockquote>
+<p><strong>HCL is a proof of concept that building clusters using container technology (in our case: Docker) also works well on small devices, not only on big servers.</strong></p>
+</blockquote>
+
+<p>This &ldquo;Expansion to Small&rdquo; was the theme of the ICT 2016, which made HCL a perfect fit to the conference&rsquo;s agenda.</p>
+
+<h2 id="hcl-makes-a-tangible-iot-like-cluster-affordable:e2e346a019a074ac80ebae91f71aeae5">HCL makes a tangible IoT-like cluster affordable</h2>
+
+<p>HCL is not only a proof of concept that clustering with container technology on IoT devices works, it also serves a second purpose: It is cheap enough to be used as a learning platform to play with clustering or cloud computing on your desk. The minimal hardware configuration requires three Raspberry Pis plus accessoires, which is affordable for everyone to get their hands on a real, tangible cluster. We&rsquo;ve already seen lecturers, students and pupils getting started on the HCL with different topics related to cloud computing, e.g. playing with micro services or load balancing. Some use cases can be found <a href="https://github.com/hypriot/rpi-cluster-lab-demos">in one of our repos here</a>.</p>
+
+<p>Even though the HCL is intended to be used as a tool to learn, its containing concepts are applicable for promising IoT software solutions. Comparing IoT&rsquo;s general requirements for hard- and software that I identified in my bachelor thesis (<a href="https://medium.com/@mathiasrenner/docker-container-virtualization-and-the-internet-of-things-bachelor-thesis-a6bc783b81fa#.f09czsq2e">details here</a>) show that many of those aspects are already visible in the HCL:</p>
+
+<p><img src="/images/ict-2016-greece/iot-requirements.jpg" alt="IoT-requirements" />
+</p>
+
+<h2 id="conclusion:e2e346a019a074ac80ebae91f71aeae5">Conclusion</h2>
+
+<p>All in all, the conference was an enriching experience. Discussing with scientific researches and professors from many different countries resulted in high-grade feedback and inspirations of how we can further improve the HCL. Particularly interesting were the discussions after some glasses of good, greek wine. They resulted in less high-grade feedback, but much fun instead :)</p>
+
+<p>Thus, we look forward to also attend more conferences. Well, the next conference is already set: In two weeks, three of the Hypriot team (Dieter, Stefan and myself) will attend DockerCon in Seattle, USA! We will give workshops and talks, so we are happy to meet you there! For everyone who won&rsquo;t attend: Stay tuned, we try to share as much as possible via our channels.</p>
+
+<p>Last but not least, I give special thanks Marcel Großmann (research assistant at University of Bamberg) for his great support. He is not only providing high quality feedback to our work, meanwhile he also contributes to the HCL. Not to mention that he also provides the venue for our Docker Meetups. His continunous support is worth a virtual applause!</p>
+
+<p>As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.</p>
+
+<p><a href="https://twitter.com/MathiasRenner">@MathiasRenner</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
