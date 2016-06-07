@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Microservices Bliss with Docker and Traefik &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Microservices Bliss with Docker and Traefik</h1>
+    <span class="post-date">Tue, Jun 7, 2016</span>
+    
+
+<p>A couple of weeks ago I found this really nice and neat HTTP reverse proxy called <a href="https://docs.traefik.io/">Traefik</a>.
+It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.</p>
+
+<p>Did you realize the important part of the last sentence was <strong>dynamic</strong>?</p>
+
+<p>What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
+So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.</p>
+
+<p><img src="/images/traefik/architecture.png" alt="Traffic" />
+</p>
+
+<p>With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
+<a href="https://github.com/gliderlabs/registrator">Registrator</a>, <a href="https://www.consul.io/">Consul</a> and <a href="https://github.com/hashicorp/consul-template">Consul-Template</a> to achieve the same kind of functionality.</p>
+
+<p>So let me show you with a simple microservice example how easy it is to get started with Traefik&hellip;</p>
+
+<p>As you can see in the following architecture overview we will have a simple HTTP service that answers incoming HTTP requests.</p>
+
+<p>We have multiple backend services that are running on different physical nodes for high availability and loadbalancing reasons.
+Traefik serves as a frontend proxy that loadbalances incoming requests to the available backend services.</p>
+
+<p>Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
+In this example each backend service will answer with their individual container ID to make it easy to see which one answered.</p>
+
+<p><img src="/images/traefik/microsservice_example_end.jpg" alt="Traffic" />
+</p>
+
+<p>So to get started we need a running Docker Swarm Cluster first.</p>
+
+<h2 id="creating-a-docker-swarm-cluster:eaccea7a352d1344b842649dc78262ad">Creating a Docker Swarm Cluster</h2>
+
+<p>One of fastest and easiest ways to get a Docker Swarm cluster running is to use our <a href="https://github.com/hypriot/cluster-lab">Hypriot Cluster Lab</a>.</p>
+
+<p>As the Cluster Lab comes already preinstalled with out latest HypriotOS &ldquo;Barbossa&rdquo; release for the Raspberr Pi I will show you how to set up a Swarm Cluster with that.</p>
+
+<p>To follow along you will need at least three Raspberry Pi&rsquo;s. I will use my Pico-Cluster with five nodes.</p>
+
+<p><img src="/images/traefik/picocluster.jpg" alt="Traffic" />
+</p>
+
+<p>The first step is flashing the necessary SD card images with HypriotOS.</p>
+
+<p>Clone the Hypriot flash repository and change into the appropriate folder for the operating system you are using to flash the SD cards.</p>
+
+<pre><code>$ git clone https://github.com/hypriot/flash.gi://github.com/hypriot/flash.git
+$ cd flash/Darwin
+</code></pre>
+
+<p>With the flash tool ready we now can prepare the SD card for our <strong>leader node</strong>:</p>
+
+<pre><code>$ ./flash --hostname cl-leader https://downloads.hypriot.com/hypriotos-rpi-v0.8.0.img.zip
+</code></pre>
+
+<p>Repeat the process for the <strong>follower nodes</strong>:</p>
+
+<pre><code>$ for i in {1..4} do; ./flash --hostname cl-follower${i} https://downloads.hypriot.com/hypriotos-rpi-v0.8.0.img.zip; done
+</code></pre>
+
+<p>While the SD cards for the follower nodes are still being flashed you can already start the leader node.</p>
+
+<p>SSH into the leader and become root user:</p>
+
+<pre><code>$ ssh pirate@cl-leader.local
+$ sudo su
+</code></pre>
+
+<p>To make the Cluster Lab work with Traefik we need to update to the most recent version:</p>
+
+<pre><code>$ apt-get update
+$ apt-get install hypriot-cluster-lab=0.2.13-1
+</code></pre>
+
+<p>Then start the Hypriot Cluster Lab with verbose output logging enabled:</p>
+
+<pre><code>$ VERBOSE=true cluster-lab start
+</code></pre>
+
+<p>While the Cluster Lab starts you can see how it configures itself and does a number of self-tests.
+If not all steps are green stop it and start it again. If that fails, too, have a look at our <a href="https://github.com/hypriot/cluster-lab#troubleshooting">troubleshooting section</a>.</p>
+
+<p>After the leader node is ready, it is time to boot the rest of our nodes and update and start the Cluster Lab in the same fashion.
+So go ahead and come back when your are done.</p>
+
+<p>Allright, We can now check if we really have a healthy five nodes Swarm Cluster by executing the following command:</p>
+
+<pre><code>DOCKER_HOST=tcp://192.168.200.1:2378 docker info | grep Nodes
+Nodes: 5
+</code></pre>
+
+<p>And voila we now really have five nodes in our cluster.
+Congrats!</p>
+
+<p>As you made it so far the rest will be a piece of a cake!</p>
+
+<h3 id="setting-up-our-microservice-app-with-traefik:eaccea7a352d1344b842649dc78262ad">Setting up our microservice app with Traefik</h3>
+
+<p>Our example microservice application consists of two parts. The Traefik frontend and the WhoAmI application backend.
+For both parts I have prepared images for you that can be pulled from the Docker Hub.</p>
+
+<p>The Traefik image is called <a href="https://hub.docker.com/r/hypriot/rpi-traefik/">hypriot/rpi-traefik</a> and the WhoAmI image is called <a href="https://hub.docker.com/r/hypriot/rpi-whoami/">hypriot/rpi-whoami</a>.
+The Dockerfiles for both images can be found on Github in the <a href="https://github.com/hypriot">related repositories</a>.</p>
+
+<p>Because both Dockerfiles are a fine example of how easy it is to create Docker images for Golang based software I will
+show them here, too.</p>
+
+<p>Dockerfile for &ldquo;rpi-traefik&rdquo;:</p>
+
+<pre><code>FROM hypriot/rpi-alpine-scratch
+RUN apk update &amp;&amp;\
+    apk upgrade &amp;&amp;\
+    apk add ca-certificates &amp;&amp;\
+    rm -rf /var/cache/apk/*
+ADD https://github.com/containous/traefik/releases/download/v1.0.0-beta.771/traefik_linux-arm /traefik
+RUN chmod +x /traefik
+EXPOSE 80 8080
+ENTRYPOINT [&quot;/traefik&quot;]
+</code></pre>
+
+<p>Here we just add the Traefik binary on top of an Alpine linux image. The result is an image that is already quite small with about 41 MB.
+It propably could be made even smaller by ensuring that the Traefik binary is compiled as a static binary and then putting it into an empty scratch image.</p>
+
+<p>You can see how this can be done with the next Dockerfile for the WhoAmI image:</p>
+
+<p>Dockerfile for &ldquo;rpi-whoami&rdquo;:</p>
+
+<pre><code>FROM scratch
+
+ADD http /http
+
+ENV PORT 8000
+EXPOSE 8000
+
+CMD [&quot;/http&quot;]
+</code></pre>
+
+<p>With about 3 MB the resulting image is really small.</p>
+
+<p>Well, now it is time to put this all together in a Docker Compose application.</p>
+
+<p>Clone the following repository on you cluster leader:</p>
+
+<pre><code>$ git clone https://github.com/hypriot/rpi-cluster-lab-demos
+</code></pre>
+
+<p>When the cloning is finished change into the &lsquo;traefik&rsquo; folder and use Docker Compose to start our application on top of our little Docker Swarm cluster:</p>
+
+<pre><code>$ cd rpi-cluster-lab-demos/traefik
+$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose up -d
+Creating network &quot;traefik_default&quot; with the default driver
+Creating traefik_traefik_1
+Creating traefik_whoami_1
+</code></pre>
+
+<p>With this command Docker Compose should start two containers.
+One Traefik container on our leader and one WhoAmi container on one of our follower nodes.</p>
+
+<p>Let&rsquo;s check if that really happened:</p>
+
+<pre><code>$ DOCKER_HOST=tcp://192.168.200.1:2378 docker ps | grep 'traefik\|whoami'
+cba8d9a7d8f7        hypriot/rpi-whoami         &quot;/http&quot;                  About a minute ago   Up About a minute   8000/tcp                                                 cl-follower1/traefik_whoami_1
+7dc2b48a24e2        hypriot/rpi-traefik        &quot;/traefik --web --doc&quot;   About a minute ago   Up About a minute   192.168.200.1:80-&gt;80/tcp, 192.168.200.1:8080-&gt;8080/tcp   cl-leader/traefik_traefik_1
+</code></pre>
+
+<p>Looks good. So let&rsquo;s test our application by flinging some HTTP request towards our frontend:</p>
+
+<pre><code>$ for i in {1..5}; do curl -H Host:whoami.docker.localhost http://192.168.200.1; done
+I'am f72892c9187c
+I'am f72892c9187c
+I'am f72892c9187c
+I'am f72892c9187c
+I'am f72892c9187c
+</code></pre>
+
+<p>As you can see it is always the same backend container which is responding and that&rsquo;s just as it should be.</p>
+
+<p>Next we are going to increase the number of backend containers with the help of Docker Compose scale command.</p>
+
+<pre><code>$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose scale whoami=5
+Creating and starting traefik_whoami_2 ... done
+Creating and starting traefik_whoami_3 ... done
+Creating and starting traefik_whoami_4 ... done
+Creating and starting traefik_whoami_5 ... done
+</code></pre>
+
+<p>We can watch as Docker Compose tells Docker Swarm to spin up more containers.</p>
+
+<p>Let&rsquo;s verify again if we now have five backend containers running:</p>
+
+<pre><code>$ for i in {1..5}; do curl -H Host:whoami.docker.localhost http://192.168.200.1; done
+I'm 5d829fecbdaa
+I'm 5eb115353885
+I'm e0313ac24554
+I'm 642b5d2c8d09
+I'm f72892c9187c
+</code></pre>
+
+<p>Perfect. Obviously Traefik did recognise that we started more containers and made them available to the frontend automatically.</p>
+
+<p>We can see what happened by looking at the logs of the Traefik container:</p>
+
+<pre><code>$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose logs traefik
+...
+traefik_1  | time=&quot;2016-06-07T06:50:38Z&quot; level=debug msg=&quot;Configuration received from provider docker: {\&quot;backends\&quot;:{\&quot;backend-whoami\&quot;:{\&quot;servers\&quot;:{\&quot;server-traefik_whoami_1\&quot;:{\&quot;url\&quot;:\&quot;http://10.0.0.3:8000\&quot;,\&quot;weight\&quot;:1},\&quot;server-traefik_whoami_2\&quot;:{\&quot;url\&quot;:\&quot;http://10.0.0.5:8000\&quot;,\&quot;weight\&quot;:1},\&quot;server-traefik_whoami_3\&quot;:{\&quot;url\&quot;:\&quot;http://10.0.0.6:8000\&quot;,\&quot;weight\&quot;:1},\&quot;server-traefik_whoami_4\&quot;:{\&quot;url\&quot;:\&quot;http://10.0.0.4:8000\&quot;,\&quot;weight\&quot;:1},\&quot;server-traefik_whoami_5\&quot;:{\&quot;url\&quot;:\&quot;http://10.0.0.7:8000\&quot;,\&quot;weight\&quot;:1}}}},\&quot;frontends\&quot;:{\&quot;frontend-Host-whoami-docker-localhost\&quot;:{\&quot;backend\&quot;:\&quot;backend-whoami\&quot;,\&quot;routes\&quot;:{\&quot;route-frontend-Host-whoami-docker-localhost\&quot;:{\&quot;rule\&quot;:\&quot;Host:whoami.docker.localhost\&quot;}},\&quot;passHostHeader\&quot;:true}}}&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:38Z&quot; level=debug msg=&quot;Last docker config received less than 2s, waiting...&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Waited for docker config, OK&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating frontend frontend-Host-whoami-docker-localhost&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Wiring frontend frontend-Host-whoami-docker-localhost to entryPoint http&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating route route-frontend-Host-whoami-docker-localhost Host:whoami.docker.localhost&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating backend backend-whoami&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating load-balancer wrr&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating server server-traefik_whoami_4 at http://10.0.0.4:8000 with weight 1&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating server server-traefik_whoami_3 at http://10.0.0.6:8000 with weight 1&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating server server-traefik_whoami_2 at http://10.0.0.5:8000 with weight 1&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating server server-traefik_whoami_1 at http://10.0.0.3:8000 with weight 1&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=debug msg=&quot;Creating server server-traefik_whoami_5 at http://10.0.0.7:8000 with weight 1&quot;
+traefik_1  | time=&quot;2016-06-07T06:50:40Z&quot; level=info msg=&quot;Server configuration reloaded on :80&quot;
+</code></pre>
+
+<p>Looking at the logs we can now clearly see how Traefik catched the Docker event and how it reacted.</p>
+
+<p>Isnt&rsquo; awesome?</p>
+
+<p>OK. So this was basically our quick tour on how to do set up a simple microservice example with Docker and Traefik.</p>
+
+<p>The only thing that is left for us now is to clean up again.</p>
+
+<pre><code>$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose down -v
+</code></pre>
+
+<p>Did you notice the &lsquo;-v&rsquo; option? This seems to be really important as it cleans up all the containers including the overlay network that was created for us.
+Without the &lsquo;-v&rsquo; option we would get an error the next time we start the application again with Docker Compose.</p>
+
+<p>It is also a good idea to stop the Cluster Lab on all nodes before you switch of your Raspberry Pi&rsquo;s.</p>
+
+<p>So do a</p>
+
+<pre><code>$ cluster-lab stop
+</code></pre>
+
+<p>on all your cluster nodes.</p>
+
+<p>It&rsquo;s just amazing how many interesting technologies we used in this small blog post.
+And it wasn&rsquo;t to hard to get them running together, wasn&rsquo;t it?</p>
+
+<p>That is mostly due to the work the <a href="https://github.com/hypriot/cluster-lab">Hypriot Cluster Lab</a> does for us and of course under the hood it is the Docker-Engine, Docker-Swarm and Docker-Compose that let&rsquo;s us do so much with so little effort.</p>
+
+<p>So make sure to give our Hypriot Cluster Lab a spin and try some of the examples in our <a href="https://github.com/hypriot/rpi-cluster-lab-demos">Hypriot Cluster Lab Demos</a> repository or add some of your own. Pull requests are always welcome.</p>
+
+<p>As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.</p>
+
+<p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

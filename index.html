@@ -80,6 +80,38 @@
     
       <div class="summary">
         <h1 class="post-title">
+          <a href="/post/microservices-bliss-with-docker-and-traefik/">
+            Microservices Bliss with Docker and Traefik
+          </a>
+        </h1>
+
+        <span class="post-date">Tue, Jun 7, 2016</span>
+
+        <p>A couple of weeks ago I found this really nice and neat HTTP reverse proxy called <a href="https://docs.traefik.io/">Traefik</a>.
+It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.</p>
+
+<p>Did you realize the important part of the last sentence was <strong>dynamic</strong>?</p>
+
+<p>What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
+So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.</p>
+
+<p><img src="/images/traefik/architecture.png" alt="Traffic" />
+</p>
+
+<p>With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
+<a href="https://github.com/gliderlabs/registrator">Registrator</a>, <a href="https://www.consul.io/">Consul</a> and <a href="https://github.com/hashicorp/consul-template">Consul-Template</a> to achieve the same kind of functionality.</p>
+
+<p>So let me show you with a simple microservice example how easy it is to get started with Traefik&hellip;</p>
+
+        
+        <div class="read-more-link">
+          <a href="/post/microservices-bliss-with-docker-and-traefik/">Read More…</a>
+        </div>
+        
+      </div>
+    
+      <div class="summary">
+        <h1 class="post-title">
           <a href="/post/talk_ict_2016_international_conference_telecommunications/">
             Learning about Cloud Computing with Hypriot Cluster Lab at ICT 2016
           </a>
