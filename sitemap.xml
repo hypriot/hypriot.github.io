@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2016-06-07T09:15:00+00:00</lastmod>
+    <lastmod>2016-06-13T09:21:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</loc>
+    <lastmod>2016-06-13T09:21:00+00:00</lastmod>
   </url>
   
   <url>
@@ -303,15 +308,15 @@
   </url>
   
   <url>
+    <loc>http://blog.hypriot.com/downloads/</loc>
+  </url>
+  
+  <url>
     <loc>http://blog.hypriot.com/crew/</loc>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/faq/</loc>
-  </url>
-  
-  <url>
-    <loc>http://blog.hypriot.com/downloads/</loc>
   </url>
   
   <url>
