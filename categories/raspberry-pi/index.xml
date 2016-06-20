@@ -15,7 +15,7 @@
       <pubDate>Mon, 20 Jun 2016 21:49:00 +0200</pubDate>
       
       <guid>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
-      <description>&lt;p&gt;A couple of days I wrote a blog post about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
+      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
 I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.&lt;/p&gt;
 
 &lt;p&gt;I really thought it couldn&amp;rsquo;t get much easier. Oh boy - was I wrong!&lt;/p&gt;

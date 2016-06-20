@@ -86,7 +86,16 @@
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
   &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_
+      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;/a&gt;
+
+
+  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
+    Docker Birthday Party at University of Bamberg
+    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
 
 
 
