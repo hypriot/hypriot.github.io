@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> More Microservices Bliss with Docker 1.12 and Swarm only &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>More Microservices Bliss with Docker 1.12 and Swarm only</h1>
+    <span class="post-date">Mon, Jun 20, 2016</span>
+    <p>A couple of days I wrote a blog post about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
+I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.</p>
+
+<p>I really thought it couldn&rsquo;t get much easier. Oh boy - was I wrong!</p>
+
+<p>Today as part of the Docker opening keynote Docker demostrated an evolution of Docker Swarm that simplifies this whole scenario even more.
+It makes setting up a Docker Swarm Cluster a really simple and straigtforward task.</p>
+
+<p>Let&rsquo;s see how this new thing works&hellip;</p>
+
+<p><img src="/images/more-microservices/swarm.jpg" alt="Docker Swarm" />
+</p>
+
+<p>If you remember the example from my last post - it consisted of a microservice application made of a frontend and a couple of backend services.
+The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
+And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.</p>
+
+<p><img src="/images/traefik/microsservice_example_end.jpg" alt="Traffic" />
+</p>
+
+<p>The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.</p>
+
+<p>Less moving parts - that is great!</p>
+
+<p>Still we get built-in loadbalancing to our backend services. We even can access those services from every node in our cluster.
+Docker Swarm has a kind of built-in mesh routing integrated that takes care of routing requests to the appropriate backend containers.</p>
+
+<p>With all the new functionality one could assume that setting up a Docker Swarm cluster got even more complicated then before.
+But to the contrary - it got much easier - and that by leaps and bounds.</p>
+
+<p>Don&rsquo;t believe me? Just follow along.</p>
+
+<p>As you might have guessed, we are doing this on Raspberry Pi cluster again.
+I am using a homegrown version of Docker 1.12 that I installed on my Raspberry Pi.
+Hopefully when Docker 1.12 is not a release candidate anymore we will have a version for you ready, too.</p>
+
+<p>Let&rsquo;s see what we have:</p>
+
+<pre><code>root@pi6 $ docker version
+Client:
+ Version:      1.12.0-rc1
+ API version:  1.24
+ Go version:   go1.6.2
+ Git commit:   1f136c1-unsupported
+ Built:        Wed Jun 15 15:35:51 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.0-rc1
+ API version:  1.24
+ Go version:   go1.6.2
+ Git commit:   1f136c1-unsupported
+ Built:        Wed Jun 15 15:35:51 2016
+ OS/Arch:      linux/arm
+</code></pre>
+
+<p>Great. Docker 1.12 RC1 is ready. We should have everything we need to get started.</p>
+
+<p>Let&rsquo;s see if we can find out if we have same new features hidden in our Docker CLI.</p>
+
+<pre><code>root@pi6 $ docker
+Usage: docker [OPTIONS] COMMAND [arg...]
+       docker [ --help | -v | --version ]
+
+A self-sufficient runtime for containers.
+    ...
+    service   Manage Docker services
+    ...
+    stats     Display a live stream of container(s) resource usage statistics
+    ...
+    swarm     Manage Docker Swarm
+    ...
+    update    Update configuration of one or more containers
+
+Run 'docker COMMAND --help' for more information on a command.
+</code></pre>
+
+<p>I removed the lines of the command output that have not changed compared to the previous release. What remains though is still pretty interesting&hellip;</p>
+
+<p>We now seem to have a &lsquo;docker swarm&rsquo; command.</p>
+
+<p>Let&rsquo;s see what it is all about&hellip;</p>
+
+<pre><code>root@pi6 $ docker swarm
+
+Usage:  docker swarm COMMAND
+
+Manage Docker Swarm
+
+Options:
+      --help   Print usage
+
+Commands:
+  init        Initialize a Swarm.
+  join        Join a Swarm as a node and/or manager.
+  update      update the Swarm.
+  leave       Leave a Swarm.
+  inspect     Inspect the Swarm
+
+Run 'docker swarm COMMAND --help' for more information on a command.
+</code></pre>
+
+<p>So &lsquo;Initialize a Swarm.&rsquo; seems to be exactly what we want. Let&rsquo;s start with this one.</p>
+
+<pre><code>root@pi6 $ docker swarm init
+Swarm initialized: current node (1njlvzi9rk2syv3xojw217o0g) is now a manager.
+</code></pre>
+
+<p>Now that we have a Swarm manger node running it is time to add some more nodes to the cluster.<br />
+And it is really simple as well.</p>
+
+<p>Just go to another node of your cluster and execute:</p>
+
+<pre><code>root@pi1 $ docker swarm join pi6:2377
+This node joined a Swarm as a worker.
+</code></pre>
+
+<p>With this command we basically just tell new nodes that they should join the Swarm Manager node on which we created the inital Swarm cluster.
+In the background Docker Swarm now does some work for us.</p>
+
+<p>For instance it sets up encrypted communication channels between the cluster nodes. We do not need to manage TLS certificates on our own.</p>
+
+<p>Everybody who knows how involved it could be to get a Docker Swarm cluster up running in the past should realize how easy it is now.</p>
+
+<p>Still we are not yet finished.</p>
+
+<p>A &lsquo;docker info&rsquo; on our Swarm Manager node reveals some interesting tidbits.
+Again I removed the uninteresting parts for brevity.</p>
+
+<pre><code>root@pi6 $ docker info
+...
+Swarm: active
+ NodeID: 1njlvzi9rk2syv3xojw217o0g
+ IsManager: Yes
+ Managers: 1
+ Nodes: 2
+ CACertHash: sha256:de4e2bff3b63700aad01df97bbe0397f131aabed5fabb7732283f044472323fc
+...
+Kernel Version: 4.4.10-hypriotos-v7+
+Operating System: Raspbian GNU/Linux 8 (jessie)
+OSType: linux
+Architecture: armv7l
+CPUs: 4
+Total Memory: 925.4 MiB
+Name: pi6
+...
+</code></pre>
+
+<p>As you can see we now have a new &lsquo;Swarm&rsquo; part in the &lsquo;docker info&rsquo; output.
+It tells us that our current node is a Swarm Manager node and that the cluster is composed of two cluster nodes in total.</p>
+
+<p>On our second node it looks a bit different as it is not a Manager node:</p>
+
+<pre><code>Swarm: active
+ NodeID: 3fmwt4taurwxczr2icboojz8g
+ IsManager: No
+</code></pre>
+
+<p>Unil now we just have an interesting, but still very empty Swarm cluster.
+Let&rsquo;s change that.</p>
+
+<p>Before we start let me introduce you to the concept of a service that is also new abstraction with Docker 1.12.
+You might have seen a hint of it already in the output of the Docker command above.
+Yes, it is the &lsquo;docker service&rsquo; command that I am talking about.
+A Docker service is basically just a bit of software running in a container that offers its &lsquo;service&rsquo; to the outside world and runs on a Swarm cluster.</p>
+
+<p>Such a service can consist of just one container or of multiple containers.
+In the latter case we get high availability and/or loadbalancing for our service out of the box.</p>
+
+<p>Let&rsquo;s create such a service based on our &lsquo;whoami&rsquo; image from my last blog post.</p>
+
+<pre><code>root@pi6 $ docker service create --name whoami -p 80:8000 hypriot/rpi-whoami
+buy0q65lw7nshm76kvy5imxk3
+</code></pre>
+
+<p>With the help of the &lsquo;docker swarm ls&rsquo; command we can check the status of our new service.</p>
+
+<pre><code>root@pi6 $ docker service ls
+ID            NAME    SCALE  IMAGE               COMMAND
+buy0q65lw7ns  whoami  1      hypriot/rpi-whoami
+</code></pre>
+
+<p>Let&rsquo;s check if we can request the index page from our whoami container by sending I http request via curl to the ip of eth0 network interface.</p>
+
+<pre><code>root@pi6 $ curl http://192.168.178.24
+I'm 1b6df814c654
+</code></pre>
+
+<p>And it is working. Awesome!</p>
+
+<p>Those who followed along with keen eyes will have noticed the &lsquo;SCALE&rsquo; part in the header line of the &lsquo;docker swarm ls&rsquo; command.
+It seems as we can scale our service somehow.</p>
+
+<pre><code>root@pi6 $ docker service scale whoami=5
+whoami scaled to 5
+</code></pre>
+
+<p>OK. Let&rsquo;s check what we have now:</p>
+
+<pre><code>root@pi6 $ docker service ls
+ID            NAME    SCALE  IMAGE               COMMAND
+buy0q65lw7ns  whoami  5      hypriot/rpi-whoami
+
+root@pi6 $ for i in {1..5}; do curl http://192.168.178.24; done
+I'm 8db1657e8517
+I'm e1863a2be88d
+I'm 1b6df814c654
+I'm 8db1657e8517
+I'm e1863a2be88d
+</code></pre>
+
+<p>This is pretty neat.</p>
+
+<p>But this is not just way more simple than the old Swarm, it also feels much more snappier and faster when executing commands.
+And remember I am working on Raspberry Pi&rsquo;s and not on a beefy server like you would propably work on.</p>
+
+<p>Let&rsquo;s see how this looks from the perspective of an individual Docker engine.</p>
+
+<pre><code>root@pi6 $ docker ps
+CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
+e1863a2be88d        hypriot/rpi-whoami:latest   &quot;/http&quot;             2 minutes ago       Up 2 minutes        8000/tcp            whoami.4.0lg12zndbal72exqe08r9wvpg
+8db1657e8517        hypriot/rpi-whoami:latest   &quot;/http&quot;             2 minutes ago       Up 2 minutes        8000/tcp            whoami.5.5z6mvsrdy73m5w24icgsqc8i2
+1b6df814c654        hypriot/rpi-whoami:latest   &quot;/http&quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.1.bg4qlpiye6h6uxyf8cmkwuh52
+</code></pre>
+
+<p>As you can see from the five containers that were started three reside on &lsquo;pi6&rsquo;.</p>
+
+<p>Let&rsquo;s see if we can find the rest:</p>
+
+<pre><code>root@pi1 docker ps
+CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
+db411a119c0a        hypriot/rpi-whoami:latest   &quot;/http&quot;             6 minutes ago       Up 6 minutes        8000/tcp            whoami.2.2tf7yhmx9haol7e2b7xib2emj
+0a4bf32fa9c4        hypriot/rpi-whoami:latest   &quot;/http&quot;             6 minutes ago       Up 6 minutes        8000/tcp            whoami.3.2r6mm091c2ybr0f9jz4qaxw9k
+</code></pre>
+
+<p>So what happens when I just leave the Swarm cluster on &lsquo;pi1&rsquo;?</p>
+
+<pre><code>root@pi1 docker swarm leave
+Node left the default swarm.
+</code></pre>
+
+<p>Now I should be two containers short, right?</p>
+
+<p>Let&rsquo;s see what we have on our remaining node:</p>
+
+<pre><code>docker ps
+CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
+58620e3d533c        hypriot/rpi-whoami:latest   &quot;/http&quot;             46 seconds ago      Up 43 seconds       8000/tcp            whoami.2.cgc4e2ixulc2f3ehr4laoursg
+acc9b523f434        hypriot/rpi-whoami:latest   &quot;/http&quot;             46 seconds ago      Up 43 seconds       8000/tcp            whoami.3.67bhlo3nwgehthi3bg5bfdzue
+e1863a2be88d        hypriot/rpi-whoami:latest   &quot;/http&quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.4.0lg12zndbal72exqe08r9wvpg
+8db1657e8517        hypriot/rpi-whoami:latest   &quot;/http&quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.5.5z6mvsrdy73m5w24icgsqc8i2
+1b6df814c654        hypriot/rpi-whoami:latest   &quot;/http&quot;             15 minutes ago      Up 14 minutes       8000/tcp            whoami.1.bg4qlpiye6h6uxyf8cmkwuh52
+</code></pre>
+
+<p>What we witnessed here is the same what would have happend if we just had a failing &lsquo;pi1&rsquo; node.
+All the containers that were running on node &lsquo;pi1&rsquo; were migrated to the remaining cluster nodes automatically.
+That&rsquo;s pretty impressive.</p>
+
+<p>So to recap what we just did:<br />
+We created a small dynamic microservice applications with just the plain Docker.
+Docker Swarm is now integrated into the Docker-Engine instead of being a separate piece of software.
+In many cases this makes a separate proxy for the backend services of your application obsolete. No more nginx, HAProxy or Traefik. Sorry to see you go&hellip;</p>
+
+<p>Despite having less moving parts we now have additional loadbalancing and high availability feature builtin.
+I am really looking forward to find out what else there is in store with the new Docker Swarm and how it works together with Docker Compose.</p>
+
+<p>But that&rsquo;s a story for another day&hellip;</p>
+
+<p>As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.</p>
+
+<p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
