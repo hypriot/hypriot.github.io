@@ -46,7 +46,7 @@ The architecture from above is now slimmed down considerably and looks like this
 &lt;p&gt;Still we get built-in loadbalancing to our backend services. We even can access those services from every node in our cluster.
 Docker Swarm has a kind of built-in mesh routing integrated that takes care of routing requests to the appropriate backend containers.&lt;/p&gt;
 
-&lt;p&gt;With all the new functionality one could assume that setting up a Docker Swarm cluster got even more complicated then before.
+&lt;p&gt;With all the new functionality one could assume that setting up a Docker Swarm cluster got even more complicated than before.
 But to the contrary - it got much easier - and that by leaps and bounds.&lt;/p&gt;
 
 &lt;p&gt;Don&amp;rsquo;t believe me? Just follow along.&lt;/p&gt;
