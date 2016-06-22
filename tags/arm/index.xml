@@ -649,6 +649,9 @@ Despite being one of the first talks at nine o&amp;rsquo;clock in the morning it
 Starting with some basic Docker Fu the demo soon gathered speed and I showed how to use Docker Compose and Swarm to get a
 two tiered microservice architecture up and running in less then 5 minutes.&lt;/p&gt;
 
+&lt;p&gt;Here is a recording of the talk made by &lt;a href=&#34;https://call-a-tux.de/&#34;&gt;Call-a-Tux&lt;/a&gt;:
+&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/9xAkILSdlxE&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;docker-workshop:ce44e480ae6cb7c6d49829357f2a0d42&#34;&gt;Docker Workshop&lt;/h2&gt;
 
 &lt;p&gt;It seems the talk was able to whet the appetite of the audience as many joined the two hour workshop later.
