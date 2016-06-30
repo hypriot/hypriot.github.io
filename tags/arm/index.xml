@@ -78,8 +78,8 @@ drwx------ 2 pirate pirate 4.0K Jun 21 12:09 .ssh
 
 &lt;pre&gt;&lt;code&gt;$ docker-machine ls
 NAME   ACTIVE   DRIVER    STATE     URL                          SWARM   DOCKER        ERRORS
-pi2    -        generic   Running   tcp://192.168.178.171:2376           v1.12.0-rc1
-pi6    -        generic   Running   tcp://192.168.178.24:2376            v1.12.0-rc1
+pi1    -        generic   Running   tcp://192.168.178.171:2376           v1.12.0-rc1
+pi2    -        generic   Running   tcp://192.168.178.24:2376            v1.12.0-rc1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And indeed we have two hosts that are already managed by Docker Machine.&lt;/p&gt;
@@ -133,9 +133,9 @@ Without this option Docker Machine would try to use &amp;lsquo;aufs&amp;rsquo; w
 
 &lt;pre&gt;&lt;code&gt;$ docker-machine ls
 NAME   ACTIVE   DRIVER    STATE     URL                          SWARM   DOCKER        ERRORS
-pi2    -        generic   Running   tcp://192.168.178.171:2376           v1.12.0-rc1
+pi1    -        generic   Running   tcp://192.168.178.171:2376           v1.12.0-rc1
 pi3    -        generic   Running   tcp://192.168.178.59:2376            v1.12.0-rc1
-pi6    -        generic   Running   tcp://192.168.178.24:2376            v1.12.0-rc1
+pi2    -        generic   Running   tcp://192.168.178.24:2376            v1.12.0-rc1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Yeah - we do.&lt;/p&gt;
@@ -146,7 +146,7 @@ If this is the case make sure you did not forget to set up your SSH public key w
 &lt;p&gt;Sometimes when Docker Machine tries to add a new host it happens that it is stuck halfway with an error.
 In those cases the best course of action is often to remove the host first and add it again later.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ docker-machine rm pi2
+&lt;pre&gt;&lt;code&gt;$ docker-machine rm pi3
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Let&amp;rsquo;s assume all went well and we now have a list of host under remote control. How do you work with those now?&lt;/p&gt;
@@ -217,7 +217,7 @@ Insecure Registries:
 
 &lt;p&gt;Just repeat the command from above and replace the hostname with another:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi6)
+&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi2)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;docker-machine-and-docker-swarm-mode:85b1180b5e32a76ced09e55169dd699d&#34;&gt;Docker Machine and Docker Swarm Mode&lt;/h2&gt;
@@ -256,15 +256,15 @@ Swarm: active
 
 &lt;pre&gt;&lt;code&gt;$ docker node ls
 ID                           NAME  MEMBERSHIP  STATUS  AVAILABILITY  MANAGER STATUS
-efyap0lxrttld19djs3ygtuac *  pi2   Accepted    Ready   Active        Leader
+efyap0lxrttld19djs3ygtuac *  pi1   Accepted    Ready   Active        Leader
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;OK. Time to add two more nodes.&lt;/p&gt;
 
 &lt;p&gt;First we need to switch our Docker environment with Docker Machine. Afterwards we join the existing Swarm cluster with the next node.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi3)
-$ docker swarm join pi2:2377
+&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi2)
+$ docker swarm join pi1:2377
 This node joined a Swarm as a worker.
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -279,19 +279,19 @@ Error response from daemon: this node is not participating as a Swarm manager
 &lt;p&gt;Obviously we are only able to use the &amp;lsquo;node&amp;rsquo; subcommand from a Swarm Manager node and not from a Swarm Worker node.
 So ignoring this for the moment let&amp;rsquo;s add the last node, too.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi6)
-$ docker swarm join pi2:2377
+&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi3)
+$ docker swarm join pi1:2377
 This node joined a Swarm as a worker.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Let&amp;rsquo;s switch back to our original Swarm Manager node:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi2)
+&lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi1)
 $ docker node ls
 ID                           NAME  MEMBERSHIP  STATUS  AVAILABILITY  MANAGER STATUS
-3cgg9qfo6nk77zisgrst1333n    pi6   Accepted    Ready   Active
+3cgg9qfo6nk77zisgrst1333n    pi2   Accepted    Ready   Active
 6lezwd8vplgcdmxyhswbc1cvp    pi3   Accepted    Ready   Active
-efyap0lxrttld19djs3ygtuac *  pi2   Accepted    Ready   Active        Leader
+efyap0lxrttld19djs3ygtuac *  pi1   Accepted    Ready   Active        Leader
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;As you can see we have sucessfully set up a Docker Swarm Cluster with three nodes.&lt;/p&gt;
@@ -309,17 +309,17 @@ efyap0lxrttld19djs3ygtuac *  pi2   Accepted    Ready   Active        Leader
 
 &lt;pre&gt;&lt;code&gt;$ docker service tasks hypriot-httpd
 ID                         NAME             SERVICE        IMAGE                      LAST STATE         DESIRED STATE  NODE
-14ywlwfix019b95oizce0hgd2  hypriot-httpd.1  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi2
+14ywlwfix019b95oizce0hgd2  hypriot-httpd.1  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi1
 60k55m336zq04rke696m848w1  hypriot-httpd.2  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi3
-55sl8zwi1v8om3pvtb0zscf8d  hypriot-httpd.3  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi6
+55sl8zwi1v8om3pvtb0zscf8d  hypriot-httpd.3  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi2
 105gbhovh5p3zmwpqaeg3hprd  hypriot-httpd.4  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi3
-8her9l13z78g9mjdrkovs9d46  hypriot-httpd.5  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi6
-5xwwxuvbwsr7pmomg91cnf08y  hypriot-httpd.6  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi2
+8her9l13z78g9mjdrkovs9d46  hypriot-httpd.5  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi2
+5xwwxuvbwsr7pmomg91cnf08y  hypriot-httpd.6  hypriot-httpd  hypriot/rpi-busybox-httpd  Running 6 minutes  Running        pi1
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;On a Mac we now can open the website that is served by this service with:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ open http://$(docker-machine ip pi2):8080
+&lt;pre&gt;&lt;code&gt;$ open http://$(docker-machine ip pi1):8080
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
