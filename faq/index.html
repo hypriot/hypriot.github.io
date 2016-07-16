@@ -103,11 +103,27 @@
 
 <h3 id="default-credentials:4a1318da06786ac52626178ca960109e">Default Credentials</h3>
 
-<p>The default credentials for the image are pirate/hypriot</p>
+<p>The default credentials for the image are user <strong>pirate</strong> with password <strong>hypriot</strong>.</p>
 
 <h3 id="connection-via-ssh-to-a-fresh-hypriotos-i-get-connection-reset-by-peer:4a1318da06786ac52626178ca960109e">Connection via SSH to a fresh HypriotOS, I get <code>connection reset by peer</code>.</h3>
 
 <p>After all, Re-flashing of the SD cards is all that we&rsquo;ve experienced as a solution for this error.</p>
+
+<h3 id="how-can-i-change-the-hostname:4a1318da06786ac52626178ca960109e">How can I change the hostname?</h3>
+
+<p>We use <a href="https://github.com/hypriot/device-init">device-init</a> to automatically change some settings on every boot.</p>
+
+<p>Just edit the <code>/boot/device-init.yaml</code> file with an editor</p>
+
+<pre><code class="language-bash">sudo nano /boot/device-init.yaml
+</code></pre>
+
+<p>and change the line with <code>hostname:</code></p>
+
+<pre><code class="language-yaml">hostname: &quot;black-pearl&quot;
+</code></pre>
+
+<p>After a reboot the device boots up with the new hostname. See more details about the <a href="https://github.com/hypriot/device-init#the-bootdevice-inityaml">device-init.yaml</a> file.</p>
 
 <p></br>
 <strong>You think that some important information is missing? <a href="https://github.com/hypriot/blog">Improve this site on GitHub!</a></strong></p>
