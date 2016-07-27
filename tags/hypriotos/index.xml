@@ -198,7 +198,7 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;Keep this in mind when searching for apps on the &lt;a href=&#34;https://registry.hub.docker.com/search?q=library&#34;&gt;Docker Hub&lt;/a&gt; - &lt;strong&gt;the source&lt;/strong&gt; for Docker apps/images. If you see the keyword &lt;em&gt;RPI&lt;/em&gt; or &lt;em&gt;ARM&lt;/em&gt; in the heading or description, this app can usually be used for the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;We prepared a couple of &lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;amp;searchfield=&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
+&lt;p&gt;We prepared a couple of &lt;a href=&#34;https://hub.docker.com/u/hypriot/&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
