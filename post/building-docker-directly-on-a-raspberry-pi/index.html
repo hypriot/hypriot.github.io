@@ -225,10 +225,10 @@ Date:   Wed Jul 27 16:35:10 2016 -0700
 <p>As you can see, the second last commit is the release commit for the official v1.12.0
 version of the Docker Engine. The last commit is from the applied PR.</p>
 
-<h3 id="run-the-builder:c68665982a08b259934801e30d513d89">Run the Builder</h3>
+<h3 id="run-the-build:c68665982a08b259934801e30d513d89">Run the build</h3>
 
-<p>And here comes the really boring magic, we&rsquo;ll start the building process and have
-to wait for a really long time to get the build finished.</p>
+<p>And here comes the magic: we&rsquo;ll start the build process and then have to wait
+for a really long time for it to finish.</p>
 
 <pre><code>$ time make deb
 
@@ -247,8 +247,9 @@ we&rsquo;ll get the Docker Engine v1.12.0 build for a few different ARM operatin
 -rw-r--r-- 1 root root 15915910 Jul 31 13:40 /home/pirate/docker/bundles/1.12.0/build-deb/ubuntu-trusty/docker-engine_1.12.0-0~trusty_armhf.deb
 </code></pre>
 
-<p>To install the Docker Engine on our Raspberry Pi&rsquo;s, we just pick
-<code>raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb</code>.</p>
+<p>To install the Docker Engine on our Raspberry Pi&rsquo;s, we just pick</p>
+
+<p><code>raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb</code>.</p>
 
 <p>Here is the install process on HypriotOS:</p>
 
@@ -279,13 +280,14 @@ Server:
 
 <h3 id="what-other-build-options-can-be-used:c68665982a08b259934801e30d513d89">What other build options can be used?</h3>
 
-<p>We do have some Raspberry Pi users who wants to run Docker on ArchLinux or other
-non-supported OSes. And for them it&rsquo;s also easy to build the Docker binaries in
-a static version as well.</p>
+<p>Some Raspberry Pi owners such as (Alex Ellis)[<a href="http://blog.alexellis.io/">http://blog.alexellis.io/</a>] run Docker on <a href="http://archlinuxarm.org">Arch Linux for ARM (ALARM)</a> or other compatible Linux distributions. For most non-Debian
+distributions it makes sense to build a static binary with the below command:</p>
 
 <pre><code>$ cd ~/docker
 $ time make binary
 </code></pre>
+
+<p>You will find the binary files in the <code>bundles</code> folder and can then move then to <code>/usr/bin</code> or <code>/usr/local/bin</code>.</p>
 
 <h3 id="lessons-learned:c68665982a08b259934801e30d513d89">Lessons learned</h3>
 
@@ -304,6 +306,8 @@ have to start all over again!</p>
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
+<p><em>Edits by <a href="http://twitter.com/alexellisuk">Alex Ellis</a></em></p>
 
     <div class="social-sharing">
   

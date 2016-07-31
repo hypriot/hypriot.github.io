@@ -159,10 +159,10 @@ Date:   Wed Jul 27 16:35:10 2016 -0700
 &lt;p&gt;As you can see, the second last commit is the release commit for the official v1.12.0
 version of the Docker Engine. The last commit is from the applied PR.&lt;/p&gt;
 
-&lt;h3 id=&#34;run-the-builder:c68665982a08b259934801e30d513d89&#34;&gt;Run the Builder&lt;/h3&gt;
+&lt;h3 id=&#34;run-the-build:c68665982a08b259934801e30d513d89&#34;&gt;Run the build&lt;/h3&gt;
 
-&lt;p&gt;And here comes the really boring magic, we&amp;rsquo;ll start the building process and have
-to wait for a really long time to get the build finished.&lt;/p&gt;
+&lt;p&gt;And here comes the magic: we&amp;rsquo;ll start the build process and then have to wait
+for a really long time for it to finish.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ time make deb
 
@@ -181,8 +181,9 @@ we&amp;rsquo;ll get the Docker Engine v1.12.0 build for a few different ARM oper
 -rw-r--r-- 1 root root 15915910 Jul 31 13:40 /home/pirate/docker/bundles/1.12.0/build-deb/ubuntu-trusty/docker-engine_1.12.0-0~trusty_armhf.deb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To install the Docker Engine on our Raspberry Pi&amp;rsquo;s, we just pick
-&lt;code&gt;raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To install the Docker Engine on our Raspberry Pi&amp;rsquo;s, we just pick&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here is the install process on HypriotOS:&lt;/p&gt;
 
@@ -213,13 +214,14 @@ Server:
 
 &lt;h3 id=&#34;what-other-build-options-can-be-used:c68665982a08b259934801e30d513d89&#34;&gt;What other build options can be used?&lt;/h3&gt;
 
-&lt;p&gt;We do have some Raspberry Pi users who wants to run Docker on ArchLinux or other
-non-supported OSes. And for them it&amp;rsquo;s also easy to build the Docker binaries in
-a static version as well.&lt;/p&gt;
+&lt;p&gt;Some Raspberry Pi owners such as (Alex Ellis)[&lt;a href=&#34;http://blog.alexellis.io/&#34;&gt;http://blog.alexellis.io/&lt;/a&gt;] run Docker on &lt;a href=&#34;http://archlinuxarm.org&#34;&gt;Arch Linux for ARM (ALARM)&lt;/a&gt; or other compatible Linux distributions. For most non-Debian
+distributions it makes sense to build a static binary with the below command:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ cd ~/docker
 $ time make binary
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will find the binary files in the &lt;code&gt;bundles&lt;/code&gt; folder and can then move then to &lt;code&gt;/usr/bin&lt;/code&gt; or &lt;code&gt;/usr/local/bin&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;lessons-learned:c68665982a08b259934801e30d513d89&#34;&gt;Lessons learned&lt;/h3&gt;
 
@@ -238,6 +240,8 @@ have to start all over again!&lt;/p&gt;
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Edits by &lt;a href=&#34;http://twitter.com/alexellisuk&#34;&gt;Alex Ellis&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
