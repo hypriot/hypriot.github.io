@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Building Docker 1.12 on a Raspberry Pi &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Building Docker 1.12 on a Raspberry Pi</h1>
+    <span class="post-date">Sun, Jul 31, 2016</span>
+    
+
+<p>In the past a lot of our users did asked us, how we&rsquo;re building the Docker Engine
+and the associated Debian packages. They&rsquo;d like to hack on some new features and
+would like to use the very latest software releases as soon as possible.</p>
+
+<p>Here I&rsquo;d like to share all the details how to build the latest Docker version even
+on a Raspberry Pi directly. Be warned: it&rsquo;s not too complicated, but it requires
+a large amount of time!</p>
+
+<p><img src="/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg" alt="Docker on Raspberry" />
+</p>
+
+<p>So, let&rsquo;s get started and follow me down the Rabbit Hole&hellip;</p>
+
+<h3 id="background:c68665982a08b259934801e30d513d89">Background</h3>
+
+<p>The goal of this tutorial is to give you all the details you need to know, when you&rsquo;d
+like to build the Docker Engine by yourself on your cool and fast $35 super-computer,
+a standard Raspberry Pi.</p>
+
+<h3 id="prepare-the-build-environment:c68665982a08b259934801e30d513d89">Prepare the Build Environment</h3>
+
+<p>Before we can begin the bloody work we have to make sure to prepare our build environment
+for this heavy and long-running workload.</p>
+
+<h4 id="hardware-and-software-requirements:c68665982a08b259934801e30d513d89">Hardware and Software Requirements</h4>
+
+<p>For building the Docker Engine in the recommended way we need a Linux computer which
+already has a recent version of Docker running. Yeah, the Docker Engine will be build
+inside of a Docker container to get a consistent and reproducible build environment.
+As this requires some CPU power and disk space, I&rsquo;m giving you here the minimal
+specs for the hardware.</p>
+
+<ul>
+<li>Raspberry Pi 3 (a Pi 2 will work, but the build process will take even longer!)</li>
+<li>16 GByte SD card (8 GByte is not enough!)</li>
+<li>enabled swap space (1 GByte of memory is not sufficient!)</li>
+<li>Docker Engine 1.11</li>
+</ul>
+
+<h4 id="installing-the-build-environment:c68665982a08b259934801e30d513d89">Installing the Build Environment</h4>
+
+<p>As you will see, setting up the build environment is damn easy, because we&rsquo;ll just
+use the latest release of HypriotOS which has the required Docker Engine 1.11.1
+already pre-installed. These steps here are done on OS X, on a Linux or Windows
+box it&rsquo;s a little bit different.</p>
+
+<p><em>Step 1:</em> install HypriotOS 0.8.2 on a SD card</p>
+
+<pre><code>$ flash https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.2/hypriotos-rpi-v0.8.2.img.zip
+</code></pre>
+
+<p>Now boot the Raspberry Pi 3 with the newly flashed SD card.</p>
+
+<p><em>Step 2:</em> deploy SSH keys</p>
+
+<p>(Note: login credentials are username=pirate, password=hypriot)</p>
+
+<p>First, wait until the Raspberry Pi is booted up and is visible on the network
+to gather it&rsquo;s IP address.</p>
+
+<pre><code>$ ping -c 1 black-pearl.local
+PING black-pearl.local (192.168.2.113): 56 data bytes
+64 bytes from 192.168.2.113: icmp_seq=0 ttl=64 time=5.697 ms
+</code></pre>
+
+<p>Second, deploy your standard SSH keys to the Raspberry Pi.</p>
+
+<pre><code>$ ssh-add
+$ ssh-keygen -R 192.168.2.113
+$ ssh-copy-id pirate@192.168.2.113
+</code></pre>
+
+<p>Now we&rsquo;re able to login into the Raspberry Pi without using a password.</p>
+
+<pre><code>$ ssh pirate@192.168.2.113
+
+$ uname -a
+Linux black-pearl 4.4.15-hypriotos-v7+ #1 SMP PREEMPT Mon Jul 25 08:46:52 UTC 2016 armv7l GNU/Linux
+</code></pre>
+
+<p><em>Step 3:</em> install some build dependencies</p>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install -y make
+</code></pre>
+
+<p><em>Step 4:</em> using a swap file</p>
+
+<p>This will create and use a default 2x 1GByte swap file at /var/swap.</p>
+
+<pre><code>$ sudo apt-get install -y dphys-swapfile
+$ ls -alh /var/swap
+-rw------- 1 root root 1.8G Jul 30 17:58 /var/swap
+</code></pre>
+
+<p>If we need a larger swap file, we could edit the config file <code>/etc/dphys-swapfile</code>,
+but for our use case the default 1.8 GByte swap file is sufficient.</p>
+
+<h3 id="clone-the-docker-repo:c68665982a08b259934801e30d513d89">Clone the Docker repo</h3>
+
+<pre><code>$ git clone https://github.com/docker/docker.git
+$ cd docker
+$ git checkout v1.12.0
+</code></pre>
+
+<p>As you can see, we&rsquo;re using a tagged release for Docker to build this exact version.</p>
+
+<h3 id="how-to-apply-some-extra-pull-requests:c68665982a08b259934801e30d513d89">How to apply some extra Pull Requests</h3>
+
+<p>Just to be honest, right now the build process for Docker v1.12.0 will fail on ARM.
+This is a known issue and will be fixed hopefully soon. But luckily there is already
+a <a href="https://github.com/docker/docker/pull/25192">pull request</a>
+which enables us to build the Docker .deb packages. This gives me
+the change to explain how you can easily apply a PR on top of a release version.</p>
+
+<p>So, let&rsquo;s cherry pick this specific pull request.</p>
+
+<pre><code>$ git fetch origin pull/25192/head:fix-manpages-on-arm
+$ git cherry-pick fix-manpages-on-arm
+</code></pre>
+
+<p>And finally let&rsquo;s check if everything is OK with the git history.</p>
+
+<pre><code>commit e15322b4fcb173674fd62a329a51b0756f02d503
+Author: Daniel Nephin &lt;dnephin@docker.com&gt;
+Date:   Thu Jul 28 14:53:08 2016 -0400
+
+    Fix the man/Dockerfile for arm
+
+    Signed-off-by: Daniel Nephin &lt;dnephin@docker.com&gt;
+
+commit 8eab29edd820017901796eb60d4bea28d760f16f
+Author: Tibor Vass &lt;tibor@docker.com&gt;
+Date:   Wed Jul 27 16:35:10 2016 -0700
+
+    Bump VERSION to v1.12.0
+
+    Signed-off-by: Tibor Vass &lt;tibor@docker.com&gt;
+</code></pre>
+
+<p>As you can see, the second last commit is the release commit for the official v1.12.0
+version of the Docker Engine. The last commit is from the applied PR.</p>
+
+<h3 id="run-the-builder:c68665982a08b259934801e30d513d89">Run the Builder</h3>
+
+<p>And here comes the really boring magic, we&rsquo;ll start the building process and have
+to wait for a really long time to get the build finished.</p>
+
+<pre><code>$ time make deb
+
+...
+real	350m48.228s
+user	0m22.140s
+sys	0m4.870s
+</code></pre>
+
+<p>The complete build process takes almost 6 hours on a fast Raspberry Pi 3, but finally
+we&rsquo;ll get the Docker Engine v1.12.0 build for a few different ARM operating systems.</p>
+
+<pre><code>$ ls -al ~/docker/bundles/1.12.0/build-deb/*/*.deb
+-rw-r--r-- 1 root root 15933554 Jul 31 10:46 /home/pirate/docker/bundles/1.12.0/build-deb/debian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb
+-rw-r--r-- 1 root root 15945462 Jul 31 12:28 /home/pirate/docker/bundles/1.12.0/build-deb/raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb
+-rw-r--r-- 1 root root 15915910 Jul 31 13:40 /home/pirate/docker/bundles/1.12.0/build-deb/ubuntu-trusty/docker-engine_1.12.0-0~trusty_armhf.deb
+</code></pre>
+
+<p>To install the Docker Engine on our Raspberry Pi&rsquo;s, we just pick
+<code>raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb</code>.</p>
+
+<p>Here is the install process on HypriotOS:</p>
+
+<pre><code>$ sudo apt-get purge -y docker-hypriot
+$ sudo dpkg -i docker-engine_1.12.0-0~jessie_armhf.deb
+</code></pre>
+
+<p>And now we do have the latest release version v1.12.0 of the Docker Engine running
+on our Raspberry Pi.</p>
+
+<pre><code>$ docker version
+Client:
+ Version:      1.12.0
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   e15322b4f
+ Built:        Sun Jul 31 11:41:45 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.0
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   e15322b4f
+ Built:        Sun Jul 31 11:41:45 2016
+ OS/Arch:      linux/arm
+</code></pre>
+
+<h3 id="what-other-build-options-can-be-used:c68665982a08b259934801e30d513d89">What other build options can be used?</h3>
+
+<p>We do have some Raspberry Pi users who wants to run Docker on ArchLinux or other
+non-supported OSes. And for them it&rsquo;s also easy to build the Docker binaries in
+a static version as well.</p>
+
+<pre><code>$ cd ~/docker
+$ time make binary
+</code></pre>
+
+<h3 id="lessons-learned:c68665982a08b259934801e30d513d89">Lessons learned</h3>
+
+<p>With the right Raspberry Pi OS and the Docker Engine already pre-installed, it&rsquo;s
+pretty easy and straight forward to build the next version of the Docker Engine
+directly and natively on a standard Raspberry Pi.</p>
+
+<p>I strongly recommend to use the faster Raspberry Pi 3 and a SD card of at least
+16 GByte, with a smaller SD card the build will crash after some hours and you
+have to start all over again!</p>
+
+<h3 id="feedback-please:c68665982a08b259934801e30d513d89">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
