@@ -214,7 +214,7 @@ Server:
 
 &lt;h3 id=&#34;what-other-build-options-can-be-used:c68665982a08b259934801e30d513d89&#34;&gt;What other build options can be used?&lt;/h3&gt;
 
-&lt;p&gt;Some Raspberry Pi owners such as (Alex Ellis)[&lt;a href=&#34;http://blog.alexellis.io/&#34;&gt;http://blog.alexellis.io/&lt;/a&gt;] run Docker on &lt;a href=&#34;http://archlinuxarm.org&#34;&gt;Arch Linux for ARM (ALARM)&lt;/a&gt; or other compatible Linux distributions. For most non-Debian
+&lt;p&gt;Some Raspberry Pi owners such as &lt;a href=&#34;http://blog.alexellis.io/&#34;&gt;Alex Ellis&lt;/a&gt; run Docker on &lt;a href=&#34;http://archlinuxarm.org&#34;&gt;Arch Linux for ARM (ALARM)&lt;/a&gt; or other compatible Linux distributions. For most non-Debian
 distributions it makes sense to build a static binary with the below command:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ cd ~/docker
