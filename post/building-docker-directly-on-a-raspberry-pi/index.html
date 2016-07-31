@@ -83,29 +83,28 @@
     <span class="post-date">Sun, Jul 31, 2016</span>
     
 
-<p>In the past a lot of our users did asked us, how we&rsquo;re building the Docker Engine
-and the associated Debian packages. They&rsquo;d like to hack on some new features and
-would like to use the very latest software releases as soon as possible.</p>
+<p>Over time many of our users have asked us exactly how we build the Docker Engine
+and the associated Debian packages. For instance: they&rsquo;d like to hack on some
+ new features and need the latest software releases as soon as possible.</p>
 
-<p>Here I&rsquo;d like to share all the details how to build the latest Docker version even
-on a Raspberry Pi directly. Be warned: it&rsquo;s not too complicated, but it requires
+<p>Here I&rsquo;ll share all the details on building the latest Docker version - even on
+a Raspberry Pi itself. Beware: while it&rsquo;s not too complicated it will require
 a large amount of time!</p>
 
 <p><img src="/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg" alt="Docker on Raspberry" />
 </p>
 
-<p>So, let&rsquo;s get started and follow me down the Rabbit Hole&hellip;</p>
+<p>So, let&rsquo;s get started. Follow me down the <em>Rabbit Hole</em>&hellip;</p>
 
 <h3 id="background:c68665982a08b259934801e30d513d89">Background</h3>
 
-<p>The goal of this tutorial is to give you all the details you need to know, when you&rsquo;d
-like to build the Docker Engine by yourself on your cool and fast $35 super-computer,
-a standard Raspberry Pi.</p>
+<p>The goal of this tutorial is to give you all the details you need to build the
+Docker Engine yourself on your cool and fast $35 super-computer (the Raspberry Pi).</p>
 
 <h3 id="prepare-the-build-environment:c68665982a08b259934801e30d513d89">Prepare the Build Environment</h3>
 
-<p>Before we can begin the bloody work we have to make sure to prepare our build environment
-for this heavy and long-running workload.</p>
+<p>Before we begin this arduous task have to prepare our build environment for what
+will be a large, long-running workload.</p>
 
 <h4 id="hardware-and-software-requirements:c68665982a08b259934801e30d513d89">Hardware and Software Requirements</h4>
 

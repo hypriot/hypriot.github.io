@@ -17,29 +17,28 @@
       <guid>http://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/</guid>
       <description>
 
-&lt;p&gt;In the past a lot of our users did asked us, how we&amp;rsquo;re building the Docker Engine
-and the associated Debian packages. They&amp;rsquo;d like to hack on some new features and
-would like to use the very latest software releases as soon as possible.&lt;/p&gt;
+&lt;p&gt;Over time many of our users have asked us exactly how we build the Docker Engine
+and the associated Debian packages. For instance: they&amp;rsquo;d like to hack on some
+ new features and need the latest software releases as soon as possible.&lt;/p&gt;
 
-&lt;p&gt;Here I&amp;rsquo;d like to share all the details how to build the latest Docker version even
-on a Raspberry Pi directly. Be warned: it&amp;rsquo;s not too complicated, but it requires
+&lt;p&gt;Here I&amp;rsquo;ll share all the details on building the latest Docker version - even on
+a Raspberry Pi itself. Beware: while it&amp;rsquo;s not too complicated it will require
 a large amount of time!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg&#34; alt=&#34;Docker on Raspberry&#34; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;So, let&amp;rsquo;s get started and follow me down the Rabbit Hole&amp;hellip;&lt;/p&gt;
+&lt;p&gt;So, let&amp;rsquo;s get started. Follow me down the &lt;em&gt;Rabbit Hole&lt;/em&gt;&amp;hellip;&lt;/p&gt;
 
 &lt;h3 id=&#34;background:c68665982a08b259934801e30d513d89&#34;&gt;Background&lt;/h3&gt;
 
-&lt;p&gt;The goal of this tutorial is to give you all the details you need to know, when you&amp;rsquo;d
-like to build the Docker Engine by yourself on your cool and fast $35 super-computer,
-a standard Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;The goal of this tutorial is to give you all the details you need to build the
+Docker Engine yourself on your cool and fast $35 super-computer (the Raspberry Pi).&lt;/p&gt;
 
 &lt;h3 id=&#34;prepare-the-build-environment:c68665982a08b259934801e30d513d89&#34;&gt;Prepare the Build Environment&lt;/h3&gt;
 
-&lt;p&gt;Before we can begin the bloody work we have to make sure to prepare our build environment
-for this heavy and long-running workload.&lt;/p&gt;
+&lt;p&gt;Before we begin this arduous task have to prepare our build environment for what
+will be a large, long-running workload.&lt;/p&gt;
 
 &lt;h4 id=&#34;hardware-and-software-requirements:c68665982a08b259934801e30d513d89&#34;&gt;Hardware and Software Requirements&lt;/h4&gt;
 
