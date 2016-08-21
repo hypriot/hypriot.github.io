@@ -21,8 +21,9 @@
 
 &lt;p&gt;For this major release we&amp;rsquo;ve taken an especially great deal of trouble. Out of the box, you not only get the breaking features of the Docker Engine 1.12.1 and the latest versions of Docker Compose and Docker Machine, but also many improvements that enhance the performance, reliability and usability.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/release-1-0/docker_pirate_650px.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
-&lt;/p&gt;
+&lt;div align=&#34;center&#34;&gt;
+  ![Raspberry Pi 3](/images/release-1-0/docker_pirate_650px.jpg)
+&lt;/div&gt;
 
 &lt;p&gt;Therefore, this release illustrates very much how we work as Hypriot Team: We don&amp;rsquo;t stop after a &lt;code&gt;docker run&lt;/code&gt; just works on a Raspberry Pi. Meanwhile this has been possible for a long time. We only stop, when we went all the way down the rabbit whole and identified all adjusting screws of the operating system that can be used to improve the &lt;strong&gt;performance, reliability and usability&lt;/strong&gt; to run containers efficiently on ARM. Just to name a few examples: we include a Linux Kernel that is optimized for running Docker, we set all recommended configuration settings stated by Docker (and more), and provide tools that make the process of downloading HypriotOS and flashing it on a SD card super easy (see our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;).&lt;/p&gt;
 
@@ -50,7 +51,7 @@ As with security, running Docker with high performance comes out-of-the-box with
 &lt;p&gt;&lt;strong&gt;Now 50% smaller in size, even smaller than Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
 Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian (&amp;ldquo;Raspbian Lite&amp;rdquo;). We achieved this mainly by reducing the cache&amp;rsquo;s footprint and leaving out some unused packages, so you won&amp;rsquo;t miss any features you are used to. You just need to download only 232 MB instead of 504 MB as before. With this improvements the minimum disk usage is reduced down to 600 MB.&lt;/p&gt;
 
-&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.0.0&#34;&gt;release notes&lt;/a&gt; for HypriotOS 1.0.0.&lt;/p&gt;
+&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.0.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;quick-start:6302a5b7b7c942e4a845691a2c858ddf&#34;&gt;Quick start&lt;/h2&gt;
 
