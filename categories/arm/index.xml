@@ -6,8 +6,91 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jul 2016 15:24:03 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2016 12:30:00 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Releasing HypriotOS 1.0.0 &#34;Blackbeard&#34;</title>
+      <link>http://blog.hypriot.com/post/releasing-HypriotOS-1-0/</link>
+      <pubDate>Sun, 21 Aug 2016 12:30:00 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/releasing-HypriotOS-1-0/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Today we proudly present our 1.0.0 release of HypriotOS – a container OS that takes you from Zero to Docker within 5 Minutes only, on any device of the complete Raspberry Pi family.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For this major release we&amp;rsquo;ve taken an especially great deal of trouble. Out of the box, you not only get the breaking features of the Docker Engine 1.12.1 and the latest versions of Docker Compose and Docker Machine, but also many improvements that enhance the performance, reliability and usability.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/release-1-0/docker_pirate.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Therefore, this release illustrates very much how we work as Hypriot Team: We don&amp;rsquo;t stop after a &lt;code&gt;docker run&lt;/code&gt; just works on a Raspberry Pi. Meanwhile this has been possible for a long time. We only stop, when we went all the way down the rabbit whole and identified all adjusting screws of the operating system that can be used to improve the &lt;strong&gt;performance, reliability and usability&lt;/strong&gt; to run containers efficiently on ARM. Just to name a few examples: we include a Linux Kernel that is optimized for running Docker, we set all recommended configuration settings stated by Docker (and more), and provide tools that make the process of downloading HypriotOS and flashing it on a SD card super easy (see our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;).
+As a result, you can be sure that we fine-tuned all adjusting screws to ensure we provide not some container OS, but an awesome one.&lt;/p&gt;
+
+&lt;h2 id=&#34;feature-highlights-of-hypriotos:6302a5b7b7c942e4a845691a2c858ddf&#34;&gt;Feature Highlights of HypriotOS&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Latest Docker Engine 1.12.1 with Swarm Mode&lt;/strong&gt; &lt;/br&gt;
+You can get your hands on the new features of the freshly-baked Engine Docker 1.12.1 that is still warm. It includes the new Swarm Mode, which allows high availability of services in a multi-node cluster within just a few commands.
+&lt;a href=&#34;https://blog.docker.com/2016/07/swarm-mode-on-a-raspberry-pi-cluster/&#34;&gt;See this short video how it works.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Support for the complete Raspberry Pi family&lt;/strong&gt; &lt;/br&gt;
+You can run HypriotOS on each and every model of the Raspberry Pi family - we&amp;rsquo;re supporting Pi 1, 2, 3, Zero and even the Compute Module. Thus, all Raspberry Pi devices ever built are fully supported. This is possible through the dual kernels for ARMv6 and ARMv7 architecure we included on the SD card. Guess what: you can even switch your SD card from one Pi model to the other and it just works.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Easy flashing and configuration&lt;/strong&gt; &lt;/br&gt;
+We improved our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;, which puts HypriotOS onto a SD card that is ready to boot from with a single command. After you flashed the SD card, you can store the settings of your environment, e.g. Wi-Fi connection parameters into a configuration file on the SD card &lt;code&gt;/boot/device-init.yaml&lt;/code&gt;. HypriotOS includes &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;, which makes your Raspberry Pi directly connecting to your Wi-Fi network after booting.
+After booting, you can find the Raspberry Pi at your network with a simple &lt;code&gt;ping black-pearl.local&lt;/code&gt; – no more searching for IP addresses required thanks to the integrated Avahi service discovery.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Enhanced Security out of the box&lt;/strong&gt; &lt;/br&gt;
+We think that security should be shipped out-of-the-box. We make HypriotOS more secure without you even noticing it. For instance, there is no built-in &amp;ldquo;root&amp;rdquo; user any more. Also, the default user &amp;ldquo;pirate&amp;rdquo; (password &amp;ldquo;hypriot&amp;rdquo;) is able to run Docker commands directly, which usually requires sudo rights. For an even better security, we strongly recommend to change the default user password and to restrict SSH access to pre-shared keys only with disabling SSH password authentication.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Maximum Performance out of the box&lt;/strong&gt; &lt;/br&gt;
+As with security, running Docker with high performance comes out-of-the-box with HypriotOS. This includes faster booting times (15-17 sec.), an optimized file system to support more Inodes, minimal memory footprint and disk usage, and the reliable overlay storage driver for Docker by default.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now 50% smaller in size, even smaller than Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
+Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian Lite. We achieved this mainly by reducing the cache&amp;rsquo;s footprint and leaving out some unused packages, thus you won&amp;rsquo;t miss any features you are used to. You just need to download only 232 MB instead of 504 MB as before. With this improvements the minimum disk usage is reduced down to 600 MB.&lt;/p&gt;
+
+&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.0.0&#34;&gt;release notes&lt;/a&gt; for HypriotOS 1.0.0.&lt;/p&gt;
+
+&lt;h2 id=&#34;quick-start:6302a5b7b7c942e4a845691a2c858ddf&#34;&gt;Quick start&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Download our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and run&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Afterwards, put the SD card into the Raspberry Pi and power it. That&amp;rsquo;s all to get HypriotOS up and running!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you wanna connect to the Raspberry Pi, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with password &amp;ldquo;hypriot&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;If you want the Raspberry Pi to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit &lt;code&gt;/boot/device-init.yaml&lt;/code&gt; of the SD card and have a look at the &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;documentation of device-init&lt;/a&gt;. Alternatively, checkout the parameters of the &lt;code&gt;flash&lt;/code&gt; tool that also allows you to define configurations.&lt;/p&gt;
+
+&lt;p&gt;Really, it&amp;rsquo;s just so damn easy using our Hypriot &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -s mySSID -p myWIFIPASSWORD https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;feedback-please:6302a5b7b7c942e4a845691a2c858ddf&#34;&gt;Feedback, please&lt;/h2&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Your Hypriot Team:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Andreas &lt;a href=&#34;https://twitter.com/firecyberice&#34;&gt;@firecyberice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Building Docker 1.12 on a Raspberry Pi</title>
@@ -3120,197 +3203,6 @@ services:
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>How to setup a Docker Swarm cluster with Raspberry Pi&#39;s</title>
-      <link>http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/</link>
-      <pubDate>Tue, 08 Mar 2016 17:27:58 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/</guid>
-      <description>
-
-&lt;p&gt;This week is dedicated to &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/&#34;&gt;Docker #SwarmWeek&lt;/a&gt;. In this tutorial we show you how easy it is to setup a Docker Swarm with HypriotOS and the standard &lt;code&gt;docker-machine&lt;/code&gt; binary.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/how-to-setup-rpi-docker-swarm/docker-swarm-logo.png&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We want to setup a cluster with &lt;strong&gt;eight Raspberry Pi 3&lt;/strong&gt;, grouped into two tiny datacenters with four Pi&amp;rsquo;s each.&lt;/p&gt;
-
-&lt;h2 id=&#34;prepare-your-notebook:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Prepare your notebook&lt;/h2&gt;
-
-&lt;p&gt;To control the Docker Swarm from our notebook, we have to install both &lt;code&gt;docker&lt;/code&gt; and &lt;code&gt;docker-machine&lt;/code&gt; binaries. If you are on a Mac, you can use &lt;code&gt;brew&lt;/code&gt; to install them.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install docker
-brew install docker-machine
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;flash-all-your-sd-cards:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Flash all your SD cards&lt;/h2&gt;
-
-&lt;p&gt;Now we can easily flash the latest HypriotOS image to the eight SD cards with our &lt;a href=&#34;https://github.com/hypriot/flash#installation&#34;&gt;flash tool&lt;/a&gt; and assign different node names.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash --hostname swarm-dc1-pi01 https://downloads.hypriot.com/hypriot-rpi-20160306-192317.img.zip
-flash --hostname swarm-dc1-pi02 https://downloads.hypriot.com/hypriot-rpi-20160306-192317.img.zip
-...
-flash --hostname swarm-dc2-pi04 https://downloads.hypriot.com/hypriot-rpi-20160306-192317.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that, insert the SD cards and boot all the Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
-
-&lt;h2 id=&#34;prepare-your-pi-s-for-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Prepare your Pi&amp;rsquo;s for docker-machine&lt;/h2&gt;
-
-&lt;p&gt;We want to create the Docker Swarm with the standard &lt;code&gt;docker-machine&lt;/code&gt; binary. To make this work we need to prepare the Raspberry Pi&amp;rsquo;s a little bit. The next steps are adding your SSH public key to all of your Pi&amp;rsquo;s as well as fixing the ID in &lt;code&gt;/etc/os-release&lt;/code&gt; to &lt;code&gt;debian&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function getip() { (traceroute $1 2&amp;gt;&amp;amp;1 | head -n 1 | cut -d\( -f 2 | cut -d\) -f 1) }
-
-IP_ADDRESS=$(getip swarm-dc1-pi01.local)
-
-ssh-keygen -R $IP_ADDRESS
-ssh-copy-id -oStrictHostKeyChecking=no -oCheckHostIP=no root@$IP_ADDRESS
-
-ssh root@$IP_ADDRESS sed -i \&#39;s/ID=raspbian/ID=debian/g\&#39; /etc/os-release
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Repeat this for all the eight Raspberry Pi&amp;rsquo;s. You will prompted for the root password which is &lt;code&gt;hypriot&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;create-swarm-token:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Create Swarm Token&lt;/h2&gt;
-
-&lt;p&gt;A Docker Swarm cluster uses a unique Cluster ID to enable all swarm agents find each other. We need such a Cluster ID to build our Docker Swarm. This can be done in your shell with this command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export TOKEN=$(for i in $(seq 1 32); do echo -n $(echo &amp;quot;obase=16; $(($RANDOM % 16))&amp;quot; | bc); done; echo)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;create-the-swarm-with-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Create the swarm with docker-machine&lt;/h2&gt;
-
-&lt;p&gt;We now create the Swarm Master on the first Raspberry Pi.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d generic \
-  --engine-storage-driver=overlay --swarm --swarm-master \
-  --swarm-image hypriot/rpi-swarm:latest \
-  --swarm-discovery=&amp;quot;token://$TOKEN&amp;quot; \
-  --generic-ip-address=$(getip swarm-dc1-pi01.local) \
-  swarm-dc1-pi01
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For all the seven remaining Raspberry Pi&amp;rsquo;s we create Swarm Agents that join the Swarm cluster.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-machine create -d generic \
-  --engine-storage-driver=overlay --swarm \
-  --swarm-image hypriot/rpi-swarm:latest \
-  --swarm-discovery=&amp;quot;token://$TOKEN&amp;quot; \
-  --generic-ip-address=$(getip swarm-dc1-pi02.local) \
-  swarm-dc1-pi02
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After a while the whole Docker Swarm cluster with the two datacenters is up and running. We now have a cluster with &lt;strong&gt;32 CPU&amp;rsquo;s&lt;/strong&gt; and &lt;strong&gt;8 GByte RAM&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;control-your-swarm:7086adb18de3c46a0c9331e9b3dc5f01&#34;&gt;Control your Swarm&lt;/h2&gt;
-
-&lt;p&gt;To connect to your Docker Swarm use the following command to set the environment variables for the Docker Client.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;eval $(docker-machine env --swarm swarm-dc1-pi01)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/how-to-setup-rpi-docker-swarm/dc1-pi3.jpg&#34; alt=&#34;Datacenter 1&#34; /&gt;
-
-&lt;img src=&#34;http://blog.hypriot.com/images/how-to-setup-rpi-docker-swarm/dc2-pi3.jpg&#34; alt=&#34;Datacenter 2&#34; /&gt;
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker info
-Containers: 10
- Running: 9
- Paused: 0
- Stopped: 1
-Images: 8
-Server Version: swarm/1.1.3
-Role: primary
-Strategy: spread
-Filters: health, port, dependency, affinity, constraint
-Nodes: 8
- swarm-dc1-pi01: 192.168.1.207:2376
-  └ Status: Healthy
-  └ Containers: 3
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:47:03Z
- swarm-dc1-pi02: 192.168.1.209:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:56Z
- swarm-dc1-pi03: 192.168.1.206:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:22Z
- swarm-dc1-pi04: 192.168.1.208:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:51Z
- swarm-dc2-pi01: 192.168.1.204:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:35Z
- swarm-dc2-pi02: 192.168.1.205:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:49Z
- swarm-dc2-pi03: 192.168.1.210:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:40Z
- swarm-dc2-pi04: 192.168.1.211:2376
-  └ Status: Healthy
-  └ Containers: 1
-  └ Reserved CPUs: 0 / 4
-  └ Reserved Memory: 0 B / 971.8 MiB
-  └ Labels: executiondriver=native-0.2, kernelversion=4.1.17-hypriotos-v7+, operatingsystem=Raspbian GNU/Linux 8 (jessie), provider=generic, storagedriver=overlay
-  └ Error: (none)
-  └ UpdatedAt: 2016-03-08T17:46:37Z
-Plugins:
- Volume:
- Network:
-Kernel Version: 4.1.17-hypriotos-v7+
-Operating System: linux
-Architecture: arm
-CPUs: 32
-Total Memory: 7.592 GiB
-Name: d90d49c65205
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/how-to-setup-rpi-docker-swarm/five-pi3.jpg&#34; alt=&#34;five pi3&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;For more information about Docker Swarm you can follow the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/&#34;&gt;#SwarmWeek: Introduction to container orchestration with Docker Swarm&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/quintus23m&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
