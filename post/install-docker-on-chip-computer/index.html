@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Install Docker 1.12 on the $9 C.H.I.P. computer &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Install Docker 1.12 on the $9 C.H.I.P. computer</h1>
+    <span class="post-date">Sat, Sep 3, 2016</span>
+    
+
+<p>Did you seen the successfully launch of a really cheap ARM board for $9 only - the C.H.I.P. computer? It has an ARMv7 CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
+<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" />
+</p>
+
+<p>With these awesome features built-in it would be really a great device to run Docker containers if only the recent Linux kernel 4.4  has the correct modules included, but it doesn&rsquo;t - what a bummer!</p>
+
+<p>But with spending a lot of time in building a custom Linux kernel and tweaking &amp; testing I was finally able to install the latest Docker Engine for ARM on the C.H.I.P. &mdash; and as a result you can easily follow this tutorial and within a few minutes only you can run your first Docker container on this cute ARM board&hellip;</p>
+
+<p><img src="/images/install-docker-on-chip-computer/chip-photo.jpg" alt="chip-photo" />
+</p>
+
+<h3 id="background:f104f10590263b135a4ba1767b05f846">Background</h3>
+
+<p>Preparing your operating system and your Linux kernel to be able to run the Docker Engine efficiently can be a hard thing and can consume a lot of labor time.</p>
+
+<p>Fortunately in this tutorial I&rsquo;ll show you the basic steps to get Docker running on the $9 C.H.I.P. computer, so every normal user should be able to do it on her own within a short time only - even without the need being an expert in this area. And if you&rsquo;re in a hurry you can skip most of the tutorial and go straight ahead to the <code>Lessons learned - TL;DR</code> section and install Docker with just two single commands.</p>
+
+<h3 id="necessary-steps-to-install-docker:f104f10590263b135a4ba1767b05f846">Necessary steps to install Docker</h3>
+
+<ol>
+<li>Flash the latest available firmware</li>
+<li>Connect to the C.H.I.P. via USB or UART console cable</li>
+<li>Configure WiFi connection</li>
+<li>Configure SSH to access the C.H.I.P.</li>
+<li>Checking the OS and Linux kernel version</li>
+<li>Install the Docker Engine 1.12.1 the easy way</li>
+<li>Upgrade the Linux kernel to a custom built version</li>
+<li>Run your first Docker Container on the C.H.I.P.</li>
+</ol>
+
+<h4 id="step-1-flash-the-latest-available-firmware:f104f10590263b135a4ba1767b05f846">Step 1: Flash the latest available firmware</h4>
+
+<p>Use a Chrome browser and flash the latest firmware and OS on your C.H.I.P. computer. For detailed instructions go to the appropriate web site at <a href="http://flash.getchip.com/">http://flash.getchip.com/</a>.
+<img src="/images/install-docker-on-chip-computer/flash-getchip-com.jpg" alt="flash-getchip-com" />
+</p>
+
+<p>To run Docker on the C.H.I.P. we&rsquo;re using the OS image for <code>Debian Headless 4.4</code>, which is a server installation without any GUI and thus it&rsquo;s quite smaller is size, so we do have more space left for running apps and Docker containers.</p>
+
+<p><strong>Pro Tip:</strong> You can even see all the detailed log messages while flashing via an UART console cable:</p>
+
+<pre><code>...
+Starting download of 6291508 bytes
+................................................
+downloading of 6291508 bytes finished
+Flashing sparse image on partition UBI at offset 0x26800000 (ID: 10)
+start 0x9a00 blkcnt 0x180 partition 0x400 size 0x7fc00
+Writing at offset 0x26800000
+New offset 0x27400000
+........ wrote 384 blocks to 'UBI'
+
+*****************[ FLASHING DONE ]*****************
+</code></pre>
+
+<p><img src="/images/install-docker-on-chip-computer/chip-successfully-flashed.jpg" alt="chip-successfully-flashed" />
+</p>
+
+<h4 id="step-2-connect-to-the-c-h-i-p-via-usb-or-uart-console-cable:f104f10590263b135a4ba1767b05f846">Step 2: Connect to the C.H.I.P. via USB or UART console cable</h4>
+
+<p>Once the C.H.I.P. is successfully flashed you can connect it directly with an USB cable to a Mac or Linux machine. The C.H.I.P. is getting power over the USB cable and connects via an USB serial console driver, so you can easily connect to.</p>
+
+<p>Let&rsquo;s see if we can find the booted C.H.I.P. on the USB wire:</p>
+
+<pre><code>ls -al /dev/cu.usb*
+crw-rw-rw-  1 root  wheel   20, 159 Sep  3 16:52 /dev/cu.usbmodem141113
+</code></pre>
+
+<p><em>Note 1:</em> you have to wait a few minutes until the device can be detected as the C.H.I.P. has to be fully booted. <br>
+<em>Note 2:</em> it&rsquo;s strongly recommended to use a powered USB hub, otherwise you&rsquo;ll hit some power problems and the C.H.I.P. can&rsquo;t access or can immediately shuts off</p>
+
+<p>Now we can connect to the ARM device via the <code>screen</code> utility:</p>
+
+<pre><code>sudo screen /dev/cu.usbmodem141113
+</code></pre>
+
+<p>Alternatively, and this is my preferred way, you can attach an UART console cable (e.g. from <a href="https://www.adafruit.com/product/954">AdaFruit</a>) which is typically shown as a device on the Mac like <code>/dev/cu.usbserial</code>. With this setup you can even watch the complete boot logs of the C.H.I.P. computer and you are able to see all early boot messages from U-Boot and from loading and starting the Linux kernel. This gives you all details in case there are any problems and issues with a homegrown kernel.</p>
+
+<pre><code>sudo screen /dev/cu.usbserial 115200
+</code></pre>
+
+<p>Once you get to the login message, you can use username <code>root</code> and password <code>chip</code> to login:</p>
+
+<pre><code>Debian GNU/Linux 8 chip ttyS0
+
+chip login: root
+Password:
+Linux chip 4.4.11-ntc #1 SMP Sat May 28 00:27:07 UTC 2016 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@chip:~#
+</code></pre>
+
+<h4 id="step-3-configure-wifi-connection:f104f10590263b135a4ba1767b05f846">Step 3: Configure WiFi connection</h4>
+
+<p>Following the instruction here <a href="http://docs.getchip.com/chip.html#wifi-connection">http://docs.getchip.com/chip.html#wifi-connection</a> you can list all the available WiFi networks and then connect the C.H.I.P. to your preferred network.</p>
+
+<pre><code>nmcli device wifi list
+*  SSID         MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
+   HITRON-FEE0  Infra  11    54 Mbit/s  67      ▂▄▆_  WPA2
+   WLAN-R46VFR  Infra  1     54 Mbit/s  65      ▂▄▆_  WPA2
+   My ASUS      Infra  6     54 Mbit/s  64      ▂▄▆_  WPA2
+   WLAN-718297  Infra  1     54 Mbit/s  59      ▂▄▆_  WPA2
+   WLAN-MCQYPS  Infra  1     54 Mbit/s  30      ▂___  WPA2
+   Telekom_FON  Infra  1     54 Mbit/s  27      ▂___  --
+
+*  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
+</code></pre>
+
+<p>Connect to the WiFi station with the SSID <code>mySSID</code> and password <code>myPASSWORD</code>, please insert you own SSID and PASSWORD. In this example I&rsquo;m using the SSID <code>WLAN-R46VFR</code>:</p>
+
+<pre><code>nmcli device wifi connect 'WLAN-R46VFR' password '**********' ifname wlan0
+</code></pre>
+
+<p>Once you are connected you can see the &lsquo;*&rsquo; in front of your connected WiFi network:</p>
+
+<pre><code>nmcli device wifi list
+*  SSID         MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
+   HITRON-FEE0  Infra  11    54 Mbit/s  67      ▂▄▆_  WPA2
+   My ASUS      Infra  6     54 Mbit/s  64      ▂▄▆_  WPA2
+   WLAN-718297  Infra  1     54 Mbit/s  59      ▂▄▆_  WPA2
+   WLAN-MCQYPS  Infra  1     54 Mbit/s  30      ▂___  WPA2
+   Telekom_FON  Infra  1     54 Mbit/s  27      ▂___  --
+*  WLAN-R46VFR  Infra  1     54 Mbit/s  100     ▂▄▆█  WPA2
+
+*  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
+</code></pre>
+
+<p>And the C.H.I.P. should have got an IP address from the DHCP server:</p>
+
+<pre><code>ifconfig wlan0
+wlan0     Link encap:Ethernet  HWaddr cc:79:cf:20:6d:d8
+          inet addr:192.168.2.112  Bcast:192.168.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::ce79:cfff:fe20:6dd8/64 Scope:Link
+          inet6 addr: 2003:86:8c18:1a37:ce79:cfff:fe20:6dd8/64 Scope:Global
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:119 errors:0 dropped:1 overruns:0 frame:0
+          TX packets:102 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:24656 (24.0 KiB)  TX bytes:16973 (16.5 KiB)
+</code></pre>
+
+<p>Now we&rsquo;re connected to the network and can access the internet and the C.H.I.P. can be reached from our Mac or Linux machine.</p>
+
+<h4 id="step-4-configure-ssh-to-access-the-c-h-i-p:f104f10590263b135a4ba1767b05f846">Step 4: Configure SSH to access the C.H.I.P.</h4>
+
+<p>Here we have to use the same username <code>root</code> and password <code>chip</code> to login via SSH:</p>
+
+<pre><code>ssh-add
+ssh-keygen -R 192.168.2.112
+ssh-copy-id root@192.168.2.112
+</code></pre>
+
+<p>Finally we can login to the C.H.I.P. computer via SSH:</p>
+
+<pre><code>ssh root@192.168.2.112
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Jan  1 00:32:25 1970
+-bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+root@chip:~#
+</code></pre>
+
+<h4 id="step-5-checking-the-os-and-linux-kernel-version:f104f10590263b135a4ba1767b05f846">Step 5: Checking the OS and Linux kernel version</h4>
+
+<p>As a first step we&rsquo;d like to check the current Linux kernel version and operating system.</p>
+
+<p>Kernel version:</p>
+
+<pre><code>uname -a
+Linux chip 4.4.11-ntc #1 SMP Sat May 28 00:27:07 UTC 2016 armv7l GNU/Linux
+</code></pre>
+
+<p>Operating system:</p>
+
+<pre><code>cat /etc/os-release
+PRETTY_NAME=&quot;Debian GNU/Linux 8 (jessie)&quot;
+NAME=&quot;Debian GNU/Linux&quot;
+VERSION_ID=&quot;8&quot;
+VERSION=&quot;8 (jessie)&quot;
+ID=debian
+HOME_URL=&quot;http://www.debian.org/&quot;
+SUPPORT_URL=&quot;http://www.debian.org/support&quot;
+BUG_REPORT_URL=&quot;https://bugs.debian.org/&quot;
+BUILD_ID=Wed Jun  1 05:34:36 UTC 2016
+VARIANT=&quot;Debian on C.H.I.P&quot;
+VARIANT_ID=SERVER
+</code></pre>
+
+<h4 id="step-6-install-the-docker-engine-1-12-1-the-easy-way:f104f10590263b135a4ba1767b05f846">Step 6: Install the Docker Engine 1.12.1 the easy way</h4>
+
+<p>In order to install Docker I&rsquo;ve prepared a complete installation script which can be downloaded and executed in a single command line. I&rsquo;ve you&rsquo;re interested into the details you should check the script at <a href="https://github.com/DieterReuter/arm-docker-fixes/blob/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh">GitHub</a>.</p>
+
+<pre><code># install Docker
+curl -sSL https://github.com/DieterReuter/arm-docker-fixes/raw/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh | bash
+</code></pre>
+
+<p>At the end of running the install script we&rsquo;ll see some errors occurred and the start of the Docker Engine has failed.</p>
+
+<pre><code>...
+Errors were encountered while processing:
+ docker-engine
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+</code></pre>
+
+<p>This is OK for now as it just indicates the default Linux kernel isn&rsquo;t able to run Docker on the C.H.I.P. and we have to build and install a custom Linux kernel which has all the necessary kernel settings for Docker enabled.</p>
+
+<p>If you&rsquo;re interested in analyzing these errors in more detail you can run the command <code>systemctl status docker.service</code> and you&rsquo;ll get more detailed log messages from <code>systemd</code>.</p>
+
+<pre><code>root@chip:~# systemctl status docker.service -l
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/etc/systemd/system/docker.service; enabled)
+   Active: failed (Result: exit-code) since Sat 2016-09-03 13:20:49 UTC; 2min 23s ago
+     Docs: https://docs.docker.com
+ Main PID: 10840 (code=exited, status=1/FAILURE)
+
+Sep 03 13:20:48 chip dockerd[10840]: time=&quot;2016-09-03T13:20:48.580271961Z&quot; level=info msg=&quot;libcontainerd: new containerd process, pid: 10848&quot;
+Sep 03 13:20:49 chip dockerd[10840]: time=&quot;2016-09-03T13:20:49.652832502Z&quot; level=error msg=&quot;'overlay' not found as a supported filesystem on this host. Please ensure kernel is new enough and has overlay support loaded.&quot;
+Sep 03 13:20:49 chip dockerd[10840]: time=&quot;2016-09-03T13:20:49.656854332Z&quot; level=fatal msg=&quot;Error starting daemon: error initializing graphdriver: driver not supported&quot;
+Sep 03 13:20:49 chip systemd[1]: docker.service: main process exited, code=exited, status=1/FAILURE
+Sep 03 13:20:49 chip systemd[1]: Failed to start Docker Application Container Engine.
+Sep 03 13:20:49 chip systemd[1]: Unit docker.service entered failed state.
+Sep 03 13:20:50 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue 'Delegate' in section 'Service'
+Sep 03 13:20:52 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue 'Delegate' in section 'Service'
+Sep 03 13:20:53 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue 'Delegate' in section 'Service'
+Sep 03 13:20:54 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue 'Delegate' in section 'Service'
+</code></pre>
+
+<h4 id="step-7-upgrade-the-linux-kernel-to-a-custom-built-version:f104f10590263b135a4ba1767b05f846">Step 7: Upgrade the Linux kernel to a custom built version</h4>
+
+<p>In order to keep this tutorial short and easy to follow, I&rsquo;d like to use an already prepared custom kernel which has nearly all the possible kernel modules and settings enabled to run the Docker Engine in an optimized way on the C.H.I.P. computer.</p>
+
+<p>Therefore we only have to install our new Linux kernel and have to reboot the system to activate it.</p>
+
+<pre><code># install custom Linux Kernel and reboot
+curl -sSL https://downloads.hypriot.com/chip-kernel-4.4.11-hypriotos.tar.bz2 | tar xvfj - -C /
+reboot
+</code></pre>
+
+<p>After rebooting we&rsquo;re going to check the kernel version again:</p>
+
+<pre><code>uname -a
+Linux chip 4.4.11-hypriotos #1 SMP Mon Aug 29 19:18:49 UTC 2016 armv7l GNU/Linux
+</code></pre>
+
+<p>Check the Docker client version:</p>
+
+<pre><code>docker -v
+Docker version 1.12.1, build 23cf638
+</code></pre>
+
+<p>Check the Docker server version:</p>
+
+<pre><code>docker version
+Client:
+ Version:      1.12.1
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   23cf638
+ Built:        Thu Aug 18 05:31:15 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.1
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   23cf638
+ Built:        Thu Aug 18 05:31:15 2016
+ OS/Arch:      linux/arm
+</code></pre>
+
+<p>Getting the detailed informations about the Docker Engine:</p>
+
+<pre><code>docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 1.12.1
+Storage Driver: overlay
+ Backing Filesystem: &lt;unknown&gt;
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: null host bridge overlay
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Security Options:
+Kernel Version: 4.4.11-hypriotos
+Operating System: Debian GNU/Linux 8 (jessie)
+OSType: linux
+Architecture: armv7l
+CPUs: 1
+Total Memory: 491 MiB
+Name: chip
+ID: SSJ5:7OTQ:BCAZ:4MDL:VEW6:VKND:3J6W:UI3O:UTBB:7H5V:LQ4W:ABRP
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Insecure Registries:
+ 127.0.0.0/8
+</code></pre>
+
+<p>Finally we could see, the latest Docker Engine v1.12.1 is now installed and is successfully running.</p>
+
+<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p:f104f10590263b135a4ba1767b05f846">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
+
+<p>As a last step we&rsquo;d like to start a first Docker container, a small web server.</p>
+
+<pre><code>docker run -d -p 80:80 hypriot/rpi-busybox-httpd
+Unable to find image 'hypriot/rpi-busybox-httpd:latest' locally
+latest: Pulling from hypriot/rpi-busybox-httpd
+c74a9c6a645f: Pull complete
+6f1938f6d8ae: Pull complete
+e1347d4747a6: Pull complete
+a3ed95caeb02: Pull complete
+Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
+Status: Downloaded newer image for hypriot/rpi-busybox-httpd:latest
+fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
+</code></pre>
+
+<p>Now start your web browser and point it to the website from our Docker container.</p>
+
+<pre><code>open http://192.168.2.112
+</code></pre>
+
+<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" />
+</p>
+
+<p><strong>Additional tip:</strong></p>
+
+<p>After installing some packages via <code>apt-get</code> it&rsquo;s a good idea to clean the APT cache from time to time and save disk space.</p>
+
+<pre><code>root@chip:~# apt-get clean
+root@chip:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+ubi0:rootfs     3.7G  373M  3.3G  11% /
+devtmpfs        213M     0  213M   0% /dev
+tmpfs           246M     0  246M   0% /dev/shm
+tmpfs           246M  6.7M  239M   3% /run
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           246M     0  246M   0% /sys/fs/cgroup
+tmpfs            50M     0   50M   0% /run/user/0
+</code></pre>
+
+<h3 id="lessons-learned-tl-dr:f104f10590263b135a4ba1767b05f846">Lessons learned - TL;DR</h3>
+
+<p>Currently the C.H.I.P. isn&rsquo;t able to run Docker out-of-the-box, but it just needs to install a custom built Linux kernel to prepare this awesome ARM board to run Docker easily. And now we&rsquo;re able to install the officially built Docker Engine from the Docker project&rsquo;s APT repository.</p>
+
+<p><em><strong>TL;DR</strong></em> <BR>
+these are the only commands you need to install Docker</p>
+
+<pre><code># install Docker
+curl -sSL https://github.com/DieterReuter/arm-docker-fixes/raw/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh | bash
+
+# install custom Linux Kernel and reboot
+curl -sSL https://downloads.hypriot.com/chip-kernel-4.4.11-hypriotos.tar.bz2 | tar xvfj - -C /
+reboot
+</code></pre>
+
+<p>And the best thing is, according to this <a href="https://twitter.com/zerotri/status/771218366845497344">tweet</a>, the developers at <a href="https://twitter.com/nextthingco">@NextThingCo</a> have already started to include all the required kernel settings into the standard OS images. So we can expect that the Docker Engine can be installed in the future even without tweaking the Linux kernel.</p>
+
+<h3 id="outlook:f104f10590263b135a4ba1767b05f846">Outlook</h3>
+
+<p>As I told you at the beginning of this tutorial, these are just the basic steps for a normal user to install and use Docker on the C.H.I.P. computer. But if you&rsquo;re interested in all the technical details behind the scene, how to check and analyze your Linux kernel and how to optimize it for running Docker efficiently, then please drop me a comment or tweet me and I&rsquo;ll write even more about all the technical details so you can follow the path along on to an expert level too. With these skills you then should be able to install Docker on any Linux-based ARM device.</p>
+
+<h3 id="feedback-please:f104f10590263b135a4ba1767b05f846">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="http://blog.hypriot.com/post/install-docker-on-chip-computer/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="http://blog.hypriot.com/post/install-docker-on-chip-computer/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="http://blog.hypriot.com/post/install-docker-on-chip-computer/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
