@@ -6,8 +6,354 @@
     <description>Recent content in Chip on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Sep 2016 22:53:12 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/categories/chip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Deploying an IoT Swarm with Docker Machine</title>
+      <link>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</link>
+      <pubDate>Sun, 04 Sep 2016 19:45:58 +0200</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</guid>
+      <description>
+
+&lt;p&gt;With the new SwarmMode in Docker 1.12 it is really damn easy to build a Docker Swarm and connect different ARM devices to an IoT cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg&#34; alt=&#34;swarm-chip-flashing1.jpg&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s connect a few of the $9 C.H.I.P. computers and a Raspberry Pi Zero all through a WiFi network&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;step-1-install-docker-machine:2916a0476909fe024f00614543881ecf&#34;&gt;Step 1: Install Docker Machine&lt;/h4&gt;
+
+&lt;p&gt;First of all, we need to make sure we do have Docker Machine installed on our local computer. I&amp;rsquo;m using a Mac for this tutorial, but you can use Docker Machine on Linux or Windows too. If not already done, you should install the latest Docker Machine binary following the &lt;a href=&#34;https://docs.docker.com/machine/install-machine/&#34;&gt;Install Docker Machine&lt;/a&gt; instructions.&lt;/p&gt;
+
+&lt;p&gt;You can easily check the version of Docker Machine with the following command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine --version
+docker-machine version 0.8.0, build b85aac1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;step-2-prepare-all-c-h-i-p-s-with-docker-machine:2916a0476909fe024f00614543881ecf&#34;&gt;Step 2: Prepare all C.H.I.P.&amp;rsquo;s with Docker Machine&lt;/h4&gt;
+
+&lt;p&gt;In order to connect a couple of C.H.I.P. computers to a Docker Swarm cluster, we have to install Docker 1.12.1 first. This can be done easily by following the steps of my last tutorial &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt;. Then we&amp;rsquo;re using the standard Docker Machine from a Mac to attach each C.H.I.P. device via a secured Docker API port and give each device an individual hostname on the network. With the help of Docker Machine it&amp;rsquo;s easier to access all the C.H.I.P. devices we&amp;rsquo;d like to connect to the Swarm cluster from a Mac, Linux or Windows machine.&lt;/p&gt;
+
+&lt;p&gt;Here are the basic steps we have to follow for each single C.H.I.P. computer:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;flash C.H.I.P. and install Docker 1.12.1&lt;/li&gt;
+&lt;li&gt;detect the IP address and use Docker Machine&lt;/li&gt;
+&lt;li&gt;restart Avahi daemon or reboot C.H.I.P.&lt;/li&gt;
+&lt;li&gt;check the device connectivity via network and Docker API&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Flashing the C.H.I.P. computer in FEL mode with UART console cable attached: &lt;br&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing2.jpg&#34; alt=&#34;swarm-chip-flashing2.jpg&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As soon as we&amp;rsquo;ve installed our first C.H.I.P. with Docker we&amp;rsquo;ll use its IP address and run &lt;code&gt;docker-machine create&lt;/code&gt; and let&amp;rsquo;s do some Docker magic and we have secured the network access to its Docker Engine easily. In this command I&amp;rsquo;m using the flag &lt;code&gt;--debug&lt;/code&gt; to get a more verbose output, so you can see all the details whats going on in the background, but you can omit this flag for the remaining C.H.I.P.&amp;rsquo;s.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CHIP_IP_ADDRESS=192.168.2.112
+CHIP_NODENAME=swarm-chip01
+
+docker-machine --debug create \
+  --driver=generic \
+  --engine-storage-driver=overlay \
+  --generic-ip-address=$CHIP_IP_ADDRESS \
+  $CHIP_NODENAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After successfully running this command, the C.H.I.P. device is attached to Docker Machine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ls --filter name=swarm*
+NAME           ACTIVE   DRIVER    STATE     URL                        SWARM   DOCKER    ERRORS
+swarm-chip01   -        generic   Running   tcp://192.168.2.112:2376           v1.12.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On the C.H.I.P. itself you can see that the hostname has changed. So let&amp;rsquo;s check this in detail to get a better understanding what&amp;rsquo;s happening behind the scene. Now we&amp;rsquo;re using some Docker Machine fu to connect to the device.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01
+root@swarm-chip01:~#
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The hostname has changed to &lt;code&gt;swarm-chip01&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# cat /etc/hostname
+swarm-chip01
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And so there is a new local loopback address included as &lt;code&gt;127.0.1.1 swarm-chip01&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# cat /etc/hosts
+127.0.0.1      	chip
+127.0.0.1      	localhost
+::1    		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+127.0.1.1 swarm-chip01
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check if we can reach the C.H.I.P. from the network with its new hostname.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ping -c 3 swarm-chip01.local
+ping: cannot resolve swarm-chip01.local: Unknown host
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unfortunately the Avahi service discovery daemon didn&amp;rsquo;t changed the hostname, so we have to restart it manually to get the changes in order to reach the C.H.I.P. with it&amp;rsquo;s new hostname from the WiFi network. Alternatively we can just reboot the C.H.I.P. to activate these changes. So let&amp;rsquo;s do it through Docker Machine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01 systemctl restart avahi-daemon.service
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And check with ping again.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ping -c 3 swarm-chip01.local
+PING swarm-chip01.local (192.168.2.112): 56 data bytes
+64 bytes from 192.168.2.112: icmp_seq=0 ttl=64 time=105.129 ms
+64 bytes from 192.168.2.112: icmp_seq=1 ttl=64 time=3.529 ms
+64 bytes from 192.168.2.112: icmp_seq=2 ttl=64 time=48.178 ms
+
+--- swarm-chip01.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 3.529/52.279/105.129/41.579 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s up to you to repeat these steps for all the remaining C.H.I.P. devices. After some time you should be ready and having a list of devices connected to Docker Machine. I&amp;rsquo;ve done this with six C.H.I.P.&amp;rsquo;s, and one of them is an Alpha unit which works exactly the same way without any differences.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ls --filter name=swarm*
+NAME            ACTIVE   DRIVER    STATE     URL                        SWARM   DOCKER    ERRORS
+swarm-chip01    -        generic   Running   tcp://192.168.2.112:2376           v1.12.1
+swarm-chip02    -        generic   Running   tcp://192.168.2.116:2376           v1.12.1
+swarm-chip03    -        generic   Running   tcp://192.168.2.117:2376           v1.12.1
+swarm-chip04    -        generic   Running   tcp://192.168.2.118:2376           v1.12.1
+swarm-chip05    -        generic   Running   tcp://192.168.2.120:2376           v1.12.1
+swarm-chip06    -        generic   Running   tcp://192.168.2.104:2376           v1.12.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;step-3-initialize-the-swarm-create-a-swarm-manager:2916a0476909fe024f00614543881ecf&#34;&gt;Step 3: Initialize the Swarm, create a Swarm manager&lt;/h4&gt;
+
+&lt;p&gt;As soon as all the C.H.I.P.&amp;rsquo;s are prepared we are able to initiate a Swarm cluster. We are creating a Swarm manager first and then we can attach the other C.H.I.P.&amp;rsquo;s as additional Swarm managers or Swarm workers pretty easily. All the steps to form a Swarm cluster are literally a single command per device only!&lt;/p&gt;
+
+&lt;p&gt;With this command the Swarm will be initialized.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01 docker swarm init
+Swarm initialized: current node (8174iszkmn4u4wwjogam8bsrw) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+    192.168.2.112:2377
+
+To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we do have our first Swarm manager running.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01 docker node ls
+ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
+8174iszkmn4u4wwjogam8bsrw *  swarm-chip01  Ready   Active        Leader
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;step-4-set-up-swarm-for-high-availability-attach-more-swarm-managers:2916a0476909fe024f00614543881ecf&#34;&gt;Step 4: Set up Swarm for high-availability, attach more Swarm managers&lt;/h4&gt;
+
+&lt;p&gt;In order to build a high-availability Swarm cluster, we like to join two additional Swarm managers. So, first we have to ask the Swarm Leader for an access token to join new Swarm managers. You have to know that the complete control traffic between Swarm nodes is secured by default.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01 docker swarm join-token manager
+To add a manager to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-beiuuzahvn9f7c1q42irqzncb \
+    192.168.2.112:2377
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this given command we can now join the nodes &lt;code&gt;swarm-chip02&lt;/code&gt; and &lt;code&gt;swarm-chip02&lt;/code&gt; as Swarm managers with a single command for each of the nodes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip02 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-beiuuzahvn9f7c1q42irqzncb \
+  192.168.2.112:2377
+This node joined a swarm as a manager.
+
+docker-machine ssh swarm-chip03 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-beiuuzahvn9f7c1q42irqzncb \
+  192.168.2.112:2377
+This node joined a swarm as a manager.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Swarm status and the list of all Swarm nodes can be determined by asking any of the three Swarm managers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip01 docker node ls
+ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
+1qelz3ttd54mh8fb57hf67ff1    swarm-chip03  Ready   Active        Reachable
+8174iszkmn4u4wwjogam8bsrw *  swarm-chip01  Ready   Active        Leader
+ctggddtwrg0ybrwpa52heaz9c    swarm-chip02  Ready   Active        Reachable
+OSX: dieter@DietersMacBookPro in ~/code/github/hypriot/blog on deploy-swarm-on-chip-with-docker-machine
+
+docker-machine ssh swarm-chip02 docker node ls
+ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
+1qelz3ttd54mh8fb57hf67ff1    swarm-chip03  Ready   Active        Reachable
+8174iszkmn4u4wwjogam8bsrw    swarm-chip01  Ready   Active        Leader
+ctggddtwrg0ybrwpa52heaz9c *  swarm-chip02  Ready   Active        Reachable
+OSX: dieter@DietersMacBookPro in ~/code/github/hypriot/blog on deploy-swarm-on-chip-with-docker-machine
+
+docker-machine ssh swarm-chip03 docker node ls
+ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
+1qelz3ttd54mh8fb57hf67ff1 *  swarm-chip03  Ready   Active        Reachable
+8174iszkmn4u4wwjogam8bsrw    swarm-chip01  Ready   Active        Leader
+ctggddtwrg0ybrwpa52heaz9c    swarm-chip02  Ready   Active        Reachable
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;step-5-let-s-grow-the-swarm-attach-all-swarm-workers:2916a0476909fe024f00614543881ecf&#34;&gt;Step 5: Let&amp;rsquo;s grow the Swarm, attach all Swarm workers&lt;/h4&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s time to join our remaining C.H.I.P. devices as Swarm workers to our Swarm cluster. For this purpose we just pick the token from the initial Swarm creation command. But if we can&amp;rsquo;t remember we can just ask one of the Swarm managers for the access token with the command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip02 docker swarm join-token worker
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+    192.168.2.116:2377
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s join our workers one by one now.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip04 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+  192.168.2.112:2377
+This node joined a swarm as a worker.
+
+docker-machine ssh swarm-chip05 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+  192.168.2.112:2377
+This node joined a swarm as a worker.
+
+docker-machine ssh swarm-chip06 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+  192.168.2.112:2377
+This node joined a swarm as a worker.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As a result we have joined all of the six C.H.I.P. devices to the Swarm cluster, three as Swarm managers and three as Swarm workers.&lt;/p&gt;
+
+&lt;h4 id=&#34;step-6-attach-an-additional-pi-zero-as-swarm-worker:2916a0476909fe024f00614543881ecf&#34;&gt;Step 6: Attach an additional Pi Zero as Swarm worker&lt;/h4&gt;
+
+&lt;p&gt;But we&amp;rsquo;re not limited in using only one kind of ARM devices for our Swarm cluster. So I&amp;rsquo;d like to add a different device, a Raspberry Pi Zero which is equipped with a &lt;a href=&#34;https://twitter.com/redbearlab&#34;&gt;RedBear IoT pHAT&lt;/a&gt; for WiFi/Bluetooth connectivity.
+&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-pi-zero.jpg&#34; alt=&#34;swarm-chip-pi-zero.jpg&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Here you can see that using &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;HypriotOS for RPi&lt;/a&gt; and the Hypriot &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; it&amp;rsquo;s damn easy to create another ARM device with Docker 1.12.1 and attach it via WiFi to our network.&lt;/p&gt;
+
+&lt;p&gt;Flash the SD card, and power up the Raspberry Pi Zero.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash -n swarm-raspi01 -s &amp;quot;WLAN-R46VFR&amp;quot; -p &amp;quot;************&amp;quot; https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Determine the IP address of the Pi Zero.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ping -c 3 swarm-raspi01.local
+PING swarm-raspi01.local (192.168.2.119): 56 data bytes
+64 bytes from 192.168.2.119: icmp_seq=0 ttl=64 time=617.658 ms
+64 bytes from 192.168.2.119: icmp_seq=1 ttl=64 time=26.326 ms
+64 bytes from 192.168.2.119: icmp_seq=2 ttl=64 time=1187.048 ms
+
+--- swarm-raspi01.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 26.326/610.344/1187.048/473.891 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prepare SSH access to the Pi Zero, use username=&lt;code&gt;pirate&lt;/code&gt; and password=&lt;code&gt;hypriot&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -R 192.168.2.119
+ssh-copy-id pirate@192.168.2.119
+ssh pirate@192.168.2.119
+uname -a
+Linux swarm-raspi01 4.4.15-hypriotos+ #2 PREEMPT Mon Jul 25 09:18:11 UTC 2016 armv6l GNU/Linux
+exit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Login and install a fix on the Pi so we can use the standard Docker Machine binary.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@192.168.2.119
+curl -sSL https://github.com/DieterReuter/arm-docker-fixes/raw/master/001-fix-docker-machine-1.8.0-create-for-arm/apply-fix-001.sh | bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Back on our Mac we are able to run Docker Machine and attach the Raspi. As you can see, we do use another flag &lt;code&gt;--generic-ssh-user=pirate&lt;/code&gt; because we&amp;rsquo;re using a different username instead of the default &lt;code&gt;root&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RASPI_IP_ADDRESS=192.168.2.119
+RASPI_NODENAME=swarm-raspi01
+
+docker-machine --debug create \
+  --driver=generic \
+  --engine-storage-driver=overlay \
+  --generic-ip-address=$RASPI_IP_ADDRESS \
+  --generic-ssh-user=pirate \
+  $RASPI_NODENAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After a few minutes only, the Raspberry Pi Zero can be accessed through Docker Machine with the exactly same methods and commands like the C.H.I.P. devices.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ls --filter name=swarm*
+NAME            ACTIVE   DRIVER    STATE     URL                        SWARM   DOCKER    ERRORS
+swarm-chip01    -        generic   Running   tcp://192.168.2.112:2376           v1.12.1
+swarm-chip02    -        generic   Running   tcp://192.168.2.116:2376           v1.12.1
+swarm-chip03    -        generic   Running   tcp://192.168.2.117:2376           v1.12.1
+swarm-chip04    -        generic   Running   tcp://192.168.2.118:2376           v1.12.1
+swarm-chip05    -        generic   Running   tcp://192.168.2.120:2376           v1.12.1
+swarm-chip06    -        generic   Running   tcp://192.168.2.104:2376           v1.12.1
+swarm-raspi01   -        generic   Running   tcp://192.168.2.119:2376           v1.12.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally we join our last Swarm worker, a lonely Raspberry Pi Zero running HypriotOS 1.0.1 and Docker 1.12.1, to the Swarm cluster.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-raspi01 \
+  docker swarm join \
+  --token SWMTKN-1-2olhigqvrmxkbby00qarokzdd6cmy0ovak6fst77y4qnec4ufv-4utgsw8ed9a0cyxx86yygqvzt \
+  192.168.2.112:2377
+This node joined a swarm as a worker.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;step-7-check-the-complete-swarm:2916a0476909fe024f00614543881ecf&#34;&gt;Step 7: Check the complete Swarm&lt;/h4&gt;
+
+&lt;p&gt;With the &lt;code&gt;docker node ls&lt;/code&gt; command issued on any of the Swarm managers we can list all the Swarm nodes, get their roles and status shown in the printed output on our terminal window.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-machine ssh swarm-chip03 docker node ls
+ID                           HOSTNAME       STATUS  AVAILABILITY  MANAGER STATUS
+1qelz3ttd54mh8fb57hf67ff1 *  swarm-chip03   Ready   Active        Reachable
+3inlk62a6l3afqp570nnus12f    swarm-raspi01  Ready   Active
+7jvz6c8a852rve1r21fordkfa    swarm-chip04   Ready   Active
+8174iszkmn4u4wwjogam8bsrw    swarm-chip01   Ready   Active        Leader
+91ee08vkwuh3f6yelc4ci46se    swarm-chip05   Ready   Active
+agglzv8ju0diwpd665nbhdtti    swarm-chip06   Ready   Active
+ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-node-ls.jpg&#34; alt=&#34;swarm-chip-node-ls.jpg&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;the-result-a-mixed-iot-swarm-running-docker-1-12:2916a0476909fe024f00614543881ecf&#34;&gt;THE RESULT: a mixed IoT Swarm running Docker 1.12&lt;/h3&gt;
+
+&lt;p&gt;This is our newly created Swarm cluster, built with an USB power supply from Anker, 6x C.H.I.P. computers and a lonely Raspberry Pi Zero - all devices attached through a WiFi network and running Docker 1.12.1 with SwarmMode: &lt;br&gt;
+&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-complete-cluster.jpg&#34; alt=&#34;swarm-chip-complete-cluster.jpg&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;next-steps:2916a0476909fe024f00614543881ecf&#34;&gt;Next steps&lt;/h3&gt;
+
+&lt;p&gt;With this hardware setup we&amp;rsquo;ve now built a network of seven ARM devices for IoT which are all connected through WiFi. All the control traffic between the nodes are secured be default and can be centrally controlled through the Swarm managers and we can connect them securely from a local computer via Docker Machine. The ARM boards can be spread out in your house and can run different tasks as Docker containers&amp;hellip; but these details I&amp;rsquo;d like to cover in a future blog post.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:2916a0476909fe024f00614543881ecf&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Install Docker 1.12 on the $9 C.H.I.P. computer</title>

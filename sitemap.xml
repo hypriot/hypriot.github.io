@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2016-09-03T22:53:12+02:00</lastmod>
+    <lastmod>2016-09-04T19:45:58+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</loc>
+    <lastmod>2016-09-04T19:45:58+02:00</lastmod>
   </url>
   
   <url>
@@ -333,15 +338,15 @@
   </url>
   
   <url>
+    <loc>http://blog.hypriot.com/about/</loc>
+  </url>
+  
+  <url>
     <loc>http://blog.hypriot.com/crew/</loc>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/downloads/</loc>
-  </url>
-  
-  <url>
-    <loc>http://blog.hypriot.com/about/</loc>
   </url>
   
   <url>
