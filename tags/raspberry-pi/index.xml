@@ -6,8 +6,120 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 26 Oct 2016 18:03:34 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster</title>
+      <link>http://blog.hypriot.com/post/high-availability-with-docker/</link>
+      <pubDate>Wed, 26 Oct 2016 18:03:34 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/high-availability-with-docker/</guid>
+      <description>
+
+&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
+
+&lt;p&gt;These two news combined beg for testing the new capabilities in reality.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;old&amp;rdquo; Docker Swarm already offered some high availability features, but the new called &amp;ldquo;Swarm Mode&amp;rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.&lt;/p&gt;
+
+&lt;p&gt;Also, the release of Docker 1.12 comes with official support for the ARM architecture. Running Docker on ARM has been possible for long time, but now, users can install it the same way on their Raspberry Pis as they do it on any other architecture: Using Docker&amp;rsquo;s official repositories. If you are one of our regular readers, you know that our Team at Hypriot intensively collaborated with Docker to make this official support possible. So we are also very happy that this huge milestone that many people asked for is eventually checked!&lt;/p&gt;
+
+&lt;p&gt;Now, with these two news, let&amp;rsquo;s get our hands dirty and test if the announced promises hold.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup the cluster&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;As hardware&lt;/strong&gt;, I have 5x Raspberry Pi 3, connected in a network with Internet access.&lt;/p&gt;
+
+&lt;p&gt;The Raspberry Pis with their SD cards, the network switch, power input and all cables live in a &lt;a href=&#34;https://www.picocluster.com/collections/starter-picocluster-kits/products/pico-5-raspberry-pi-starter-kit?variant=29344698892&#34;&gt;hardware kit from PicoCluster&lt;/a&gt;. Thanks to PicoCluster for providing the kit to us for testing!&lt;/p&gt;
+
+&lt;p&gt;See how the cluster looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;As software&lt;/strong&gt;, I chose HypriotOS. I also tried Raspbian, but it requires a large system upgrade after the first boot in order to provide all features required by Docker (e.g. VXLAN kernel module). Before and after the system upgrade, I also had to run &lt;a href=&#34;https://github.com/docker/docker/blob/master/contrib/check-config.sh&#34;&gt;Docker&amp;rsquo;s test script&lt;/a&gt; to make sure everything is ok. All of this is not a big deal, but if there is an OS available that comes out of the box with all that Docker needs (and even adds lots of useful optimizations), it simply saves time and provides a hassle-free experience. So I flashed all SD cards with HypriotOS using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To connect to the cluster&lt;/strong&gt;, I SSHed into all the nodes via &lt;a href=&#34;http://gnometerminator.blogspot.de/p/introduction.html&#34;&gt;Terminator&lt;/a&gt;. Terminator is my preferred tool to organize multiple terminals in a single window. It allows to send commands to several terminals at once. Soon, I&amp;rsquo;ll have a look at tmux and might switch, but for now I recommend Terminator :)&lt;/p&gt;
+
+&lt;p&gt;Finally, we have 5 terminals opened, all waiting for commands as you see in the following image. Please don&amp;rsquo;t care about the commands running in each terminal for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s all to do before getting our hands on Docker itself!&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
+
+&lt;p&gt;On latest HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
+
+&lt;p&gt;On an arbitrary node of the cluster, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker swarm init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output should look similar to that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Swarm initialized: current node (node-master) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-1acm9qa7b0hmzz5v8t40d75v5fsgckeu2z5ds6ls0x7cny7l8p-307wqrc8756akpxjxls9abbbs \
+    [2a02:810d:8600:2a78:f6c6:d67d:6912:17ca]:2377
+
+To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As explained in this output, now you need to run the presented &lt;code&gt;docker swarm join ...&lt;/code&gt; command on all other nodes, which you want to join the cluster.&lt;/p&gt;
+
+&lt;p&gt;Finally, on the node at which you executed &lt;code&gt;docker swarm init&lt;/code&gt;, check if all nodes of your cluster successfully formed a swarm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker node ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the terminal prints a list of all nodes of your cluster, the setup is all done! Forming a cluster cannot be easier, can it?&lt;/p&gt;
+
+&lt;h2 id=&#34;execution-of-tests:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Execution of tests&lt;/h2&gt;
+
+&lt;p&gt;My tests of Docker&amp;rsquo;s ability to recover from failures comprise the following use cases:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The ethernet interface of a random node (master or slave) got unavailable&lt;/li&gt;
+&lt;li&gt;A random node completely rebooted&lt;/li&gt;
+&lt;li&gt;A random node instantly crashed (unplug power source)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I documented one of the test runs in the following screencast.&lt;/p&gt;
+
+&lt;div align=&#34;center&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/185361173&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/185361173&#34;&gt;Testing High Availability Docker Swarm Mode&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user54109827&#34;&gt;Mathias Renner&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, I can confirm that Docker recovers flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!&lt;/p&gt;
+
+&lt;h2 id=&#34;more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;More to come soon&lt;/h2&gt;
+
+&lt;p&gt;This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the &lt;a href=&#34;http://highload.co/&#34;&gt;HighLoad++ Conference&lt;/a&gt; in Moskow, Russia. I&amp;rsquo;d be happy if you can make it there!&lt;/p&gt;
+
+&lt;p&gt;Also, this is not the end of the story,kontakt@pringuin.de of course. Thorough testing requires also measuring incoming requests from an external load tester to the cluster while a failure occurs. After some research, I have not found any evidence that someone has ever performed that tests (please correct me if I&amp;rsquo;m wrong!).&lt;/p&gt;
+
+&lt;p&gt;Moreover, Kubernetes received much attention lately since its support for ARM became better and better. So wouldn&amp;rsquo;t it be interesting to see if Docker or Kubernetes is better in keeping a service available and performing well, even if there are outages in the cluster?&lt;/p&gt;
+
+&lt;p&gt;So there&amp;rsquo;s more coming soon, just stay tuned for the upcoming posts :)&lt;/p&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
@@ -2872,228 +2984,6 @@ beta units.&lt;/p&gt;
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Docker on Raspberry Pi Workshop in Brussels</title>
-      <link>http://blog.hypriot.com/post/docker-on-arm-workshops/</link>
-      <pubDate>Thu, 17 Mar 2016 00:00:00 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/docker-on-arm-workshops/</guid>
-      <description>&lt;p&gt;A couple of weeks ago we have been invited by the fine folks over at the Docker User Group in Brussels to help conduct a workshop.
-And of course this workshop was about Docker. Still it was not your ordinary Docker workshop.&lt;/p&gt;
-
-&lt;p&gt;It was special because instead of being a workshop about Docker on big servers it was about Docker on really small ARM devices.
-The very same devices that power the upcoming IoT revolution.&lt;/p&gt;
-
-&lt;p&gt;Turns out it is really amazing what you can do with Docker on those tiny machines.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;In this workshop attendees learned how to get started with Docker on their Raspberry Pi&amp;rsquo;s.
-Starting with the basics they soon turned to advanced topics like building a Docker cluster.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;What is Raspberry Pi and how is it working&lt;/li&gt;
-&lt;li&gt;How to flash an SD card with HypriotOS&lt;/li&gt;
-&lt;li&gt;How to log in to a Raspberry Pi via SSH or serial console&lt;/li&gt;
-&lt;li&gt;How to do basic stuff with Docker&lt;/li&gt;
-&lt;li&gt;What is different when using Docker on ARM compared to Intel&lt;/li&gt;
-&lt;li&gt;How to build a Docker Cluster with Docker Swarm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dieter Reuter from our team gave an introductory talk and showed off some of the cool things we did at Hypriot.
-About 70 people attended the workshop and worked in small groups and helped each other to learn new stuff.
-Even days after the event Dieter was still raving about the cool event and the amazing, open-minded and friendly people.&lt;/p&gt;
-
-&lt;p&gt;As you can see from the pictures it was a lot of fun to be there.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Docker &amp;amp; Raspberry Pi Workshop in Brussels&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-02.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-02.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Dieter giving a talk&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Dieter giving a talk
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-01.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-01.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-03.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-03.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-04.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-04.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-05.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-05.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-06.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-06.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Special thanks for making the workshop possible need to go to Damien Duportal.
-His workshop presentation can be found &lt;a href=&#34;http://dduportal.github.io/presentations/docker-meetup-brussels-20160210/#1&#34;&gt;here&lt;/a&gt;.
-The example app that was used during the workshop was ported to ARM and can be found &lt;a href=&#34;https://github.com/jmMeessen/rpi-voting-app/commits/master&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We - at the Hypriot team - are really excited to see how more and more people start to see the potential in Docker on ARM.&lt;/p&gt;
-
-&lt;p&gt;Last week I was approached by Bastiaan Schaap from the DevOps Oost-Nederland Meetup Group to help organize a similar workshop.
-It will take place on &lt;strong&gt;June, 1st in Wageningen in the Netherlands&lt;/strong&gt;. You can read more about the agenda on the &lt;a href=&#34;http://www.meetup.com/de-DE/DevOps-OostNL/events/229287742/?eventId=229287742&#34;&gt;Meetup-Website&lt;/a&gt;.
-Make sure to RSVP early as there will only be a limited number of seats available.&lt;/p&gt;
-
-&lt;p&gt;We plan to do some more workshops in the next couple of months. So if you like to see one happen in your area - please come and talk to us.
-We really have a lot of fun organizing and conducting these kind of events and can come up with a ton of different workshop topics.&lt;/p&gt;
-
-&lt;p&gt;So in this sense - hope to see you soon in person.
-Happy ARM hacking until then. :)&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

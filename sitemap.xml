@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://blog.hypriot.com/</loc>
-    <lastmod>2016-09-04T19:45:58+02:00</lastmod>
+    <lastmod>2016-10-26T18:03:34+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/post/high-availability-with-docker/</loc>
+    <lastmod>2016-10-26T18:03:34+01:00</lastmod>
   </url>
   
   <url>
@@ -258,17 +263,17 @@
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
-    <lastmod>2015-05-15T20:16:11+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</loc>
+    <lastmod>2015-05-15T20:16:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
@@ -338,15 +343,15 @@
   </url>
   
   <url>
+    <loc>http://blog.hypriot.com/about/</loc>
+  </url>
+  
+  <url>
     <loc>http://blog.hypriot.com/crew/</loc>
   </url>
   
   <url>
     <loc>http://blog.hypriot.com/downloads/</loc>
-  </url>
-  
-  <url>
-    <loc>http://blog.hypriot.com/about/</loc>
   </url>
   
   <url>

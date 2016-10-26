@@ -6,8 +6,120 @@
     <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 26 Oct 2016 18:03:34 +0100</lastBuildDate>
     <atom:link href="http://blog.hypriot.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster</title>
+      <link>http://blog.hypriot.com/post/high-availability-with-docker/</link>
+      <pubDate>Wed, 26 Oct 2016 18:03:34 +0100</pubDate>
+      
+      <guid>http://blog.hypriot.com/post/high-availability-with-docker/</guid>
+      <description>
+
+&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
+
+&lt;p&gt;These two news combined beg for testing the new capabilities in reality.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;old&amp;rdquo; Docker Swarm already offered some high availability features, but the new called &amp;ldquo;Swarm Mode&amp;rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.&lt;/p&gt;
+
+&lt;p&gt;Also, the release of Docker 1.12 comes with official support for the ARM architecture. Running Docker on ARM has been possible for long time, but now, users can install it the same way on their Raspberry Pis as they do it on any other architecture: Using Docker&amp;rsquo;s official repositories. If you are one of our regular readers, you know that our Team at Hypriot intensively collaborated with Docker to make this official support possible. So we are also very happy that this huge milestone that many people asked for is eventually checked!&lt;/p&gt;
+
+&lt;p&gt;Now, with these two news, let&amp;rsquo;s get our hands dirty and test if the announced promises hold.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup the cluster&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;As hardware&lt;/strong&gt;, I have 5x Raspberry Pi 3, connected in a network with Internet access.&lt;/p&gt;
+
+&lt;p&gt;The Raspberry Pis with their SD cards, the network switch, power input and all cables live in a &lt;a href=&#34;https://www.picocluster.com/collections/starter-picocluster-kits/products/pico-5-raspberry-pi-starter-kit?variant=29344698892&#34;&gt;hardware kit from PicoCluster&lt;/a&gt;. Thanks to PicoCluster for providing the kit to us for testing!&lt;/p&gt;
+
+&lt;p&gt;See how the cluster looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;As software&lt;/strong&gt;, I chose HypriotOS. I also tried Raspbian, but it requires a large system upgrade after the first boot in order to provide all features required by Docker (e.g. VXLAN kernel module). Before and after the system upgrade, I also had to run &lt;a href=&#34;https://github.com/docker/docker/blob/master/contrib/check-config.sh&#34;&gt;Docker&amp;rsquo;s test script&lt;/a&gt; to make sure everything is ok. All of this is not a big deal, but if there is an OS available that comes out of the box with all that Docker needs (and even adds lots of useful optimizations), it simply saves time and provides a hassle-free experience. So I flashed all SD cards with HypriotOS using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To connect to the cluster&lt;/strong&gt;, I SSHed into all the nodes via &lt;a href=&#34;http://gnometerminator.blogspot.de/p/introduction.html&#34;&gt;Terminator&lt;/a&gt;. Terminator is my preferred tool to organize multiple terminals in a single window. It allows to send commands to several terminals at once. Soon, I&amp;rsquo;ll have a look at tmux and might switch, but for now I recommend Terminator :)&lt;/p&gt;
+
+&lt;p&gt;Finally, we have 5 terminals opened, all waiting for commands as you see in the following image. Please don&amp;rsquo;t care about the commands running in each terminal for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s all to do before getting our hands on Docker itself!&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
+
+&lt;p&gt;On latest HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
+
+&lt;p&gt;On an arbitrary node of the cluster, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker swarm init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output should look similar to that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Swarm initialized: current node (node-master) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-1acm9qa7b0hmzz5v8t40d75v5fsgckeu2z5ds6ls0x7cny7l8p-307wqrc8756akpxjxls9abbbs \
+    [2a02:810d:8600:2a78:f6c6:d67d:6912:17ca]:2377
+
+To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As explained in this output, now you need to run the presented &lt;code&gt;docker swarm join ...&lt;/code&gt; command on all other nodes, which you want to join the cluster.&lt;/p&gt;
+
+&lt;p&gt;Finally, on the node at which you executed &lt;code&gt;docker swarm init&lt;/code&gt;, check if all nodes of your cluster successfully formed a swarm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker node ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the terminal prints a list of all nodes of your cluster, the setup is all done! Forming a cluster cannot be easier, can it?&lt;/p&gt;
+
+&lt;h2 id=&#34;execution-of-tests:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Execution of tests&lt;/h2&gt;
+
+&lt;p&gt;My tests of Docker&amp;rsquo;s ability to recover from failures comprise the following use cases:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The ethernet interface of a random node (master or slave) got unavailable&lt;/li&gt;
+&lt;li&gt;A random node completely rebooted&lt;/li&gt;
+&lt;li&gt;A random node instantly crashed (unplug power source)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I documented one of the test runs in the following screencast.&lt;/p&gt;
+
+&lt;div align=&#34;center&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/185361173&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/185361173&#34;&gt;Testing High Availability Docker Swarm Mode&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user54109827&#34;&gt;Mathias Renner&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, I can confirm that Docker recovers flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!&lt;/p&gt;
+
+&lt;h2 id=&#34;more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;More to come soon&lt;/h2&gt;
+
+&lt;p&gt;This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the &lt;a href=&#34;http://highload.co/&#34;&gt;HighLoad++ Conference&lt;/a&gt; in Moskow, Russia. I&amp;rsquo;d be happy if you can make it there!&lt;/p&gt;
+
+&lt;p&gt;Also, this is not the end of the story,kontakt@pringuin.de of course. Thorough testing requires also measuring incoming requests from an external load tester to the cluster while a failure occurs. After some research, I have not found any evidence that someone has ever performed that tests (please correct me if I&amp;rsquo;m wrong!).&lt;/p&gt;
+
+&lt;p&gt;Moreover, Kubernetes received much attention lately since its support for ARM became better and better. So wouldn&amp;rsquo;t it be interesting to see if Docker or Kubernetes is better in keeping a service available and performing well, even if there are outages in the cluster?&lt;/p&gt;
+
+&lt;p&gt;So there&amp;rsquo;s more coming soon, just stay tuned for the upcoming posts :)&lt;/p&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
@@ -2732,519 +2844,6 @@ key points what impressed me most about this great new release.&lt;/p&gt;
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>And did you see the notch in the sabre? Our Docker birthday wrap-up</title>
-      <link>http://blog.hypriot.com/post/docker-birthday-party-review/</link>
-      <pubDate>Thu, 24 Mar 2016 00:00:00 +0100</pubDate>
-      
-      <guid>http://blog.hypriot.com/post/docker-birthday-party-review/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg&#34; alt=&#34;one-of-its-kind birthday cake&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Once in a while everyone should have a break from work and party hard. I am not saying that this event was a break for our Hypriot Team, but we definitely celebrated as real pirates do: With a worn-out sabre and rum, on board of a three-storey cake ship.&lt;/p&gt;
-
-&lt;p&gt;This three hour long journey has been tough. 50 pirates, many of them Docker freshmen from many different companies, striked out to look for the blue whale. Strong currents in foreign waters made this task a challenging one. But six veterans were aboard that shared their experience so that together with the freshmen they made good progress.&lt;/p&gt;
-
-&lt;p&gt;The crew has already been working hard for well over 2 hours, when suddenly a huge wave reared up right in front of the ship. &amp;ldquo;This wave is the test if we did our work on deck properly&amp;rdquo;, one of the veterans roared against the loud noise of the strong breeze. And as the crew realized some seconds later, he was right. The wave fell on the ship and washed many of the bold freshmen away. However, eight of them, due to their exceptional firmness and ambition to finish the work properly, survived.&lt;/p&gt;
-
-&lt;p&gt;When the waters calmed down and the first sunrays started touching the ship again, the veterans promised the remaining freshmen to provide special T-shirts, which will help them to successfully master all upcoming journeys. Also the ones that shouted out loud such that more people get to know about this adventure were promised to receive a T-shirt.&lt;/p&gt;
-
-&lt;p&gt;The veterans carved their names on a wooden plank:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Christof Rodejohann (extra point since he tweeted in addition!)&lt;/li&gt;
-&lt;li&gt;Bruno (@brrandrade)&lt;/li&gt;
-&lt;li&gt;Daniel Muenzel&lt;/li&gt;
-&lt;li&gt;Pablo (@Pedce)&lt;/li&gt;
-&lt;li&gt;Jens Boerner&lt;/li&gt;
-&lt;li&gt;Bjoern Pohl&lt;/li&gt;
-&lt;li&gt;Alexander Mikuta&lt;/li&gt;
-&lt;li&gt;Evaldo Junior Bento&lt;/li&gt;
-&lt;li&gt;Christian Häussler (tweeted)&lt;/li&gt;
-&lt;li&gt;Andras Bekesi (tweeted)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The veterans believe that these valuable goods will be lost when the mailboat impinges upon huge waves. Therefore, the T-shirts will be handed over  at the beginning of the next journey.&lt;/p&gt;
-
-&lt;p&gt;In case we do not have your proper size any more, we request your size from Docker. If this won&amp;rsquo;t work out, we put you on top of the winners list for next time when there&amp;rsquo;s something to win.&lt;/p&gt;
-
-&lt;h2 id=&#34;big-thanks-to-our-sponsors:4df1e7d2138a2d89c860af43c5e2ace8&#34;&gt;Big thanks to our sponsors&lt;/h2&gt;
-
-&lt;p&gt;This event would not have been possible without our sponsors. Again, we heartfully thank:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Paessler AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/paesslerAG&#34;&gt;@paesslerAG&lt;/a&gt;&lt;/em&gt; for the gorgeous birthday cake:
-&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
-&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Seal Systems AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/printandconvert&#34;&gt;@PrintAndConvert&lt;/a&gt;&lt;/em&gt; for the yummy pizza:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
-
-&lt;p&gt;Particularly, we thank Prof. Krieger and Marcel Großmann from University of Bamberg for their fantastic support!&lt;/p&gt;
-
-&lt;p&gt;Also, thanks to everyone who gave us &lt;a href=&#34;http://www.meetup.com/Docker-Bamberg/events/228784029/&#34;&gt;feedback on Meetup.com&lt;/a&gt;, especially feedback on how we can improve!&lt;/p&gt;
-
-&lt;p&gt;Last but not least, we would like to give special thanks to Jana Jakob from &lt;a href=&#34;https://www.facebook.com/janescaketragedy/&#34;&gt;Janes Cake Tragedy&lt;/a&gt; for the one-of-its-kind birthday cake!&lt;/p&gt;
-
-&lt;h2 id=&#34;visually-dive-into-of-what-happened:4df1e7d2138a2d89c860af43c5e2ace8&#34;&gt;Visually dive into of what happened&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-
-
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_07.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_07.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_08.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_08.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_09.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_09.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_10.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_10.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_11.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_11.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_12.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_12.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_13.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_13.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_14.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_14.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_16.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_16.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_17.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_17.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_18.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_18.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_19.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_19.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_20.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_20.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_22.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_22.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_21.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_21.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_15.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_15.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_23.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_23.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Docker Birthday Party at University of Bamberg
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Dieter Reuter, Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We look forward to have you with us on our next adventure! Stay in contact!&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
