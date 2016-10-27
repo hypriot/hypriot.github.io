@@ -109,7 +109,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the &lt;a href=&#34;http://highload.co/&#34;&gt;HighLoad++ Conference&lt;/a&gt; in Moskow, Russia. I&amp;rsquo;d be happy if you can make it there!&lt;/p&gt;
 
-&lt;p&gt;Also, this is not the end of the story,kontakt@pringuin.de of course. Thorough testing requires also measuring incoming requests from an external load tester to the cluster while a failure occurs. After some research, I have not found any evidence that someone has ever performed that tests (please correct me if I&amp;rsquo;m wrong!).&lt;/p&gt;
+&lt;p&gt;Also, this is not the end of the story of course. Thorough testing requires also measuring incoming requests from an external load tester to the cluster while a failure occurs. After some research, I have not found any evidence that someone has ever performed that tests (please correct me if I&amp;rsquo;m wrong!).&lt;/p&gt;
 
 &lt;p&gt;Moreover, Kubernetes received much attention lately since its support for ARM became better and better. So wouldn&amp;rsquo;t it be interesting to see if Docker or Kubernetes is better in keeping a service available and performing well, even if there are outages in the cluster?&lt;/p&gt;
 
