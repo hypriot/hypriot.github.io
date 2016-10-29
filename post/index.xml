@@ -362,7 +362,7 @@ This node joined a swarm as a worker.
 
 &lt;p&gt;Flash the SD card, and power up the Raspberry Pi Zero.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;flash -n swarm-raspi01 -s &amp;quot;WLAN-R46VFR&amp;quot; -p &amp;quot;************&amp;quot; https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;pre&gt;&lt;code&gt;flash -n swarm-raspi01 -s &amp;quot;WLAN-R46VFR&amp;quot; -p &amp;quot;************&amp;quot; https://github.com/hypriot/image-builder-rpi/releases/download/v1.0.0/hypriotos-rpi-v1.0.0.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Determine the IP address of the Pi Zero.&lt;/p&gt;
@@ -910,7 +910,7 @@ Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker 
 
 &lt;p&gt;&lt;strong&gt;Download our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and run&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;flash https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;pre&gt;&lt;code&gt;flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.0.0/hypriotos-rpi-v1.0.0.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Afterwards, put the SD card into the Raspberry Pi and power it. That&amp;rsquo;s all to get HypriotOS up and running!&lt;/strong&gt;&lt;/p&gt;
@@ -926,7 +926,7 @@ Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker 
 
 &lt;p&gt;If you want the Raspberry Pi to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit &lt;code&gt;/boot/device-init.yaml&lt;/code&gt; of the SD card and have a look at the &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;documentation of device-init&lt;/a&gt;. Alternatively, checkout the parameters of the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;Hypriot flash tool&lt;/a&gt; that also allows you to define configurations. Really, it&amp;rsquo;s just so damn easy:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -s mySSID -p myWIFIPASSWORD https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -s mySSID -p myWIFIPASSWORD https://github.com/hypriot/image-builder-rpi/releases/download/v1.0.0/hypriotos-rpi-v1.0.0.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;feedback-please:6302a5b7b7c942e4a845691a2c858ddf&#34;&gt;Feedback, please&lt;/h2&gt;
@@ -1918,12 +1918,12 @@ $ cd flash/Darwin
 
 &lt;p&gt;With the flash tool ready we now can prepare the SD card for our &lt;strong&gt;leader node&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ./flash --hostname cl-leader https://downloads.hypriot.com/hypriotos-rpi-v0.8.0.img.zip
+&lt;pre&gt;&lt;code&gt;$ ./flash --hostname cl-leader https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Repeat the process for the &lt;strong&gt;follower nodes&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ for i in {1..4} do; ./flash --hostname cl-follower${i} https://downloads.hypriot.com/hypriotos-rpi-v0.8.0.img.zip; done
+&lt;pre&gt;&lt;code&gt;$ for i in {1..4} do; ./flash --hostname cl-follower${i} https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip; done
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;While the SD cards for the follower nodes are still being flashed you can already start the leader node.&lt;/p&gt;
