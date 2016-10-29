@@ -361,7 +361,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -376,7 +376,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a result you should see&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now we are ready to flash the SD card. We are going to use the &lt;code&gt;dd&lt;/code&gt; command for this.&lt;/p&gt;
@@ -395,7 +395,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
@@ -430,7 +430,7 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
@@ -454,7 +454,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker Service is running by typing&lt;/p&gt;
@@ -464,7 +464,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;

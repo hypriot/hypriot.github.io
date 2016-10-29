@@ -186,7 +186,7 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;Now you can open up your browser on your workstation and type in the IP address of your Raspberry Pi to see that it really works!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
@@ -200,7 +200,7 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;We prepared a couple of &lt;a href=&#34;https://hub.docker.com/u/hypriot/&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -261,7 +261,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now identify the SD Card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -296,7 +296,7 @@ Depending on your hardware and the performance of your SD card it will take up t
 
 &lt;p&gt;When &lt;code&gt;dd&lt;/code&gt; is finished you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
@@ -335,7 +335,7 @@ yum install nmap       # for red hat based distros
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
@@ -343,7 +343,7 @@ yum install nmap       # for red hat based distros
 &lt;pre&gt;&lt;code&gt;nmap -sP 192.168.0.101/24 | grep black-pearl
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The output of the &lt;code&gt;nmap&lt;/code&gt; command should show you the IP address of your Raspberry Pi.
@@ -362,7 +362,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker service is running by typing&lt;/p&gt;
@@ -372,7 +372,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
@@ -440,7 +440,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -455,7 +455,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a result you should see&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now we are ready to flash the SD card. We are going to use the &lt;code&gt;dd&lt;/code&gt; command for this.&lt;/p&gt;
@@ -474,7 +474,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
@@ -509,7 +509,7 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
@@ -533,7 +533,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker Service is running by typing&lt;/p&gt;
@@ -543,7 +543,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
@@ -631,7 +631,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 &lt;p&gt;Next to the blue folder button, you will find a dropdown menu in which you can select your SD card.
 To double check the device letter open your Windows Explorer and locate the SD card drive.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally click on &lt;strong&gt;write&lt;/strong&gt; which will flash the SD card image to the SD card.&lt;/p&gt;
@@ -640,7 +640,7 @@ To double check the device letter open your Windows Explorer and locate the SD c
 In order to eject the SD card use the &lt;em&gt;secure eject&lt;/em&gt; function in the menu next to your system clock.
 This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
@@ -671,28 +671,28 @@ Type the following command into this field but replace the IP address in front o
 
 &lt;p&gt;As a result you should see this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Zenmap&lt;/em&gt; list all active hosts within your local network.
 In order to find the Raspberry Pi click the button &lt;em&gt;filter hosts&lt;/em&gt; at the bottom of the &lt;em&gt;Zenmap&lt;/em&gt; and type in &lt;em&gt;black&lt;/em&gt;.
 Now the first line of the list should show the IP address of your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Since we now know where to find the Raspberry Pi within your network it is time to start &lt;em&gt;PuTTY&lt;/em&gt; to establish a SSH connection to your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;After starting &lt;em&gt;PuTTY&lt;/em&gt; type in the IP address we determined into the field &lt;em&gt;Host Name&lt;/em&gt;. With a click on the button &lt;em&gt;Open&lt;/em&gt; the connection will be established.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally to check if the Docker service is running type&lt;/p&gt;
@@ -702,7 +702,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
@@ -1017,7 +1017,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 &lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;/p&gt;
 
 &lt;p&gt;&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
-  &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
+  &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
 
   
   &lt;figcaption style=&#34;height: 1rem;&#34;&gt;
@@ -1041,8 +1041,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Modern Kernel build for Docker&#34; /&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Modern Kernel build for Docker&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1056,8 +1056,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker version&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker version&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1071,8 +1071,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker info&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker info&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1086,8 +1086,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/hypriot-pi-04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://assets.hypriot.com/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker images&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 

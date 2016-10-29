@@ -131,7 +131,7 @@ In the next step we will flash this file onto your SD card.</p>
 
 <p>You should see a list of all your disks like this:</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/diskutil-list.png" alt="disktuil-list" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/diskutil-list.png" alt="disktuil-list" />
 </p>
 
 <p>Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -146,7 +146,7 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 
 <p>As a result you should see</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/unmount.png" alt="Screenshot unmounted" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/unmount.png" alt="Screenshot unmounted" />
 </p>
 
 <p>Now we are ready to flash the SD card. We are going to use the <code>dd</code> command for this.</p>
@@ -165,7 +165,7 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the <code>dd</code> is finished, you should get an output like this:</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/dd-success.png" alt="after-dd-success" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/dd-success.png" alt="after-dd-success" />
 </p>
 
 <p>Finally unmount the SD card again in the same way as before.</p>
@@ -200,7 +200,7 @@ One way is to use the <code>nmap</code> command.</p>
 
 <p>As you can see in the following screenshot our IP address is <code>192.168.0.101</code>.</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/own-ip-address.png" alt="own-ip-address" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/own-ip-address.png" alt="own-ip-address" />
 </p>
 
 <p>Then replace the IP address in front of the <code>/24</code> with yours and type</p>
@@ -224,7 +224,7 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>If everything went fine you should now see the <em>HypriotOS</em> command line prompt waiting for your input.</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png" alt="hypriot-ssh-prompt-after-login" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png" alt="hypriot-ssh-prompt-after-login" />
 </p>
 
 <p>Finally check if the Docker Service is running by typing</p>
@@ -234,7 +234,7 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>The output of the <code>docker info</code> command should look similar to:</p>
 
-<p><img src="https://s3.eu-central-1.amazonaws.com/assets.hypriot.com/blog_post_getting-started/mac-screenies/docker-info.png" alt="docker-info" />
+<p><img src="/images/blog_post_getting-started/mac-screenies/docker-info.png" alt="docker-info" />
 </p>
 
 <p><strong>Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!</strong> :)</p>
