@@ -25,8 +25,7 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~369MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150416-201537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker-Pi Image (hypriot-rpi-20150416-201537.img.zip) (~369MB)&lt;/p&gt;
 
 &lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
 
@@ -53,8 +52,7 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb&#34;&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/a&gt; (~ 6MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
@@ -1070,8 +1068,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
-&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker-Pi Image (hypriot-rpi-20150301-140537.img.zip) (~347MB)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
@@ -1366,7 +1363,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150208-015447.zip&#34;&gt;Docker-Pi-Image&lt;/a&gt; (~400MB)&lt;/p&gt;
+&lt;p&gt;Docker-Pi-Image (hypriot-rpi-20150208-015447.zip) (~400MB)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 

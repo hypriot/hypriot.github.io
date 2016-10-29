@@ -45,7 +45,7 @@ Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsq
 We also added a default &lt;code&gt;/boot/config.txt&lt;/code&gt;, which for instance allows for a better out-of-the-box HDMI display experience (&lt;code&gt;hdmi_force_hotplug=1&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;There is no easier way to get started with Docker on ARM.
-Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;latest image&lt;/a&gt; and get started in less than 5 minutes.&lt;/p&gt;
+Just give it a try: Download our latest image (hypriot-rpi-20151115-132854.img.zip) and get started in less than 5 minutes.&lt;/p&gt;
 
 &lt;h3 id=&#34;detailed-features-of-hypriotos-hector:02d83c62817c8a33766342f7f05756e9&#34;&gt;Detailed Features of HypriotOS &amp;ldquo;Hector&amp;rdquo;&lt;/h3&gt;
 
@@ -67,8 +67,7 @@ Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hy
 
 &lt;h3 id=&#34;download-get-it-while-it-is-still-hot:02d83c62817c8a33766342f7f05756e9&#34;&gt;Download: Get it while it is still hot&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;hypriot-rpi-20151115-132854.img.zip&lt;/a&gt; (~ 438 MB)
-&lt;a href=&#34;hypriot-rpi-20151115-132854.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;hypriot-rpi-20151115-132854.img.zip (hypriot-rpi-20151115-132854.img.zip) (~ 438 MB)&lt;/p&gt;
 
 &lt;p&gt;Check out our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Raspberry Pi.&lt;/p&gt;
 
