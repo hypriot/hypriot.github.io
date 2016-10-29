@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dockercon Eu on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/dockercon-eu/</link>
+    <link>https://blog.hypriot.com/tags/dockercon-eu/</link>
     <description>Recent content in Dockercon Eu on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Nov 2015 21:40:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/dockercon-eu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/dockercon-eu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Just in time for DockerCon EU: a shipload of new Docker ARM goodies</title>
-      <link>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</link>
+      <link>https://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</link>
       <pubDate>Sun, 15 Nov 2015 21:40:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</guid>
+      <guid>https://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</guid>
       <description>
 
 &lt;p&gt;Hard on the heels of Docker announcing &lt;a href=&#34;https://blog.docker.com/2015/11/docker-1-9-production-ready-swarm-multi-host-networking/&#34;&gt;major changes with Docker 1.9&lt;/a&gt; we are making the newest Docker goodies available on HypriotOS.
@@ -23,7 +23,7 @@ We are really happy that we were able to finish our new release called &amp;ldqu
 &lt;p&gt;If you like a personal demo of what&amp;rsquo;s in store for &amp;ldquo;Hector&amp;rdquo; just ping @Quintus23M on Twitter and meet him in person at DockerCon EU.
 Dieter and Andreas brought their treasure chest filled with Raspberry Pi&amp;rsquo;s to Barcelona and are eager to show off a bit.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hector-release/testing.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hector-release/testing.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And if you are not lucky enough to attend DockerCon you might as well read on.&lt;/p&gt;
@@ -70,7 +70,7 @@ Just give it a try: Download our &lt;a href=&#34;http://downloads.hypriot.com/hy
 &lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip&#34;&gt;hypriot-rpi-20151115-132854.img.zip&lt;/a&gt; (~ 438 MB)
 &lt;a href=&#34;hypriot-rpi-20151115-132854.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Check out our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;Check out our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started-Guide&lt;/a&gt; on how to get this SD card image running on your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google+ or Facebook.&lt;/p&gt;
 

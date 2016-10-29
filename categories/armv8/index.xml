@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Armv8 on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/armv8/</link>
+    <link>https://blog.hypriot.com/categories/armv8/</link>
     <description>Recent content in Armv8 on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 Mar 2016 15:59:56 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/armv8/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/armv8/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting Docker running on a high-density ARMv8 development board from HiSilicon</title>
-      <link>http://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</link>
+      <link>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</link>
       <pubDate>Tue, 01 Mar 2016 15:59:56 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</guid>
+      <guid>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</guid>
       <description>
 
 &lt;p&gt;Running Docker containers on the latest high-density ARMv8 cloud servers lets
@@ -22,7 +22,7 @@ you operate your data center at lower costs and gives you the ability to scale
 your business even faster. In this article we demonstrate the technical ground
 work of compiling Docker and bootstrapping all the necessary development tools.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;introduction:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Introduction&lt;/h3&gt;
@@ -57,7 +57,7 @@ most out of our data center resources.&lt;/p&gt;
 
 &lt;h3 id=&#34;hisilicon-d02-development-board-specs:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;HiSilicon D02 development board specs&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;
 &lt;/p&gt;
 
 &lt;table&gt;
@@ -141,7 +141,7 @@ most out of our data center resources.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The HiSilicon D02 board uses the UEFI/Kernel/Ubuntu rootfs, which is available for download at &lt;a href=&#34;http://open-estuary.org/&#34;&gt;http://open-estuary.org/&lt;/a&gt;.&lt;/p&gt;
@@ -930,10 +930,10 @@ or tweet your thoughts and ideas on this tutorial at &lt;a href=&#34;https://twi
     
     <item>
       <title>Getting Docker running on a high-end 64-bit ARM gaming console for fun and profit</title>
-      <link>http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</link>
+      <link>https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</link>
       <pubDate>Mon, 28 Dec 2015 09:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</guid>
+      <guid>https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</guid>
       <description>
 
 &lt;p&gt;I don&amp;rsquo;t really know how this happened. Again. :(&lt;br /&gt;
@@ -943,7 +943,7 @@ Somehow over and over again these little ARM devices and maker devboards end up 
 
 &lt;p&gt;Well, look at this beauty because words cannot even begin to describe it:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Alright, start breathing again.&lt;/p&gt;
@@ -971,7 +971,7 @@ For fast and efficient graphics, Nvidia has included 256 Maxwell GPU cores as we
 
 &lt;p&gt;Looking at the Tegra X1 chip, it&amp;rsquo;s dominated by the 256x CUDA GPU cores. Can you find the CPU cores? They are pretty hard to find. ;-)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;All in all, this device has a lot of CPU power and an incredible amount of GPU power as well - especially for a low-cost device &lt;a href=&#34;http://www.amazon.com/NVIDIA-SHIELD-Remote/dp/B013HJ13V0/ref=sr_1_3?ie=UTF8&amp;amp;qid=1451218402&amp;amp;sr=8-3&amp;amp;keywords=nvidia+shield&#34;&gt;at just $199.99&lt;/a&gt;.
@@ -996,7 +996,7 @@ Linux for instance - if we were only able to hack the ShieldTV and install a Lin
 This so called &lt;a href=&#34;https://developer.nvidia.com/embedded/linux-tegra&#34;&gt;Nvidia Linux For Tegra (L4T)&lt;/a&gt; is running a 64-bit kernel, but does only provide a 32-bit root file system.
 Nvidia really? What a bummer. Hopefully they will change this in the future.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Later on, I created a Debian Jessie root file system directly from upstream, which is compiled for the ARM64 architecture.
@@ -1009,12 +1009,12 @@ Fortunately I got a lot of help from Andreas (another member of our Hypriot crew
 
 &lt;p&gt;&lt;strong&gt;&amp;hellip; HypriotOS&lt;/strong&gt;. As a result the ShieldTV is now booting into a pure 64-bit environment in less than ten seconds.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;As you can see the Nvidia ShieldTV is running our new 64-bit HypriotOS system on four CPU cores and has almost three gigabyte of memory available.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;in-the-end-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;In the end there was &amp;hellip;&lt;/h3&gt;
@@ -1036,19 +1036,19 @@ And as you can imagine, debugging some kernel and boot issues without having a s
 Yesterday I was finally lucky enough to get almost all of the important kernel settings for Docker working im my custom 3.10.61 Linux kernel.
 Honestly, this is quite an old kernel version and far from being perfect for Docker but it works for now and the Docker Engine is running the first time on this great device!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s spin up a Docker image or two! Funny enough even a Docker image that was built for the Raspberry Pi can run on ARM64.
-Who can remember it? This is exactly the same web server container I was demoing live on stage at &lt;a href=&#34;http://blog.hypriot.com/post/dockercon2015/&#34;&gt;DockerCon 2015 in San Francisco&lt;/a&gt;.&lt;/p&gt;
+Who can remember it? This is exactly the same web server container I was demoing live on stage at &lt;a href=&#34;https://blog.hypriot.com/post/dockercon2015/&#34;&gt;DockerCon 2015 in San Francisco&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Maybe it is more interesting to run a real ARM64 Docker image to proof that our ARM 64-bit Docker engine is working just fine.
 So here we go&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;That is already pretty impressive, but there is still a lot to do.&lt;/p&gt;
@@ -1057,7 +1057,7 @@ So here we go&amp;hellip;&lt;/p&gt;
 This means we need a really easy way to flash and install HypriotOS on the ShieldTV similar to how we do it for the Raspberry Pi.
 And all the included components should be really up-to-date: the Linux kernel (4.x) and of course all of the Docker tools as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Maybe there are some of you who - after reading this article - want to get started hacking on the ShieldTV, too.

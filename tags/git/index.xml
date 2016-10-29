@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/git/</link>
+    <link>https://blog.hypriot.com/tags/git/</link>
     <description>Recent content in Git on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Jun 2015 22:19:55 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Run your own GitHub-like service with the help of Docker</title>
-      <link>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</link>
+      <link>https://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</link>
       <pubDate>Sat, 27 Jun 2015 22:19:55 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</guid>
+      <guid>https://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://git-scm.com/&#34;&gt;Git&lt;/a&gt; and &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; have taken the world by storm.
@@ -38,7 +38,7 @@ This makes it a perfect candidate for a home-grown GitHub alternative that can e
 &lt;p&gt;In this post, we show you how to set up &lt;em&gt;Gogs&lt;/em&gt; in just a couple of minutes. Thanks to Docker it will be fast and easy.&lt;/p&gt;
 
 &lt;p&gt;To follow along you gonna need a Raspberry Pi with Docker.
-In case you do not have Docker running on your Raspberry Pi our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; will cover everything you need to know to get up and running in a snap.&lt;/p&gt;
+In case you do not have Docker running on your Raspberry Pi our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; will cover everything you need to know to get up and running in a snap.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://gogs.qiniudn.com/gogs_demo.gif&#34; alt=&#34;Gogs Screenshots&#34; /&gt;
 &lt;/p&gt;
@@ -48,7 +48,7 @@ In case you do not have Docker running on your Raspberry Pi our &lt;a href=&#34;
 &lt;h2 id=&#34;how-to-set-up-gogs:dc7018a7890c20895bf31528a8ab5dea&#34;&gt;How to set up Gogs&lt;/h2&gt;
 
 &lt;p&gt;First, log into your Raspberry Pi via SSH.
-Please refer to our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; if you are not sure about how to do this.&lt;/p&gt;
+Please refer to our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting-Started guide&lt;/a&gt; if you are not sure about how to do this.&lt;/p&gt;
 
 &lt;p&gt;After logging in successfully pull and run &lt;em&gt;Gogs&lt;/em&gt; by executing the following command:&lt;/p&gt;
 
@@ -69,7 +69,7 @@ In our example we have to type the following address into the browser:&lt;/p&gt;
 
 &lt;p&gt;As a result you should see the setup page of &lt;em&gt;Gogs&lt;/em&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
@@ -114,7 +114,7 @@ In our example we have to type the following address into the browser:&lt;/p&gt;
 
 &lt;p&gt;After you filled all required fields, it should look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs_user-input-combined.png&#34; alt=&#34;frist-run-gogs_user-input-combined.png&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/frist-run-gogs_user-input-combined.png&#34; alt=&#34;frist-run-gogs_user-input-combined.png&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;To finish the setup, click on &lt;strong&gt;install&lt;/strong&gt; at the bottom of the page. Afterwards you will be forwarded to the login page of &lt;em&gt;Gogs&lt;/em&gt;.
@@ -136,7 +136,7 @@ Please login with the credentials you just specified.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s start by creating a new repository. Click on the &lt;strong&gt;green button&lt;/strong&gt; in the top right corner of the page and choose &lt;strong&gt;New Repository&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/start-with-green-button_with-marker.png&#34; alt=&#34;start-with-green-button&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/start-with-green-button_with-marker.png&#34; alt=&#34;start-with-green-button&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;You should see a setup page for your new repository. Please fill out the two text input fields.&lt;/p&gt;
@@ -144,14 +144,14 @@ Please login with the credentials you just specified.&lt;/p&gt;
 &lt;p&gt;At the bottom of the page you will find a checkbox. We recommend to enable this checkbox since it automatically will initialize this repository with a &lt;em&gt;README.md&lt;/em&gt;.
 The following screenshot shows an example of how the setup page might look like after you provided all the necessary information.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/new-repo.png&#34; alt=&#34;new-repo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/new-repo.png&#34; alt=&#34;new-repo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finish the setup by clicking on &lt;strong&gt;Create Repository&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Before you can actually use the new repository, you need to add your SSH key. Click on The &lt;strong&gt;settings button&lt;/strong&gt; in the top right corner of the page. Then, go to &lt;strong&gt;SSH Keys&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Add Key&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/add-private-key2_with-markers.png&#34; alt=&#34;add-private-key2&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/add-private-key2_with-markers.png&#34; alt=&#34;add-private-key2&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Paste your public SSH key into this field and set an arbitrary &lt;em&gt;Key Name&lt;/em&gt;.&lt;/p&gt;
@@ -163,7 +163,7 @@ The following screenshot shows an example of how the setup page might look like 
 
 &lt;p&gt;As you can see in the following screenshot, you should see your SSH key as result.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/ssh-key-export.png&#34; alt=&#34;ssh-key-export.png&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/ssh-key-export.png&#34; alt=&#34;ssh-key-export.png&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally, back in the &lt;em&gt;Gogs&lt;/em&gt; website, click the green button &lt;strong&gt;Add Key&lt;/strong&gt; to add your public SSH key. Afterwards you should see a message confirming that the key has been added successfully.&lt;/p&gt;
@@ -176,7 +176,7 @@ The following screenshot shows an example of how the setup page might look like 
 Navigate inside your new repository in the Gogs Web-GUI and click on the &lt;strong&gt;black cloud symbol&lt;/strong&gt;.
 Make sure that the &lt;strong&gt;SSH&lt;/strong&gt; button in front of the command is activated and copy the string in the text field via the &lt;strong&gt;black copy button&lt;/strong&gt; on the right edge.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/gogs_own_Git_service/in-repo-get-ssh-link-for-git-remote_with-markers.png&#34; alt=&#34;in-repo-get-ssh-link-for-git-remote&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gogs_own_Git_service/in-repo-get-ssh-link-for-git-remote_with-markers.png&#34; alt=&#34;in-repo-get-ssh-link-for-git-remote&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now open a terminal at your workstation and navigate to the location where you want to create the folder for the repository.&lt;/p&gt;

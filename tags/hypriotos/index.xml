@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hypriotos on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/hypriotos/</link>
+    <link>https://blog.hypriot.com/tags/hypriotos/</link>
     <description>Recent content in Hypriotos on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Jan 2016 16:00:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/hypriotos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/hypriotos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to get Docker working on your favourite ARM board with HypriotOS</title>
-      <link>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</link>
+      <link>https://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</link>
       <pubDate>Mon, 18 Jan 2016 16:00:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</guid>
+      <guid>https://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</guid>
       <description>&lt;p&gt;It all began when Dieter aka &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; started to experiment with the NVIDIA ShieldTV.
 The ShieldTV is a curious little thing. Sold as a media hub for your living room it does deliver one teraflop of processing power.
 On top of that it is one of the first 64-bit ARM boards that can be bought for a reasonable price.&lt;/p&gt;
@@ -22,7 +22,7 @@ On top of that it is one of the first 64-bit ARM boards that can be bought for a
 &lt;p&gt;Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
 Read on to learn what happened next&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
+&lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
 The gist of it is that it was quite an involved process of creating his own custom Debian based operating system that supported building Go and Docker for ARM64.&lt;/p&gt;
 
 &lt;p&gt;The work of Dieter on the ShieldTV inspired our team to revisit the way we were building our beloved HypriotOS for the Raspberry Pi.
@@ -72,7 +72,7 @@ A highlevel comparision of both devices can be found at &lt;a href=&#34;http://w
 
 &lt;p&gt;Overall the relation of the different repositories now looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;All these changes also redefined for us what HypriotOS is all about.&lt;/p&gt;
@@ -118,10 +118,10 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
     
     <item>
       <title>Getting started with Docker on your Raspberry Pi</title>
-      <link>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</link>
+      <link>https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</link>
       <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</guid>
+      <guid>https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</guid>
       <description>
 
 &lt;p&gt;Docker is a new technology that emerged in the last two years and took the software world by storm. What exactly is Docker and why did it became so popular in such short time?&lt;/p&gt;
@@ -161,11 +161,11 @@ It’s capable of doing everything you’d expect a desktop computer to do, from
 
 &lt;p&gt;The goal of this guide is to show you the necessary steps to get you started with Docker on a Raspberry Pi. Please follow the guide that covers your operating system and continue below once you have finished.&lt;/p&gt;
 
-&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi&#34;&gt;The Windows guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi&#34;&gt;The Windows guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi&#34;&gt;The Mac OS X guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi&#34;&gt;The Mac OS X guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;-&amp;gt; &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi&#34;&gt;The Linux guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi&#34;&gt;The Linux guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
 
@@ -186,7 +186,7 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;Now you can open up your browser on your workstation and type in the IP address of your Raspberry Pi to see that it really works!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
@@ -200,23 +200,23 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;We prepared a couple of &lt;a href=&#34;https://hub.docker.com/u/hypriot/&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>How to get Docker running on your Raspberry Pi using Linux</title>
-      <link>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</link>
+      <link>https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</link>
       <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</guid>
+      <guid>https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</guid>
       <description>
 
 &lt;p&gt;This guide shows you how to get Docker running on your Raspberry Pi using a &lt;strong&gt;Linux workstation&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started on your ARM device&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started on your ARM device&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;We tried to make this guide as concise as possible. Make sure that you know the basics about the command line and you should be ready to go.
@@ -229,13 +229,13 @@ The SD card contains all the software which we are going to use on our Raspberry
 With software we basically mean two things: first an operating system for your Raspberry Pi and second the software you as user would like to use - e.g. a browser or a word processing program.
 In our case the software we wanna use is Docker.&lt;/p&gt;
 
-&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
+&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After the download is completed open a terminal window. To do this use the search function of your Linux distribution and type &lt;em&gt;terminal&lt;/em&gt; and press &lt;em&gt;Enter&lt;/em&gt;.&lt;/p&gt;
 
@@ -261,7 +261,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now identify the SD Card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -296,7 +296,7 @@ Depending on your hardware and the performance of your SD card it will take up t
 
 &lt;p&gt;When &lt;code&gt;dd&lt;/code&gt; is finished you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
@@ -335,7 +335,7 @@ yum install nmap       # for red hat based distros
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
@@ -343,7 +343,7 @@ yum install nmap       # for red hat based distros
 &lt;pre&gt;&lt;code&gt;nmap -sP 192.168.0.101/24 | grep black-pearl
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The output of the &lt;code&gt;nmap&lt;/code&gt; command should show you the IP address of your Raspberry Pi.
@@ -362,7 +362,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker service is running by typing&lt;/p&gt;
@@ -372,12 +372,12 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
-&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 </description>
@@ -385,16 +385,16 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
     
     <item>
       <title>How to get Docker running on your Raspberry Pi using Mac OS X</title>
-      <link>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</link>
+      <link>https://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</link>
       <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</guid>
+      <guid>https://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</guid>
       <description>
 
 &lt;p&gt;This guide shows you how to get Docker running on your Raspberry Pi using a &lt;strong&gt;Mac OS X workstation&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started with Docker on your ARM Device&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started with Docker on your ARM Device&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;We tried to make this guide as concise as possible. Make sure that you know the basics about the command line and you should be ready to go.
@@ -408,13 +408,13 @@ We recommend a size of at least 4 GB.&lt;/p&gt;
 With software we basically mean two things: first an operating system for your Raspberry Pi and second the software you as user would like to use - e.g. a browser or a word processing program.
 In our case the software we wanna use is Docker.&lt;/p&gt;
 
-&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
+&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After the download is completed open a terminal window. To do this press &lt;strong&gt;CMD&lt;/strong&gt; + &lt;strong&gt;Whitespace&lt;/strong&gt; and type &lt;em&gt;terminal&lt;/em&gt;.&lt;/p&gt;
 
@@ -440,7 +440,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
@@ -455,7 +455,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a result you should see&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now we are ready to flash the SD card. We are going to use the &lt;code&gt;dd&lt;/code&gt; command for this.&lt;/p&gt;
@@ -474,7 +474,7 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
@@ -509,7 +509,7 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
@@ -533,7 +533,7 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker Service is running by typing&lt;/p&gt;
@@ -543,12 +543,12 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
-&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 </description>
@@ -556,16 +556,16 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
     
     <item>
       <title>How to get Docker running on your Raspberry Pi using Windows</title>
-      <link>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</link>
+      <link>https://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</link>
       <pubDate>Fri, 15 May 2015 20:16:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</guid>
+      <guid>https://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</guid>
       <description>
 
 &lt;p&gt;This guide shows you how to get Docker running on your Raspberry Pi using a &lt;strong&gt;Windows workstation&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started on your ARM device&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you have not read the getting started guide about Docker on the Raspberry Pi yet you might wanna check it out first: &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device&#34;&gt;Getting started on your ARM device&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;The &lt;strong&gt;hardware&lt;/strong&gt; you gonna need to follow along is a Raspberry Pi 1 or 2 and one SD card.
@@ -576,7 +576,7 @@ We recommend a size of at least 4 GB.&lt;/p&gt;
 With software we basically mean two things: first an operating system for your Raspberry Pi and second the software you as user would like to use - e.g. a browser or a word processing program.
 In our case the software we wanna use is Docker.&lt;/p&gt;
 
-&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
+&lt;p&gt;We - from Hypriot - created a preconfigured &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD card image&lt;/a&gt; which contains everything you need to run Docker on your Raspberry Pi.
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
@@ -615,7 +615,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 
 &lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
-&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Next go to your &lt;strong&gt;Download&lt;/strong&gt; folder and extract the downloaded zip file by right-clicking on the file and then clicking on &lt;strong&gt;7-zip&lt;/strong&gt; -&amp;gt; &lt;strong&gt;extract here&amp;hellip;&lt;/strong&gt;.&lt;/p&gt;
 
@@ -631,7 +631,7 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 &lt;p&gt;Next to the blue folder button, you will find a dropdown menu in which you can select your SD card.
 To double check the device letter open your Windows Explorer and locate the SD card drive.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally click on &lt;strong&gt;write&lt;/strong&gt; which will flash the SD card image to the SD card.&lt;/p&gt;
@@ -640,7 +640,7 @@ To double check the device letter open your Windows Explorer and locate the SD c
 In order to eject the SD card use the &lt;em&gt;secure eject&lt;/em&gt; function in the menu next to your system clock.
 This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
@@ -671,28 +671,28 @@ Type the following command into this field but replace the IP address in front o
 
 &lt;p&gt;As a result you should see this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Zenmap&lt;/em&gt; list all active hosts within your local network.
 In order to find the Raspberry Pi click the button &lt;em&gt;filter hosts&lt;/em&gt; at the bottom of the &lt;em&gt;Zenmap&lt;/em&gt; and type in &lt;em&gt;black&lt;/em&gt;.
 Now the first line of the list should show the IP address of your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Since we now know where to find the Raspberry Pi within your network it is time to start &lt;em&gt;PuTTY&lt;/em&gt; to establish a SSH connection to your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;After starting &lt;em&gt;PuTTY&lt;/em&gt; type in the IP address we determined into the field &lt;em&gt;Host Name&lt;/em&gt;. With a click on the button &lt;em&gt;Open&lt;/em&gt; the connection will be established.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Finally to check if the Docker service is running type&lt;/p&gt;
@@ -702,12 +702,12 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
-&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You are now ready to continue your exploration of Docker with our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device#going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 </description>
@@ -715,11 +715,11 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
     
     <item>
       <title>Brand new Getting-Started guide for Docker on the Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/brand-new-getting-started-guide/</link>
+      <link>https://blog.hypriot.com/post/brand-new-getting-started-guide/</link>
       <pubDate>Fri, 15 May 2015 12:35:44 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
-      <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;http://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
+      <guid>https://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
+      <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;https://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
 Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;Actually - in the end - we came up with three guides. :)&lt;/p&gt;
@@ -739,10 +739,10 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
     
     <item>
       <title>Stay on the cutting edge with Docker 1.6 and test drive it on your Raspberry Pi today</title>
-      <link>http://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</link>
+      <link>https://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</link>
       <pubDate>Tue, 31 Mar 2015 20:00:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</guid>
+      <guid>https://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</guid>
       <description>
 
 &lt;p&gt;If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.&lt;/p&gt;
@@ -765,7 +765,7 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
 
 &lt;p&gt;Find out more details in the &lt;a href=&#34;https://github.com/docker/docker/blob/v1.6.0-rc2/CHANGELOG.md&#34;&gt;changelog&lt;/a&gt; yourself.&lt;/p&gt;
 
-&lt;p&gt;The only prerequisite to get started is that you are using our Hypriot SD card image for the Rasperry Pi. We published a new version just yesterday and you can the blog post about it here: &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The only prerequisite to get started is that you are using our Hypriot SD card image for the Rasperry Pi. We published a new version just yesterday and you can the blog post about it here: &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;get-it-while-it-is-still-hot:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Get it while it is still hot&lt;/h3&gt;
 
@@ -785,7 +785,7 @@ $ dpkg -i docker-hypriot_1.6.0-rc2-1_armhf.deb
 &lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with this shiny new toy.
-This is not yet a stable release so let us know what you think! And by the way - you can find older versions of Docker as Debian packages in our &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;Download-Area&lt;/a&gt;.
+This is not yet a stable release so let us know what you think! And by the way - you can find older versions of Docker as Debian packages in our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;Download-Area&lt;/a&gt;.
 Installing a new version replaces the existing one and thus makes it possible to switch versions without breaking a sweat.&lt;/p&gt;
 
 &lt;p&gt;Have fun.&lt;/p&gt;
@@ -827,10 +827,10 @@ Installing a new version replaces the existing one and thus makes it possible to
     
     <item>
       <title>HypriotOS: Back Again and Better then Ever</title>
-      <link>http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</link>
+      <link>https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</link>
       <pubDate>Mon, 30 Mar 2015 00:00:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</guid>
+      <guid>https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</guid>
       <description>
 
 &lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
@@ -1006,18 +1006,18 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
     
     <item>
       <title>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</title>
-      <link>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</link>
+      <link>https://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</link>
       <pubDate>Tue, 03 Mar 2015 22:09:33 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
+      <guid>https://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
       <description>
 
-&lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;http://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
+&lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;https://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
 
 &lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;/p&gt;
 
 &lt;p&gt;&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
-  &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
+  &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
 
   
   &lt;figcaption style=&#34;height: 1rem;&#34;&gt;
@@ -1041,8 +1041,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Modern Kernel build for Docker&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Modern Kernel build for Docker&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1056,8 +1056,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker version&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker version&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1071,8 +1071,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker info&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker info&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1086,8 +1086,8 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker images&amp;#39;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/hypriot-pi-04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1008&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/thumbnails/thumb_hypriot-pi-04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Output of &amp;#39;docker images&amp;#39;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -1101,11 +1101,11 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -1199,7 +1199,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;p&gt;&lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip&#34;&gt;Docker-Pi Image&lt;/a&gt; (~347MB)&lt;br /&gt;
 &lt;a href=&#34;http://downloads.hypriot.com/hypriot-rpi-20150301-140537.img.zip.sha256&#34;&gt;SHA256 checksum&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;How to get started&lt;/h2&gt;
 

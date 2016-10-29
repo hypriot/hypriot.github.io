@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker Compose on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/docker-compose/</link>
+    <link>https://blog.hypriot.com/categories/docker-compose/</link>
     <description>Recent content in Docker Compose on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 16 Apr 2015 22:06:11 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker 1.6.0 is finally released into the wild</title>
-      <link>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</link>
+      <link>https://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</link>
       <pubDate>Thu, 16 Apr 2015 22:06:11 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
+      <guid>https://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
       <description>
 
 &lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
@@ -72,7 +72,7 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;And if you are especially daring today you might wanna try it together with Docker Compose:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&#34;&gt;http://blog.hypriot.com/post/docker-compose-nodejs-haproxy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;/post/docker-compose-nodejs-haproxy&lt;/p&gt;
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 
@@ -82,10 +82,10 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
     
     <item>
       <title>How to use Docker Compose to run complex multi container apps on your Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</link>
+      <link>https://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</link>
       <pubDate>Mon, 06 Apr 2015 00:18:47 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</guid>
+      <guid>https://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</guid>
       <description>
 
 &lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
@@ -194,7 +194,7 @@ To install Apache Bench on Debian/Ubuntu use &lt;code&gt;sudo apt-get install ap
 
 &lt;p&gt;This runs 10.000 HTTP requests with a concurrency of 10. The CPU load while running the benchmark test shows that only one CPU core of the Raspberry Pi 2 is used. The reason is that Node.js is a single threaded process.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And here are the results of the Apache Bench test. As you can see a single web server can handle &lt;strong&gt;338&lt;/strong&gt; Requests per second.&lt;/p&gt;
@@ -406,7 +406,7 @@ The HAProxy container forwards each request in a round robin fashion, so each we
 
 &lt;p&gt;Now we run 10.000 HTTP requests with a concurrency of 30. The CPU load while running the benchmark test now shows that all four CPU cores of the Raspberry Pi 2 are used.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And here are the results of the benchmark test itself.&lt;/p&gt;

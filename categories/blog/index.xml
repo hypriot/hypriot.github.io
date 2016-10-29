@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/blog/</link>
+    <link>https://blog.hypriot.com/categories/blog/</link>
     <description>Recent content in Blog on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Mar 2015 22:52:37 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>We moved our blog from Posthaven to Hugo after only three posts. Why?</title>
-      <link>http://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</link>
+      <link>https://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</link>
       <pubDate>Fri, 27 Mar 2015 22:52:37 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</guid>
+      <guid>https://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</guid>
       <description>
 
 &lt;p&gt;Today we made the move and switched our blog from &lt;a href=&#34;http://posthaven.com&#34;&gt;Posthaven&lt;/a&gt; to &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hypriot Cluster Lab on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/hypriot-cluster-lab/</link>
+    <link>https://blog.hypriot.com/tags/hypriot-cluster-lab/</link>
     <description>Recent content in Hypriot Cluster Lab on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Mar 2016 23:00:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/hypriot-cluster-lab/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/hypriot-cluster-lab/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up 100 nodes Jenkins cluster with Docker Swarm in less than 10 minutes</title>
-      <link>http://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</link>
+      <link>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</link>
       <pubDate>Sun, 20 Mar 2016 23:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
+      <guid>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
       <description>
 
 &lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
@@ -28,7 +28,7 @@ Still with my thoughts firmly rooted in the &lt;a href=&#34;https://blog.docker.
 &lt;p&gt;You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;There are couple of reasons why it was so simple.&lt;/p&gt;
@@ -449,12 +449,12 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;You should see a page similar to&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And at &lt;a href=&#34;http://212.47.225.127:8080/computer&#34;&gt;http://212.47.225.127:8080/computer&lt;/a&gt; we can find all the slave nodes, too:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
@@ -479,18 +479,18 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
     
     <item>
       <title>Exciting Docker Swarm experiments in the Hypriot Cluster Lab</title>
-      <link>http://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</link>
+      <link>https://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</link>
       <pubDate>Thu, 10 Mar 2016 23:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</guid>
-      <description>&lt;p&gt;This post is - like the &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;last one&lt;/a&gt; - dedicated to the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/&#34;&gt;Docker #SwarmWeek&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</guid>
+      <description>&lt;p&gt;This post is - like the &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;last one&lt;/a&gt; - dedicated to the &lt;a href=&#34;https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/&#34;&gt;Docker #SwarmWeek&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;If you thought that it was pretty easy to set up a Swarm Cluster after our last post - you are going to be pretty surprised to find out that there is still room for improvement.&lt;/p&gt;
 
 &lt;p&gt;With our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; it is possible to get up a Swarm Cluster with just one command.
 Follow along to learn how this is possible.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV&#34;&gt;SNRE Labs&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 

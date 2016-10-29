@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogging on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/blogging/</link>
+    <link>https://blog.hypriot.com/categories/blogging/</link>
     <description>Recent content in Blogging on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Jun 2015 09:03:12 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/blogging/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/blogging/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Static Website Generation on Steriods with Docker</title>
-      <link>http://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</link>
+      <link>https://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</link>
       <pubDate>Tue, 30 Jun 2015 09:03:12 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</guid>
+      <guid>https://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</guid>
       <description>
 
 &lt;p&gt;Within the blogging community static site generators have been an exceptional hot topic in the last couple of years (at least before Docker appeared).
@@ -37,7 +37,7 @@ Typically static site generators transform input (e.g. text in a lightweight mar
 &lt;p&gt;Out of these static site generators &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is our favorite. Hugo is written in &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt; and is focused on speed and performance.
 We are using Hugo to generate this very blog&amp;hellip; :)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hugo/hugo-logo.png&#34; alt=&#34;hugo-logo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hugo/hugo-logo.png&#34; alt=&#34;hugo-logo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;What we like most is that Hugo is basically just one binary. That makes it really easy to use Hugo in a Docker container.
@@ -46,7 +46,7 @@ And - surprise - that is exactly what we did. You can find the prepared image on
 &lt;h2 id=&#34;setting-up-hugo:208d73d31f997ec1e4befc58fff83e1c&#34;&gt;Setting up Hugo&lt;/h2&gt;
 
 &lt;p&gt;To get started with Hugo you need a Raspberry Pi with a running Docker engine.
-The best way to get there is with our &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
+The best way to get there is with our &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;Getting Started Guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;After logging into your Raspberry Pi via SSH do a&lt;/p&gt;
 
@@ -78,7 +78,7 @@ Next we need to download some nifty themes for our new site.&lt;/p&gt;
 
 &lt;p&gt;If you execute &lt;code&gt;ls&lt;/code&gt; you should see a folder structure similar to the one in the following screenshot:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hugo/hugo-files-after-new-site.png&#34; alt=&#34;hugo-files-after-new-site&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hugo/hugo-files-after-new-site.png&#34; alt=&#34;hugo-files-after-new-site&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;create-a-new-article:208d73d31f997ec1e4befc58fff83e1c&#34;&gt;Create a new article&lt;/h2&gt;
@@ -105,7 +105,7 @@ You can further edit this document with the editor of your choice.&lt;/p&gt;
 &lt;p&gt;You can now open your browser and go to &lt;code&gt;http://&amp;lt;ip of your pi&amp;gt;:1313&lt;/code&gt; to preview your new blog.
 Whenever you change any of your documents, Hugo will regenerate the HTML and reload the resulting webpage in your browser.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hugo/preview.png&#34; alt=&#34;preview&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hugo/preview.png&#34; alt=&#34;preview&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;build-the-final-html-pages:208d73d31f997ec1e4befc58fff83e1c&#34;&gt;Build the final HTML pages&lt;/h2&gt;
@@ -124,7 +124,7 @@ Now you can just open &lt;code&gt;public/index.html&lt;/code&gt; with a browser 
 
 &lt;p&gt;Right at the beginning when we started blogging about Docker on ARM we were faced with several challenges.
 We failed to address these challenges with our first blogging platform - Posthaven - and soon switched to Hugo.
-We wrote about this false start with Posthaven in &lt;a href=&#34;http://blog.hypriot.com/post/moved-from-posthaven-to-hugo/&#34;&gt;We moved our blog from Posthaven to Hugo after only three posts. Why?&lt;/a&gt;.&lt;/p&gt;
+We wrote about this false start with Posthaven in &lt;a href=&#34;https://blog.hypriot.com/post/moved-from-posthaven-to-hugo/&#34;&gt;We moved our blog from Posthaven to Hugo after only three posts. Why?&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;But we did not tell you everything in that blog post. We held some bits back&amp;hellip; :)&lt;br /&gt;
 Hugo in Docker really starts to make a lot of sense when it is used together with some other tools in a &lt;strong&gt;team publishing workflow&lt;/strong&gt;.

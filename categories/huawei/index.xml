@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Huawei on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/huawei/</link>
+    <link>https://blog.hypriot.com/categories/huawei/</link>
     <description>Recent content in Huawei on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 Mar 2016 15:59:56 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/huawei/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/huawei/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting Docker running on a high-density ARMv8 development board from HiSilicon</title>
-      <link>http://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</link>
+      <link>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</link>
       <pubDate>Tue, 01 Mar 2016 15:59:56 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</guid>
+      <guid>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</guid>
       <description>
 
 &lt;p&gt;Running Docker containers on the latest high-density ARMv8 cloud servers lets
@@ -22,7 +22,7 @@ you operate your data center at lower costs and gives you the ability to scale
 your business even faster. In this article we demonstrate the technical ground
 work of compiling Docker and bootstrapping all the necessary development tools.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;introduction:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Introduction&lt;/h3&gt;
@@ -57,7 +57,7 @@ most out of our data center resources.&lt;/p&gt;
 
 &lt;h3 id=&#34;hisilicon-d02-development-board-specs:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;HiSilicon D02 development board specs&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;
 &lt;/p&gt;
 
 &lt;table&gt;
@@ -141,7 +141,7 @@ most out of our data center resources.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The HiSilicon D02 board uses the UEFI/Kernel/Ubuntu rootfs, which is available for download at &lt;a href=&#34;http://open-estuary.org/&#34;&gt;http://open-estuary.org/&lt;/a&gt;.&lt;/p&gt;

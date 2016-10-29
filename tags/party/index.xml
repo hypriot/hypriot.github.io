@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Party on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/party/</link>
+    <link>https://blog.hypriot.com/tags/party/</link>
     <description>Recent content in Party on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 24 Mar 2016 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/party/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/party/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>And did you see the notch in the sabre? Our Docker birthday wrap-up</title>
-      <link>http://blog.hypriot.com/post/docker-birthday-party-review/</link>
+      <link>https://blog.hypriot.com/post/docker-birthday-party-review/</link>
       <pubDate>Thu, 24 Mar 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-birthday-party-review/</guid>
+      <guid>https://blog.hypriot.com/post/docker-birthday-party-review/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg&#34; alt=&#34;one-of-its-kind birthday cake&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg&#34; alt=&#34;one-of-its-kind birthday cake&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Once in a while everyone should have a break from work and party hard. I am not saying that this event was a break for our Hypriot Team, but we definitely celebrated as real pirates do: With a worn-out sabre and rum, on board of a three-storey cake ship.&lt;/p&gt;
@@ -52,19 +52,19 @@
 &lt;p&gt;This event would not have been possible without our sponsors. Again, we heartfully thank:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Paessler AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/paesslerAG&#34;&gt;@paesslerAG&lt;/a&gt;&lt;/em&gt; for the gorgeous birthday cake:
-&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
+&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
-&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
+&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Seal Systems AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/printandconvert&#34;&gt;@PrintAndConvert&lt;/a&gt;&lt;/em&gt; for the yummy pizza:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
@@ -85,8 +85,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -100,8 +100,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -115,8 +115,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -130,8 +130,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -145,8 +145,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -160,8 +160,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -175,8 +175,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -190,8 +190,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_07.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_07.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_07.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_07.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -205,8 +205,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_08.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_08.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_08.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_08.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -220,8 +220,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_09.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_09.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_09.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_09.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -235,8 +235,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_10.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_10.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_10.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_10.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -250,8 +250,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_11.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_11.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_11.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_11.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -265,8 +265,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_12.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_12.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_12.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_12.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -280,8 +280,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_13.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_13.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_13.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_13.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -295,8 +295,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_14.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_14.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_14.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_14.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -310,8 +310,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_16.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_16.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_16.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_16.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -325,8 +325,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_17.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_17.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_17.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_17.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -340,8 +340,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_18.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_18.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_18.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_18.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -355,8 +355,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_19.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_19.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_19.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_19.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -370,8 +370,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_20.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_20.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_20.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_20.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -385,8 +385,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_22.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_22.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_22.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_22.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -400,8 +400,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_21.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_21.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_21.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_21.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -415,8 +415,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_15.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_15.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_15.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_15.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -430,8 +430,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/dockerbday-review/dockerbday_23.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_23.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/dockerbday-review/dockerbday_23.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/thumbnails/thumb_dockerbday_23.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Docker Birthday Party at University of Bamberg&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -446,11 +446,11 @@
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -524,17 +524,17 @@
     
     <item>
       <title>Come to our Docker Birthday Party</title>
-      <link>http://blog.hypriot.com/post/docker-birthday-party-announcement/</link>
+      <link>https://blog.hypriot.com/post/docker-birthday-party-announcement/</link>
       <pubDate>Mon, 21 Mar 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-birthday-party-announcement/</guid>
+      <guid>https://blog.hypriot.com/post/docker-birthday-party-announcement/</guid>
       <description>&lt;p&gt;As you all know tomorrow will be a really special day.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;We will celebrate the 3rd Docker birthday.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;And of course we from Hypriot are in the thick of it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake-cover.jpg&#34; alt=&#34;Come to the Docker Birthday Party 2016&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake-cover.jpg&#34; alt=&#34;Come to the Docker Birthday Party 2016&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;We had to find a suitable location (we now have space for 450 people), prepare the location and computers for all the attendees,
@@ -543,19 +543,19 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;p&gt;And we actually found some and want to say thank you here for their support:&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;Paessler AG&lt;/strong&gt; for the Birthday Cake:
-&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
+&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
-&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
+&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;Seal Systems&lt;/strong&gt; AG for the yummy pizza:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
@@ -580,8 +580,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-mini-cake.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Come to the Docker Birthday Party!&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-mini-cake.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Come to the Docker Birthday Party!&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -595,8 +595,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-gopher.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-gopher.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Go, the concurrency wizard handles three balloons at once...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-gopher.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-gopher.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Go, the concurrency wizard handles three balloons at once...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -610,8 +610,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-pinguin.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-pinguin.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And here comes Linux who can even party in realtime...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-pinguin.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-pinguin.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And here comes Linux who can even party in realtime...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -625,8 +625,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-squid.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-squid.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And the squid will manage the bar. Nobody composes better cocktails...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-squid.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-squid.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And the squid will manage the bar. Nobody composes better cocktails...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -640,8 +640,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-whale.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-whale.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Here comes the main act - guess Docker will take a deep dive at the bar...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-whale.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1062&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-whale.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Here comes the main act - guess Docker will take a deep dive at the bar...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -655,8 +655,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-pirate.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-pirate.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And of course there is no Docker party without at least one Docker Pirate ...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-pirate.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-pirate.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And of course there is no Docker party without at least one Docker Pirate ...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -670,8 +670,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/come-to-birthday-party/docker-birthday-cake.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-birthday-cake.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And the whole motely crew ...&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-birthday-cake.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1062x1600&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/thumbnails/thumb_docker-birthday-cake.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;And the whole motely crew ...&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -685,11 +685,11 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 

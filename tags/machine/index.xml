@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/machine/</link>
+    <link>https://blog.hypriot.com/tags/machine/</link>
     <description>Recent content in Machine on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/machine/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/machine/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
-      <link>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</link>
+      <link>https://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</link>
       <pubDate>Sun, 04 Sep 2016 19:45:58 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</guid>
+      <guid>https://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</guid>
       <description>
 
 &lt;p&gt;With the new SwarmMode in Docker 1.12 it is really damn easy to build a Docker Swarm and connect different ARM devices to an IoT cluster.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg&#34; alt=&#34;swarm-chip-flashing1.jpg&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg&#34; alt=&#34;swarm-chip-flashing1.jpg&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s connect a few of the $9 C.H.I.P. computers and a Raspberry Pi Zero all through a WiFi network&amp;hellip;&lt;/p&gt;
@@ -36,7 +36,7 @@ docker-machine version 0.8.0, build b85aac1
 
 &lt;h4 id=&#34;step-2-prepare-all-c-h-i-p-s-with-docker-machine:2916a0476909fe024f00614543881ecf&#34;&gt;Step 2: Prepare all C.H.I.P.&amp;rsquo;s with Docker Machine&lt;/h4&gt;
 
-&lt;p&gt;In order to connect a couple of C.H.I.P. computers to a Docker Swarm cluster, we have to install Docker 1.12.1 first. This can be done easily by following the steps of my last tutorial &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt;. Then we&amp;rsquo;re using the standard Docker Machine from a Mac to attach each C.H.I.P. device via a secured Docker API port and give each device an individual hostname on the network. With the help of Docker Machine it&amp;rsquo;s easier to access all the C.H.I.P. devices we&amp;rsquo;d like to connect to the Swarm cluster from a Mac, Linux or Windows machine.&lt;/p&gt;
+&lt;p&gt;In order to connect a couple of C.H.I.P. computers to a Docker Swarm cluster, we have to install Docker 1.12.1 first. This can be done easily by following the steps of my last tutorial &lt;a href=&#34;https://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt;. Then we&amp;rsquo;re using the standard Docker Machine from a Mac to attach each C.H.I.P. device via a secured Docker API port and give each device an individual hostname on the network. With the help of Docker Machine it&amp;rsquo;s easier to access all the C.H.I.P. devices we&amp;rsquo;d like to connect to the Swarm cluster from a Mac, Linux or Windows machine.&lt;/p&gt;
 
 &lt;p&gt;Here are the basic steps we have to follow for each single C.H.I.P. computer:&lt;/p&gt;
 
@@ -48,7 +48,7 @@ docker-machine version 0.8.0, build b85aac1
 &lt;/ol&gt;
 
 &lt;p&gt;Flashing the C.H.I.P. computer in FEL mode with UART console cable attached: &lt;br&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing2.jpg&#34; alt=&#34;swarm-chip-flashing2.jpg&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing2.jpg&#34; alt=&#34;swarm-chip-flashing2.jpg&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;As soon as we&amp;rsquo;ve installed our first C.H.I.P. with Docker we&amp;rsquo;ll use its IP address and run &lt;code&gt;docker-machine create&lt;/code&gt; and let&amp;rsquo;s do some Docker magic and we have secured the network access to its Docker Engine easily. In this command I&amp;rsquo;m using the flag &lt;code&gt;--debug&lt;/code&gt; to get a more verbose output, so you can see all the details whats going on in the background, but you can omit this flag for the remaining C.H.I.P.&amp;rsquo;s.&lt;/p&gt;
@@ -243,7 +243,7 @@ This node joined a swarm as a worker.
 &lt;h4 id=&#34;step-6-attach-an-additional-pi-zero-as-swarm-worker:2916a0476909fe024f00614543881ecf&#34;&gt;Step 6: Attach an additional Pi Zero as Swarm worker&lt;/h4&gt;
 
 &lt;p&gt;But we&amp;rsquo;re not limited in using only one kind of ARM devices for our Swarm cluster. So I&amp;rsquo;d like to add a different device, a Raspberry Pi Zero which is equipped with a &lt;a href=&#34;https://twitter.com/redbearlab&#34;&gt;RedBear IoT pHAT&lt;/a&gt; for WiFi/Bluetooth connectivity.
-&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-pi-zero.jpg&#34; alt=&#34;swarm-chip-pi-zero.jpg&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-pi-zero.jpg&#34; alt=&#34;swarm-chip-pi-zero.jpg&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Here you can see that using &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;HypriotOS for RPi&lt;/a&gt; and the Hypriot &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; it&amp;rsquo;s damn easy to create another ARM device with Docker 1.12.1 and attach it via WiFi to our network.&lt;/p&gt;
@@ -332,13 +332,13 @@ agglzv8ju0diwpd665nbhdtti    swarm-chip06   Ready   Active
 ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-node-ls.jpg&#34; alt=&#34;swarm-chip-node-ls.jpg&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-node-ls.jpg&#34; alt=&#34;swarm-chip-node-ls.jpg&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;the-result-a-mixed-iot-swarm-running-docker-1-12:2916a0476909fe024f00614543881ecf&#34;&gt;THE RESULT: a mixed IoT Swarm running Docker 1.12&lt;/h3&gt;
 
 &lt;p&gt;This is our newly created Swarm cluster, built with an USB power supply from Anker, 6x C.H.I.P. computers and a lonely Raspberry Pi Zero - all devices attached through a WiFi network and running Docker 1.12.1 with SwarmMode: &lt;br&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-complete-cluster.jpg&#34; alt=&#34;swarm-chip-complete-cluster.jpg&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-complete-cluster.jpg&#34; alt=&#34;swarm-chip-complete-cluster.jpg&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;next-steps:2916a0476909fe024f00614543881ecf&#34;&gt;Next steps&lt;/h3&gt;
@@ -357,10 +357,10 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
     
     <item>
       <title>Connecting Kitematic to an external Docker Engine running on a Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</link>
+      <link>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</link>
       <pubDate>Wed, 15 Apr 2015 06:35:55 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</guid>
+      <guid>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</guid>
       <description>
 
 &lt;p&gt;In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.&lt;/p&gt;
@@ -369,7 +369,7 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 
 &lt;p&gt;At Hypriot we recently built and released our own OS image to run the Docker Engine on a low-cost Raspberry Pi and labeled it HypriotOS.  A user can download this pre-compiled Raspbian based SD card image, which includes a Linux 3.18.10 kernel with all Docker related kernel options included, and Docker 1.5.0 is already enabled with Overlay filesystem.  Just download, extract, flash to a SD card and boot your Raspberry Pi - and within minutes you have Docker up and running and you can instantly start using it.&lt;/p&gt;
 
-&lt;p&gt;You can read more details and find the download links in our blog post &lt;a href=&#34;http://blog.hypriot.com/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0&#34;&gt;Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0&lt;/a&gt; and recently updated post &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can read more details and find the download links in our blog post &lt;a href=&#34;https://blog.hypriot.com/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0&#34;&gt;Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0&lt;/a&gt; and recently updated post &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;As developers and geeks, we&amp;rsquo;re really comfortable using SSH and a bash shell to control the Docker CLI.  It&amp;rsquo;s also not a problem to connect a Linux or Mac OSX host via a native Docker CLI over the network, even a Windows client works well.  But what about the normal end users?  Wouldn&amp;rsquo;t it be great to have a more convinient way to use a graphical frontend via web or a specific app.  A GUI would be really cool, but this would take a long time to develop.&lt;/p&gt;
 
@@ -384,7 +384,7 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 &lt;h3 id=&#34;connecting-the-dots:90fd682791be4b8b148459904d1205f8&#34;&gt;Connecting the Dots&lt;/h3&gt;
 
 &lt;p&gt;We quickly read through the docs and studied the source code and found out that Kitematic is based upon Docker Machine to control the backend Docker Host, hey cool - that&amp;rsquo;s the key.  Within a couple of hours we had the first rough hack and were able to actively control a Raspberry Pi 2 running Docker 1.5.0 with a brand new graphical user interface.  Just selecting one of our favorite Docker Images from the Docker Hub and pushed it seamlessly to a RPi!&lt;br /&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;But until now, it was just a hack and far away from being used in production or by end users.  All settings were done with some source code changes within Kitematic itself.&lt;/p&gt;
@@ -415,7 +415,7 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 
 &lt;p&gt;To use this improved Kitematic version from Hypriot, you have to clone the GitHub repo &lt;a href=&#34;https://github.com/hypriot/kitematic/tree/connect-to-externel-docker-host&#34;&gt;hypriot/kitematic&lt;/a&gt;, use the branch &lt;code&gt;connect-to-externel-docker-host&lt;/code&gt; and build it with &amp;ldquo;npm run install&amp;rdquo;, it will also download and use our specifically built version of Docker Machine with the &lt;code&gt;hypriot&lt;/code&gt; driver included.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;mission-accomplished:90fd682791be4b8b148459904d1205f8&#34;&gt;Mission accomplished&lt;/h3&gt;
@@ -448,7 +448,7 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 &lt;li&gt;&amp;hellip; (depending on user feedback)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;send-us-your-feedback-please:90fd682791be4b8b148459904d1205f8&#34;&gt;Send us your Feedback, please!&lt;/h3&gt;

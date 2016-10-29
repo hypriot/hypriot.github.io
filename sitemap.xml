@@ -2,360 +2,360 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.hypriot.com/</loc>
+    <loc>https://blog.hypriot.com/</loc>
     <lastmod>2016-10-26T18:03:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/high-availability-with-docker/</loc>
+    <loc>https://blog.hypriot.com/post/high-availability-with-docker/</loc>
     <lastmod>2016-10-26T18:03:34+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</loc>
+    <loc>https://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</loc>
     <lastmod>2016-09-04T19:45:58+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/install-docker-on-chip-computer/</loc>
+    <loc>https://blog.hypriot.com/post/install-docker-on-chip-computer/</loc>
     <lastmod>2016-09-03T22:53:12+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/releasing-HypriotOS-1-0/</loc>
+    <loc>https://blog.hypriot.com/post/releasing-HypriotOS-1-0/</loc>
     <lastmod>2016-08-21T12:30:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/</loc>
     <lastmod>2016-07-31T15:24:03+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</loc>
+    <loc>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</loc>
     <lastmod>2016-06-21T13:49:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</loc>
+    <loc>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</loc>
     <lastmod>2016-06-20T21:49:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</loc>
+    <loc>https://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</loc>
     <lastmod>2016-06-13T09:21:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</loc>
+    <loc>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</loc>
     <lastmod>2016-06-07T09:15:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/</loc>
+    <loc>https://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/</loc>
     <lastmod>2016-06-06T18:03:34+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/making-of-hypriotos/</loc>
+    <loc>https://blog.hypriot.com/post/making-of-hypriotos/</loc>
     <lastmod>2016-05-25T18:03:32+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</loc>
+    <loc>https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</loc>
     <lastmod>2016-05-25T03:30:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/close-encounters-of-the-third-kind/</loc>
+    <loc>https://blog.hypriot.com/post/close-encounters-of-the-third-kind/</loc>
     <lastmod>2016-03-29T17:20:34+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</loc>
+    <loc>https://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</loc>
     <lastmod>2016-03-28T22:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/</loc>
+    <loc>https://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/</loc>
     <lastmod>2016-03-27T18:30:29+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-birthday-party-review/</loc>
+    <loc>https://blog.hypriot.com/post/docker-birthday-party-review/</loc>
     <lastmod>2016-03-24T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</loc>
+    <loc>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</loc>
     <lastmod>2016-03-23T18:40:04+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-birthday-party-announcement/</loc>
+    <loc>https://blog.hypriot.com/post/docker-birthday-party-announcement/</loc>
     <lastmod>2016-03-21T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</loc>
+    <loc>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</loc>
     <lastmod>2016-03-20T23:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-on-arm-workshops/</loc>
+    <loc>https://blog.hypriot.com/post/docker-on-arm-workshops/</loc>
     <lastmod>2016-03-17T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</loc>
+    <loc>https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</loc>
     <lastmod>2016-03-16T18:14:02+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/post/docker-sensor-fu-on-a-raspberry-pi/</loc>
     <lastmod>2016-03-15T23:02:30+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</loc>
+    <loc>https://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</loc>
     <lastmod>2016-03-14T23:38:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/traffic-light/</loc>
+    <loc>https://blog.hypriot.com/post/traffic-light/</loc>
     <lastmod>2016-03-13T17:31:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</loc>
+    <loc>https://blog.hypriot.com/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/</loc>
     <lastmod>2016-03-10T23:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/</loc>
+    <loc>https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/</loc>
     <lastmod>2016-03-08T17:27:58+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</loc>
+    <loc>https://blog.hypriot.com/post/new-hypriotos-berry-with-rpi3-support/</loc>
     <lastmod>2016-03-07T09:03:23+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</loc>
+    <loc>https://blog.hypriot.com/post/run-docker-rpi3-with-wifi/</loc>
     <lastmod>2016-03-05T16:04:12+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</loc>
+    <loc>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</loc>
     <lastmod>2016-03-01T15:59:56+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</loc>
+    <loc>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</loc>
     <lastmod>2016-02-05T16:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</loc>
+    <loc>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</loc>
     <lastmod>2016-01-25T23:55:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</loc>
+    <loc>https://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/</loc>
     <lastmod>2016-01-18T16:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</loc>
+    <loc>https://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</loc>
     <lastmod>2016-01-15T21:47:24+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/how-to-compile-go-on-arm/</loc>
+    <loc>https://blog.hypriot.com/post/how-to-compile-go-on-arm/</loc>
     <lastmod>2015-12-31T18:47:24+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</loc>
+    <loc>https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</loc>
     <lastmod>2015-12-28T09:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</loc>
+    <loc>https://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</loc>
     <lastmod>2015-12-08T15:30:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</loc>
+    <loc>https://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</loc>
     <lastmod>2015-12-07T19:55:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</loc>
+    <loc>https://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/</loc>
     <lastmod>2015-11-15T21:40:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</loc>
     <lastmod>2015-10-12T00:15:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</loc>
+    <loc>https://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/</loc>
     <lastmod>2015-10-07T17:30:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/rc2-jessie-with-brand-new-kernel-and-docker-and-display-support/</loc>
+    <loc>https://blog.hypriot.com/post/rc2-jessie-with-brand-new-kernel-and-docker-and-display-support/</loc>
     <lastmod>2015-09-28T21:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/rc1-jessie-with-brand-new-kernel-and-docker/</loc>
+    <loc>https://blog.hypriot.com/post/rc1-jessie-with-brand-new-kernel-and-docker/</loc>
     <lastmod>2015-09-10T21:30:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</loc>
+    <loc>https://blog.hypriot.com/post/kitematic-meets-windows-docker/</loc>
     <lastmod>2015-09-09T00:07:37+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</loc>
+    <loc>https://blog.hypriot.com/post/port_dockerfiles_to_arm/</loc>
     <lastmod>2015-08-26T02:55:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/</loc>
+    <loc>https://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/</loc>
     <lastmod>2015-08-06T09:55:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</loc>
+    <loc>https://blog.hypriot.com/post/moving-docker-from-wheezy-to-jessie/</loc>
     <lastmod>2015-07-27T20:37:38+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</loc>
+    <loc>https://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</loc>
     <lastmod>2015-07-03T00:30:45+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</loc>
+    <loc>https://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/</loc>
     <lastmod>2015-06-30T09:03:12+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</loc>
+    <loc>https://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/</loc>
     <lastmod>2015-06-27T22:19:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/dockercon2015/</loc>
+    <loc>https://blog.hypriot.com/post/dockercon2015/</loc>
     <lastmod>2015-06-24T01:30:34+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-and-windows-on-the-raspberry-pi/</loc>
+    <loc>https://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</loc>
+    <loc>https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/</loc>
     <lastmod>2015-05-15T20:16:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/brand-new-getting-started-guide/</loc>
+    <loc>https://blog.hypriot.com/post/brand-new-getting-started-guide/</loc>
     <lastmod>2015-05-15T12:35:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</loc>
+    <loc>https://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</loc>
     <lastmod>2015-04-16T22:06:11+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</loc>
+    <loc>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</loc>
     <lastmod>2015-04-15T06:35:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/drive-neopixels-in-docker/</loc>
+    <loc>https://blog.hypriot.com/post/drive-neopixels-in-docker/</loc>
     <lastmod>2015-04-14T13:25:33+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/lets-get-physical/</loc>
+    <loc>https://blog.hypriot.com/post/lets-get-physical/</loc>
     <lastmod>2015-04-09T16:49:33+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</loc>
+    <loc>https://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</loc>
     <lastmod>2015-04-06T00:18:47+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</loc>
+    <loc>https://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</loc>
     <lastmod>2015-03-31T20:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</loc>
+    <loc>https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</loc>
     <lastmod>2015-03-30T00:00:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</loc>
+    <loc>https://blog.hypriot.com/post/moved-from-posthaven-to-hugo/</loc>
     <lastmod>2015-03-27T22:52:37+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/legal_notice/</loc>
+    <loc>https://blog.hypriot.com/legal_notice/</loc>
     <lastmod>2015-03-13T19:31:57+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</loc>
+    <loc>https://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</loc>
     <lastmod>2015-03-03T22:09:33+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/hypriot-on-the-docker-website/</loc>
+    <loc>https://blog.hypriot.com/post/hypriot-on-the-docker-website/</loc>
     <lastmod>2015-02-15T22:09:33+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</loc>
+    <loc>https://blog.hypriot.com/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/</loc>
     <lastmod>2015-02-08T22:09:33+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/about/</loc>
+    <loc>https://blog.hypriot.com/crew/</loc>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/crew/</loc>
+    <loc>https://blog.hypriot.com/about/</loc>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/downloads/</loc>
+    <loc>https://blog.hypriot.com/faq/</loc>
   </url>
   
   <url>
-    <loc>http://blog.hypriot.com/faq/</loc>
+    <loc>https://blog.hypriot.com/downloads/</loc>
   </url>
   
 </urlset>

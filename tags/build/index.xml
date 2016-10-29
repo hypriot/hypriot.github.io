@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Build on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/build/</link>
+    <link>https://blog.hypriot.com/tags/build/</link>
     <description>Recent content in Build on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Feb 2016 16:00:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/build/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/build/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Test, build and package Docker for ARM the official way</title>
-      <link>http://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</link>
+      <link>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</link>
       <pubDate>Fri, 05 Feb 2016 16:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</guid>
+      <guid>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</guid>
       <description>
 
 &lt;p&gt;With the recent release of Docker 1.10.0 it is a good time to talk about &lt;strong&gt;Docker on ARM&lt;/strong&gt;.
@@ -28,7 +28,7 @@ And it is a first important step towards offical support for Docker on ARM.&lt;/
 &lt;p&gt;In this blog post I am going to walk you through all the steps that are needed to test, build and package Docker on ARM.
 And as an extra bonus I am showing you how to do this on the most advanced ARM on-demand cloud-platform ever.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;preparation-first-we-need-suiteable-arm-hardware:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Preparation: First we need suiteable ARM hardware&lt;/h2&gt;
@@ -51,13 +51,13 @@ Using the Scaleway Docker image is just a reliable and fast way to get us starte
 
 &lt;p&gt;In the &lt;strong&gt;Web-GUI&lt;/strong&gt; just select the &amp;ldquo;Server&amp;rdquo; menu entry on the left and click the &amp;ldquo;Create&amp;rdquo;-button.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In the following dialogue choose the &amp;ldquo;Image Hub&amp;rdquo; tab and search for &amp;ldquo;docker&amp;rdquo;.&lt;br /&gt;
 Select the &amp;ldquo;Docker 1.9.1&amp;rdquo; image and you are good.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The same can be done with the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli&#34;&gt;Scaleway Command Line Interface&lt;/a&gt;, too.

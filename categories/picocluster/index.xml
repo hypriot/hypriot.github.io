@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Picocluster on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/picocluster/</link>
+    <link>https://blog.hypriot.com/categories/picocluster/</link>
     <description>Recent content in Picocluster on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 23 Mar 2016 18:40:04 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/picocluster/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/picocluster/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Let&#39;s build a PicoCluster for Docker Swarm</title>
-      <link>http://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</link>
+      <link>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</link>
       <pubDate>Wed, 23 Mar 2016 18:40:04 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</guid>
+      <guid>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</guid>
       <description>
 
 &lt;p&gt;As we love to use Docker Swarm on a cluster of Raspberry Pi&amp;rsquo;s, we&amp;rsquo;d like to cover
@@ -26,7 +26,7 @@ Raspberry Pi&amp;rsquo;s and the time to assemble all the parts together. The pr
 completed within an hour only, and makes so much fun, too - especially when you can
 share this as quality time with your kids.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;PicoCluster had just sent us two different kits of their cool Raspberry Pi
@@ -45,7 +45,7 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;5-node PicoCluster kit:&lt;/p&gt;
@@ -63,7 +63,7 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Not included in the kits: (so you have to buy it separately)&lt;/p&gt;
@@ -80,7 +80,7 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;7mm wrench (or a pliers)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;assembling-the-3-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 3-node PicoCluster&lt;/h3&gt;
@@ -90,7 +90,7 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;p&gt;First we take the mounting plate for the Pi tower and stack all
 three Raspberry Pi&amp;rsquo;s with the help of the included spacers.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h4 id=&#34;wiring-all-together:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
@@ -98,12 +98,12 @@ three Raspberry Pi&amp;rsquo;s with the help of the included spacers.&lt;/p&gt;
 &lt;p&gt;Now it&amp;rsquo;s easy to mount the PDU on top of the Pi tower with 4 screws and attaching
 the USB power cables to the three Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Next we mount the tower on the base plate, which makes our new cluster look even better.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
@@ -119,7 +119,7 @@ Mounting with nuts &amp;amp; bolts and the PicoCluster is ready.&lt;/p&gt;
 because as soon as we close the cluster case, it&amp;rsquo;s a little bit harder to change
 the SD cards.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;assembling-the-5-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 5-node PicoCluster&lt;/h3&gt;
@@ -130,9 +130,9 @@ the SD cards.&lt;/p&gt;
 the mounting plate for the Pi tower and stack all five Raspberry Pi&amp;rsquo;s with the
 spacers.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 
-&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h4 id=&#34;wiring-all-together-1:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
@@ -140,26 +140,26 @@ spacers.&lt;/p&gt;
 &lt;p&gt;Next, we mount the PDU on top of the Pi tower with 4 screws and attach
 the USB power cables to the five Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;As soon as we mount the tower on the base plate, we see that we do have a lot more
 parts left.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;For the 5-node cluster we have an internal dedicated 8-port switch, which we&amp;rsquo;ll
 install inside the case and wire all the ethernet cables to the Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
 the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
 to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;You&amp;rsquo;ll also find two USB cables in the kit, which you can connect to one or two
@@ -181,7 +181,7 @@ a perfect way. Only accessing the microSD cards is not optimal once after the ca
 is closed. You just have to remove only a few screws and dismounting the rear side
 panel of the case and then you can easily access the SD card slots.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Because the 5-node cluster includes an integrated 8-port Ethernet switch, we&amp;rsquo;d recommend
@@ -191,7 +191,7 @@ a single network link. This is all you need to start playing with it right away.
 
 &lt;p&gt;Now, you can go ahead and install software on your new PicoCluster.
 However, this isn&amp;rsquo;t within the scope of this hands-on project, so we&amp;rsquo;ll point you to one of our
-latest tutorials where you learn &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;how to setup a Docker Swarm cluster with Raspberry Pi&amp;rsquo;s&lt;/a&gt;.&lt;/p&gt;
+latest tutorials where you learn &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;how to setup a Docker Swarm cluster with Raspberry Pi&amp;rsquo;s&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;where-can-you-get-it:098640bbbda183ea709087a458ce9550&#34;&gt;Where can you get it ?&lt;/h3&gt;
 

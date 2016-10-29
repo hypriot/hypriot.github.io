@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker Compose on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/docker-compose/</link>
+    <link>https://blog.hypriot.com/tags/docker-compose/</link>
     <description>Recent content in Docker Compose on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 20 Jun 2016 21:49:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>More Microservices Bliss with Docker 1.12 and Swarm only</title>
-      <link>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
+      <link>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
       <pubDate>Mon, 20 Jun 2016 21:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
-      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
+      <guid>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
+      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
 I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.&lt;/p&gt;
 
 &lt;p&gt;I really thought it couldn&amp;rsquo;t get much easier. Oh boy - was I wrong!&lt;/p&gt;
@@ -25,7 +25,7 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 
 &lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -33,13 +33,13 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Less moving parts - that is great!&lt;/p&gt;
@@ -296,10 +296,10 @@ I am really looking forward to find out what else there is in store with the new
     
     <item>
       <title>Microservices Bliss with Docker and Traefik</title>
-      <link>http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</link>
+      <link>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</link>
       <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
       
-      <guid>http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
+      <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
       <description>
 
 &lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
@@ -310,7 +310,7 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 &lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
@@ -326,7 +326,7 @@ Traefik serves as a frontend proxy that loadbalances incoming requests to the av
 &lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
 In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
@@ -339,7 +339,7 @@ In this example each backend service will answer with their individual container
 
 &lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;

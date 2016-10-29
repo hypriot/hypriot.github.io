@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scaleway on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/scaleway/</link>
+    <link>https://blog.hypriot.com/tags/scaleway/</link>
     <description>Recent content in Scaleway on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Mar 2016 23:00:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/scaleway/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/scaleway/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up 100 nodes Jenkins cluster with Docker Swarm in less than 10 minutes</title>
-      <link>http://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</link>
+      <link>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</link>
       <pubDate>Sun, 20 Mar 2016 23:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
+      <guid>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
       <description>
 
 &lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
@@ -28,7 +28,7 @@ Still with my thoughts firmly rooted in the &lt;a href=&#34;https://blog.docker.
 &lt;p&gt;You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;There are couple of reasons why it was so simple.&lt;/p&gt;
@@ -449,12 +449,12 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;You should see a page similar to&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And at &lt;a href=&#34;http://212.47.225.127:8080/computer&#34;&gt;http://212.47.225.127:8080/computer&lt;/a&gt; we can find all the slave nodes, too:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
@@ -479,10 +479,10 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
     
     <item>
       <title>Test, build and package Docker for ARM the official way</title>
-      <link>http://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</link>
+      <link>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</link>
       <pubDate>Fri, 05 Feb 2016 16:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</guid>
+      <guid>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</guid>
       <description>
 
 &lt;p&gt;With the recent release of Docker 1.10.0 it is a good time to talk about &lt;strong&gt;Docker on ARM&lt;/strong&gt;.
@@ -496,7 +496,7 @@ And it is a first important step towards offical support for Docker on ARM.&lt;/
 &lt;p&gt;In this blog post I am going to walk you through all the steps that are needed to test, build and package Docker on ARM.
 And as an extra bonus I am showing you how to do this on the most advanced ARM on-demand cloud-platform ever.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;preparation-first-we-need-suiteable-arm-hardware:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Preparation: First we need suiteable ARM hardware&lt;/h2&gt;
@@ -519,13 +519,13 @@ Using the Scaleway Docker image is just a reliable and fast way to get us starte
 
 &lt;p&gt;In the &lt;strong&gt;Web-GUI&lt;/strong&gt; just select the &amp;ldquo;Server&amp;rdquo; menu entry on the left and click the &amp;ldquo;Create&amp;rdquo;-button.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In the following dialogue choose the &amp;ldquo;Image Hub&amp;rdquo; tab and search for &amp;ldquo;docker&amp;rdquo;.&lt;br /&gt;
 Select the &amp;ldquo;Docker 1.9.1&amp;rdquo; image and you are good.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The same can be done with the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli&#34;&gt;Scaleway Command Line Interface&lt;/a&gt;, too.

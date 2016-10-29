@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dockerfile on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/dockerfile/</link>
+    <link>https://blog.hypriot.com/tags/dockerfile/</link>
     <description>Recent content in Dockerfile on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 26 Aug 2015 02:55:55 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/dockerfile/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Better be prepared for the ARMed IoT flood and port Docker apps to ARM</title>
-      <link>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</link>
+      <link>https://blog.hypriot.com/post/port_dockerfiles_to_arm/</link>
       <pubDate>Wed, 26 Aug 2015 02:55:55 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
+      <guid>https://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
       <description>
 
 &lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
@@ -33,7 +33,7 @@
 
 &lt;p&gt;In order to directly apply the necessary steps, we go through an example. In this example, we wanna port the &lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache webserver&lt;/a&gt; to ARM.&lt;/p&gt;
 
-&lt;p&gt;As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our &lt;a href=&#34;http://blog.hypriot.com/downloads/&#34;&gt;SD Card image&lt;/a&gt; that provides Docker on the Raspberry Pi by just &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flashing it to a SD card and booting it&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD Card image&lt;/a&gt; that provides Docker on the Raspberry Pi by just &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flashing it to a SD card and booting it&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;let-s-arm-it:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
 
@@ -57,12 +57,12 @@
 
 &lt;p&gt;When the Docker command completed, point your browser to &lt;code&gt;http://&amp;lt;IP OF YOUR PI&amp;gt;:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Next, let&amp;rsquo;s move to the target machine running on ARM. Copy the content of the Dockerfile as is to your ARM machine.&lt;/p&gt;
 
-&lt;p&gt;In our case, we log into the Raspberry Pi (&lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;get help from our getting started guide&lt;/a&gt;) and copy the content of the Dockerfile to the machine. For this, on the machine, we use the &lt;code&gt;vim&lt;/code&gt; editor by executing&lt;/p&gt;
+&lt;p&gt;In our case, we log into the Raspberry Pi (&lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/&#34;&gt;get help from our getting started guide&lt;/a&gt;) and copy the content of the Dockerfile to the machine. For this, on the machine, we use the &lt;code&gt;vim&lt;/code&gt; editor by executing&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;vim Dockerfile&lt;/code&gt;&lt;/p&gt;
 

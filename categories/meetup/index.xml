@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meetup on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/meetup/</link>
+    <link>https://blog.hypriot.com/categories/meetup/</link>
     <description>Recent content in Meetup on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Jan 2016 21:47:24 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/meetup/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/meetup/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>First Meetup at University of Bamberg summons local Docker community</title>
-      <link>http://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</link>
+      <link>https://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</link>
       <pubDate>Fri, 15 Jan 2016 21:47:24 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</guid>
+      <guid>https://blog.hypriot.com/post/first_docker_meetup_university_bamberg/</guid>
       <description>&lt;p&gt;&lt;strong&gt;An introduction to Docker, hands-on tutorials, live demos and roughly 30 attendees.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the summary of the first Docker meetup that we organized in cooperation with University of Bamberg. As a supplement to this event yesterday, we share the pictures and the slides of the presentation.&lt;/p&gt;
@@ -26,8 +26,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Our self-made poster&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_00.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_00.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Our self-made poster&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -41,8 +41,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Some introductory words by Marcel Großmann as representer of the University&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Some introductory words by Marcel Großmann as representer of the University&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -56,8 +56,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;... and Mathias with introductory words for Hypriot.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;... and Mathias with introductory words for Hypriot.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -71,8 +71,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Introduction to Docker: Knowing about the evolution of virtualization helps to understand Docker.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Introduction to Docker: Knowing about the evolution of virtualization helps to understand Docker.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -86,8 +86,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Community is carefully listening.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Community is carefully listening.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -101,8 +101,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;While everyone is playing with Docker the entire Hypriot team is around to help.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;While everyone is playing with Docker the entire Hypriot team is around to help.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -116,8 +116,8 @@
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Mathias announcing a live demo with Hypriot Cluster Lab presented by Andreas (in the middle).&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/docker_meetup_university_bamberg_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1030x684&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/meetup_uni_bamberg/thumbnails/thumb_docker_meetup_university_bamberg_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Mathias announcing a live demo with Hypriot Cluster Lab presented by Andreas (in the middle).&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -131,11 +131,11 @@
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 

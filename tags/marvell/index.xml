@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marvell on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/marvell/</link>
+    <link>https://blog.hypriot.com/tags/marvell/</link>
     <description>Recent content in Marvell on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Mar 2016 18:14:02 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/marvell/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/marvell/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Let&#39;s run Docker on the ClearFog Pro router board</title>
-      <link>http://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</link>
+      <link>https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</link>
       <pubDate>Wed, 16 Mar 2016 18:14:02 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</guid>
+      <guid>https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</guid>
       <description>
 
 &lt;p&gt;Here is the follow up of our blog post series about the new ARM-based router board
@@ -23,7 +23,7 @@ you missed the intro a few days ago, we highly recommend reading the technical
 specifications first to get an impression of this board.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Part 1: &lt;a href=&#34;http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/&#34;&gt;Introducing the new ClearFog Pro Router Board from SolidRun&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 1: &lt;a href=&#34;https://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/&#34;&gt;Introducing the new ClearFog Pro Router Board from SolidRun&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;This time we&amp;rsquo;ll get our hands on this new board and try to install Linux with a
@@ -33,7 +33,7 @@ the first time on this powerful device.&lt;/p&gt;
 &lt;p&gt;So let&amp;rsquo;s get started and for our second episode we connect the ClearFog Pro to a
 MacBookPro and powering this thing up&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg&#34; alt=&#34;ClearFog Pro Eth2 Cabled&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg&#34; alt=&#34;ClearFog Pro Eth2 Cabled&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;first-contact:df574ad27518dffc38341295be8d9782&#34;&gt;First contact&lt;/h3&gt;
@@ -41,7 +41,7 @@ MacBookPro and powering this thing up&amp;hellip;&lt;/p&gt;
 &lt;p&gt;We can connect the ClearFog Pro to a MacBookPro with a standard USB cable, because
 SolidRun added a FTDI chip on the board (Note: you&amp;rsquo;ll need to install the appropriate
 FTDI device drivers).
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg&#34; alt=&#34;ClearFog Pro Serial Console&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg&#34; alt=&#34;ClearFog Pro Serial Console&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The microUSB connector acts as a debugging console and gives us access to the
@@ -167,7 +167,7 @@ Serial          : 0000000000000000
 
 &lt;p&gt;Here is a detailed picture of the SOM (System On Module), which includes the CPU
 and the DDR3 memory chips.
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg&#34; alt=&#34;ClearFog Pro MicroSOM&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg&#34; alt=&#34;ClearFog Pro MicroSOM&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Once we attach an ethernet cable to the ethernet connector next to the USB plug,
@@ -445,7 +445,7 @@ from the MacBookPro.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Or, we just point our web browser with &lt;code&gt;open http://192.168.2.108/&lt;/code&gt; to the main web page.
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg&#34; alt=&#34;ClearFog Pro WebBrowser&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg&#34; alt=&#34;ClearFog Pro WebBrowser&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;current-status-and-key-takeaways:df574ad27518dffc38341295be8d9782&#34;&gt;Current status and key takeaways&lt;/h3&gt;
@@ -486,10 +486,10 @@ stay tuned&amp;hellip;&lt;/p&gt;
     
     <item>
       <title>Introducing the new ClearFog Pro Router Board from SolidRun</title>
-      <link>http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</link>
+      <link>https://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</link>
       <pubDate>Mon, 14 Mar 2016 23:38:42 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</guid>
+      <guid>https://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/</guid>
       <description>
 
 &lt;p&gt;Could you imagine to run a standard Linux OS and your applications of choice securely
@@ -503,12 +503,12 @@ and get Docker running on this Marvell ARMADA powered Single Board Computer (SBC
 the technical specifications of the ClearFog Pro in order to get to know this neat
 little device.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;But be prepared, this one is really a powerful beast&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview-01.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-overview-01.jpg&#34; alt=&#34;ClearFog Pro Overview&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;technical-specifications:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;Technical specifications&lt;/h3&gt;
@@ -674,11 +674,11 @@ NEON and FPU.&lt;/p&gt;
 &lt;a href=&#34;https://www.solid-run.com/marvell-armada-family/clearfog/&#34;&gt;ClearFog Pro&lt;/a&gt; product page.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;ClearFog Pro (top view)&lt;/em&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-top-view-1.jpg&#34; alt=&#34;ClearFog Pro Top View&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-top-view-1.jpg&#34; alt=&#34;ClearFog Pro Top View&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;ClearFog Pro (buttom view)&lt;/em&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-bottom-view.jpg&#34; alt=&#34;ClearFog Pro Buttom View&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-components-bottom-view.jpg&#34; alt=&#34;ClearFog Pro Buttom View&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;technical-highlights:568e70a5f9d2a7d5ec5b5140013e90f2&#34;&gt;Technical highlights&lt;/h3&gt;
@@ -723,7 +723,7 @@ imagine what could be possible with such a board.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; new follow-up posts&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Part 2: &lt;a href=&#34;http://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/&#34;&gt;Let&amp;rsquo;s run Docker on the ClearFog Pro router board&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 2: &lt;a href=&#34;https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/&#34;&gt;Let&amp;rsquo;s run Docker on the ClearFog Pro router board&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
@@ -731,7 +731,7 @@ imagine what could be possible with such a board.&lt;/p&gt;
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;P.S. this ClearFog Pro (ARMADA A388 w/ 1GByte memory) is already hooked up for testing in our labs
-&lt;img src=&#34;http://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-cabled.jpg&#34; alt=&#34;ClearFog Pro Cabled&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-intro/clearfog-pro-cabled.jpg&#34; alt=&#34;ClearFog Pro Cabled&#34; /&gt;
 &lt;/p&gt;
 </description>
     </item>

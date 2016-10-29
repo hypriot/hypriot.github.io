@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hardware on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/hardware/</link>
+    <link>https://blog.hypriot.com/tags/hardware/</link>
     <description>Recent content in Hardware on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Dec 2015 19:55:55 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The family of ARM hardware for Docker got two more children – at least!</title>
-      <link>http://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</link>
+      <link>https://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</link>
       <pubDate>Mon, 07 Dec 2015 19:55:55 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</guid>
+      <guid>https://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</guid>
       <description>
 
 &lt;p&gt;Today we are proud to present a guest contribution from the community. Marcel Großmann, a research assistant at the University of Bamberg, Germany, shows in a short test that the hardware family on which our ARMed Docker runs is probably much larger than we ever thought. But rather than anticipating the punch line, let&amp;rsquo;s give the word to him!&lt;/p&gt;

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/kubernetes/</link>
+    <link>https://blog.hypriot.com/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Dec 2015 15:30:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introducing Hypriot Cluster Lab: Docker clustering as easy as it gets</title>
-      <link>http://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</link>
+      <link>https://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</link>
       <pubDate>Tue, 08 Dec 2015 15:30:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</guid>
+      <guid>https://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</guid>
       <description>
 
 &lt;p&gt;Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
-It is based on our beloved &lt;a href=&#34;http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;HypriotOS&lt;/a&gt; and makes it dead simple to build Docker clusters.&lt;/p&gt;
+It is based on our beloved &lt;a href=&#34;https://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;HypriotOS&lt;/a&gt; and makes it dead simple to build Docker clusters.&lt;/p&gt;
 
 &lt;p&gt;Until now it was not exactly easy to get started with Docker clustering.
 You would have needed specific knowledge and lots of time to manually configure the cluster and its individual nodes.&lt;/p&gt;
@@ -27,7 +27,7 @@ You would have needed specific knowledge and lots of time to manually configure 
 
 &lt;p&gt;May we introduce to you the newest member of the Hypriot family: &lt;strong&gt;The Hypriot Cluster Lab!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;With the &lt;strong&gt;Hypriot Cluster Lab&lt;/strong&gt; it is just a matter of minutes to set up your own personal Docker cluster.
@@ -91,16 +91,16 @@ $ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot_20160121-23512
 
 &lt;p&gt;&lt;strong&gt;4.&lt;/strong&gt; Power on &lt;strong&gt;only one&lt;/strong&gt; node. This node will automatically become the master node of the cluster. It might take up to two minutes until the master node is fully functional.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; Find out the IP address of your master node. One way to do this is via &lt;a href=&#34;https://nmap.org/&#34;&gt;nmap&lt;/a&gt; and is described &lt;a href=&#34;http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/#ensure-everything-works:8814904f208dcaade82991443c7514e0&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; Find out the IP address of your master node. One way to do this is via &lt;a href=&#34;https://nmap.org/&#34;&gt;nmap&lt;/a&gt; and is described &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/#ensure-everything-works:8814904f208dcaade82991443c7514e0&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; Use the IP (from step 5) or the hostname (from step 2) to point your browser to &lt;code&gt;http://{IP or hostname of the master node}:8500&lt;/code&gt;. In our case &lt;code&gt;http://cl-master:8500&lt;/code&gt; opens the Consul web interface and our cluster master node is displayed:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;7.&lt;/strong&gt; Power on all the remaining cluster nodes only if step 5 was successful. After about 2 minutes you should see the rest of them being listed in the Consul web interface, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The last step makes the cluster fully operational and we are now able to work with the cluster in earnest.&lt;/p&gt;
@@ -168,7 +168,7 @@ By using the &amp;lsquo;constraint:node&amp;rsquo; label we are able to control 
 &lt;p&gt;So let&amp;rsquo;s open the DockerUI with the following URL: &lt;code&gt;http://cl-master:9000&lt;/code&gt;.
 If everything did work you should now see an overview of your running containers similar to this one:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Back to the command line we can see the same result by using the &lt;code&gt;docker ps&lt;/code&gt; command:&lt;/p&gt;

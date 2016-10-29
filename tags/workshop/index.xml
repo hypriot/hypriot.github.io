@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workshop on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/workshop/</link>
+    <link>https://blog.hypriot.com/tags/workshop/</link>
     <description>Recent content in Workshop on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 17 Mar 2016 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker on Raspberry Pi Workshop in Brussels</title>
-      <link>http://blog.hypriot.com/post/docker-on-arm-workshops/</link>
+      <link>https://blog.hypriot.com/post/docker-on-arm-workshops/</link>
       <pubDate>Thu, 17 Mar 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-on-arm-workshops/</guid>
+      <guid>https://blog.hypriot.com/post/docker-on-arm-workshops/</guid>
       <description>&lt;p&gt;A couple of weeks ago we have been invited by the fine folks over at the Docker User Group in Brussels to help conduct a workshop.
 And of course this workshop was about Docker. Still it was not your ordinary Docker workshop.&lt;/p&gt;
 
@@ -23,7 +23,7 @@ The very same devices that power the upcoming IoT revolution.&lt;/p&gt;
 
 &lt;p&gt;Turns out it is really amazing what you can do with Docker on those tiny machines.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;In this workshop attendees learned how to get started with Docker on their Raspberry Pi&amp;rsquo;s.
@@ -51,8 +51,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-02.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-02.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Dieter giving a talk&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-02.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-02.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Dieter giving a talk&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -66,8 +66,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-01.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-01.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-01.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-01.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -81,8 +81,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-03.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-03.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-03.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-03.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -96,8 +96,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-04.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-04.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-04.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-04.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -111,8 +111,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-05.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-05.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-05.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-05.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -126,8 +126,8 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/workshop-06.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-06.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-06.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-06.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -141,11 +141,11 @@ Even days after the event Dieter was still raving about the cool event and the a
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 

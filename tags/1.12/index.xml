@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1.12 on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/1/index.12/</link>
+    <link>https://blog.hypriot.com/tags/1/index.12/</link>
     <description>Recent content in 1.12 on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/1.12/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/1.12/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Swarm Machines or Having fun with Docker Machine and the new Docker Swarm orchestration</title>
-      <link>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
+      <link>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
+      <guid>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
       <description>
 
 &lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
@@ -24,7 +24,7 @@ As we have not yet written how that works I thought I would do a short blog post
 
 &lt;p&gt;So just for the fun of it I decided I will explore that a bit, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -324,7 +324,7 @@ ID                         NAME             SERVICE        IMAGE                
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
@@ -337,11 +337,11 @@ ID                         NAME             SERVICE        IMAGE                
     
     <item>
       <title>More Microservices Bliss with Docker 1.12 and Swarm only</title>
-      <link>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
+      <link>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
       <pubDate>Mon, 20 Jun 2016 21:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
-      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
+      <guid>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
+      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
 I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.&lt;/p&gt;
 
 &lt;p&gt;I really thought it couldn&amp;rsquo;t get much easier. Oh boy - was I wrong!&lt;/p&gt;
@@ -351,7 +351,7 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 
 &lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -359,13 +359,13 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Less moving parts - that is great!&lt;/p&gt;

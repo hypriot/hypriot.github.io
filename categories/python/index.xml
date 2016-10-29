@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/python/</link>
+    <link>https://blog.hypriot.com/categories/python/</link>
     <description>Recent content in Python on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 13 Mar 2016 17:31:10 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to build a traffic light</title>
-      <link>http://blog.hypriot.com/post/traffic-light/</link>
+      <link>https://blog.hypriot.com/post/traffic-light/</link>
       <pubDate>Sun, 13 Mar 2016 17:31:10 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/traffic-light/</guid>
+      <guid>https://blog.hypriot.com/post/traffic-light/</guid>
       <description>
 
 &lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;the-hardware:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The hardware&lt;/h2&gt;
@@ -73,7 +73,7 @@
 
 &lt;p&gt;Even after months and other projects it is easy to spin up that application again as there is a standardized way. There also is no need to backup the SD image and write down what you had to install on your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;As shown in the diagram your Notebook should have the following tools installed.&lt;/p&gt;
@@ -85,7 +85,7 @@
 &lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Client&lt;/a&gt;&lt;/strong&gt; to run other Docker commands&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;I don&amp;rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a &lt;a href=&#34;http://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;previous blog post&lt;/a&gt; how to use docker-machine for that.&lt;/p&gt;
+&lt;p&gt;I don&amp;rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;previous blog post&lt;/a&gt; how to use docker-machine for that.&lt;/p&gt;
 
 &lt;h2 id=&#34;dockerfile:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerfile&lt;/h2&gt;
 
@@ -129,7 +129,7 @@
 
 &lt;p&gt;The advantage of using Docker is to easily share the dockerized app with others. As the developer of an app you just push the Docker image with to the Docker Hub. Others can pull this Docker image from there and run it without to know which tools and dependencies to install.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;pushing-the-docker-image:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pushing the Docker image&lt;/h3&gt;
@@ -177,8 +177,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/hardwired.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_hardwired.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;First hardwired setup. Pull the wires to switch lights.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/hardwired.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_hardwired.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;First hardwired setup. Pull the wires to switch lights.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -192,8 +192,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/cars-green.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_cars-green.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have green, pedestrians have to wait.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/cars-green.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_cars-green.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have green, pedestrians have to wait.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -207,8 +207,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/push-button.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_push-button.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Push the button!&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/push-button.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_push-button.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Push the button!&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -222,8 +222,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/walk.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_walk.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have to stop, pedestrian may cross the road.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/walk.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_walk.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Cars have to stop, pedestrian may cross the road.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -237,8 +237,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/drive.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_drive.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Safely crossed the street. Cars driving again.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/drive.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_drive.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Safely crossed the street. Cars driving again.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -252,8 +252,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/raspberry-pi3-edimax.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_raspberry-pi3-edimax.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Raspberry Pi 3 running traffic light app. Edimax as workaround, soon onboard WiFi support.&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/raspberry-pi3-edimax.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_raspberry-pi3-edimax.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Raspberry Pi 3 running traffic light app. Edimax as workaround, soon onboard WiFi support.&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -267,8 +267,8 @@ services:
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/traffic-light/development.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/traffic-light/thumbnails/thumb_development.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Build, Ship and Run from a Mac&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/traffic-light/development.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/thumbnails/thumb_development.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Build, Ship and Run from a Mac&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -282,11 +282,11 @@ services:
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 

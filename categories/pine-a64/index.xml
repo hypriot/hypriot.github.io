@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pine A64 on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/categories/pine-a64/</link>
+    <link>https://blog.hypriot.com/categories/pine-a64/</link>
     <description>Recent content in Pine A64 on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 25 Jan 2016 23:55:00 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/categories/pine-a64/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/categories/pine-a64/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Pine A64 is about to become the cheapest ARM 64-bit platform to run Docker</title>
-      <link>http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</link>
+      <link>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</link>
       <pubDate>Mon, 25 Jan 2016 23:55:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</guid>
+      <guid>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Last Saturday one of the more promising &lt;a href=&#34;https://www.kickstarter.com/projects/pine64/pine-a64-first-15-64-bit-single-board-super-comput&#34;&gt;Kickstarter campaigns&lt;/a&gt;
@@ -29,7 +29,7 @@ It was a campaign to fund the cheapest 64-bit ARM board that can currently be bo
 &lt;p&gt;So why is that noteworthy when there are boards like the Pi Zero around that sell for $5?&lt;/p&gt;
 
 &lt;p&gt;It very much is, when you put that price into perspective. The cheapest 64-bit ARM board we knew before the Pine was
-the &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;, which sells for about $200.
+the &lt;a href=&#34;https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;, which sells for about $200.
 Next comes the much more expensive &lt;a href=&#34;http://www.slashgear.com/amd-starts-shipping-seattle-arm-server-chips-14423259/&#34;&gt;AMD Opteron A1100 series&lt;/a&gt; where an individual chip alone starts with a price tag of $150.&lt;/p&gt;
 
 &lt;p&gt;All in all that means that the Pine A64 is the most affordable way to lay your hands on real 64-bit ARM hardware - and that by a long shot!
@@ -70,8 +70,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_front_pine_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_front_pine_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 FRONT&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_front_pine_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_front_pine_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 FRONT&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -85,8 +85,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_back_pine_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_back_pine_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 BACK&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_back_pine_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_back_pine_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 BACK&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -100,8 +100,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 01&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 01&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -115,8 +115,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 02&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 02&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -130,8 +130,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 03&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 03&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -145,8 +145,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 04&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 04&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -160,8 +160,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/comparison_to_other_boards.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_comparison_to_other_boards.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Pine A64 compared to a Raspberry Pi 2 and an ODroid C1&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/comparison_to_other_boards.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_comparison_to_other_boards.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Pine A64 compared to a Raspberry Pi 2 and an ODroid C1&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -175,11 +175,11 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -275,12 +275,12 @@ The location of each can be seen on the following images. Consult the &lt;a href
 
 &lt;p&gt;Serial Console with Euler Bus:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Serial Console with Ext connector:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;To actually work with the UART0 console you have to connect the UART-to-USB cable to your Linux or Mac computer and start your preferred terminal program.&lt;/p&gt;
@@ -349,7 +349,7 @@ sunxi# run boot_kernel
 
 &lt;p&gt;Bingo! It works.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Here are a few snippets of the boot log from the UART0 console.
@@ -437,7 +437,7 @@ As such it makes the annoying process of flashing and inserting SD cards over an
 Then power on the Pine. It&amp;rsquo;s important to know that you have to connect to the Pine with a special USB cable to the upper USB port.
 That is because only this USB port is wired for using the FEL signals.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;You can buy such a special USB A-male/A-male cable at &lt;a href=&#34;http://www.amazon.com/Monoprice-1-5-Feet-24AWG-Plated-105441/dp/B009GUXG92&#34;&gt;Amazon&lt;/a&gt; or &lt;a href=&#34;http://www.instructables.com/id/Male-to-Male-A-to-A-USB-Cable/&#34;&gt;build it on your own&lt;/a&gt;.
@@ -450,7 +450,7 @@ Bus 001 Device 004: ID 1f3a:efe8
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For further access via FEL mode, we need to install and compile the very latest version of the sunxi-tools.
-As our development computer we are using a Raspberry Pi running &lt;a href=&#34;http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/&#34;&gt;HypriotOS&lt;/a&gt;.
+As our development computer we are using a Raspberry Pi running &lt;a href=&#34;https://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/&#34;&gt;HypriotOS&lt;/a&gt;.
 So let&amp;rsquo;s install all the development dependencies we need and then clone the sunxi-tools repo and compile them from source.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get update
@@ -567,7 +567,7 @@ AWUSBFEX soc=00001689(A64) 00000001 ver=0001 44 08 scratchpad=00017e00 00000000 
 
 &lt;p&gt;With this preparation in place our work on things like the Secondary Program Loader (SPL or boot0), U-Boot, the Linux kernel and its modules get much more convenient.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;inside-wonderland-combining-uart0-console-and-fel-mode:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;Inside wonderland: Combining UART0 console and FEL mode&lt;/h3&gt;
@@ -702,13 +702,13 @@ By this Docker will gain access to a really powerful developer board - and we wi
     
     <item>
       <title>The Pine A64 is about to become the cheapest ARM 64-bit platform to run Docker</title>
-      <link>http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</link>
+      <link>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</link>
       <pubDate>Mon, 25 Jan 2016 23:55:00 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</guid>
+      <guid>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Last Saturday one of the more promising &lt;a href=&#34;https://www.kickstarter.com/projects/pine64/pine-a64-first-15-64-bit-single-board-super-comput&#34;&gt;Kickstarter campaigns&lt;/a&gt;
@@ -720,7 +720,7 @@ It was a campaign to fund the cheapest 64-bit ARM board that can currently be bo
 &lt;p&gt;So why is that noteworthy when there are boards like the Pi Zero around that sell for $5?&lt;/p&gt;
 
 &lt;p&gt;It very much is, when you put that price into perspective. The cheapest 64-bit ARM board we knew before the Pine was
-the &lt;a href=&#34;http://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;, which sells for about $200.
+the &lt;a href=&#34;https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;, which sells for about $200.
 Next comes the much more expensive &lt;a href=&#34;http://www.slashgear.com/amd-starts-shipping-seattle-arm-server-chips-14423259/&#34;&gt;AMD Opteron A1100 series&lt;/a&gt; where an individual chip alone starts with a price tag of $150.&lt;/p&gt;
 
 &lt;p&gt;All in all that means that the Pine A64 is the most affordable way to lay your hands on real 64-bit ARM hardware - and that by a long shot!
@@ -761,8 +761,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_front_pine_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_front_pine_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 FRONT&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_front_pine_06.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_front_pine_06.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 FRONT&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -776,8 +776,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_back_pine_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_back_pine_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 BACK&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_back_pine_05.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_back_pine_05.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up Pine 64 BACK&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -791,8 +791,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 01&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_01.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_01.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 01&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -806,8 +806,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 02&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 02&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -821,8 +821,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 03&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_03.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_03.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 03&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -836,8 +836,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 04&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/close_up_pine_04.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_close_up_pine_04.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Close up 04&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -851,8 +851,8 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/pine-a64-gallery/comparison_to_other_boards.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_comparison_to_other_boards.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Pine A64 compared to a Raspberry Pi 2 and an ODroid C1&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/pine-a64-gallery/comparison_to_other_boards.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1000x664&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/pine-a64-gallery/thumbnails/thumb_comparison_to_other_boards.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Pine A64 compared to a Raspberry Pi 2 and an ODroid C1&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -866,11 +866,11 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -966,12 +966,12 @@ The location of each can be seen on the following images. Consult the &lt;a href
 
 &lt;p&gt;Serial Console with Euler Bus:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Serial Console with Ext connector:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;To actually work with the UART0 console you have to connect the UART-to-USB cable to your Linux or Mac computer and start your preferred terminal program.&lt;/p&gt;
@@ -1040,7 +1040,7 @@ sunxi# run boot_kernel
 
 &lt;p&gt;Bingo! It works.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Here are a few snippets of the boot log from the UART0 console.
@@ -1128,7 +1128,7 @@ As such it makes the annoying process of flashing and inserting SD cards over an
 Then power on the Pine. It&amp;rsquo;s important to know that you have to connect to the Pine with a special USB cable to the upper USB port.
 That is because only this USB port is wired for using the FEL signals.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;You can buy such a special USB A-male/A-male cable at &lt;a href=&#34;http://www.amazon.com/Monoprice-1-5-Feet-24AWG-Plated-105441/dp/B009GUXG92&#34;&gt;Amazon&lt;/a&gt; or &lt;a href=&#34;http://www.instructables.com/id/Male-to-Male-A-to-A-USB-Cable/&#34;&gt;build it on your own&lt;/a&gt;.
@@ -1141,7 +1141,7 @@ Bus 001 Device 004: ID 1f3a:efe8
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For further access via FEL mode, we need to install and compile the very latest version of the sunxi-tools.
-As our development computer we are using a Raspberry Pi running &lt;a href=&#34;http://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/&#34;&gt;HypriotOS&lt;/a&gt;.
+As our development computer we are using a Raspberry Pi running &lt;a href=&#34;https://blog.hypriot.com/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/&#34;&gt;HypriotOS&lt;/a&gt;.
 So let&amp;rsquo;s install all the development dependencies we need and then clone the sunxi-tools repo and compile them from source.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get update
@@ -1258,7 +1258,7 @@ AWUSBFEX soc=00001689(A64) 00000001 ver=0001 44 08 scratchpad=00017e00 00000000 
 
 &lt;p&gt;With this preparation in place our work on things like the Secondary Program Loader (SPL or boot0), U-Boot, the Linux kernel and its modules get much more convenient.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;inside-wonderland-combining-uart0-console-and-fel-mode:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;Inside wonderland: Combining UART0 console and FEL mode&lt;/h3&gt;

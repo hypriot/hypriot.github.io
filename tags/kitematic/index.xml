@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kitematic on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/kitematic/</link>
+    <link>https://blog.hypriot.com/tags/kitematic/</link>
     <description>Recent content in Kitematic on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Oct 2015 00:15:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/kitematic/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/kitematic/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A touch of magic: Controlling Kitematic &amp; Docker with a touch display on the Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</link>
+      <link>https://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</link>
       <pubDate>Mon, 12 Oct 2015 00:15:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</guid>
-      <description>&lt;p&gt;We have recently released our &lt;a href=&#34;http://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;new SD card image&lt;/a&gt; called &lt;strong&gt;Will&lt;/strong&gt;.
+      <guid>https://blog.hypriot.com/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/</guid>
+      <description>&lt;p&gt;We have recently released our &lt;a href=&#34;https://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;new SD card image&lt;/a&gt; called &lt;strong&gt;Will&lt;/strong&gt;.
 It is the ultimate Docker playground with Docker Engine, Docker Compose, Docker Swarm and Docker Machine preinstalled.
 This image now also supports the new 7&amp;rdquo; Raspberry Pi Touch Display out-of-the-box. So we thought, wouldn&amp;rsquo;t it be cool to have Kitematic running directly on your Raspberry Pi? And yes, we did it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/teaser.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/teaser.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;While polishing and testing &lt;strong&gt;Will&lt;/strong&gt; the idea came up that it would be awesome to be able to use Kitematic on the new great &lt;a href=&#34;https://www.raspberrypi.org/blog/the-eagerly-awaited-raspberry-pi-display/&#34;&gt;7&amp;rdquo; touch display of the Raspberry Pi foundation&lt;/a&gt;.&lt;/p&gt;
@@ -35,8 +35,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/docker-toolbox.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_docker-toolbox.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Unboxing the Docker Toolbox&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/docker-toolbox.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_docker-toolbox.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Unboxing the Docker Toolbox&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -50,8 +50,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/display-back.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_display-back.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The RPi 2 is attached to 7 inch Raspberry Pi Display&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/display-back.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_display-back.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The RPi 2 is attached to 7 inch Raspberry Pi Display&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -65,8 +65,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/connect-to-docker-hub.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_connect-to-docker-hub.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Connect to the Docker Hub&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/connect-to-docker-hub.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_connect-to-docker-hub.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Connect to the Docker Hub&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -80,8 +80,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/kitematic.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_kitematic.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;List of Docker Images&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/kitematic.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_kitematic.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;List of Docker Images&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -95,8 +95,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/create.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_create.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Download and create a Docker Container&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/create.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_create.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Download and create a Docker Container&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -110,8 +110,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/web-preview.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_web-preview.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;A running a container with web preview&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/web-preview.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_web-preview.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;A running a container with web preview&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -125,8 +125,8 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbs-up.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_thumbs-up.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Thumbs up! All is running well&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbs-up.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/kitematic-on-pi/thumbnails/thumb_thumbs-up.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Thumbs up! All is running well&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -140,11 +140,11 @@ This was the time for the next crazy idea. We thought, let us write a &lt;code&g
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -284,23 +284,23 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
     
     <item>
       <title>Kitematic meets Windows Docker</title>
-      <link>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</link>
+      <link>https://blog.hypriot.com/post/kitematic-meets-windows-docker/</link>
       <pubDate>Wed, 09 Sep 2015 00:07:37 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/kitematic-meets-windows-docker/</guid>
+      <guid>https://blog.hypriot.com/post/kitematic-meets-windows-docker/</guid>
       <description>&lt;p&gt;I just want to share some screenshots with you. Today I have played with Kitematic on a Windows Server 2016 TP3 and made it talk to the Windows Docker Engine. Yes, no VirtualBox in between. Just starting native Windows Containers from the Kitematic interface.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-win2016tp3.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-win2016tp3.png-shadow.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;A closer look at the left column shows a running &lt;strong&gt;mongo&lt;/strong&gt; container. Yes, I know, you cannot pull docker images with the Windows Docker Engine at the moment. But I have built a mongo Docker image for Windows with this &lt;a href=&#34;https://github.com/StefanScherer/dockerfiles-windows/blob/master/mongo/3.0/Dockerfile&#34;&gt;Dockerfile&lt;/a&gt; and created the container by pressing the &lt;strong&gt;Create&lt;/strong&gt; button in the Kitematic UI.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-mongo.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-mongo.png-shadow.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;And to show that this is no fake you can see some windows paths in the container logs view:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-list.png-shadow.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic-meets-windows-docker/kitematic-list.png-shadow.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s all for now.&lt;/p&gt;
@@ -313,10 +313,10 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
     
     <item>
       <title>Connecting Kitematic to an external Docker Engine running on a Raspberry Pi</title>
-      <link>http://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</link>
+      <link>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</link>
       <pubDate>Wed, 15 Apr 2015 06:35:55 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</guid>
+      <guid>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</guid>
       <description>
 
 &lt;p&gt;In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.&lt;/p&gt;
@@ -325,7 +325,7 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
 
 &lt;p&gt;At Hypriot we recently built and released our own OS image to run the Docker Engine on a low-cost Raspberry Pi and labeled it HypriotOS.  A user can download this pre-compiled Raspbian based SD card image, which includes a Linux 3.18.10 kernel with all Docker related kernel options included, and Docker 1.5.0 is already enabled with Overlay filesystem.  Just download, extract, flash to a SD card and boot your Raspberry Pi - and within minutes you have Docker up and running and you can instantly start using it.&lt;/p&gt;
 
-&lt;p&gt;You can read more details and find the download links in our blog post &lt;a href=&#34;http://blog.hypriot.com/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0&#34;&gt;Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0&lt;/a&gt; and recently updated post &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can read more details and find the download links in our blog post &lt;a href=&#34;https://blog.hypriot.com/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0&#34;&gt;Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0&lt;/a&gt; and recently updated post &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;As developers and geeks, we&amp;rsquo;re really comfortable using SSH and a bash shell to control the Docker CLI.  It&amp;rsquo;s also not a problem to connect a Linux or Mac OSX host via a native Docker CLI over the network, even a Windows client works well.  But what about the normal end users?  Wouldn&amp;rsquo;t it be great to have a more convinient way to use a graphical frontend via web or a specific app.  A GUI would be really cool, but this would take a long time to develop.&lt;/p&gt;
 
@@ -340,7 +340,7 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
 &lt;h3 id=&#34;connecting-the-dots:90fd682791be4b8b148459904d1205f8&#34;&gt;Connecting the Dots&lt;/h3&gt;
 
 &lt;p&gt;We quickly read through the docs and studied the source code and found out that Kitematic is based upon Docker Machine to control the backend Docker Host, hey cool - that&amp;rsquo;s the key.  Within a couple of hours we had the first rough hack and were able to actively control a Raspberry Pi 2 running Docker 1.5.0 with a brand new graphical user interface.  Just selecting one of our favorite Docker Images from the Docker Hub and pushed it seamlessly to a RPi!&lt;br /&gt;
-&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;But until now, it was just a hack and far away from being used in production or by end users.  All settings were done with some source code changes within Kitematic itself.&lt;/p&gt;
@@ -371,7 +371,7 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
 
 &lt;p&gt;To use this improved Kitematic version from Hypriot, you have to clone the GitHub repo &lt;a href=&#34;https://github.com/hypriot/kitematic/tree/connect-to-externel-docker-host&#34;&gt;hypriot/kitematic&lt;/a&gt;, use the branch &lt;code&gt;connect-to-externel-docker-host&lt;/code&gt; and build it with &amp;ldquo;npm run install&amp;rdquo;, it will also download and use our specifically built version of Docker Machine with the &lt;code&gt;hypriot&lt;/code&gt; driver included.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;mission-accomplished:90fd682791be4b8b148459904d1205f8&#34;&gt;Mission accomplished&lt;/h3&gt;
@@ -404,7 +404,7 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
 &lt;li&gt;&amp;hellip; (depending on user feedback)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h3 id=&#34;send-us-your-feedback-please:90fd682791be4b8b148459904d1205f8&#34;&gt;Send us your Feedback, please!&lt;/h3&gt;

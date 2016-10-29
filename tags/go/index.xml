@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/go/</link>
+    <link>https://blog.hypriot.com/tags/go/</link>
     <description>Recent content in Go on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 31 Dec 2015 18:47:24 +0100</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to compile Go on any ARM device</title>
-      <link>http://blog.hypriot.com/post/how-to-compile-go-on-arm/</link>
+      <link>https://blog.hypriot.com/post/how-to-compile-go-on-arm/</link>
       <pubDate>Thu, 31 Dec 2015 18:47:24 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/how-to-compile-go-on-arm/</guid>
+      <guid>https://blog.hypriot.com/post/how-to-compile-go-on-arm/</guid>
       <description>
 
 &lt;p&gt;As for today, up to the latest Go version 1.5.2 there is no official binary release

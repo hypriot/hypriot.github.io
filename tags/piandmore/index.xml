@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Piandmore on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/piandmore/</link>
+    <link>https://blog.hypriot.com/tags/piandmore/</link>
     <description>Recent content in Piandmore on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 13 Jun 2016 09:21:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/piandmore/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/piandmore/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker was well received at Germany&#39;s biggest Raspberry Pi Jam</title>
-      <link>http://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</link>
+      <link>https://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</link>
       <pubDate>Mon, 13 Jun 2016 09:21:00 +0000</pubDate>
       
-      <guid>http://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</guid>
+      <guid>https://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</guid>
       <description>
 
 &lt;p&gt;Last Saturday Germany&amp;rsquo;s biggest Raspberry Pi community event - &lt;a href=&#34;http://piandmore.de/en&#34;&gt;the PiAndMore&lt;/a&gt; - took place for the 9th time.&lt;/p&gt;
@@ -24,7 +24,7 @@ There were talks, workshops and many interesting tinker projects at display to d
 
 &lt;p&gt;It comes as no suprise that Docker was a hot topic at the PiAndMore conference, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/piandmore/piandmore_loves_docker.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/piandmore_loves_docker.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;docker-and-the-raspberry-pi-a-dream-team:ce44e480ae6cb7c6d49829357f2a0d42&#34;&gt;Docker and the Raspberry Pi - a dream team?&lt;/h2&gt;
@@ -46,14 +46,14 @@ two tiered microservice architecture up and running in less then 5 minutes.&lt;/
 &lt;p&gt;It seems the talk was able to whet the appetite of the audience as many joined the two hour workshop later.
 Soon all seats were taken and the attendees embarked on a whirlwind tour through HypriotOS and Docker.&lt;/p&gt;
 
-&lt;p&gt;Thanks to &lt;a href=&#34;http://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/&#34;&gt;HypriotOS&lt;/a&gt; and our convenient &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; everybody was able to start with Docker in no time.&lt;br /&gt;
+&lt;p&gt;Thanks to &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/&#34;&gt;HypriotOS&lt;/a&gt; and our convenient &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; everybody was able to start with Docker in no time.&lt;br /&gt;
 After learning the basic Docker commands everybody started to feel like a real Docker Pirate.&lt;/p&gt;
 
 &lt;p&gt;From there it was mostly smooth sailing and we even started to manage our containers with Docker Compose and Swarm.&lt;/p&gt;
 
 &lt;p&gt;In the end the workshop was rounded off by an excursion into the realm of Dockerfiles and how to build our own Docker images.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/piandmore/workshop.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/workshop.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;It was really nice to see so many people get excited about Docker and ask so many curious questions.
@@ -63,7 +63,7 @@ Later when I walked through the exhibition part of the conference I even learned
 It was really well organized and had a very nice nerdy feel about it.
 Actually I had a really hard time to pry my colleague Andreas from the event when we finally had to leave to drive home.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/piandmore/organizers_docker_pirates.jpg&#34; alt=&#34;PiAndMore Having fun&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/organizers_docker_pirates.jpg&#34; alt=&#34;PiAndMore Having fun&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So if you happen to be near Trier next year when the next PiAndMore takes place make sure to pay them a visit.

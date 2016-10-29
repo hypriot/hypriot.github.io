@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker Swarm on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/docker-swarm/</link>
+    <link>https://blog.hypriot.com/tags/docker-swarm/</link>
     <description>Recent content in Docker Swarm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/docker-swarm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/docker-swarm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Swarm Machines or Having fun with Docker Machine and the new Docker Swarm orchestration</title>
-      <link>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
+      <link>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
+      <guid>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
       <description>
 
 &lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
@@ -24,7 +24,7 @@ As we have not yet written how that works I thought I would do a short blog post
 
 &lt;p&gt;So just for the fun of it I decided I will explore that a bit, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -324,7 +324,7 @@ ID                         NAME             SERVICE        IMAGE                
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
@@ -337,11 +337,11 @@ ID                         NAME             SERVICE        IMAGE                
     
     <item>
       <title>More Microservices Bliss with Docker 1.12 and Swarm only</title>
-      <link>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
+      <link>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
       <pubDate>Mon, 20 Jun 2016 21:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
-      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
+      <guid>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
+      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
 I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.&lt;/p&gt;
 
 &lt;p&gt;I really thought it couldn&amp;rsquo;t get much easier. Oh boy - was I wrong!&lt;/p&gt;
@@ -351,7 +351,7 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 
 &lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -359,13 +359,13 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Less moving parts - that is great!&lt;/p&gt;
@@ -622,10 +622,10 @@ I am really looking forward to find out what else there is in store with the new
     
     <item>
       <title>Microservices Bliss with Docker and Traefik</title>
-      <link>http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</link>
+      <link>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</link>
       <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
       
-      <guid>http://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
+      <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
       <description>
 
 &lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
@@ -636,7 +636,7 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 &lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
@@ -652,7 +652,7 @@ Traefik serves as a frontend proxy that loadbalances incoming requests to the av
 &lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
 In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
@@ -665,7 +665,7 @@ In this example each backend service will answer with their individual container
 
 &lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;
@@ -884,10 +884,10 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
     
     <item>
       <title>Let Docker Swarm all over your Raspberry Pi Cluster</title>
-      <link>http://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</link>
+      <link>https://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</link>
       <pubDate>Fri, 03 Jul 2015 00:30:45 +0100</pubDate>
       
-      <guid>http://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</guid>
+      <guid>https://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</guid>
       <description>
 
 &lt;p&gt;In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.&lt;/p&gt;
@@ -904,8 +904,8 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/docker-swarm/d-link_mounting_holes.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_mounting_holes.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Making of Pi Tower&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/docker-swarm/d-link_mounting_holes.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_mounting_holes.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;The Making of Pi Tower&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -919,8 +919,8 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower with D-Link Switch&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower with D-Link Switch&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -934,8 +934,8 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower with D-Link Switch&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster02.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster02.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower with D-Link Switch&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -949,8 +949,8 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;http://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster_lights.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
-      &lt;img src=&#34;http://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster_lights.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower at night&#34; /&gt;
+  &lt;a href=&#34;https://blog.hypriot.com/images/docker-swarm/d-link_rpi2_cluster_lights.jpg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;1600x1200&#34;&gt;
+      &lt;img src=&#34;https://blog.hypriot.com/images/docker-swarm/thumbnails/thumb_d-link_rpi2_cluster_lights.jpg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Pi Tower at night&#34; /&gt;
   &lt;/a&gt;
 
 
@@ -964,11 +964,11 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;http://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
 
 
 

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Swarm Mode on Docker Pirates ARMed with explosive stuff</title>
-    <link>http://blog.hypriot.com/tags/swarm-mode/</link>
+    <link>https://blog.hypriot.com/tags/swarm-mode/</link>
     <description>Recent content in Swarm Mode on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
-    <atom:link href="http://blog.hypriot.com/tags/swarm-mode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.hypriot.com/tags/swarm-mode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Swarm Machines or Having fun with Docker Machine and the new Docker Swarm orchestration</title>
-      <link>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
+      <link>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</link>
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
       
-      <guid>http://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
+      <guid>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
       <description>
 
 &lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
@@ -24,7 +24,7 @@ As we have not yet written how that works I thought I would do a short blog post
 
 &lt;p&gt;So just for the fun of it I decided I will explore that a bit, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
@@ -324,7 +324,7 @@ ID                         NAME             SERVICE        IMAGE                
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
