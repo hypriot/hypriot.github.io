@@ -3,8 +3,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2016-10-26T18:03:34+01:00</lastmod>
+    <lastmod>2016-10-31T15:18:33+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/post/new-docker-ui-portainer/</loc>
+    <lastmod>2016-10-31T15:18:33+01:00</lastmod>
   </url>
   
   <url>
@@ -347,15 +352,15 @@
   </url>
   
   <url>
-    <loc>https://blog.hypriot.com/crew/</loc>
-  </url>
-  
-  <url>
     <loc>https://blog.hypriot.com/downloads/</loc>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/crew/</loc>
   </url>
   
 </urlset>
