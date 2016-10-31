@@ -129,12 +129,11 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
 <h2 id="portainer:9b02a9b5d0cf4c4b78c5b66f0c71e56f">Portainer</h2>
 
-<p>Last week I found <a href="http://portainer.io">portainer.io</a> which also looks very good. They provide Docker images for Linux and Windows, but not for ARM right now.</p>
+<p>Last week I found <a href="http://portainer.io">portainer.io</a> which also looks very good. They provide Docker images for Linux and Windows, <del>but not for ARM right now</del> and as well an image for ARM.</p>
 
 <p>The source code is also available on GitHub <a href="https://github.com/portainer/portainer">https://github.com/portainer/portainer</a> and it&rsquo;s based on the work of DockerUI.</p>
 
-<p>As there is no Linux ARM version for it, I just sent them a <a href="https://github.com/portainer/portainer/pull/299">pull request</a> to add support for it.
-In the meantime we provide a Docker image for the Rapsberry Pi at <a href="https://hub.docker.com/r/hypriot/rpi-portainer/">hypriot/rpi-portainer</a>.</p>
+<p>The <a href="https://github.com/portainer/portainer/pull/299">pull request</a> to add Linux ARM support was merged and now you can get the Docker image for the Rapsberry Pi using the image <a href="https://hub.docker.com/r/portainer/portainer/">portainer/portainer:arm</a>.</p>
 
 <p>Just use the same Docker Compose sample from above and replace the image name. Killing the old container and running a new one with <code>docker-compose up -d ui</code> you have Portainer up and running.</p>
 

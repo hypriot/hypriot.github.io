@@ -63,12 +63,11 @@ the Docker CLI for that. There are two nice Docker UI&amp;rsquo;s to access your
 
 &lt;h2 id=&#34;portainer:9b02a9b5d0cf4c4b78c5b66f0c71e56f&#34;&gt;Portainer&lt;/h2&gt;
 
-&lt;p&gt;Last week I found &lt;a href=&#34;http://portainer.io&#34;&gt;portainer.io&lt;/a&gt; which also looks very good. They provide Docker images for Linux and Windows, but not for ARM right now.&lt;/p&gt;
+&lt;p&gt;Last week I found &lt;a href=&#34;http://portainer.io&#34;&gt;portainer.io&lt;/a&gt; which also looks very good. They provide Docker images for Linux and Windows, &lt;del&gt;but not for ARM right now&lt;/del&gt; and as well an image for ARM.&lt;/p&gt;
 
 &lt;p&gt;The source code is also available on GitHub &lt;a href=&#34;https://github.com/portainer/portainer&#34;&gt;https://github.com/portainer/portainer&lt;/a&gt; and it&amp;rsquo;s based on the work of DockerUI.&lt;/p&gt;
 
-&lt;p&gt;As there is no Linux ARM version for it, I just sent them a &lt;a href=&#34;https://github.com/portainer/portainer/pull/299&#34;&gt;pull request&lt;/a&gt; to add support for it.
-In the meantime we provide a Docker image for the Rapsberry Pi at &lt;a href=&#34;https://hub.docker.com/r/hypriot/rpi-portainer/&#34;&gt;hypriot/rpi-portainer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/portainer/portainer/pull/299&#34;&gt;pull request&lt;/a&gt; to add Linux ARM support was merged and now you can get the Docker image for the Rapsberry Pi using the image &lt;a href=&#34;https://hub.docker.com/r/portainer/portainer/&#34;&gt;portainer/portainer:arm&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Just use the same Docker Compose sample from above and replace the image name. Killing the old container and running a new one with &lt;code&gt;docker-compose up -d ui&lt;/code&gt; you have Portainer up and running.&lt;/p&gt;
 
