@@ -6,8 +6,235 @@
     <description>Recent content in Raspberry Pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Oct 2016 18:03:34 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 01 Nov 2016 13:42:20 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fix Dirty COW on Raspberry Pi the Docker way</title>
+      <link>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</link>
+      <pubDate>Tue, 01 Nov 2016 13:42:20 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</guid>
+      <description>
+
+&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
+Dirty COW is a &lt;a href=&#34;http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/&#34;&gt;race condition in Linux&lt;/a&gt; arising from how Copy-On-Write (the COW in the name) is handled by the kernel&amp;rsquo;s memory subsystem&amp;rsquo;s use of private mappings.&lt;/p&gt;
+
+&lt;p&gt;The really dangerous point here is, it can be used to &lt;a href=&#34;http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/&#34;&gt;escape Docker containers&lt;/a&gt;.
+&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So, we&amp;rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!&lt;/p&gt;
+
+&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
+
+&lt;p&gt;For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS&lt;/strong&gt; and &lt;strong&gt;Raspbian Jessie&lt;/strong&gt; (more details can be found &lt;a href=&#34;https://www.raspberrypi.org/blog/#fix-dirty-cow-raspberry-pi&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&amp;rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.&lt;/p&gt;
+
+&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo &lt;a href=&#34;https://github.com/DieterReuter/rpi-dirtycow&#34;&gt;DieterReuter/rpi-dirtycow&lt;/a&gt;, so you can build everything on your own, too.&lt;/p&gt;
+
+&lt;p&gt;Running this single command is just absolutely easy and this is one of the benefits of Docker, you don&amp;rsquo;t have to install anything on your host machine. Just run a Docker container in a secure way and get instant results within seconds.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do some testing on two different operating systems for the Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Raspbian Jessie LITE (2016-09-23)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a freshly installed Raspbian Lite for these tests and you can see, we do have a Linux kernel 4.4.21.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t have the Docker Engine already installed on Raspbian, you can perform it with this few commands - YEAH, it&amp;rsquo;s just so easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://get.docker.com | bash
+$ sudo usermod -aG docker pi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, logout and login again to get access to the Docker CLI from your default &amp;ldquo;pi&amp;rdquo; user.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --version
+Docker version 1.12.3, build 6b644ec
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have Docker installed, we can test against Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s upgrade the Linux kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we&amp;rsquo;ll test it again. Hopefully we&amp;rsquo;ve fixed it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.26-v7+ #915 SMP Thu Oct 20 17:08:44 BST 2016 armv7l GNU/Linux
+
+$ docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New Linux kernel 4.4.26 is installed for Raspbian and Dirty COW is fixed!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Did you mentioned the different output from the &lt;code&gt;docker run&lt;/code&gt; commands? The first time, Docker has detected that the Docker Image &amp;ldquo;hypriot/rpi-dirtycow&amp;rdquo; is not on the machine and downloads/pulls the required image layers. The second time it can just start the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS 1.1.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;m using the latest HypriotOS 1.1.0 release, but the Linux kernel upgrade works even for an older 0.8 release.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.24-hypriotos-v7+ #1 SMP PREEMPT Tue Oct 11 17:15:58 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test for Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ time docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+
+real	0m14.514s
+user	0m0.200s
+sys	0m0.180s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You can see, it takes just under 15 seconds to pull the Docker Image and to perform the test against the Dirty COW vulnerability. We didn&amp;rsquo;t installed anything on the host machine for these tests and we can get rid of the Docker image later on and clean our host system easily.&lt;/p&gt;
+
+&lt;p&gt;Upgrade the Linux kernel for HypriotOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we have the latest Linux kernel 4.4.27 for HypriotOS installed and we&amp;rsquo;re safe again.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.27-hypriotos-v7+ #1 SMP PREEMPT Fri Oct 28 09:06:49 UTC 2016 armv7l GNU/Linux
+
+$ time docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+
+real	0m4.504s
+user	0m0.100s
+sys	0m0.050s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally, we&amp;rsquo;ll remove the Docker Image we&amp;rsquo;ve used for the tests and free some disk space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-dirtycow   latest              31229be9ea1d        3 days ago          5.512 MB
+
+$ docker rmi -f 31229be9ea1d
+Untagged: hypriot/rpi-dirtycow:latest
+Untagged: hypriot/rpi-dirtycow@sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Deleted: sha256:31229be9ea1d01ed2df47cc23ab50efdc84be3b49572bb4b6047a449dea4e596
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This is another great advantage by Docker - get rid of all the tools we don&amp;rsquo;t need anymore.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
+
+&lt;p&gt;Your Raspberry Pi system is now SAFE again. In the future don&amp;rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And with this way you&amp;rsquo;ll get some other tools updated as well, like the Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker version
+Client:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+HypriotOS/armv7: pirate@black-pearl in ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s all and STAY SAFE !!!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster</title>
@@ -2782,204 +3009,6 @@ key points what impressed me most about this great new release.&lt;/p&gt;
 &lt;li&gt;ARM IoT containers can be developed and run even on a Mac&lt;/li&gt;
 &lt;li&gt;&amp;hellip;much more will be revealed in later blog posts&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let&#39;s build a PicoCluster for Docker Swarm</title>
-      <link>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</link>
-      <pubDate>Wed, 23 Mar 2016 18:40:04 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</guid>
-      <description>
-
-&lt;p&gt;As we love to use Docker Swarm on a cluster of Raspberry Pi&amp;rsquo;s, we&amp;rsquo;d like to cover
-in this hands-on tutorial how to build such a cluster easily with a hardware kit
-from &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;All you need is a PicoCluster kit for a 3-node or 5-node cluster, a couple of
-Raspberry Pi&amp;rsquo;s and the time to assemble all the parts together. The project can be
-completed within an hour only, and makes so much fun, too - especially when you can
-share this as quality time with your kids.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;PicoCluster had just sent us two different kits of their cool Raspberry Pi
-clusters. Of course, we are eager to build these new clusters so you can get a first impression.&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-in-the-box:098640bbbda183ea709087a458ce9550&#34;&gt;What&amp;rsquo;s in the box&lt;/h3&gt;
-
-&lt;p&gt;3-node PicoCluster kit:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;acrylic case, all parts&lt;/li&gt;
-&lt;li&gt;PDU (12V input, 4x USB 5V output), including all wires&lt;/li&gt;
-&lt;li&gt;wiring for 3x microUSB power&lt;/li&gt;
-&lt;li&gt;case wiring for 1x HDMI&lt;/li&gt;
-&lt;li&gt;case wiring for 1x 12V power plug&lt;/li&gt;
-&lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;5-node PicoCluster kit:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;acrylic case, all parts&lt;/li&gt;
-&lt;li&gt;internal 8-port Ethernet switch&lt;/li&gt;
-&lt;li&gt;PDU (12V input, 5x USB 5V output), including all wires&lt;/li&gt;
-&lt;li&gt;wiring for 5x microUSB power&lt;/li&gt;
-&lt;li&gt;wiring for network (Raspberry Pi to Ethernet switch)&lt;/li&gt;
-&lt;li&gt;case wiring for 1x Ethernet&lt;/li&gt;
-&lt;li&gt;case wiring for 1x HDMI&lt;/li&gt;
-&lt;li&gt;case wiring for 2x USB&lt;/li&gt;
-&lt;li&gt;case wiring for 1x 12V power plug&lt;/li&gt;
-&lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Not included in the kits: (so you have to buy it separately)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Raspberry Pi’s and microSD cards&lt;/li&gt;
-&lt;li&gt;AC adapter (12V, 1.5A, barrel plug 5.5x2.1mm)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Additionally we&amp;rsquo;ll need some common tools for the mechanical assembling:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;philips screw driver&lt;/li&gt;
-&lt;li&gt;7mm wrench (or a pliers)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&#34;assembling-the-3-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 3-node PicoCluster&lt;/h3&gt;
-
-&lt;h4 id=&#34;towering-the-raspberry-pi-s:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
-
-&lt;p&gt;First we take the mounting plate for the Pi tower and stack all
-three Raspberry Pi&amp;rsquo;s with the help of the included spacers.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h4 id=&#34;wiring-all-together:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
-
-&lt;p&gt;Now it&amp;rsquo;s easy to mount the PDU on top of the Pi tower with 4 screws and attaching
-the USB power cables to the three Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Next we mount the tower on the base plate, which makes our new cluster look even better.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
-the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
-to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
-
-&lt;h4 id=&#34;assembling-the-case:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
-
-&lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
-Mounting with nuts &amp;amp; bolts and the PicoCluster is ready.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Don&amp;rsquo;t forget to flash your microSD cards and insert them into the Pi&amp;rsquo;s,
-because as soon as we close the cluster case, it&amp;rsquo;s a little bit harder to change
-the SD cards.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&#34;assembling-the-5-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 5-node PicoCluster&lt;/h3&gt;
-
-&lt;h4 id=&#34;towering-the-raspberry-pi-s-1:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
-
-&lt;p&gt;With the 5-node cluster we start similar as with the 3-node. We take
-the mounting plate for the Pi tower and stack all five Raspberry Pi&amp;rsquo;s with the
-spacers.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-
-&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h4 id=&#34;wiring-all-together-1:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
-
-&lt;p&gt;Next, we mount the PDU on top of the Pi tower with 4 screws and attach
-the USB power cables to the five Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;As soon as we mount the tower on the base plate, we see that we do have a lot more
-parts left.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;For the 5-node cluster we have an internal dedicated 8-port switch, which we&amp;rsquo;ll
-install inside the case and wire all the ethernet cables to the Pi&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
-the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
-to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;ll also find two USB cables in the kit, which you can connect to one or two
-different Pi&amp;rsquo;s and mount the plug to the front panel as well. Attaching HDMI and USB
-plugs to the case is really optional.&lt;/p&gt;
-
-&lt;h4 id=&#34;assembling-the-case-1:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
-
-&lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
-Mounting with nuts &amp;amp; bolts and our second PicoCluster is almost ready. As there are a
-few more parts to assemble the 5-node cluster, it will take a little bit longer than
-building the smaller cluster.&lt;/p&gt;
-
-&lt;h3 id=&#34;finally-we-have-two-new-clusters:098640bbbda183ea709087a458ce9550&#34;&gt;Finally, we have two new clusters&lt;/h3&gt;
-
-&lt;p&gt;At the end we have now built two new Raspberry Pi clusters, a 3-node and a 5-node
-from PicoCluster. Both are looking really neat and everything is stowed away in
-a perfect way. Only accessing the microSD cards is not optimal once after the case
-is closed. You just have to remove only a few screws and dismounting the rear side
-panel of the case and then you can easily access the SD card slots.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Because the 5-node cluster includes an integrated 8-port Ethernet switch, we&amp;rsquo;d recommend
-it to use as a standalone Pi cluster for experimenting with Docker Swarm and other
-cluster related tutorials and demos. You just have to attach a 12V power source and
-a single network link. This is all you need to start playing with it right away.&lt;/p&gt;
-
-&lt;p&gt;Now, you can go ahead and install software on your new PicoCluster.
-However, this isn&amp;rsquo;t within the scope of this hands-on project, so we&amp;rsquo;ll point you to one of our
-latest tutorials where you learn &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;how to setup a Docker Swarm cluster with Raspberry Pi&amp;rsquo;s&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;where-can-you-get-it:098640bbbda183ea709087a458ce9550&#34;&gt;Where can you get it ?&lt;/h3&gt;
-
-&lt;p&gt;You can order your own ready-to-use and tiny data center directly at &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;
-with the Raspberry Pi&amp;rsquo;s included. The hardware kits we used in this post should be available soon, too.
-PicoCluster is currently optimizing a few parts like the PDU to get more power for the new Raspberry Pi 3,
-so we expect the next version will get some changes and improvements compared to these
-beta units.&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 

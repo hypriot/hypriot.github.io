@@ -6,8 +6,235 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 01 Nov 2016 13:42:20 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fix Dirty COW on Raspberry Pi the Docker way</title>
+      <link>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</link>
+      <pubDate>Tue, 01 Nov 2016 13:42:20 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</guid>
+      <description>
+
+&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
+Dirty COW is a &lt;a href=&#34;http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/&#34;&gt;race condition in Linux&lt;/a&gt; arising from how Copy-On-Write (the COW in the name) is handled by the kernel&amp;rsquo;s memory subsystem&amp;rsquo;s use of private mappings.&lt;/p&gt;
+
+&lt;p&gt;The really dangerous point here is, it can be used to &lt;a href=&#34;http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/&#34;&gt;escape Docker containers&lt;/a&gt;.
+&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So, we&amp;rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!&lt;/p&gt;
+
+&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
+
+&lt;p&gt;For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS&lt;/strong&gt; and &lt;strong&gt;Raspbian Jessie&lt;/strong&gt; (more details can be found &lt;a href=&#34;https://www.raspberrypi.org/blog/#fix-dirty-cow-raspberry-pi&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&amp;rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.&lt;/p&gt;
+
+&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo &lt;a href=&#34;https://github.com/DieterReuter/rpi-dirtycow&#34;&gt;DieterReuter/rpi-dirtycow&lt;/a&gt;, so you can build everything on your own, too.&lt;/p&gt;
+
+&lt;p&gt;Running this single command is just absolutely easy and this is one of the benefits of Docker, you don&amp;rsquo;t have to install anything on your host machine. Just run a Docker container in a secure way and get instant results within seconds.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do some testing on two different operating systems for the Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Raspbian Jessie LITE (2016-09-23)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a freshly installed Raspbian Lite for these tests and you can see, we do have a Linux kernel 4.4.21.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t have the Docker Engine already installed on Raspbian, you can perform it with this few commands - YEAH, it&amp;rsquo;s just so easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://get.docker.com | bash
+$ sudo usermod -aG docker pi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, logout and login again to get access to the Docker CLI from your default &amp;ldquo;pi&amp;rdquo; user.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --version
+Docker version 1.12.3, build 6b644ec
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have Docker installed, we can test against Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s upgrade the Linux kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we&amp;rsquo;ll test it again. Hopefully we&amp;rsquo;ve fixed it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.26-v7+ #915 SMP Thu Oct 20 17:08:44 BST 2016 armv7l GNU/Linux
+
+$ docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New Linux kernel 4.4.26 is installed for Raspbian and Dirty COW is fixed!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Did you mentioned the different output from the &lt;code&gt;docker run&lt;/code&gt; commands? The first time, Docker has detected that the Docker Image &amp;ldquo;hypriot/rpi-dirtycow&amp;rdquo; is not on the machine and downloads/pulls the required image layers. The second time it can just start the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS 1.1.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;m using the latest HypriotOS 1.1.0 release, but the Linux kernel upgrade works even for an older 0.8 release.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.24-hypriotos-v7+ #1 SMP PREEMPT Tue Oct 11 17:15:58 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test for Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ time docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+
+real	0m14.514s
+user	0m0.200s
+sys	0m0.180s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You can see, it takes just under 15 seconds to pull the Docker Image and to perform the test against the Dirty COW vulnerability. We didn&amp;rsquo;t installed anything on the host machine for these tests and we can get rid of the Docker image later on and clean our host system easily.&lt;/p&gt;
+
+&lt;p&gt;Upgrade the Linux kernel for HypriotOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we have the latest Linux kernel 4.4.27 for HypriotOS installed and we&amp;rsquo;re safe again.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.27-hypriotos-v7+ #1 SMP PREEMPT Fri Oct 28 09:06:49 UTC 2016 armv7l GNU/Linux
+
+$ time docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+
+real	0m4.504s
+user	0m0.100s
+sys	0m0.050s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally, we&amp;rsquo;ll remove the Docker Image we&amp;rsquo;ve used for the tests and free some disk space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-dirtycow   latest              31229be9ea1d        3 days ago          5.512 MB
+
+$ docker rmi -f 31229be9ea1d
+Untagged: hypriot/rpi-dirtycow:latest
+Untagged: hypriot/rpi-dirtycow@sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Deleted: sha256:31229be9ea1d01ed2df47cc23ab50efdc84be3b49572bb4b6047a449dea4e596
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This is another great advantage by Docker - get rid of all the tools we don&amp;rsquo;t need anymore.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
+
+&lt;p&gt;Your Raspberry Pi system is now SAFE again. In the future don&amp;rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And with this way you&amp;rsquo;ll get some other tools updated as well, like the Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker version
+Client:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+HypriotOS/armv7: pirate@black-pearl in ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s all and STAY SAFE !!!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
@@ -2872,228 +3099,6 @@ beta units.&lt;/p&gt;
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Docker on Raspberry Pi Workshop in Brussels</title>
-      <link>https://blog.hypriot.com/post/docker-on-arm-workshops/</link>
-      <pubDate>Thu, 17 Mar 2016 00:00:00 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/docker-on-arm-workshops/</guid>
-      <description>&lt;p&gt;A couple of weeks ago we have been invited by the fine folks over at the Docker User Group in Brussels to help conduct a workshop.
-And of course this workshop was about Docker. Still it was not your ordinary Docker workshop.&lt;/p&gt;
-
-&lt;p&gt;It was special because instead of being a workshop about Docker on big servers it was about Docker on really small ARM devices.
-The very same devices that power the upcoming IoT revolution.&lt;/p&gt;
-
-&lt;p&gt;Turns out it is really amazing what you can do with Docker on those tiny machines.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;In this workshop attendees learned how to get started with Docker on their Raspberry Pi&amp;rsquo;s.
-Starting with the basics they soon turned to advanced topics like building a Docker cluster.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;What is Raspberry Pi and how is it working&lt;/li&gt;
-&lt;li&gt;How to flash an SD card with HypriotOS&lt;/li&gt;
-&lt;li&gt;How to log in to a Raspberry Pi via SSH or serial console&lt;/li&gt;
-&lt;li&gt;How to do basic stuff with Docker&lt;/li&gt;
-&lt;li&gt;What is different when using Docker on ARM compared to Intel&lt;/li&gt;
-&lt;li&gt;How to build a Docker Cluster with Docker Swarm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dieter Reuter from our team gave an introductory talk and showed off some of the cool things we did at Hypriot.
-About 70 people attended the workshop and worked in small groups and helped each other to learn new stuff.
-Even days after the event Dieter was still raving about the cool event and the amazing, open-minded and friendly people.&lt;/p&gt;
-
-&lt;p&gt;As you can see from the pictures it was a lot of fun to be there.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-&lt;div class=&#34;title&#34;&gt;Docker &amp;amp; Raspberry Pi Workshop in Brussels&lt;/div&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-02.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-02.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;Dieter giving a talk&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    Dieter giving a talk
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-01.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-01.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-03.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-03.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-04.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-04.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-05.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-05.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-
-
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-  &lt;a href=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/workshop-06.jpeg&#34; itemprop=&#34;contentUrl&#34; data-size=&#34;600x450&#34;&gt;
-      &lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/thumbnails/thumb_workshop-06.jpeg&#34; itemprop=&#34;thumbnail&#34; alt=&#34;&#34; /&gt;
-  &lt;/a&gt;
-
-
-  &lt;figcaption itemprop=&#34;caption description&#34;&gt;
-    
-    &lt;span itemprop=&#34;copyrightHolder&#34;&gt;Hypriot&lt;/span&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
-&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://blog.hypriot.com/js/initphotoswipe.js&#34;&gt;&lt;/script&gt;
-
-
-
-&lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-
-&lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-
-&lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-    
-    &lt;div class=&#34;pswp__container&#34;&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-      &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-    &lt;div class=&#34;pswp__top-bar&#34;&gt;
-      
-      &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-      &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-      &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-      
-      
-      &lt;div class=&#34;pswp__preloader&#34;&gt;
-        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-          &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-            &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-      &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-    &lt;/button&gt;
-    &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-    &lt;/button&gt;
-    &lt;div class=&#34;pswp__caption&#34;&gt;
-      &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;style&gt;
-    .gallery {  }
-    .gallery img { width: 100%; height: auto; }
-    .gallery figure { display: block; float: left; margin: 0 5px 5px 0; width: 200px; }
-    .gallery figcaption { display: none; }
-    .gallery div.title { font-weight: bold; }
-    span[itemprop=&#34;copyrightHolder&#34;] { color : #888; float: right; }
-    span[itemprop=&#34;copyrightHolder&#34;]:before { content: &#34;Foto: &#34;; }
-    img[itemprop=&#34;thumbnail&#34;]{ width: 200px; }
-&lt;/style&gt;
-
-
-&lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Special thanks for making the workshop possible need to go to Damien Duportal.
-His workshop presentation can be found &lt;a href=&#34;http://dduportal.github.io/presentations/docker-meetup-brussels-20160210/#1&#34;&gt;here&lt;/a&gt;.
-The example app that was used during the workshop was ported to ARM and can be found &lt;a href=&#34;https://github.com/jmMeessen/rpi-voting-app/commits/master&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We - at the Hypriot team - are really excited to see how more and more people start to see the potential in Docker on ARM.&lt;/p&gt;
-
-&lt;p&gt;Last week I was approached by Bastiaan Schaap from the DevOps Oost-Nederland Meetup Group to help organize a similar workshop.
-It will take place on &lt;strong&gt;June, 1st in Wageningen in the Netherlands&lt;/strong&gt;. You can read more about the agenda on the &lt;a href=&#34;http://www.meetup.com/de-DE/DevOps-OostNL/events/229287742/?eventId=229287742&#34;&gt;Meetup-Website&lt;/a&gt;.
-Make sure to RSVP early as there will only be a limited number of seats available.&lt;/p&gt;
-
-&lt;p&gt;We plan to do some more workshops in the next couple of months. So if you like to see one happen in your area - please come and talk to us.
-We really have a lot of fun organizing and conducting these kind of events and can come up with a ton of different workshop topics.&lt;/p&gt;
-
-&lt;p&gt;So in this sense - hope to see you soon in person.
-Happy ARM hacking until then. :)&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

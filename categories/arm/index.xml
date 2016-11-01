@@ -6,8 +6,235 @@
     <description>Recent content in Arm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 01 Nov 2016 13:42:20 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fix Dirty COW on Raspberry Pi the Docker way</title>
+      <link>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</link>
+      <pubDate>Tue, 01 Nov 2016 13:42:20 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</guid>
+      <description>
+
+&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
+Dirty COW is a &lt;a href=&#34;http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/&#34;&gt;race condition in Linux&lt;/a&gt; arising from how Copy-On-Write (the COW in the name) is handled by the kernel&amp;rsquo;s memory subsystem&amp;rsquo;s use of private mappings.&lt;/p&gt;
+
+&lt;p&gt;The really dangerous point here is, it can be used to &lt;a href=&#34;http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/&#34;&gt;escape Docker containers&lt;/a&gt;.
+&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So, we&amp;rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!&lt;/p&gt;
+
+&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
+
+&lt;p&gt;For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS&lt;/strong&gt; and &lt;strong&gt;Raspbian Jessie&lt;/strong&gt; (more details can be found &lt;a href=&#34;https://www.raspberrypi.org/blog/#fix-dirty-cow-raspberry-pi&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&amp;rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.&lt;/p&gt;
+
+&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo &lt;a href=&#34;https://github.com/DieterReuter/rpi-dirtycow&#34;&gt;DieterReuter/rpi-dirtycow&lt;/a&gt;, so you can build everything on your own, too.&lt;/p&gt;
+
+&lt;p&gt;Running this single command is just absolutely easy and this is one of the benefits of Docker, you don&amp;rsquo;t have to install anything on your host machine. Just run a Docker container in a secure way and get instant results within seconds.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do some testing on two different operating systems for the Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Raspbian Jessie LITE (2016-09-23)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a freshly installed Raspbian Lite for these tests and you can see, we do have a Linux kernel 4.4.21.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t have the Docker Engine already installed on Raspbian, you can perform it with this few commands - YEAH, it&amp;rsquo;s just so easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://get.docker.com | bash
+$ sudo usermod -aG docker pi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, logout and login again to get access to the Docker CLI from your default &amp;ldquo;pi&amp;rdquo; user.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --version
+Docker version 1.12.3, build 6b644ec
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have Docker installed, we can test against Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s upgrade the Linux kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we&amp;rsquo;ll test it again. Hopefully we&amp;rsquo;ve fixed it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.26-v7+ #915 SMP Thu Oct 20 17:08:44 BST 2016 armv7l GNU/Linux
+
+$ docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New Linux kernel 4.4.26 is installed for Raspbian and Dirty COW is fixed!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Did you mentioned the different output from the &lt;code&gt;docker run&lt;/code&gt; commands? The first time, Docker has detected that the Docker Image &amp;ldquo;hypriot/rpi-dirtycow&amp;rdquo; is not on the machine and downloads/pulls the required image layers. The second time it can just start the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS 1.1.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;m using the latest HypriotOS 1.1.0 release, but the Linux kernel upgrade works even for an older 0.8 release.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.24-hypriotos-v7+ #1 SMP PREEMPT Tue Oct 11 17:15:58 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test for Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ time docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+
+real	0m14.514s
+user	0m0.200s
+sys	0m0.180s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You can see, it takes just under 15 seconds to pull the Docker Image and to perform the test against the Dirty COW vulnerability. We didn&amp;rsquo;t installed anything on the host machine for these tests and we can get rid of the Docker image later on and clean our host system easily.&lt;/p&gt;
+
+&lt;p&gt;Upgrade the Linux kernel for HypriotOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we have the latest Linux kernel 4.4.27 for HypriotOS installed and we&amp;rsquo;re safe again.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.27-hypriotos-v7+ #1 SMP PREEMPT Fri Oct 28 09:06:49 UTC 2016 armv7l GNU/Linux
+
+$ time docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+
+real	0m4.504s
+user	0m0.100s
+sys	0m0.050s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally, we&amp;rsquo;ll remove the Docker Image we&amp;rsquo;ve used for the tests and free some disk space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-dirtycow   latest              31229be9ea1d        3 days ago          5.512 MB
+
+$ docker rmi -f 31229be9ea1d
+Untagged: hypriot/rpi-dirtycow:latest
+Untagged: hypriot/rpi-dirtycow@sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Deleted: sha256:31229be9ea1d01ed2df47cc23ab50efdc84be3b49572bb4b6047a449dea4e596
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This is another great advantage by Docker - get rid of all the tools we don&amp;rsquo;t need anymore.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
+
+&lt;p&gt;Your Raspberry Pi system is now SAFE again. In the future don&amp;rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And with this way you&amp;rsquo;ll get some other tools updated as well, like the Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker version
+Client:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+HypriotOS/armv7: pirate@black-pearl in ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s all and STAY SAFE !!!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
@@ -2868,481 +3095,6 @@ with the Raspberry Pi&amp;rsquo;s included. The hardware kits we used in this po
 PicoCluster is currently optimizing a few parts like the PDU to get more power for the new Raspberry Pi 3,
 so we expect the next version will get some changes and improvements compared to these
 beta units.&lt;/p&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Let&#39;s run Docker on the ClearFog Pro router board</title>
-      <link>https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</link>
-      <pubDate>Wed, 16 Mar 2016 18:14:02 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/clearfog-pro-part-2-lets-run-docker/</guid>
-      <description>
-
-&lt;p&gt;Here is the follow up of our blog post series about the new ARM-based router board
-from SolidRun which is powered by a dual core Marvell ARMADA ARMv7 CPU. In case
-you missed the intro a few days ago, we highly recommend reading the technical
-specifications first to get an impression of this board.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Part 1: &lt;a href=&#34;https://blog.hypriot.com/post/introducing-the-clearfog-pro-router-board/&#34;&gt;Introducing the new ClearFog Pro Router Board from SolidRun&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This time we&amp;rsquo;ll get our hands on this new board and try to install Linux with a
-recent kernel version and hopefully we&amp;rsquo;re able to install and run the Docker Engine
-the first time on this powerful device.&lt;/p&gt;
-
-&lt;p&gt;So let&amp;rsquo;s get started and for our second episode we connect the ClearFog Pro to a
-MacBookPro and powering this thing up&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg&#34; alt=&#34;ClearFog Pro Eth2 Cabled&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&#34;first-contact:df574ad27518dffc38341295be8d9782&#34;&gt;First contact&lt;/h3&gt;
-
-&lt;p&gt;We can connect the ClearFog Pro to a MacBookPro with a standard USB cable, because
-SolidRun added a FTDI chip on the board (Note: you&amp;rsquo;ll need to install the appropriate
-FTDI device drivers).
-&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg&#34; alt=&#34;ClearFog Pro Serial Console&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;The microUSB connector acts as a debugging console and gives us access to the
-Linux console as well. As soon as we&amp;rsquo;re powering the board, we can see the console
-output of the boot loader. Here we don&amp;rsquo;t have a microSD card inserted and the bootloader
-stops it&amp;rsquo;s boot sequence and we proved that we are successfully connected.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;BootROM - 1.73
-
-Booting from MMC
-Card did not respond to voltage select!
-Error initializing MMC - FFFFFFEF
-
-Trying Uart
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;install-linux:df574ad27518dffc38341295be8d9782&#34;&gt;Install Linux&lt;/h3&gt;
-
-&lt;p&gt;Normally we would start building our own HypriotOS for a new board, in order to get a
-perfect Linux kernel with tuned settings and a Debian-based Linux distro to run Docker
-in an optimized way. But this time it turns out we are able to jump start pretty fast
-and using Armbian for this first testing.&lt;/p&gt;
-
-&lt;p&gt;For this purpose we&amp;rsquo;ve created Armbian for the ClearFog Pro from source and getting a brand-new
-Linux kernel 4.4.5 and all things packaged into a ready-to-install SD card image. Now, we
-only have to flash the image to a microSD card with the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;Hypriot flash tool&lt;/a&gt;
-and boot up the board.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash Armbian_5.05_Armada_Debian_jessie_4.4.5.raw
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;On the login prompt we&amp;rsquo;re using username &lt;code&gt;root&lt;/code&gt; with the initial password &lt;code&gt;1234&lt;/code&gt;
-to login the first time.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Debian GNU/Linux 8 armada ttyS0
-
-armada login:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once we&amp;rsquo;ve changed the root password and created another user account, we do have
-access to the console and can check the Armbian Linux system in detail.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# uname -a
-Linux armada 4.4.5-marvell #2 SMP Wed Mar 16 09:42:31 UTC 2016 armv7l GNU/Linux
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, this is indeed a current Linux kernel version 4.4.5. The very latest
-Linux kernel release is 4.5 and it was just released a few days ago and we should expect
-it will be supported soon for the ClearFog Pro board too.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s dive a little bit deeper and we can see our board is running with 1 GByte
-of main memory.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# cat /proc/meminfo
-MemTotal:        1027860 kB
-MemFree:          910964 kB
-MemAvailable:     973540 kB
-Buffers:           11104 kB
-Cached:            66864 kB
-SwapCached:            0 kB
-Active:            56388 kB
-Inactive:          37856 kB
-Active(anon):      17536 kB
-Inactive(anon):     6540 kB
-Active(file):      38852 kB
-Inactive(file):    31316 kB
-Unevictable:           0 kB
-Mlocked:               0 kB
-HighTotal:        262144 kB
-HighFree:         237664 kB
-LowTotal:         765716 kB
-LowFree:          673300 kB
-SwapTotal:        131068 kB
-SwapFree:         131068 kB
-Dirty:                 8 kB
-Writeback:             0 kB
-AnonPages:         16340 kB
-Mapped:            10092 kB
-Shmem:              7804 kB
-Slab:              11668 kB
-SReclaimable:       5004 kB
-SUnreclaim:         6664 kB
-KernelStack:         720 kB
-PageTables:          360 kB
-NFS_Unstable:          0 kB
-Bounce:                0 kB
-WritebackTmp:          0 kB
-CommitLimit:      644996 kB
-Committed_AS:      56040 kB
-VmallocTotal:     245760 kB
-VmallocUsed:           0 kB
-VmallocChunk:          0 kB
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And a dual core ARMv7 from a Marvell Armada 380 / 385 CPU. To be precise, it&amp;rsquo;s a
-Marvell ARMADA 388 CPU with up to 1.6GHz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# cat /proc/cpuinfo
-processor       : 0
-model name      : ARMv7 Processor rev 1 (v7l)
-BogoMIPS        : 50.00
-Features        : half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpd32
-CPU implementer : 0x41
-CPU architecture: 7
-CPU variant     : 0x4
-CPU part        : 0xc09
-CPU revision    : 1
-
-processor       : 1
-model name      : ARMv7 Processor rev 1 (v7l)
-BogoMIPS        : 50.00
-Features        : half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpd32
-CPU implementer : 0x41
-CPU architecture: 7
-CPU variant     : 0x4
-CPU part        : 0xc09
-CPU revision    : 1
-
-Hardware        : Marvell Armada 380/385 (Device Tree)
-Revision        : 0000
-Serial          : 0000000000000000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is a detailed picture of the SOM (System On Module), which includes the CPU
-and the DDR3 memory chips.
-&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg&#34; alt=&#34;ClearFog Pro MicroSOM&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Once we attach an ethernet cable to the ethernet connector next to the USB plug,
-we should have the network interface &lt;code&gt;eth2&lt;/code&gt; running. If there is no IP address
-assigned we can use &lt;code&gt;dhclient eth2&lt;/code&gt; to fetch a new TCP/IP address via DHCP.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# dhclient eth2
-[  262.372335] mvneta f1070000.ethernet eth2: PHY [f1072004.mdio-mi:00] driver [Marvell 88E1510]
-[  262.380889] mvneta f1070000.ethernet eth2: configuring for link AN mode phy
-[  262.387949] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
-[  265.371548] mvneta f1070000.ethernet eth2: Link is Up - 100Mbps/Full - flow control rx/tx
-[  265.379757] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# ifconfig eth2
-eth2      Link encap:Ethernet  HWaddr 00:50:43:25:fb:84
-          inet addr:192.168.2.108  Bcast:192.168.2.255  Mask:255.255.255.0
-          inet6 addr: fe80::250:43ff:fe25:fb84/64 Scope:Link
-          inet6 addr: 2003:86:8c11:a703:250:43ff:fe25:fb84/64 Scope:Global
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:57 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:44 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:532
-          RX bytes:7746 (7.5 KiB)  TX bytes:4300 (4.1 KiB)
-          Interrupt:41
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally let&amp;rsquo;s check if we have an internet connection to proceed with our installation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@armada:~# ping -c 3 google.com
-PING google.com (173.194.116.206) 56(84) bytes of data.
-64 bytes from fra07s64-in-f14.1e100.net (173.194.116.206): icmp_seq=1 ttl=57 time=27.0 ms
-64 bytes from fra07s64-in-f14.1e100.net (173.194.116.206): icmp_seq=2 ttl=57 time=26.8 ms
-
---- google.com ping statistics ---
-3 packets transmitted, 2 received, 33% packet loss, time 2003ms
-rtt min/avg/max/mdev = 26.828/26.959/27.091/0.210 ms
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ok, that&amp;rsquo;s great. We do have now a Debian Jessie Linux distro called &lt;code&gt;Armbian&lt;/code&gt;
-with a most recent Linux kernel 4.4.5 running on the ClearFog Pro.&lt;/p&gt;
-
-&lt;h3 id=&#34;installing-the-docker-engine:df574ad27518dffc38341295be8d9782&#34;&gt;Installing the Docker Engine&lt;/h3&gt;
-
-&lt;p&gt;Before we try to install Docker, we&amp;rsquo;d like to know about if the Linux kernel settings
-are sufficient to run Docker in a decent way. Remember, most of the standard Linux
-kernels for dev boards lacks the support for a few important kernel options, and this
-could cause major problems to run Docker.&lt;/p&gt;
-
-&lt;p&gt;But let&amp;rsquo;s have a look here and check the kernel settings with a check script which
-is thankfully provided by the Docker core team.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://github.com/docker/docker/raw/master/contrib/check-config.sh
-chmod +x check-config.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;./check-config.sh
-info: reading kernel config from /proc/config.gz ...
-
-Generally Necessary:
-- cgroup hierarchy: properly mounted [/sys/fs/cgroup]
-- CONFIG_NAMESPACES: enabled
-- CONFIG_NET_NS: enabled
-- CONFIG_PID_NS: enabled
-- CONFIG_IPC_NS: enabled
-- CONFIG_UTS_NS: enabled
-- CONFIG_DEVPTS_MULTIPLE_INSTANCES: missing
-- CONFIG_CGROUPS: enabled
-- CONFIG_CGROUP_CPUACCT: enabled
-- CONFIG_CGROUP_DEVICE: enabled
-- CONFIG_CGROUP_FREEZER: enabled
-- CONFIG_CGROUP_SCHED: enabled
-- CONFIG_CPUSETS: enabled
-- CONFIG_MEMCG: enabled
-- CONFIG_KEYS: enabled
-- CONFIG_MACVLAN: enabled
-- CONFIG_VETH: enabled
-- CONFIG_BRIDGE: enabled
-- CONFIG_BRIDGE_NETFILTER: enabled (as module)
-- CONFIG_NF_NAT_IPV4: enabled (as module)
-- CONFIG_IP_NF_FILTER: enabled (as module)
-- CONFIG_IP_NF_TARGET_MASQUERADE: enabled (as module)
-- CONFIG_NETFILTER_XT_MATCH_ADDRTYPE: enabled (as module)
-- CONFIG_NETFILTER_XT_MATCH_CONNTRACK: enabled (as module)
-- CONFIG_NF_NAT: enabled (as module)
-- CONFIG_NF_NAT_NEEDED: enabled
-- CONFIG_POSIX_MQUEUE: enabled
-
-Optional Features:
-- CONFIG_USER_NS: missing
-- CONFIG_SECCOMP: missing
-- CONFIG_CGROUP_PIDS: missing
-- CONFIG_MEMCG_KMEM: enabled
-- CONFIG_MEMCG_SWAP: enabled
-- CONFIG_MEMCG_SWAP_ENABLED: enabled
-- CONFIG_BLK_CGROUP: enabled
-- CONFIG_IOSCHED_CFQ: enabled
-- CONFIG_BLK_DEV_THROTTLING: enabled
-- CONFIG_CGROUP_PERF: enabled
-- CONFIG_CGROUP_HUGETLB: missing
-- CONFIG_NET_CLS_CGROUP: missing
-- CONFIG_CGROUP_NET_PRIO: missing
-- CONFIG_CFS_BANDWIDTH: enabled
-- CONFIG_FAIR_GROUP_SCHED: enabled
-- CONFIG_RT_GROUP_SCHED: enabled
-- CONFIG_EXT3_FS: missing
-- CONFIG_EXT3_FS_XATTR: missing
-- CONFIG_EXT3_FS_POSIX_ACL: missing
-- CONFIG_EXT3_FS_SECURITY: missing
-    (enable these ext3 configs if you are using ext3 as backing filesystem)
-- CONFIG_EXT4_FS: enabled
-- CONFIG_EXT4_FS_POSIX_ACL: enabled
-- CONFIG_EXT4_FS_SECURITY: enabled
-- Storage Drivers:
-  - &amp;quot;aufs&amp;quot;:
-    - CONFIG_AUFS_FS: missing
-  - &amp;quot;btrfs&amp;quot;:
-    - CONFIG_BTRFS_FS: enabled
-  - &amp;quot;devicemapper&amp;quot;:
-    - CONFIG_BLK_DEV_DM: missing
-    - CONFIG_DM_THIN_PROVISIONING: missing
-  - &amp;quot;overlay&amp;quot;:
-    - CONFIG_OVERLAY_FS: enabled (as module)
-  - &amp;quot;zfs&amp;quot;:
-    - /dev/zfs: missing
-    - zfs command: missing
-    - zpool command: missing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This report tells us that the kernel 4.4.5 provided by Armbian is quite well,
-but it&amp;rsquo;s not perfectly optimized for Docker usage. Anyway, we&amp;rsquo;ll give it a try
-and will see how far we can go before we&amp;rsquo;re trying to optimize the kernel settings
-even further.&lt;/p&gt;
-
-&lt;p&gt;As this board has a standard ARMv7 CPU we can easily install the Docker Engine from
-the Hypriot package repository. BTW, that&amp;rsquo;s exactly the same version we&amp;rsquo;re running
-on all the Raspberry Pi&amp;rsquo;s, ODROID&amp;rsquo;s and other ARMv6 or ARMv7 boards as well.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install -y apt-transport-https
-wget -q https://packagecloud.io/gpg.key -O - | apt-key add -
-echo &#39;deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main&#39; &amp;gt;&amp;gt; /etc/apt/sources.list.d/hypriot.list
-apt-get update
-apt-get install -y docker-hypriot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally, let&amp;rsquo;s check the Docker version and infos and see if all is installed the
-right way.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker version
-Client:
- Version:      1.10.3
- API version:  1.22
- Go version:   go1.4.3
- Git commit:   20f81dd
- Built:        Thu Mar 10 22:23:48 2016
- OS/Arch:      linux/arm
-
-Server:
- Version:      1.10.3
- API version:  1.22
- Go version:   go1.4.3
- Git commit:   20f81dd
- Built:        Thu Mar 10 22:23:48 2016
- OS/Arch:      linux/arm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;docker info
-Containers: 0
- Running: 0
- Paused: 0
- Stopped: 0
-Images: 0
-Server Version: 1.10.3
-Storage Driver: overlay
- Backing Filesystem: extfs
-Execution Driver: native-0.2
-Logging Driver: json-file
-Plugins:
- Volume: local
- Network: host bridge null
-Kernel Version: 4.4.5-marvell
-Operating System: Debian GNU/Linux 8 (jessie)
-OSType: linux
-Architecture: armv7l
-CPUs: 2
-Total Memory: 1004 MiB
-Name: armada
-ID: CH4K:7X5P:SF47:C6NN:CRIF:OIUS:66TM:PJFL:D5ET:APW2:KCKT:DWBT
-Debug mode (server): true
- File Descriptors: 12
- Goroutines: 20
- System Time: 2016-03-16T16:34:52.01930928Z
- EventsListeners: 0
- Init SHA1: 0db326fc09273474242804e87e11e1d9930fb95b
- Init Path: /usr/lib/docker/dockerinit
- Docker Root Dir: /var/lib/docker
-WARNING: No memory limit support
-WARNING: No swap limit support
-WARNING: No oom kill disable support
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Perfect! As you can see, we do have now the latest Docker Engine release v1.10.3 up and running
-on the ClearFog Pro. And it&amp;rsquo;s using Overlay filesystem which is really great. But
-there are also some warnings displayed - this will be fixed later with our own
-Linux distro HypriotOS.&lt;/p&gt;
-
-&lt;p&gt;Checking the status of the &lt;code&gt;docker service&lt;/code&gt; reveals, that the service is running
-but it&amp;rsquo;s not enabled yet.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;systemctl status docker
-● docker.service - Docker Application Container Engine
-   Loaded: loaded (/lib/systemd/system/docker.service; disabled)
-   Active: active (running) since Wed 2016-03-16 16:34:27 UTC; 49s ago
-     Docs: https://docs.docker.com
- Main PID: 4219 (docker)
-   CGroup: /system.slice/docker.service
-           └─4219 /usr/bin/docker daemon -H fd:// --storage-driver=overlay -D...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Thus we should enable it to get the Docker Engine automatically started on the next
-reboot of the board.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;systemctl enable docker
-Synchronizing state for docker.service with sysvinit using update-rc.d...
-Executing /usr/sbin/update-rc.d docker defaults
-Executing /usr/sbin/update-rc.d docker enable
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Wow, this was really damn easy. Nothing complicated and nothing special until now.
-It seems that with Armbian the Docker Engine 1.10.3 is just running almost out-of-the-box.&lt;/p&gt;
-
-&lt;h3 id=&#34;running-the-first-docker-container:df574ad27518dffc38341295be8d9782&#34;&gt;Running the first Docker container&lt;/h3&gt;
-
-&lt;p&gt;Now, we&amp;rsquo;d like to start a first Docker container and we&amp;rsquo;re just using a very small
-web server.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
-Unable to find image &#39;hypriot/rpi-busybox-httpd:latest&#39; locally
-latest: Pulling from hypriot/rpi-busybox-httpd
-c74a9c6a645f: Pull complete
-6f1938f6d8ae: Pull complete
-e1347d4747a6: Pull complete
-a3ed95caeb02: Pull complete
-Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
-Status: Downloaded newer image for hypriot/rpi-busybox-httpd:latest
-c6bf2a8a534dea6b5afd2cf466ed1828bae2f77ba06e7563732e3b416c607d6b
-[  705.631098] device vethe5d37f3 entered promiscuous mode
-[  705.636762] IPv6: ADDRCONF(NETDEV_UP): vethe5d37f3: link is not ready
-[  706.011850] eth0: renamed from veth4dd291a
-[  706.052008] IPv6: ADDRCONF(NETDEV_CHANGE): vethe5d37f3: link becomes ready
-[  706.058946] docker0: port 1(vethe5d37f3) entered forwarding state
-[  706.065096] docker0: port 1(vethe5d37f3) entered forwarding state
-[  706.071820] IPv6: ADDRCONF(NETDEV_CHANGE): docker0: link becomes ready
-[  706.095771] devpts: called with bogus options
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ok, the web server seems to be running fine.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker ps -a
-CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                NAMES
-c6bf2a8a534d        hypriot/rpi-busybox-httpd   &amp;quot;/bin/busybox httpd -&amp;quot;   21 seconds ago      Up 19 seconds       0.0.0.0:80-&amp;gt;80/tcp   sharp_hugle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can check the web server via a simple &lt;code&gt;curl&lt;/code&gt; command on the ClearFog console or
-from the MacBookPro.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl 192.168.2.108
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;Pi armed with Docker by Hypriot&amp;lt;/title&amp;gt;
-  &amp;lt;body style=&amp;quot;width: 100%; background-color: black;&amp;quot;&amp;gt;
-    &amp;lt;div id=&amp;quot;main&amp;quot; style=&amp;quot;margin: 100px auto 0 auto; width: 800px;&amp;quot;&amp;gt;
-      &amp;lt;img src=&amp;quot;pi_armed_with_docker.jpg&amp;quot; alt=&amp;quot;pi armed with docker&amp;quot; style=&amp;quot;width: 800px&amp;quot;&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/body&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or, we just point our web browser with &lt;code&gt;open http://192.168.2.108/&lt;/code&gt; to the main web page.
-&lt;img src=&#34;https://blog.hypriot.com/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg&#34; alt=&#34;ClearFog Pro WebBrowser&#34; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&#34;current-status-and-key-takeaways:df574ad27518dffc38341295be8d9782&#34;&gt;Current status and key takeaways&lt;/h3&gt;
-
-&lt;p&gt;The web site of SolidRun says, they&amp;rsquo;re supporting a Linux kernel 3.x only and this would
-be way too old and outdated. But luckily we figured out there is already support for
-the very latest Linux kernel 4.x versions available. SolidRun has an own kernel repo
-on GitHub where you can find all the changes and patches, these patches are already
-included by Armbian as well.&lt;/p&gt;
-
-&lt;p&gt;We just double-checked this directly with SolidRun and they told us, they&amp;rsquo;re already
-working on it, to get all the Marvell related kernel patches for the ClearFog Pro
-into the mainline Linux kernel. They plan to get everything merged into LK 4.6. This could
-maybe mean that not all the special features of the board will be supported right now
-with a kernel 4.x, but we&amp;rsquo;ll test this later on.&lt;/p&gt;
-
-&lt;p&gt;This engagement of SolidRun sounds pretty fantastic and we highly encourage them to proceed
-with this strategy. With supporting the latest mainline Linux kernel with hopefully
-all hardware features this could become one of the best router boards on the market.
-It&amp;rsquo;s powerful with high-speed networking and supports Docker container technology too.&lt;/p&gt;
-
-&lt;h3 id=&#34;next-steps:df574ad27518dffc38341295be8d9782&#34;&gt;Next steps&lt;/h3&gt;
-
-&lt;p&gt;The Linux kernel and SD image provided by Armbian looks really good at this point
-and can be used for the first steps with Docker. But we think there is almost a
-lot of room for improvements which we&amp;rsquo;d like to pick up and optimize the kernel
-settings. As soon as this ground work is done, we&amp;rsquo;ll create a SD card image with
-HypriotOS for the ClearFog Pro router board and release this soon.&lt;/p&gt;
-
-&lt;p&gt;But this will be covered in the next detailed posts of this series, so please
-stay tuned&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 

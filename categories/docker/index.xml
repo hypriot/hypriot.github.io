@@ -6,8 +6,235 @@
     <description>Recent content in Docker on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Oct 2016 15:18:33 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 01 Nov 2016 13:42:20 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fix Dirty COW on Raspberry Pi the Docker way</title>
+      <link>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</link>
+      <pubDate>Tue, 01 Nov 2016 13:42:20 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</guid>
+      <description>
+
+&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
+Dirty COW is a &lt;a href=&#34;http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/&#34;&gt;race condition in Linux&lt;/a&gt; arising from how Copy-On-Write (the COW in the name) is handled by the kernel&amp;rsquo;s memory subsystem&amp;rsquo;s use of private mappings.&lt;/p&gt;
+
+&lt;p&gt;The really dangerous point here is, it can be used to &lt;a href=&#34;http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/&#34;&gt;escape Docker containers&lt;/a&gt;.
+&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So, we&amp;rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!&lt;/p&gt;
+
+&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
+
+&lt;p&gt;For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS&lt;/strong&gt; and &lt;strong&gt;Raspbian Jessie&lt;/strong&gt; (more details can be found &lt;a href=&#34;https://www.raspberrypi.org/blog/#fix-dirty-cow-raspberry-pi&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&amp;rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.&lt;/p&gt;
+
+&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo &lt;a href=&#34;https://github.com/DieterReuter/rpi-dirtycow&#34;&gt;DieterReuter/rpi-dirtycow&lt;/a&gt;, so you can build everything on your own, too.&lt;/p&gt;
+
+&lt;p&gt;Running this single command is just absolutely easy and this is one of the benefits of Docker, you don&amp;rsquo;t have to install anything on your host machine. Just run a Docker container in a secure way and get instant results within seconds.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do some testing on two different operating systems for the Raspberry Pi:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Raspbian Jessie LITE (2016-09-23)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a freshly installed Raspbian Lite for these tests and you can see, we do have a Linux kernel 4.4.21.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t have the Docker Engine already installed on Raspbian, you can perform it with this few commands - YEAH, it&amp;rsquo;s just so easy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://get.docker.com | bash
+$ sudo usermod -aG docker pi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, logout and login again to get access to the Docker CLI from your default &amp;ldquo;pi&amp;rdquo; user.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --version
+Docker version 1.12.3, build 6b644ec
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have Docker installed, we can test against Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s upgrade the Linux kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we&amp;rsquo;ll test it again. Hopefully we&amp;rsquo;ve fixed it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux raspberrypi 4.4.26-v7+ #915 SMP Thu Oct 20 17:08:44 BST 2016 armv7l GNU/Linux
+
+$ docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New Linux kernel 4.4.26 is installed for Raspbian and Dirty COW is fixed!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Did you mentioned the different output from the &lt;code&gt;docker run&lt;/code&gt; commands? The first time, Docker has detected that the Docker Image &amp;ldquo;hypriot/rpi-dirtycow&amp;rdquo; is not on the machine and downloads/pulls the required image layers. The second time it can just start the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HypriotOS 1.1.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;m using the latest HypriotOS 1.1.0 release, but the Linux kernel upgrade works even for an older 0.8 release.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.24-hypriotos-v7+ #1 SMP PREEMPT Tue Oct 11 17:15:58 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test for Dirty COW.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ time docker run hypriot/rpi-dirtycow
+Unable to find image &#39;hypriot/rpi-dirtycow:latest&#39; locally
+latest: Pulling from hypriot/rpi-dirtycow
+38070c4d0c33: Pull complete
+a3ed95caeb02: Pull complete
+2d2e2d46b9b5: Pull complete
+Digest: sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Status: Downloaded newer image for hypriot/rpi-dirtycow:latest
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are VULNERABLE!!!
+
+real	0m14.514s
+user	0m0.200s
+sys	0m0.180s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You can see, it takes just under 15 seconds to pull the Docker Image and to perform the test against the Dirty COW vulnerability. We didn&amp;rsquo;t installed anything on the host machine for these tests and we can get rid of the Docker image later on and clean our host system easily.&lt;/p&gt;
+
+&lt;p&gt;Upgrade the Linux kernel for HypriotOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install raspberrypi-kernel
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we have the latest Linux kernel 4.4.27 for HypriotOS installed and we&amp;rsquo;re safe again.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ uname -a
+Linux black-pearl 4.4.27-hypriotos-v7+ #1 SMP PREEMPT Fri Oct 28 09:06:49 UTC 2016 armv7l GNU/Linux
+
+$ time docker run hypriot/rpi-dirtycow
+
+Test for Dirty Cow:
+  $ echo &amp;quot;You are SAFE!          &amp;quot; &amp;gt; foo
+  $ chmod 404 foo
+  $ ./dirtyc0w foo &amp;quot;You are VULNERABLE!!!&amp;quot; &amp;amp;
+  $ sleep 2
+  $ cat foo
+You are SAFE!
+
+real	0m4.504s
+user	0m0.100s
+sys	0m0.050s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And finally, we&amp;rsquo;ll remove the Docker Image we&amp;rsquo;ve used for the tests and free some disk space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-dirtycow   latest              31229be9ea1d        3 days ago          5.512 MB
+
+$ docker rmi -f 31229be9ea1d
+Untagged: hypriot/rpi-dirtycow:latest
+Untagged: hypriot/rpi-dirtycow@sha256:065d979dd3c48e6488044206ec782628ecf241ef02104610c076949d9881ad0d
+Deleted: sha256:31229be9ea1d01ed2df47cc23ab50efdc84be3b49572bb4b6047a449dea4e596
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This is another great advantage by Docker - get rid of all the tools we don&amp;rsquo;t need anymore.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
+
+&lt;p&gt;Your Raspberry Pi system is now SAFE again. In the future don&amp;rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And with this way you&amp;rsquo;ll get some other tools updated as well, like the Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker version
+Client:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.3
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   6b644ec
+ Built:        Wed Oct 26 19:06:36 2016
+ OS/Arch:      linux/arm
+HypriotOS/armv7: pirate@black-pearl in ~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s all and STAY SAFE !!!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Visualize your Raspberry Pi containers with Portainer or UI for Docker</title>
@@ -2566,80 +2793,6 @@ Then you should register for the Docker BETA program at &lt;a href=&#34;https://
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Your No. 1 source for Docker on ARM</title>
-      <link>https://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</link>
-      <pubDate>Mon, 28 Mar 2016 22:00:00 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</guid>
-      <description>&lt;p&gt;Besides our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;Download section&lt;/a&gt; we do have another source for getting the latest and greatest Docker for ARM.&lt;br /&gt;
-It is a debian package repository hosted at &lt;a href=&#34;https://packagecloud.io/&#34;&gt;packagecloud.io&lt;/a&gt; that contains lots of the stuff from our Download section.&lt;/p&gt;
-
-&lt;p&gt;Despite having a package repository for a couple of months now, it seems many people do not know it.
-I guess that&amp;rsquo;s our own fault because we never spoke about it - we only added it to our prepared SD card images. :)
-Installing or updating Docker or other Docker goodies like Docker-Compose from this repository can be done by a simple &lt;code&gt;apt-get install&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this post I gonna show you what you need to know to get started with this repository.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/packagecloud/packagecloud_io_wide.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Packagecloud.io is a really great service for hosting different types of packages (DEBs, RPMs, Ruby Gems).
-You get detailed download/usage statistics and can manage all your packages easily with a Web-GUI or with an API.&lt;/p&gt;
-
-&lt;p&gt;The last point was what convinced us to use packagecloud.io as it allows us to upload our packages directly from our Continuous Integration systems.
-Many popular CI systems offer build-in packagecloud support - for instance Travis or Circle-CI.&lt;/p&gt;
-
-&lt;p&gt;Our packagecloud repository is conveniently named &amp;ldquo;Schatzkiste&amp;rdquo; and supports Debian-based Linux distributions.&lt;/p&gt;
-
-&lt;p&gt;To use it you need to configure &amp;lsquo;apt&amp;rsquo; first by executing:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -s https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you want to know what this script does you can look up the &lt;a href=&#34;https://packagecloud.io/Hypriot/Schatzkiste/install&#34;&gt;source of this script&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It installs &amp;lsquo;apt-transport-https&amp;rsquo; for connecting securely to our repository, adds the packagecloud GPG key to &amp;lsquo;apt&amp;rsquo; and then adds our &amp;lsquo;Schatzkiste&amp;rsquo;-repository sources to &amp;lsquo;/etc/apt/sources.list.d/Hypriot_Schatzkiste.list&amp;rsquo;.&lt;br /&gt;
-Afterwards it updates the package sources via &amp;lsquo;apt-get update&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;From there you are ready to search for the latest Docker via&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ apt-cache madison docker-hypriot
-docker-hypriot |   1.10.3-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.9.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.9.0-2 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.3-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.7.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.2-2 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.5.0-7 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;lsquo;apt-cache madison&amp;rsquo; will list all the available version for package &amp;lsquo;docker-hypriot&amp;rsquo; and as you can see the latest Docker 1.10.3 is already there, too.&lt;/p&gt;
-
-&lt;p&gt;Install it with&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ apt-get install docker-hypriot=1.10.3-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So I want to close this blog post with a huge thank you to the packagecloud.io guys as they are hosting our packages for free.&lt;/p&gt;
-
-&lt;p&gt;I highly recommend their service as it can be so tedious and time-consuming to setup your own repository properly - I have been there myself.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
