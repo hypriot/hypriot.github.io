@@ -112,7 +112,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;&amp;ldquo;sudo crontab -e&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;There, insert the following line and save the file.&lt;/p&gt;
+&lt;p&gt;There, insert the following line (without quotation marks) and save the file.&lt;/p&gt;
 
 &lt;p&gt;&amp;rdquo;@reboot docker ps&amp;rdquo;&lt;/p&gt;
 
