@@ -10,7 +10,7 @@
     <atom:link href="https://blog.hypriot.com/categories/fault-tolerance/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster</title>
+      <title>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster (Updated)</title>
       <link>https://blog.hypriot.com/post/high-availability-with-docker/</link>
       <pubDate>Wed, 26 Oct 2016 18:03:34 +0100</pubDate>
       
@@ -103,7 +103,26 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
 
-&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, I can confirm that Docker recovers flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!&lt;/p&gt;
+&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Edit on 6.11.2016&lt;/strong&gt;: Jérémy Derussé and Nikolay Kushin reported in the discussion below that for them a reboot or crash of a node did not result in a healthy cluster state after bringing up the node again. As of today, unfortunately I can confirm this, with Docker version 1.12.1, 1.12.2 as well as 1.12.3. I cannot explain why during my tests for this post a crashed node recovered smoothly.&lt;/p&gt;
+
+&lt;p&gt;Based on Jeremy&amp;rsquo;s report, I was able to create a quick fix for this issue. On a node, simply run:&lt;/p&gt;
+
+&lt;p&gt;```
+sudo crontab -e&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;Then insert this:
+
+&amp;gt;```
+@reboot docker ps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Having this configured, after a crash or reboot the node recovered correctly in my tests. I look forward for feedback about this issue! Please use the discussion below.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;More to come soon&lt;/h2&gt;
 

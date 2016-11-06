@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> Testing High Availability of Docker Swarm on a Raspberry Pi Cluster &middot; Docker Pirates ARMed with explosive stuff </title>
+  <title> Testing High Availability of Docker Swarm on a Raspberry Pi Cluster (Updated) &middot; Docker Pirates ARMed with explosive stuff </title>
 
   
   <link rel="stylesheet" href="/css/poole.css">
@@ -79,7 +79,7 @@
 
 <div class="content container">
   <div class="post">
-    <h1>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster</h1>
+    <h1>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster (Updated)</h1>
     <span class="post-date">Wed, Oct 26, 2016</span>
     
 
@@ -169,7 +169,26 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 <h2 id="results:a00c34eb72f8a894fd7d46707edd473e">Results</h2>
 
-<p>As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, I can confirm that Docker recovers flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!</p>
+<p>As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!</p>
+
+<blockquote>
+<p><strong>Edit on 6.11.2016</strong>: Jérémy Derussé and Nikolay Kushin reported in the discussion below that for them a reboot or crash of a node did not result in a healthy cluster state after bringing up the node again. As of today, unfortunately I can confirm this, with Docker version 1.12.1, 1.12.2 as well as 1.12.3. I cannot explain why during my tests for this post a crashed node recovered smoothly.</p>
+
+<p>Based on Jeremy&rsquo;s report, I was able to create a quick fix for this issue. On a node, simply run:</p>
+
+<p>```
+sudo crontab -e</p>
+</blockquote>
+
+<pre><code>Then insert this:
+
+&gt;```
+@reboot docker ps
+</code></pre>
+
+<blockquote>
+<p>Having this configured, after a crash or reboot the node recovered correctly in my tests. I look forward for feedback about this issue! Please use the discussion below.</p>
+</blockquote>
 
 <h2 id="more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e">More to come soon</h2>
 
