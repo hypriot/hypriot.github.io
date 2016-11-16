@@ -253,7 +253,7 @@ HypriotOS/armv7: pirate@black-pearl in ~
 
 &lt;p&gt;The &amp;ldquo;old&amp;rdquo; Docker Swarm already offered some high availability features, but the new called &amp;ldquo;Swarm Mode&amp;rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.&lt;/p&gt;
 
-&lt;p&gt;Also, the release of Docker 1.12 comes with official support for the ARM architecture. Running Docker on ARM has been possible for long time, but now, users can install it the same way on their Raspberry Pis as they do it on any other architecture: Using Docker&amp;rsquo;s official repositories. If you are one of our regular readers, you know that our Team at Hypriot intensively collaborated with Docker to make this official support possible. So we are also very happy that this huge milestone that many people asked for is eventually checked!&lt;/p&gt;
+&lt;p&gt;Also, the release of Docker 1.12 comes with official support for the ARM architecture. Running Docker on ARM has been possible for long time, but now, users can install it the same way on their Raspberry Pis as they do it on any other architecture: Using Docker&amp;rsquo;s official repositories. If you are one of our regular readers, you know that our team at Hypriot intensively collaborated with Docker to make this official support possible. So we are also very happy that this huge milestone that many people asked for is eventually checked!&lt;/p&gt;
 
 &lt;p&gt;Now, with these two news, let&amp;rsquo;s get our hands dirty and test if the announced promises hold.&lt;/p&gt;
 
@@ -281,7 +281,7 @@ HypriotOS/armv7: pirate@black-pearl in ~
 
 &lt;h2 id=&#34;setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
 
-&lt;p&gt;On latest HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
+&lt;p&gt;On HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
 
 &lt;p&gt;On an arbitrary node of the cluster, run&lt;/p&gt;
 
@@ -330,7 +330,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
 
-&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. This holds for the slave and the master node, which is remarkable!&lt;/p&gt;
+&lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. Note that this also holds for master nodes, not only for slave nodes! This is remarkable because in contrast to slave nodes, master nodes hold important data of the cluster state. A master nodes&amp;rsquo;s outage is critical for the health of the cluster. With e.g. &lt;a href=&#34;https://github.com/luxas/kubernetes-on-arm&#34;&gt;Kubernetes-on-arm&lt;/a&gt;, the cluster does not recover after rebooting or crashing a master node.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Edit on 6.11.2016&lt;/strong&gt;: Jérémy Derussé and Nikolay Kushin reported in the discussion below that for them a reboot or crash of a node did not result in a healthy cluster state after bringing up the node again. As of today, unfortunately I can confirm this, with Docker version 1.12.1, 1.12.2 as well as 1.12.3. I cannot explain why during my tests for this post a crashed node recovered smoothly.&lt;/p&gt;
