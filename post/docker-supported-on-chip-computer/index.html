@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Docker is supported on the $9 C.H.I.P. computer &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq/"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about/"> ABOUT US </a></li>
+      
+        <li><a href="/crew/"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Docker is supported on the $9 C.H.I.P. computer</h1>
+    <span class="post-date">Sun, Dec 11, 2016</span>
+    
+
+<p>I guess you&rsquo;re already knowing, one of the cheapest but powerful ARM boards is the $9 C.H.I.P. computer from Next Thing Co. <a href="https://twitter.com/nextthingco">@NextThingCo</a>. It has an ARMv7 1GHz CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
+<img src="/images/install-docker-on-chip-computer/chip-photo2.jpg" alt="chip-photo" />
+</p>
+
+<p>Some time ago I wrote a detailed blog post about how to <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">Install Docker 1.12 on the $9 C.H.I.P. computer</a> with the help of a custom Linux kernel which I built from source for this purpose and included all the necessary kernel modules which are required to run Docker. As an outlook I mentioned that one of the kernel developers from <a href="https://twitter.com/nextthingco">@NextThingCo</a>, namely Wynter Woods <a href="https://twitter.com/zerotri">@zerotri</a>, is working to support Docker officially.</p>
+
+<p>Kernel development and testing takes time and finally here it is!<br>
+<strong>Docker is running on the C.H.I.P. with their latest standard kernel!</strong></p>
+
+<p><img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" />
+</p>
+
+<h3 id="short-overview:db97de66cf60c20e1811a4239cd5d3d4">Short overview</h3>
+
+<p>With the new Docker-enabled Linux kernel for the C.H.I.P. it&rsquo;s really easy to install and use Docker on these tiny cute ARM devices. Basically you just have to update/upgrade to the latest software packages through the standard <code>apt</code> package management commands, have to install Docker and you&rsquo;re good to go.</p>
+
+<p>As I&rsquo;ve already covered all these steps in detail in my post <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">Install Docker 1.12 on the $9 C.H.I.P. computer</a>, we can take a shortcut and I&rsquo;m explaining only the new and shorter steps.</p>
+
+<h3 id="necessary-steps-to-install-docker:db97de66cf60c20e1811a4239cd5d3d4">Necessary steps to install Docker</h3>
+
+<ol>
+<li>Flash the latest available firmware (see <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">last post</a>)</li>
+<li>Connect to the C.H.I.P. via USB or UART console cable (see <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">last post</a>)</li>
+<li>Configure WiFi connection (see <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">last post</a>)</li>
+<li>Configure SSH to access the C.H.I.P. (see <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">last post</a>)</li>
+<li>Checking the OS and Linux kernel version</li>
+<li>Upgrade the Linux kernel and operating system</li>
+<li>Install the Docker Engine the official way</li>
+<li>Run your first Docker Container on the C.H.I.P.</li>
+</ol>
+
+<h4 id="step-5-checking-the-os-and-linux-kernel-version:db97de66cf60c20e1811a4239cd5d3d4">Step 5: Checking the OS and Linux kernel version</h4>
+
+<p>Here I&rsquo;ve flashed the C.H.I.P. with the latest available firmware</p>
+
+<pre><code>uname -a
+Linux chip 4.4.13-ntc-mlc #1 SMP Thu Nov 3 01:28:54 UTC 2016 armv7l GNU/Linux
+</code></pre>
+
+<p>and we can see it&rsquo;s running a Linux kernel version <code>4.4.13-ntc-mlc</code> which is compiled at <code>Thu Nov 3 01:28:54 UTC 2016</code>. If you&rsquo;ve flashed your device weeks or months before, you could maybe see a different and older kernel version.</p>
+
+<h4 id="step-6-upgrade-the-linux-kernel-and-operating-system:db97de66cf60c20e1811a4239cd5d3d4">Step 6: Upgrade the Linux kernel and operating system</h4>
+
+<p>The new Docker-enabled Linux kernel for the C.H.I.P. computer is already available in the standard APT package repository, but it&rsquo;s not yet included in the latest firmware you can flash with the <a href="http://flash.getchip.com/">C.H.I.P. Flasher</a>.</p>
+
+<p>In order to update/upgrade the C.H.I.P. kernel we are going the easy way and performing a complete update and upgrade process of the operating system as well.</p>
+
+<pre><code>apt-get update
+apt-get upgrade
+</code></pre>
+
+<p>As you can see on the <code>apt-get upgrade</code> command, you&rsquo;ll be asked to confirm to install a few new software packages which also includes the new kernel packages.</p>
+
+<pre><code>...
+The following packages will be upgraded:
+  apt apt-utils base-files chip-mali-modules-4.4.13-ntc-mlc cpio dmsetup dpkg e2fslibs e2fsprogs
+  gnupg gpgv libapt-inst1.5 libapt-pkg4.12 libc-bin libc6 libcomerr2 libdevmapper1.02.1
+  libdns-export100 libgcrypt20 libhogweed2 libicu52 libidn11 libirs-export91 libisc-export95
+  libisccfg-export90 libnettle4 libpam-modules libpam-modules-bin libpam0g libpcre3 libss2
+  libtasn1-6 libudev1 linux-image-4.4.13-ntc-mlc multiarch-support
+  rtl8723bs-mp-driver-modules-4.4.13-ntc-mlc tar tzdata udev vim-common vim-tiny wget
+42 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 39.8 MB of archives.
+After this operation, 8562 kB of additional disk space will be used.
+Do you want to continue? [Y/n]
+</code></pre>
+
+<p>At the end of the upgrade you have to reboot the device in order to boot the new Linux kernel. That&rsquo;s all, really!</p>
+
+<pre><code>reboot
+</code></pre>
+
+<p>As you log in again, you can see</p>
+
+<pre><code>uname -a
+Linux chip 4.4.13-ntc-mlc #1 SMP Tue Dec 6 21:38:00 UTC 2016 armv7l GNU/Linux
+</code></pre>
+
+<p>the new Linux kernel has the same version, but a newer build time from <code>Tue Dec 6 21:38:00 UTC 2016</code>.</p>
+
+<h4 id="step-6-install-the-docker-engine-the-official-way:db97de66cf60c20e1811a4239cd5d3d4">Step 6: Install the Docker Engine the official way</h4>
+
+<p>To install Docker the official way is quite easy today because we can use the APT packages and install scripts directly provided by the <a href="https://github.com/docker/docker">Docker project</a>. And Debian for ARMv7 is one of the officially supported OS.</p>
+
+<pre><code>curl -sSL https://get.docker.com | sh
+</code></pre>
+
+<p>This will take some time, but after a while the Docker Engine is installed on your C.H.I.P. computer with just a few commands.</p>
+
+<pre><code>root@chip:~# cat /etc/apt/sources.list.d/docker.list
+deb [arch=armhf] https://apt.dockerproject.org/repo debian-jessie main
+</code></pre>
+
+<p>Check the version of the Docker client command.</p>
+
+<pre><code>root@chip:~# docker --version
+Docker version 1.12.2, build bb80604
+</code></pre>
+
+<p>Check the versions of the Docker client, Docker API and Docker Engine.</p>
+
+<pre><code>root@chip:~# docker version
+Client:
+ Version:      1.12.2
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   bb80604
+ Built:        Tue Oct 11 17:52:51 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.2
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   bb80604
+ Built:        Tue Oct 11 17:52:51 2016
+ OS/Arch:      linux/arm
+</code></pre>
+
+<p>Get some more details about the running Docker Engine.</p>
+
+<pre><code>root@chip:~# docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 1.12.2
+Storage Driver: devicemapper
+ Pool Name: docker-0:16-33578-pool
+ Pool Blocksize: 65.54 kB
+ Base Device Size: 10.74 GB
+ Backing Filesystem: ext4
+ Data file: /dev/loop0
+ Metadata file: /dev/loop1
+ Data Space Used: 305.7 MB
+ Data Space Total: 107.4 GB
+ Data Space Available: 6.596 GB
+ Metadata Space Used: 729.1 kB
+ Metadata Space Total: 2.147 GB
+ Metadata Space Available: 2.147 GB
+ Thin Pool Minimum Free Space: 10.74 GB
+ Udev Sync Supported: true
+ Deferred Removal Enabled: false
+ Deferred Deletion Enabled: false
+ Deferred Deleted Device Count: 0
+ Data loop file: /var/lib/docker/devicemapper/devicemapper/data
+ WARNING: Usage of loopback devices is strongly discouraged for production use. Use `--storage-opt dm.thinpooldev` to specify a custom block storage device.
+ Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
+ Library Version: 1.02.90 (2014-09-01)
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: overlay bridge null host
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Security Options:
+Kernel Version: 4.4.13-ntc-mlc
+Operating System: Debian GNU/Linux 8 (jessie)
+OSType: linux
+Architecture: armv7l
+CPUs: 1
+Total Memory: 491 MiB
+Name: chip
+ID: Z7U2:2DYF:G54F:2QLU:AAG3:TD7Y:YWSQ:6PRM:6ZW3:WIC5:7DEA:HFFK
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+WARNING: No swap limit support
+WARNING: No kernel memory limit support
+Insecure Registries:
+ 127.0.0.0/8
+</code></pre>
+
+<p>Finally we could see, the latest Docker Engine v1.12.2 for Debian/ARMv7 is now installed and is successfully running.</p>
+
+<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p:db97de66cf60c20e1811a4239cd5d3d4">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
+
+<p>As a last step we&rsquo;d like to start a first Docker container, a small web server.</p>
+
+<pre><code>docker run -d -p 80:80 hypriot/rpi-busybox-httpd
+Unable to find image 'hypriot/rpi-busybox-httpd:latest' locally
+latest: Pulling from hypriot/rpi-busybox-httpd
+c74a9c6a645f: Pull complete
+6f1938f6d8ae: Pull complete
+e1347d4747a6: Pull complete
+a3ed95caeb02: Pull complete
+Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
+Status: Downloaded newer image for hypriot/rpi-busybox-httpd:latest
+fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
+</code></pre>
+
+<p>Now start your web browser and point it to the website from our Docker container.</p>
+
+<pre><code>open http://192.168.2.112
+</code></pre>
+
+<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" />
+</p>
+
+<h3 id="tl-dr-install-docker-on-the-c-h-i-p-computer:db97de66cf60c20e1811a4239cd5d3d4">TL;DR - Install Docker on the C.H.I.P. computer</h3>
+
+<p>For all the impatient users, these are the minimal steps to install the latest Linux kernel and the latest Docker Engine on the C.H.I.P. computer.</p>
+
+<pre><code>apt-get update
+apt-get upgrade -y
+reboot
+curl -sSL https://get.docker.com | sh
+</code></pre>
+
+<p>DONE !!!!</p>
+
+<h3 id="acknowledgments:db97de66cf60c20e1811a4239cd5d3d4">Acknowledgments</h3>
+
+<p>Again, I like to thank Wynter Woods <a href="https://twitter.com/zerotri">@zerotri</a> from <a href="https://twitter.com/nextthingco">@NextThingCo</a> for his efforts and hard work to include all the Linux kernel changes necessary to run the Docker Engine pretty slick on the C.H.I.P. computer. It&rsquo;s so great to see when all the changes will be accepted and implemented in the upstream version, so everybody can use the new features without spending too much time.</p>
+
+<p>That&rsquo;s the important point to work in opensource, contributing back so that all users benefit from the results!</p>
+
+<h3 id="feedback-please:db97de66cf60c20e1811a4239cd5d3d4">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/docker-supported-on-chip-computer/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/docker-supported-on-chip-computer/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/docker-supported-on-chip-computer/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

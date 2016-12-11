@@ -6,8 +6,247 @@
     <description>Recent content in Nextthingco on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Dec 2016 13:22:15 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/nextthingco/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker is supported on the $9 C.H.I.P. computer</title>
+      <link>https://blog.hypriot.com/post/docker-supported-on-chip-computer/</link>
+      <pubDate>Sun, 11 Dec 2016 13:22:15 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/docker-supported-on-chip-computer/</guid>
+      <description>
+
+&lt;p&gt;I guess you&amp;rsquo;re already knowing, one of the cheapest but powerful ARM boards is the $9 C.H.I.P. computer from Next Thing Co. &lt;a href=&#34;https://twitter.com/nextthingco&#34;&gt;@NextThingCo&lt;/a&gt;. It has an ARMv7 1GHz CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
+&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/chip-photo2.jpg&#34; alt=&#34;chip-photo&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some time ago I wrote a detailed blog post about how to &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt; with the help of a custom Linux kernel which I built from source for this purpose and included all the necessary kernel modules which are required to run Docker. As an outlook I mentioned that one of the kernel developers from &lt;a href=&#34;https://twitter.com/nextthingco&#34;&gt;@NextThingCo&lt;/a&gt;, namely Wynter Woods &lt;a href=&#34;https://twitter.com/zerotri&#34;&gt;@zerotri&lt;/a&gt;, is working to support Docker officially.&lt;/p&gt;
+
+&lt;p&gt;Kernel development and testing takes time and finally here it is!&lt;br&gt;
+&lt;strong&gt;Docker is running on the C.H.I.P. with their latest standard kernel!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/chip-and-banana.jpg&#34; alt=&#34;chip-and-banana&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;short-overview:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Short overview&lt;/h3&gt;
+
+&lt;p&gt;With the new Docker-enabled Linux kernel for the C.H.I.P. it&amp;rsquo;s really easy to install and use Docker on these tiny cute ARM devices. Basically you just have to update/upgrade to the latest software packages through the standard &lt;code&gt;apt&lt;/code&gt; package management commands, have to install Docker and you&amp;rsquo;re good to go.&lt;/p&gt;
+
+&lt;p&gt;As I&amp;rsquo;ve already covered all these steps in detail in my post &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt;, we can take a shortcut and I&amp;rsquo;m explaining only the new and shorter steps.&lt;/p&gt;
+
+&lt;h3 id=&#34;necessary-steps-to-install-docker:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Necessary steps to install Docker&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Flash the latest available firmware (see &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;last post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Connect to the C.H.I.P. via USB or UART console cable (see &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;last post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Configure WiFi connection (see &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;last post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Configure SSH to access the C.H.I.P. (see &lt;a href=&#34;http://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;last post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Checking the OS and Linux kernel version&lt;/li&gt;
+&lt;li&gt;Upgrade the Linux kernel and operating system&lt;/li&gt;
+&lt;li&gt;Install the Docker Engine the official way&lt;/li&gt;
+&lt;li&gt;Run your first Docker Container on the C.H.I.P.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;step-5-checking-the-os-and-linux-kernel-version:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Step 5: Checking the OS and Linux kernel version&lt;/h4&gt;
+
+&lt;p&gt;Here I&amp;rsquo;ve flashed the C.H.I.P. with the latest available firmware&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uname -a
+Linux chip 4.4.13-ntc-mlc #1 SMP Thu Nov 3 01:28:54 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and we can see it&amp;rsquo;s running a Linux kernel version &lt;code&gt;4.4.13-ntc-mlc&lt;/code&gt; which is compiled at &lt;code&gt;Thu Nov 3 01:28:54 UTC 2016&lt;/code&gt;. If you&amp;rsquo;ve flashed your device weeks or months before, you could maybe see a different and older kernel version.&lt;/p&gt;
+
+&lt;h4 id=&#34;step-6-upgrade-the-linux-kernel-and-operating-system:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Step 6: Upgrade the Linux kernel and operating system&lt;/h4&gt;
+
+&lt;p&gt;The new Docker-enabled Linux kernel for the C.H.I.P. computer is already available in the standard APT package repository, but it&amp;rsquo;s not yet included in the latest firmware you can flash with the &lt;a href=&#34;http://flash.getchip.com/&#34;&gt;C.H.I.P. Flasher&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In order to update/upgrade the C.H.I.P. kernel we are going the easy way and performing a complete update and upgrade process of the operating system as well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get update
+apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see on the &lt;code&gt;apt-get upgrade&lt;/code&gt; command, you&amp;rsquo;ll be asked to confirm to install a few new software packages which also includes the new kernel packages.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+The following packages will be upgraded:
+  apt apt-utils base-files chip-mali-modules-4.4.13-ntc-mlc cpio dmsetup dpkg e2fslibs e2fsprogs
+  gnupg gpgv libapt-inst1.5 libapt-pkg4.12 libc-bin libc6 libcomerr2 libdevmapper1.02.1
+  libdns-export100 libgcrypt20 libhogweed2 libicu52 libidn11 libirs-export91 libisc-export95
+  libisccfg-export90 libnettle4 libpam-modules libpam-modules-bin libpam0g libpcre3 libss2
+  libtasn1-6 libudev1 linux-image-4.4.13-ntc-mlc multiarch-support
+  rtl8723bs-mp-driver-modules-4.4.13-ntc-mlc tar tzdata udev vim-common vim-tiny wget
+42 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 39.8 MB of archives.
+After this operation, 8562 kB of additional disk space will be used.
+Do you want to continue? [Y/n]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At the end of the upgrade you have to reboot the device in order to boot the new Linux kernel. That&amp;rsquo;s all, really!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you log in again, you can see&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uname -a
+Linux chip 4.4.13-ntc-mlc #1 SMP Tue Dec 6 21:38:00 UTC 2016 armv7l GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;the new Linux kernel has the same version, but a newer build time from &lt;code&gt;Tue Dec 6 21:38:00 UTC 2016&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;step-6-install-the-docker-engine-the-official-way:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Step 6: Install the Docker Engine the official way&lt;/h4&gt;
+
+&lt;p&gt;To install Docker the official way is quite easy today because we can use the APT packages and install scripts directly provided by the &lt;a href=&#34;https://github.com/docker/docker&#34;&gt;Docker project&lt;/a&gt;. And Debian for ARMv7 is one of the officially supported OS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -sSL https://get.docker.com | sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will take some time, but after a while the Docker Engine is installed on your C.H.I.P. computer with just a few commands.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# cat /etc/apt/sources.list.d/docker.list
+deb [arch=armhf] https://apt.dockerproject.org/repo debian-jessie main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check the version of the Docker client command.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# docker --version
+Docker version 1.12.2, build bb80604
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check the versions of the Docker client, Docker API and Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# docker version
+Client:
+ Version:      1.12.2
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   bb80604
+ Built:        Tue Oct 11 17:52:51 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.12.2
+ API version:  1.24
+ Go version:   go1.6.3
+ Git commit:   bb80604
+ Built:        Tue Oct 11 17:52:51 2016
+ OS/Arch:      linux/arm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Get some more details about the running Docker Engine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;root@chip:~# docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 1.12.2
+Storage Driver: devicemapper
+ Pool Name: docker-0:16-33578-pool
+ Pool Blocksize: 65.54 kB
+ Base Device Size: 10.74 GB
+ Backing Filesystem: ext4
+ Data file: /dev/loop0
+ Metadata file: /dev/loop1
+ Data Space Used: 305.7 MB
+ Data Space Total: 107.4 GB
+ Data Space Available: 6.596 GB
+ Metadata Space Used: 729.1 kB
+ Metadata Space Total: 2.147 GB
+ Metadata Space Available: 2.147 GB
+ Thin Pool Minimum Free Space: 10.74 GB
+ Udev Sync Supported: true
+ Deferred Removal Enabled: false
+ Deferred Deletion Enabled: false
+ Deferred Deleted Device Count: 0
+ Data loop file: /var/lib/docker/devicemapper/devicemapper/data
+ WARNING: Usage of loopback devices is strongly discouraged for production use. Use `--storage-opt dm.thinpooldev` to specify a custom block storage device.
+ Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
+ Library Version: 1.02.90 (2014-09-01)
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: overlay bridge null host
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Security Options:
+Kernel Version: 4.4.13-ntc-mlc
+Operating System: Debian GNU/Linux 8 (jessie)
+OSType: linux
+Architecture: armv7l
+CPUs: 1
+Total Memory: 491 MiB
+Name: chip
+ID: Z7U2:2DYF:G54F:2QLU:AAG3:TD7Y:YWSQ:6PRM:6ZW3:WIC5:7DEA:HFFK
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+WARNING: No swap limit support
+WARNING: No kernel memory limit support
+Insecure Registries:
+ 127.0.0.0/8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally we could see, the latest Docker Engine v1.12.2 for Debian/ARMv7 is now installed and is successfully running.&lt;/p&gt;
+
+&lt;h4 id=&#34;step-8-run-your-first-docker-container-on-the-c-h-i-p:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Step 8: Run your first Docker Container on the C.H.I.P.&lt;/h4&gt;
+
+&lt;p&gt;As a last step we&amp;rsquo;d like to start a first Docker container, a small web server.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
+Unable to find image &#39;hypriot/rpi-busybox-httpd:latest&#39; locally
+latest: Pulling from hypriot/rpi-busybox-httpd
+c74a9c6a645f: Pull complete
+6f1938f6d8ae: Pull complete
+e1347d4747a6: Pull complete
+a3ed95caeb02: Pull complete
+Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
+Status: Downloaded newer image for hypriot/rpi-busybox-httpd:latest
+fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now start your web browser and point it to the website from our Docker container.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open http://192.168.2.112
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/first-container-on-chip.jpg&#34; alt=&#34;first-container-on-chip&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;tl-dr-install-docker-on-the-c-h-i-p-computer:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;TL;DR - Install Docker on the C.H.I.P. computer&lt;/h3&gt;
+
+&lt;p&gt;For all the impatient users, these are the minimal steps to install the latest Linux kernel and the latest Docker Engine on the C.H.I.P. computer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get update
+apt-get upgrade -y
+reboot
+curl -sSL https://get.docker.com | sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;DONE !!!!&lt;/p&gt;
+
+&lt;h3 id=&#34;acknowledgments:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Acknowledgments&lt;/h3&gt;
+
+&lt;p&gt;Again, I like to thank Wynter Woods &lt;a href=&#34;https://twitter.com/zerotri&#34;&gt;@zerotri&lt;/a&gt; from &lt;a href=&#34;https://twitter.com/nextthingco&#34;&gt;@NextThingCo&lt;/a&gt; for his efforts and hard work to include all the Linux kernel changes necessary to run the Docker Engine pretty slick on the C.H.I.P. computer. It&amp;rsquo;s so great to see when all the changes will be accepted and implemented in the upstream version, so everybody can use the new features without spending too much time.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s the important point to work in opensource, contributing back so that all users benefit from the results!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Deploying an IoT Swarm with Docker Machine</title>
