@@ -220,6 +220,44 @@ fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/first-container-on-chip.jpg&#34; alt=&#34;first-container-on-chip&#34; /&gt;
 &lt;/p&gt;
 
+&lt;h3 id=&#34;using-latest-rc-of-docker-engine:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;Using latest RC of Docker Engine&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to get the latest Docker Engine for testing, like release candidates, you can install it pretty easily with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -sSL https://test.docker.com | sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or you can upgrade your current system with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#edit /etc/apt/sources.list.d/docker.list # change &#39;main&#39; to &#39;testing&#39;
+cat /etc/apt/sources.list.d/docker.list
+deb [arch=armhf] https://apt.dockerproject.org/repo debian-jessie testing
+
+apt-get update
+apt-get install -y docker-engine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can test the latest available release candidate of the Docker Engine with all the newest features with Docker Swarm mode and other goodies.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker version
+Client:
+ Version:      1.13.0-rc3
+ API version:  1.25
+ Go version:   go1.7.3
+ Git commit:   4d92237
+ Built:        Mon Dec  5 19:00:08 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.13.0-rc3
+ API version:  1.25 (minimum version 1.12)
+ Go version:   go1.7.3
+ Git commit:   4d92237
+ Built:        Mon Dec  5 19:00:08 2016
+ OS/Arch:      linux/arm
+ Experimental: false
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;tl-dr-install-docker-on-the-c-h-i-p-computer:db97de66cf60c20e1811a4239cd5d3d4&#34;&gt;TL;DR - Install Docker on the C.H.I.P. computer&lt;/h3&gt;
 
 &lt;p&gt;For all the impatient users, these are the minimal steps to install the latest Linux kernel and the latest Docker Engine on the C.H.I.P. computer.&lt;/p&gt;

@@ -286,6 +286,44 @@ fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
 <p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" />
 </p>
 
+<h3 id="using-latest-rc-of-docker-engine:db97de66cf60c20e1811a4239cd5d3d4">Using latest RC of Docker Engine</h3>
+
+<p>If you&rsquo;d like to get the latest Docker Engine for testing, like release candidates, you can install it pretty easily with</p>
+
+<pre><code>curl -sSL https://test.docker.com | sh
+</code></pre>
+
+<p>Or you can upgrade your current system with</p>
+
+<pre><code>#edit /etc/apt/sources.list.d/docker.list # change 'main' to 'testing'
+cat /etc/apt/sources.list.d/docker.list
+deb [arch=armhf] https://apt.dockerproject.org/repo debian-jessie testing
+
+apt-get update
+apt-get install -y docker-engine
+</code></pre>
+
+<p>Now you can test the latest available release candidate of the Docker Engine with all the newest features with Docker Swarm mode and other goodies.</p>
+
+<pre><code>docker version
+Client:
+ Version:      1.13.0-rc3
+ API version:  1.25
+ Go version:   go1.7.3
+ Git commit:   4d92237
+ Built:        Mon Dec  5 19:00:08 2016
+ OS/Arch:      linux/arm
+
+Server:
+ Version:      1.13.0-rc3
+ API version:  1.25 (minimum version 1.12)
+ Go version:   go1.7.3
+ Git commit:   4d92237
+ Built:        Mon Dec  5 19:00:08 2016
+ OS/Arch:      linux/arm
+ Experimental: false
+</code></pre>
+
 <h3 id="tl-dr-install-docker-on-the-c-h-i-p-computer:db97de66cf60c20e1811a4239cd5d3d4">TL;DR - Install Docker on the C.H.I.P. computer</h3>
 
 <p>For all the impatient users, these are the minimal steps to install the latest Linux kernel and the latest Docker Engine on the C.H.I.P. computer.</p>
