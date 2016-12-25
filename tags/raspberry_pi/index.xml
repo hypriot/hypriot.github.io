@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/raspberry_pi/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Raspberry_pi on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/raspberry_pi/</link>
+    <description>Recent content in Raspberry_pi on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 31 Oct 2016 15:18:33 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/raspberry_pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,16 +15,17 @@
       <pubDate>Mon, 31 Oct 2016 15:18:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/new-docker-ui-portainer/</guid>
-      <description>&lt;p&gt;At home I use some Raspberry Pi&amp;rsquo;s for some home network services, and I run
+      <description>
+
+&lt;p&gt;At home I use some Raspberry Pi&amp;rsquo;s for some home network services, and I run
 these services inside Docker containers. From time to time I want to see or
 manage one of these containers. But I&amp;rsquo;m too lazy to get to my laptop and use
 the Docker CLI for that. There are two nice Docker UI&amp;rsquo;s to access your Docker engine with a web browser. Let&amp;rsquo;s have a look at both.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-docker.png&#34; alt=&#34;Portainer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-docker.png&#34; alt=&#34;Portainer&#34; /&gt;
+&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;ui-for-docker-formerly-known-as-dockerui&#34;&gt;UI for Docker, formerly known as DockerUI&lt;/h2&gt;
+&lt;h2 id=&#34;ui-for-docker-formerly-known-as-dockerui:9b02a9b5d0cf4c4b78c5b66f0c71e56f&#34;&gt;UI for Docker, formerly known as DockerUI&lt;/h2&gt;
 
 &lt;p&gt;I have started using the DockerUI, an open source project from Michael Crosby and Kevan Ahlquist. You can find the source code on GitHub at &lt;a href=&#34;https://github.com/kevana/ui-for-docker&#34;&gt;https://github.com/kevana/ui-for-docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -46,17 +48,20 @@ the Docker CLI for that. There are two nice Docker UI&amp;rsquo;s to access your
 
 &lt;p&gt;So let&amp;rsquo;s have a look at the dashboard which shows you an overview of your running or stopped containers:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-dashboard.png&#34; alt=&#34;DockerUI Dashboard&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-dashboard.png&#34; alt=&#34;DockerUI Dashboard&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;You can click on each container and see more details and so some actions with them like stopping and starting them again.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-container.png&#34; alt=&#34;DockerUI Container&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-container.png&#34; alt=&#34;DockerUI Container&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The UI provides some more views to list for example all local Docker images and information about your Docker engine.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-images.png&#34; alt=&#34;DockerUI Images&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/dockerui-images.png&#34; alt=&#34;DockerUI Images&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;portainer&#34;&gt;Portainer&lt;/h2&gt;
+&lt;h2 id=&#34;portainer:9b02a9b5d0cf4c4b78c5b66f0c71e56f&#34;&gt;Portainer&lt;/h2&gt;
 
 &lt;p&gt;Last week I found &lt;a href=&#34;http://portainer.io&#34;&gt;portainer.io&lt;/a&gt; which also looks very good. They provide Docker images for Linux and Windows, &lt;del&gt;but not for ARM right now&lt;/del&gt; and as well an image for ARM.&lt;/p&gt;
 
@@ -68,18 +73,21 @@ the Docker CLI for that. There are two nice Docker UI&amp;rsquo;s to access your
 
 &lt;p&gt;The dashboard also gives you an overview of all running containers, all images etc.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-dashboard.png&#34; alt=&#34;Portainer Dashboard&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-dashboard.png&#34; alt=&#34;Portainer Dashboard&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;In the container list you can see all running and stopped containers as well as some actions you can do with it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-container.png&#34; alt=&#34;Portainer Dashboard&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-container.png&#34; alt=&#34;Portainer Dashboard&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Clicking on one of the running containers you have access to the details, environment variables, port mappings, volumes.
 You can also access some CPU/memory and network statistics as well as the logs of your container, as well as the processes running inside the container.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-stats.png&#34; alt=&#34;Portainer Stats&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerui-portainer/portainer-stats.png&#34; alt=&#34;Portainer Stats&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:9b02a9b5d0cf4c4b78c5b66f0c71e56f&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;If you want to remote control your Raspberry Pi Docker containers from a nice Web UI, then try
 one of these prebuilt Docker images. Of course be aware that everyone in your home network
@@ -88,7 +96,8 @@ But for some private projects it is still an advantage to simplify starting and 
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -104,7 +113,7 @@ But for some private projects it is still an advantage to simplify starting and 
 &lt;p&gt;The goal of this guide is to answer these questions and to get you started with Docker on a Raspberry Pi in no time.
 We are going to cover the procedure for Windows, OS X and Linux users.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
+&lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
 
 &lt;p&gt;Docker simplifies the packaging, distribution, installation and execution of (complex) applications.&lt;/p&gt;
 
@@ -123,7 +132,7 @@ Containers are self-contained, preconfigured packages that a user can fetch and 
 By keeping different software components separated in containers they can also be easily updated or removed without influencing each other.
 There are many more advantages of using Docker; the details of which can be found in the official &lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Documentation&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
+&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker:397c66ef19f9f061b6711d2e296cb276&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
 
 &lt;p&gt;If we piqued your curiosity and you would like to dive into the magic world of Docker one of the easiest ways is by using Docker on a &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;.
 According to the creators of the Raspberry Pi it is:&lt;/p&gt;
@@ -142,7 +151,7 @@ It’s capable of doing everything you’d expect a desktop computer to do, from
 
 &lt;p&gt;-&amp;gt; &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi&#34;&gt;The Linux guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
+&lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
 
 &lt;p&gt;As stated in the beginning Docker simplifies the way software is distributed and run. We even said that you would only need one command for that. It is time to prove it.&lt;/p&gt;
 
@@ -161,7 +170,8 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;Now you can open up your browser on your workstation and type in the IP address of your Raspberry Pi to see that it really works!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
 
@@ -174,7 +184,8 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;We prepared a couple of &lt;a href=&#34;https://hub.docker.com/u/hypriot/&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -206,7 +217,7 @@ In our case the software we wanna use is Docker.&lt;/p&gt;
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -225,7 +236,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:8814904f208dcaade82991443c7514e0&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;First put your SD card into the computer. Then in the terminal type&lt;/p&gt;
 
@@ -234,7 +245,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now identify the SD Card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -268,11 +280,12 @@ Depending on your hardware and the performance of your SD card it will take up t
 
 &lt;p&gt;When &lt;code&gt;dd&lt;/code&gt; is finished you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:8814904f208dcaade82991443c7514e0&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -285,7 +298,7 @@ Depending on your hardware and the performance of your SD card it will take up t
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:8814904f208dcaade82991443c7514e0&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi.&lt;/p&gt;
 
@@ -306,14 +319,16 @@ yum install nmap       # for red hat based distros
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;nmap -sP 192.168.0.101/24 | grep black-pearl
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The output of the &lt;code&gt;nmap&lt;/code&gt; command should show you the IP address of your Raspberry Pi.
 If you get a blank line without an IP address your Raspberry Pi is probably not connected to the network.
@@ -331,7 +346,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker service is running by typing&lt;/p&gt;
 
@@ -340,7 +356,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -379,7 +396,7 @@ In our case the software we wanna use is Docker.&lt;/p&gt;
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -398,7 +415,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;First put your SD card into the computer. Then in the terminal type&lt;/p&gt;
 
@@ -407,7 +424,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -421,7 +439,8 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a result you should see&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now we are ready to flash the SD card. We are going to use the &lt;code&gt;dd&lt;/code&gt; command for this.&lt;/p&gt;
 
@@ -439,11 +458,12 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -456,7 +476,7 @@ When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like 
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi.&lt;/p&gt;
 
@@ -473,7 +493,8 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
 
@@ -496,7 +517,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker Service is running by typing&lt;/p&gt;
 
@@ -505,7 +527,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -574,7 +597,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -583,7 +606,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After 7-zip is finished with extracting you will have a file with a &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;To start the flashing process right-click on the &lt;em&gt;Win32 Disk Imager&lt;/em&gt; application which we installed earlier and click on &lt;em&gt;Run as administrator&lt;/em&gt;. You will see a window asking for permissions. Grant them.&lt;/p&gt;
 
@@ -592,7 +615,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 &lt;p&gt;Next to the blue folder button, you will find a dropdown menu in which you can select your SD card.
 To double check the device letter open your Windows Explorer and locate the SD card drive.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally click on &lt;strong&gt;write&lt;/strong&gt; which will flash the SD card image to the SD card.&lt;/p&gt;
 
@@ -600,9 +624,10 @@ To double check the device letter open your Windows Explorer and locate the SD c
 In order to eject the SD card use the &lt;em&gt;secure eject&lt;/em&gt; function in the menu next to your system clock.
 This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -615,7 +640,7 @@ This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi via &lt;em&gt;PuTTY&lt;/em&gt;.&lt;/p&gt;
 
@@ -630,25 +655,29 @@ Type the following command into this field but replace the IP address in front o
 
 &lt;p&gt;As a result you should see this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Zenmap&lt;/em&gt; list all active hosts within your local network.
 In order to find the Raspberry Pi click the button &lt;em&gt;filter hosts&lt;/em&gt; at the bottom of the &lt;em&gt;Zenmap&lt;/em&gt; and type in &lt;em&gt;black&lt;/em&gt;.
 Now the first line of the list should show the IP address of your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Since we now know where to find the Raspberry Pi within your network it is time to start &lt;em&gt;PuTTY&lt;/em&gt; to establish a SSH connection to your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;After starting &lt;em&gt;PuTTY&lt;/em&gt; type in the IP address we determined into the field &lt;em&gt;Host Name&lt;/em&gt;. With a click on the button &lt;em&gt;Open&lt;/em&gt; the connection will be established.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally to check if the Docker service is running type&lt;/p&gt;
 
@@ -657,7 +686,8 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -674,8 +704,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
       
       <guid>https://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
       <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;https://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
-Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.
-&lt;/p&gt;
+Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;Actually - in the end - we came up with three guides. :)&lt;/p&gt;
 
@@ -688,7 +717,8 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 
-&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;</description>
+&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -697,10 +727,10 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
       <pubDate>Thu, 16 Apr 2015 22:06:11 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
-      <description>&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
-Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
+Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
 
 &lt;p&gt;Our Docker Debian packages are battle-tested only with our HypriotOS Docker SD card image.
 Use it to get the best Docker experience available for the Raspberry Pi. It is ridiculous easy to get up and running. Under 5 minutes - promised!&lt;/p&gt;
@@ -711,7 +741,7 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
 
-&lt;h2 id=&#34;all-new-shiny-docker-1-6-0&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
+&lt;h2 id=&#34;all-new-shiny-docker-1-6-0:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
 
 &lt;p&gt;Alright back to Docker&amp;hellip; version 1.6.0 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
 
@@ -732,13 +762,13 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 &lt;p&gt;Read some more details on the official Docker blog
 &lt;a href=&#34;https://blog.docker.com/2015/04/docker-release-1-6/&#34;&gt;DOCKER 1.6: ENGINE &amp;amp; ORCHESTRATION UPDATES, REGISTRY 2.0, &amp;amp; WINDOWS CLIENT PREVIEW&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;get-it-while-it-is-still-hot&#34;&gt;Get it while it is still hot&lt;/h2&gt;
+&lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-
+&lt;p&gt;
 
 HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
@@ -746,7 +776,7 @@ $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
-
+&lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;
 
@@ -756,7 +786,8 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and like this post on Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and like this post on Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -765,10 +796,11 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
       <pubDate>Wed, 15 Apr 2015 06:35:55 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/connect-kitematic-to-external-docker-engine/</guid>
-      <description>&lt;p&gt;In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.
-&lt;/p&gt;
+      <description>
 
-&lt;h3 id=&#34;intro-and-background&#34;&gt;Intro and Background&lt;/h3&gt;
+&lt;p&gt;In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.&lt;/p&gt;
+
+&lt;h3 id=&#34;intro-and-background:90fd682791be4b8b148459904d1205f8&#34;&gt;Intro and Background&lt;/h3&gt;
 
 &lt;p&gt;At Hypriot we recently built and released our own OS image to run the Docker Engine on a low-cost Raspberry Pi and labeled it HypriotOS.  A user can download this pre-compiled Raspbian based SD card image, which includes a Linux 3.18.10 kernel with all Docker related kernel options included, and Docker 1.5.0 is already enabled with Overlay filesystem.  Just download, extract, flash to a SD card and boot your Raspberry Pi - and within minutes you have Docker up and running and you can instantly start using it.&lt;/p&gt;
 
@@ -776,7 +808,7 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;As developers and geeks, we&amp;rsquo;re really comfortable using SSH and a bash shell to control the Docker CLI.  It&amp;rsquo;s also not a problem to connect a Linux or Mac OSX host via a native Docker CLI over the network, even a Windows client works well.  But what about the normal end users?  Wouldn&amp;rsquo;t it be great to have a more convinient way to use a graphical frontend via web or a specific app.  A GUI would be really cool, but this would take a long time to develop.&lt;/p&gt;
 
-&lt;h3 id=&#34;kitematic-to-the-rescue&#34;&gt;Kitematic to the Rescue&lt;/h3&gt;
+&lt;h3 id=&#34;kitematic-to-the-rescue:90fd682791be4b8b148459904d1205f8&#34;&gt;Kitematic to the Rescue&lt;/h3&gt;
 
 &lt;p&gt;Even the fact that our OS image works pretty much out of the box, and everybody can use Docker within minutes we&amp;rsquo;ve received a lot of feedback, whether we could build and deliver a graphical application to control Docker and deploying apps/containers with it.  And here comes Kitematic to the rescue - what a great timing.  We&amp;rsquo;ve just read the announcement on the Docker blog and were extremely impressed but also a little bit frustrated, it&amp;rsquo;s only meant to be used on a Mac running it&amp;rsquo;s own Boot2Docker VM through a newly created Docker Machine.&lt;/p&gt;
 
@@ -784,10 +816,11 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;Imagine now what could be even better for an end user?  What if we could use Kitematic to control a remote Docker Host running on that cute little Raspberry Pi.&lt;/p&gt;
 
-&lt;h3 id=&#34;connecting-the-dots&#34;&gt;Connecting the Dots&lt;/h3&gt;
+&lt;h3 id=&#34;connecting-the-dots:90fd682791be4b8b148459904d1205f8&#34;&gt;Connecting the Dots&lt;/h3&gt;
 
 &lt;p&gt;We quickly read through the docs and studied the source code and found out that Kitematic is based upon Docker Machine to control the backend Docker Host, hey cool - that&amp;rsquo;s the key.  Within a couple of hours we had the first rough hack and were able to actively control a Raspberry Pi 2 running Docker 1.5.0 with a brand new graphical user interface.  Just selecting one of our favorite Docker Images from the Docker Hub and pushed it seamlessly to a RPi!&lt;br /&gt;
-&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/rpi-docker-images-at-the-hub.png&#34; alt=&#34;image1&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;But until now, it was just a hack and far away from being used in production or by end users.  All settings were done with some source code changes within Kitematic itself.&lt;/p&gt;
 
@@ -802,7 +835,7 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;For the next day we scheduled a short online meeting with Mike from Kitematic, and to our surprise the whole team joined us, including Jeff and Sean.  Everybody was so happy and surprised how easy we could merge both ideas and concepts together.  Right now, we&amp;rsquo;re able to offer a Docker optimized OS for the Raspberry Pi which one could install and use within a few minutes only, and within the same amount of time, installing the app from Kitematic to control your Raspberry Pi with a great user experience.&lt;/p&gt;
 
-&lt;h3 id=&#34;switch-to-a-better-system-design&#34;&gt;Switch to a better System Design&lt;/h3&gt;
+&lt;h3 id=&#34;switch-to-a-better-system-design:90fd682791be4b8b148459904d1205f8&#34;&gt;Switch to a better System Design&lt;/h3&gt;
 
 &lt;p&gt;Thanks to the fact, that Kitematic uses Docker Machine under the hood to connect to it&amp;rsquo;s Docker VM, it must be able to use this concept for a better system design to communicate with an external Docker Host.  Our first try was just looking for a standard driver available which supports our needs.  We quickly tested the &lt;code&gt;none&lt;/code&gt; driver and were able to control the Raspberry Pi from within Docker Machine.  For this case it was necessary to reconfigure Docker to use a TLS encrypted connection.  But we had absolute no luck to get it work together with Kitematic.&lt;/p&gt;
 
@@ -817,9 +850,10 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;To use this improved Kitematic version from Hypriot, you have to clone the GitHub repo &lt;a href=&#34;https://github.com/hypriot/kitematic/tree/connect-to-externel-docker-host&#34;&gt;hypriot/kitematic&lt;/a&gt;, use the branch &lt;code&gt;connect-to-externel-docker-host&lt;/code&gt; and build it with &amp;ldquo;npm run install&amp;rdquo;, it will also download and use our specifically built version of Docker Machine with the &lt;code&gt;hypriot&lt;/code&gt; driver included.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/Kitematic-and-HypriotOS-just-works.png&#34; alt=&#34;image2&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;mission-accomplished&#34;&gt;Mission accomplished&lt;/h3&gt;
+&lt;h3 id=&#34;mission-accomplished:90fd682791be4b8b148459904d1205f8&#34;&gt;Mission accomplished&lt;/h3&gt;
 
 &lt;p&gt;At the end, we&amp;rsquo;ve now built our own basic Docker Machine driver for the HypriotOS to use it for controlling a Raspberry Pi with the Kitematic app, and we&amp;rsquo;ll improve it over the next few days and weeks to get it production ready.  To our surprise, we only had to change a single line of code within Kitematic itself.&lt;/p&gt;
 
@@ -827,7 +861,7 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;And the best thing is, it could be used to connect any other external Docker Host to Kitematic, not only the Raspberry Pi.  In the PR we included a short description how to connect an already running Boot2Docker VM to Kitematic.  And if anyone is interested to help, please feel free to join.  As soon as we&amp;rsquo;re done with the development we&amp;rsquo;ll create an upstream PR to get the changes back into Kitematic and Docker Machine.&lt;/p&gt;
 
-&lt;h3 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h3&gt;
+&lt;h3 id=&#34;next-steps:90fd682791be4b8b148459904d1205f8&#34;&gt;Next Steps&lt;/h3&gt;
 
 &lt;p&gt;We do have a lot of things on our roadmap, maybe too much to share in this blog post.  Here are at least the next important things we&amp;rsquo;re planing:&lt;/p&gt;
 
@@ -849,18 +883,20 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 &lt;li&gt;&amp;hellip; (depending on user feedback)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kitematic/pi_armed_with_docker.jpg&#34; alt=&#34;image3&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;send-us-your-feedback-please&#34;&gt;Send us your Feedback, please!&lt;/h3&gt;
+&lt;h3 id=&#34;send-us-your-feedback-please:90fd682791be4b8b148459904d1205f8&#34;&gt;Send us your Feedback, please!&lt;/h3&gt;
 
 &lt;p&gt;We really love feedback and would like to get some new ideas and thoughts from all of you.  So, if you&amp;rsquo;re liking our ideas and the way to find and break the limits, please send us your comments via email, twitter or drop us a line.  We&amp;rsquo;d be more than happy to answer and talk directly to share our experiences.&lt;/p&gt;
 
-&lt;h4 id=&#34;note&#34;&gt;Note&lt;/h4&gt;
+&lt;h4 id=&#34;note:90fd682791be4b8b148459904d1205f8&#34;&gt;Note&lt;/h4&gt;
 
 &lt;p&gt;This post was originally posted at the &lt;a href=&#34;http://blog.kitematic.com&#34;&gt;Kitematic Blog&lt;/a&gt;, and is slightly updated to recent download links and version numbers.&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash;
-Dieter Reuter&lt;/p&gt;</description>
+Dieter Reuter&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -869,27 +905,28 @@ Dieter Reuter&lt;/p&gt;</description>
       <pubDate>Tue, 14 Apr 2015 13:25:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/drive-neopixels-in-docker/</guid>
-      <description>&lt;p&gt;In our &lt;a href=&#34;https://blog.hypriot.com/post/lets-get-physical/&#34;&gt;last blog post&lt;/a&gt; we showed you how to interact with the GPIO ports and how to turn on one LED. Now for some more magic lights we create a little Node.js application that drives a NeoPixel LED strip from Adafruit in a Docker container.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;In our &lt;a href=&#34;https://blog.hypriot.com/post/lets-get-physical/&#34;&gt;last blog post&lt;/a&gt; we showed you how to interact with the GPIO ports and how to turn on one LED. Now for some more magic lights we create a little Node.js application that drives a NeoPixel LED strip from Adafruit in a Docker container.&lt;/p&gt;
 
 &lt;p&gt;Thanks to the latest improvements now both Raspberry Pi B/B+ and the new Pi 2 B can  drive the NeoPixel LED strips from Adafruit with just a level shifter. So it&amp;rsquo;s time to put this into Docker for easier deployment.&lt;/p&gt;
 
 &lt;p&gt;The NeoPixel (or WS2812) LED&amp;rsquo;s are programmable RGB LED&amp;rsquo;s that receive their RGB value with a single serial wire.&lt;/p&gt;
 
-&lt;h2 id=&#34;wiring&#34;&gt;Wiring&lt;/h2&gt;
+&lt;h2 id=&#34;wiring:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Wiring&lt;/h2&gt;
 
 &lt;p&gt;Let&amp;rsquo;s have a look at the wiring first. The Raspberry Pi can create the serial signal on GPIO Pin 18 trough PWM/DMA. But the signal level has to be shifted from 3.3V to 5V for the LED strip. I have used a Adafruit Level Shifter Breakout Board, but a 74AHCT125 level converter could be used as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/rpi-levelshifter-neopixel_Steckplatine.png&#34; alt=&#34;wiring diagram&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/rpi-levelshifter-neopixel_Steckplatine.png&#34; alt=&#34;wiring diagram&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Do not power the NeoPixels directly from your Raspberry Pi as the 5V output could not source enough current to light many pixels. This could damage your Raspberry Pi!&lt;/strong&gt; For my tests with only eight pixels it is ok to use the 5V from the Pi, but be warned!&lt;/p&gt;
 
-&lt;h2 id=&#34;the-code&#34;&gt;The code&lt;/h2&gt;
+&lt;h2 id=&#34;the-code:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;The code&lt;/h2&gt;
 
 &lt;p&gt;First we create the &lt;code&gt;package.json&lt;/code&gt; file with a dependency to the &lt;code&gt;rpi-ws281x-native&lt;/code&gt; Node.js module that supports all Raspberry Pi versions to drive the NeoPixels.&lt;/p&gt;
 
-&lt;h3 id=&#34;package-json&#34;&gt;package.json&lt;/h3&gt;
+&lt;h3 id=&#34;package-json:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;package.json&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
   &amp;quot;name&amp;quot;: &amp;quot;rpi-node-neopixel-example&amp;quot;,
@@ -903,7 +940,7 @@ Dieter Reuter&lt;/p&gt;</description>
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;server-js&#34;&gt;server.js&lt;/h3&gt;
+&lt;h3 id=&#34;server-js:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;server.js&lt;/h3&gt;
 
 &lt;p&gt;Now we implement a Node.js sample that does some color magic. We have reduced the brightness of the LED&amp;rsquo;s a little bit.&lt;/p&gt;
 
@@ -972,21 +1009,21 @@ function color(r, g, b) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h3&gt;
+&lt;h3 id=&#34;dockerfile:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Dockerfile&lt;/h3&gt;
 
 &lt;p&gt;The &lt;code&gt;Dockerfile&lt;/code&gt; is very simple here as we use the &lt;code&gt;onbuild&lt;/code&gt; version of our &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-iojs/&#34;&gt;hypriot/rpi-iojs&lt;/a&gt; Docker image.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;FROM hypriot/rpi-iojs:onbuild
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;build-the-docker-image&#34;&gt;Build the Docker image&lt;/h2&gt;
+&lt;h2 id=&#34;build-the-docker-image:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Build the Docker image&lt;/h2&gt;
 
 &lt;p&gt;We now have all parts together and are ready to build the docker image with this command&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker build -t node-neopixel .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;run-the-docker-container&#34;&gt;Run the Docker container&lt;/h2&gt;
+&lt;h2 id=&#34;run-the-docker-container:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Run the Docker container&lt;/h2&gt;
 
 &lt;p&gt;Now it is time to turn on the NeoPixel LED&amp;rsquo;s by running the container&lt;/p&gt;
 
@@ -998,17 +1035,19 @@ function color(r, g, b) {
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --privileged -d node-neopixel
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/neopixel640.gif&#34; alt=&#34;Let there be lights!&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/neopixel640.gif&#34; alt=&#34;Let there be lights!&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;You can find the complete Node.js example on GitHub at &lt;a href=&#34;https://github.com/hypriot/rpi-node-neopixel-example&#34;&gt;https://github.com/hypriot/rpi-node-neopixel-example&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Now you are ready to start your NeoPixel project on your Raspberry Pi and deploy it with Docker.&lt;/p&gt;
 
 &lt;p&gt;To learn more about NeoPixels head over to the excellent &lt;a href=&#34;https://learn.adafruit.com/adafruit-neopixel-uberguide/overview&#34;&gt;Adafruit&amp;rsquo;s NeoPixel Überguide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1017,9 +1056,9 @@ function color(r, g, b) {
       <pubDate>Thu, 09 Apr 2015 16:49:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/lets-get-physical/</guid>
-      <description>&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;To keep the tutorial simple we will use the binary from the &lt;a href=&#34;http://wiringpi.com&#34;&gt;wiringPi&lt;/a&gt; project within a Docker container. This command line tool can be used to read and write the GPIO (General Purpose Input/Output) pins of the Raspberry Pi.&lt;/p&gt;
 
@@ -1028,21 +1067,23 @@ function color(r, g, b) {
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull hypriot/rpi-gpio
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;turn-an-led-on-and-off&#34;&gt;Turn an LED on and off&lt;/h2&gt;
+&lt;h2 id=&#34;turn-an-led-on-and-off:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn an LED on and off&lt;/h2&gt;
 
 &lt;p&gt;In a first little example we just want to turn an LED on and off. You need only a few components to try it yourself.&lt;/p&gt;
 
 &lt;p&gt;See the wiring diagram on how to connect the LED and the 220Ω resistor to your Raspberry Pi for the following examples. We use the 11th (BCM GPIO 17 / wiringPi Pin 0) and 9th (Ground) Pin of the Raspberry Pi B/B+ or Pi 2 B.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here is the circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now you can use these commands:&lt;/p&gt;
 
-&lt;h3 id=&#34;get-status-of-all-gpios&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
+&lt;h3 id=&#34;get-status-of-all-gpios:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio readall
 &lt;/code&gt;&lt;/pre&gt;
@@ -1077,7 +1118,7 @@ function color(r, g, b) {
  +-----+-----+---------+------+---+---Pi 2---+---+------+---------+-----+-----+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;set-mode-to-output&#34;&gt;Set mode to output&lt;/h3&gt;
+&lt;h3 id=&#34;set-mode-to-output:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Set mode to output&lt;/h3&gt;
 
 &lt;p&gt;To turn on LED&amp;rsquo;s or switch other outputs you have to set the corresponding GPIO pin to output mode with&lt;/p&gt;
 
@@ -1086,34 +1127,36 @@ function color(r, g, b) {
 
 &lt;p&gt;This has to be done only once after reboot.&lt;/p&gt;
 
-&lt;h3 id=&#34;turn-on-the-led&#34;&gt;Turn on the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-on-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn on the LED&lt;/h3&gt;
 
 &lt;p&gt;Now we can turn on the LED with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;turn-off-the-led&#34;&gt;Turn off the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-off-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn off the LED&lt;/h3&gt;
 
 &lt;p&gt;or off with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 off
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;read-a-button-from-gpio&#34;&gt;Read a button from GPIO&lt;/h2&gt;
+&lt;h2 id=&#34;read-a-button-from-gpio:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read a button from GPIO&lt;/h2&gt;
 
 &lt;p&gt;In another example we attach a button to the Raspberry Pi and read the state from the 12th pin (BCM GPIO 18, wiringPi Pin 1).
 The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor is connected to 9th Pin (Ground).&lt;/p&gt;
 
 &lt;p&gt;The wiring diagram shows how to connect all parts. You need a push button, a 1kΩ resistor for pull down and a 10kΩ resistor to connect to the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here is the corresponding circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;read-button-state&#34;&gt;Read button state&lt;/h3&gt;
+&lt;h3 id=&#34;read-button-state:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read button state&lt;/h3&gt;
 
 &lt;p&gt;To get the status of just the 1th GPIO use this command&lt;/p&gt;
 
@@ -1123,7 +1166,7 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;The command returns &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; as a result of the input state.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;In this blog post we showed you how easily you can use the GPIO ports of the Raspberry Pi from a Docker container with a simple command line tool.&lt;/p&gt;
 
@@ -1131,7 +1174,8 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;If you want to learn more about the GPIO pins you can use the excellent &lt;a href=&#34;http://pi.gadgetoid.com/pinout&#34;&gt;interactive Raspberry Pi Pinout guide&lt;/a&gt; from Gadgetoid.&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1140,12 +1184,12 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
       <pubDate>Mon, 06 Apr 2015 00:18:47 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</guid>
-      <description>&lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
 
 &lt;p&gt;To demonstrate the benefits of Docker Compose we are going to create a simple Node.js &amp;ldquo;Hello World&amp;rdquo; application which will run on three Docker Node.js containers.
 HTTP requests will be distributed to these Node.js nodes by an HAProxy instance running on another Docker container.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;If you haven&amp;rsquo;t heard about Docker Compose its docs have a neat description of what it is all about:&lt;/p&gt;
 
@@ -1155,13 +1199,13 @@ With Compose, you define a multi-container application in a single file,
 then spin your application up in a single command which does everything that needs to be done to get it running.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;a-hello-world-application&#34;&gt;A Hello-World application&lt;/h2&gt;
+&lt;h2 id=&#34;a-hello-world-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;A Hello-World application&lt;/h2&gt;
 
 &lt;p&gt;We start by creating a simple Hello-World &lt;a href=&#34;https://nodejs.org&#34;&gt;Node.js&lt;/a&gt; web application based on &lt;a href=&#34;http://expressjs.com/&#34;&gt;Express.js&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To keep it simple we are only going to show a &amp;ldquo;Hello World&amp;rdquo; message and the hostname of the container.  This will be useful later on.&lt;/p&gt;
 
-&lt;h3 id=&#34;src-index-js&#34;&gt;src/index.js&lt;/h3&gt;
+&lt;h3 id=&#34;src-index-js:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/index.js&lt;/h3&gt;
 
 &lt;p&gt;First we create a &lt;code&gt;src/index.js&lt;/code&gt; file for the web application:&lt;/p&gt;
 
@@ -1179,7 +1223,7 @@ app.listen(80);
 console.log(&#39;Running on http://localhost&#39;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;src-package-json&#34;&gt;src/package.json&lt;/h3&gt;
+&lt;h3 id=&#34;src-package-json:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/package.json&lt;/h3&gt;
 
 &lt;p&gt;Then we need to create a &lt;code&gt;src/package.json&lt;/code&gt; file with the dependencies we need to build and start the Node.js application:&lt;/p&gt;
 
@@ -1197,7 +1241,7 @@ console.log(&#39;Running on http://localhost&#39;);
 
 &lt;p&gt;And that is all that is need to set up this small Hello-World application from the nods.js side of things.&lt;/p&gt;
 
-&lt;h3 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h3&gt;
+&lt;h3 id=&#34;dockerfile:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Dockerfile&lt;/h3&gt;
 
 &lt;p&gt;As we want to run our web application in a Docker container we now need to create a &lt;code&gt;Dockerfile&lt;/code&gt; for that.
 The Dockerfile is simple and straightforward.&lt;/p&gt;
@@ -1219,7 +1263,7 @@ EXPOSE 80
 CMD [&amp;quot;node&amp;quot;, &amp;quot;index.js&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-one-container&#34;&gt;Running one container&lt;/h2&gt;
+&lt;h2 id=&#34;running-one-container:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running one container&lt;/h2&gt;
 
 &lt;p&gt;We can now test if our Node.js web server works by building a Docker application image first and then spinning it up as a new container.&lt;/p&gt;
 
@@ -1236,7 +1280,7 @@ $ docker run -p 80:80 --name web -d node-hello
 
 &lt;p&gt;As we have published the port 80 to the host we also can access our web application from another machine.&lt;/p&gt;
 
-&lt;h3 id=&#34;benchmarking-our-web-application&#34;&gt;Benchmarking our web application&lt;/h3&gt;
+&lt;h3 id=&#34;benchmarking-our-web-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application&lt;/h3&gt;
 
 &lt;p&gt;As we are curious guys we want to know how well our Hello-World application performs on a Docker-Raspberry-Pi-Combo.&lt;/p&gt;
 
@@ -1248,7 +1292,8 @@ To install Apache Bench on Debian/Ubuntu use &lt;code&gt;sudo apt-get install ap
 
 &lt;p&gt;This runs 10.000 HTTP requests with a concurrency of 10. The CPU load while running the benchmark test shows that only one CPU core of the Raspberry Pi 2 is used. The reason is that Node.js is a single threaded process.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here are the results of the Apache Bench test. As you can see a single web server can handle &lt;strong&gt;338&lt;/strong&gt; Requests per second.&lt;/p&gt;
 
@@ -1309,27 +1354,27 @@ Percentage of the requests served within a certain time (ms)
  100%    109 (longest request)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;cleaning-up&#34;&gt;Cleaning up&lt;/h3&gt;
+&lt;h3 id=&#34;cleaning-up:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Cleaning up&lt;/h3&gt;
 
 &lt;p&gt;That&amp;rsquo;s it for our first test drive. We can now stop the web server container.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker stop web
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-multiple-container-with-docker-compose&#34;&gt;Running multiple container with Docker Compose&lt;/h2&gt;
+&lt;h2 id=&#34;running-multiple-container-with-docker-compose:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running multiple container with Docker Compose&lt;/h2&gt;
 
 &lt;p&gt;To run more of these web servers we now use Docker Compose to create a farm of web servers which are running behind a &lt;a href=&#34;http://www.haproxy.org&#34;&gt;HAProxy&lt;/a&gt; load balancer.&lt;/p&gt;
 
 &lt;p&gt;As our mission is to make Docker and its toolset available on ARM we created a &lt;code&gt;docker-compose&lt;/code&gt; binary ready to run on your Raspberry Pi.&lt;/p&gt;
 
-&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;h3 id=&#34;installation:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Installation&lt;/h3&gt;
 
 &lt;p&gt;First we have to install Docker Compose for the ARM-based Raspberry Pi from our fork at &lt;a href=&#34;https://github.com/hypriot/compose&#34;&gt;https://github.com/hypriot/compose&lt;/a&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo sh -c &amp;quot;curl -L https://github.com/hypriot/compose/releases/download/1.1.0-raspbian/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;docker-compose-yml&#34;&gt;docker-compose.yml&lt;/h3&gt;
+&lt;h3 id=&#34;docker-compose-yml:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;docker-compose.yml&lt;/h3&gt;
 
 &lt;p&gt;To get our four container configuration set up we first need to create a &lt;code&gt;docker-compose.yml&lt;/code&gt; file.
 We will need three containers &lt;code&gt;weba&lt;/code&gt;, &lt;code&gt;webb&lt;/code&gt; and &lt;code&gt;webc&lt;/code&gt; based on our web application image and one &lt;code&gt;haproxy&lt;/code&gt; container.&lt;/p&gt;
@@ -1370,7 +1415,7 @@ haproxy:
 Additionally the HAProxy container will have (network) links to each of the three web application containers.
 Furthermore the HAProxy container will exposes port 80 as a central entry point to our Hello-World application webserver farm and its admin interface on port 70.&lt;/p&gt;
 
-&lt;h3 id=&#34;haproxy-haproxy-cfg&#34;&gt;haproxy/haproxy.cfg&lt;/h3&gt;
+&lt;h3 id=&#34;haproxy-haproxy-cfg:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;haproxy/haproxy.cfg&lt;/h3&gt;
 
 &lt;p&gt;HAProxy needs a configuration file that is mapped into the container. Create a file &lt;code&gt;haproxy/haproxy.cfg&lt;/code&gt; with the following content.&lt;/p&gt;
 
@@ -1411,7 +1456,7 @@ backend aj_backends
 
 &lt;p&gt;HAProxy does a health check for each of our three web servers.&lt;/p&gt;
 
-&lt;h3 id=&#34;running-our-webserver-farm&#34;&gt;Running our webserver farm&lt;/h3&gt;
+&lt;h3 id=&#34;running-our-webserver-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running our webserver farm&lt;/h3&gt;
 
 &lt;p&gt;Now that we have set up all the necessary parts it is time to spin up all our Docker containers at once. Just run the command &lt;code&gt;docker-compose up&lt;/code&gt; interactively to see what is happening or use option &lt;code&gt;-d&lt;/code&gt; to start all containers in the background.&lt;/p&gt;
 
@@ -1450,7 +1495,7 @@ $ curl http://localhost
 And the fourth request has the same container name as the first one.
 The HAProxy container forwards each request in a round robin fashion, so each web server gets only one third of the load.&lt;/p&gt;
 
-&lt;h3 id=&#34;benchmarking-our-web-application-farm&#34;&gt;Benchmarking our web application farm&lt;/h3&gt;
+&lt;h3 id=&#34;benchmarking-our-web-application-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application farm&lt;/h3&gt;
 
 &lt;p&gt;Let&amp;rsquo;s see how our web server farm fares compared to our single web application container instance from our first benchmark.&lt;/p&gt;
 
@@ -1459,7 +1504,8 @@ The HAProxy container forwards each request in a round robin fashion, so each we
 
 &lt;p&gt;Now we run 10.000 HTTP requests with a concurrency of 30. The CPU load while running the benchmark test now shows that all four CPU cores of the Raspberry Pi 2 are used.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here are the results of the benchmark test itself.&lt;/p&gt;
 
@@ -1538,7 +1584,8 @@ Killing rpinodehaproxyexample_webb_1...
 
 &lt;p&gt;We hope you enjoyed this little tour of Docker Compose!&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1547,10 +1594,11 @@ Killing rpinodehaproxyexample_webb_1...
       <pubDate>Tue, 31 Mar 2015 20:00:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-1-dot-6-release-candidate-ready-for-arm/</guid>
-      <description>&lt;p&gt;If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.
-&lt;/p&gt;
+      <description>
 
-&lt;h3 id=&#34;what-do-you-get-with-docker-1-6&#34;&gt;What do you get with Docker 1.6?&lt;/h3&gt;
+&lt;p&gt;If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-do-you-get-with-docker-1-6:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;What do you get with Docker 1.6?&lt;/h3&gt;
 
 &lt;p&gt;Docker 1.6 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
 
@@ -1570,13 +1618,13 @@ Killing rpinodehaproxyexample_webb_1...
 
 &lt;p&gt;The only prerequisite to get started is that you are using our Hypriot SD card image for the Rasperry Pi. We published a new version just yesterday and you can the blog post about it here: &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;HypriotOS: Back Again and Better then Ever&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;get-it-while-it-is-still-hot&#34;&gt;Get it while it is still hot&lt;/h3&gt;
+&lt;h3 id=&#34;get-it-while-it-is-still-hot:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Get it while it is still hot&lt;/h3&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-rc2-1_armhf.deb&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-
+&lt;p&gt;
 
 HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
@@ -1584,7 +1632,7 @@ $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-rc2-1_armhf.deb
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-rc2-1_armhf.deb
 
-
+&lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with this shiny new toy.
 This is not yet a stable release so let us know what you think! And by the way - you can find older versions of Docker as Debian packages in our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;Download-Area&lt;/a&gt;.
@@ -1592,33 +1640,34 @@ Installing a new version replaces the existing one and thus makes it possible to
 
 &lt;p&gt;Have fun.&lt;/p&gt;
 
-&lt;h3 id=&#34;update-01-04-2015-get-docker-1-6-0-rc3&#34;&gt;Update 01.04.2015: Get Docker 1.6.0 RC3&lt;/h3&gt;
+&lt;h3 id=&#34;update-01-04-2015-get-docker-1-6-0-rc3:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 01.04.2015: Get Docker 1.6.0 RC3&lt;/h3&gt;
 
 &lt;p&gt;Two hours ago the Docker team released another release candidate, so we&amp;rsquo;ve cooked it for you.&lt;/p&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-rc3-1_armhf.deb&lt;/p&gt;
 
-&lt;h3 id=&#34;update-03-04-2015-get-docker-1-6-0-rc4&#34;&gt;Update 03.04.2015: Get Docker 1.6.0 RC4&lt;/h3&gt;
+&lt;h3 id=&#34;update-03-04-2015-get-docker-1-6-0-rc4:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 03.04.2015: Get Docker 1.6.0 RC4&lt;/h3&gt;
 
 &lt;p&gt;Well, this time it is already 11 hours since it was published. But still here is the lastest and greatest.&lt;/p&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-rc4-1_armhf.deb&lt;/p&gt;
 
-&lt;h3 id=&#34;update-12-04-2015-get-docker-1-6-0-rc5&#34;&gt;Update 12.04.2015: Get Docker 1.6.0 RC5&lt;/h3&gt;
+&lt;h3 id=&#34;update-12-04-2015-get-docker-1-6-0-rc5:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 12.04.2015: Get Docker 1.6.0 RC5&lt;/h3&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-rc5-1_armhf.deb&lt;/p&gt;
 
-&lt;h3 id=&#34;update-14-04-2015-get-docker-1-6-0-rc6&#34;&gt;Update 14.04.2015: Get Docker 1.6.0 RC6&lt;/h3&gt;
+&lt;h3 id=&#34;update-14-04-2015-get-docker-1-6-0-rc6:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 14.04.2015: Get Docker 1.6.0 RC6&lt;/h3&gt;
 
 &lt;p&gt;Maybe this could be the last release candidate before a final 1.6.0 release.&lt;/p&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-rc6-1_armhf.deb&lt;/p&gt;
 
-&lt;h3 id=&#34;update-15-04-2015-get-docker-1-6-0-rc7&#34;&gt;Update 15.04.2015: Get Docker 1.6.0 RC7&lt;/h3&gt;
+&lt;h3 id=&#34;update-15-04-2015-get-docker-1-6-0-rc7:0dae4ec28729ab061bcaeb3432f04165&#34;&gt;Update 15.04.2015: Get Docker 1.6.0 RC7&lt;/h3&gt;
 
 &lt;p&gt;OK, here is the next 1.6.0 release candidate.&lt;/p&gt;
 
-&lt;p&gt;docker-hypriot_1.6.0-rc7-1_armhf.deb&lt;/p&gt;</description>
+&lt;p&gt;docker-hypriot_1.6.0-rc7-1_armhf.deb&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1627,13 +1676,14 @@ Installing a new version replaces the existing one and thus makes it possible to
       <pubDate>Mon, 30 Mar 2015 00:00:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</guid>
-      <description>&lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
+      <description>
+
+&lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
 Listening to our users and having some ideas of our own we are back again with our latest version of HypriotOS.&lt;/p&gt;
 
-&lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.
-&lt;/p&gt;
+&lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary-of-changes&#34;&gt;Summary of Changes&lt;/h2&gt;
+&lt;h2 id=&#34;summary-of-changes:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Summary of Changes&lt;/h2&gt;
 
 &lt;p&gt;Jack brings along a host of new features&lt;/p&gt;
 
@@ -1649,14 +1699,14 @@ Listening to our users and having some ideas of our own we are back again with o
 
 &lt;p&gt;Some of these feature deserve a more thorough explanation.&lt;/p&gt;
 
-&lt;h3 id=&#34;open-vswitch-support&#34;&gt;Open vSwitch support&lt;/h3&gt;
+&lt;h3 id=&#34;open-vswitch-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Open vSwitch support&lt;/h3&gt;
 
 &lt;p&gt;Check out this cool video &lt;a href=&#34;https://www.youtube.com/watch?v=sBy0NVBPc9g&#34;&gt;Running Open vSwitch on Docker&lt;/a&gt; from Dave Tucker as an introduction to Docker and Open vSwitch.
 We added the foundation for using Open vSwitch by adding the necessary kernel support into our image.&lt;/p&gt;
 
 &lt;p&gt;You can see for yourself by typing the following&lt;/p&gt;
 
-
+&lt;p&gt;
 HypriotOS: root@black-pearl in ~
 $ modprobe openvswitch
 HypriotOS: root@black-pearl in ~
@@ -1665,41 +1715,41 @@ openvswitch            68194  0
 vxlan                  29211  1 openvswitch
 gre                     4069  1 openvswitch
 
-
+&lt;/p&gt;
 
 &lt;p&gt;Be aware that you still need a working Open vSwitch Docker image that works for ARM.
 If nobody else is faster we might provide one soon ourselves!&lt;/p&gt;
 
-&lt;h3 id=&#34;improved-networking-support&#34;&gt;Improved Networking Support&lt;/h3&gt;
+&lt;h3 id=&#34;improved-networking-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Improved Networking Support&lt;/h3&gt;
 
-&lt;h4 id=&#34;hotplug&#34;&gt;Hotplug&lt;/h4&gt;
+&lt;h4 id=&#34;hotplug:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Hotplug&lt;/h4&gt;
 
 &lt;p&gt;To make the networking with our image a smoother experience we added hotplug support for networking devices.
 This allows you to add for instance a USB Wifi Dongle and it will be recognized by your Pi at once.&lt;/p&gt;
 
 &lt;p&gt;You can check if it worked by using &lt;strong&gt;lsusb&lt;/strong&gt;:&lt;/p&gt;
 
-
+&lt;p&gt;
 
 $ lsusb
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n WLAN Adapter
+&lt;/p&gt;
 
-
-&lt;h4 id=&#34;wifi&#34;&gt;Wifi&lt;/h4&gt;
+&lt;h4 id=&#34;wifi:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Wifi&lt;/h4&gt;
 
 &lt;p&gt;One of the most asked for features regarding our SD image was the support of Wifi.&lt;/p&gt;
 
 &lt;p&gt;The easiest way to get started with Wifi is on Mac with our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash script&lt;/a&gt;.
 This script does not only allow you to set Wifi configuration but it also allows you to fetch, configure and flash the SD card in one go.&lt;/p&gt;
 
-
+&lt;p&gt;
 
 flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip
 
-
+&lt;/p&gt;
 
 &lt;p&gt;If you cannot use our nifty flash tool you have to first boot your Pi with a network cable attached.
 Then you can add your Wifi credentials in &lt;code&gt;/boot/occidentalis.txt&lt;/code&gt; as described in the &lt;a href=&#34;https://github.com/hypriot/flash#occidentalistxt&#34;&gt;Readme&lt;/a&gt; of the flash tool.
@@ -1707,7 +1757,7 @@ Afterwards run &lt;code&gt;occi&lt;/code&gt; at the command line and reboot.&lt;
 
 &lt;p&gt;After rebooting you should see a wlan-interface with an ip address assigned similar to this:&lt;/p&gt;
 
-
+&lt;p&gt;
 
 $ ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN
@@ -1733,16 +1783,16 @@ $ ip a
     inet 172.17.42.1/16 scope global docker0
        valid_lft forever preferred_lft forever
 
+&lt;/p&gt;
 
-
-&lt;h3 id=&#34;support-for-avahi-bonjour&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
+&lt;h3 id=&#34;support-for-avahi-bonjour:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
 
 &lt;p&gt;One of the major problems after booting your Pi always was how to find out its IP address.
-There are many approaches to solve this problem but one of the easiest is with the help of [Avahi](&lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;http://de.wikipedia.org/wiki/Avahi_(Software&lt;/a&gt;).&lt;/p&gt;
+There are many approaches to solve this problem but one of the easiest is with the help of &lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;Avahi&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now after booting up our SD card image you can just ssh into your Pi without finding out the IP address first.&lt;/p&gt;
 
-
+&lt;p&gt;
 $ ssh root@black-pearl.local
 root@black-pearl.local&#39;s password:
 Linux black-pearl 3.18.10-hypriotos-v7+ #2 SMP PREEMPT Sun Mar 29 13:13:41 UTC 2015 armv7l
@@ -1756,7 +1806,7 @@ permitted by applicable law.
 Last login: Sun Mar 29 23:49:43 2015 from macbook
 HypriotOS: root@black-pearl in ~
 $
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;black-pearl&lt;/strong&gt; is the standard hostname your Pi gets after booting with our image.&lt;/p&gt;
 
@@ -1769,13 +1819,13 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;Windows users need to install &lt;a href=&#34;https://www.apple.com/de/itunes/download/&#34;&gt;iTunes&lt;/a&gt; as Bonjour/Avahi comes bundles with it.&lt;/p&gt;
 
-&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;h2 id=&#34;download:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Download&lt;/h2&gt;
 
 &lt;p&gt;The new image can be downloaded here:&lt;/p&gt;
 
 &lt;p&gt;Docker-Pi Image (hypriot-rpi-20150329-140334.img.zip) (~367MB)&lt;/p&gt;
 
-&lt;h2 id=&#34;how-to-get-started&#34;&gt;How to get started&lt;/h2&gt;
+&lt;h2 id=&#34;how-to-get-started:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;How to get started&lt;/h2&gt;
 
 &lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
@@ -1786,7 +1836,7 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;You can find these images and more at &lt;a href=&#34;https://registry.hub.docker.com/repos/hypriot/&#34;&gt;our place&lt;/a&gt; on the Docker Hub. After booting our image on your Pi these base images are just a &amp;ldquo;docker pull&amp;rdquo; away. For example &amp;ldquo;docker pull hypriot/rpi-node&amp;rdquo;.&lt;/p&gt;
 
-&lt;h2 id=&#34;give-us-your-feedback&#34;&gt;Give us your feedback&lt;/h2&gt;
+&lt;h2 id=&#34;give-us-your-feedback:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Give us your feedback&lt;/h2&gt;
 
 &lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
 
@@ -1794,7 +1844,8 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 And please share this post with your friends.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
-Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</description>
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1803,12 +1854,13 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
       <pubDate>Tue, 03 Mar 2015 22:09:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/</guid>
-      <description>&lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;https://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
-&lt;/p&gt;
+&lt;p&gt;Nearly two weeks ago we have been blown away by the positive feedback we got for &lt;a href=&#34;https://blog.hypriot.com/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1&#34;&gt;our first Raspberry Pi SD card image&lt;/a&gt;. It allowed people to get up and running with Docker on the Raspberry Pi in no time.&lt;/p&gt;
 
-&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
+&lt;p&gt;The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure itemscope itemtype=&#34;http://schema.org/ImageObject&#34; class=&#34;clearfix&#34;&gt;
   &lt;img src=&#34;https://blog.hypriot.com/images/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg&#34; alt=&#34;&#34; /&gt;
 
   
@@ -1819,14 +1871,14 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
   
 
 &lt;/figure&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;The most important upgrade of our second image is the support for Docker 1.5.0 which has been released just recently. Most noteworthy about Docker 1.5.0 is the new support for IPv6, read-only containers and advanced statistics for image resource consumption. We find the last one especially interesting for people like us who are running Docker on small devices.&lt;/p&gt;
 
 &lt;p&gt;One thing we already had in the last incarnation of our image is the support of OverlayFS. OverlayFS is one of several storage drivers for Docker. The biggest distinction to other storage options, like lvm or btrfs, is the performance it offers. See this &lt;a href=&#34;https://developerblog.redhat.com/2014/09/30/overview-storage-scalability-docker/&#34;&gt;website&lt;/a&gt; for an in-depth-look at the performance/advantages of different docker storage options.
 Needless to say that OverlayFS comes out at the top. Even the big players like &lt;a href=&#34;http://lwn.net/Articles/627232/&#34;&gt;CoreOS&lt;/a&gt; seem to be in the process of moving to OverlayFS. We can provide OverlayFS in our image because with 3.18.8 we are using the latest linux kernel version which already has built-in support for OverlayFS.&lt;/p&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Raspberry Pi with Docker&lt;/div&gt;
 
 
@@ -1891,9 +1943,9 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;/div&gt;
+&lt;/p&gt;
 
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -1959,9 +2011,9 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
+&lt;/p&gt;
 
-
-&lt;h2 id=&#34;summary-of-changes&#34;&gt;Summary of changes&lt;/h2&gt;
+&lt;h2 id=&#34;summary-of-changes:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Summary of changes&lt;/h2&gt;
 
 &lt;p&gt;Here is a list of the most important changes to the SD card image.&lt;/p&gt;
 
@@ -1984,7 +2036,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 &lt;li&gt;support for Raspberry Pi 1 &amp;amp; 2 with the same SD card image (dual kernel)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;h2 id=&#34;download:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Download&lt;/h2&gt;
 
 &lt;p&gt;The image can be downloaded here:&lt;/p&gt;
 
@@ -1992,7 +2044,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like &
 
 &lt;p&gt;&lt;strong&gt;Update (30.03.2015):&lt;/strong&gt; We have published a more &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm&#34;&gt;recent version of our SD card image&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;how-to-get-started&#34;&gt;How to get started&lt;/h2&gt;
+&lt;h2 id=&#34;how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;How to get started&lt;/h2&gt;
 
 &lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
@@ -2005,7 +2057,7 @@ Standard x86-64 Docker Images from the Docker Hub won&amp;rsquo;t work. That&amp
 
 &lt;p&gt;As you can see - getting started with Docker on your Raspberry Pi just got so much easier!&lt;/p&gt;
 
-&lt;h2 id=&#34;give-us-your-feedback&#34;&gt;Give us your feedback&lt;/h2&gt;
+&lt;h2 id=&#34;give-us-your-feedback:3455e8c2e00ddc235c73ff691ea5d2cc&#34;&gt;Give us your feedback&lt;/h2&gt;
 
 &lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
 
@@ -2013,7 +2065,8 @@ Standard x86-64 Docker Images from the Docker Hub won&amp;rsquo;t work. That&amp
 And please share this post with your friends.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
-Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</description>
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -2028,7 +2081,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
 
 &lt;p&gt;Pi 2 has the same form factor as the previous Pi 1 Model B+ and is completely compatible with Pi 1 - which is good news for everybody who already owns a Pi 1. Your old equipment will most likely still work with the Pi 2.&lt;/p&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Raspberry Pi 2 Images&lt;/div&gt;
 
 
@@ -2123,7 +2176,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
 
 
 &lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Looking at the Pi 2 the most obvious difference is that it features a 900MHz quad-core ARM Cortex-A7 CPU with 1 GB of RAM. Because it has an ARMv7 processor it can now run the full range of ARM GNU/Linux distributions. Early benchmarks promise a performance boost of 4 to 6 times faster compared to the old single core Pi.&lt;/p&gt;
 
@@ -2212,7 +2265,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -2278,7 +2331,7 @@ Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</d
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;We really would like to see how our image works for others and that is why you can download it here:&lt;/p&gt;
 

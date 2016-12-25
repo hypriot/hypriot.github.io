@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,24 +81,26 @@
   <div class="post">
     <h1>Install Docker 1.12 on the $9 C.H.I.P. computer</h1>
     <span class="post-date">Sat, Sep 3, 2016</span>
-    <p>Did you see the successfully launch of a really cheap ARM board for $9 only - the C.H.I.P. computer? It has an ARMv7 CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
-<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" /></p>
+    
+
+<p>Did you see the successfully launch of a really cheap ARM board for $9 only - the C.H.I.P. computer? It has an ARMv7 CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
+<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" />
+</p>
 
 <p>With these awesome features built-in it would be really a great device to run Docker containers if only the recent Linux kernel 4.4  has the correct modules included, but it doesn&rsquo;t - what a bummer!</p>
 
 <p>But with spending a lot of time in building a custom Linux kernel and tweaking &amp; testing I was finally able to install the latest Docker Engine for ARM on the C.H.I.P. &mdash; and as a result you can easily follow this tutorial and within a few minutes only you can run your first Docker container on this cute ARM board&hellip;</p>
 
-<p></p>
+<p><img src="/images/install-docker-on-chip-computer/chip-photo.jpg" alt="chip-photo" />
+</p>
 
-<p><img src="/images/install-docker-on-chip-computer/chip-photo.jpg" alt="chip-photo" /></p>
-
-<h3 id="background">Background</h3>
+<h3 id="background:f104f10590263b135a4ba1767b05f846">Background</h3>
 
 <p>Preparing your operating system and your Linux kernel to be able to run the Docker Engine efficiently can be a hard thing and can consume a lot of labor time.</p>
 
 <p>Fortunately in this tutorial I&rsquo;ll show you the basic steps to get Docker running on the $9 C.H.I.P. computer, so every normal user should be able to do it on her own within a short time only - even without the need being an expert in this area. And if you&rsquo;re in a hurry you can skip most of the tutorial and go straight ahead to the <code>Lessons learned - TL;DR</code> section and install Docker with just two single commands.</p>
 
-<h3 id="necessary-steps-to-install-docker">Necessary steps to install Docker</h3>
+<h3 id="necessary-steps-to-install-docker:f104f10590263b135a4ba1767b05f846">Necessary steps to install Docker</h3>
 
 <ol>
 <li>Flash the latest available firmware</li>
@@ -111,10 +113,11 @@
 <li>Run your first Docker Container on the C.H.I.P.</li>
 </ol>
 
-<h4 id="step-1-flash-the-latest-available-firmware">Step 1: Flash the latest available firmware</h4>
+<h4 id="step-1-flash-the-latest-available-firmware:f104f10590263b135a4ba1767b05f846">Step 1: Flash the latest available firmware</h4>
 
 <p>Use a Chrome browser and flash the latest firmware and OS on your C.H.I.P. computer. For detailed instructions go to the appropriate web site at <a href="http://flash.getchip.com/">http://flash.getchip.com/</a>.
-<img src="/images/install-docker-on-chip-computer/flash-getchip-com.jpg" alt="flash-getchip-com" /></p>
+<img src="/images/install-docker-on-chip-computer/flash-getchip-com.jpg" alt="flash-getchip-com" />
+</p>
 
 <p>To run Docker on the C.H.I.P. we&rsquo;re using the OS image for <code>Debian Headless 4.4</code>, which is a server installation without any GUI and thus it&rsquo;s quite smaller is size, so we do have more space left for running apps and Docker containers.</p>
 
@@ -133,9 +136,10 @@ New offset 0x27400000
 *****************[ FLASHING DONE ]*****************
 </code></pre>
 
-<p><img src="/images/install-docker-on-chip-computer/chip-successfully-flashed.jpg" alt="chip-successfully-flashed" /></p>
+<p><img src="/images/install-docker-on-chip-computer/chip-successfully-flashed.jpg" alt="chip-successfully-flashed" />
+</p>
 
-<h4 id="step-2-connect-to-the-c-h-i-p-via-usb-or-uart-console-cable">Step 2: Connect to the C.H.I.P. via USB or UART console cable</h4>
+<h4 id="step-2-connect-to-the-c-h-i-p-via-usb-or-uart-console-cable:f104f10590263b135a4ba1767b05f846">Step 2: Connect to the C.H.I.P. via USB or UART console cable</h4>
 
 <p>Once the C.H.I.P. is successfully flashed you can connect it directly with an USB cable to a Mac or Linux machine. The C.H.I.P. is getting power over the USB cable and connects via an USB serial console driver, so you can easily connect to.</p>
 
@@ -175,7 +179,7 @@ permitted by applicable law.
 root@chip:~#
 </code></pre>
 
-<h4 id="step-3-configure-wifi-connection">Step 3: Configure WiFi connection</h4>
+<h4 id="step-3-configure-wifi-connection:f104f10590263b135a4ba1767b05f846">Step 3: Configure WiFi connection</h4>
 
 <p>Following the instruction here <a href="http://docs.getchip.com/chip.html#wifi-connection">http://docs.getchip.com/chip.html#wifi-connection</a> you can list all the available WiFi networks and then connect the C.H.I.P. to your preferred network.</p>
 
@@ -226,7 +230,7 @@ wlan0     Link encap:Ethernet  HWaddr cc:79:cf:20:6d:d8
 
 <p>Now we&rsquo;re connected to the network and can access the internet and the C.H.I.P. can be reached from our Mac or Linux machine.</p>
 
-<h4 id="step-4-configure-ssh-to-access-the-c-h-i-p">Step 4: Configure SSH to access the C.H.I.P.</h4>
+<h4 id="step-4-configure-ssh-to-access-the-c-h-i-p:f104f10590263b135a4ba1767b05f846">Step 4: Configure SSH to access the C.H.I.P.</h4>
 
 <p>Here we have to use the same username <code>root</code> and password <code>chip</code> to login via SSH:</p>
 
@@ -250,7 +254,7 @@ Last login: Thu Jan  1 00:32:25 1970
 root@chip:~#
 </code></pre>
 
-<h4 id="step-5-checking-the-os-and-linux-kernel-version">Step 5: Checking the OS and Linux kernel version</h4>
+<h4 id="step-5-checking-the-os-and-linux-kernel-version:f104f10590263b135a4ba1767b05f846">Step 5: Checking the OS and Linux kernel version</h4>
 
 <p>As a first step we&rsquo;d like to check the current Linux kernel version and operating system.</p>
 
@@ -276,7 +280,7 @@ VARIANT=&quot;Debian on C.H.I.P&quot;
 VARIANT_ID=SERVER
 </code></pre>
 
-<h4 id="step-6-install-the-docker-engine-1-12-1-the-easy-way">Step 6: Install the Docker Engine 1.12.1 the easy way</h4>
+<h4 id="step-6-install-the-docker-engine-1-12-1-the-easy-way:f104f10590263b135a4ba1767b05f846">Step 6: Install the Docker Engine 1.12.1 the easy way</h4>
 
 <p>In order to install Docker I&rsquo;ve prepared a complete installation script which can be downloaded and executed in a single command line. I&rsquo;ve you&rsquo;re interested into the details you should check the script at <a href="https://github.com/DieterReuter/arm-docker-fixes/blob/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh">GitHub</a>.</p>
 
@@ -315,7 +319,7 @@ Sep 03 13:20:53 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown
 Sep 03 13:20:54 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue 'Delegate' in section 'Service'
 </code></pre>
 
-<h4 id="step-7-upgrade-the-linux-kernel-to-a-custom-built-version">Step 7: Upgrade the Linux kernel to a custom built version</h4>
+<h4 id="step-7-upgrade-the-linux-kernel-to-a-custom-built-version:f104f10590263b135a4ba1767b05f846">Step 7: Upgrade the Linux kernel to a custom built version</h4>
 
 <p>In order to keep this tutorial short and easy to follow, I&rsquo;d like to use an already prepared custom kernel which has nearly all the possible kernel modules and settings enabled to run the Docker Engine in an optimized way on the C.H.I.P. computer.</p>
 
@@ -396,7 +400,7 @@ Insecure Registries:
 
 <p>Finally we could see, the latest Docker Engine v1.12.1 is now installed and is successfully running.</p>
 
-<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
+<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p:f104f10590263b135a4ba1767b05f846">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
 
 <p>As a last step we&rsquo;d like to start a first Docker container, a small web server.</p>
 
@@ -417,7 +421,8 @@ fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
 <pre><code>open http://192.168.2.112
 </code></pre>
 
-<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" /></p>
+<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" />
+</p>
 
 <p><strong>Additional tip:</strong></p>
 
@@ -435,7 +440,7 @@ tmpfs           246M     0  246M   0% /sys/fs/cgroup
 tmpfs            50M     0   50M   0% /run/user/0
 </code></pre>
 
-<h3 id="lessons-learned-tl-dr">Lessons learned - TL;DR</h3>
+<h3 id="lessons-learned-tl-dr:f104f10590263b135a4ba1767b05f846">Lessons learned - TL;DR</h3>
 
 <p>Currently the C.H.I.P. isn&rsquo;t able to run Docker out-of-the-box, but it just needs to install a custom built Linux kernel to prepare this awesome ARM board to run Docker easily. And now we&rsquo;re able to install the officially built Docker Engine from the Docker project&rsquo;s APT repository.</p>
 
@@ -452,17 +457,18 @@ reboot
 
 <p>And the best thing is, according to this <a href="https://twitter.com/zerotri/status/771218366845497344">tweet</a>, the developers at <a href="https://twitter.com/nextthingco">@NextThingCo</a> have already started to include all the required kernel settings into the standard OS images. So we can expect that the Docker Engine can be installed in the future even without tweaking the Linux kernel.</p>
 
-<h3 id="outlook">Outlook</h3>
+<h3 id="outlook:f104f10590263b135a4ba1767b05f846">Outlook</h3>
 
 <p>As I told you at the beginning of this tutorial, these are just the basic steps for a normal user to install and use Docker on the C.H.I.P. computer. But if you&rsquo;re interested in all the technical details behind the scene, how to check and analyze your Linux kernel and how to optimize it for running Docker efficiently, then please drop me a comment or tweet me and I&rsquo;ll write even more about all the technical details so you can follow the path along on to an expert level too. With these skills you then should be able to install Docker on any Linux-based ARM device.</p>
 
-<h3 id="feedback-please">Feedback, please</h3>
+<h3 id="feedback-please:f104f10590263b135a4ba1767b05f846">Feedback, please</h3>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

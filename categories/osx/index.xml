@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/osx/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Osx on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/osx/</link>
+    <description>Recent content in Osx on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 27 Mar 2016 18:30:29 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/osx/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,7 +15,9 @@
       <pubDate>Sun, 27 Mar 2016 18:30:29 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/first-touch-down-with-docker-for-mac/</guid>
-      <description>&lt;p&gt;A few days ago, Docker has announced a closed BETA program for their new
+      <description>
+
+&lt;p&gt;A few days ago, Docker has announced a closed BETA program for their new
 applications &amp;ldquo;Docker for Mac&amp;rdquo; and &amp;ldquo;Docker for Windows&amp;rdquo;. These apps are meant to
 simplify the usage of Docker containers for every developer even more. They try
 to lower the barrier to install and use Docker on your desktop and laptop computers
@@ -29,19 +32,19 @@ token within a few hours only.&lt;/p&gt;
 &lt;p&gt;Here I&amp;rsquo;d like to give you a first insight view how to install and use &amp;ldquo;Docker for Mac&amp;rdquo;
 with a basic walk-through on my MacBook Pro running the very latest OS X 10.11.4.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;So, please join me on this journey&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;access-to-the-beta-program&#34;&gt;Access to the BETA program&lt;/h2&gt;
+&lt;h2 id=&#34;access-to-the-beta-program:10b72799563d55724d4550d1181f06ee&#34;&gt;Access to the BETA program&lt;/h2&gt;
 
 &lt;p&gt;You can easily register to the Docker BETA program at &lt;a href=&#34;https://beta.docker.com&#34;&gt;https://beta.docker.com&lt;/a&gt;. Once
 you&amp;rsquo;re logged in with your Docker ID (which is literally your Docker Hub user account)
 you can apply for testing &amp;ldquo;Docker for Mac&amp;rdquo; and &amp;ldquo;Docker for Windows&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-apply-for-beta.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-apply-for-beta.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;As this is a closed BETA, you&amp;rsquo;ll get on a waiting list and hopefully will be selected
 soon. So, please be patient until you&amp;rsquo;ll receive an invitation email with some more
@@ -50,56 +53,67 @@ detailed instructions and a personal access key.&lt;/p&gt;
 &lt;p&gt;For this blog post, I&amp;rsquo;ll show you how easy it is to install and use Docker on OS X.
 And I guess, we&amp;rsquo;ll write another post later for all the curious Windows users,  too.&lt;/p&gt;
 
-&lt;h2 id=&#34;download-and-install-docker-for-mac&#34;&gt;Download and install &amp;ldquo;Docker for Mac&amp;rdquo;&lt;/h2&gt;
+&lt;h2 id=&#34;download-and-install-docker-for-mac:10b72799563d55724d4550d1181f06ee&#34;&gt;Download and install &amp;ldquo;Docker for Mac&amp;rdquo;&lt;/h2&gt;
 
 &lt;p&gt;When you&amp;rsquo;re selected for the BETA, you&amp;rsquo;ll receive an email titled &amp;ldquo;Docker Private Beta&amp;rdquo;
 with a link to the download page and an access key.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-download-page.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-download-page.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Download the installer package called &amp;ldquo;Docker.dmg&amp;rdquo; to your Mac and double click it,
 drag and drop the &amp;ldquo;Docker beta&amp;rdquo; app to your Applications folder.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now, from your Lauchpad you can start the &amp;ldquo;Docker beta&amp;rdquo; app directly the first time
 and you can begin right away using Docker on your Mac.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-start-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-start-app.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Once you start the BETA Docker app the first time you&amp;rsquo;ll be asked to enter your
 personal invite token.
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-01-insert-key.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-01-insert-key.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Token has been accepted.
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-02-key-accepted.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-02-key-accepted.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The Docker app needs to additionally install a network helper and requests for privileges
 to do so.
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Enter your credentials to grant privileged access.
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Success, the Docker app is installed and you can easily find and access it by
 clicking on the little neat whale icon.
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;using-docker-for-mac-the-first-time&#34;&gt;Using &amp;ldquo;Docker for Mac&amp;rdquo; the first time&lt;/h2&gt;
+&lt;h2 id=&#34;using-docker-for-mac-the-first-time:10b72799563d55724d4550d1181f06ee&#34;&gt;Using &amp;ldquo;Docker for Mac&amp;rdquo; the first time&lt;/h2&gt;
 
 &lt;p&gt;To use Docker we&amp;rsquo;ll just start a terminal window and use the Docker CLI to access
 the local Docker Engine.&lt;/p&gt;
 
 &lt;p&gt;First, get the version of the Docker command:
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Determine the versions of the Docker Client and the Docker Engine:
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Display some more detailed informations about the installed Docker software:
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;let-s-start-a-real-docker-container&#34;&gt;Let&amp;rsquo;s start a real Docker container&lt;/h2&gt;
+&lt;h2 id=&#34;let-s-start-a-real-docker-container:10b72799563d55724d4550d1181f06ee&#34;&gt;Let&amp;rsquo;s start a real Docker container&lt;/h2&gt;
 
 &lt;p&gt;First, we&amp;rsquo;ll check how our host operating system looks like:&lt;/p&gt;
 
@@ -194,7 +208,7 @@ commands inside Docker containers with a Linux OS and a recent kernel version 4.
 &lt;p&gt;That&amp;rsquo;s pure Docker container magic: running a Linux container seamlessly on our
 development machine, here on a MacBook Pro (Retina, 15-inch, Mid 2014).&lt;/p&gt;
 
-&lt;h2 id=&#34;the-magic-behind-the-scenes&#34;&gt;The Magic behind the scenes&lt;/h2&gt;
+&lt;h2 id=&#34;the-magic-behind-the-scenes:10b72799563d55724d4550d1181f06ee&#34;&gt;The Magic behind the scenes&lt;/h2&gt;
 
 &lt;p&gt;As I&amp;rsquo;ve shown you in the screenshots above, our host operating system, where the Docker
 Client is running, is &lt;code&gt;darwin/amd64&lt;/code&gt; or OS X, but the Docker Engine runs on &lt;code&gt;linux/amd64&lt;/code&gt;.&lt;/p&gt;
@@ -214,7 +228,7 @@ natively on our Mac.&lt;/p&gt;
 &lt;p&gt;Honestly, there are even more great technical details packed into the new &amp;ldquo;Docker for Mac&amp;rdquo;
 release, but we&amp;rsquo;ll keep them for a later more advanced technical blog post.&lt;/p&gt;
 
-&lt;h2 id=&#34;there-is-another-big-arm-surprise&#34;&gt;There is another big ARM surprise&lt;/h2&gt;
+&lt;h2 id=&#34;there-is-another-big-arm-surprise:10b72799563d55724d4550d1181f06ee&#34;&gt;There is another big ARM surprise&lt;/h2&gt;
 
 &lt;p&gt;With the public announcement of &amp;ldquo;Docker for Mac&amp;rdquo;, I received an &lt;a href=&#34;https://twitter.com/avsm/status/713010884596080640&#34;&gt;Easter Egg tweet&lt;/a&gt; from one
 of the Docker engineers, Anil Madhavapeddy, that they&amp;rsquo;ve just included another cool
@@ -229,12 +243,14 @@ the webserver I&amp;rsquo;ve presented at DockerCon 2015 San Francisco, CA, last
 
 &lt;p&gt;Ok, here we go. Let&amp;rsquo;s run an ARM container on a Mac:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;As you can see, it doesn&amp;rsquo;t work that way&amp;hellip;&lt;br /&gt;
 &amp;hellip;hmmm, but maybe with some more magic Docker spells it could be done.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And this is where all the magic happens. We&amp;rsquo;re just bind-mounting a special binary
 into our original ARM-based container. Again, we don&amp;rsquo;t change the original Docker
@@ -243,10 +259,12 @@ which was built on a Raspberry Pi, now on an Intel-based Mac - just with the hel
 of some &lt;a href=&#34;https://twitter.com/quintus23m/status/713523016836231171&#34;&gt;fantastic Docker fu&lt;/a&gt;
 embedded in &amp;ldquo;Docker for Mac&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;As a last proof, we check with &lt;code&gt;docker ps&lt;/code&gt; that we&amp;rsquo;re running the original ARM container from June 2015:
-&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg&#34; alt=&#34;Docker for Mac&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;This is possible because the Docker engineers have already included the Linux kernel support
 for &lt;code&gt;binfmt_misc&lt;/code&gt; into &amp;ldquo;Docker for Mac&amp;rdquo;. And as long as there is the right Qemu interpreter
@@ -262,7 +280,7 @@ but now it&amp;rsquo;s coming true soon.&lt;/p&gt;
 &lt;p&gt;Special thanks to Anil, Justin and all the other great guys at the Docker engineering
 team to make this magic true.&lt;/p&gt;
 
-&lt;h2 id=&#34;key-takeaways&#34;&gt;Key Takeaways&lt;/h2&gt;
+&lt;h2 id=&#34;key-takeaways:10b72799563d55724d4550d1181f06ee&#34;&gt;Key Takeaways&lt;/h2&gt;
 
 &lt;p&gt;After this first and fast walk-through, I guess you&amp;rsquo;re even more curious and you&amp;rsquo;d
 like to use &amp;ldquo;Docker for Mac&amp;rdquo; by yourself. So in the meantime I&amp;rsquo;ll just summarize the
@@ -282,7 +300,8 @@ key points what impressed me most about this great new release.&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

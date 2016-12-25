@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,7 +81,9 @@
   <div class="post">
     <h1>Introducing Hypriot Cluster Lab: Docker clustering as easy as it gets</h1>
     <span class="post-date">Tue, Dec 8, 2015</span>
-    <p>Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
+    
+
+<p>Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
 It is based on our beloved <a href="/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/">HypriotOS</a> and makes it dead simple to build Docker clusters.</p>
 
 <p>Until now it was not exactly easy to get started with Docker clustering.
@@ -91,9 +93,8 @@ You would have needed specific knowledge and lots of time to manually configure 
 
 <p>May we introduce to you the newest member of the Hypriot family: <strong>The Hypriot Cluster Lab!</strong></p>
 
-<p><img src="/images/cluster-lab-release-v01/cluster_lab.png" alt="" /></p>
-
-<p></p>
+<p><img src="/images/cluster-lab-release-v01/cluster_lab.png" alt="" />
+</p>
 
 <p>With the <strong>Hypriot Cluster Lab</strong> it is just a matter of minutes to set up your own personal Docker cluster.
 All you need is a couple of Raspberry Pi&rsquo;s - 3, 5, 30 or even 100 - it is up to you - and our Hypriot Cluster Lab SD card image.</p>
@@ -130,7 +131,7 @@ Working with <strong>real hardware</strong> compared to a virtual environment (e
 
 <p>So enough talking - let&rsquo;s get our hands dirty - shall we?</p>
 
-<h3 id="prerequisites-or-what-you-gonna-need-to-follow-along">Prerequisites or what you gonna need to follow along</h3>
+<h3 id="prerequisites-or-what-you-gonna-need-to-follow-along:8280d5ff2f6dfae78180ad5a72400c1a">Prerequisites or what you gonna need to follow along</h3>
 
 <ul>
 <li>at least two <strong>Raspberry Pi&rsquo;s</strong>: Model 1 or 2 - both will do</li>
@@ -140,7 +141,7 @@ Working with <strong>real hardware</strong> compared to a virtual environment (e
 
 <p>Additionally, the switch should not filter IEEE 802.1Q VLAN flags out of network packets. Usually this feature is provided even by cheap switches. If you wanna be safe, go through a small test to figure this out. The test is <a href="https://github.com/hypriot/cluster-lab/blob/master/README.md#troubleshooting">listed here</a>.</p>
 
-<h3 id="download-flash-boot-enjoy">Download. Flash. Boot. Enjoy!</h3>
+<h3 id="download-flash-boot-enjoy:8280d5ff2f6dfae78180ad5a72400c1a">Download. Flash. Boot. Enjoy!</h3>
 
 <p><strong>1.</strong> <strong>Download</strong> the Hypriot Cluster Lab SD card image (hypriot_20160121-235123_clusterlab.img.zip).</p>
 
@@ -160,15 +161,17 @@ $ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot_20160121-23512
 
 <p><strong>6.</strong> Use the IP (from step 5) or the hostname (from step 2) to point your browser to <code>http://{IP or hostname of the master node}:8500</code>. In our case <code>http://cl-master:8500</code> opens the Consul web interface and our cluster master node is displayed:</p>
 
-<p><img src="/images/cluster-lab-release-v01/consul_cl_master.png" alt="" /></p>
+<p><img src="/images/cluster-lab-release-v01/consul_cl_master.png" alt="" />
+</p>
 
 <p><strong>7.</strong> Power on all the remaining cluster nodes only if step 5 was successful. After about 2 minutes you should see the rest of them being listed in the Consul web interface, too.</p>
 
-<p><img src="/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png" alt="" /></p>
+<p><img src="/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png" alt="" />
+</p>
 
 <p>The last step makes the cluster fully operational and we are now able to work with the cluster in earnest.</p>
 
-<h3 id="babysteps-with-our-cluster-lab">Babysteps with our Cluster Lab</h3>
+<h3 id="babysteps-with-our-cluster-lab:8280d5ff2f6dfae78180ad5a72400c1a">Babysteps with our Cluster Lab</h3>
 
 <p>Congratulations, you got your Hypriot Cluster Lab up and running! That was easy, wasn&rsquo;t it?</p>
 
@@ -231,7 +234,8 @@ By using the &lsquo;constraint:node&rsquo; label we are able to control on which
 <p>So let&rsquo;s open the DockerUI with the following URL: <code>http://cl-master:9000</code>.
 If everything did work you should now see an overview of your running containers similar to this one:</p>
 
-<p><img src="/images/cluster-lab-release-v01/dockerui.png" alt="" /></p>
+<p><img src="/images/cluster-lab-release-v01/dockerui.png" alt="" />
+</p>
 
 <p>Back to the command line we can see the same result by using the <code>docker ps</code> command:</p>
 
@@ -250,7 +254,7 @@ f6b11e9e4f07        hypriot/rpi-consul                                          
 <p>By now you should have gotten the hang of it and come to expect that you can use many of the Docker command line commands with Swarm, too.
 And you are right - you just need to remember to use the <code>-H</code> flag as part of the Docker command.</p>
 
-<h3 id="getting-to-the-grown-up-stuff">Getting to the grown-up stuff</h3>
+<h3 id="getting-to-the-grown-up-stuff:8280d5ff2f6dfae78180ad5a72400c1a">Getting to the grown-up stuff</h3>
 
 <p>After we did our first babysteps successfully it is now time for some serious grown-up stuff.
 Certainly Docker multi-host networking can be considered serious stuff - don&rsquo;t you think?</p>
@@ -346,6 +350,7 @@ We will write more about those in some future blog posts.</p>
 <p>As always, use the comments below to give us feedback, discuss this post on <a href="https://news.ycombinator.com/item?id=10696752">HackerNews</a> and share this post on Twitter, Google or Facebook.</p>
 
 <p>Andreas &amp; Mathias</p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

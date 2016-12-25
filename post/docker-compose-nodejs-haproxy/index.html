@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,12 +81,12 @@
   <div class="post">
     <h1>How to use Docker Compose to run complex multi container apps on your Raspberry Pi</h1>
     <span class="post-date">Mon, Apr 6, 2015</span>
-    <p>In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.</p>
+    
+
+<p>In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.</p>
 
 <p>To demonstrate the benefits of Docker Compose we are going to create a simple Node.js &ldquo;Hello World&rdquo; application which will run on three Docker Node.js containers.
 HTTP requests will be distributed to these Node.js nodes by an HAProxy instance running on another Docker container.</p>
-
-<p></p>
 
 <p>If you haven&rsquo;t heard about Docker Compose its docs have a neat description of what it is all about:</p>
 
@@ -96,13 +96,13 @@ With Compose, you define a multi-container application in a single file,
 then spin your application up in a single command which does everything that needs to be done to get it running.</p>
 </blockquote>
 
-<h2 id="a-hello-world-application">A Hello-World application</h2>
+<h2 id="a-hello-world-application:63a2807194fcdb5e829ff92f8506efa0">A Hello-World application</h2>
 
 <p>We start by creating a simple Hello-World <a href="https://nodejs.org">Node.js</a> web application based on <a href="http://expressjs.com/">Express.js</a>.</p>
 
 <p>To keep it simple we are only going to show a &ldquo;Hello World&rdquo; message and the hostname of the container.  This will be useful later on.</p>
 
-<h3 id="src-index-js">src/index.js</h3>
+<h3 id="src-index-js:63a2807194fcdb5e829ff92f8506efa0">src/index.js</h3>
 
 <p>First we create a <code>src/index.js</code> file for the web application:</p>
 
@@ -120,7 +120,7 @@ app.listen(80);
 console.log('Running on http://localhost');
 </code></pre>
 
-<h3 id="src-package-json">src/package.json</h3>
+<h3 id="src-package-json:63a2807194fcdb5e829ff92f8506efa0">src/package.json</h3>
 
 <p>Then we need to create a <code>src/package.json</code> file with the dependencies we need to build and start the Node.js application:</p>
 
@@ -138,7 +138,7 @@ console.log('Running on http://localhost');
 
 <p>And that is all that is need to set up this small Hello-World application from the nods.js side of things.</p>
 
-<h3 id="dockerfile">Dockerfile</h3>
+<h3 id="dockerfile:63a2807194fcdb5e829ff92f8506efa0">Dockerfile</h3>
 
 <p>As we want to run our web application in a Docker container we now need to create a <code>Dockerfile</code> for that.
 The Dockerfile is simple and straightforward.</p>
@@ -160,7 +160,7 @@ EXPOSE 80
 CMD [&quot;node&quot;, &quot;index.js&quot;]
 </code></pre>
 
-<h2 id="running-one-container">Running one container</h2>
+<h2 id="running-one-container:63a2807194fcdb5e829ff92f8506efa0">Running one container</h2>
 
 <p>We can now test if our Node.js web server works by building a Docker application image first and then spinning it up as a new container.</p>
 
@@ -177,7 +177,7 @@ $ docker run -p 80:80 --name web -d node-hello
 
 <p>As we have published the port 80 to the host we also can access our web application from another machine.</p>
 
-<h3 id="benchmarking-our-web-application">Benchmarking our web application</h3>
+<h3 id="benchmarking-our-web-application:63a2807194fcdb5e829ff92f8506efa0">Benchmarking our web application</h3>
 
 <p>As we are curious guys we want to know how well our Hello-World application performs on a Docker-Raspberry-Pi-Combo.</p>
 
@@ -189,7 +189,8 @@ To install Apache Bench on Debian/Ubuntu use <code>sudo apt-get install apache2-
 
 <p>This runs 10.000 HTTP requests with a concurrency of 10. The CPU load while running the benchmark test shows that only one CPU core of the Raspberry Pi 2 is used. The reason is that Node.js is a single threaded process.</p>
 
-<p><img src="/images/rpi-node-haproxy/htop-1-webserver.png" alt="htop with 1 webserver" /></p>
+<p><img src="/images/rpi-node-haproxy/htop-1-webserver.png" alt="htop with 1 webserver" />
+</p>
 
 <p>And here are the results of the Apache Bench test. As you can see a single web server can handle <strong>338</strong> Requests per second.</p>
 
@@ -250,27 +251,27 @@ Percentage of the requests served within a certain time (ms)
  100%    109 (longest request)
 </code></pre>
 
-<h3 id="cleaning-up">Cleaning up</h3>
+<h3 id="cleaning-up:63a2807194fcdb5e829ff92f8506efa0">Cleaning up</h3>
 
 <p>That&rsquo;s it for our first test drive. We can now stop the web server container.</p>
 
 <pre><code class="language-bash">$ docker stop web
 </code></pre>
 
-<h2 id="running-multiple-container-with-docker-compose">Running multiple container with Docker Compose</h2>
+<h2 id="running-multiple-container-with-docker-compose:63a2807194fcdb5e829ff92f8506efa0">Running multiple container with Docker Compose</h2>
 
 <p>To run more of these web servers we now use Docker Compose to create a farm of web servers which are running behind a <a href="http://www.haproxy.org">HAProxy</a> load balancer.</p>
 
 <p>As our mission is to make Docker and its toolset available on ARM we created a <code>docker-compose</code> binary ready to run on your Raspberry Pi.</p>
 
-<h3 id="installation">Installation</h3>
+<h3 id="installation:63a2807194fcdb5e829ff92f8506efa0">Installation</h3>
 
 <p>First we have to install Docker Compose for the ARM-based Raspberry Pi from our fork at <a href="https://github.com/hypriot/compose">https://github.com/hypriot/compose</a>.</p>
 
 <pre><code class="language-bash">$ sudo sh -c &quot;curl -L https://github.com/hypriot/compose/releases/download/1.1.0-raspbian/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose&quot;
 </code></pre>
 
-<h3 id="docker-compose-yml">docker-compose.yml</h3>
+<h3 id="docker-compose-yml:63a2807194fcdb5e829ff92f8506efa0">docker-compose.yml</h3>
 
 <p>To get our four container configuration set up we first need to create a <code>docker-compose.yml</code> file.
 We will need three containers <code>weba</code>, <code>webb</code> and <code>webc</code> based on our web application image and one <code>haproxy</code> container.</p>
@@ -311,7 +312,7 @@ haproxy:
 Additionally the HAProxy container will have (network) links to each of the three web application containers.
 Furthermore the HAProxy container will exposes port 80 as a central entry point to our Hello-World application webserver farm and its admin interface on port 70.</p>
 
-<h3 id="haproxy-haproxy-cfg">haproxy/haproxy.cfg</h3>
+<h3 id="haproxy-haproxy-cfg:63a2807194fcdb5e829ff92f8506efa0">haproxy/haproxy.cfg</h3>
 
 <p>HAProxy needs a configuration file that is mapped into the container. Create a file <code>haproxy/haproxy.cfg</code> with the following content.</p>
 
@@ -352,7 +353,7 @@ backend aj_backends
 
 <p>HAProxy does a health check for each of our three web servers.</p>
 
-<h3 id="running-our-webserver-farm">Running our webserver farm</h3>
+<h3 id="running-our-webserver-farm:63a2807194fcdb5e829ff92f8506efa0">Running our webserver farm</h3>
 
 <p>Now that we have set up all the necessary parts it is time to spin up all our Docker containers at once. Just run the command <code>docker-compose up</code> interactively to see what is happening or use option <code>-d</code> to start all containers in the background.</p>
 
@@ -391,7 +392,7 @@ $ curl http://localhost
 And the fourth request has the same container name as the first one.
 The HAProxy container forwards each request in a round robin fashion, so each web server gets only one third of the load.</p>
 
-<h3 id="benchmarking-our-web-application-farm">Benchmarking our web application farm</h3>
+<h3 id="benchmarking-our-web-application-farm:63a2807194fcdb5e829ff92f8506efa0">Benchmarking our web application farm</h3>
 
 <p>Let&rsquo;s see how our web server farm fares compared to our single web application container instance from our first benchmark.</p>
 
@@ -400,7 +401,8 @@ The HAProxy container forwards each request in a round robin fashion, so each we
 
 <p>Now we run 10.000 HTTP requests with a concurrency of 30. The CPU load while running the benchmark test now shows that all four CPU cores of the Raspberry Pi 2 are used.</p>
 
-<p><img src="/images/rpi-node-haproxy/htop-3-webserver-haproxy.png" alt="htop with 3 webserver and haproxy" /></p>
+<p><img src="/images/rpi-node-haproxy/htop-3-webserver-haproxy.png" alt="htop with 3 webserver and haproxy" />
+</p>
 
 <p>And here are the results of the benchmark test itself.</p>
 
@@ -480,6 +482,7 @@ Killing rpinodehaproxyexample_webb_1...
 <p>We hope you enjoyed this little tour of Docker Compose!</p>
 
 <p>As always use the comments below to give us feedback and share it on our <a href="https://news.ycombinator.com/item?id=9329890">HackerNews-Thread</a>, Twitter or Facebook.</p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

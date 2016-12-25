@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -102,7 +102,7 @@ In our case the software we wanna use is Docker.</p>
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as <em>flashing</em>.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.</p>
 
-<h3 id="download-the-hypriot-docker-sd-card-image">Download the Hypriot Docker SD card image</h3>
+<h3 id="download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0">Download the Hypriot Docker SD card image</h3>
 
 <p>Download our latest SD card image from the <a href="/downloads/">download page</a>.</p>
 
@@ -121,7 +121,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 <p>After the file is unzipped you will have a new file with an <strong>.img</strong> extension.
 In the next step we will flash this file onto your SD card.</p>
 
-<h3 id="flash-the-downloaded-image-to-your-sd-card">Flash the downloaded image to your SD card</h3>
+<h3 id="flash-the-downloaded-image-to-your-sd-card:8814904f208dcaade82991443c7514e0">Flash the downloaded image to your SD card</h3>
 
 <p>First put your SD card into the computer. Then in the terminal type</p>
 
@@ -130,7 +130,8 @@ In the next step we will flash this file onto your SD card.</p>
 
 <p>You should see a list of all your disks like this:</p>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/lsblk.png" alt="lsblk" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/lsblk.png" alt="lsblk" />
+</p>
 
 <p>Now identify the SD Card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -164,11 +165,12 @@ Depending on your hardware and the performance of your SD card it will take up t
 
 <p>When <code>dd</code> is finished you should get an output like this:</p>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/after-dd.png" alt="after-dd" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/after-dd.png" alt="after-dd" />
+</p>
 
 <p>Finally unmount the SD card again in the same way as before.</p>
 
-<h3 id="start-your-raspberry-pi-with-the-sd-card">Start your Raspberry Pi with the SD card</h3>
+<h3 id="start-your-raspberry-pi-with-the-sd-card:8814904f208dcaade82991443c7514e0">Start your Raspberry Pi with the SD card</h3>
 
 <p>Boot your Raspberry Pi by</p>
 
@@ -181,7 +183,7 @@ Depending on your hardware and the performance of your SD card it will take up t
 <p>After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.</p>
 
-<h3 id="ensure-everything-works">Ensure everything works</h3>
+<h3 id="ensure-everything-works:8814904f208dcaade82991443c7514e0">Ensure everything works</h3>
 
 <p>To check if Docker is actually running we need to log into the Raspberry Pi.</p>
 
@@ -202,14 +204,16 @@ yum install nmap       # for red hat based distros
 
 <p>As you can see in the following screenshot our IP address is <code>192.168.0.101</code>.</p>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/hostname-i.png" alt="hostname-i" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/hostname-i.png" alt="hostname-i" />
+</p>
 
 <p>Then replace the IP address in front of the <code>/24</code> with yours and type</p>
 
 <pre><code>nmap -sP 192.168.0.101/24 | grep black-pearl
 </code></pre>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/nmap.png" alt="nmap result of query" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/nmap.png" alt="nmap result of query" />
+</p>
 
 <p>The output of the <code>nmap</code> command should show you the IP address of your Raspberry Pi.
 If you get a blank line without an IP address your Raspberry Pi is probably not connected to the network.
@@ -227,7 +231,8 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>If everything went fine you should now see the <em>HypriotOS</em> command line prompt waiting for your input.</p>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png" alt="screenshot docker first connection" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png" alt="screenshot docker first connection" />
+</p>
 
 <p>Finally check if the Docker service is running by typing</p>
 
@@ -236,7 +241,8 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>The output of the <code>docker info</code> command should look similar to:</p>
 
-<p><img src="/images/blog_post_getting-started/linux-screenies/docker-info.png" alt="screenshot docker info" /></p>
+<p><img src="/images/blog_post_getting-started/linux-screenies/docker-info.png" alt="screenshot docker info" />
+</p>
 
 <p><strong>Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!</strong> :)</p>
 

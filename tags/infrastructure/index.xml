@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/infrastructure/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Infrastructure on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/infrastructure/</link>
+    <description>Recent content in Infrastructure on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 06 Aug 2015 09:55:55 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/infrastructure/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,9 +15,9 @@
       <pubDate>Thu, 06 Aug 2015 09:55:55 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/access_your_raspberry_pi_from_the_internet/</guid>
-      <description>&lt;p&gt;If you followed our guides about &lt;a href=&#34;https://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;setting up a git service&lt;/a&gt; or about &lt;a href=&#34;https://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/&#34;&gt;setting up a blog&lt;/a&gt; on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;If you followed our guides about &lt;a href=&#34;https://blog.hypriot.com/post/run-your-own-github-like-service-with-docker/&#34;&gt;setting up a git service&lt;/a&gt; or about &lt;a href=&#34;https://blog.hypriot.com/post/static-website-generation-on-steriods-with-docker/&#34;&gt;setting up a blog&lt;/a&gt; on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.&lt;/p&gt;
 
 &lt;p&gt;First check, which of the following two cases match your network environment:&lt;/p&gt;
 
@@ -37,13 +38,14 @@
 
 &lt;p&gt;So, hands on!&lt;/p&gt;
 
-&lt;h2 id=&#34;step-1-setup-dynamic-dns&#34;&gt;Step 1: Setup Dynamic DNS&lt;/h2&gt;
+&lt;h2 id=&#34;step-1-setup-dynamic-dns:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 1: Setup Dynamic DNS&lt;/h2&gt;
 
 &lt;p&gt;A Dynamic DNS provider maps a domain to the IP address of the router at your home. For example, if the Dynamic DNS provider offers the domain &lt;em&gt;my-home.domain-of-provider.org&lt;/em&gt; to you, you will reach your home by just typing this domain into your browser - from all over the world. This is useful because your router usually changes its IP address it is accessible from the internet on a daily basis. Thus, you want some automated tracking  of these changes. Moreover it is often easier to remember a domain instead of an IP address. Therefore, first we register a free domain that always routes to your router at home.&lt;/p&gt;
 
 &lt;p&gt;As a Dynamic DNS provider, we recommend &lt;a href=&#34;https://virtual-ip.org/&#34;&gt;virtual-ip.org&lt;/a&gt;, which is free and has no commercial purpose.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/virtual_ip.png&#34; alt=&#34;virtual_ip.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/virtual_ip.png&#34; alt=&#34;virtual_ip.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Follow these steps:&lt;/p&gt;
 
@@ -55,13 +57,15 @@
 
 &lt;p&gt;Next, you need to install &lt;em&gt;virtual-ip.org&lt;/em&gt; as Dynamic DNS provider in your router. First you need to &lt;strong&gt;login to your router&lt;/strong&gt;. To do so, point your browser to the IP address of your router. If you are not sure about the IP address of your router, try to figure out your own IP address, which is e.g. &lt;code&gt;192.168.0.20&lt;/code&gt;. Then, exchange the last number of your own IP address by &lt;code&gt;1&lt;/code&gt;. The resulting IP address is often assigned to your router. Point your browser to this IP address and you should see your router&amp;rsquo;s web interface:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_login.png&#34; alt=&#34;fritzbox_login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_login.png&#34; alt=&#34;fritzbox_login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The screenshot is taken of the web interface of a router called &amp;ldquo;Fritz!Box&amp;rdquo;, which we will use to show the steps in the following. If you have a different router, check if your device is listed in the &lt;a href=&#34;https://virtual-ip.org/support.aspx&#34;&gt;documentation of virtual-ip.org about how to configure Dynamic DNS&lt;/a&gt;. If your device is not listed, try to apply the following steps to your device accordingly.&lt;/p&gt;
 
 &lt;p&gt;In our case, using the Fritz!Box, you need to go to &lt;strong&gt;Internet&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Permit Access&lt;/strong&gt; and open the &lt;strong&gt;Dynamic DNS&lt;/strong&gt; tab.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritz_box_dyn-dns-settings.png&#34; alt=&#34;fritz_box_dyn-dns-settings.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritz_box_dyn-dns-settings.png&#34; alt=&#34;fritz_box_dyn-dns-settings.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Here, &lt;strong&gt;Activate the checkbox and fill the fields with your credentials of virtual-ip.org&lt;/strong&gt;. If the Update URL is not provided in the &lt;em&gt;virtual-ip.org&lt;/em&gt; documenation, try the following one. In advance, replace &lt;code&gt;&amp;lt;your-domain&amp;gt;&lt;/code&gt; with the domain you just registered at &lt;em&gt;virtual-ip.org&lt;/em&gt;:&lt;/p&gt;
 
@@ -69,21 +73,24 @@
 
 &lt;p&gt;After you have set the configuration for Dynamic DNS in your router, &lt;strong&gt;login to virtual-ip.org&lt;/strong&gt;. Now, the IP address of your router should be displayed in the column &lt;strong&gt;IP Address&lt;/strong&gt; next to your new domain as in the following screenshot. You can double check if this really is your IP address with a service like &lt;a href=&#34;https://www.whatismyip.com/&#34;&gt;whatismyip.com&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/virtual_ip_domain-list.png&#34; alt=&#34;virtual_ip_domain-list.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/virtual_ip_domain-list.png&#34; alt=&#34;virtual_ip_domain-list.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations!&lt;/strong&gt; At this point you can reach your router at home by a domain in the internet. However, your requests won&amp;rsquo;t reach the Raspberry Pi yet because the router is not configured to forward requests from your router to the Raspberry Pi. Continue with the following section to configure this.&lt;/p&gt;
 
-&lt;h2 id=&#34;step-2-configure-port-forwarding-in-your-router&#34;&gt;Step 2: Configure port forwarding in your router&lt;/h2&gt;
+&lt;h2 id=&#34;step-2-configure-port-forwarding-in-your-router:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 2: Configure port forwarding in your router&lt;/h2&gt;
 
 &lt;p&gt;In order to forward requests from your router to the Raspberry Pi, you need create &lt;em&gt;port forwarding rules&lt;/em&gt; in your router.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s create a port forwarding rule for an app on your Raspberry Pi. In the web interface of your router, find the section &lt;em&gt;Port Forwarding&lt;/em&gt; or alike. In our case, we go to &lt;strong&gt;Internet&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Permit Access&lt;/strong&gt;. As shown in the following screenshot, you should see an option to create port forwarding rules. Klick on &lt;strong&gt;New Port Forwading&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-menu-port-forwarding-start.png&#34; alt=&#34;fritzbox_port-forwarding-menu-port-forwarding-start.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-menu-port-forwarding-start.png&#34; alt=&#34;fritzbox_port-forwarding-menu-port-forwarding-start.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Then, the web interface asks for some input. Before we gonna provide this, choose &lt;strong&gt;other applications&lt;/strong&gt; in the drop down box. This will expand the input fields as shown in the next screenshot:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-rules-input-empty.png&#34; alt=&#34;fritzbox_port-forwarding-rules-input-empty.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-rules-input-empty.png&#34; alt=&#34;fritzbox_port-forwarding-rules-input-empty.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now refer to the following table to provide the required input. Also have look at the next screenshot which shows an example of the result.&lt;/p&gt;
 
@@ -125,15 +132,17 @@
 
 &lt;p&gt;If you are not sure about the port numbers you need to define, checkout the chapter &lt;em&gt;Example: How to create port forwarding rules for Docker containers&lt;/em&gt; below. There we will give some introduction of how port forwarding works.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-fules-inputs-filled.png&#34; alt=&#34;fritzbox_port-forwarding-fules-inputs-filled.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-fules-inputs-filled.png&#34; alt=&#34;fritzbox_port-forwarding-fules-inputs-filled.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Save. Next you should see a list of all rules that have been created. Make sure that the rule is &lt;strong&gt;Enabled&lt;/strong&gt; and that the parameters are correct.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-see-config.png&#34; alt=&#34;fritzbox_port-forwarding-see-config.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/fritzbox_port-forwarding-see-config.png&#34; alt=&#34;fritzbox_port-forwarding-see-config.png&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations!&lt;/strong&gt; You managed to configure everything to reach your Raspberry Pi from the internet. Next, we will see how to bring Docker into this game.&lt;/p&gt;
 
-&lt;h2 id=&#34;step-3-docker-run-your-containers-with-published-ports&#34;&gt;Step 3: Docker run your containers with published ports&lt;/h2&gt;
+&lt;h2 id=&#34;step-3-docker-run-your-containers-with-published-ports:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Step 3: Docker run your containers with published ports&lt;/h2&gt;
 
 &lt;p&gt;Before we get down to Docker, we will put some technical details about how port forwarding works upfront.&lt;/p&gt;
 
@@ -163,9 +172,10 @@
 
 &lt;p&gt;You will see a list of all running Docker containers. In the column &lt;strong&gt;PORTS&lt;/strong&gt; you find the ports a container has published. Use the port number in front of the &lt;code&gt;-&amp;gt;&lt;/code&gt; sign as port number when creating the forwarding rules your router.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/docker-ps_on_rpi_with-marker.png&#34; alt=&#34;docker-ps_on_rpi_with-marker.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/docker-ps_on_rpi_with-marker.png&#34; alt=&#34;docker-ps_on_rpi_with-marker.png&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;finally-test-your-setup&#34;&gt;Finally test your setup&lt;/h2&gt;
+&lt;h2 id=&#34;finally-test-your-setup:fb391bf85a6f0a9f03fa40ecb16bfcab&#34;&gt;Finally test your setup&lt;/h2&gt;
 
 &lt;p&gt;To test your setup, we recommend to use a simple webserver you make available to the internet. In the terminal on your Raspberry Pi, execute as root:&lt;/p&gt;
 
@@ -174,11 +184,13 @@
 
 &lt;p&gt;Then, point your browser to the domain name you registered at the Dynamic DNS service. If everything has been configured properly, a small website from our team should appear.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/browser-pi-hypriot-logo.png&#34; alt=&#34;browser-pi-hypriot-logo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/access_service_from_internet/browser-pi-hypriot-logo.png&#34; alt=&#34;browser-pi-hypriot-logo&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;We cross our fingers so that it will work for you! Please use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;&amp;ndash; Mathias&lt;/p&gt;</description>
+&lt;p&gt;&amp;ndash; Mathias&lt;/p&gt;
+</description>
     </item>
     
   </channel>

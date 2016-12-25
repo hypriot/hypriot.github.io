@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/go/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Go on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/go/</link>
+    <description>Recent content in Go on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 31 Dec 2015 18:47:24 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,7 +15,9 @@
       <pubDate>Thu, 31 Dec 2015 18:47:24 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/how-to-compile-go-on-arm/</guid>
-      <description>&lt;p&gt;As for today, up to the latest Go version 1.5.2 there is no official binary release
+      <description>
+
+&lt;p&gt;As for today, up to the latest Go version 1.5.2 there is no official binary release
 of the Go runtime available for ARM devices. Maybe you can install it as
 a package from your operating system, but these packages are almost outdated.&lt;/p&gt;
 
@@ -29,9 +32,7 @@ for everybody to build and use the Go compiler in a consistent and reproducible 
 
 &lt;p&gt;So let&amp;rsquo;s get started with building your own Go environment on ARM&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;let-s-go-on-arm&#34;&gt;Let&amp;rsquo;s Go on ARM&lt;/h3&gt;
+&lt;h3 id=&#34;let-s-go-on-arm:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Let&amp;rsquo;s Go on ARM&lt;/h3&gt;
 
 &lt;p&gt;As a member of the Hypriot team I&amp;rsquo;ll show you all the necessary steps on a
 Raspberry Pi 2 board. Together we&amp;rsquo;ll first install the operating system with
@@ -42,7 +43,7 @@ need to bootstrap a complete Go development environment.&lt;/p&gt;
 need just a short time to adjust the build steps for any Ubuntu, Debian, ArchLinux
 or other Linux OS on your ARM device of choice.&lt;/p&gt;
 
-&lt;h3 id=&#34;bootstrap-the-building-system&#34;&gt;Bootstrap the building system&lt;/h3&gt;
+&lt;h3 id=&#34;bootstrap-the-building-system:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Bootstrap the building system&lt;/h3&gt;
 
 &lt;p&gt;We need the following parts:&lt;/p&gt;
 
@@ -56,7 +57,7 @@ or other Linux OS on your ARM device of choice.&lt;/p&gt;
 &lt;p&gt;As soon as you have setup the hardware, we can start to install the OS and login
 to our fresh and clean build system.&lt;/p&gt;
 
-&lt;h4 id=&#34;a-flash-a-new-sd-card-with-hypriotos-0-6-1&#34;&gt;a) Flash a new SD card with HypriotOS 0.6.1&lt;/h4&gt;
+&lt;h4 id=&#34;a-flash-a-new-sd-card-with-hypriotos-0-6-1:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Flash a new SD card with HypriotOS 0.6.1&lt;/h4&gt;
 
 &lt;p&gt;I&amp;rsquo;m using a Mac to flash the SD card, so maybe you have to look for specific
 instructions for your OS in one of our other posts.&lt;/p&gt;
@@ -66,7 +67,7 @@ $ tar -xvf hypriot-rpi-20151115-132854.img.zip
 $ flash --hostname golang-nutshell hypriot-rpi-20151115-132854.img
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;b-boot-the-raspberry-pi-2-with-hypriotos&#34;&gt;b) Boot the Raspberry Pi 2 with HypriotOS&lt;/h4&gt;
+&lt;h4 id=&#34;b-boot-the-raspberry-pi-2-with-hypriotos:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Boot the Raspberry Pi 2 with HypriotOS&lt;/h4&gt;
 
 &lt;p&gt;Just insert the SD card into your Raspberry Pi 2, connect the Ethernet cable
 between the Raspi and your Internet router/switch and power on the Raspi.&lt;/p&gt;
@@ -87,7 +88,7 @@ PING golang-nutshell.local (192.168.2.116): 56 data bytes
 round-trip min/avg/max/stddev = 5.337/6.087/6.781/0.591 ms
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;c-prepare-ssh-for-login&#34;&gt;c) Prepare SSH for login&lt;/h4&gt;
+&lt;h4 id=&#34;c-prepare-ssh-for-login:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Prepare SSH for login&lt;/h4&gt;
 
 &lt;p&gt;In case you used the same hostname or IP address before, you should clean your
 SSH cache with the following commands:&lt;/p&gt;
@@ -102,7 +103,7 @@ or you can optionally just setup SSH with your SSH credentials.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ssh-copy-id pi@golang-nutshell.local
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;d-login-to-your-raspberry-pi&#34;&gt;d) Login to your Raspberry Pi&lt;/h4&gt;
+&lt;h4 id=&#34;d-login-to-your-raspberry-pi:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;d) Login to your Raspberry Pi&lt;/h4&gt;
 
 &lt;p&gt;Once the Raspi and SSH access is configured, we can login and start working on
 our task to compile Go from the source code.&lt;/p&gt;
@@ -110,7 +111,7 @@ our task to compile Go from the source code.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ssh pi@golang-nutshell.local
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;e-install-all-the-required-build-dependencies&#34;&gt;e) Install all the required build dependencies&lt;/h4&gt;
+&lt;h4 id=&#34;e-install-all-the-required-build-dependencies:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;e) Install all the required build dependencies&lt;/h4&gt;
 
 &lt;p&gt;In order to build Go 1.5 we need first a running Go 1.4 compiler on our system.
 So, we&amp;rsquo;ll start our journey with building the Go 1.4 compiler first.&lt;/p&gt;
@@ -126,7 +127,7 @@ can easily replay this tutorial on a different Linux distro as well.&lt;/p&gt;
 $ sudo apt-get install -y curl gcc git-core
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;download-go-1-4-3-source-tarball-and-compile-it&#34;&gt;Download Go 1.4.3 source tarball and compile it&lt;/h3&gt;
+&lt;h3 id=&#34;download-go-1-4-3-source-tarball-and-compile-it:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Download Go 1.4.3 source tarball and compile it&lt;/h3&gt;
 
 &lt;p&gt;The GOLANG team provides all the Go sources for all the different versions as
 easy to download and install tarballs. But it&amp;rsquo;s not clearly documented how to compile
@@ -136,7 +137,7 @@ and package it the right way to get a package for a binary release later on.&lt;
 parts. After all it&amp;rsquo;s just easy to make some mistakes and so we&amp;rsquo;ll try to break
 the steps down for easy understanding.&lt;/p&gt;
 
-&lt;h4 id=&#34;a-download-the-go-1-4-3-source-code&#34;&gt;a) Download the Go 1.4.3 source code&lt;/h4&gt;
+&lt;h4 id=&#34;a-download-the-go-1-4-3-source-code:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Download the Go 1.4.3 source code&lt;/h4&gt;
 
 &lt;p&gt;Maybe some of you will be asking, why I&amp;rsquo;m extracting the Go source code into the
 directory &lt;code&gt;/usr/local/go&lt;/code&gt; and running the gcc compiler as a &lt;code&gt;root&lt;/code&gt; user.
@@ -157,7 +158,7 @@ $ curl -O https://storage.googleapis.com/golang/go1.4.3.src.tar.gz
 $ sudo tar -xzf go1.4.3.src.tar.gz -C /usr/local
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;b-compile-go-1-4-3-without-running-the-tests&#34;&gt;b) Compile Go 1.4.3 without running the tests&lt;/h4&gt;
+&lt;h4 id=&#34;b-compile-go-1-4-3-without-running-the-tests:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Compile Go 1.4.3 without running the tests&lt;/h4&gt;
 
 &lt;p&gt;We compile Go now from within this installation directory and please we warned
 it will take some time. On a Raspberry Pi 2 with it&amp;rsquo;s four ARMv7 cores it&amp;rsquo;s quite fast
@@ -181,7 +182,7 @@ sys	0m46.860s
 &lt;p&gt;As soon as we can read the message &lt;code&gt;Installed Go for linux/arm in /usr/local/go&lt;/code&gt;
 we know the build was successful and we can use the Go compiler right away.&lt;/p&gt;
 
-&lt;h4 id=&#34;c-test-running-the-go-1-4-3-locally&#34;&gt;c) Test running the Go 1.4.3 locally&lt;/h4&gt;
+&lt;h4 id=&#34;c-test-running-the-go-1-4-3-locally:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Test running the Go 1.4.3 locally&lt;/h4&gt;
 
 &lt;p&gt;According to the fact that we used the standard installation path in &lt;code&gt;/usr/local/go&lt;/code&gt;,
 we are now able to use Go 1.4.3 directly on our Raspi. The only thing we need is
@@ -205,7 +206,7 @@ fail on a Raspberry Pi 2 and maybe on other similar devices too. In this case it
 better to compile Go an run the tests on a reliable machine like the
 &lt;a href=&#34;https://www.scaleway.com&#34;&gt;Scaleway&lt;/a&gt; cloud servers.&lt;/p&gt;
 
-&lt;h3 id=&#34;package-go-1-4-3-as-a-binary-tarball&#34;&gt;Package Go 1.4.3 as a binary tarball&lt;/h3&gt;
+&lt;h3 id=&#34;package-go-1-4-3-as-a-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Package Go 1.4.3 as a binary tarball&lt;/h3&gt;
 
 &lt;p&gt;Maybe some of you already know, that the GOLANG team is providing Go binary releases
 for the most common operating systems. But unfortunately not for ARM.&lt;/p&gt;
@@ -214,7 +215,7 @@ for the most common operating systems. But unfortunately not for ARM.&lt;/p&gt;
 because then it&amp;rsquo;s easier for us using the exact same ways and scripts when
 we&amp;rsquo;d like to install it on our new ARM machines as well.&lt;/p&gt;
 
-&lt;h4 id=&#34;a-analyse-the-original-go-binary-tarball&#34;&gt;a) Analyse the original Go binary tarball&lt;/h4&gt;
+&lt;h4 id=&#34;a-analyse-the-original-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;a) Analyse the original Go binary tarball&lt;/h4&gt;
 
 &lt;p&gt;We can find the official GOLANG binary releases on their download page.
 So let&amp;rsquo;s just google for &amp;ldquo;golang download&amp;rdquo; and we&amp;rsquo;ll get to their website
@@ -250,7 +251,7 @@ make sure, we create our own tarball the same way - otherwise it will work on so
 machines and on some we&amp;rsquo;ll get some wired issues, because we don&amp;rsquo;t know which
 command a different user will use to install the binary tarball on his machine.&lt;/p&gt;
 
-&lt;h4 id=&#34;b-create-our-own-go-binary-tarball&#34;&gt;b) Create our own Go binary tarball&lt;/h4&gt;
+&lt;h4 id=&#34;b-create-our-own-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;b) Create our own Go binary tarball&lt;/h4&gt;
 
 &lt;p&gt;With this details in mind we can create our own binary release tarball easily.&lt;/p&gt;
 
@@ -263,7 +264,7 @@ command a different user will use to install the binary tarball on his machine.&
 $ tar -czf ~/go1.4.3.linux-armv7.tar.gz go
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;c-prove-our-own-go-binary-tarball&#34;&gt;c) Prove our own Go binary tarball&lt;/h4&gt;
+&lt;h4 id=&#34;c-prove-our-own-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;c) Prove our own Go binary tarball&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;$ tar -vtf go1.4.3.linux-armv7.tar.gz | head -10
 drwxr-xr-x root/root         0 2015-12-31 14:06 go/
@@ -280,7 +281,7 @@ drwxr-xr-x root/root         0 2015-09-23 06:38 go/test/
 
 &lt;p&gt;Ok, not exactly the same as the original. The user and group id&amp;rsquo;s are not in numerical form, but all the other details seems to be correct. We just have to include the &lt;code&gt;--numeric-owner&lt;/code&gt; flag and we&amp;rsquo;ll get a perfect result.&lt;/p&gt;
 
-&lt;h4 id=&#34;d-recommended-way-to-package-the-go-binary-tarball&#34;&gt;d) Recommended way to package the Go binary tarball&lt;/h4&gt;
+&lt;h4 id=&#34;d-recommended-way-to-package-the-go-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;d) Recommended way to package the Go binary tarball&lt;/h4&gt;
 
 &lt;p&gt;With all the details proved well, we do have now a way how we should package the
 Go pre-compiled binary tarball. As long as your ARM Linux system supports the &lt;code&gt;tar&lt;/code&gt;
@@ -315,7 +316,7 @@ drwxr-xr-x 0/0               0 2015-09-23 06:38 go/test/
 -rw-r--r-- 0/0             716 2015-09-23 06:37 go/test/typeswitch3.go
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;install-and-test-the-go-1-4-3-binary-tarball&#34;&gt;Install and test the Go 1.4.3 binary tarball&lt;/h3&gt;
+&lt;h3 id=&#34;install-and-test-the-go-1-4-3-binary-tarball:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Install and test the Go 1.4.3 binary tarball&lt;/h3&gt;
 
 &lt;p&gt;Honestly, this was a long and dirty road, just to get a Go 1.4.3 compiler so that
 we can start developing our Go code and compiling our real world tasks on an
@@ -333,7 +334,7 @@ $ go version
 go version go1.4.3 linux/arm
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;compiling-testing-and-packaging-go-1-5-2&#34;&gt;Compiling, testing and packaging Go 1.5.2&lt;/h3&gt;
+&lt;h3 id=&#34;compiling-testing-and-packaging-go-1-5-2:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Compiling, testing and packaging Go 1.5.2&lt;/h3&gt;
 
 &lt;p&gt;With all our previous detailed work this part is now a really easy task.&lt;/p&gt;
 
@@ -403,7 +404,7 @@ But we didn&amp;rsquo;t run any tests at all. And honestly, as a developer I jus
 to install and use the Go compiler - I don&amp;rsquo;t like to compile it by myself,
 so I recommend using a Go binary release would be the best way!&lt;/p&gt;
 
-&lt;h3 id=&#34;key-takeaways&#34;&gt;Key takeaways&lt;/h3&gt;
+&lt;h3 id=&#34;key-takeaways:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Key takeaways&lt;/h3&gt;
 
 &lt;p&gt;As you can clearly see, it&amp;rsquo;s really the easiest and preferred way to install a
 Go binary release instead of compiling the Go compiler every time from source.
@@ -436,11 +437,12 @@ go version go1.5.2 linux/arm
 &lt;p&gt;This is already a work in progress and we&amp;rsquo;re happy to get comments and pull-request
 to improve the build task even more.&lt;/p&gt;
 
-&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback please!&lt;/h3&gt;
+&lt;h3 id=&#34;feedback-please:204f85c7f3de7b1fb9d7b9a672da8cbd&#34;&gt;Feedback please!&lt;/h3&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this tutorial at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

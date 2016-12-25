@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/birthday/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Birthday on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/birthday/</link>
+    <description>Recent content in Birthday on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2016 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/birthday/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,11 +15,12 @@
       <pubDate>Thu, 24 Mar 2016 00:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-birthday-party-review/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg&#34; alt=&#34;one-of-its-kind birthday cake&#34; /&gt;&lt;/p&gt;
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg&#34; alt=&#34;one-of-its-kind birthday cake&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Once in a while everyone should have a break from work and party hard. I am not saying that this event was a break for our Hypriot Team, but we definitely celebrated as real pirates do: With a worn-out sabre and rum, on board of a three-storey cake ship.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;This three hour long journey has been tough. 50 pirates, many of them Docker freshmen from many different companies, striked out to look for the blue whale. Strong currents in foreign waters made this task a challenging one. But six veterans were aboard that shared their experience so that together with the freshmen they made good progress.&lt;/p&gt;
 
@@ -45,21 +47,25 @@
 
 &lt;p&gt;In case we do not have your proper size any more, we request your size from Docker. If this won&amp;rsquo;t work out, we put you on top of the winners list for next time when there&amp;rsquo;s something to win.&lt;/p&gt;
 
-&lt;h2 id=&#34;big-thanks-to-our-sponsors&#34;&gt;Big thanks to our sponsors&lt;/h2&gt;
+&lt;h2 id=&#34;big-thanks-to-our-sponsors:4df1e7d2138a2d89c860af43c5e2ace8&#34;&gt;Big thanks to our sponsors&lt;/h2&gt;
 
 &lt;p&gt;This event would not have been possible without our sponsors. Again, we heartfully thank:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Paessler AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/paesslerAG&#34;&gt;@paesslerAG&lt;/a&gt;&lt;/em&gt; for the gorgeous birthday cake:
-&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
-&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Seal Systems AG&lt;/strong&gt; &lt;em&gt;&lt;a href=&#34;https://twitter.com/printandconvert&#34;&gt;@PrintAndConvert&lt;/a&gt;&lt;/em&gt; for the yummy pizza:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockerbday-review/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
 
@@ -69,9 +75,9 @@
 
 &lt;p&gt;Last but not least, we would like to give special thanks to Jana Jakob from &lt;a href=&#34;https://www.facebook.com/janescaketragedy/&#34;&gt;Janes Cake Tragedy&lt;/a&gt; for the one-of-its-kind birthday cake!&lt;/p&gt;
 
-&lt;h2 id=&#34;visually-dive-into-of-what-happened&#34;&gt;Visually dive into of what happened&lt;/h2&gt;
+&lt;h2 id=&#34;visually-dive-into-of-what-happened:4df1e7d2138a2d89c860af43c5e2ace8&#34;&gt;Visually dive into of what happened&lt;/h2&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 
 
 
@@ -438,7 +444,7 @@
 
 
 &lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
@@ -512,7 +518,8 @@
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -527,9 +534,8 @@
 
 &lt;p&gt;And of course we from Hypriot are in the thick of it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake-cover.jpg&#34; alt=&#34;Come to the Docker Birthday Party 2016&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/docker-mini-cake-cover.jpg&#34; alt=&#34;Come to the Docker Birthday Party 2016&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;We had to find a suitable location (we now have space for 450 people), prepare the location and computers for all the attendees,
 make a birthday cake, learn all about Docker so we could be mentors and finally we had to find sponsors &amp;hellip;&lt;/p&gt;
@@ -537,16 +543,20 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 &lt;p&gt;And we actually found some and want to say thank you here for their support:&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;Paessler AG&lt;/strong&gt; for the Birthday Cake:
-&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://www.paessler.com/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/paessler.jpg&#34; alt=&#34;Paessler AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;TAO &amp;amp; University of Bamberg&lt;/strong&gt; for the great location:
-&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://www.tao-oberfranken.de//&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/tao.jpg&#34; alt=&#34;TAO&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.uni-bamberg.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/uni-bamberg.jpg&#34; alt=&#34;University of Bamberg&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;We thank &lt;strong&gt;Seal Systems&lt;/strong&gt; AG for the yummy pizza:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sealsystems.de/&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/come-to-birthday-party/seal.jpg&#34; alt=&#34;Seal Systems AG&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please drop them a line at their twitter account and give them a virtual hug!&lt;/p&gt;
 
@@ -563,7 +573,7 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 &lt;p&gt;And to wet your appetite some more we have prepared some pictures:&lt;/p&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Docker Birthday Party Warm-Up&lt;/div&gt;
 
 
@@ -673,7 +683,7 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 
 &lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
@@ -747,7 +757,8 @@ make a birthday cake, learn all about Docker so we could be mentors and finally 
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

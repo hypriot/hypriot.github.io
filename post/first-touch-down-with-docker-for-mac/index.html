@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,7 +81,9 @@
   <div class="post">
     <h1>First Touch Down with Docker for Mac</h1>
     <span class="post-date">Sun, Mar 27, 2016</span>
-    <p>A few days ago, Docker has announced a closed BETA program for their new
+    
+
+<p>A few days ago, Docker has announced a closed BETA program for their new
 applications &ldquo;Docker for Mac&rdquo; and &ldquo;Docker for Windows&rdquo;. These apps are meant to
 simplify the usage of Docker containers for every developer even more. They try
 to lower the barrier to install and use Docker on your desktop and laptop computers
@@ -96,19 +98,19 @@ token within a few hours only.</p>
 <p>Here I&rsquo;d like to give you a first insight view how to install and use &ldquo;Docker for Mac&rdquo;
 with a basic walk-through on my MacBook Pro running the very latest OS X 10.11.4.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" />
+</p>
 
 <p>So, please join me on this journey&hellip;</p>
 
-<p></p>
-
-<h2 id="access-to-the-beta-program">Access to the BETA program</h2>
+<h2 id="access-to-the-beta-program:10b72799563d55724d4550d1181f06ee">Access to the BETA program</h2>
 
 <p>You can easily register to the Docker BETA program at <a href="https://beta.docker.com">https://beta.docker.com</a>. Once
 you&rsquo;re logged in with your Docker ID (which is literally your Docker Hub user account)
 you can apply for testing &ldquo;Docker for Mac&rdquo; and &ldquo;Docker for Windows&rdquo;.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-apply-for-beta.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-apply-for-beta.jpg" alt="Docker for Mac" />
+</p>
 
 <p>As this is a closed BETA, you&rsquo;ll get on a waiting list and hopefully will be selected
 soon. So, please be patient until you&rsquo;ll receive an invitation email with some more
@@ -117,56 +119,67 @@ detailed instructions and a personal access key.</p>
 <p>For this blog post, I&rsquo;ll show you how easy it is to install and use Docker on OS X.
 And I guess, we&rsquo;ll write another post later for all the curious Windows users,  too.</p>
 
-<h2 id="download-and-install-docker-for-mac">Download and install &ldquo;Docker for Mac&rdquo;</h2>
+<h2 id="download-and-install-docker-for-mac:10b72799563d55724d4550d1181f06ee">Download and install &ldquo;Docker for Mac&rdquo;</h2>
 
 <p>When you&rsquo;re selected for the BETA, you&rsquo;ll receive an email titled &ldquo;Docker Private Beta&rdquo;
 with a link to the download page and an access key.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-download-page.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-download-page.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Download the installer package called &ldquo;Docker.dmg&rdquo; to your Mac and double click it,
 drag and drop the &ldquo;Docker beta&rdquo; app to your Applications folder.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Now, from your Lauchpad you can start the &ldquo;Docker beta&rdquo; app directly the first time
 and you can begin right away using Docker on your Mac.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-start-app.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-start-app.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Once you start the BETA Docker app the first time you&rsquo;ll be asked to enter your
 personal invite token.
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-01-insert-key.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-01-insert-key.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Token has been accepted.
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-02-key-accepted.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-02-key-accepted.jpg" alt="Docker for Mac" />
+</p>
 
 <p>The Docker app needs to additionally install a network helper and requests for privileges
 to do so.
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-03-request-privileges.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Enter your credentials to grant privileged access.
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-04-grant-privileges.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Success, the Docker app is installed and you can easily find and access it by
 clicking on the little neat whale icon.
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-install-05-tray-icon.jpg" alt="Docker for Mac" />
+</p>
 
-<h2 id="using-docker-for-mac-the-first-time">Using &ldquo;Docker for Mac&rdquo; the first time</h2>
+<h2 id="using-docker-for-mac-the-first-time:10b72799563d55724d4550d1181f06ee">Using &ldquo;Docker for Mac&rdquo; the first time</h2>
 
 <p>To use Docker we&rsquo;ll just start a terminal window and use the Docker CLI to access
 the local Docker Engine.</p>
 
 <p>First, get the version of the Docker command:
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-01-dash-v.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Determine the versions of the Docker Client and the Docker Engine:
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-02-version.jpg" alt="Docker for Mac" />
+</p>
 
 <p>Display some more detailed informations about the installed Docker software:
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-run-docker-03-info.jpg" alt="Docker for Mac" />
+</p>
 
-<h2 id="let-s-start-a-real-docker-container">Let&rsquo;s start a real Docker container</h2>
+<h2 id="let-s-start-a-real-docker-container:10b72799563d55724d4550d1181f06ee">Let&rsquo;s start a real Docker container</h2>
 
 <p>First, we&rsquo;ll check how our host operating system looks like:</p>
 
@@ -261,7 +274,7 @@ commands inside Docker containers with a Linux OS and a recent kernel version 4.
 <p>That&rsquo;s pure Docker container magic: running a Linux container seamlessly on our
 development machine, here on a MacBook Pro (Retina, 15-inch, Mid 2014).</p>
 
-<h2 id="the-magic-behind-the-scenes">The Magic behind the scenes</h2>
+<h2 id="the-magic-behind-the-scenes:10b72799563d55724d4550d1181f06ee">The Magic behind the scenes</h2>
 
 <p>As I&rsquo;ve shown you in the screenshots above, our host operating system, where the Docker
 Client is running, is <code>darwin/amd64</code> or OS X, but the Docker Engine runs on <code>linux/amd64</code>.</p>
@@ -281,7 +294,7 @@ natively on our Mac.</p>
 <p>Honestly, there are even more great technical details packed into the new &ldquo;Docker for Mac&rdquo;
 release, but we&rsquo;ll keep them for a later more advanced technical blog post.</p>
 
-<h2 id="there-is-another-big-arm-surprise">There is another big ARM surprise</h2>
+<h2 id="there-is-another-big-arm-surprise:10b72799563d55724d4550d1181f06ee">There is another big ARM surprise</h2>
 
 <p>With the public announcement of &ldquo;Docker for Mac&rdquo;, I received an <a href="https://twitter.com/avsm/status/713010884596080640">Easter Egg tweet</a> from one
 of the Docker engineers, Anil Madhavapeddy, that they&rsquo;ve just included another cool
@@ -296,12 +309,14 @@ the webserver I&rsquo;ve presented at DockerCon 2015 San Francisco, CA, last yea
 
 <p>Ok, here we go. Let&rsquo;s run an ARM container on a Mac:</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-01.jpg" alt="Docker for Mac" />
+</p>
 
 <p>As you can see, it doesn&rsquo;t work that way&hellip;<br />
 &hellip;hmmm, but maybe with some more magic Docker spells it could be done.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-02.jpg" alt="Docker for Mac" />
+</p>
 
 <p>And this is where all the magic happens. We&rsquo;re just bind-mounting a special binary
 into our original ARM-based container. Again, we don&rsquo;t change the original Docker
@@ -310,10 +325,12 @@ which was built on a Raspberry Pi, now on an Intel-based Mac - just with the hel
 of some <a href="https://twitter.com/quintus23m/status/713523016836231171">fantastic Docker fu</a>
 embedded in &ldquo;Docker for Mac&rdquo;.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg" alt="Docker for Mac" /></p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-05.jpg" alt="Docker for Mac" />
+</p>
 
 <p>As a last proof, we check with <code>docker ps</code> that we&rsquo;re running the original ARM container from June 2015:
-<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg" alt="Docker for Mac" /></p>
+<img src="/images/first-touch-down-with-docker-for-mac/docker4mac-arm-container-04.jpg" alt="Docker for Mac" />
+</p>
 
 <p>This is possible because the Docker engineers have already included the Linux kernel support
 for <code>binfmt_misc</code> into &ldquo;Docker for Mac&rdquo;. And as long as there is the right Qemu interpreter
@@ -329,7 +346,7 @@ but now it&rsquo;s coming true soon.</p>
 <p>Special thanks to Anil, Justin and all the other great guys at the Docker engineering
 team to make this magic true.</p>
 
-<h2 id="key-takeaways">Key Takeaways</h2>
+<h2 id="key-takeaways:10b72799563d55724d4550d1181f06ee">Key Takeaways</h2>
 
 <p>After this first and fast walk-through, I guess you&rsquo;re even more curious and you&rsquo;d
 like to use &ldquo;Docker for Mac&rdquo; by yourself. So in the meantime I&rsquo;ll just summarize the
@@ -350,6 +367,7 @@ key points what impressed me most about this great new release.</p>
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/hypriotos/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Hypriotos on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/hypriotos/</link>
+    <description>Recent content in Hypriotos on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 01 Nov 2016 13:42:20 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/hypriotos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,18 +15,20 @@
       <pubDate>Tue, 01 Nov 2016 13:42:20 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/fix-dirty-cow-on-raspberry-pi/</guid>
-      <description>&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
+      <description>
+
+&lt;p&gt;Have you seen the latest reports about the Linux kernel security vulnerability called &amp;ldquo;Dirty COW&amp;rdquo;?
 Dirty COW is a &lt;a href=&#34;http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/&#34;&gt;race condition in Linux&lt;/a&gt; arising from how Copy-On-Write (the COW in the name) is handled by the kernel&amp;rsquo;s memory subsystem&amp;rsquo;s use of private mappings.&lt;/p&gt;
 
 &lt;p&gt;The really dangerous point here is, it can be used to &lt;a href=&#34;http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/&#34;&gt;escape Docker containers&lt;/a&gt;.
-&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg&#34; alt=&#34;dirty-cow-001&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;So, we&amp;rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!&lt;/p&gt;
 
-&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;
-&lt;/p&gt;
+&lt;p&gt;No matter if you&amp;rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&amp;hellip;&lt;/p&gt;
 
-&lt;h3 id=&#34;tl-dr-fast-fixing&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
+&lt;h3 id=&#34;tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;TL;DR - Fast Fixing&lt;/h3&gt;
 
 &lt;p&gt;For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:&lt;/p&gt;
 
@@ -38,7 +41,7 @@ $ sudo reboot
 
 &lt;p&gt;For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&amp;rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.&lt;/p&gt;
 
-&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
+&lt;h3 id=&#34;testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Testing for Dirty COW with the help of Docker&lt;/h3&gt;
 
 &lt;p&gt;If you&amp;rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo &lt;a href=&#34;https://github.com/DieterReuter/rpi-dirtycow&#34;&gt;DieterReuter/rpi-dirtycow&lt;/a&gt;, so you can build everything on your own, too.&lt;/p&gt;
 
@@ -191,7 +194,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This is another great advantage by Docker - get rid of all the tools we don&amp;rsquo;t need anymore.&lt;/p&gt;
 
-&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
+&lt;h3 id=&#34;conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Conclusion: upgrade your system regularly&lt;/h3&gt;
 
 &lt;p&gt;Your Raspberry Pi system is now SAFE again. In the future don&amp;rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:&lt;/p&gt;
 
@@ -223,13 +226,14 @@ HypriotOS/armv7: pirate@black-pearl in ~
 
 &lt;p&gt;That&amp;rsquo;s all and STAY SAFE !!!&lt;/p&gt;
 
-&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+&lt;h3 id=&#34;feedback-please:3be4aa7cb9bc4e1cf6956202774eb827&#34;&gt;Feedback, please&lt;/h3&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -244,8 +248,6 @@ On top of that it is one of the first 64-bit ARM boards that can be bought for a
 
 &lt;p&gt;Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
 Read on to learn what happened next&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
 The gist of it is that it was quite an involved process of creating his own custom Debian based operating system that supported building Go and Docker for ARM64.&lt;/p&gt;
@@ -297,7 +299,8 @@ A highlevel comparision of both devices can be found at &lt;a href=&#34;http://w
 
 &lt;p&gt;Overall the relation of the different repositories now looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;All these changes also redefined for us what HypriotOS is all about.&lt;/p&gt;
 
@@ -305,7 +308,7 @@ A highlevel comparision of both devices can be found at &lt;a href=&#34;http://w
 &lt;em&gt;&amp;ldquo;HypriotOS is a minimal operating system for the Raspberry Pi 1 &amp;amp; 2 that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Our new mission statement is:&lt;/strong&gt;&lt;br /&gt;
-*&amp;ldquo;HypriotOS is a minimal Debian-based operating system for &lt;strong&gt;many popular IoT devices&lt;/strong&gt; that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;*&lt;/p&gt;
+&lt;em&gt;&amp;ldquo;HypriotOS is a minimal Debian-based operating system for &lt;strong&gt;many popular IoT devices&lt;/strong&gt; that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;It is just a small change but it will have big implications.&lt;/p&gt;
 
@@ -336,7 +339,8 @@ Help us to get your favourite ARM board supported by HypriotOS!&lt;/p&gt;
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.
 You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10926502&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
-&lt;p&gt;Govinda aka &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@&lt;em&gt;beagile&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Govinda aka &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@&lt;em&gt;beagile&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -345,13 +349,14 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
       <pubDate>Mon, 30 Mar 2015 00:00:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/hypriotos-back-again-with-docker-on-arm/</guid>
-      <description>&lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
+      <description>
+
+&lt;p&gt;Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
 Listening to our users and having some ideas of our own we are back again with our latest version of HypriotOS.&lt;/p&gt;
 
-&lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.
-&lt;/p&gt;
+&lt;p&gt;We dubbed it &amp;ldquo;&lt;strong&gt;Jack&lt;/strong&gt;&amp;rdquo; as every proper software release should have a fitting &lt;a href=&#34;http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/&#34;&gt;code name&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary-of-changes&#34;&gt;Summary of Changes&lt;/h2&gt;
+&lt;h2 id=&#34;summary-of-changes:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Summary of Changes&lt;/h2&gt;
 
 &lt;p&gt;Jack brings along a host of new features&lt;/p&gt;
 
@@ -367,14 +372,14 @@ Listening to our users and having some ideas of our own we are back again with o
 
 &lt;p&gt;Some of these feature deserve a more thorough explanation.&lt;/p&gt;
 
-&lt;h3 id=&#34;open-vswitch-support&#34;&gt;Open vSwitch support&lt;/h3&gt;
+&lt;h3 id=&#34;open-vswitch-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Open vSwitch support&lt;/h3&gt;
 
 &lt;p&gt;Check out this cool video &lt;a href=&#34;https://www.youtube.com/watch?v=sBy0NVBPc9g&#34;&gt;Running Open vSwitch on Docker&lt;/a&gt; from Dave Tucker as an introduction to Docker and Open vSwitch.
 We added the foundation for using Open vSwitch by adding the necessary kernel support into our image.&lt;/p&gt;
 
 &lt;p&gt;You can see for yourself by typing the following&lt;/p&gt;
 
-
+&lt;p&gt;
 HypriotOS: root@black-pearl in ~
 $ modprobe openvswitch
 HypriotOS: root@black-pearl in ~
@@ -383,41 +388,41 @@ openvswitch            68194  0
 vxlan                  29211  1 openvswitch
 gre                     4069  1 openvswitch
 
-
+&lt;/p&gt;
 
 &lt;p&gt;Be aware that you still need a working Open vSwitch Docker image that works for ARM.
 If nobody else is faster we might provide one soon ourselves!&lt;/p&gt;
 
-&lt;h3 id=&#34;improved-networking-support&#34;&gt;Improved Networking Support&lt;/h3&gt;
+&lt;h3 id=&#34;improved-networking-support:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Improved Networking Support&lt;/h3&gt;
 
-&lt;h4 id=&#34;hotplug&#34;&gt;Hotplug&lt;/h4&gt;
+&lt;h4 id=&#34;hotplug:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Hotplug&lt;/h4&gt;
 
 &lt;p&gt;To make the networking with our image a smoother experience we added hotplug support for networking devices.
 This allows you to add for instance a USB Wifi Dongle and it will be recognized by your Pi at once.&lt;/p&gt;
 
 &lt;p&gt;You can check if it worked by using &lt;strong&gt;lsusb&lt;/strong&gt;:&lt;/p&gt;
 
-
+&lt;p&gt;
 
 $ lsusb
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp.
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n WLAN Adapter
+&lt;/p&gt;
 
-
-&lt;h4 id=&#34;wifi&#34;&gt;Wifi&lt;/h4&gt;
+&lt;h4 id=&#34;wifi:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Wifi&lt;/h4&gt;
 
 &lt;p&gt;One of the most asked for features regarding our SD image was the support of Wifi.&lt;/p&gt;
 
 &lt;p&gt;The easiest way to get started with Wifi is on Mac with our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash script&lt;/a&gt;.
 This script does not only allow you to set Wifi configuration but it also allows you to fetch, configure and flash the SD card in one go.&lt;/p&gt;
 
-
+&lt;p&gt;
 
 flash --ssid Your-Wifi-SID --password Your-Wifi-Password http://downloads.hypriot.com/hypriot-rpi-20150329-140334.img.zip
 
-
+&lt;/p&gt;
 
 &lt;p&gt;If you cannot use our nifty flash tool you have to first boot your Pi with a network cable attached.
 Then you can add your Wifi credentials in &lt;code&gt;/boot/occidentalis.txt&lt;/code&gt; as described in the &lt;a href=&#34;https://github.com/hypriot/flash#occidentalistxt&#34;&gt;Readme&lt;/a&gt; of the flash tool.
@@ -425,7 +430,7 @@ Afterwards run &lt;code&gt;occi&lt;/code&gt; at the command line and reboot.&lt;
 
 &lt;p&gt;After rebooting you should see a wlan-interface with an ip address assigned similar to this:&lt;/p&gt;
 
-
+&lt;p&gt;
 
 $ ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN
@@ -451,16 +456,16 @@ $ ip a
     inet 172.17.42.1/16 scope global docker0
        valid_lft forever preferred_lft forever
 
+&lt;/p&gt;
 
-
-&lt;h3 id=&#34;support-for-avahi-bonjour&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
+&lt;h3 id=&#34;support-for-avahi-bonjour:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Support for Avahi/Bonjour&lt;/h3&gt;
 
 &lt;p&gt;One of the major problems after booting your Pi always was how to find out its IP address.
-There are many approaches to solve this problem but one of the easiest is with the help of [Avahi](&lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;http://de.wikipedia.org/wiki/Avahi_(Software&lt;/a&gt;).&lt;/p&gt;
+There are many approaches to solve this problem but one of the easiest is with the help of &lt;a href=&#34;http://de.wikipedia.org/wiki/Avahi_(Software&#34;&gt;Avahi&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now after booting up our SD card image you can just ssh into your Pi without finding out the IP address first.&lt;/p&gt;
 
-
+&lt;p&gt;
 $ ssh root@black-pearl.local
 root@black-pearl.local&#39;s password:
 Linux black-pearl 3.18.10-hypriotos-v7+ #2 SMP PREEMPT Sun Mar 29 13:13:41 UTC 2015 armv7l
@@ -474,7 +479,7 @@ permitted by applicable law.
 Last login: Sun Mar 29 23:49:43 2015 from macbook
 HypriotOS: root@black-pearl in ~
 $
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;black-pearl&lt;/strong&gt; is the standard hostname your Pi gets after booting with our image.&lt;/p&gt;
 
@@ -487,13 +492,13 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;Windows users need to install &lt;a href=&#34;https://www.apple.com/de/itunes/download/&#34;&gt;iTunes&lt;/a&gt; as Bonjour/Avahi comes bundles with it.&lt;/p&gt;
 
-&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;h2 id=&#34;download:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Download&lt;/h2&gt;
 
 &lt;p&gt;The new image can be downloaded here:&lt;/p&gt;
 
 &lt;p&gt;Docker-Pi Image (hypriot-rpi-20150329-140334.img.zip) (~367MB)&lt;/p&gt;
 
-&lt;h2 id=&#34;how-to-get-started&#34;&gt;How to get started&lt;/h2&gt;
+&lt;h2 id=&#34;how-to-get-started:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;How to get started&lt;/h2&gt;
 
 &lt;p&gt;Download our SD card image and flash it on your own SD card. &lt;a href=&#34;http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600&#34;&gt;Here&lt;/a&gt; is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.&lt;/p&gt;
 
@@ -504,7 +509,7 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 
 &lt;p&gt;You can find these images and more at &lt;a href=&#34;https://registry.hub.docker.com/repos/hypriot/&#34;&gt;our place&lt;/a&gt; on the Docker Hub. After booting our image on your Pi these base images are just a &amp;ldquo;docker pull&amp;rdquo; away. For example &amp;ldquo;docker pull hypriot/rpi-node&amp;rdquo;.&lt;/p&gt;
 
-&lt;h2 id=&#34;give-us-your-feedback&#34;&gt;Give us your feedback&lt;/h2&gt;
+&lt;h2 id=&#34;give-us-your-feedback:3dc6f6d2f6296024232980f87970ab3c&#34;&gt;Give us your feedback&lt;/h2&gt;
 
 &lt;p&gt;As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?&lt;/p&gt;
 
@@ -512,7 +517,8 @@ Linux and Windows users need to install additional software first.&lt;/p&gt;
 And please share this post with your friends.&lt;/p&gt;
 
 &lt;p&gt;We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
-Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;</description>
+Low-cost instant access to Docker awesomeness on your Raspberry Pi.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

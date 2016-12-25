@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/publicity/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Publicity on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/publicity/</link>
+    <description>Recent content in Publicity on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 15 Feb 2015 22:09:33 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/publicity/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -17,7 +18,8 @@
       <description>&lt;p&gt;We just had our short moment of fame when we were featured on the docker website.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gallery/hypriot-on-the-docker-website/docker_community.jpg&#34; alt=&#34;Hypriot on the Docker Website&#34; /&gt;
-&lt;/p&gt;</description>
+&lt;/p&gt;
+</description>
     </item>
     
   </channel>

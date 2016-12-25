@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,17 +81,18 @@
   <div class="post">
     <h1>Making of HypriotOS</h1>
     <span class="post-date">Wed, May 25, 2016</span>
-    <p>Today we have released a new version of HypriotOS &ldquo;Barbossa&rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&rsquo;s. Beginning with this release we have <strong>open sourced every step</strong> to build each parts, from the kernel and root filesystem up to the SD card image.</p>
+    
+
+<p>Today we have released a new version of HypriotOS &ldquo;Barbossa&rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&rsquo;s. Beginning with this release we have <strong>open sourced every step</strong> to build each parts, from the kernel and root filesystem up to the SD card image.</p>
 
 <p>We have also moved every build step out in the cloud to use the &ldquo;programmable internet&rdquo; to build and test everything with just a <strong>git push</strong>.</p>
 
-<p><img src="/images/making-of-hypriotos/hypriotos-release.png" alt="release process" /></p>
-
-<p></p>
+<p><img src="/images/making-of-hypriotos/hypriotos-release.png" alt="release process" />
+</p>
 
 <p>This diagram above shows the release process of a new SD card image for any of the new HypriotOS supported ARM boards. We have moved all building steps to Cloud services. This helps us all to build any SD card without the need to have the specific ARM board. And this also <strong>enables the community to contribute</strong> to all our repos with pull requests.</p>
 
-<h2 id="ci-driven-builds">CI driven builds</h2>
+<h2 id="ci-driven-builds:ce95f1b761ab1b4f8ebf52d516170ec1">CI driven builds</h2>
 
 <p>To build the SD card images in the Cloud we have chosen a mixture of <strong>Travis CI</strong> and <strong>CircleCI</strong> as the Docker support fits our needs. Only where we need ARM servers to built natively we have our own <strong>Drone</strong> and <strong>Jenkins</strong> servers running on Scaleway C1 servers.</p>
 
@@ -99,17 +100,19 @@
 
 <p>After each build Travis also runs <strong>Serverspec</strong> tests against the SD card image to have a minimal test of the generated output.</p>
 
-<p><img src="/images/making-of-hypriotos/travis-serverspec-tests.png" alt="travis serverspec tests" /></p>
+<p><img src="/images/making-of-hypriotos/travis-serverspec-tests.png" alt="travis serverspec tests" />
+</p>
 
 <p>When we trigger a release build, Travis deploys the newly generated SD card image to the <strong><a href="https://github.com/hypriot/image-builder-rpi/releases">GitHub releases</a></strong> page. You can find releases, as well as pre-releases of upcoming versions there.</p>
 
-<h2 id="join-the-movement">Join the movement</h2>
+<h2 id="join-the-movement:ce95f1b761ab1b4f8ebf52d516170ec1">Join the movement</h2>
 
 <p>The advantage of open sourcing is that the community can give us feedback and sometimes even start contributing back. The SD card image can be built locally on your Linux or Mac notebook as well. So you also are able to build a SD card image without having the device.</p>
 
 <p>As we love Docker the build process runs in a Docker Container. This simplifies the setup on your local machine. Each GitHub repository has a README with the steps needed to build and test the specific HypriotOS SD card image.</p>
 
-<p><img src="/images/making-of-hypriotos/hypriotos-local-build.png" alt="local build" /></p>
+<p><img src="/images/making-of-hypriotos/hypriotos-local-build.png" alt="local build" />
+</p>
 
 <p>The normal workflow looks like this</p>
 
@@ -126,13 +129,15 @@ This enables everyone to make changes to the code base and send us Pull Requests
 
 <p>The <strong>Pull Requests</strong> are tested with <strong>Travis CI</strong> of course, so we can see if it works well.</p>
 
-<p><img src="/images/making-of-hypriotos/github-pr-success.png" alt="pull request successful" /></p>
+<p><img src="/images/making-of-hypriotos/github-pr-success.png" alt="pull request successful" />
+</p>
 
 <p>As there are several GitHub repositories involved to build the SD card image we use <strong>Waffle.io</strong> to have and overview of all issues, pull requests and tasks to do for a release.</p>
 
-<p><img src="/images/making-of-hypriotos/waffle.png" alt="waffle board" /></p>
+<p><img src="/images/making-of-hypriotos/waffle.png" alt="waffle board" />
+</p>
 
-<h2 id="what-s-next">What&rsquo;s next</h2>
+<h2 id="what-s-next:ce95f1b761ab1b4f8ebf52d516170ec1">What&rsquo;s next</h2>
 
 <p>We also started to add more boards and created new GitHub repos for each. But we focused on the Raspberry Pi to finish the &ldquo;Barbossa&rdquo; release. Here is a list of boards we have started to support:</p>
 
@@ -152,6 +157,7 @@ The other boards are still a work in progress - any help is welcome from the com
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

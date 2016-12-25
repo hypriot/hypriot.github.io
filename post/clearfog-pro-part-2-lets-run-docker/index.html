@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,7 +81,9 @@
   <div class="post">
     <h1>Let&#39;s run Docker on the ClearFog Pro router board</h1>
     <span class="post-date">Wed, Mar 16, 2016</span>
-    <p>Here is the follow up of our blog post series about the new ARM-based router board
+    
+
+<p>Here is the follow up of our blog post series about the new ARM-based router board
 from SolidRun which is powered by a dual core Marvell ARMADA ARMv7 CPU. In case
 you missed the intro a few days ago, we highly recommend reading the technical
 specifications first to get an impression of this board.</p>
@@ -97,16 +99,16 @@ the first time on this powerful device.</p>
 <p>So let&rsquo;s get started and for our second episode we connect the ClearFog Pro to a
 MacBookPro and powering this thing up&hellip;</p>
 
-<p><img src="/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg" alt="ClearFog Pro Eth2 Cabled" /></p>
+<p><img src="/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg" alt="ClearFog Pro Eth2 Cabled" />
+</p>
 
-<p></p>
-
-<h3 id="first-contact">First contact</h3>
+<h3 id="first-contact:df574ad27518dffc38341295be8d9782">First contact</h3>
 
 <p>We can connect the ClearFog Pro to a MacBookPro with a standard USB cable, because
 SolidRun added a FTDI chip on the board (Note: you&rsquo;ll need to install the appropriate
 FTDI device drivers).
-<img src="/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg" alt="ClearFog Pro Serial Console" /></p>
+<img src="/images/clearfog-pro-part2/clearfog-pro-serial-console.jpg" alt="ClearFog Pro Serial Console" />
+</p>
 
 <p>The microUSB connector acts as a debugging console and gives us access to the
 Linux console as well. As soon as we&rsquo;re powering the board, we can see the console
@@ -122,7 +124,7 @@ Error initializing MMC - FFFFFFEF
 Trying Uart
 </code></pre>
 
-<h3 id="install-linux">Install Linux</h3>
+<h3 id="install-linux:df574ad27518dffc38341295be8d9782">Install Linux</h3>
 
 <p>Normally we would start building our own HypriotOS for a new board, in order to get a
 perfect Linux kernel with tuned settings and a Debian-based Linux distro to run Docker
@@ -231,7 +233,8 @@ Serial          : 0000000000000000
 
 <p>Here is a detailed picture of the SOM (System On Module), which includes the CPU
 and the DDR3 memory chips.
-<img src="/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg" alt="ClearFog Pro MicroSOM" /></p>
+<img src="/images/clearfog-pro-part2/clearfog-pro-microsom-a388-top-transparent.jpg" alt="ClearFog Pro MicroSOM" />
+</p>
 
 <p>Once we attach an ethernet cable to the ethernet connector next to the USB plug,
 we should have the network interface <code>eth2</code> running. If there is no IP address
@@ -273,7 +276,7 @@ rtt min/avg/max/mdev = 26.828/26.959/27.091/0.210 ms
 <p>Ok, that&rsquo;s great. We do have now a Debian Jessie Linux distro called <code>Armbian</code>
 with a most recent Linux kernel 4.4.5 running on the ClearFog Pro.</p>
 
-<h3 id="installing-the-docker-engine">Installing the Docker Engine</h3>
+<h3 id="installing-the-docker-engine:df574ad27518dffc38341295be8d9782">Installing the Docker Engine</h3>
 
 <p>Before we try to install Docker, we&rsquo;d like to know about if the Linux kernel settings
 are sufficient to run Docker in a decent way. Remember, most of the standard Linux
@@ -462,7 +465,7 @@ Executing /usr/sbin/update-rc.d docker enable
 <p>Wow, this was really damn easy. Nothing complicated and nothing special until now.
 It seems that with Armbian the Docker Engine 1.10.3 is just running almost out-of-the-box.</p>
 
-<h3 id="running-the-first-docker-container">Running the first Docker container</h3>
+<h3 id="running-the-first-docker-container:df574ad27518dffc38341295be8d9782">Running the first Docker container</h3>
 
 <p>Now, we&rsquo;d like to start a first Docker container and we&rsquo;re just using a very small
 web server.</p>
@@ -508,9 +511,10 @@ from the MacBookPro.</p>
 </code></pre>
 
 <p>Or, we just point our web browser with <code>open http://192.168.2.108/</code> to the main web page.
-<img src="/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg" alt="ClearFog Pro WebBrowser" /></p>
+<img src="/images/clearfog-pro-part2/clearfog-pro-webbrowser.jpg" alt="ClearFog Pro WebBrowser" />
+</p>
 
-<h3 id="current-status-and-key-takeaways">Current status and key takeaways</h3>
+<h3 id="current-status-and-key-takeaways:df574ad27518dffc38341295be8d9782">Current status and key takeaways</h3>
 
 <p>The web site of SolidRun says, they&rsquo;re supporting a Linux kernel 3.x only and this would
 be way too old and outdated. But luckily we figured out there is already support for
@@ -529,7 +533,7 @@ with this strategy. With supporting the latest mainline Linux kernel with hopefu
 all hardware features this could become one of the best router boards on the market.
 It&rsquo;s powerful with high-speed networking and supports Docker container technology too.</p>
 
-<h3 id="next-steps">Next steps</h3>
+<h3 id="next-steps:df574ad27518dffc38341295be8d9782">Next steps</h3>
 
 <p>The Linux kernel and SD image provided by Armbian looks really good at this point
 and can be used for the first steps with Docker. But we think there is almost a
@@ -543,6 +547,7 @@ stay tuned&hellip;</p>
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

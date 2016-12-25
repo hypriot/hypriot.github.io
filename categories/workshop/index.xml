@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/workshop/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Workshop on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/workshop/</link>
+    <description>Recent content in Workshop on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 17 Mar 2016 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/workshop/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -22,9 +23,8 @@ The very same devices that power the upcoming IoT revolution.&lt;/p&gt;
 
 &lt;p&gt;Turns out it is really amazing what you can do with Docker on those tiny machines.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;In this workshop attendees learned how to get started with Docker on their Raspberry Pi&amp;rsquo;s.
 Starting with the basics they soon turned to advanced topics like building a Docker cluster.&lt;/p&gt;
@@ -44,7 +44,7 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 &lt;p&gt;As you can see from the pictures it was a lot of fun to be there.&lt;/p&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Docker &amp;amp; Raspberry Pi Workshop in Brussels&lt;/div&gt;
 
 
@@ -139,9 +139,9 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;/div&gt;
+&lt;/p&gt;
 
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -207,7 +207,7 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Special thanks for making the workshop possible need to go to Damien Duportal.
 His workshop presentation can be found &lt;a href=&#34;http://dduportal.github.io/presentations/docker-meetup-brussels-20160210/#1&#34;&gt;here&lt;/a&gt;.
@@ -227,7 +227,8 @@ Happy ARM hacking until then. :)&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

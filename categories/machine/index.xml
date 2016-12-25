@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/machine/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Machine on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/machine/</link>
+    <description>Recent content in Machine on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 04 Sep 2016 19:45:58 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/machine/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,15 +15,16 @@
       <pubDate>Sun, 04 Sep 2016 19:45:58 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/deploy-swarm-on-chip-with-docker-machine/</guid>
-      <description>&lt;p&gt;With the new SwarmMode in Docker 1.12 it is really damn easy to build a Docker Swarm and connect different ARM devices to an IoT cluster.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg&#34; alt=&#34;swarm-chip-flashing1.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;With the new SwarmMode in Docker 1.12 it is really damn easy to build a Docker Swarm and connect different ARM devices to an IoT cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg&#34; alt=&#34;swarm-chip-flashing1.jpg&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s connect a few of the $9 C.H.I.P. computers and a Raspberry Pi Zero all through a WiFi network&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;step-1-install-docker-machine&#34;&gt;Step 1: Install Docker Machine&lt;/h4&gt;
+&lt;h4 id=&#34;step-1-install-docker-machine:2916a0476909fe024f00614543881ecf&#34;&gt;Step 1: Install Docker Machine&lt;/h4&gt;
 
 &lt;p&gt;First of all, we need to make sure we do have Docker Machine installed on our local computer. I&amp;rsquo;m using a Mac for this tutorial, but you can use Docker Machine on Linux or Windows too. If not already done, you should install the latest Docker Machine binary following the &lt;a href=&#34;https://docs.docker.com/machine/install-machine/&#34;&gt;Install Docker Machine&lt;/a&gt; instructions.&lt;/p&gt;
 
@@ -32,7 +34,7 @@
 docker-machine version 0.8.0, build b85aac1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;step-2-prepare-all-c-h-i-p-s-with-docker-machine&#34;&gt;Step 2: Prepare all C.H.I.P.&amp;rsquo;s with Docker Machine&lt;/h4&gt;
+&lt;h4 id=&#34;step-2-prepare-all-c-h-i-p-s-with-docker-machine:2916a0476909fe024f00614543881ecf&#34;&gt;Step 2: Prepare all C.H.I.P.&amp;rsquo;s with Docker Machine&lt;/h4&gt;
 
 &lt;p&gt;In order to connect a couple of C.H.I.P. computers to a Docker Swarm cluster, we have to install Docker 1.12.1 first. This can be done easily by following the steps of my last tutorial &lt;a href=&#34;https://blog.hypriot.com/post/install-docker-on-chip-computer/&#34;&gt;Install Docker 1.12 on the $9 C.H.I.P. computer&lt;/a&gt;. Then we&amp;rsquo;re using the standard Docker Machine from a Mac to attach each C.H.I.P. device via a secured Docker API port and give each device an individual hostname on the network. With the help of Docker Machine it&amp;rsquo;s easier to access all the C.H.I.P. devices we&amp;rsquo;d like to connect to the Swarm cluster from a Mac, Linux or Windows machine.&lt;/p&gt;
 
@@ -46,7 +48,8 @@ docker-machine version 0.8.0, build b85aac1
 &lt;/ol&gt;
 
 &lt;p&gt;Flashing the C.H.I.P. computer in FEL mode with UART console cable attached: &lt;br&gt;
-&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing2.jpg&#34; alt=&#34;swarm-chip-flashing2.jpg&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing2.jpg&#34; alt=&#34;swarm-chip-flashing2.jpg&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;As soon as we&amp;rsquo;ve installed our first C.H.I.P. with Docker we&amp;rsquo;ll use its IP address and run &lt;code&gt;docker-machine create&lt;/code&gt; and let&amp;rsquo;s do some Docker magic and we have secured the network access to its Docker Engine easily. In this command I&amp;rsquo;m using the flag &lt;code&gt;--debug&lt;/code&gt; to get a more verbose output, so you can see all the details whats going on in the background, but you can omit this flag for the remaining C.H.I.P.&amp;rsquo;s.&lt;/p&gt;
 
@@ -127,7 +130,7 @@ swarm-chip05    -        generic   Running   tcp://192.168.2.120:2376           
 swarm-chip06    -        generic   Running   tcp://192.168.2.104:2376           v1.12.1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;step-3-initialize-the-swarm-create-a-swarm-manager&#34;&gt;Step 3: Initialize the Swarm, create a Swarm manager&lt;/h4&gt;
+&lt;h4 id=&#34;step-3-initialize-the-swarm-create-a-swarm-manager:2916a0476909fe024f00614543881ecf&#34;&gt;Step 3: Initialize the Swarm, create a Swarm manager&lt;/h4&gt;
 
 &lt;p&gt;As soon as all the C.H.I.P.&amp;rsquo;s are prepared we are able to initiate a Swarm cluster. We are creating a Swarm manager first and then we can attach the other C.H.I.P.&amp;rsquo;s as additional Swarm managers or Swarm workers pretty easily. All the steps to form a Swarm cluster are literally a single command per device only!&lt;/p&gt;
 
@@ -152,7 +155,7 @@ ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
 8174iszkmn4u4wwjogam8bsrw *  swarm-chip01  Ready   Active        Leader
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;step-4-set-up-swarm-for-high-availability-attach-more-swarm-managers&#34;&gt;Step 4: Set up Swarm for high-availability, attach more Swarm managers&lt;/h4&gt;
+&lt;h4 id=&#34;step-4-set-up-swarm-for-high-availability-attach-more-swarm-managers:2916a0476909fe024f00614543881ecf&#34;&gt;Step 4: Set up Swarm for high-availability, attach more Swarm managers&lt;/h4&gt;
 
 &lt;p&gt;In order to build a high-availability Swarm cluster, we like to join two additional Swarm managers. So, first we have to ask the Swarm Leader for an access token to join new Swarm managers. You have to know that the complete control traffic between Swarm nodes is secured by default.&lt;/p&gt;
 
@@ -202,7 +205,7 @@ ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
 ctggddtwrg0ybrwpa52heaz9c    swarm-chip02  Ready   Active        Reachable
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;step-5-let-s-grow-the-swarm-attach-all-swarm-workers&#34;&gt;Step 5: Let&amp;rsquo;s grow the Swarm, attach all Swarm workers&lt;/h4&gt;
+&lt;h4 id=&#34;step-5-let-s-grow-the-swarm-attach-all-swarm-workers:2916a0476909fe024f00614543881ecf&#34;&gt;Step 5: Let&amp;rsquo;s grow the Swarm, attach all Swarm workers&lt;/h4&gt;
 
 &lt;p&gt;Now it&amp;rsquo;s time to join our remaining C.H.I.P. devices as Swarm workers to our Swarm cluster. For this purpose we just pick the token from the initial Swarm creation command. But if we can&amp;rsquo;t remember we can just ask one of the Swarm managers for the access token with the command.&lt;/p&gt;
 
@@ -237,10 +240,11 @@ This node joined a swarm as a worker.
 
 &lt;p&gt;As a result we have joined all of the six C.H.I.P. devices to the Swarm cluster, three as Swarm managers and three as Swarm workers.&lt;/p&gt;
 
-&lt;h4 id=&#34;step-6-attach-an-additional-pi-zero-as-swarm-worker&#34;&gt;Step 6: Attach an additional Pi Zero as Swarm worker&lt;/h4&gt;
+&lt;h4 id=&#34;step-6-attach-an-additional-pi-zero-as-swarm-worker:2916a0476909fe024f00614543881ecf&#34;&gt;Step 6: Attach an additional Pi Zero as Swarm worker&lt;/h4&gt;
 
 &lt;p&gt;But we&amp;rsquo;re not limited in using only one kind of ARM devices for our Swarm cluster. So I&amp;rsquo;d like to add a different device, a Raspberry Pi Zero which is equipped with a &lt;a href=&#34;https://twitter.com/redbearlab&#34;&gt;RedBear IoT pHAT&lt;/a&gt; for WiFi/Bluetooth connectivity.
-&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-pi-zero.jpg&#34; alt=&#34;swarm-chip-pi-zero.jpg&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-pi-zero.jpg&#34; alt=&#34;swarm-chip-pi-zero.jpg&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Here you can see that using &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;HypriotOS for RPi&lt;/a&gt; and the Hypriot &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; it&amp;rsquo;s damn easy to create another ARM device with Docker 1.12.1 and attach it via WiFi to our network.&lt;/p&gt;
 
@@ -313,7 +317,7 @@ swarm-raspi01   -        generic   Running   tcp://192.168.2.119:2376           
 This node joined a swarm as a worker.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;step-7-check-the-complete-swarm&#34;&gt;Step 7: Check the complete Swarm&lt;/h4&gt;
+&lt;h4 id=&#34;step-7-check-the-complete-swarm:2916a0476909fe024f00614543881ecf&#34;&gt;Step 7: Check the complete Swarm&lt;/h4&gt;
 
 &lt;p&gt;With the &lt;code&gt;docker node ls&lt;/code&gt; command issued on any of the Swarm managers we can list all the Swarm nodes, get their roles and status shown in the printed output on our terminal window.&lt;/p&gt;
 
@@ -328,24 +332,27 @@ agglzv8ju0diwpd665nbhdtti    swarm-chip06   Ready   Active
 ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-node-ls.jpg&#34; alt=&#34;swarm-chip-node-ls.jpg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-node-ls.jpg&#34; alt=&#34;swarm-chip-node-ls.jpg&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;the-result-a-mixed-iot-swarm-running-docker-1-12&#34;&gt;THE RESULT: a mixed IoT Swarm running Docker 1.12&lt;/h3&gt;
+&lt;h3 id=&#34;the-result-a-mixed-iot-swarm-running-docker-1-12:2916a0476909fe024f00614543881ecf&#34;&gt;THE RESULT: a mixed IoT Swarm running Docker 1.12&lt;/h3&gt;
 
 &lt;p&gt;This is our newly created Swarm cluster, built with an USB power supply from Anker, 6x C.H.I.P. computers and a lonely Raspberry Pi Zero - all devices attached through a WiFi network and running Docker 1.12.1 with SwarmMode: &lt;br&gt;
-&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-complete-cluster.jpg&#34; alt=&#34;swarm-chip-complete-cluster.jpg&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-complete-cluster.jpg&#34; alt=&#34;swarm-chip-complete-cluster.jpg&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
+&lt;h3 id=&#34;next-steps:2916a0476909fe024f00614543881ecf&#34;&gt;Next steps&lt;/h3&gt;
 
 &lt;p&gt;With this hardware setup we&amp;rsquo;ve now built a network of seven ARM devices for IoT which are all connected through WiFi. All the control traffic between the nodes are secured be default and can be centrally controlled through the Swarm managers and we can connect them securely from a local computer via Docker Machine. The ARM boards can be spread out in your house and can run different tasks as Docker containers&amp;hellip; but these details I&amp;rsquo;d like to cover in a future blog post.&lt;/p&gt;
 
-&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+&lt;h3 id=&#34;feedback-please:2916a0476909fe024f00614543881ecf&#34;&gt;Feedback, please&lt;/h3&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

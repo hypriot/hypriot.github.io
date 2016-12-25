@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,16 +81,17 @@
   <div class="post">
     <h1>Visualize your Raspberry Pi containers with Portainer or UI for Docker</h1>
     <span class="post-date">Mon, Oct 31, 2016</span>
-    <p>At home I use some Raspberry Pi&rsquo;s for some home network services, and I run
+    
+
+<p>At home I use some Raspberry Pi&rsquo;s for some home network services, and I run
 these services inside Docker containers. From time to time I want to see or
 manage one of these containers. But I&rsquo;m too lazy to get to my laptop and use
 the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Docker engine with a web browser. Let&rsquo;s have a look at both.</p>
 
-<p><img src="/images/dockerui-portainer/portainer-docker.png" alt="Portainer" /></p>
+<p><img src="/images/dockerui-portainer/portainer-docker.png" alt="Portainer" />
+</p>
 
-<p></p>
-
-<h2 id="ui-for-docker-formerly-known-as-dockerui">UI for Docker, formerly known as DockerUI</h2>
+<h2 id="ui-for-docker-formerly-known-as-dockerui:9b02a9b5d0cf4c4b78c5b66f0c71e56f">UI for Docker, formerly known as DockerUI</h2>
 
 <p>I have started using the DockerUI, an open source project from Michael Crosby and Kevan Ahlquist. You can find the source code on GitHub at <a href="https://github.com/kevana/ui-for-docker">https://github.com/kevana/ui-for-docker</a>.</p>
 
@@ -113,17 +114,20 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
 <p>So let&rsquo;s have a look at the dashboard which shows you an overview of your running or stopped containers:</p>
 
-<p><img src="/images/dockerui-portainer/dockerui-dashboard.png" alt="DockerUI Dashboard" /></p>
+<p><img src="/images/dockerui-portainer/dockerui-dashboard.png" alt="DockerUI Dashboard" />
+</p>
 
 <p>You can click on each container and see more details and so some actions with them like stopping and starting them again.</p>
 
-<p><img src="/images/dockerui-portainer/dockerui-container.png" alt="DockerUI Container" /></p>
+<p><img src="/images/dockerui-portainer/dockerui-container.png" alt="DockerUI Container" />
+</p>
 
 <p>The UI provides some more views to list for example all local Docker images and information about your Docker engine.</p>
 
-<p><img src="/images/dockerui-portainer/dockerui-images.png" alt="DockerUI Images" /></p>
+<p><img src="/images/dockerui-portainer/dockerui-images.png" alt="DockerUI Images" />
+</p>
 
-<h2 id="portainer">Portainer</h2>
+<h2 id="portainer:9b02a9b5d0cf4c4b78c5b66f0c71e56f">Portainer</h2>
 
 <p>Last week I found <a href="http://portainer.io">portainer.io</a> which also looks very good. They provide Docker images for Linux and Windows, <del>but not for ARM right now</del> and as well an image for ARM.</p>
 
@@ -135,18 +139,21 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
 <p>The dashboard also gives you an overview of all running containers, all images etc.</p>
 
-<p><img src="/images/dockerui-portainer/portainer-dashboard.png" alt="Portainer Dashboard" /></p>
+<p><img src="/images/dockerui-portainer/portainer-dashboard.png" alt="Portainer Dashboard" />
+</p>
 
 <p>In the container list you can see all running and stopped containers as well as some actions you can do with it.</p>
 
-<p><img src="/images/dockerui-portainer/portainer-container.png" alt="Portainer Dashboard" /></p>
+<p><img src="/images/dockerui-portainer/portainer-container.png" alt="Portainer Dashboard" />
+</p>
 
 <p>Clicking on one of the running containers you have access to the details, environment variables, port mappings, volumes.
 You can also access some CPU/memory and network statistics as well as the logs of your container, as well as the processes running inside the container.</p>
 
-<p><img src="/images/dockerui-portainer/portainer-stats.png" alt="Portainer Stats" /></p>
+<p><img src="/images/dockerui-portainer/portainer-stats.png" alt="Portainer Stats" />
+</p>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion:9b02a9b5d0cf4c4b78c5b66f0c71e56f">Conclusion</h2>
 
 <p>If you want to remote control your Raspberry Pi Docker containers from a nice Web UI, then try
 one of these prebuilt Docker images. Of course be aware that everyone in your home network
@@ -156,6 +163,7 @@ But for some private projects it is still an advantage to simplify starting and 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

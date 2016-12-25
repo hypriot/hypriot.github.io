@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,13 +81,14 @@
   <div class="post">
     <h1>Testing High Availability of Docker Swarm on a Raspberry Pi Cluster (Updated)</h1>
     <span class="post-date">Wed, Oct 26, 2016</span>
-    <p>In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &ldquo;Docker Swarm Mode&rdquo;. And second, Docker started providing official support for the ARM architecture.</p>
+    
+
+<p>In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &ldquo;Docker Swarm Mode&rdquo;. And second, Docker started providing official support for the ARM architecture.</p>
 
 <p>These two news combined beg for testing the new capabilities in reality.</p>
 
-<p><img src="/images/high-availability-testing/high-availability-docker-swarm.png" alt="SwarmClusterHA" /></p>
-
-<p></p>
+<p><img src="/images/high-availability-testing/high-availability-docker-swarm.png" alt="SwarmClusterHA" />
+</p>
 
 <p>The &ldquo;old&rdquo; Docker Swarm already offered some high availability features, but the new called &ldquo;Swarm Mode&rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.</p>
 
@@ -95,7 +96,7 @@
 
 <p>Now, with these two news, let&rsquo;s get our hands dirty and test if the announced promises hold.</p>
 
-<h2 id="setup-the-cluster">Setup the cluster</h2>
+<h2 id="setup-the-cluster:a00c34eb72f8a894fd7d46707edd473e">Setup the cluster</h2>
 
 <p><strong>As hardware</strong>, I have 5x Raspberry Pi 3, connected in a network with Internet access.</p>
 
@@ -103,7 +104,8 @@
 
 <p>See how the cluster looks like:</p>
 
-<p><img src="/images/high-availability-testing/PicoCluster.jpg" alt="PicoClusterBuilt" /></p>
+<p><img src="/images/high-availability-testing/PicoCluster.jpg" alt="PicoClusterBuilt" />
+</p>
 
 <p><strong>As software</strong>, I chose HypriotOS. I also tried Raspbian, but it requires a large system upgrade after the first boot in order to provide all features required by Docker (e.g. VXLAN kernel module). Before and after the system upgrade, I also had to run <a href="https://github.com/docker/docker/blob/master/contrib/check-config.sh">Docker&rsquo;s test script</a> to make sure everything is ok. All of this is not a big deal, but if there is an OS available that comes out of the box with all that Docker needs (and even adds lots of useful optimizations), it simply saves time and provides a hassle-free experience. So I flashed all SD cards with HypriotOS using our <a href="https://github.com/hypriot/flash">flash tool</a>.</p>
 
@@ -111,11 +113,12 @@
 
 <p>Finally, we have 5 terminals opened, all waiting for commands as you see in the following image. Please don&rsquo;t care about the commands running in each terminal for now.</p>
 
-<p><img src="/images/high-availability-testing/terminal.png" alt="Terminator" /></p>
+<p><img src="/images/high-availability-testing/terminal.png" alt="Terminator" />
+</p>
 
 <p>That&rsquo;s all to do before getting our hands on Docker itself!</p>
 
-<h2 id="setup-docker-swarm-on-the-cluster">Setup Docker Swarm on the cluster</h2>
+<h2 id="setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e">Setup Docker Swarm on the cluster</h2>
 
 <p>On HypriotOS, you&rsquo;ll have the latest Docker installed, so we can instantly start playing.</p>
 
@@ -147,7 +150,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 <p>If the terminal prints a list of all nodes of your cluster, the setup is all done! Forming a cluster cannot be easier, can it?</p>
 
-<h2 id="execution-of-tests">Execution of tests</h2>
+<h2 id="execution-of-tests:a00c34eb72f8a894fd7d46707edd473e">Execution of tests</h2>
 
 <p>My tests of Docker&rsquo;s ability to recover from failures comprise the following use cases:</p>
 
@@ -164,7 +167,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 <p><a href="https://vimeo.com/185361173">Testing High Availability Docker Swarm Mode</a> from <a href="https://vimeo.com/user54109827">Mathias Renner</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 
-<h2 id="results">Results</h2>
+<h2 id="results:a00c34eb72f8a894fd7d46707edd473e">Results</h2>
 
 <p>As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. Note that this also holds for master nodes, not only for slave nodes! This is remarkable because in contrast to slave nodes, master nodes hold important data of the cluster state. A master nodes&rsquo;s outage is critical for the health of the cluster. With e.g. <a href="https://github.com/luxas/kubernetes-on-arm">Kubernetes-on-arm</a>, the cluster does not recover after rebooting or crashing a master node.</p>
 
@@ -182,7 +185,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 <p>Having this configured, after a crash or reboot the node recovered correctly in my tests. I look forward for feedback about this issue! Please use the discussion below.</p>
 </blockquote>
 
-<h2 id="more-to-come-soon">More to come soon</h2>
+<h2 id="more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e">More to come soon</h2>
 
 <p>This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the <a href="http://highload.co/">HighLoad++ Conference</a> in Moskow, Russia. I&rsquo;d be happy if you can make it there!</p>
 
@@ -195,6 +198,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 <p>As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.</p>
 
 <p><a href="https://twitter.com/MathiasRenner">@MathiasRenner</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

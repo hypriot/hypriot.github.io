@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/getting_started/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Getting_started on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/getting_started/</link>
+    <description>Recent content in Getting_started on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 15 May 2015 20:16:11 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/getting_started/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,7 +22,7 @@
 &lt;p&gt;The goal of this guide is to answer these questions and to get you started with Docker on a Raspberry Pi in no time.
 We are going to cover the procedure for Windows, OS X and Linux users.&lt;/p&gt;
 
-&lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
+&lt;h2 id=&#34;what-the-heck-is-docker-and-why-would-i-use-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;What the heck is Docker and why would I use it?&lt;/h2&gt;
 
 &lt;p&gt;Docker simplifies the packaging, distribution, installation and execution of (complex) applications.&lt;/p&gt;
 
@@ -40,7 +41,7 @@ Containers are self-contained, preconfigured packages that a user can fetch and 
 By keeping different software components separated in containers they can also be easily updated or removed without influencing each other.
 There are many more advantages of using Docker; the details of which can be found in the official &lt;a href=&#34;https://docs.docker.com&#34;&gt;Docker Documentation&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
+&lt;h2 id=&#34;the-raspberry-pi-an-easy-low-cost-way-of-getting-started-with-docker:397c66ef19f9f061b6711d2e296cb276&#34;&gt;The Raspberry Pi: An easy, low cost way of getting started with Docker&lt;/h2&gt;
 
 &lt;p&gt;If we piqued your curiosity and you would like to dive into the magic world of Docker one of the easiest ways is by using Docker on a &lt;a href=&#34;https://www.raspberrypi.org/help/what-is-a-raspberry-pi/&#34;&gt;Raspberry Pi&lt;/a&gt;.
 According to the creators of the Raspberry Pi it is:&lt;/p&gt;
@@ -59,7 +60,7 @@ It’s capable of doing everything you’d expect a desktop computer to do, from
 
 &lt;p&gt;-&amp;gt; &lt;a href=&#34;https://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi&#34;&gt;The Linux guide for setting up Docker on a Raspberry Pi&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
+&lt;h2 id=&#34;going-wild-with-docker-what-can-you-actually-do-with-it:397c66ef19f9f061b6711d2e296cb276&#34;&gt;Going wild with Docker! What can you actually do with it?&lt;/h2&gt;
 
 &lt;p&gt;As stated in the beginning Docker simplifies the way software is distributed and run. We even said that you would only need one command for that. It is time to prove it.&lt;/p&gt;
 
@@ -78,7 +79,8 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;Now you can open up your browser on your workstation and type in the IP address of your Raspberry Pi to see that it really works!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/browser-pi-hypriot-logo.png&#34; alt=&#34;hypriot-logo&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;One great aspect of running a Docker-based app is, you can be sure that it works on every machine running Docker with one exception.&lt;/p&gt;
 
@@ -91,7 +93,8 @@ You can check if your container is running by typing&lt;/p&gt;
 
 &lt;p&gt;We prepared a couple of &lt;a href=&#34;https://hub.docker.com/u/hypriot/&#34;&gt;Raspberry Pi ready images&lt;/a&gt; for your convenience. Try them out now and have fun!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://registry.hub.docker.com/search?q=hypriot&amp;searchfield=&#34;&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/dockerhub-hypriot-search.png&#34; alt=&#34;dockerhub-hypriot-search&#34; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -123,7 +126,7 @@ In our case the software we wanna use is Docker.&lt;/p&gt;
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:8814904f208dcaade82991443c7514e0&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -142,7 +145,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:8814904f208dcaade82991443c7514e0&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;First put your SD card into the computer. Then in the terminal type&lt;/p&gt;
 
@@ -151,7 +154,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/lsblk.png&#34; alt=&#34;lsblk&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now identify the SD Card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -185,11 +189,12 @@ Depending on your hardware and the performance of your SD card it will take up t
 
 &lt;p&gt;When &lt;code&gt;dd&lt;/code&gt; is finished you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/after-dd.png&#34; alt=&#34;after-dd&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:8814904f208dcaade82991443c7514e0&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -202,7 +207,7 @@ Depending on your hardware and the performance of your SD card it will take up t
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:8814904f208dcaade82991443c7514e0&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi.&lt;/p&gt;
 
@@ -223,14 +228,16 @@ yum install nmap       # for red hat based distros
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/hostname-i.png&#34; alt=&#34;hostname-i&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;nmap -sP 192.168.0.101/24 | grep black-pearl
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/nmap.png&#34; alt=&#34;nmap result of query&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The output of the &lt;code&gt;nmap&lt;/code&gt; command should show you the IP address of your Raspberry Pi.
 If you get a blank line without an IP address your Raspberry Pi is probably not connected to the network.
@@ -248,7 +255,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/rpi-first-connect.png&#34; alt=&#34;screenshot docker first connection&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker service is running by typing&lt;/p&gt;
 
@@ -257,7 +265,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/linux-screenies/docker-info.png&#34; alt=&#34;screenshot docker info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -296,7 +305,7 @@ In our case the software we wanna use is Docker.&lt;/p&gt;
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as &lt;em&gt;flashing&lt;/em&gt;.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -315,7 +324,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After the file is unzipped you will have a new file with an &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;First put your SD card into the computer. Then in the terminal type&lt;/p&gt;
 
@@ -324,7 +333,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
 &lt;p&gt;You should see a list of all your disks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/diskutil-list.png&#34; alt=&#34;disktuil-list&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -338,7 +348,8 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As a result you should see&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/unmount.png&#34; alt=&#34;Screenshot unmounted&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Now we are ready to flash the SD card. We are going to use the &lt;code&gt;dd&lt;/code&gt; command for this.&lt;/p&gt;
 
@@ -356,11 +367,12 @@ Here the identifier is &lt;code&gt;/dev/disk5&lt;/code&gt;.&lt;/p&gt;
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/dd-success.png&#34; alt=&#34;after-dd-success&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally unmount the SD card again in the same way as before.&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -373,7 +385,7 @@ When the &lt;code&gt;dd&lt;/code&gt; is finished, you should get an output like 
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:ca4b4a19668a2ec6a58c5af490c910c5&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi.&lt;/p&gt;
 
@@ -390,7 +402,8 @@ One way is to use the &lt;code&gt;nmap&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following screenshot our IP address is &lt;code&gt;192.168.0.101&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/own-ip-address.png&#34; alt=&#34;own-ip-address&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Then replace the IP address in front of the &lt;code&gt;/24&lt;/code&gt; with yours and type&lt;/p&gt;
 
@@ -413,7 +426,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png&#34; alt=&#34;hypriot-ssh-prompt-after-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally check if the Docker Service is running by typing&lt;/p&gt;
 
@@ -422,7 +436,8 @@ Replace the IP address after the &lt;code&gt;@&lt;/code&gt; with the one of your
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/mac-screenies/docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -491,7 +506,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
+&lt;h3 id=&#34;download-the-hypriot-docker-sd-card-image:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Download the Hypriot Docker SD card image&lt;/h3&gt;
 
 &lt;p&gt;Download our latest SD card image from the &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;download page&lt;/a&gt;.&lt;/p&gt;
 
@@ -500,7 +515,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 &lt;p&gt;After 7-zip is finished with extracting you will have a file with a &lt;strong&gt;.img&lt;/strong&gt; extension.
 In the next step we will flash this file onto your SD card.&lt;/p&gt;
 
-&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
+&lt;h3 id=&#34;flash-the-downloaded-image-to-your-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Flash the downloaded image to your SD card&lt;/h3&gt;
 
 &lt;p&gt;To start the flashing process right-click on the &lt;em&gt;Win32 Disk Imager&lt;/em&gt; application which we installed earlier and click on &lt;em&gt;Run as administrator&lt;/em&gt;. You will see a window asking for permissions. Grant them.&lt;/p&gt;
 
@@ -509,7 +524,8 @@ In the next step we will flash this file onto your SD card.&lt;/p&gt;
 &lt;p&gt;Next to the blue folder button, you will find a dropdown menu in which you can select your SD card.
 To double check the device letter open your Windows Explorer and locate the SD card drive.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/image-writer-opened.png&#34; alt=&#34;image-writer&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally click on &lt;strong&gt;write&lt;/strong&gt; which will flash the SD card image to the SD card.&lt;/p&gt;
 
@@ -517,9 +533,10 @@ To double check the device letter open your Windows Explorer and locate the SD c
 In order to eject the SD card use the &lt;em&gt;secure eject&lt;/em&gt; function in the menu next to your system clock.
 This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/eject-sd-card.png&#34; alt=&#34;eject-sd&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
+&lt;h3 id=&#34;start-your-raspberry-pi-with-the-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Start your Raspberry Pi with the SD card&lt;/h3&gt;
 
 &lt;p&gt;Boot your Raspberry Pi by&lt;/p&gt;
 
@@ -532,7 +549,7 @@ This is usually in the very bottom right corner of your screen.&lt;/p&gt;
 &lt;p&gt;After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.&lt;/p&gt;
 
-&lt;h3 id=&#34;ensure-everything-works&#34;&gt;Ensure everything works&lt;/h3&gt;
+&lt;h3 id=&#34;ensure-everything-works:f9c6c9c0ab05c0ca238dff8f082f6e17&#34;&gt;Ensure everything works&lt;/h3&gt;
 
 &lt;p&gt;To check if Docker is actually running we need to log into the Raspberry Pi via &lt;em&gt;PuTTY&lt;/em&gt;.&lt;/p&gt;
 
@@ -547,25 +564,29 @@ Type the following command into this field but replace the IP address in front o
 
 &lt;p&gt;As a result you should see this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG&#34; alt=&#34;zenmap-scan-result&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Zenmap&lt;/em&gt; list all active hosts within your local network.
 In order to find the Raspberry Pi click the button &lt;em&gt;filter hosts&lt;/em&gt; at the bottom of the &lt;em&gt;Zenmap&lt;/em&gt; and type in &lt;em&gt;black&lt;/em&gt;.
 Now the first line of the list should show the IP address of your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png&#34; alt=&#34;zenmap-with-filter-with-marker&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Since we now know where to find the Raspberry Pi within your network it is time to start &lt;em&gt;PuTTY&lt;/em&gt; to establish a SSH connection to your Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;After starting &lt;em&gt;PuTTY&lt;/em&gt; type in the IP address we determined into the field &lt;em&gt;Host Name&lt;/em&gt;. With a click on the button &lt;em&gt;Open&lt;/em&gt; the connection will be established.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-settings.png&#34; alt=&#34;Screenshot-putty-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;In the new window which just opened type &lt;code&gt;pirate&lt;/code&gt; as login name and hit &lt;em&gt;Enter&lt;/em&gt;. Next you will be asked for a password. Type &lt;code&gt;hypriot&lt;/code&gt; and hit &lt;em&gt;Enter&lt;/em&gt; again.&lt;/p&gt;
 
 &lt;p&gt;If everything went fine you should now see the &lt;em&gt;HypriotOS&lt;/em&gt; command line prompt waiting for your input. It should look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-login.png&#34; alt=&#34;putty-window-login&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Finally to check if the Docker service is running type&lt;/p&gt;
 
@@ -574,7 +595,8 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
 
 &lt;p&gt;The output of the &lt;code&gt;docker info&lt;/code&gt; command should look similar to:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png&#34; alt=&#34;docker-info&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!&lt;/strong&gt; :)&lt;/p&gt;
 
@@ -591,8 +613,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.&
       
       <guid>https://blog.hypriot.com/post/brand-new-getting-started-guide/</guid>
       <description>&lt;p&gt;The last couple of days Mathias Renner and I were busy creating a comprehensive &lt;a href=&#34;https://blog.hypriot.com/getting-started&#34;&gt;Getting Started guide for Docker on the Raspberry Pi&lt;/a&gt;.
-Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.
-&lt;/p&gt;
+Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;Actually - in the end - we came up with three guides. :)&lt;/p&gt;
 
@@ -605,7 +626,8 @@ Downloading, flashing and booting up the SD card image on your Raspberry Pi is n
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 
-&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;</description>
+&lt;p&gt;Govinda &amp;amp; Mathias&lt;/p&gt;
+</description>
     </item>
     
   </channel>

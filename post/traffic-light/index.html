@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,13 +81,14 @@
   <div class="post">
     <h1>How to build a traffic light</h1>
     <span class="post-date">Sun, Mar 13, 2016</span>
-    <p>My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.</p>
+    
 
-<p><img src="/images/traffic-light/traffic-light.png" alt="Traffic light wiring" /></p>
+<p>My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.</p>
 
-<p></p>
+<p><img src="/images/traffic-light/traffic-light.png" alt="Traffic light wiring" />
+</p>
 
-<h2 id="the-hardware">The hardware</h2>
+<h2 id="the-hardware:36e2dfd970af1a18eb3decac8ff94950">The hardware</h2>
 
 <p>First we have to build the curcuit. To follow this tutorial you need these parts</p>
 
@@ -104,27 +105,27 @@
 <li>cables</li>
 </ul>
 
-<h2 id="the-software">The software</h2>
+<h2 id="the-software:36e2dfd970af1a18eb3decac8ff94950">The software</h2>
 
 <p>The application is written in Python and it is based on the blog post <a href="http://www.bobrathbone.com/pi_traffic_led.htm">Raspberry PI Traffic Lights</a> by Bob Rathbone. I have added some more LEDs and changed it to our local traffic light scheme. You can find the full source code <a href="https://github.com/StefanScherer/docker-rpi-traffic-light">on GitHub</a>.</p>
 
-<h3 id="defining-the-gpio-pins">Defining the GPIO pins</h3>
+<h3 id="defining-the-gpio-pins:36e2dfd970af1a18eb3decac8ff94950">Defining the GPIO pins</h3>
 
 <script src="https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=16:30&footer=minimal"></script>
 
-<h3 id="initializing-the-gpio-ports">Initializing the GPIO ports</h3>
+<h3 id="initializing-the-gpio-ports:36e2dfd970af1a18eb3decac8ff94950">Initializing the GPIO ports</h3>
 
 <p>At the beginning of the app we initialize the GPIO ports and turn off all LEDs. They may turned on from aborting a previous run.</p>
 
 <script src="https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=31:48&footer=minimal"></script>
 
-<h3 id="main-loop">Main loop</h3>
+<h3 id="main-loop:36e2dfd970af1a18eb3decac8ff94950">Main loop</h3>
 
 <p>The main loop begins with green lights for the cars. In this state the button for the pedestrian crossing is checked.</p>
 
 <script src="https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=49:64&footer=minimal"></script>
 
-<h3 id="pedestrian-crossing">Pedestrian crossing</h3>
+<h3 id="pedestrian-crossing:36e2dfd970af1a18eb3decac8ff94950">Pedestrian crossing</h3>
 
 <p>After the button has been pressed the next code block just changes the LEDs for the cars to red, green for pedestrians and back again.</p>
 
@@ -132,13 +133,14 @@
 
 <p>That completes the whole app. I could explain how a traffic light works and my daughter could play with it for a while. This could be the whole story, but as I&rsquo;ve deployed my app with Docker there is another story behind the story.</p>
 
-<h1 id="dockerize-all-the-things">Dockerize all the things</h1>
+<h1 id="dockerize-all-the-things:36e2dfd970af1a18eb3decac8ff94950">Dockerize all the things</h1>
 
 <p>I want to save my work and make it reproducible for me and others. So beside putting the source code into a GitHub repo I also dockerized the application development and deployment. With the help of Docker and the Docker tools it is very easy to develop from eg. a MacBook.</p>
 
 <p>Even after months and other projects it is easy to spin up that application again as there is a standardized way. There also is no need to backup the SD image and write down what you had to install on your Raspberry Pi.</p>
 
-<p><img src="/images/traffic-light/mac_rpi_development.png" alt="Developing for RPi from a Mac" /></p>
+<p><img src="/images/traffic-light/mac_rpi_development.png" alt="Developing for RPi from a Mac" />
+</p>
 
 <p>As shown in the diagram your Notebook should have the following tools installed.</p>
 
@@ -151,33 +153,33 @@
 
 <p>I don&rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a <a href="/post/how-to-setup-rpi-docker-swarm/">previous blog post</a> how to use docker-machine for that.</p>
 
-<h2 id="dockerfile">Dockerfile</h2>
+<h2 id="dockerfile:36e2dfd970af1a18eb3decac8ff94950">Dockerfile</h2>
 
 <p>To build the Docker image we need a Dockerfile. We use a Python base image and install the needed tools and dependencies. Then we add the application source code and define the command to execute.</p>
 
 <script src="https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/Dockerfile?footer=minimal"></script>
 
-<h2 id="docker-compose-yml">docker-compose.yml</h2>
+<h2 id="docker-compose-yml:36e2dfd970af1a18eb3decac8ff94950">docker-compose.yml</h2>
 
 <p>Docker Compose can be used to simplify running the container. With the docker-compose.yml we can document all the parameters needed to start the container. The file is versioned in Git so we do not forget how to run this container.</p>
 
 <script src="https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/docker-compose.yml?footer=minimal"></script>
 
-<h2 id="developing-the-app">Developing the app</h2>
+<h2 id="developing-the-app:36e2dfd970af1a18eb3decac8ff94950">Developing the app</h2>
 
 <p>When you develop the app or want to modify the source code the Docker image has to be rebuilt with the new code. To do this just run this command</p>
 
 <pre><code>docker-compose build
 </code></pre>
 
-<h2 id="running-the-app">Running the app</h2>
+<h2 id="running-the-app:36e2dfd970af1a18eb3decac8ff94950">Running the app</h2>
 
 <pre><code>docker-compose up
 </code></pre>
 
 <p>If you want to stop the app again, just press <code>CTRL+C</code>. You may have to press it twice to kill the app.</p>
 
-<h2 id="running-permanently">Running permanently</h2>
+<h2 id="running-permanently:36e2dfd970af1a18eb3decac8ff94950">Running permanently</h2>
 
 <p>You can run the application automatically by adding <code>-d</code>. The docker-compose.yml also sets the restart policy to always, so the container is starting right after booting the Raspberry Pi. This is very useful for such hardware projects which should start automatically after turning on your Pi.</p>
 
@@ -189,13 +191,14 @@
 <pre><code>docker-compose kill
 </code></pre>
 
-<h2 id="sharing-the-dockerized-app">Sharing the dockerized app</h2>
+<h2 id="sharing-the-dockerized-app:36e2dfd970af1a18eb3decac8ff94950">Sharing the dockerized app</h2>
 
 <p>The advantage of using Docker is to easily share the dockerized app with others. As the developer of an app you just push the Docker image with to the Docker Hub. Others can pull this Docker image from there and run it without to know which tools and dependencies to install.</p>
 
-<p><img src="/images/traffic-light/mac_rpi_docker_push.png" alt="Developing for RPi from a Mac" /></p>
+<p><img src="/images/traffic-light/mac_rpi_docker_push.png" alt="Developing for RPi from a Mac" />
+</p>
 
-<h3 id="pushing-the-docker-image">Pushing the Docker image</h3>
+<h3 id="pushing-the-docker-image:36e2dfd970af1a18eb3decac8ff94950">Pushing the Docker image</h3>
 
 <pre><code>docker images
 docker tag dockerrpitrafficlight_trafficlight stefanscherer/rpi-traffic-light
@@ -204,7 +207,7 @@ docker push stefanscherer/rpi-traffic-light
 
 <p>The Docker image is send sent to the Docker Hub. My example is available as image <a href="https://hub.docker.com/r/stefanscherer/rpi-traffic-light/">stefanscherer/rpi-traffic-light</a>.</p>
 
-<h2 id="sharing-with-others">Sharing with Others</h2>
+<h2 id="sharing-with-others:36e2dfd970af1a18eb3decac8ff94950">Sharing with Others</h2>
 
 <p>If someone else wants to build the traffic light and run your application, she has to use this little modified docker-compose.yml to pull the published Docker image instead of building it herself.</p>
 
@@ -233,7 +236,7 @@ services:
 
 <p>In this way any app can be published in the same way, regardless the programming language used.</p>
 
-<div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
+<p><div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
 <div class="title">Building a traffic light with Raspberry Pi 3</div>
 
 
@@ -343,9 +346,9 @@ services:
 
 
 </div>
+</p>
 
-
-<link rel="stylesheet" href="/css/photoswipe.css">
+<p><link rel="stylesheet" href="/css/photoswipe.css">
 <link rel="stylesheet" href="/css/default-skin/default-skin.css">
 <script src="/js/photoswipe.min.js"></script>
 <script src="/js/photoswipe-ui-default.min.js"></script>
@@ -411,11 +414,12 @@ services:
 
 
 <script>initPhotoSwipeFromDOM('.gallery');</script>
-
+</p>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

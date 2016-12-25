@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/compose/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Compose on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/compose/</link>
+    <description>Recent content in Compose on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 16 Apr 2015 22:06:11 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/compose/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,10 +15,10 @@
       <pubDate>Thu, 16 Apr 2015 22:06:11 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-1-6-is-finally-released-into-the-wild/</guid>
-      <description>&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
-Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;After nearly two months of development Docker 1.6.0 was finally released into the wild.
+Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.&lt;/p&gt;
 
 &lt;p&gt;Our Docker Debian packages are battle-tested only with our HypriotOS Docker SD card image.
 Use it to get the best Docker experience available for the Raspberry Pi. It is ridiculous easy to get up and running. Under 5 minutes - promised!&lt;/p&gt;
@@ -28,7 +29,7 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 
 &lt;p&gt;For everybody else use our Docker Debian package at your own peril&amp;hellip; :)&lt;/p&gt;
 
-&lt;h2 id=&#34;all-new-shiny-docker-1-6-0&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
+&lt;h2 id=&#34;all-new-shiny-docker-1-6-0:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;All new shiny Docker 1.6.0&lt;/h2&gt;
 
 &lt;p&gt;Alright back to Docker&amp;hellip; version 1.6.0 will bring a couple of new features, changes and bugfixes.&lt;/p&gt;
 
@@ -49,13 +50,13 @@ Use it to get the best Docker experience available for the Raspberry Pi. It is r
 &lt;p&gt;Read some more details on the official Docker blog
 &lt;a href=&#34;https://blog.docker.com/2015/04/docker-release-1-6/&#34;&gt;DOCKER 1.6: ENGINE &amp;amp; ORCHESTRATION UPDATES, REGISTRY 2.0, &amp;amp; WINDOWS CLIENT PREVIEW&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;get-it-while-it-is-still-hot&#34;&gt;Get it while it is still hot&lt;/h2&gt;
+&lt;h2 id=&#34;get-it-while-it-is-still-hot:d3971ee1212b5cb8ba1d048eadd8bf0e&#34;&gt;Get it while it is still hot&lt;/h2&gt;
 
 &lt;p&gt;docker-hypriot_1.6.0-1_armhf.deb&lt;/p&gt;
 
 &lt;p&gt;All you have to do is to start up your Pi with our SD card image, download the prepared Docker package and install it with dpkg.&lt;/p&gt;
 
-
+&lt;p&gt;
 
 HypriotOS: root@black-pearl in ~
 $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
@@ -63,7 +64,7 @@ $ wget http://downloads.hypriot.com/docker-hypriot_1.6.0-1_armhf.deb
 HypriotOS: root@black-pearl in ~
 $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
-
+&lt;/p&gt;
 
 &lt;p&gt;Afterwards you should be able to quench your curiosity by playing with the latest and greatest Docker Engine.&lt;/p&gt;
 
@@ -73,7 +74,8 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
 
 &lt;p&gt;Have fun!&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and like this post on Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and like this post on Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -82,12 +84,12 @@ $ dpkg -i docker-hypriot_1.6.0-1_armhf.deb
       <pubDate>Mon, 06 Apr 2015 00:18:47 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/docker-compose-nodejs-haproxy/</guid>
-      <description>&lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;In this blog post we gonna walk you through the different steps that are necessary to get you started with Docker Compose and show how to use it.&lt;/p&gt;
 
 &lt;p&gt;To demonstrate the benefits of Docker Compose we are going to create a simple Node.js &amp;ldquo;Hello World&amp;rdquo; application which will run on three Docker Node.js containers.
 HTTP requests will be distributed to these Node.js nodes by an HAProxy instance running on another Docker container.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;If you haven&amp;rsquo;t heard about Docker Compose its docs have a neat description of what it is all about:&lt;/p&gt;
 
@@ -97,13 +99,13 @@ With Compose, you define a multi-container application in a single file,
 then spin your application up in a single command which does everything that needs to be done to get it running.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;a-hello-world-application&#34;&gt;A Hello-World application&lt;/h2&gt;
+&lt;h2 id=&#34;a-hello-world-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;A Hello-World application&lt;/h2&gt;
 
 &lt;p&gt;We start by creating a simple Hello-World &lt;a href=&#34;https://nodejs.org&#34;&gt;Node.js&lt;/a&gt; web application based on &lt;a href=&#34;http://expressjs.com/&#34;&gt;Express.js&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To keep it simple we are only going to show a &amp;ldquo;Hello World&amp;rdquo; message and the hostname of the container.  This will be useful later on.&lt;/p&gt;
 
-&lt;h3 id=&#34;src-index-js&#34;&gt;src/index.js&lt;/h3&gt;
+&lt;h3 id=&#34;src-index-js:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/index.js&lt;/h3&gt;
 
 &lt;p&gt;First we create a &lt;code&gt;src/index.js&lt;/code&gt; file for the web application:&lt;/p&gt;
 
@@ -121,7 +123,7 @@ app.listen(80);
 console.log(&#39;Running on http://localhost&#39;);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;src-package-json&#34;&gt;src/package.json&lt;/h3&gt;
+&lt;h3 id=&#34;src-package-json:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;src/package.json&lt;/h3&gt;
 
 &lt;p&gt;Then we need to create a &lt;code&gt;src/package.json&lt;/code&gt; file with the dependencies we need to build and start the Node.js application:&lt;/p&gt;
 
@@ -139,7 +141,7 @@ console.log(&#39;Running on http://localhost&#39;);
 
 &lt;p&gt;And that is all that is need to set up this small Hello-World application from the nods.js side of things.&lt;/p&gt;
 
-&lt;h3 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h3&gt;
+&lt;h3 id=&#34;dockerfile:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Dockerfile&lt;/h3&gt;
 
 &lt;p&gt;As we want to run our web application in a Docker container we now need to create a &lt;code&gt;Dockerfile&lt;/code&gt; for that.
 The Dockerfile is simple and straightforward.&lt;/p&gt;
@@ -161,7 +163,7 @@ EXPOSE 80
 CMD [&amp;quot;node&amp;quot;, &amp;quot;index.js&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-one-container&#34;&gt;Running one container&lt;/h2&gt;
+&lt;h2 id=&#34;running-one-container:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running one container&lt;/h2&gt;
 
 &lt;p&gt;We can now test if our Node.js web server works by building a Docker application image first and then spinning it up as a new container.&lt;/p&gt;
 
@@ -178,7 +180,7 @@ $ docker run -p 80:80 --name web -d node-hello
 
 &lt;p&gt;As we have published the port 80 to the host we also can access our web application from another machine.&lt;/p&gt;
 
-&lt;h3 id=&#34;benchmarking-our-web-application&#34;&gt;Benchmarking our web application&lt;/h3&gt;
+&lt;h3 id=&#34;benchmarking-our-web-application:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application&lt;/h3&gt;
 
 &lt;p&gt;As we are curious guys we want to know how well our Hello-World application performs on a Docker-Raspberry-Pi-Combo.&lt;/p&gt;
 
@@ -190,7 +192,8 @@ To install Apache Bench on Debian/Ubuntu use &lt;code&gt;sudo apt-get install ap
 
 &lt;p&gt;This runs 10.000 HTTP requests with a concurrency of 10. The CPU load while running the benchmark test shows that only one CPU core of the Raspberry Pi 2 is used. The reason is that Node.js is a single threaded process.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-1-webserver.png&#34; alt=&#34;htop with 1 webserver&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here are the results of the Apache Bench test. As you can see a single web server can handle &lt;strong&gt;338&lt;/strong&gt; Requests per second.&lt;/p&gt;
 
@@ -251,27 +254,27 @@ Percentage of the requests served within a certain time (ms)
  100%    109 (longest request)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;cleaning-up&#34;&gt;Cleaning up&lt;/h3&gt;
+&lt;h3 id=&#34;cleaning-up:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Cleaning up&lt;/h3&gt;
 
 &lt;p&gt;That&amp;rsquo;s it for our first test drive. We can now stop the web server container.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker stop web
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-multiple-container-with-docker-compose&#34;&gt;Running multiple container with Docker Compose&lt;/h2&gt;
+&lt;h2 id=&#34;running-multiple-container-with-docker-compose:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running multiple container with Docker Compose&lt;/h2&gt;
 
 &lt;p&gt;To run more of these web servers we now use Docker Compose to create a farm of web servers which are running behind a &lt;a href=&#34;http://www.haproxy.org&#34;&gt;HAProxy&lt;/a&gt; load balancer.&lt;/p&gt;
 
 &lt;p&gt;As our mission is to make Docker and its toolset available on ARM we created a &lt;code&gt;docker-compose&lt;/code&gt; binary ready to run on your Raspberry Pi.&lt;/p&gt;
 
-&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;h3 id=&#34;installation:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Installation&lt;/h3&gt;
 
 &lt;p&gt;First we have to install Docker Compose for the ARM-based Raspberry Pi from our fork at &lt;a href=&#34;https://github.com/hypriot/compose&#34;&gt;https://github.com/hypriot/compose&lt;/a&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo sh -c &amp;quot;curl -L https://github.com/hypriot/compose/releases/download/1.1.0-raspbian/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;docker-compose-yml&#34;&gt;docker-compose.yml&lt;/h3&gt;
+&lt;h3 id=&#34;docker-compose-yml:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;docker-compose.yml&lt;/h3&gt;
 
 &lt;p&gt;To get our four container configuration set up we first need to create a &lt;code&gt;docker-compose.yml&lt;/code&gt; file.
 We will need three containers &lt;code&gt;weba&lt;/code&gt;, &lt;code&gt;webb&lt;/code&gt; and &lt;code&gt;webc&lt;/code&gt; based on our web application image and one &lt;code&gt;haproxy&lt;/code&gt; container.&lt;/p&gt;
@@ -312,7 +315,7 @@ haproxy:
 Additionally the HAProxy container will have (network) links to each of the three web application containers.
 Furthermore the HAProxy container will exposes port 80 as a central entry point to our Hello-World application webserver farm and its admin interface on port 70.&lt;/p&gt;
 
-&lt;h3 id=&#34;haproxy-haproxy-cfg&#34;&gt;haproxy/haproxy.cfg&lt;/h3&gt;
+&lt;h3 id=&#34;haproxy-haproxy-cfg:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;haproxy/haproxy.cfg&lt;/h3&gt;
 
 &lt;p&gt;HAProxy needs a configuration file that is mapped into the container. Create a file &lt;code&gt;haproxy/haproxy.cfg&lt;/code&gt; with the following content.&lt;/p&gt;
 
@@ -353,7 +356,7 @@ backend aj_backends
 
 &lt;p&gt;HAProxy does a health check for each of our three web servers.&lt;/p&gt;
 
-&lt;h3 id=&#34;running-our-webserver-farm&#34;&gt;Running our webserver farm&lt;/h3&gt;
+&lt;h3 id=&#34;running-our-webserver-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Running our webserver farm&lt;/h3&gt;
 
 &lt;p&gt;Now that we have set up all the necessary parts it is time to spin up all our Docker containers at once. Just run the command &lt;code&gt;docker-compose up&lt;/code&gt; interactively to see what is happening or use option &lt;code&gt;-d&lt;/code&gt; to start all containers in the background.&lt;/p&gt;
 
@@ -392,7 +395,7 @@ $ curl http://localhost
 And the fourth request has the same container name as the first one.
 The HAProxy container forwards each request in a round robin fashion, so each web server gets only one third of the load.&lt;/p&gt;
 
-&lt;h3 id=&#34;benchmarking-our-web-application-farm&#34;&gt;Benchmarking our web application farm&lt;/h3&gt;
+&lt;h3 id=&#34;benchmarking-our-web-application-farm:63a2807194fcdb5e829ff92f8506efa0&#34;&gt;Benchmarking our web application farm&lt;/h3&gt;
 
 &lt;p&gt;Let&amp;rsquo;s see how our web server farm fares compared to our single web application container instance from our first benchmark.&lt;/p&gt;
 
@@ -401,7 +404,8 @@ The HAProxy container forwards each request in a round robin fashion, so each we
 
 &lt;p&gt;Now we run 10.000 HTTP requests with a concurrency of 30. The CPU load while running the benchmark test now shows that all four CPU cores of the Raspberry Pi 2 are used.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/rpi-node-haproxy/htop-3-webserver-haproxy.png&#34; alt=&#34;htop with 3 webserver and haproxy&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And here are the results of the benchmark test itself.&lt;/p&gt;
 
@@ -480,7 +484,8 @@ Killing rpinodehaproxyexample_webb_1...
 
 &lt;p&gt;We hope you enjoyed this little tour of Docker Compose!&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;</description>
+&lt;p&gt;As always use the comments below to give us feedback and share it on our &lt;a href=&#34;https://news.ycombinator.com/item?id=9329890&#34;&gt;HackerNews-Thread&lt;/a&gt;, Twitter or Facebook.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,19 +81,20 @@
   <div class="post">
     <h1>Close Encounters of the Third Kind, or Microsoft Windows meets Docker ARM Containers for IoT</h1>
     <span class="post-date">Tue, Mar 29, 2016</span>
-    <p>Running an ARM-based Docker container for IoT applications directly on Microsoft Windows
+    
+
+<p>Running an ARM-based Docker container for IoT applications directly on Microsoft Windows
 looks like an unbelievable <strong>extraterrestrial technology</strong> from outer space.</p>
 
 <p>This cannot be true, it must be a fake, right?<br />
 Or, is this maybe just a <strong>cheap magic trick</strong>?</p>
 
-<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage.jpg" alt="Docker for Windows" /></p>
+<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage.jpg" alt="Docker for Windows" />
+</p>
 
 <p>Nope, believe me, that&rsquo;s really true&hellip;</p>
 
-<p></p>
-
-<h2 id="behind-the-scenes">Behind the scenes</h2>
+<h2 id="behind-the-scenes:41ce06d9c70eae57025ae829633db5ae">Behind the scenes</h2>
 
 <p>As I showed in my last blog post about the <a href="/post/first-touch-down-with-docker-for-mac/">First Touch Down with Docker for Mac</a>,
 &ldquo;Docker for Mac&rdquo; uses an Alpine Linux VM under the hood with the capability of emulating
@@ -116,7 +117,7 @@ drwxr-xr-x  0 dieter staff       0 Mar 28 18:34 usr/bin/
 -rwxr-xr-x  0 dieter staff 2899840 Mar 28 18:34 usr/bin/qemu-arm-static
 </code></pre>
 
-<h4 id="dockerfile">Dockerfile</h4>
+<h4 id="dockerfile:41ce06d9c70eae57025ae829633db5ae">Dockerfile</h4>
 
 <pre><code>FROM hypriot/rpi-busybox-httpd
 ADD qemu-arm-static.tar /
@@ -138,21 +139,23 @@ Windows 10 with two steps only.</p>
 <p>Here in this screenshot you can see all the necessary steps we need, there is really
 nothing else to do.</p>
 
-<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-container.jpg" alt="Docker for Windows" /></p>
+<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-container.jpg" alt="Docker for Windows" />
+</p>
 
 <p><strong>Voilà</strong> - that was the magic trick which can be applied to almost all ARM-based Docker
 images to make them run in &ldquo;Docker for Windows&rdquo; and &ldquo;Docker for Mac&rdquo; even on an Intel-based
 CPU architecture.</p>
 
-<h2 id="watch-the-results">Watch the results</h2>
+<h2 id="watch-the-results:41ce06d9c70eae57025ae829633db5ae">Watch the results</h2>
 
 <p>&ldquo;Docker for Windows&rdquo; publishes the Docker Engine network with the local network name
 <code>docker</code>. Thus to access the ARM web server, which is running inside of a Linux container,
  we just have to point our preferred web browser to <code>http://docker/</code>.</p>
 
-<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage2.jpg" alt="Docker for Windows" /></p>
+<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage2.jpg" alt="Docker for Windows" />
+</p>
 
-<h2 id="key-takeaways">Key Takeaways</h2>
+<h2 id="key-takeaways:41ce06d9c70eae57025ae829633db5ae">Key Takeaways</h2>
 
 <ul>
 <li>&ldquo;Docker for Windows&rdquo; uses Windows native hypervisor Hyper-V</li>
@@ -167,6 +170,7 @@ Then you should register for the Docker BETA program at <a href="https://beta.do
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

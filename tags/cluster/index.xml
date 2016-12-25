@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/cluster/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Cluster on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/cluster/</link>
+    <description>Recent content in Cluster on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 26 Oct 2016 18:03:34 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,13 +15,14 @@
       <pubDate>Wed, 26 Oct 2016 18:03:34 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/high-availability-with-docker/</guid>
-      <description>&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
 
 &lt;p&gt;These two news combined beg for testing the new capabilities in reality.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;The &amp;ldquo;old&amp;rdquo; Docker Swarm already offered some high availability features, but the new called &amp;ldquo;Swarm Mode&amp;rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.&lt;/p&gt;
 
@@ -28,7 +30,7 @@
 
 &lt;p&gt;Now, with these two news, let&amp;rsquo;s get our hands dirty and test if the announced promises hold.&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-the-cluster&#34;&gt;Setup the cluster&lt;/h2&gt;
+&lt;h2 id=&#34;setup-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup the cluster&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;As hardware&lt;/strong&gt;, I have 5x Raspberry Pi 3, connected in a network with Internet access.&lt;/p&gt;
 
@@ -36,7 +38,8 @@
 
 &lt;p&gt;See how the cluster looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;As software&lt;/strong&gt;, I chose HypriotOS. I also tried Raspbian, but it requires a large system upgrade after the first boot in order to provide all features required by Docker (e.g. VXLAN kernel module). Before and after the system upgrade, I also had to run &lt;a href=&#34;https://github.com/docker/docker/blob/master/contrib/check-config.sh&#34;&gt;Docker&amp;rsquo;s test script&lt;/a&gt; to make sure everything is ok. All of this is not a big deal, but if there is an OS available that comes out of the box with all that Docker needs (and even adds lots of useful optimizations), it simply saves time and provides a hassle-free experience. So I flashed all SD cards with HypriotOS using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;.&lt;/p&gt;
 
@@ -44,11 +47,12 @@
 
 &lt;p&gt;Finally, we have 5 terminals opened, all waiting for commands as you see in the following image. Please don&amp;rsquo;t care about the commands running in each terminal for now.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s all to do before getting our hands on Docker itself!&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
+&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
 
 &lt;p&gt;On HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
 
@@ -80,7 +84,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;If the terminal prints a list of all nodes of your cluster, the setup is all done! Forming a cluster cannot be easier, can it?&lt;/p&gt;
 
-&lt;h2 id=&#34;execution-of-tests&#34;&gt;Execution of tests&lt;/h2&gt;
+&lt;h2 id=&#34;execution-of-tests:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Execution of tests&lt;/h2&gt;
 
 &lt;p&gt;My tests of Docker&amp;rsquo;s ability to recover from failures comprise the following use cases:&lt;/p&gt;
 
@@ -97,7 +101,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 &lt;p&gt;&lt;a href=&#34;https://vimeo.com/185361173&#34;&gt;Testing High Availability Docker Swarm Mode&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user54109827&#34;&gt;Mathias Renner&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
 
 &lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. Note that this also holds for master nodes, not only for slave nodes! This is remarkable because in contrast to slave nodes, master nodes hold important data of the cluster state. A master nodes&amp;rsquo;s outage is critical for the health of the cluster. With e.g. &lt;a href=&#34;https://github.com/luxas/kubernetes-on-arm&#34;&gt;Kubernetes-on-arm&lt;/a&gt;, the cluster does not recover after rebooting or crashing a master node.&lt;/p&gt;
 
@@ -115,7 +119,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 &lt;p&gt;Having this configured, after a crash or reboot the node recovered correctly in my tests. I look forward for feedback about this issue! Please use the discussion below.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;more-to-come-soon&#34;&gt;More to come soon&lt;/h2&gt;
+&lt;h2 id=&#34;more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;More to come soon&lt;/h2&gt;
 
 &lt;p&gt;This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the &lt;a href=&#34;http://highload.co/&#34;&gt;HighLoad++ Conference&lt;/a&gt; in Moskow, Russia. I&amp;rsquo;d be happy if you can make it there!&lt;/p&gt;
 
@@ -127,7 +131,8 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -136,23 +141,25 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
       <pubDate>Mon, 06 Jun 2016 18:03:34 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/</guid>
-      <description>&lt;p&gt;Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at &lt;a href=&#34;http://ict-2016.org/&#34;&gt;ICT 2016&lt;/a&gt;, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/ict_logo.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at &lt;a href=&#34;http://ict-2016.org/&#34;&gt;ICT 2016&lt;/a&gt;, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/ict_logo.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;We built the Hypriot Cluster Lab as lab environment that allows to easily teach about clustering and cloud computing. At the conference, the Hypriot Cluster Lab piqued lots of interest, so we are confident that it will be used more and more in educational institutions.&lt;/p&gt;
 
 &lt;p&gt;Now, after the show, we are publishing &lt;a href=&#34;http://ict-2016.org/pdf/Demo1.pdf&#34;&gt;the paper&lt;/a&gt; that has been accepted at the conference and the &lt;a href=&#34;https://blog.hypriot.com/images/ict-2016-greece/ICT-Presentation.pdf&#34;&gt;presentation slides&lt;/a&gt;. However, the paper is (intentionally) very brief and the slides are not throughout self-explanatory, so we&amp;rsquo;ve also written down what we&amp;rsquo;ve presented to the audience back in Greece.&lt;/p&gt;
 
-&lt;h2 id=&#34;iot-requires-expansion-to-small&#34;&gt;IoT requires &amp;ldquo;Expansion to small&amp;rdquo;&lt;/h2&gt;
+&lt;h2 id=&#34;iot-requires-expansion-to-small:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;IoT requires &amp;ldquo;Expansion to small&amp;rdquo;&lt;/h2&gt;
 
 &lt;p&gt;Building cloud computing infrastructures with big servers is well understood. Even large cloud infrastructures powered by container technology are commonly in use. One of the pioneers to mention here is Google with its container-based cloud platform &lt;a href=&#34;http://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;However, the uprising Internet of Things (IoT) will not allow to equip the edge of the network such as sensor networks in smart home/grid/production environments with big servers only. There, you especially need small devices with less computational power and energy demand. These devices require to be small and cheap enough to install up to several thousands of them in a smart environment, thereby creating sensor networks. For example think of sensor networks on wind farms:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/wind.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
+
 &lt;div style=&#34;padding-left:34.4em; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/ewea/16577911487/in/photolist-rfW8w8-ipD2tM-ipC49q-7d8FqR-ipCNzR-ipC1dU-ipBRBC-ipCGWN-ipCkFm-njeuG6-ipCC31-ipCnPv-ayYLge-ipCJ61-ayYMmc-ipBGVN-ayYHLH-9mZuNi-ayYMzX-oWbzp6-ayYK6n-7ZaHBQ-q8T7wm-az2p4W-8LowiB-az2o8s-ayYJJt-az2p2f-3euhCb-ayYMWD-ayYNgZ-ayYL48-az2riu-6YiWvR-az2qkC-ayYMev-az2rxU-az2on1-ayYK2V-ayYHrz-az2oru-az2ov7-az2oeW-qQMUJN-auVRqy-az2oDm-ayYM8Z-i5kW85-ayYJTV-az2rCE&#34;&gt;European Wind Energy Association&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, Hypriot Cluster Lab (HCL) comes into play:&lt;/p&gt;
@@ -163,15 +170,16 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;This &amp;ldquo;Expansion to Small&amp;rdquo; was the theme of the ICT 2016, which made HCL a perfect fit to the conference&amp;rsquo;s agenda.&lt;/p&gt;
 
-&lt;h2 id=&#34;hcl-makes-a-tangible-iot-like-cluster-affordable&#34;&gt;HCL makes a tangible IoT-like cluster affordable&lt;/h2&gt;
+&lt;h2 id=&#34;hcl-makes-a-tangible-iot-like-cluster-affordable:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;HCL makes a tangible IoT-like cluster affordable&lt;/h2&gt;
 
 &lt;p&gt;HCL is not only a proof of concept that clustering with container technology on IoT devices works, it also serves a second purpose: It is cheap enough to be used as a learning platform to play with clustering or cloud computing on your desk. The minimal hardware configuration requires three Raspberry Pis plus accessoires, which is affordable for everyone to get their hands on a real, tangible cluster. We&amp;rsquo;ve already seen lecturers, students and pupils getting started on the HCL with different topics related to cloud computing, e.g. playing with micro services or load balancing. Some use cases can be found &lt;a href=&#34;https://github.com/hypriot/rpi-cluster-lab-demos&#34;&gt;in one of our repos here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Even though the HCL is intended to be used as a tool to learn, its containing concepts are applicable for promising IoT software solutions. Comparing IoT&amp;rsquo;s general requirements for hard- and software that I identified in my bachelor thesis (&lt;a href=&#34;https://medium.com/@mathiasrenner/docker-container-virtualization-and-the-internet-of-things-bachelor-thesis-a6bc783b81fa#.f09czsq2e&#34;&gt;details here&lt;/a&gt;) show that many of those aspects are already visible in the HCL:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/iot-requirements.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/iot-requirements.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;All in all, the conference was an enriching experience. Discussing with scientific researches and professors from many different countries resulted in high-grade feedback and inspirations of how we can further improve the HCL. Particularly interesting were the discussions after some glasses of good, greek wine. They resulted in less high-grade feedback, but much fun instead :)&lt;/p&gt;
 
@@ -181,7 +189,8 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -190,7 +199,9 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
       <pubDate>Wed, 23 Mar 2016 18:40:04 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/lets-build-a-pi-docker-picocluster/</guid>
-      <description>&lt;p&gt;As we love to use Docker Swarm on a cluster of Raspberry Pi&amp;rsquo;s, we&amp;rsquo;d like to cover
+      <description>
+
+&lt;p&gt;As we love to use Docker Swarm on a cluster of Raspberry Pi&amp;rsquo;s, we&amp;rsquo;d like to cover
 in this hands-on tutorial how to build such a cluster easily with a hardware kit
 from &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;.&lt;/p&gt;
 
@@ -199,14 +210,13 @@ Raspberry Pi&amp;rsquo;s and the time to assemble all the parts together. The pr
 completed within an hour only, and makes so much fun, too - especially when you can
 share this as quality time with your kids.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;PicoCluster had just sent us two different kits of their cool Raspberry Pi
 clusters. Of course, we are eager to build these new clusters so you can get a first impression.&lt;/p&gt;
 
-&lt;h3 id=&#34;what-s-in-the-box&#34;&gt;What&amp;rsquo;s in the box&lt;/h3&gt;
+&lt;h3 id=&#34;what-s-in-the-box:098640bbbda183ea709087a458ce9550&#34;&gt;What&amp;rsquo;s in the box&lt;/h3&gt;
 
 &lt;p&gt;3-node PicoCluster kit:&lt;/p&gt;
 
@@ -219,7 +229,8 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-parts.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;5-node PicoCluster kit:&lt;/p&gt;
 
@@ -236,7 +247,8 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;base mounting for Pi tower, including all crews, nuts &amp;amp; bolts, spacers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-parts.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Not included in the kits: (so you have to buy it separately)&lt;/p&gt;
 
@@ -252,33 +264,37 @@ clusters. Of course, we are eager to build these new clusters so you can get a f
 &lt;li&gt;7mm wrench (or a pliers)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/tools-screwdriver-wrench.jpg&#34; alt=&#34;PicoCluster toosl&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;assembling-the-3-node-picocluster&#34;&gt;Assembling the 3-node PicoCluster&lt;/h3&gt;
+&lt;h3 id=&#34;assembling-the-3-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 3-node PicoCluster&lt;/h3&gt;
 
-&lt;h4 id=&#34;towering-the-raspberry-pi-s&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
+&lt;h4 id=&#34;towering-the-raspberry-pi-s:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
 
 &lt;p&gt;First we take the mounting plate for the Pi tower and stack all
 three Raspberry Pi&amp;rsquo;s with the help of the included spacers.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pi-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h4 id=&#34;wiring-all-together&#34;&gt;Wiring all together&lt;/h4&gt;
+&lt;h4 id=&#34;wiring-all-together:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
 
 &lt;p&gt;Now it&amp;rsquo;s easy to mount the PDU on top of the Pi tower with 4 screws and attaching
 the USB power cables to the three Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-pdu-tower2.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Next we mount the tower on the base plate, which makes our new cluster look even better.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-base-tower.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
 the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
 to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
 
-&lt;h4 id=&#34;assembling-the-case&#34;&gt;Assembling the case&lt;/h4&gt;
+&lt;h4 id=&#34;assembling-the-case:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
 
 &lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
 Mounting with nuts &amp;amp; bolts and the PicoCluster is ready.&lt;/p&gt;
@@ -287,54 +303,61 @@ Mounting with nuts &amp;amp; bolts and the PicoCluster is ready.&lt;/p&gt;
 because as soon as we close the cluster case, it&amp;rsquo;s a little bit harder to change
 the SD cards.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-completed.jpg&#34; alt=&#34;PicoCluster 3-node&#34; /&gt;
+&lt;/p&gt;
 
-&lt;h3 id=&#34;assembling-the-5-node-picocluster&#34;&gt;Assembling the 5-node PicoCluster&lt;/h3&gt;
+&lt;h3 id=&#34;assembling-the-5-node-picocluster:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the 5-node PicoCluster&lt;/h3&gt;
 
-&lt;h4 id=&#34;towering-the-raspberry-pi-s-1&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
+&lt;h4 id=&#34;towering-the-raspberry-pi-s-1:098640bbbda183ea709087a458ce9550&#34;&gt;Towering the Raspberry Pi&amp;rsquo;s&lt;/h4&gt;
 
 &lt;p&gt;With the 5-node cluster we start similar as with the 3-node. We take
 the mounting plate for the Pi tower and stack all five Raspberry Pi&amp;rsquo;s with the
 spacers.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
-&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;wiring-all-together-1&#34;&gt;Wiring all together&lt;/h4&gt;
+&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pi-tower2.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;wiring-all-together-1:098640bbbda183ea709087a458ce9550&#34;&gt;Wiring all together&lt;/h4&gt;
 
 &lt;p&gt;Next, we mount the PDU on top of the Pi tower with 4 screws and attach
 the USB power cables to the five Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-pdu-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;As soon as we mount the tower on the base plate, we see that we do have a lot more
 parts left.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-base-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;For the 5-node cluster we have an internal dedicated 8-port switch, which we&amp;rsquo;ll
 install inside the case and wire all the ethernet cables to the Pi&amp;rsquo;s.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-ethernet-switch.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;From now on, it&amp;rsquo;s easy to complete the cluster installation: We connect
 the 12V power cable to the PDU and front cover. We can also attach the HDMI cable
 to the upper Raspberry Pi and mount the other end to the front cover, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-5node-switch-tower.jpg&#34; alt=&#34;PicoCluster 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;You&amp;rsquo;ll also find two USB cables in the kit, which you can connect to one or two
 different Pi&amp;rsquo;s and mount the plug to the front panel as well. Attaching HDMI and USB
 plugs to the case is really optional.&lt;/p&gt;
 
-&lt;h4 id=&#34;assembling-the-case-1&#34;&gt;Assembling the case&lt;/h4&gt;
+&lt;h4 id=&#34;assembling-the-case-1:098640bbbda183ea709087a458ce9550&#34;&gt;Assembling the case&lt;/h4&gt;
 
 &lt;p&gt;Finally, we mount the side and back cover and put on the top plate.
 Mounting with nuts &amp;amp; bolts and our second PicoCluster is almost ready. As there are a
 few more parts to assemble the 5-node cluster, it will take a little bit longer than
 building the smaller cluster.&lt;/p&gt;
 
-&lt;h3 id=&#34;finally-we-have-two-new-clusters&#34;&gt;Finally, we have two new clusters&lt;/h3&gt;
+&lt;h3 id=&#34;finally-we-have-two-new-clusters:098640bbbda183ea709087a458ce9550&#34;&gt;Finally, we have two new clusters&lt;/h3&gt;
 
 &lt;p&gt;At the end we have now built two new Raspberry Pi clusters, a 3-node and a 5-node
 from PicoCluster. Both are looking really neat and everything is stowed away in
@@ -342,7 +365,8 @@ a perfect way. Only accessing the microSD cards is not optimal once after the ca
 is closed. You just have to remove only a few screws and dismounting the rear side
 panel of the case and then you can easily access the SD card slots.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/picocluster-kits/picocluster-3node-and-5node-cluster.jpg&#34; alt=&#34;PicoCluster 3- and 5-node&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Because the 5-node cluster includes an integrated 8-port Ethernet switch, we&amp;rsquo;d recommend
 it to use as a standalone Pi cluster for experimenting with Docker Swarm and other
@@ -353,7 +377,7 @@ a single network link. This is all you need to start playing with it right away.
 However, this isn&amp;rsquo;t within the scope of this hands-on project, so we&amp;rsquo;ll point you to one of our
 latest tutorials where you learn &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;how to setup a Docker Swarm cluster with Raspberry Pi&amp;rsquo;s&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;where-can-you-get-it&#34;&gt;Where can you get it ?&lt;/h3&gt;
+&lt;h3 id=&#34;where-can-you-get-it:098640bbbda183ea709087a458ce9550&#34;&gt;Where can you get it ?&lt;/h3&gt;
 
 &lt;p&gt;You can order your own ready-to-use and tiny data center directly at &lt;a href=&#34;http://picocluster.com&#34;&gt;PicoCluster&lt;/a&gt;
 with the Raspberry Pi&amp;rsquo;s included. The hardware kits we used in this post should be available soon, too.
@@ -363,7 +387,8 @@ beta units.&lt;/p&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -372,7 +397,9 @@ beta units.&lt;/p&gt;
       <pubDate>Sun, 20 Mar 2016 23:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
-      <description>&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
+      <description>
+
+&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
 Not until I logged in and did &lt;code&gt;lscpu&lt;/code&gt; did I realize that those servers were &amp;ldquo;just&amp;rdquo; Intel Atom servers.&lt;/p&gt;
 
 &lt;p&gt;A bit disappointed I thought what to do now? In my enthusiasm I had spun up 3 servers with 82 GB of RAM and 24 CPUs.
@@ -383,13 +410,12 @@ Still with my thoughts firmly rooted in the &lt;a href=&#34;https://blog.docker.
 &lt;p&gt;You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;There are couple of reasons why it was so simple.&lt;/p&gt;
 
-&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
+&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
 
 &lt;p&gt;The first reason is that I was using the new Scaleway Cloud servers.&lt;/p&gt;
 
@@ -574,7 +600,7 @@ I am not going into the details of the tinc configuration now, because I am goin
 
 &lt;p&gt;That we have the name of tinc network device is important for the configuration of the Hypriot Cluster Lab which we gonna use in the next section.&lt;/p&gt;
 
-&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
+&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
 
 &lt;p&gt;The &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; is the second reason why it is so easy to set up our 100 node Jenkins cluster.
 The Cluster Lab helps us to set up a Docker Swarm Cluster without any manual configuration in minutes.&lt;/p&gt;
@@ -717,7 +743,7 @@ Name: 4b3fd589316c
 For instance we can see the number of nodes we have as well as the total number of CPUs and RAM we do have in the cluster: 24 CPUs and a whopping amount of 82 GB of RAM.
 That&amp;rsquo;s nice isn&amp;rsquo;t it?&lt;/p&gt;
 
-&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
+&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
 
 &lt;p&gt;Ok, now comes the last reason why it is so fast and easy to set up 100 node Jenkins cluster.
 The reason is called &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker-Compose&lt;/a&gt; and makes it ridiculous easy to get multi-container applications up and running.&lt;/p&gt;
@@ -805,11 +831,13 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;You should see a page similar to&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And at &lt;a href=&#34;http://212.47.225.127:8080/computer&#34;&gt;http://212.47.225.127:8080/computer&lt;/a&gt; we can find all the slave nodes, too:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
 
@@ -827,7 +855,8 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -844,9 +873,8 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 Follow along to learn how this is possible.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV&#34;&gt;SNRE Labs&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
+&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV&#34;&gt;SNRE Labs&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;The Hypriot Cluster Lab has already been there for while as an easy way to set up a Swarm Cluster on Raspberry Pi&amp;rsquo;s.
 The basic idea was to have a SD card image that can be used to boot up a couple of Pi&amp;rsquo;s who then automatically form a Swarm Cluster.
@@ -1033,7 +1061,8 @@ That was easy, was it?&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=11263205&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -1042,15 +1071,16 @@ That was easy, was it?&lt;/p&gt;
       <pubDate>Fri, 03 Jul 2015 00:30:45 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</guid>
-      <description>&lt;p&gt;In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;We have built a little &amp;ldquo;Pi Tower&amp;rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.
-&lt;/p&gt;
+&lt;p&gt;In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.&lt;/p&gt;
+
+&lt;p&gt;We have built a little &amp;ldquo;Pi Tower&amp;rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.&lt;/p&gt;
 
 &lt;p&gt;As you can see in the pictures below we have mounted the three Raspberry Pi&amp;rsquo;s on top of a 5-port D-Link GBit switch. All four devices get their power from an Anker 4-port USB charger.
 This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only one power plug and one external network connector.&lt;/p&gt;
 
-&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Pi Tower&lt;/div&gt;
 
 
@@ -1115,9 +1145,9 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;/div&gt;
+&lt;/p&gt;
 
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -1183,11 +1213,11 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;For your convenience we have prepared a &lt;a href=&#34;http://www.amazon.de/gp/registry/wishlist/BCGEW9W3V8GM/ref=cm_wl_rlist_go_o&#34;&gt;small shopping list&lt;/a&gt; of all the components we used at Amazon.&lt;/p&gt;
 
-&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
+&lt;h2 id=&#34;pre-requisites:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Pre-requisites&lt;/h2&gt;
 
 &lt;p&gt;For this tutorial we will run all steps from a Mac. To do this we need three tools.&lt;/p&gt;
 
@@ -1197,7 +1227,7 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 &lt;li&gt;The Docker Machine binary with the hypriot driver&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;flash-all-sd-cards&#34;&gt;Flash all SD cards&lt;/h2&gt;
+&lt;h2 id=&#34;flash-all-sd-cards:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Flash all SD cards&lt;/h2&gt;
 
 &lt;p&gt;First we want to install the SD cards with Docker preinstalled.
 On a Mac or Linux machine we can use our little &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash command line tool&lt;/a&gt; to prepare the three SD cards with these simple commands:&lt;/p&gt;
@@ -1209,7 +1239,7 @@ $ flash --hostname pi3 http://downloads.hypriot.com/hypriot-rpi-20150416-201537.
 
 &lt;p&gt;Now insert the SD cards into all Raspberry Pi&amp;rsquo;s and boot them. They will come up with different host names after a while.&lt;/p&gt;
 
-&lt;h2 id=&#34;retrieve-ip-addresses&#34;&gt;Retrieve IP addresses&lt;/h2&gt;
+&lt;h2 id=&#34;retrieve-ip-addresses:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Retrieve IP addresses&lt;/h2&gt;
 
 &lt;p&gt;Our SD card image also starts the avahi-daemon to announce the hostname through mDNS, so each Pi is reachable with &lt;code&gt;pi1.local&lt;/code&gt;, &lt;code&gt;pi2.local&lt;/code&gt; and &lt;code&gt;pi3.local&lt;/code&gt;.
 Docker Machine cannot resolve these hostnames at the moment, so we have to retrieve the IP addresses for the Raspberry Pi&amp;rsquo;s manually.&lt;/p&gt;
@@ -1221,7 +1251,7 @@ $ ping -c 1 pi3.local
 
 &lt;p&gt;For this example we assume that the three IP adresses are &lt;code&gt;192.168.1.101&lt;/code&gt;, &lt;code&gt;102&lt;/code&gt; and &lt;code&gt;103&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;insert-ssh-public-key&#34;&gt;Insert SSH public key&lt;/h2&gt;
+&lt;h2 id=&#34;insert-ssh-public-key:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Insert SSH public key&lt;/h2&gt;
 
 &lt;p&gt;Docker Machine connects to each Raspberry Pi through SSH. You have to insert your public SSH key to avoid entering the password of the &lt;code&gt;root&lt;/code&gt; user.
 To insert the SSH public key into a remote machine there is a tool called &lt;code&gt;ssh-copy-id&lt;/code&gt;. You might have to install it first.&lt;/p&gt;
@@ -1233,7 +1263,7 @@ $ ssh-copy-id root@192.168.1.103
 
 &lt;p&gt;For each of the above commands you have to enter the password &lt;code&gt;hypriot&lt;/code&gt; for the user &lt;code&gt;root&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;create-docker-machines&#34;&gt;Create Docker Machines&lt;/h2&gt;
+&lt;h2 id=&#34;create-docker-machines:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create Docker Machines&lt;/h2&gt;
 
 &lt;p&gt;For the next step we use our Docker Machine driver to connect to the Raspberry Pi Hypriot devices.
 Our hypriot driver is not yet integrated into the official Docker Machine binary.
@@ -1246,7 +1276,7 @@ $ chmod +x ./docker-machine
 &lt;p&gt;Download the binary into the current directory and make it executable. You may move it
 into another directory in your PATH to use it from other directories.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-swarm-token&#34;&gt;Create Swarm Token&lt;/h3&gt;
+&lt;h3 id=&#34;create-swarm-token:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create Swarm Token&lt;/h3&gt;
 
 &lt;p&gt;A Docker Swarm cluster uses a unique Cluster ID which allows the individual swarm agents to find each other.
 We need such a Cluster ID to build our Docker Swarm.&lt;/p&gt;
@@ -1266,7 +1296,7 @@ $ echo $TOKEN
 with &lt;code&gt;docker run --rm hypriot/rpi-swarm create&lt;/code&gt;.
 We simply used the shell commands above to skip this chicken or egg problem.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-the-swarm-master&#34;&gt;Create the Swarm Master&lt;/h3&gt;
+&lt;h3 id=&#34;create-the-swarm-master:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create the Swarm Master&lt;/h3&gt;
 
 &lt;p&gt;Now we create the Docker Swarm Master on the first Raspberry Pi with our generated Cluster ID&lt;/p&gt;
 
@@ -1293,7 +1323,7 @@ Nodes: 1
 
 &lt;p&gt;We now have successfully set up a lonely Swarm Manager. Let&amp;rsquo;s start some more Raspberry Pi&amp;rsquo;s to prevent the Swarm Manager from feeling lonely.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-the-swarm-agents&#34;&gt;Create the Swarm agents&lt;/h3&gt;
+&lt;h3 id=&#34;create-the-swarm-agents:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create the Swarm agents&lt;/h3&gt;
 
 &lt;p&gt;For the rest of the Raspberry Pi&amp;rsquo;s we also create Docker Machine connections with the same Cluster ID.
 This time we run docker-machine without the &lt;code&gt;--swarm-master&lt;/code&gt; option to just spin up a Swarm Agent container in each Pi.&lt;/p&gt;
@@ -1347,7 +1377,8 @@ Have a look at the &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;offici
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Stefan&lt;/p&gt;</description>
+&lt;p&gt;Stefan&lt;/p&gt;
+</description>
     </item>
     
   </channel>

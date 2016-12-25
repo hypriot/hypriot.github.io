@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,15 +81,16 @@
   <div class="post">
     <h1>How to setup a Docker Swarm cluster with Raspberry Pi&#39;s</h1>
     <span class="post-date">Tue, Mar 8, 2016</span>
-    <p>This week is dedicated to <a href="https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/">Docker #SwarmWeek</a>. In this tutorial we show you how easy it is to setup a Docker Swarm with HypriotOS and the standard <code>docker-machine</code> binary.</p>
+    
 
-<p><img src="/images/how-to-setup-rpi-docker-swarm/docker-swarm-logo.png" alt="Docker Swarm" /></p>
+<p>This week is dedicated to <a href="https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/">Docker #SwarmWeek</a>. In this tutorial we show you how easy it is to setup a Docker Swarm with HypriotOS and the standard <code>docker-machine</code> binary.</p>
 
-<p></p>
+<p><img src="/images/how-to-setup-rpi-docker-swarm/docker-swarm-logo.png" alt="Docker Swarm" />
+</p>
 
 <p>We want to setup a cluster with <strong>eight Raspberry Pi 3</strong>, grouped into two tiny datacenters with four Pi&rsquo;s each.</p>
 
-<h2 id="prepare-your-notebook">Prepare your notebook</h2>
+<h2 id="prepare-your-notebook:7086adb18de3c46a0c9331e9b3dc5f01">Prepare your notebook</h2>
 
 <p>To control the Docker Swarm from our notebook, we have to install both <code>docker</code> and <code>docker-machine</code> binaries. If you are on a Mac, you can use <code>brew</code> to install them.</p>
 
@@ -97,7 +98,7 @@
 brew install docker-machine
 </code></pre>
 
-<h2 id="flash-all-your-sd-cards">Flash all your SD cards</h2>
+<h2 id="flash-all-your-sd-cards:7086adb18de3c46a0c9331e9b3dc5f01">Flash all your SD cards</h2>
 
 <p>Now we can easily flash the latest HypriotOS image to the eight SD cards with our <a href="https://github.com/hypriot/flash#installation">flash tool</a> and assign different node names.</p>
 
@@ -109,7 +110,7 @@ flash --hostname swarm-dc2-pi04 https://downloads.hypriot.com/hypriot-rpi-201603
 
 <p>After that, insert the SD cards and boot all the Raspberry Pi&rsquo;s.</p>
 
-<h2 id="prepare-your-pi-s-for-docker-machine">Prepare your Pi&rsquo;s for docker-machine</h2>
+<h2 id="prepare-your-pi-s-for-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01">Prepare your Pi&rsquo;s for docker-machine</h2>
 
 <p>We want to create the Docker Swarm with the standard <code>docker-machine</code> binary. To make this work we need to prepare the Raspberry Pi&rsquo;s a little bit. The next steps are adding your SSH public key to all of your Pi&rsquo;s as well as fixing the ID in <code>/etc/os-release</code> to <code>debian</code>.</p>
 
@@ -125,14 +126,14 @@ ssh root@$IP_ADDRESS sed -i \'s/ID=raspbian/ID=debian/g\' /etc/os-release
 
 <p>Repeat this for all the eight Raspberry Pi&rsquo;s. You will prompted for the root password which is <code>hypriot</code>.</p>
 
-<h2 id="create-swarm-token">Create Swarm Token</h2>
+<h2 id="create-swarm-token:7086adb18de3c46a0c9331e9b3dc5f01">Create Swarm Token</h2>
 
 <p>A Docker Swarm cluster uses a unique Cluster ID to enable all swarm agents find each other. We need such a Cluster ID to build our Docker Swarm. This can be done in your shell with this command</p>
 
 <pre><code class="language-bash">export TOKEN=$(for i in $(seq 1 32); do echo -n $(echo &quot;obase=16; $(($RANDOM % 16))&quot; | bc); done; echo)
 </code></pre>
 
-<h2 id="create-the-swarm-with-docker-machine">Create the swarm with docker-machine</h2>
+<h2 id="create-the-swarm-with-docker-machine:7086adb18de3c46a0c9331e9b3dc5f01">Create the swarm with docker-machine</h2>
 
 <p>We now create the Swarm Master on the first Raspberry Pi.</p>
 
@@ -156,7 +157,7 @@ ssh root@$IP_ADDRESS sed -i \'s/ID=raspbian/ID=debian/g\' /etc/os-release
 
 <p>After a while the whole Docker Swarm cluster with the two datacenters is up and running. We now have a cluster with <strong>32 CPU&rsquo;s</strong> and <strong>8 GByte RAM</strong>.</p>
 
-<h2 id="control-your-swarm">Control your Swarm</h2>
+<h2 id="control-your-swarm:7086adb18de3c46a0c9331e9b3dc5f01">Control your Swarm</h2>
 
 <p>To connect to your Docker Swarm use the following command to set the environment variables for the Docker Client.</p>
 
@@ -164,7 +165,9 @@ ssh root@$IP_ADDRESS sed -i \'s/ID=raspbian/ID=debian/g\' /etc/os-release
 </code></pre>
 
 <p><img src="/images/how-to-setup-rpi-docker-swarm/dc1-pi3.jpg" alt="Datacenter 1" />
-<img src="/images/how-to-setup-rpi-docker-swarm/dc2-pi3.jpg" alt="Datacenter 2" /></p>
+
+<img src="/images/how-to-setup-rpi-docker-swarm/dc2-pi3.jpg" alt="Datacenter 2" />
+</p>
 
 <pre><code>docker info
 Containers: 10
@@ -252,13 +255,15 @@ Total Memory: 7.592 GiB
 Name: d90d49c65205
 </code></pre>
 
-<p><img src="/images/how-to-setup-rpi-docker-swarm/five-pi3.jpg" alt="five pi3" /></p>
+<p><img src="/images/how-to-setup-rpi-docker-swarm/five-pi3.jpg" alt="five pi3" />
+</p>
 
 <p>For more information about Docker Swarm you can follow the <a href="https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/">#SwarmWeek: Introduction to container orchestration with Docker Swarm</a>.</p>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Dieter <a href="https://twitter.com/quintus23m">@Quintus23M</a> &amp; Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

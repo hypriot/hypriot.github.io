@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/hardware/index.xml</link>
-    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
+    <title>Hardware on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/hardware/</link>
+    <description>Recent content in Hardware on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 07 Dec 2015 19:55:55 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -14,12 +15,13 @@
       <pubDate>Mon, 07 Dec 2015 19:55:55 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/family_arm_hardware_for_docker_more_children/</guid>
-      <description>&lt;p&gt;Today we are proud to present a guest contribution from the community. Marcel Großmann, a research assistant at the University of Bamberg, Germany, shows in a short test that the hardware family on which our ARMed Docker runs is probably much larger than we ever thought. But rather than anticipating the punch line, let&amp;rsquo;s give the word to him!&lt;/p&gt;
+      <description>
 
-&lt;p&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Today we are proud to present a guest contribution from the community. Marcel Großmann, a research assistant at the University of Bamberg, Germany, shows in a short test that the hardware family on which our ARMed Docker runs is probably much larger than we ever thought. But rather than anticipating the punch line, let&amp;rsquo;s give the word to him!&lt;/p&gt;
 
-&lt;h2 id=&#34;testing-docker-on-new-platforms&#34;&gt;Testing Docker on new Platforms&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-docker-on-new-platforms:b445d62276b06d5ff303032c7603f78a&#34;&gt;Testing Docker on new Platforms&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;(Marcel is now speaking)&lt;/em&gt;&lt;/p&gt;
 
@@ -94,7 +96,7 @@ sudo chmod +x check-config.sh
 &lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;the-armed-family-for-docker-is-probably-bigger-than-that&#34;&gt;The ARMed Family for Docker is probably bigger than that&lt;/h2&gt;
+&lt;h2 id=&#34;the-armed-family-for-docker-is-probably-bigger-than-that:b445d62276b06d5ff303032c7603f78a&#34;&gt;The ARMed Family for Docker is probably bigger than that&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;(Andreas &amp;amp; Mathias speaking again)&lt;/em&gt;&lt;/p&gt;
 
@@ -104,7 +106,8 @@ sudo chmod +x check-config.sh
 
 &lt;p&gt;Get in touch with us via the comments below, on &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;Twitter&lt;/a&gt;, in the &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;community chat&lt;/a&gt; and spread the word using the buttons below.&lt;/p&gt;
 
-&lt;p&gt;Andreas, Mathias and Marcel Großmann (&lt;a href=&#34;https://www.uni-bamberg.de/en/ktr/staff/grossmann-marcel/&#34;&gt;University of Bamberg&lt;/a&gt;)&lt;/p&gt;</description>
+&lt;p&gt;Andreas, Mathias and Marcel Großmann (&lt;a href=&#34;https://www.uni-bamberg.de/en/ktr/staff/grossmann-marcel/&#34;&gt;University of Bamberg&lt;/a&gt;)&lt;/p&gt;
+</description>
     </item>
     
   </channel>

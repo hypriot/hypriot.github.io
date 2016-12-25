@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq"> FAQ </a></li>
+        <li><a href="/faq/"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about"> ABOUT US </a></li>
+        <li><a href="/about/"> ABOUT US </a></li>
       
-        <li><a href="/crew"> CREW </a></li>
+        <li><a href="/crew/"> CREW </a></li>
       
     </ul>
 
@@ -81,12 +81,13 @@
   <div class="post">
     <h1>Heavily ARMed after major upgrade: Raspberry Pi with Docker 1.5.0</h1>
     <span class="post-date">Tue, Mar 3, 2015</span>
-    <p>Nearly two weeks ago we have been blown away by the positive feedback we got for <a href="/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1">our first Raspberry Pi SD card image</a>. It allowed people to get up and running with Docker on the Raspberry Pi in no time.</p>
+    
 
-<p>The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
-</p>
+<p>Nearly two weeks ago we have been blown away by the positive feedback we got for <a href="/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1">our first Raspberry Pi SD card image</a>. It allowed people to get up and running with Docker on the Raspberry Pi in no time.</p>
 
-<figure itemscope itemtype="http://schema.org/ImageObject" class="clearfix">
+<p>The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.</p>
+
+<p><figure itemscope itemtype="http://schema.org/ImageObject" class="clearfix">
   <img src="/images/gallery/heavily-armed-after-major-upgrade/black-pearl.jpg" alt="" />
 
   
@@ -97,14 +98,14 @@
   
 
 </figure>
-
+</p>
 
 <p>The most important upgrade of our second image is the support for Docker 1.5.0 which has been released just recently. Most noteworthy about Docker 1.5.0 is the new support for IPv6, read-only containers and advanced statistics for image resource consumption. We find the last one especially interesting for people like us who are running Docker on small devices.</p>
 
 <p>One thing we already had in the last incarnation of our image is the support of OverlayFS. OverlayFS is one of several storage drivers for Docker. The biggest distinction to other storage options, like lvm or btrfs, is the performance it offers. See this <a href="https://developerblog.redhat.com/2014/09/30/overview-storage-scalability-docker/">website</a> for an in-depth-look at the performance/advantages of different docker storage options.
 Needless to say that OverlayFS comes out at the top. Even the big players like <a href="http://lwn.net/Articles/627232/">CoreOS</a> seem to be in the process of moving to OverlayFS. We can provide OverlayFS in our image because with 3.18.8 we are using the latest linux kernel version which already has built-in support for OverlayFS.</p>
 
-<div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
+<p><div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
 <div class="title">Raspberry Pi with Docker</div>
 
 
@@ -169,9 +170,9 @@ Needless to say that OverlayFS comes out at the top. Even the big players like <
 
 
 </div>
+</p>
 
-
-<link rel="stylesheet" href="/css/photoswipe.css">
+<p><link rel="stylesheet" href="/css/photoswipe.css">
 <link rel="stylesheet" href="/css/default-skin/default-skin.css">
 <script src="/js/photoswipe.min.js"></script>
 <script src="/js/photoswipe-ui-default.min.js"></script>
@@ -237,9 +238,9 @@ Needless to say that OverlayFS comes out at the top. Even the big players like <
 
 
 <script>initPhotoSwipeFromDOM('.gallery');</script>
+</p>
 
-
-<h2 id="summary-of-changes">Summary of changes</h2>
+<h2 id="summary-of-changes:3455e8c2e00ddc235c73ff691ea5d2cc">Summary of changes</h2>
 
 <p>Here is a list of the most important changes to the SD card image.</p>
 
@@ -262,7 +263,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like <
 <li>support for Raspberry Pi 1 &amp; 2 with the same SD card image (dual kernel)</li>
 </ul>
 
-<h2 id="download">Download</h2>
+<h2 id="download:3455e8c2e00ddc235c73ff691ea5d2cc">Download</h2>
 
 <p>The image can be downloaded here:</p>
 
@@ -270,7 +271,7 @@ Needless to say that OverlayFS comes out at the top. Even the big players like <
 
 <p><strong>Update (30.03.2015):</strong> We have published a more <a href="/post/hypriotos-back-again-with-docker-on-arm">recent version of our SD card image</a>.</p>
 
-<h2 id="how-to-get-started">How to get started</h2>
+<h2 id="how-to-get-started:3455e8c2e00ddc235c73ff691ea5d2cc">How to get started</h2>
 
 <p>Download our SD card image and flash it on your own SD card. <a href="http://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600">Here</a> is a short guide on how to do this for Mac, Windows and Linux users. Afterwards insert the SD card in your Raspberry Pi and wait while it boots. The first time will take a little longer as it resizes the file system to its maximum and reboots again.</p>
 
@@ -283,7 +284,7 @@ Standard x86-64 Docker Images from the Docker Hub won&rsquo;t work. That&rsquo;s
 
 <p>As you can see - getting started with Docker on your Raspberry Pi just got so much easier!</p>
 
-<h2 id="give-us-your-feedback">Give us your feedback</h2>
+<h2 id="give-us-your-feedback:3455e8c2e00ddc235c73ff691ea5d2cc">Give us your feedback</h2>
 
 <p>As we want to make this image even better we really need your feedback. What do you like about our SD card image and what could be made better? And what kind of additional Docker Images would you like to see?</p>
 
@@ -292,6 +293,7 @@ And please share this post with your friends.</p>
 
 <p>We really would like to see more people using Docker on Raspberries as we think they make a really hot combo:
 Low-cost instant access to Docker awesomeness on your Raspberry Pi.</p>
+
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">
