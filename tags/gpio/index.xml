@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gpio on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/gpio/</link>
-    <description>Recent content in Gpio on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/gpio/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Mar 2016 17:31:10 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/gpio/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,14 +14,13 @@
       <pubDate>Sun, 13 Mar 2016 17:31:10 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/traffic-light/</guid>
-      <description>
+      <description>&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
 
-&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;the-hardware:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The hardware&lt;/h2&gt;
+&lt;h2 id=&#34;the-hardware&#34;&gt;The hardware&lt;/h2&gt;
 
 &lt;p&gt;First we have to build the curcuit. To follow this tutorial you need these parts&lt;/p&gt;
 
@@ -39,27 +37,27 @@
 &lt;li&gt;cables&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;the-software:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The software&lt;/h2&gt;
+&lt;h2 id=&#34;the-software&#34;&gt;The software&lt;/h2&gt;
 
 &lt;p&gt;The application is written in Python and it is based on the blog post &lt;a href=&#34;http://www.bobrathbone.com/pi_traffic_led.htm&#34;&gt;Raspberry PI Traffic Lights&lt;/a&gt; by Bob Rathbone. I have added some more LEDs and changed it to our local traffic light scheme. You can find the full source code &lt;a href=&#34;https://github.com/StefanScherer/docker-rpi-traffic-light&#34;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;defining-the-gpio-pins:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Defining the GPIO pins&lt;/h3&gt;
+&lt;h3 id=&#34;defining-the-gpio-pins&#34;&gt;Defining the GPIO pins&lt;/h3&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=16:30&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;initializing-the-gpio-ports:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Initializing the GPIO ports&lt;/h3&gt;
+&lt;h3 id=&#34;initializing-the-gpio-ports&#34;&gt;Initializing the GPIO ports&lt;/h3&gt;
 
 &lt;p&gt;At the beginning of the app we initialize the GPIO ports and turn off all LEDs. They may turned on from aborting a previous run.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=31:48&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;main-loop:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Main loop&lt;/h3&gt;
+&lt;h3 id=&#34;main-loop&#34;&gt;Main loop&lt;/h3&gt;
 
 &lt;p&gt;The main loop begins with green lights for the cars. In this state the button for the pedestrian crossing is checked.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=49:64&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;pedestrian-crossing:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pedestrian crossing&lt;/h3&gt;
+&lt;h3 id=&#34;pedestrian-crossing&#34;&gt;Pedestrian crossing&lt;/h3&gt;
 
 &lt;p&gt;After the button has been pressed the next code block just changes the LEDs for the cars to red, green for pedestrians and back again.&lt;/p&gt;
 
@@ -67,14 +65,13 @@
 
 &lt;p&gt;That completes the whole app. I could explain how a traffic light works and my daughter could play with it for a while. This could be the whole story, but as I&amp;rsquo;ve deployed my app with Docker there is another story behind the story.&lt;/p&gt;
 
-&lt;h1 id=&#34;dockerize-all-the-things:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerize all the things&lt;/h1&gt;
+&lt;h1 id=&#34;dockerize-all-the-things&#34;&gt;Dockerize all the things&lt;/h1&gt;
 
 &lt;p&gt;I want to save my work and make it reproducible for me and others. So beside putting the source code into a GitHub repo I also dockerized the application development and deployment. With the help of Docker and the Docker tools it is very easy to develop from eg. a MacBook.&lt;/p&gt;
 
 &lt;p&gt;Even after months and other projects it is easy to spin up that application again as there is a standardized way. There also is no need to backup the SD image and write down what you had to install on your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the diagram your Notebook should have the following tools installed.&lt;/p&gt;
 
@@ -87,33 +84,33 @@
 
 &lt;p&gt;I don&amp;rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;previous blog post&lt;/a&gt; how to use docker-machine for that.&lt;/p&gt;
 
-&lt;h2 id=&#34;dockerfile:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerfile&lt;/h2&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 
 &lt;p&gt;To build the Docker image we need a Dockerfile. We use a Python base image and install the needed tools and dependencies. Then we add the application source code and define the command to execute.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/Dockerfile?footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h2 id=&#34;docker-compose-yml:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;docker-compose.yml&lt;/h2&gt;
+&lt;h2 id=&#34;docker-compose-yml&#34;&gt;docker-compose.yml&lt;/h2&gt;
 
 &lt;p&gt;Docker Compose can be used to simplify running the container. With the docker-compose.yml we can document all the parameters needed to start the container. The file is versioned in Git so we do not forget how to run this container.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/docker-compose.yml?footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h2 id=&#34;developing-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Developing the app&lt;/h2&gt;
+&lt;h2 id=&#34;developing-the-app&#34;&gt;Developing the app&lt;/h2&gt;
 
 &lt;p&gt;When you develop the app or want to modify the source code the Docker image has to be rebuilt with the new code. To do this just run this command&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker-compose build
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running the app&lt;/h2&gt;
+&lt;h2 id=&#34;running-the-app&#34;&gt;Running the app&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;docker-compose up
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If you want to stop the app again, just press &lt;code&gt;CTRL+C&lt;/code&gt;. You may have to press it twice to kill the app.&lt;/p&gt;
 
-&lt;h2 id=&#34;running-permanently:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running permanently&lt;/h2&gt;
+&lt;h2 id=&#34;running-permanently&#34;&gt;Running permanently&lt;/h2&gt;
 
 &lt;p&gt;You can run the application automatically by adding &lt;code&gt;-d&lt;/code&gt;. The docker-compose.yml also sets the restart policy to always, so the container is starting right after booting the Raspberry Pi. This is very useful for such hardware projects which should start automatically after turning on your Pi.&lt;/p&gt;
 
@@ -125,14 +122,13 @@
 &lt;pre&gt;&lt;code&gt;docker-compose kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;sharing-the-dockerized-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing the dockerized app&lt;/h2&gt;
+&lt;h2 id=&#34;sharing-the-dockerized-app&#34;&gt;Sharing the dockerized app&lt;/h2&gt;
 
 &lt;p&gt;The advantage of using Docker is to easily share the dockerized app with others. As the developer of an app you just push the Docker image with to the Docker Hub. Others can pull this Docker image from there and run it without to know which tools and dependencies to install.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;pushing-the-docker-image:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pushing the Docker image&lt;/h3&gt;
+&lt;h3 id=&#34;pushing-the-docker-image&#34;&gt;Pushing the Docker image&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;docker images
 docker tag dockerrpitrafficlight_trafficlight stefanscherer/rpi-traffic-light
@@ -141,7 +137,7 @@ docker push stefanscherer/rpi-traffic-light
 
 &lt;p&gt;The Docker image is send sent to the Docker Hub. My example is available as image &lt;a href=&#34;https://hub.docker.com/r/stefanscherer/rpi-traffic-light/&#34;&gt;stefanscherer/rpi-traffic-light&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;sharing-with-others:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing with Others&lt;/h2&gt;
+&lt;h2 id=&#34;sharing-with-others&#34;&gt;Sharing with Others&lt;/h2&gt;
 
 &lt;p&gt;If someone else wants to build the traffic light and run your application, she has to use this little modified docker-compose.yml to pull the published Docker image instead of building it herself.&lt;/p&gt;
 
@@ -170,7 +166,7 @@ services:
 
 &lt;p&gt;In this way any app can be published in the same way, regardless the programming language used.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Building a traffic light with Raspberry Pi 3&lt;/div&gt;
 
 
@@ -280,9 +276,9 @@ services:
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -348,12 +344,11 @@ services:
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

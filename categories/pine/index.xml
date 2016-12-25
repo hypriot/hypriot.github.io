@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pine on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/pine/</link>
-    <description>Recent content in Pine on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/pine/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jan 2016 23:55:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/pine/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,10 +14,7 @@
       <pubDate>Mon, 25 Jan 2016 23:55:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/close_up_front_pine_06.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Last Saturday one of the more promising &lt;a href=&#34;https://www.kickstarter.com/projects/pine64/pine-a64-first-15-64-bit-single-board-super-comput&#34;&gt;Kickstarter campaigns&lt;/a&gt;
 that piqued our curiosity ended after 44 days and was able to raise &lt;strong&gt;1.7 million dollars&lt;/strong&gt;.
@@ -35,10 +31,12 @@ Next comes the much more expensive &lt;a href=&#34;http://www.slashgear.com/amd-
 &lt;p&gt;All in all that means that the Pine A64 is the most affordable way to lay your hands on real 64-bit ARM hardware - and that by a long shot!
 So what can you actually do with such a device?&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;Lots of things of course, but &lt;strong&gt;for us at Hypriot, the first thing we think about anything is: Can we run Docker on it?&lt;/strong&gt;
 And the short answer is: probably yes. But more about that later.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-hardware:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;The Hardware&lt;/h2&gt;
+&lt;h2 id=&#34;the-hardware&#34;&gt;The Hardware&lt;/h2&gt;
 
 &lt;p&gt;Before we deep dive into the nitty gritty details, let&amp;rsquo;s first take a step back and see what the Pine A64 has to offer hardware-wise.&lt;/p&gt;
 
@@ -63,7 +61,7 @@ Just be aware that you&amp;rsquo;ll get these specs only with the high-end versi
 &lt;p&gt;We were lucky enough to secure an early developer version of the device, which arrived a couple of days ago.
 Seeing is believing and as such we prepared a couple of photos that we made from our own Pine A64+ board with 1 GB.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 
 
 
@@ -173,9 +171,9 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -241,9 +239,9 @@ Seeing is believing and as such we prepared a couple of photos that we made from
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
 
-&lt;h2 id=&#34;the-software:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;The Software&lt;/h2&gt;
+
+&lt;h2 id=&#34;the-software&#34;&gt;The Software&lt;/h2&gt;
 
 &lt;p&gt;One of the current limitations of the Pine A64 is that it only runs with Android.
 The Pine makers assured us that Linux support will come, too. Still for us it is a tad annoying that Android is first instead of Linux.&lt;/p&gt;
@@ -256,12 +254,12 @@ That basically meant that the existing &lt;a href=&#34;http://linux-sunxi.org/&#
 with limited information and support when they tried to come up with proper Linux support for Allwinner based devices.
 Still despite that some members of the Linux Sunxi Community are already busy working with the Pine A64.&lt;/p&gt;
 
-&lt;h2 id=&#34;a-long-journey-down-the-rabbit-hole-begins-with-the-first-step:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;A long journey (down the rabbit hole) begins with the first step&lt;/h2&gt;
+&lt;h2 id=&#34;a-long-journey-down-the-rabbit-hole-begins-with-the-first-step&#34;&gt;A long journey (down the rabbit hole) begins with the first step&lt;/h2&gt;
 
 &lt;p&gt;The rest of this blog post describes our preliminary journey to create Linux &amp;amp; Docker bliss for the Pine A64.
 And consider yourself sufficiently warned - this journey is not for the faint of heart&amp;hellip; :)&lt;/p&gt;
 
-&lt;h3 id=&#34;down-the-rabbit-hole-output-foo-with-the-uart0-console:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;Down the rabbit hole: Output foo with the UART0 console&lt;/h3&gt;
+&lt;h3 id=&#34;down-the-rabbit-hole-output-foo-with-the-uart0-console&#34;&gt;Down the rabbit hole: Output foo with the UART0 console&lt;/h3&gt;
 
 &lt;p&gt;So let&amp;rsquo;s get our hands on this new beauty. First thing you should know is how you can power the Pine A64 board.
 It has a standard microUSB port, which you can use with a power adapter of 5V/2A. That&amp;rsquo;s the same you might use for a Raspberry Pi.&lt;/p&gt;
@@ -275,13 +273,11 @@ The location of each can be seen on the following images. Consult the &lt;a href
 
 &lt;p&gt;Serial Console with Euler Bus:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_euler.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Serial Console with Ext connector:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/serial_ext.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;To actually work with the UART0 console you have to connect the UART-to-USB cable to your Linux or Mac computer and start your preferred terminal program.&lt;/p&gt;
 
@@ -349,8 +345,7 @@ sunxi# run boot_kernel
 
 &lt;p&gt;Bingo! It works.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/hypriotos_pine64.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Here are a few snippets of the boot log from the UART0 console.
 We have stored the complete boot log for you as a &lt;a href=&#34;https://gist.github.com/DieterReuter/93a5d10dae6a62911b71&#34;&gt;GitHub gist&lt;/a&gt;.&lt;/p&gt;
@@ -419,7 +414,7 @@ HypriotOS/arm64: root@black-pearl in ~
 
 &lt;p&gt;&lt;strong&gt;Success!&lt;/strong&gt; The first boot of HypriotOS/arm64 on a Pine A64 board.&lt;/p&gt;
 
-&lt;h3 id=&#34;even-deeper-into-the-rabbit-hole-using-the-fel-mode-to-communicate-with-the-the-pine-a64:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;Even deeper into the rabbit hole: Using the FEL mode to communicate with the the Pine A64&lt;/h3&gt;
+&lt;h3 id=&#34;even-deeper-into-the-rabbit-hole-using-the-fel-mode-to-communicate-with-the-the-pine-a64&#34;&gt;Even deeper into the rabbit hole: Using the FEL mode to communicate with the the Pine A64&lt;/h3&gt;
 
 &lt;p&gt;OK. That was fun, wasn&amp;rsquo;t it? Our small experiment with the UART-to-USB connector cable and the SD card image from Andre did give us a first taste of Linux on the Pine.
 But that of course is not the real deal. There is still a rocky path to walk before we will have proper Linux support.&lt;/p&gt;
@@ -437,8 +432,7 @@ As such it makes the annoying process of flashing and inserting SD cards over an
 Then power on the Pine. It&amp;rsquo;s important to know that you have to connect to the Pine with a special USB cable to the upper USB port.
 That is because only this USB port is wired for using the FEL signals.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/upper_usb_port.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You can buy such a special USB A-male/A-male cable at &lt;a href=&#34;http://www.amazon.com/Monoprice-1-5-Feet-24AWG-Plated-105441/dp/B009GUXG92&#34;&gt;Amazon&lt;/a&gt; or &lt;a href=&#34;http://www.instructables.com/id/Male-to-Male-A-to-A-USB-Cable/&#34;&gt;build it on your own&lt;/a&gt;.
 Once the Pine A64 is booted, it can be discovered on your host computer as a new USB device with the &lt;code&gt;USB ID 1f3a:efe8&lt;/code&gt;.&lt;/p&gt;
@@ -567,10 +561,9 @@ AWUSBFEX soc=00001689(A64) 00000001 ver=0001 44 08 scratchpad=00017e00 00000000 
 
 &lt;p&gt;With this preparation in place our work on things like the Secondary Program Loader (SPL or boot0), U-Boot, the Linux kernel and its modules get much more convenient.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/pine-a64/dev-host-pine-cabeling.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;inside-wonderland-combining-uart0-console-and-fel-mode:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;Inside wonderland: Combining UART0 console and FEL mode&lt;/h3&gt;
+&lt;h3 id=&#34;inside-wonderland-combining-uart0-console-and-fel-mode&#34;&gt;Inside wonderland: Combining UART0 console and FEL mode&lt;/h3&gt;
 
 &lt;p&gt;Now it is time to put the various things together we have learned thus far.
 Using both an USB A-male/A-male cable and an UART-to-USB connector cable at the same time we are able to send software to the Pine and see how it gets executed.
@@ -677,7 +670,7 @@ MMC:   SUNXI SD/MMC: 0
 ...
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;the-preliminary-end:7983295b98b0feead04ba41a7de6ce9d&#34;&gt;The preliminary end&lt;/h2&gt;
+&lt;h2 id=&#34;the-preliminary-end&#34;&gt;The preliminary end&lt;/h2&gt;
 
 &lt;p&gt;This brings us (somewhat sadly) to the end of our blog post.&lt;/p&gt;
 
@@ -696,8 +689,7 @@ By this Docker will gain access to a really powerful developer board - and we wi
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=10973751&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; and Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; and Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

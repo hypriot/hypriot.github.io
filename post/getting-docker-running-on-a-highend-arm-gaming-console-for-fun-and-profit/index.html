@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,17 +81,14 @@
   <div class="post">
     <h1>Getting Docker running on a high-end 64-bit ARM gaming console for fun and profit</h1>
     <span class="post-date">Mon, Dec 28, 2015</span>
-    
-
-<p>I don&rsquo;t really know how this happened. Again. :(<br />
+    <p>I don&rsquo;t really know how this happened. Again. :(<br />
 Somehow over and over again these little ARM devices and maker devboards end up on my desk.</p>
 
 <p>So what is it this time?</p>
 
 <p>Well, look at this beauty because words cannot even begin to describe it:</p>
 
-<p><img src="/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg" alt="" /></p>
 
 <p>Alright, start breathing again.</p>
 
@@ -108,7 +105,9 @@ As you all know Docker pirates love to be ARMed with little explosive stuff - an
 <p>So my son won&rsquo;t get to play any games soon because <strong>I need</strong> to get Docker running on this little beauty.
 A device engineered for performance and made to game. So, let&rsquo;s start playing&hellip;</p>
 
-<h3 id="how-it-all-started:c306f860d159b9e8165ccb1c8378bdfe">How it all started</h3>
+<p></p>
+
+<h3 id="how-it-all-started">How it all started</h3>
 
 <p>This spring, I was really happy to see Jen-Hsun Huang, CEO of Nvidia Corp. announcing a great new <a href="https://www.youtube.com/watch?v=1q30y_pfz5Q">gaming console</a> - the <a href="http://shield.nvidia.com/android-tv">Nvidia ShieldTV</a>.
 It&rsquo;s basically a 4K AndroidTV gaming machine and SmartTV device for the living room that easily connects to your big TV screen.</p>
@@ -118,15 +117,14 @@ For fast and efficient graphics, Nvidia has included 256 Maxwell GPU cores as we
 
 <p>Looking at the Tegra X1 chip, it&rsquo;s dominated by the 256x CUDA GPU cores. Can you find the CPU cores? They are pretty hard to find. ;-)</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg" alt="" /></p>
 
 <p>All in all, this device has a lot of CPU power and an incredible amount of GPU power as well - especially for a low-cost device <a href="http://www.amazon.com/NVIDIA-SHIELD-Remote/dp/B013HJ13V0/ref=sr_1_3?ie=UTF8&amp;qid=1451218402&amp;sr=8-3&amp;keywords=nvidia+shield">at just $199.99</a>.
 It is easy to imagine that the ShieldTV could be used for so much more than just simple media streaming and gaming.</p>
 
 <p>But how?</p>
 
-<h3 id="in-the-beginning-there-was:c306f860d159b9e8165ccb1c8378bdfe">In the beginning there was &hellip;</h3>
+<h3 id="in-the-beginning-there-was">In the beginning there was &hellip;</h3>
 
 <p><strong>&hellip; Android</strong>. Yeah, that is the strange operating system from Google that comes preinstalled with the Nvidia ShieldTV.</p>
 
@@ -137,14 +135,13 @@ Linux for instance - if we were only able to hack the ShieldTV and install a Lin
 
 <p>It turned out that this is everything but easy.</p>
 
-<h3 id="then-there-was:c306f860d159b9e8165ccb1c8378bdfe">Then there was &hellip;</h3>
+<h3 id="then-there-was">Then there was &hellip;</h3>
 
 <p><strong>&hellip; Ubuntu</strong>. A few weeks ago I was able to install a basic Ubuntu 14.04 provided by Nvidia for their development boards.
 This so called <a href="https://developer.nvidia.com/embedded/linux-tegra">Nvidia Linux For Tegra (L4T)</a> is running a 64-bit kernel, but does only provide a 32-bit root file system.
 Nvidia really? What a bummer. Hopefully they will change this in the future.</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg" alt="" /></p>
 
 <p>Later on, I created a Debian Jessie root file system directly from upstream, which is compiled for the ARM64 architecture.
 Combining the standard Nvidia 64-bit kernel and a Debian Jessie root file system, I am able to boot the ShieldTV into a pure 64-bit Linux system - HELL YEAH, that&rsquo;s it!</p>
@@ -152,26 +149,24 @@ Combining the standard Nvidia 64-bit kernel and a Debian Jessie root file system
 <p>Building the basic root file system was easy, but fixing all the network issues and Systemd settings was a real challenge.
 Fortunately I got a lot of help from Andreas (another member of our Hypriot crew), who managed to fix them all.</p>
 
-<h3 id="and-after-some-more-hard-work-there-was:c306f860d159b9e8165ccb1c8378bdfe">And after some more hard work there was &hellip;</h3>
+<h3 id="and-after-some-more-hard-work-there-was">And after some more hard work there was &hellip;</h3>
 
 <p><strong>&hellip; HypriotOS</strong>. As a result the ShieldTV is now booting into a pure 64-bit environment in less than ten seconds.</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg" alt="" /></p>
 
 <p>As you can see the Nvidia ShieldTV is running our new 64-bit HypriotOS system on four CPU cores and has almost three gigabyte of memory available.</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg" alt="" /></p>
 
-<h3 id="in-the-end-there-was:c306f860d159b9e8165ccb1c8378bdfe">In the end there was &hellip;</h3>
+<h3 id="in-the-end-there-was">In the end there was &hellip;</h3>
 
 <p><strong>&hellip; Docker</strong>. This is the final piece that I wanted to get running. A first step in this direction is to get <strong>Go 1.5.1</strong> and its build dependencies compiled.
 After that it was a walk in the park to get the latest <strong>Docker v1.10.0-dev</strong> compiled.</p>
 
 <p>The only annoying thing that remains right now is that we still have an old 3.10.61 kernel that is not optimized for running Docker.</p>
 
-<h3 id="damn-it-the-last-20-are-always-the-toughest:c306f860d159b9e8165ccb1c8378bdfe">Damn it! The last 20% are always the toughest&hellip;</h3>
+<h3 id="damn-it-the-last-20-are-always-the-toughest">Damn it! The last 20% are always the toughest&hellip;</h3>
 
 <p>The last few days I tried to build a custom Linux kernel for the ShieldTV that has all the right kernel settings for Docker enabled.
 But I had no luck at all.</p>
@@ -183,20 +178,17 @@ And as you can imagine, debugging some kernel and boot issues without having a s
 Yesterday I was finally lucky enough to get almost all of the important kernel settings for Docker working im my custom 3.10.61 Linux kernel.
 Honestly, this is quite an old kernel version and far from being perfect for Docker but it works for now and the Docker Engine is running the first time on this great device!</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg" alt="" /></p>
 
 <p>So let&rsquo;s spin up a Docker image or two! Funny enough even a Docker image that was built for the Raspberry Pi can run on ARM64.
 Who can remember it? This is exactly the same web server container I was demoing live on stage at <a href="/post/dockercon2015/">DockerCon 2015 in San Francisco</a>.</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg" alt="" /></p>
 
 <p>Maybe it is more interesting to run a real ARM64 Docker image to proof that our ARM 64-bit Docker engine is working just fine.
 So here we go&hellip;</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg" alt="" /></p>
 
 <p>That is already pretty impressive, but there is still a lot to do.</p>
 
@@ -204,8 +196,7 @@ So here we go&hellip;</p>
 This means we need a really easy way to flash and install HypriotOS on the ShieldTV similar to how we do it for the Raspberry Pi.
 And all the included components should be really up-to-date: the Linux kernel (4.x) and of course all of the Docker tools as well.</p>
 
-<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg" alt="" /></p>
 
 <p>Maybe there are some of you who - after reading this article - want to get started hacking on the ShieldTV, too.
 We really would appreciate getting some help here to move faster.
@@ -214,7 +205,6 @@ That&rsquo;s why we will publish the technical details in the coming weeks, so y
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a> &amp; Andreas <a href="https://twitter.com/firecyberice">@firecyberice</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

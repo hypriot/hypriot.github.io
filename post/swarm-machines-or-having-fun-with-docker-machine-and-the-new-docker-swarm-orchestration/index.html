@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,9 +81,7 @@
   <div class="post">
     <h1>Swarm Machines or Having fun with Docker Machine and the new Docker Swarm orchestration</h1>
     <span class="post-date">Tue, Jun 21, 2016</span>
-    
-
-<p>In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&rsquo;s with HypriotOS via Docker Machine.
+    <p>In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&rsquo;s with HypriotOS via Docker Machine.
 As we have not yet written how that works I thought I would do a short blog post on how to use Docker Machine with HypriotOS.</p>
 
 <p>But that&rsquo;s not all. Yesterday when I watched the DockerCon Keynote Livestream of the new Docker orchestration I wondered how Docker Machine and the new orchestration would work together.</p>
@@ -91,14 +89,15 @@ As we have not yet written how that works I thought I would do a short blog post
 <p>So just for the fun of it I decided I will explore that a bit, too.</p>
 
 <p><img src="/images/docker-machine/swarm_machines.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/thewakingdragon/">Brent M</a></div></p>
+
+<p></p>
 
 <p>I am using the latest Docker4Mac with Docker on my notebook and three Raspberry Pi&rsquo;s with HypriotOS 0.8 as hosts for my remote Docker Engines.</p>
 
 <p>The Docker version on the notebook and on the Pi&rsquo;s is 1.12 RC1. Having the lastest Docker 1.12 is not necessary for the part about Docker Machine, but it is for the part about the new Docker orchestration.</p>
 
-<h2 id="docker-machine:85b1180b5e32a76ced09e55169dd699d">Docker Machine</h2>
+<h2 id="docker-machine">Docker Machine</h2>
 
 <p><a href="https://docs.docker.com/machine/">Docker Machine</a> is used to control remote Docker-Engines as if they were locally installed.</p>
 
@@ -286,7 +285,7 @@ Insecure Registries:
 <pre><code>$ eval $(docker-machine env pi2)
 </code></pre>
 
-<h2 id="docker-machine-and-docker-swarm-mode:85b1180b5e32a76ced09e55169dd699d">Docker Machine and Docker Swarm Mode</h2>
+<h2 id="docker-machine-and-docker-swarm-mode">Docker Machine and Docker Swarm Mode</h2>
 
 <p>In the past Docker Machine allowed to set up a Docker Swarm cluster with a <a href="https://docs.docker.com/machine/reference/create/">number of options</a> for the &lsquo;create&rsquo; subcommand.</p>
 
@@ -390,15 +389,13 @@ ID                         NAME             SERVICE        IMAGE                
 
 <p>We are then rewarded with this neat little website:</p>
 
-<p><img src="/images/docker-machine/hypriot-http.jpg" alt="Docker Swarm" />
-</p>
+<p><img src="/images/docker-machine/hypriot-http.jpg" alt="Docker Swarm" /></p>
 
 <p>Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.</p>
 
 <p>As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.</p>
 
 <p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

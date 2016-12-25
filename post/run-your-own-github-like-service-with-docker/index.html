@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,14 +81,12 @@
   <div class="post">
     <h1>Run your own GitHub-like service with the help of Docker</h1>
     <span class="post-date">Sat, Jun 27, 2015</span>
-    
-
-<p><a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> have taken the world by storm.
+    <p><a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> have taken the world by storm.
 No serious developer today can afford not to <a href="https://www.atlassian.com/git/tutorials/">know how to work with Git</a>.</p>
 
-<p>But what if you do not want to have your code in the cloud? What if you want to host your code repositories yourself?</p>
+<p>But what if you do not want to have your code in the cloud? What if you want to host your code repositories yourself?
 
-<p>For most of us this meant to go with <a href="https://about.gitlab.com/">Gitlab</a>. The biggest downside in the past was that Gitlab had so many different parts that the installation could be very tedious.
+For most of us this meant to go with <a href="https://about.gitlab.com/">Gitlab</a>. The biggest downside in the past was that Gitlab had so many different parts that the installation could be very tedious.
 With the <a href="https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md">Omnibus Gitlab Installer</a> the installation did get a lot easier but this does not change the fact that Gitlab is compromised of so many different parts.</p>
 
 <p>Why does this matter?</p>
@@ -106,12 +104,11 @@ This makes it a perfect candidate for a home-grown GitHub alternative that can e
 <p>To follow along you gonna need a Raspberry Pi with Docker.
 In case you do not have Docker running on your Raspberry Pi our <a href="/getting-started-with-docker-on-your-arm-device/">Getting-Started guide</a> will cover everything you need to know to get up and running in a snap.</p>
 
-<p><img src="http://gogs.qiniudn.com/gogs_demo.gif" alt="Gogs Screenshots" />
-</p>
+<p><img src="http://gogs.qiniudn.com/gogs_demo.gif" alt="Gogs Screenshots" /></p>
 
 <p>If you wanna dive more deeply into <em>Gogs</em> there is a <a href="http://gogs.io/docs/intro/">official <em>Gogs</em> documentation</a>.</p>
 
-<h2 id="how-to-set-up-gogs:dc7018a7890c20895bf31528a8ab5dea">How to set up Gogs</h2>
+<h2 id="how-to-set-up-gogs">How to set up Gogs</h2>
 
 <p>First, log into your Raspberry Pi via SSH.
 Please refer to our <a href="/getting-started-with-docker-on-your-arm-device/">Getting-Started guide</a> if you are not sure about how to do this.</p>
@@ -135,8 +132,7 @@ In our example we have to type the following address into the browser:</p>
 
 <p>As a result you should see the setup page of <em>Gogs</em>:</p>
 
-<p><img src="/images/gogs_own_Git_service/frist-run-gogs.png" alt="hypriot-ssh-prompt-after-login" />
-</p>
+<p><img src="/images/gogs_own_Git_service/frist-run-gogs.png" alt="hypriot-ssh-prompt-after-login" /></p>
 
 <p>&nbsp;</p>
 
@@ -180,8 +176,7 @@ In our example we have to type the following address into the browser:</p>
 
 <p>After you filled all required fields, it should look like this:</p>
 
-<p><img src="/images/gogs_own_Git_service/frist-run-gogs_user-input-combined.png" alt="frist-run-gogs_user-input-combined.png" />
-</p>
+<p><img src="/images/gogs_own_Git_service/frist-run-gogs_user-input-combined.png" alt="frist-run-gogs_user-input-combined.png" /></p>
 
 <p>To finish the setup, click on <strong>install</strong> at the bottom of the page. Afterwards you will be forwarded to the login page of <em>Gogs</em>.
 Please login with the credentials you just specified.</p>
@@ -190,7 +185,7 @@ Please login with the credentials you just specified.</p>
 
 <p><strong>Nice, you successfully installed Gogs!</strong> Now let&rsquo;s start using it! Please continue with the next section to learn <em>how</em>.</p>
 
-<h2 id="how-to-create-a-git-repository-in-gogs:dc7018a7890c20895bf31528a8ab5dea">How to create a Git repository in <em>Gogs</em></h2>
+<h2 id="how-to-create-a-git-repository-in-gogs">How to create a Git repository in <em>Gogs</em></h2>
 
 <p>Before we will be able to <code>git push</code>, we need to</p>
 
@@ -202,23 +197,20 @@ Please login with the credentials you just specified.</p>
 
 <p>Let&rsquo;s start by creating a new repository. Click on the <strong>green button</strong> in the top right corner of the page and choose <strong>New Repository</strong>.</p>
 
-<p><img src="/images/gogs_own_Git_service/start-with-green-button_with-marker.png" alt="start-with-green-button" />
-</p>
+<p><img src="/images/gogs_own_Git_service/start-with-green-button_with-marker.png" alt="start-with-green-button" /></p>
 
 <p>You should see a setup page for your new repository. Please fill out the two text input fields.</p>
 
 <p>At the bottom of the page you will find a checkbox. We recommend to enable this checkbox since it automatically will initialize this repository with a <em>README.md</em>.
 The following screenshot shows an example of how the setup page might look like after you provided all the necessary information.</p>
 
-<p><img src="/images/gogs_own_Git_service/new-repo.png" alt="new-repo" />
-</p>
+<p><img src="/images/gogs_own_Git_service/new-repo.png" alt="new-repo" /></p>
 
 <p>Finish the setup by clicking on <strong>Create Repository</strong>.</p>
 
 <p>Before you can actually use the new repository, you need to add your SSH key. Click on The <strong>settings button</strong> in the top right corner of the page. Then, go to <strong>SSH Keys</strong> -&gt; <strong>Add Key</strong>.</p>
 
-<p><img src="/images/gogs_own_Git_service/add-private-key2_with-markers.png" alt="add-private-key2" />
-</p>
+<p><img src="/images/gogs_own_Git_service/add-private-key2_with-markers.png" alt="add-private-key2" /></p>
 
 <p>Paste your public SSH key into this field and set an arbitrary <em>Key Name</em>.</p>
 
@@ -229,21 +221,19 @@ The following screenshot shows an example of how the setup page might look like 
 
 <p>As you can see in the following screenshot, you should see your SSH key as result.</p>
 
-<p><img src="/images/gogs_own_Git_service/ssh-key-export.png" alt="ssh-key-export.png" />
-</p>
+<p><img src="/images/gogs_own_Git_service/ssh-key-export.png" alt="ssh-key-export.png" /></p>
 
 <p>Finally, back in the <em>Gogs</em> website, click the green button <strong>Add Key</strong> to add your public SSH key. Afterwards you should see a message confirming that the key has been added successfully.</p>
 
 <p><strong>At this point, <em>Gogs</em> should be set up properly to receive your first commit!</strong> As a last step, we will <code>git clone</code> the new repo to your workstation.</p>
 
-<h2 id="start-using-git-with-the-new-repository:dc7018a7890c20895bf31528a8ab5dea">Start using Git with the new repository</h2>
+<h2 id="start-using-git-with-the-new-repository">Start using Git with the new repository</h2>
 
 <p><em>Gogs</em> helps us in constructing the proper <code>git clone</code> command.
 Navigate inside your new repository in the Gogs Web-GUI and click on the <strong>black cloud symbol</strong>.
 Make sure that the <strong>SSH</strong> button in front of the command is activated and copy the string in the text field via the <strong>black copy button</strong> on the right edge.</p>
 
-<p><img src="/images/gogs_own_Git_service/in-repo-get-ssh-link-for-git-remote_with-markers.png" alt="in-repo-get-ssh-link-for-git-remote" />
-</p>
+<p><img src="/images/gogs_own_Git_service/in-repo-get-ssh-link-for-git-remote_with-markers.png" alt="in-repo-get-ssh-link-for-git-remote" /></p>
 
 <p>Now open a terminal at your workstation and navigate to the location where you want to create the folder for the repository.</p>
 
@@ -269,7 +259,6 @@ To make your Git service available outside of your home you need to do use a Dyn
 As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.</p>
 
 <p>Mathias, Andreas &amp; Govinda</p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

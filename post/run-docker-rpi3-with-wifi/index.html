@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,20 +81,19 @@
   <div class="post">
     <h1>Run Docker on a Raspberry Pi 3 with onboard WiFi</h1>
     <span class="post-date">Sat, Mar 5, 2016</span>
-    
+    <p>Today morning we finally got our Raspberry Pi 3&rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.</p>
 
-<p>Today morning we finally got our Raspberry Pi 3&rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.</p>
-
-<p><img src="/images/rpi3-onboard-wifi/thepihut-delivery.jpg" alt="ThePiHut delivery" />
-</p>
+<p><img src="/images/rpi3-onboard-wifi/thepihut-delivery.jpg" alt="ThePiHut delivery" /></p>
 
 <p>While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.</p>
 
 <p>But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.</p>
 
+<p></p>
+
 <p>In the meantime for all the impatient out there I&rsquo;ll give you a short intro how to run the latest Docker Engine on the standard Raspbian SD image.</p>
 
-<h2 id="download-raspbian-lite:41cd8e8b967fec6fd9b7dfd6fb7de44e">Download Raspbian LITE</h2>
+<h2 id="download-raspbian-lite">Download Raspbian LITE</h2>
 
 <p>Just download and flash the Raspbian LITE image from <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> or use our <a href="https://github.com/hypriot/flash"><code>flash</code> script</a> with this command.</p>
 
@@ -108,14 +107,14 @@
 
 <p>The standard Raspbian image does not resize the SD filesystem automatically.</p>
 
-<h2 id="add-the-overlay-kernel-module:41cd8e8b967fec6fd9b7dfd6fb7de44e">Add the overlay kernel module</h2>
+<h2 id="add-the-overlay-kernel-module">Add the overlay kernel module</h2>
 
 <p>Before we resize and reboot the Pi we also customize a little bit. The overlay kernel module must be loaded automatically while booting, so we just add it with the next command.</p>
 
 <pre><code class="language-bash">echo &quot;overlay&quot; | sudo tee -a /etc/modules
 </code></pre>
 
-<h2 id="customize-wifi:41cd8e8b967fec6fd9b7dfd6fb7de44e">Customize WiFi</h2>
+<h2 id="customize-wifi">Customize WiFi</h2>
 
 <p>If you want to run your Docker with the onboard WiFi, just add your SSID and pre-shared key with the next command</p>
 
@@ -125,7 +124,7 @@
 }' | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
 </code></pre>
 
-<h2 id="resize-filesystem:41cd8e8b967fec6fd9b7dfd6fb7de44e">Resize filesystem</h2>
+<h2 id="resize-filesystem">Resize filesystem</h2>
 
 <p>Now we have to resize the filesystem to install Docker and have space for Docker images and containers. Start <code>raspi-config</code> and follow the steps to resize your filesystem.</p>
 
@@ -134,11 +133,11 @@
 
 <p>After that let raspi-config reboot your Raspberry Pi.</p>
 
-<h2 id="cut-the-wires:41cd8e8b967fec6fd9b7dfd6fb7de44e">Cut the wires</h2>
+<h2 id="cut-the-wires">Cut the wires</h2>
 
 <p>If you have added your WiFi settings, remove your network cable while rebooting. From now on you can connect to your Raspberry Pi 3 over the air.</p>
 
-<h2 id="install-docker:41cd8e8b967fec6fd9b7dfd6fb7de44e">Install Docker</h2>
+<h2 id="install-docker">Install Docker</h2>
 
 <p>After rebooting, eventually unplugging the network cable we have to install Docker. The Raspbian Jessie distribution also has a Docker package, but it is only Version 1.3.3. So we install the Hypriot&rsquo;s Docker 1.10.2 instead.</p>
 
@@ -155,18 +154,15 @@ sudo systemctl enable docker
 
 <p>Now you have a good setup until the next HypriotOS release is coming.</p>
 
-<p><img src="/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png" alt="docker version" />
-</p>
+<p><img src="/images/rpi3-onboard-wifi/rpi3-raspbian-lite-docker-version.png" alt="docker version" /></p>
 
 <p>And with the onboard WiFi it is now very easy to build some mobile Docker IoT projects.</p>
 
-<p><img src="/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg" alt="docker over the air" />
-</p>
+<p><img src="/images/rpi3-onboard-wifi/rpi3-over-the-air.jpg" alt="docker over the air" /></p>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

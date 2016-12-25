@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,9 +81,9 @@
   <div class="post">
     <h1>Better be prepared for the ARMed IoT flood and port Docker apps to ARM</h1>
     <span class="post-date">Wed, Aug 26, 2015</span>
-    
+    <p>The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&rsquo;s basically just one step to take.</p>
 
-<p>The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&rsquo;s basically just one step to take.</p>
+<p></p>
 
 <p>In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.</p>
 
@@ -91,7 +91,7 @@
 
 <p>Fair enough, so let&rsquo;s start making apps compatible to ARM. To do so, you only need to make sure that the binaries of your apps are compiled explicitly for the ARM architecture. Thus, porting an app to ARM basically means to change the binaries to ARM compatible ones. Let&rsquo;s do it!</p>
 
-<h2 id="get-started-with-docker-for-an-easy-porting-example:88da4e06b8e93673f9a039fdd642e0cc">Get started with Docker for an easy porting example</h2>
+<h2 id="get-started-with-docker-for-an-easy-porting-example">Get started with Docker for an easy porting example</h2>
 
 <p>Of course, we use <a href="https://www.docker.com/">Docker</a>. And in the world of Docker, apps are described by Dockerfiles, like recipes for making cakes. Thus, when we wanna ARM an app, we only change its recipe, i.e. its Dockerfile. So make sure you know about the commands in Dockerfiles with the help of the <a href="https://docs.docker.com/reference/builder/">Dockerfile reference at Docker</a>.</p>
 
@@ -101,7 +101,7 @@
 
 <p>As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our <a href="/downloads/">SD Card image</a> that provides Docker on the Raspberry Pi by just <a href="https://github.com/hypriot/flash">flashing it to a SD card and booting it</a>.</p>
 
-<h2 id="let-s-arm-it:88da4e06b8e93673f9a039fdd642e0cc">Let&rsquo;s ARM it!</h2>
+<h2 id="let-s-arm-it">Let&rsquo;s ARM it!</h2>
 
 <p>First, search for a Dockerfile that describes the service you wanna ARM. In most cases, Dockerfiles reside on the <a href="https://hub.docker.com/explore/">Dockerhub</a> or on <a href="https://github.com/">Github</a>.</p>
 
@@ -123,8 +123,7 @@
 
 <p>When the Docker command completed, point your browser to <code>http://&lt;IP OF YOUR PI&gt;:80/</code>. You should see the default page of Apache:</p>
 
-<p><img src="/images/port_dockerfiles_to_arm/apache_default_x86.png" alt="port_dockerfiles_to_arm" />
-</p>
+<p><img src="/images/port_dockerfiles_to_arm/apache_default_x86.png" alt="port_dockerfiles_to_arm" /></p>
 
 <p>Next, let&rsquo;s move to the target machine running on ARM. Copy the content of the Dockerfile as is to your ARM machine.</p>
 
@@ -176,7 +175,7 @@ CMD [&quot;/usr/sbin/apache2ctl&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]
 
 <p><em>Note</em>: After you successfully ported a service, you can push it to the Dockerhub, so that other people can use it. In addition make sure to put <code>rpi-</code> in front of the Docker image&rsquo;s name. This declares it as a Raspberry Pi compatible image and therefore also as an ARM compatible service. It will make the life easier for people looking for ARMed services on the Dockerhub.</p>
 
-<h2 id="debugging-hints-to-arm-a-service:88da4e06b8e93673f9a039fdd642e0cc">Debugging hints to ARM a service</h2>
+<h2 id="debugging-hints-to-arm-a-service">Debugging hints to ARM a service</h2>
 
 <ul>
 <li><strong>Remove any command you do not need to run the service</strong>. In our Apache example, you can delete everything regarding SSL if you do not need it. This already might solve some problems.</li>
@@ -187,7 +186,7 @@ CMD [&quot;/usr/sbin/apache2ctl&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]
 <li><strong>Try to resolve any other errors by asking an online search engine</strong>. Often, you are not the first one having this problem.</li>
 </ul>
 
-<h2 id="optimize-the-dockerfile-optional:88da4e06b8e93673f9a039fdd642e0cc">Optimize the Dockerfile (optional)</h2>
+<h2 id="optimize-the-dockerfile-optional">Optimize the Dockerfile (optional)</h2>
 
 <p>Optimizing the Dockerfile does have several advantages: It often makes it smaller, i.e. you need less time to download packages and less disk space on your machine. Further, you gain a better overview over the Dockerfile&rsquo;s structure which simplifies debugging. In the following, we give some recommendations of how to optimize a Dockerfile:</p>
 
@@ -226,7 +225,6 @@ EXPOSE 80,443
 <p>We wish <strong>happy porting parties</strong>!</p>
 
 <p>Mathias &amp; Andreas</p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

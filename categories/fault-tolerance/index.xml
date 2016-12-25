@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fault Tolerance on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/fault-tolerance/</link>
-    <description>Recent content in Fault Tolerance on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/fault-tolerance/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Oct 2016 18:03:34 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/fault-tolerance/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,14 +14,13 @@
       <pubDate>Wed, 26 Oct 2016 18:03:34 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/high-availability-with-docker/</guid>
-      <description>
-
-&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
+      <description>&lt;p&gt;In its release in June this year, Docker announced two exciting news about the Docker Engine: First, the Engine 1.12 comes with built-in high availability features, called &amp;ldquo;Docker Swarm Mode&amp;rdquo;. And second, Docker started providing official support for the ARM architecture.&lt;/p&gt;
 
 &lt;p&gt;These two news combined beg for testing the new capabilities in reality.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/high-availability-docker-swarm.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;The &amp;ldquo;old&amp;rdquo; Docker Swarm already offered some high availability features, but the new called &amp;ldquo;Swarm Mode&amp;rdquo; goes far beyond: To me, the most important capabilities to mention are: built-in security, rolling updates and - maybe one of the most important benefits - super user-friendliness. Production ready clustering based on powerful container technology has probably never been easier before.&lt;/p&gt;
 
@@ -30,7 +28,7 @@
 
 &lt;p&gt;Now, with these two news, let&amp;rsquo;s get our hands dirty and test if the announced promises hold.&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup the cluster&lt;/h2&gt;
+&lt;h2 id=&#34;setup-the-cluster&#34;&gt;Setup the cluster&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;As hardware&lt;/strong&gt;, I have 5x Raspberry Pi 3, connected in a network with Internet access.&lt;/p&gt;
 
@@ -38,8 +36,7 @@
 
 &lt;p&gt;See how the cluster looks like:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/PicoCluster.jpg&#34; alt=&#34;PicoClusterBuilt&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;As software&lt;/strong&gt;, I chose HypriotOS. I also tried Raspbian, but it requires a large system upgrade after the first boot in order to provide all features required by Docker (e.g. VXLAN kernel module). Before and after the system upgrade, I also had to run &lt;a href=&#34;https://github.com/docker/docker/blob/master/contrib/check-config.sh&#34;&gt;Docker&amp;rsquo;s test script&lt;/a&gt; to make sure everything is ok. All of this is not a big deal, but if there is an OS available that comes out of the box with all that Docker needs (and even adds lots of useful optimizations), it simply saves time and provides a hassle-free experience. So I flashed all SD cards with HypriotOS using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;.&lt;/p&gt;
 
@@ -47,12 +44,11 @@
 
 &lt;p&gt;Finally, we have 5 terminals opened, all waiting for commands as you see in the following image. Please don&amp;rsquo;t care about the commands running in each terminal for now.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/high-availability-testing/terminal.png&#34; alt=&#34;Terminator&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s all to do before getting our hands on Docker itself!&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
+&lt;h2 id=&#34;setup-docker-swarm-on-the-cluster&#34;&gt;Setup Docker Swarm on the cluster&lt;/h2&gt;
 
 &lt;p&gt;On HypriotOS, you&amp;rsquo;ll have the latest Docker installed, so we can instantly start playing.&lt;/p&gt;
 
@@ -84,7 +80,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;If the terminal prints a list of all nodes of your cluster, the setup is all done! Forming a cluster cannot be easier, can it?&lt;/p&gt;
 
-&lt;h2 id=&#34;execution-of-tests:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Execution of tests&lt;/h2&gt;
+&lt;h2 id=&#34;execution-of-tests&#34;&gt;Execution of tests&lt;/h2&gt;
 
 &lt;p&gt;My tests of Docker&amp;rsquo;s ability to recover from failures comprise the following use cases:&lt;/p&gt;
 
@@ -101,7 +97,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 &lt;p&gt;&lt;a href=&#34;https://vimeo.com/185361173&#34;&gt;Testing High Availability Docker Swarm Mode&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user54109827&#34;&gt;Mathias Renner&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&#34;results:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;Results&lt;/h2&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
 
 &lt;p&gt;As shown in the screencast, Docker is able to recover from failure of the ethernet interface. After testing the other use cases later on, Docker recovered flawlessly from a reboot and crash as well. Note that this also holds for master nodes, not only for slave nodes! This is remarkable because in contrast to slave nodes, master nodes hold important data of the cluster state. A master nodes&amp;rsquo;s outage is critical for the health of the cluster. With e.g. &lt;a href=&#34;https://github.com/luxas/kubernetes-on-arm&#34;&gt;Kubernetes-on-arm&lt;/a&gt;, the cluster does not recover after rebooting or crashing a master node.&lt;/p&gt;
 
@@ -119,7 +115,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 &lt;p&gt;Having this configured, after a crash or reboot the node recovered correctly in my tests. I look forward for feedback about this issue! Please use the discussion below.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;more-to-come-soon:a00c34eb72f8a894fd7d46707edd473e&#34;&gt;More to come soon&lt;/h2&gt;
+&lt;h2 id=&#34;more-to-come-soon&#34;&gt;More to come soon&lt;/h2&gt;
 
 &lt;p&gt;This post is only a small chunk of the data I gathered during the tests. The next option to get the details is during my talk at the &lt;a href=&#34;http://highload.co/&#34;&gt;HighLoad++ Conference&lt;/a&gt; in Moskow, Russia. I&amp;rsquo;d be happy if you can make it there!&lt;/p&gt;
 
@@ -131,8 +127,7 @@ To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; an
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

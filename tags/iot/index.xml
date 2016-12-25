@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Iot on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/iot/</link>
-    <description>Recent content in Iot on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/iot/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jun 2016 18:03:34 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,25 +14,23 @@
       <pubDate>Mon, 06 Jun 2016 18:03:34 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/talk_ict_2016_international_conference_telecommunications/</guid>
-      <description>
+      <description>&lt;p&gt;Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at &lt;a href=&#34;http://ict-2016.org/&#34;&gt;ICT 2016&lt;/a&gt;, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.&lt;/p&gt;
 
-&lt;p&gt;Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at &lt;a href=&#34;http://ict-2016.org/&#34;&gt;ICT 2016&lt;/a&gt;, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/ict_logo.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/ict_logo.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;We built the Hypriot Cluster Lab as lab environment that allows to easily teach about clustering and cloud computing. At the conference, the Hypriot Cluster Lab piqued lots of interest, so we are confident that it will be used more and more in educational institutions.&lt;/p&gt;
 
 &lt;p&gt;Now, after the show, we are publishing &lt;a href=&#34;http://ict-2016.org/pdf/Demo1.pdf&#34;&gt;the paper&lt;/a&gt; that has been accepted at the conference and the &lt;a href=&#34;https://blog.hypriot.com/images/ict-2016-greece/ICT-Presentation.pdf&#34;&gt;presentation slides&lt;/a&gt;. However, the paper is (intentionally) very brief and the slides are not throughout self-explanatory, so we&amp;rsquo;ve also written down what we&amp;rsquo;ve presented to the audience back in Greece.&lt;/p&gt;
 
-&lt;h2 id=&#34;iot-requires-expansion-to-small:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;IoT requires &amp;ldquo;Expansion to small&amp;rdquo;&lt;/h2&gt;
+&lt;h2 id=&#34;iot-requires-expansion-to-small&#34;&gt;IoT requires &amp;ldquo;Expansion to small&amp;rdquo;&lt;/h2&gt;
 
 &lt;p&gt;Building cloud computing infrastructures with big servers is well understood. Even large cloud infrastructures powered by container technology are commonly in use. One of the pioneers to mention here is Google with its container-based cloud platform &lt;a href=&#34;http://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;However, the uprising Internet of Things (IoT) will not allow to equip the edge of the network such as sensor networks in smart home/grid/production environments with big servers only. There, you especially need small devices with less computational power and energy demand. These devices require to be small and cheap enough to install up to several thousands of them in a smart environment, thereby creating sensor networks. For example think of sensor networks on wind farms:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/wind.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
-
 &lt;div style=&#34;padding-left:34.4em; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/ewea/16577911487/in/photolist-rfW8w8-ipD2tM-ipC49q-7d8FqR-ipCNzR-ipC1dU-ipBRBC-ipCGWN-ipCkFm-njeuG6-ipCC31-ipCnPv-ayYLge-ipCJ61-ayYMmc-ipBGVN-ayYHLH-9mZuNi-ayYMzX-oWbzp6-ayYK6n-7ZaHBQ-q8T7wm-az2p4W-8LowiB-az2o8s-ayYJJt-az2p2f-3euhCb-ayYMWD-ayYNgZ-ayYL48-az2riu-6YiWvR-az2qkC-ayYMev-az2rxU-az2on1-ayYK2V-ayYHrz-az2oru-az2ov7-az2oeW-qQMUJN-auVRqy-az2oDm-ayYM8Z-i5kW85-ayYJTV-az2rCE&#34;&gt;European Wind Energy Association&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, Hypriot Cluster Lab (HCL) comes into play:&lt;/p&gt;
@@ -44,16 +41,15 @@
 
 &lt;p&gt;This &amp;ldquo;Expansion to Small&amp;rdquo; was the theme of the ICT 2016, which made HCL a perfect fit to the conference&amp;rsquo;s agenda.&lt;/p&gt;
 
-&lt;h2 id=&#34;hcl-makes-a-tangible-iot-like-cluster-affordable:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;HCL makes a tangible IoT-like cluster affordable&lt;/h2&gt;
+&lt;h2 id=&#34;hcl-makes-a-tangible-iot-like-cluster-affordable&#34;&gt;HCL makes a tangible IoT-like cluster affordable&lt;/h2&gt;
 
 &lt;p&gt;HCL is not only a proof of concept that clustering with container technology on IoT devices works, it also serves a second purpose: It is cheap enough to be used as a learning platform to play with clustering or cloud computing on your desk. The minimal hardware configuration requires three Raspberry Pis plus accessoires, which is affordable for everyone to get their hands on a real, tangible cluster. We&amp;rsquo;ve already seen lecturers, students and pupils getting started on the HCL with different topics related to cloud computing, e.g. playing with micro services or load balancing. Some use cases can be found &lt;a href=&#34;https://github.com/hypriot/rpi-cluster-lab-demos&#34;&gt;in one of our repos here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Even though the HCL is intended to be used as a tool to learn, its containing concepts are applicable for promising IoT software solutions. Comparing IoT&amp;rsquo;s general requirements for hard- and software that I identified in my bachelor thesis (&lt;a href=&#34;https://medium.com/@mathiasrenner/docker-container-virtualization-and-the-internet-of-things-bachelor-thesis-a6bc783b81fa#.f09czsq2e&#34;&gt;details here&lt;/a&gt;) show that many of those aspects are already visible in the HCL:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/iot-requirements.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/ict-2016-greece/iot-requirements.jpg&#34; alt=&#34;IoT-requirements&#34; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion:e2e346a019a074ac80ebae91f71aeae5&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;All in all, the conference was an enriching experience. Discussing with scientific researches and professors from many different countries resulted in high-grade feedback and inspirations of how we can further improve the HCL. Particularly interesting were the discussions after some glasses of good, greek wine. They resulted in less high-grade feedback, but much fun instead :)&lt;/p&gt;
 
@@ -63,8 +59,7 @@
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -82,8 +77,9 @@ Installing or updating Docker or other Docker goodies like Docker-Compose from t
 
 &lt;p&gt;In this post I gonna show you what you need to know to get started with this repository.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/packagecloud/packagecloud_io_wide.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/packagecloud/packagecloud_io_wide.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Packagecloud.io is a really great service for hosting different types of packages (DEBs, RPMs, Ruby Gems).
 You get detailed download/usage statistics and can manage all your packages easily with a Web-GUI or with an API.&lt;/p&gt;
@@ -137,8 +133,7 @@ docker-hypriot |    1.5.0-7 | https://packagecloud.io/Hypriot/Schatzkiste/debian
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -155,8 +150,9 @@ The very same devices that power the upcoming IoT revolution.&lt;/p&gt;
 
 &lt;p&gt;Turns out it is really amazing what you can do with Docker on those tiny machines.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/raspberry-pi-workshop/docker_workshop.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;In this workshop attendees learned how to get started with Docker on their Raspberry Pi&amp;rsquo;s.
 Starting with the basics they soon turned to advanced topics like building a Docker cluster.&lt;/p&gt;
@@ -176,7 +172,7 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 &lt;p&gt;As you can see from the pictures it was a lot of fun to be there.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Docker &amp;amp; Raspberry Pi Workshop in Brussels&lt;/div&gt;
 
 
@@ -271,9 +267,9 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -339,7 +335,7 @@ Even days after the event Dieter was still raving about the cool event and the a
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;Special thanks for making the workshop possible need to go to Damien Duportal.
 His workshop presentation can be found &lt;a href=&#34;http://dduportal.github.io/presentations/docker-meetup-brussels-20160210/#1&#34;&gt;here&lt;/a&gt;.
@@ -359,8 +355,7 @@ Happy ARM hacking until then. :)&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -375,8 +370,9 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 &lt;p&gt;To illustrate this use case we are going to create a Docker image that allows us to read the data from a temperature sensor.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/tmib/3336410263/in/photolist-65PYwT-hKwdXx-6Gvfse-8sZyde-hKwe8n-bsrVBM-aTuQm-suTVL-4keeLT-9HAaQv-6owaBS-pcKw75-ktYU9-7fCvHx-aMp4hZ-9CJPmM-5kQCwW-9uhoBD-i6h8R-8eACxB-73fGHE-ecUmhW-4ayKHW-coQnPs-x2g2w-qTtWEg-6afv15-7zQM2j-coQoDf-6uLDRM-5srT3L-hpQH9p-q1QZca-9S8ygg-mHCs1e-aZ3SJT-b3ejpi-qvDRpB-mBUjjp-mJTYFr-nhZUoo-6dRUnb-9tuUnt-eMRL2K-6K6ars-dhBwB7-5Cr4jF-5rq6uU-yzubv-q7g6xP&#34;&gt;tmib_seattle&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;To follow along you gonna need:&lt;/p&gt;
 
@@ -388,8 +384,7 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 
 &lt;p&gt;From the hardware side we need to first attach the sensor to our Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature_sensor.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature_sensor.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Looking at the picture of the sensor from left to right we need to attach&lt;/p&gt;
 
@@ -401,8 +396,7 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 
 &lt;p&gt;The information in brackets corresponds to the pin numbers in this &lt;a href=&#34;http://raspi.tv/wp-content/uploads/2013/07/Rev2-GPIO-bold.jpg&#34;&gt;GPIO overview image&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/sensor_connected_to_pi.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/sensor_connected_to_pi.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;After our hardware is settled we need to look at the software side of things.&lt;/p&gt;
 
@@ -518,8 +512,7 @@ Humidity = 35.00 % Temperature = 22.00 *C
 
 &lt;p&gt;That&amp;rsquo;s it. As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -528,9 +521,9 @@ Humidity = 35.00 % Temperature = 22.00 *C
       <pubDate>Wed, 26 Aug 2015 02:55:55 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
-      <description>
+      <description>&lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
 
-&lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&amp;rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&amp;rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.&lt;/p&gt;
 
@@ -538,7 +531,7 @@ Humidity = 35.00 % Temperature = 22.00 *C
 
 &lt;p&gt;Fair enough, so let&amp;rsquo;s start making apps compatible to ARM. To do so, you only need to make sure that the binaries of your apps are compiled explicitly for the ARM architecture. Thus, porting an app to ARM basically means to change the binaries to ARM compatible ones. Let&amp;rsquo;s do it!&lt;/p&gt;
 
-&lt;h2 id=&#34;get-started-with-docker-for-an-easy-porting-example:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Get started with Docker for an easy porting example&lt;/h2&gt;
+&lt;h2 id=&#34;get-started-with-docker-for-an-easy-porting-example&#34;&gt;Get started with Docker for an easy porting example&lt;/h2&gt;
 
 &lt;p&gt;Of course, we use &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;. And in the world of Docker, apps are described by Dockerfiles, like recipes for making cakes. Thus, when we wanna ARM an app, we only change its recipe, i.e. its Dockerfile. So make sure you know about the commands in Dockerfiles with the help of the &lt;a href=&#34;https://docs.docker.com/reference/builder/&#34;&gt;Dockerfile reference at Docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -548,7 +541,7 @@ Humidity = 35.00 % Temperature = 22.00 *C
 
 &lt;p&gt;As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD Card image&lt;/a&gt; that provides Docker on the Raspberry Pi by just &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flashing it to a SD card and booting it&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;let-s-arm-it:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
+&lt;h2 id=&#34;let-s-arm-it&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
 
 &lt;p&gt;First, search for a Dockerfile that describes the service you wanna ARM. In most cases, Dockerfiles reside on the &lt;a href=&#34;https://hub.docker.com/explore/&#34;&gt;Dockerhub&lt;/a&gt; or on &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
@@ -570,8 +563,7 @@ Humidity = 35.00 % Temperature = 22.00 *C
 
 &lt;p&gt;When the Docker command completed, point your browser to &lt;code&gt;http://&amp;lt;IP OF YOUR PI&amp;gt;:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Next, let&amp;rsquo;s move to the target machine running on ARM. Copy the content of the Dockerfile as is to your ARM machine.&lt;/p&gt;
 
@@ -623,7 +615,7 @@ CMD [&amp;quot;/usr/sbin/apache2ctl&amp;quot;, &amp;quot;-D&amp;quot;, &amp;quot
 
 &lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: After you successfully ported a service, you can push it to the Dockerhub, so that other people can use it. In addition make sure to put &lt;code&gt;rpi-&lt;/code&gt; in front of the Docker image&amp;rsquo;s name. This declares it as a Raspberry Pi compatible image and therefore also as an ARM compatible service. It will make the life easier for people looking for ARMed services on the Dockerhub.&lt;/p&gt;
 
-&lt;h2 id=&#34;debugging-hints-to-arm-a-service:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Debugging hints to ARM a service&lt;/h2&gt;
+&lt;h2 id=&#34;debugging-hints-to-arm-a-service&#34;&gt;Debugging hints to ARM a service&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Remove any command you do not need to run the service&lt;/strong&gt;. In our Apache example, you can delete everything regarding SSL if you do not need it. This already might solve some problems.&lt;/li&gt;
@@ -634,7 +626,7 @@ CMD [&amp;quot;/usr/sbin/apache2ctl&amp;quot;, &amp;quot;-D&amp;quot;, &amp;quot
 &lt;li&gt;&lt;strong&gt;Try to resolve any other errors by asking an online search engine&lt;/strong&gt;. Often, you are not the first one having this problem.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;optimize-the-dockerfile-optional:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Optimize the Dockerfile (optional)&lt;/h2&gt;
+&lt;h2 id=&#34;optimize-the-dockerfile-optional&#34;&gt;Optimize the Dockerfile (optional)&lt;/h2&gt;
 
 &lt;p&gt;Optimizing the Dockerfile does have several advantages: It often makes it smaller, i.e. you need less time to download packages and less disk space on your machine. Further, you gain a better overview over the Dockerfile&amp;rsquo;s structure which simplifies debugging. In the following, we give some recommendations of how to optimize a Dockerfile:&lt;/p&gt;
 
@@ -672,8 +664,7 @@ EXPOSE 80,443
 
 &lt;p&gt;We wish &lt;strong&gt;happy porting parties&lt;/strong&gt;!&lt;/p&gt;
 
-&lt;p&gt;Mathias &amp;amp; Andreas&lt;/p&gt;
-</description>
+&lt;p&gt;Mathias &amp;amp; Andreas&lt;/p&gt;</description>
     </item>
     
   </channel>

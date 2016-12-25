@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microservices on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/microservices/</link>
-    <description>Recent content in Microservices on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/microservices/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jun 2016 21:49:00 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,21 +25,20 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 &lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;If you remember the example from my last post - it consisted of a microservice application made of a frontend and a couple of backend services.
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Less moving parts - that is great!&lt;/p&gt;
 
@@ -290,8 +288,7 @@ I am really looking forward to find out what else there is in store with the new
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -300,9 +297,7 @@ I am really looking forward to find out what else there is in store with the new
       <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
       
       <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
-      <description>
-
-&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
+      <description>&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
 It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.&lt;/p&gt;
 
 &lt;p&gt;Did you realize the important part of the last sentence was &lt;strong&gt;dynamic&lt;/strong&gt;?&lt;/p&gt;
@@ -310,13 +305,14 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 &lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
 &lt;a href=&#34;https://github.com/gliderlabs/registrator&#34;&gt;Registrator&lt;/a&gt;, &lt;a href=&#34;https://www.consul.io/&#34;&gt;Consul&lt;/a&gt; and &lt;a href=&#34;https://github.com/hashicorp/consul-template&#34;&gt;Consul-Template&lt;/a&gt; to achieve the same kind of functionality.&lt;/p&gt;
 
 &lt;p&gt;So let me show you with a simple microservice example how easy it is to get started with Traefik&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following architecture overview we will have a simple HTTP service that answers incoming HTTP requests.&lt;/p&gt;
 
@@ -326,12 +322,11 @@ Traefik serves as a frontend proxy that loadbalances incoming requests to the av
 &lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
 In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
 
-&lt;h2 id=&#34;creating-a-docker-swarm-cluster:eaccea7a352d1344b842649dc78262ad&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
+&lt;h2 id=&#34;creating-a-docker-swarm-cluster&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
 
 &lt;p&gt;One of fastest and easiest ways to get a Docker Swarm cluster running is to use our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt;.&lt;/p&gt;
 
@@ -339,8 +334,7 @@ In this example each backend service will answer with their individual container
 
 &lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;
 
@@ -396,7 +390,7 @@ Congrats!&lt;/p&gt;
 
 &lt;p&gt;As you made it so far the rest will be a piece of a cake!&lt;/p&gt;
 
-&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik:eaccea7a352d1344b842649dc78262ad&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
+&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
 
 &lt;p&gt;Our example microservice application consists of two parts. The Traefik frontend and the WhoAmI application backend.
 For both parts I have prepared images for you that can be pulled from the Docker Hub.&lt;/p&gt;
@@ -552,8 +546,7 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -562,9 +555,7 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
       <pubDate>Tue, 08 Dec 2015 15:30:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</guid>
-      <description>
-
-&lt;p&gt;Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
+      <description>&lt;p&gt;Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
 It is based on our beloved &lt;a href=&#34;https://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;HypriotOS&lt;/a&gt; and makes it dead simple to build Docker clusters.&lt;/p&gt;
 
 &lt;p&gt;Until now it was not exactly easy to get started with Docker clustering.
@@ -574,8 +565,9 @@ You would have needed specific knowledge and lots of time to manually configure 
 
 &lt;p&gt;May we introduce to you the newest member of the Hypriot family: &lt;strong&gt;The Hypriot Cluster Lab!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;With the &lt;strong&gt;Hypriot Cluster Lab&lt;/strong&gt; it is just a matter of minutes to set up your own personal Docker cluster.
 All you need is a couple of Raspberry Pi&amp;rsquo;s - 3, 5, 30 or even 100 - it is up to you - and our Hypriot Cluster Lab SD card image.&lt;/p&gt;
@@ -612,7 +604,7 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 
 &lt;p&gt;So enough talking - let&amp;rsquo;s get our hands dirty - shall we?&lt;/p&gt;
 
-&lt;h3 id=&#34;prerequisites-or-what-you-gonna-need-to-follow-along:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Prerequisites or what you gonna need to follow along&lt;/h3&gt;
+&lt;h3 id=&#34;prerequisites-or-what-you-gonna-need-to-follow-along&#34;&gt;Prerequisites or what you gonna need to follow along&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;at least two &lt;strong&gt;Raspberry Pi&amp;rsquo;s&lt;/strong&gt;: Model 1 or 2 - both will do&lt;/li&gt;
@@ -622,7 +614,7 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 
 &lt;p&gt;Additionally, the switch should not filter IEEE 802.1Q VLAN flags out of network packets. Usually this feature is provided even by cheap switches. If you wanna be safe, go through a small test to figure this out. The test is &lt;a href=&#34;https://github.com/hypriot/cluster-lab/blob/master/README.md#troubleshooting&#34;&gt;listed here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-flash-boot-enjoy:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
+&lt;h3 id=&#34;download-flash-boot-enjoy&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; &lt;strong&gt;Download&lt;/strong&gt; the Hypriot Cluster Lab SD card image (hypriot_20160121-235123_clusterlab.img.zip).&lt;/p&gt;
 
@@ -642,17 +634,15 @@ $ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot_20160121-23512
 
 &lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; Use the IP (from step 5) or the hostname (from step 2) to point your browser to &lt;code&gt;http://{IP or hostname of the master node}:8500&lt;/code&gt;. In our case &lt;code&gt;http://cl-master:8500&lt;/code&gt; opens the Consul web interface and our cluster master node is displayed:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;7.&lt;/strong&gt; Power on all the remaining cluster nodes only if step 5 was successful. After about 2 minutes you should see the rest of them being listed in the Consul web interface, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The last step makes the cluster fully operational and we are now able to work with the cluster in earnest.&lt;/p&gt;
 
-&lt;h3 id=&#34;babysteps-with-our-cluster-lab:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Babysteps with our Cluster Lab&lt;/h3&gt;
+&lt;h3 id=&#34;babysteps-with-our-cluster-lab&#34;&gt;Babysteps with our Cluster Lab&lt;/h3&gt;
 
 &lt;p&gt;Congratulations, you got your Hypriot Cluster Lab up and running! That was easy, wasn&amp;rsquo;t it?&lt;/p&gt;
 
@@ -715,8 +705,7 @@ By using the &amp;lsquo;constraint:node&amp;rsquo; label we are able to control 
 &lt;p&gt;So let&amp;rsquo;s open the DockerUI with the following URL: &lt;code&gt;http://cl-master:9000&lt;/code&gt;.
 If everything did work you should now see an overview of your running containers similar to this one:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Back to the command line we can see the same result by using the &lt;code&gt;docker ps&lt;/code&gt; command:&lt;/p&gt;
 
@@ -735,7 +724,7 @@ f6b11e9e4f07        hypriot/rpi-consul                                          
 &lt;p&gt;By now you should have gotten the hang of it and come to expect that you can use many of the Docker command line commands with Swarm, too.
 And you are right - you just need to remember to use the &lt;code&gt;-H&lt;/code&gt; flag as part of the Docker command.&lt;/p&gt;
 
-&lt;h3 id=&#34;getting-to-the-grown-up-stuff:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Getting to the grown-up stuff&lt;/h3&gt;
+&lt;h3 id=&#34;getting-to-the-grown-up-stuff&#34;&gt;Getting to the grown-up stuff&lt;/h3&gt;
 
 &lt;p&gt;After we did our first babysteps successfully it is now time for some serious grown-up stuff.
 Certainly Docker multi-host networking can be considered serious stuff - don&amp;rsquo;t you think?&lt;/p&gt;
@@ -830,8 +819,7 @@ We will write more about those in some future blog posts.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=10696752&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Andreas &amp;amp; Mathias&lt;/p&gt;
-</description>
+&lt;p&gt;Andreas &amp;amp; Mathias&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Consul on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/consul/</link>
-    <description>Recent content in Consul on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/consul/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Mar 2016 23:00:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/consul/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,7 @@
       <pubDate>Sun, 20 Mar 2016 23:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
-      <description>
-
-&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
+      <description>&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
 Not until I logged in and did &lt;code&gt;lscpu&lt;/code&gt; did I realize that those servers were &amp;ldquo;just&amp;rdquo; Intel Atom servers.&lt;/p&gt;
 
 &lt;p&gt;A bit disappointed I thought what to do now? In my enthusiasm I had spun up 3 servers with 82 GB of RAM and 24 CPUs.
@@ -28,12 +25,13 @@ Still with my thoughts firmly rooted in the &lt;a href=&#34;https://blog.docker.
 &lt;p&gt;You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;There are couple of reasons why it was so simple.&lt;/p&gt;
 
-&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
+&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
 
 &lt;p&gt;The first reason is that I was using the new Scaleway Cloud servers.&lt;/p&gt;
 
@@ -218,7 +216,7 @@ I am not going into the details of the tinc configuration now, because I am goin
 
 &lt;p&gt;That we have the name of tinc network device is important for the configuration of the Hypriot Cluster Lab which we gonna use in the next section.&lt;/p&gt;
 
-&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
+&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
 
 &lt;p&gt;The &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; is the second reason why it is so easy to set up our 100 node Jenkins cluster.
 The Cluster Lab helps us to set up a Docker Swarm Cluster without any manual configuration in minutes.&lt;/p&gt;
@@ -361,7 +359,7 @@ Name: 4b3fd589316c
 For instance we can see the number of nodes we have as well as the total number of CPUs and RAM we do have in the cluster: 24 CPUs and a whopping amount of 82 GB of RAM.
 That&amp;rsquo;s nice isn&amp;rsquo;t it?&lt;/p&gt;
 
-&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
+&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
 
 &lt;p&gt;Ok, now comes the last reason why it is so fast and easy to set up 100 node Jenkins cluster.
 The reason is called &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker-Compose&lt;/a&gt; and makes it ridiculous easy to get multi-container applications up and running.&lt;/p&gt;
@@ -449,13 +447,11 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;You should see a page similar to&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And at &lt;a href=&#34;http://212.47.225.127:8080/computer&#34;&gt;http://212.47.225.127:8080/computer&lt;/a&gt; we can find all the slave nodes, too:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
 
@@ -473,8 +469,7 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -491,8 +486,9 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 Follow along to learn how this is possible.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV&#34;&gt;SNRE Labs&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;The Hypriot Cluster Lab has already been there for while as an easy way to set up a Swarm Cluster on Raspberry Pi&amp;rsquo;s.
 The basic idea was to have a SD card image that can be used to boot up a couple of Pi&amp;rsquo;s who then automatically form a Swarm Cluster.
@@ -679,8 +675,7 @@ That was easy, was it?&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=11263205&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -689,9 +684,7 @@ That was easy, was it?&lt;/p&gt;
       <pubDate>Tue, 08 Dec 2015 15:30:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/</guid>
-      <description>
-
-&lt;p&gt;Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
+      <description>&lt;p&gt;Today we wanna share something with you that we have been working on for the last couple of weeks. And we are pretty exited about it, too.
 It is based on our beloved &lt;a href=&#34;https://blog.hypriot.com/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/&#34;&gt;HypriotOS&lt;/a&gt; and makes it dead simple to build Docker clusters.&lt;/p&gt;
 
 &lt;p&gt;Until now it was not exactly easy to get started with Docker clustering.
@@ -701,8 +694,9 @@ You would have needed specific knowledge and lots of time to manually configure 
 
 &lt;p&gt;May we introduce to you the newest member of the Hypriot family: &lt;strong&gt;The Hypriot Cluster Lab!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/cluster_lab.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;With the &lt;strong&gt;Hypriot Cluster Lab&lt;/strong&gt; it is just a matter of minutes to set up your own personal Docker cluster.
 All you need is a couple of Raspberry Pi&amp;rsquo;s - 3, 5, 30 or even 100 - it is up to you - and our Hypriot Cluster Lab SD card image.&lt;/p&gt;
@@ -739,7 +733,7 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 
 &lt;p&gt;So enough talking - let&amp;rsquo;s get our hands dirty - shall we?&lt;/p&gt;
 
-&lt;h3 id=&#34;prerequisites-or-what-you-gonna-need-to-follow-along:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Prerequisites or what you gonna need to follow along&lt;/h3&gt;
+&lt;h3 id=&#34;prerequisites-or-what-you-gonna-need-to-follow-along&#34;&gt;Prerequisites or what you gonna need to follow along&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;at least two &lt;strong&gt;Raspberry Pi&amp;rsquo;s&lt;/strong&gt;: Model 1 or 2 - both will do&lt;/li&gt;
@@ -749,7 +743,7 @@ Working with &lt;strong&gt;real hardware&lt;/strong&gt; compared to a virtual en
 
 &lt;p&gt;Additionally, the switch should not filter IEEE 802.1Q VLAN flags out of network packets. Usually this feature is provided even by cheap switches. If you wanna be safe, go through a small test to figure this out. The test is &lt;a href=&#34;https://github.com/hypriot/cluster-lab/blob/master/README.md#troubleshooting&#34;&gt;listed here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;download-flash-boot-enjoy:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
+&lt;h3 id=&#34;download-flash-boot-enjoy&#34;&gt;Download. Flash. Boot. Enjoy!&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; &lt;strong&gt;Download&lt;/strong&gt; the Hypriot Cluster Lab SD card image (hypriot_20160121-235123_clusterlab.img.zip).&lt;/p&gt;
 
@@ -769,17 +763,15 @@ $ flash --hostname cl-node-1 http://downloads.hypriot.com/hypriot_20160121-23512
 
 &lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; Use the IP (from step 5) or the hostname (from step 2) to point your browser to &lt;code&gt;http://{IP or hostname of the master node}:8500&lt;/code&gt;. In our case &lt;code&gt;http://cl-master:8500&lt;/code&gt; opens the Consul web interface and our cluster master node is displayed:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;7.&lt;/strong&gt; Power on all the remaining cluster nodes only if step 5 was successful. After about 2 minutes you should see the rest of them being listed in the Consul web interface, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/consul_cl_master_and_nodes.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The last step makes the cluster fully operational and we are now able to work with the cluster in earnest.&lt;/p&gt;
 
-&lt;h3 id=&#34;babysteps-with-our-cluster-lab:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Babysteps with our Cluster Lab&lt;/h3&gt;
+&lt;h3 id=&#34;babysteps-with-our-cluster-lab&#34;&gt;Babysteps with our Cluster Lab&lt;/h3&gt;
 
 &lt;p&gt;Congratulations, you got your Hypriot Cluster Lab up and running! That was easy, wasn&amp;rsquo;t it?&lt;/p&gt;
 
@@ -842,8 +834,7 @@ By using the &amp;lsquo;constraint:node&amp;rsquo; label we are able to control 
 &lt;p&gt;So let&amp;rsquo;s open the DockerUI with the following URL: &lt;code&gt;http://cl-master:9000&lt;/code&gt;.
 If everything did work you should now see an overview of your running containers similar to this one:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/cluster-lab-release-v01/dockerui.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Back to the command line we can see the same result by using the &lt;code&gt;docker ps&lt;/code&gt; command:&lt;/p&gt;
 
@@ -862,7 +853,7 @@ f6b11e9e4f07        hypriot/rpi-consul                                          
 &lt;p&gt;By now you should have gotten the hang of it and come to expect that you can use many of the Docker command line commands with Swarm, too.
 And you are right - you just need to remember to use the &lt;code&gt;-H&lt;/code&gt; flag as part of the Docker command.&lt;/p&gt;
 
-&lt;h3 id=&#34;getting-to-the-grown-up-stuff:8280d5ff2f6dfae78180ad5a72400c1a&#34;&gt;Getting to the grown-up stuff&lt;/h3&gt;
+&lt;h3 id=&#34;getting-to-the-grown-up-stuff&#34;&gt;Getting to the grown-up stuff&lt;/h3&gt;
 
 &lt;p&gt;After we did our first babysteps successfully it is now time for some serious grown-up stuff.
 Certainly Docker multi-host networking can be considered serious stuff - don&amp;rsquo;t you think?&lt;/p&gt;
@@ -957,8 +948,7 @@ We will write more about those in some future blog posts.&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=10696752&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Andreas &amp;amp; Mathias&lt;/p&gt;
-</description>
+&lt;p&gt;Andreas &amp;amp; Mathias&lt;/p&gt;</description>
     </item>
     
   </channel>

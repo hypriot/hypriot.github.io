@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Internet Of Things on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/internet-of-things/</link>
-    <description>Recent content in Internet Of Things on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/internet-of-things/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2015 02:55:55 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/internet-of-things/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,9 @@
       <pubDate>Wed, 26 Aug 2015 02:55:55 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/port_dockerfiles_to_arm/</guid>
-      <description>
+      <description>&lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
 
-&lt;p&gt;The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&amp;rsquo;s basically just one step to take.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;In comparison to the x86 CPU architecture, ARM supports low power consumption by design, not just as a feature. When thinking of a sensor network at your home, you don&amp;rsquo;t wanna change the battery of all your sensors every week. Well, think of any device that profits from low power consumption, which does not need the CPU power of a sumo wrestler. As with sumo wrestlers, computers cluttered with resources lack the flexibility needed in today&amp;rsquo;s IT, and the resources of their built in x86 CPU often are barely needed.&lt;/p&gt;
 
@@ -25,7 +24,7 @@
 
 &lt;p&gt;Fair enough, so let&amp;rsquo;s start making apps compatible to ARM. To do so, you only need to make sure that the binaries of your apps are compiled explicitly for the ARM architecture. Thus, porting an app to ARM basically means to change the binaries to ARM compatible ones. Let&amp;rsquo;s do it!&lt;/p&gt;
 
-&lt;h2 id=&#34;get-started-with-docker-for-an-easy-porting-example:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Get started with Docker for an easy porting example&lt;/h2&gt;
+&lt;h2 id=&#34;get-started-with-docker-for-an-easy-porting-example&#34;&gt;Get started with Docker for an easy porting example&lt;/h2&gt;
 
 &lt;p&gt;Of course, we use &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;. And in the world of Docker, apps are described by Dockerfiles, like recipes for making cakes. Thus, when we wanna ARM an app, we only change its recipe, i.e. its Dockerfile. So make sure you know about the commands in Dockerfiles with the help of the &lt;a href=&#34;https://docs.docker.com/reference/builder/&#34;&gt;Dockerfile reference at Docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -35,7 +34,7 @@
 
 &lt;p&gt;As hardware for our example, we use a Raspberry Pi, which is one of the most popular ARM devices for developers. Of course, as operating system we use our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;SD Card image&lt;/a&gt; that provides Docker on the Raspberry Pi by just &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flashing it to a SD card and booting it&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;let-s-arm-it:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
+&lt;h2 id=&#34;let-s-arm-it&#34;&gt;Let&amp;rsquo;s ARM it!&lt;/h2&gt;
 
 &lt;p&gt;First, search for a Dockerfile that describes the service you wanna ARM. In most cases, Dockerfiles reside on the &lt;a href=&#34;https://hub.docker.com/explore/&#34;&gt;Dockerhub&lt;/a&gt; or on &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
@@ -57,8 +56,7 @@
 
 &lt;p&gt;When the Docker command completed, point your browser to &lt;code&gt;http://&amp;lt;IP OF YOUR PI&amp;gt;:80/&lt;/code&gt;. You should see the default page of Apache:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/port_dockerfiles_to_arm/apache_default_x86.png&#34; alt=&#34;port_dockerfiles_to_arm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Next, let&amp;rsquo;s move to the target machine running on ARM. Copy the content of the Dockerfile as is to your ARM machine.&lt;/p&gt;
 
@@ -110,7 +108,7 @@ CMD [&amp;quot;/usr/sbin/apache2ctl&amp;quot;, &amp;quot;-D&amp;quot;, &amp;quot
 
 &lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: After you successfully ported a service, you can push it to the Dockerhub, so that other people can use it. In addition make sure to put &lt;code&gt;rpi-&lt;/code&gt; in front of the Docker image&amp;rsquo;s name. This declares it as a Raspberry Pi compatible image and therefore also as an ARM compatible service. It will make the life easier for people looking for ARMed services on the Dockerhub.&lt;/p&gt;
 
-&lt;h2 id=&#34;debugging-hints-to-arm-a-service:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Debugging hints to ARM a service&lt;/h2&gt;
+&lt;h2 id=&#34;debugging-hints-to-arm-a-service&#34;&gt;Debugging hints to ARM a service&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Remove any command you do not need to run the service&lt;/strong&gt;. In our Apache example, you can delete everything regarding SSL if you do not need it. This already might solve some problems.&lt;/li&gt;
@@ -121,7 +119,7 @@ CMD [&amp;quot;/usr/sbin/apache2ctl&amp;quot;, &amp;quot;-D&amp;quot;, &amp;quot
 &lt;li&gt;&lt;strong&gt;Try to resolve any other errors by asking an online search engine&lt;/strong&gt;. Often, you are not the first one having this problem.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;optimize-the-dockerfile-optional:88da4e06b8e93673f9a039fdd642e0cc&#34;&gt;Optimize the Dockerfile (optional)&lt;/h2&gt;
+&lt;h2 id=&#34;optimize-the-dockerfile-optional&#34;&gt;Optimize the Dockerfile (optional)&lt;/h2&gt;
 
 &lt;p&gt;Optimizing the Dockerfile does have several advantages: It often makes it smaller, i.e. you need less time to download packages and less disk space on your machine. Further, you gain a better overview over the Dockerfile&amp;rsquo;s structure which simplifies debugging. In the following, we give some recommendations of how to optimize a Dockerfile:&lt;/p&gt;
 
@@ -159,8 +157,7 @@ EXPOSE 80,443
 
 &lt;p&gt;We wish &lt;strong&gt;happy porting parties&lt;/strong&gt;!&lt;/p&gt;
 
-&lt;p&gt;Mathias &amp;amp; Andreas&lt;/p&gt;
-</description>
+&lt;p&gt;Mathias &amp;amp; Andreas&lt;/p&gt;</description>
     </item>
     
   </channel>

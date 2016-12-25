@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,9 +81,7 @@
   <div class="post">
     <h1>Test, build and package Docker for ARM the official way</h1>
     <span class="post-date">Fri, Feb 5, 2016</span>
-    
-
-<p>With the recent release of Docker 1.10.0 it is a good time to talk about <strong>Docker on ARM</strong>.
+    <p>With the recent release of Docker 1.10.0 it is a good time to talk about <strong>Docker on ARM</strong>.
 As many of you know our mission is to make Docker (and container technology) a first class citizen on ARM devices.</p>
 
 <p>With <a href="http://blog.docker.com/2016/02/docker-1-10/">Docker 1.10.0</a> it is finally possible to build <strong>Docker for ARM</strong> from the offical Docker repository.</p>
@@ -94,10 +92,11 @@ And it is a first important step towards offical support for Docker on ARM.</p>
 <p>In this blog post I am going to walk you through all the steps that are needed to test, build and package Docker on ARM.
 And as an extra bonus I am showing you how to do this on the most advanced ARM on-demand cloud-platform ever.</p>
 
-<p><img src="/images/arm-support/scaleway_armserver.jpg" alt="" />
-</p>
+<p><img src="/images/arm-support/scaleway_armserver.jpg" alt="" /></p>
 
-<h2 id="preparation-first-we-need-suiteable-arm-hardware:7190f76dff60ef5d0c44976a259ce00e">Preparation: First we need suiteable ARM hardware</h2>
+<p></p>
+
+<h2 id="preparation-first-we-need-suiteable-arm-hardware">Preparation: First we need suiteable ARM hardware</h2>
 
 <p>Our friends at Scaleway make it really easy and cheap to get your hands on powerful ARM hardware with their ARM on-demand cloud platform.
 Using an ARM server costs only 0,006 € per hour and you only pay when a server is actually running.</p>
@@ -117,14 +116,12 @@ Using the Scaleway Docker image is just a reliable and fast way to get us starte
 
 <p>In the <strong>Web-GUI</strong> just select the &ldquo;Server&rdquo; menu entry on the left and click the &ldquo;Create&rdquo;-button.</p>
 
-<p><img src="/images/arm-support/create_server.jpg" alt="" />
-</p>
+<p><img src="/images/arm-support/create_server.jpg" alt="" /></p>
 
 <p>In the following dialogue choose the &ldquo;Image Hub&rdquo; tab and search for &ldquo;docker&rdquo;.<br />
 Select the &ldquo;Docker 1.9.1&rdquo; image and you are good.</p>
 
-<p><img src="/images/arm-support/sw_webgui_choose_an_image.jpg" alt="" />
-</p>
+<p><img src="/images/arm-support/sw_webgui_choose_an_image.jpg" alt="" /></p>
 
 <p>The same can be done with the <a href="https://github.com/scaleway/scaleway-cli">Scaleway Command Line Interface</a>, too.
 Download the latest version for your operating system from the <a href="https://github.com/scaleway/scaleway-cli/releases/tag/v1.7.1">release page</a>.</p>
@@ -241,7 +238,7 @@ Server:
 
 <p>Seems, we now have everthing ready for the second part of this blog post.</p>
 
-<h2 id="test-build-and-package-docker-for-arm:7190f76dff60ef5d0c44976a259ce00e">Test, build and package Docker for ARM</h2>
+<h2 id="test-build-and-package-docker-for-arm">Test, build and package Docker for ARM</h2>
 
 <p>Congrats, you already finished the difficult part!</p>
 
@@ -273,7 +270,7 @@ It is based on the <code>Dockerfile</code> that you will find in the root direct
 <p>With Docker 1.10.0 you will find that there is another Dockerfile present&hellip; one with an <code>.armhf</code> extension.
 This one is used to build an ARM compatible Docker development image.</p>
 
-<h3 id="building-the-docker-development-image:7190f76dff60ef5d0c44976a259ce00e">Building the Docker development image</h3>
+<h3 id="building-the-docker-development-image">Building the Docker development image</h3>
 
 <p>Creating the Docker development image can take a long time as lots of software gets downloaded, compiled and installed.
 The good news is that this is usually only needed once.</p>
@@ -291,7 +288,7 @@ docker-dev          master              2ac07dec8c9a        14 minutes ago      
 <p>If all went well we should now see an image that is named <code>docker-dev</code>.
 With this out of the way we can now proceed to the next step.</p>
 
-<h3 id="testing-docker:7190f76dff60ef5d0c44976a259ce00e">Testing Docker</h3>
+<h3 id="testing-docker">Testing Docker</h3>
 
 <p>There are two types of tests that we can run: <strong>unit-tests</strong> and <strong>integration-tests</strong>.
 To ensure that a certain Docker version really works we need to ensure that all the tests are passing.</p>
@@ -319,7 +316,7 @@ But that time is worth waiting as there are more than 1,100 tests that already w
 
 <p>When all tests are green we might as well go to the next step.</p>
 
-<h3 id="building-a-new-docker-binary:7190f76dff60ef5d0c44976a259ce00e">Building a new Docker binary</h3>
+<h3 id="building-a-new-docker-binary">Building a new Docker binary</h3>
 
 <p>Building a new Docker binary is really fast compared to running the tests.</p>
 
@@ -351,7 +348,7 @@ Client:
 <p>But shipping a plain binary is not very cool, is it?
 So shall we make a Debian package as well?</p>
 
-<h3 id="building-a-docker-debian-package:7190f76dff60ef5d0c44976a259ce00e">Building a Docker Debian package</h3>
+<h3 id="building-a-docker-debian-package">Building a Docker Debian package</h3>
 
 <p>The command for creating a Debian package is just another make command:</p>
 
@@ -383,7 +380,6 @@ While Docker ARM support is still only partially there, more is to come soon.</p
 <p>As always, use the comments below to give us feedback, discuss this post on <a href="https://news.ycombinator.com/item?id=11042427">HackerNews</a> and share this post on Twitter, Google or Facebook.</p>
 
 <p>Govinda <a href="https://twitter.com/_beagile_">@_beagile_</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Led on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/led/</link>
-    <description>Recent content in Led on Docker Pirates ARMed with explosive stuff</description>
+    <title>Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/led/index.xml</link>
+    <description>Recent content on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Apr 2015 16:49:33 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/led/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,9 @@
       <pubDate>Thu, 09 Apr 2015 16:49:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/lets-get-physical/</guid>
-      <description>
+      <description>&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;To keep the tutorial simple we will use the binary from the &lt;a href=&#34;http://wiringpi.com&#34;&gt;wiringPi&lt;/a&gt; project within a Docker container. This command line tool can be used to read and write the GPIO (General Purpose Input/Output) pins of the Raspberry Pi.&lt;/p&gt;
 
@@ -26,23 +25,21 @@
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull hypriot/rpi-gpio
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;turn-an-led-on-and-off:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn an LED on and off&lt;/h2&gt;
+&lt;h2 id=&#34;turn-an-led-on-and-off&#34;&gt;Turn an LED on and off&lt;/h2&gt;
 
 &lt;p&gt;In a first little example we just want to turn an LED on and off. You need only a few components to try it yourself.&lt;/p&gt;
 
 &lt;p&gt;See the wiring diagram on how to connect the LED and the 220Ω resistor to your Raspberry Pi for the following examples. We use the 11th (BCM GPIO 17 / wiringPi Pin 0) and 9th (Ground) Pin of the Raspberry Pi B/B+ or Pi 2 B.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And here is the circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can use these commands:&lt;/p&gt;
 
-&lt;h3 id=&#34;get-status-of-all-gpios:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
+&lt;h3 id=&#34;get-status-of-all-gpios&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio readall
 &lt;/code&gt;&lt;/pre&gt;
@@ -77,7 +74,7 @@
  +-----+-----+---------+------+---+---Pi 2---+---+------+---------+-----+-----+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;set-mode-to-output:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Set mode to output&lt;/h3&gt;
+&lt;h3 id=&#34;set-mode-to-output&#34;&gt;Set mode to output&lt;/h3&gt;
 
 &lt;p&gt;To turn on LED&amp;rsquo;s or switch other outputs you have to set the corresponding GPIO pin to output mode with&lt;/p&gt;
 
@@ -86,36 +83,34 @@
 
 &lt;p&gt;This has to be done only once after reboot.&lt;/p&gt;
 
-&lt;h3 id=&#34;turn-on-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn on the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-on-the-led&#34;&gt;Turn on the LED&lt;/h3&gt;
 
 &lt;p&gt;Now we can turn on the LED with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;turn-off-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn off the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-off-the-led&#34;&gt;Turn off the LED&lt;/h3&gt;
 
 &lt;p&gt;or off with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 off
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;read-a-button-from-gpio:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read a button from GPIO&lt;/h2&gt;
+&lt;h2 id=&#34;read-a-button-from-gpio&#34;&gt;Read a button from GPIO&lt;/h2&gt;
 
 &lt;p&gt;In another example we attach a button to the Raspberry Pi and read the state from the 12th pin (BCM GPIO 18, wiringPi Pin 1).
 The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor is connected to 9th Pin (Ground).&lt;/p&gt;
 
 &lt;p&gt;The wiring diagram shows how to connect all parts. You need a push button, a 1kΩ resistor for pull down and a 10kΩ resistor to connect to the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And here is the corresponding circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;read-button-state:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read button state&lt;/h3&gt;
+&lt;h3 id=&#34;read-button-state&#34;&gt;Read button state&lt;/h3&gt;
 
 &lt;p&gt;To get the status of just the 1th GPIO use this command&lt;/p&gt;
 
@@ -125,7 +120,7 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;The command returns &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; as a result of the input state.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;In this blog post we showed you how easily you can use the GPIO ports of the Raspberry Pi from a Docker container with a simple command line tool.&lt;/p&gt;
 
@@ -133,8 +128,7 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;If you want to learn more about the GPIO pins you can use the excellent &lt;a href=&#34;http://pi.gadgetoid.com/pinout&#34;&gt;interactive Raspberry Pi Pinout guide&lt;/a&gt; from Gadgetoid.&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;
-</description>
+&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;</description>
     </item>
     
   </channel>
