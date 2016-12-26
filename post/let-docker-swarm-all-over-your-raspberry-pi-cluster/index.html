@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,16 +81,15 @@
   <div class="post">
     <h1>Let Docker Swarm all over your Raspberry Pi Cluster</h1>
     <span class="post-date">Fri, Jul 3, 2015</span>
-    
+    <p>In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.</p>
 
-<p>In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.</p>
-
-<p>We have built a little &ldquo;Pi Tower&rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.</p>
+<p>We have built a little &ldquo;Pi Tower&rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.
+</p>
 
 <p>As you can see in the pictures below we have mounted the three Raspberry Pi&rsquo;s on top of a 5-port D-Link GBit switch. All four devices get their power from an Anker 4-port USB charger.
 This makes a very solid but portable &ldquo;Pi Tower&rdquo; with only one power plug and one external network connector.</p>
 
-<p><div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
+<div class="gallery clearfix" itemscope itemtype="http://schema.org/ImageGallery">
 <div class="title">Pi Tower</div>
 
 
@@ -155,9 +154,9 @@ This makes a very solid but portable &ldquo;Pi Tower&rdquo; with only one power 
 
 
 </div>
-</p>
 
-<p><link rel="stylesheet" href="/css/photoswipe.css">
+
+<link rel="stylesheet" href="/css/photoswipe.css">
 <link rel="stylesheet" href="/css/default-skin/default-skin.css">
 <script src="/js/photoswipe.min.js"></script>
 <script src="/js/photoswipe-ui-default.min.js"></script>
@@ -223,11 +222,11 @@ This makes a very solid but portable &ldquo;Pi Tower&rdquo; with only one power 
 
 
 <script>initPhotoSwipeFromDOM('.gallery');</script>
-</p>
+
 
 <p>For your convenience we have prepared a <a href="http://www.amazon.de/gp/registry/wishlist/BCGEW9W3V8GM/ref=cm_wl_rlist_go_o">small shopping list</a> of all the components we used at Amazon.</p>
 
-<h2 id="pre-requisites:89caca6f537cb35a7331e4245fcac0e7">Pre-requisites</h2>
+<h2 id="pre-requisites">Pre-requisites</h2>
 
 <p>For this tutorial we will run all steps from a Mac. To do this we need three tools.</p>
 
@@ -237,7 +236,7 @@ This makes a very solid but portable &ldquo;Pi Tower&rdquo; with only one power 
 <li>The Docker Machine binary with the hypriot driver</li>
 </ul>
 
-<h2 id="flash-all-sd-cards:89caca6f537cb35a7331e4245fcac0e7">Flash all SD cards</h2>
+<h2 id="flash-all-sd-cards">Flash all SD cards</h2>
 
 <p>First we want to install the SD cards with Docker preinstalled.
 On a Mac or Linux machine we can use our little <a href="https://github.com/hypriot/flash">flash command line tool</a> to prepare the three SD cards with these simple commands:</p>
@@ -249,7 +248,7 @@ $ flash --hostname pi3 http://downloads.hypriot.com/hypriot-rpi-20150416-201537.
 
 <p>Now insert the SD cards into all Raspberry Pi&rsquo;s and boot them. They will come up with different host names after a while.</p>
 
-<h2 id="retrieve-ip-addresses:89caca6f537cb35a7331e4245fcac0e7">Retrieve IP addresses</h2>
+<h2 id="retrieve-ip-addresses">Retrieve IP addresses</h2>
 
 <p>Our SD card image also starts the avahi-daemon to announce the hostname through mDNS, so each Pi is reachable with <code>pi1.local</code>, <code>pi2.local</code> and <code>pi3.local</code>.
 Docker Machine cannot resolve these hostnames at the moment, so we have to retrieve the IP addresses for the Raspberry Pi&rsquo;s manually.</p>
@@ -261,7 +260,7 @@ $ ping -c 1 pi3.local
 
 <p>For this example we assume that the three IP adresses are <code>192.168.1.101</code>, <code>102</code> and <code>103</code>.</p>
 
-<h2 id="insert-ssh-public-key:89caca6f537cb35a7331e4245fcac0e7">Insert SSH public key</h2>
+<h2 id="insert-ssh-public-key">Insert SSH public key</h2>
 
 <p>Docker Machine connects to each Raspberry Pi through SSH. You have to insert your public SSH key to avoid entering the password of the <code>root</code> user.
 To insert the SSH public key into a remote machine there is a tool called <code>ssh-copy-id</code>. You might have to install it first.</p>
@@ -273,7 +272,7 @@ $ ssh-copy-id root@192.168.1.103
 
 <p>For each of the above commands you have to enter the password <code>hypriot</code> for the user <code>root</code>.</p>
 
-<h2 id="create-docker-machines:89caca6f537cb35a7331e4245fcac0e7">Create Docker Machines</h2>
+<h2 id="create-docker-machines">Create Docker Machines</h2>
 
 <p>For the next step we use our Docker Machine driver to connect to the Raspberry Pi Hypriot devices.
 Our hypriot driver is not yet integrated into the official Docker Machine binary.
@@ -286,7 +285,7 @@ $ chmod +x ./docker-machine
 <p>Download the binary into the current directory and make it executable. You may move it
 into another directory in your PATH to use it from other directories.</p>
 
-<h3 id="create-swarm-token:89caca6f537cb35a7331e4245fcac0e7">Create Swarm Token</h3>
+<h3 id="create-swarm-token">Create Swarm Token</h3>
 
 <p>A Docker Swarm cluster uses a unique Cluster ID which allows the individual swarm agents to find each other.
 We need such a Cluster ID to build our Docker Swarm.</p>
@@ -306,7 +305,7 @@ $ echo $TOKEN
 with <code>docker run --rm hypriot/rpi-swarm create</code>.
 We simply used the shell commands above to skip this chicken or egg problem.</p>
 
-<h3 id="create-the-swarm-master:89caca6f537cb35a7331e4245fcac0e7">Create the Swarm Master</h3>
+<h3 id="create-the-swarm-master">Create the Swarm Master</h3>
 
 <p>Now we create the Docker Swarm Master on the first Raspberry Pi with our generated Cluster ID</p>
 
@@ -333,7 +332,7 @@ Nodes: 1
 
 <p>We now have successfully set up a lonely Swarm Manager. Let&rsquo;s start some more Raspberry Pi&rsquo;s to prevent the Swarm Manager from feeling lonely.</p>
 
-<h3 id="create-the-swarm-agents:89caca6f537cb35a7331e4245fcac0e7">Create the Swarm agents</h3>
+<h3 id="create-the-swarm-agents">Create the Swarm agents</h3>
 
 <p>For the rest of the Raspberry Pi&rsquo;s we also create Docker Machine connections with the same Cluster ID.
 This time we run docker-machine without the <code>--swarm-master</code> option to just spin up a Swarm Agent container in each Pi.</p>
@@ -388,7 +387,6 @@ Have a look at the <a href="https://docs.docker.com/swarm/">official Docker Swar
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Stefan</p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

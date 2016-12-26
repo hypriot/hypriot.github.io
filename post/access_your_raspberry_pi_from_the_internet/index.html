@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,9 +81,9 @@
   <div class="post">
     <h1>Access your Docker-based Raspberry Pi at home from the internet</h1>
     <span class="post-date">Thu, Aug 6, 2015</span>
-    
+    <p>If you followed our guides about <a href="/post/run-your-own-github-like-service-with-docker/">setting up a git service</a> or about <a href="/post/static-website-generation-on-steriods-with-docker/">setting up a blog</a> on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.</p>
 
-<p>If you followed our guides about <a href="/post/run-your-own-github-like-service-with-docker/">setting up a git service</a> or about <a href="/post/static-website-generation-on-steriods-with-docker/">setting up a blog</a> on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.</p>
+<p></p>
 
 <p>First check, which of the following two cases match your network environment:</p>
 
@@ -104,14 +104,13 @@
 
 <p>So, hands on!</p>
 
-<h2 id="step-1-setup-dynamic-dns:fb391bf85a6f0a9f03fa40ecb16bfcab">Step 1: Setup Dynamic DNS</h2>
+<h2 id="step-1-setup-dynamic-dns">Step 1: Setup Dynamic DNS</h2>
 
 <p>A Dynamic DNS provider maps a domain to the IP address of the router at your home. For example, if the Dynamic DNS provider offers the domain <em>my-home.domain-of-provider.org</em> to you, you will reach your home by just typing this domain into your browser - from all over the world. This is useful because your router usually changes its IP address it is accessible from the internet on a daily basis. Thus, you want some automated tracking  of these changes. Moreover it is often easier to remember a domain instead of an IP address. Therefore, first we register a free domain that always routes to your router at home.</p>
 
 <p>As a Dynamic DNS provider, we recommend <a href="https://virtual-ip.org/">virtual-ip.org</a>, which is free and has no commercial purpose.</p>
 
-<p><img src="/images/access_service_from_internet/virtual_ip.png" alt="virtual_ip.png" />
-</p>
+<p><img src="/images/access_service_from_internet/virtual_ip.png" alt="virtual_ip.png" /></p>
 
 <p>Follow these steps:</p>
 
@@ -123,15 +122,13 @@
 
 <p>Next, you need to install <em>virtual-ip.org</em> as Dynamic DNS provider in your router. First you need to <strong>login to your router</strong>. To do so, point your browser to the IP address of your router. If you are not sure about the IP address of your router, try to figure out your own IP address, which is e.g. <code>192.168.0.20</code>. Then, exchange the last number of your own IP address by <code>1</code>. The resulting IP address is often assigned to your router. Point your browser to this IP address and you should see your router&rsquo;s web interface:</p>
 
-<p><img src="/images/access_service_from_internet/fritzbox_login.png" alt="fritzbox_login" />
-</p>
+<p><img src="/images/access_service_from_internet/fritzbox_login.png" alt="fritzbox_login" /></p>
 
 <p>The screenshot is taken of the web interface of a router called &ldquo;Fritz!Box&rdquo;, which we will use to show the steps in the following. If you have a different router, check if your device is listed in the <a href="https://virtual-ip.org/support.aspx">documentation of virtual-ip.org about how to configure Dynamic DNS</a>. If your device is not listed, try to apply the following steps to your device accordingly.</p>
 
 <p>In our case, using the Fritz!Box, you need to go to <strong>Internet</strong> -&gt; <strong>Permit Access</strong> and open the <strong>Dynamic DNS</strong> tab.</p>
 
-<p><img src="/images/access_service_from_internet/fritz_box_dyn-dns-settings.png" alt="fritz_box_dyn-dns-settings.png" />
-</p>
+<p><img src="/images/access_service_from_internet/fritz_box_dyn-dns-settings.png" alt="fritz_box_dyn-dns-settings.png" /></p>
 
 <p>Here, <strong>Activate the checkbox and fill the fields with your credentials of virtual-ip.org</strong>. If the Update URL is not provided in the <em>virtual-ip.org</em> documenation, try the following one. In advance, replace <code>&lt;your-domain&gt;</code> with the domain you just registered at <em>virtual-ip.org</em>:</p>
 
@@ -139,24 +136,21 @@
 
 <p>After you have set the configuration for Dynamic DNS in your router, <strong>login to virtual-ip.org</strong>. Now, the IP address of your router should be displayed in the column <strong>IP Address</strong> next to your new domain as in the following screenshot. You can double check if this really is your IP address with a service like <a href="https://www.whatismyip.com/">whatismyip.com</a>.</p>
 
-<p><img src="/images/access_service_from_internet/virtual_ip_domain-list.png" alt="virtual_ip_domain-list.png" />
-</p>
+<p><img src="/images/access_service_from_internet/virtual_ip_domain-list.png" alt="virtual_ip_domain-list.png" /></p>
 
 <p><strong>Congratulations!</strong> At this point you can reach your router at home by a domain in the internet. However, your requests won&rsquo;t reach the Raspberry Pi yet because the router is not configured to forward requests from your router to the Raspberry Pi. Continue with the following section to configure this.</p>
 
-<h2 id="step-2-configure-port-forwarding-in-your-router:fb391bf85a6f0a9f03fa40ecb16bfcab">Step 2: Configure port forwarding in your router</h2>
+<h2 id="step-2-configure-port-forwarding-in-your-router">Step 2: Configure port forwarding in your router</h2>
 
 <p>In order to forward requests from your router to the Raspberry Pi, you need create <em>port forwarding rules</em> in your router.</p>
 
 <p>Let&rsquo;s create a port forwarding rule for an app on your Raspberry Pi. In the web interface of your router, find the section <em>Port Forwarding</em> or alike. In our case, we go to <strong>Internet</strong> -&gt; <strong>Permit Access</strong>. As shown in the following screenshot, you should see an option to create port forwarding rules. Klick on <strong>New Port Forwading</strong>.</p>
 
-<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-menu-port-forwarding-start.png" alt="fritzbox_port-forwarding-menu-port-forwarding-start.png" />
-</p>
+<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-menu-port-forwarding-start.png" alt="fritzbox_port-forwarding-menu-port-forwarding-start.png" /></p>
 
 <p>Then, the web interface asks for some input. Before we gonna provide this, choose <strong>other applications</strong> in the drop down box. This will expand the input fields as shown in the next screenshot:</p>
 
-<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-rules-input-empty.png" alt="fritzbox_port-forwarding-rules-input-empty.png" />
-</p>
+<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-rules-input-empty.png" alt="fritzbox_port-forwarding-rules-input-empty.png" /></p>
 
 <p>Now refer to the following table to provide the required input. Also have look at the next screenshot which shows an example of the result.</p>
 
@@ -198,17 +192,15 @@
 
 <p>If you are not sure about the port numbers you need to define, checkout the chapter <em>Example: How to create port forwarding rules for Docker containers</em> below. There we will give some introduction of how port forwarding works.</p>
 
-<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-fules-inputs-filled.png" alt="fritzbox_port-forwarding-fules-inputs-filled.png" />
-</p>
+<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-fules-inputs-filled.png" alt="fritzbox_port-forwarding-fules-inputs-filled.png" /></p>
 
 <p>Save. Next you should see a list of all rules that have been created. Make sure that the rule is <strong>Enabled</strong> and that the parameters are correct.</p>
 
-<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-see-config.png" alt="fritzbox_port-forwarding-see-config.png" />
-</p>
+<p><img src="/images/access_service_from_internet/fritzbox_port-forwarding-see-config.png" alt="fritzbox_port-forwarding-see-config.png" /></p>
 
 <p><strong>Congratulations!</strong> You managed to configure everything to reach your Raspberry Pi from the internet. Next, we will see how to bring Docker into this game.</p>
 
-<h2 id="step-3-docker-run-your-containers-with-published-ports:fb391bf85a6f0a9f03fa40ecb16bfcab">Step 3: Docker run your containers with published ports</h2>
+<h2 id="step-3-docker-run-your-containers-with-published-ports">Step 3: Docker run your containers with published ports</h2>
 
 <p>Before we get down to Docker, we will put some technical details about how port forwarding works upfront.</p>
 
@@ -238,10 +230,9 @@
 
 <p>You will see a list of all running Docker containers. In the column <strong>PORTS</strong> you find the ports a container has published. Use the port number in front of the <code>-&gt;</code> sign as port number when creating the forwarding rules your router.</p>
 
-<p><img src="/images/access_service_from_internet/docker-ps_on_rpi_with-marker.png" alt="docker-ps_on_rpi_with-marker.png" />
-</p>
+<p><img src="/images/access_service_from_internet/docker-ps_on_rpi_with-marker.png" alt="docker-ps_on_rpi_with-marker.png" /></p>
 
-<h2 id="finally-test-your-setup:fb391bf85a6f0a9f03fa40ecb16bfcab">Finally test your setup</h2>
+<h2 id="finally-test-your-setup">Finally test your setup</h2>
 
 <p>To test your setup, we recommend to use a simple webserver you make available to the internet. In the terminal on your Raspberry Pi, execute as root:</p>
 
@@ -250,13 +241,11 @@
 
 <p>Then, point your browser to the domain name you registered at the Dynamic DNS service. If everything has been configured properly, a small website from our team should appear.</p>
 
-<p><img src="/images/access_service_from_internet/browser-pi-hypriot-logo.png" alt="browser-pi-hypriot-logo" />
-</p>
+<p><img src="/images/access_service_from_internet/browser-pi-hypriot-logo.png" alt="browser-pi-hypriot-logo" /></p>
 
 <p>We cross our fingers so that it will work for you! Please use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>&ndash; Mathias</p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

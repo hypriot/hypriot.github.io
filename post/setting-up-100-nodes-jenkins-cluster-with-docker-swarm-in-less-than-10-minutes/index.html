@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,9 +81,7 @@
   <div class="post">
     <h1>Setting up 100 nodes Jenkins cluster with Docker Swarm in less than 10 minutes</h1>
     <span class="post-date">Sun, Mar 20, 2016</span>
-    
-
-<p>A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
+    <p>A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
 Not until I logged in and did <code>lscpu</code> did I realize that those servers were &ldquo;just&rdquo; Intel Atom servers.</p>
 
 <p>A bit disappointed I thought what to do now? In my enthusiasm I had spun up 3 servers with 82 GB of RAM and 24 CPUs.
@@ -94,12 +92,13 @@ Still with my thoughts firmly rooted in the <a href="https://blog.docker.com/201
 <p>You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.</p>
 
-<p><img src="/images/100-nodes-jenkins/scaleway.jpg" alt="Docker Swarm" />
-</p>
+<p><img src="/images/100-nodes-jenkins/scaleway.jpg" alt="Docker Swarm" /></p>
+
+<p></p>
 
 <p>There are couple of reasons why it was so simple.</p>
 
-<h2 id="meet-the-new-scaleway-c2-servers:42ed33cefda8a6f74e4e47b0527e1f17">Meet the new Scaleway C2 servers</h2>
+<h2 id="meet-the-new-scaleway-c2-servers">Meet the new Scaleway C2 servers</h2>
 
 <p>The first reason is that I was using the new Scaleway Cloud servers.</p>
 
@@ -284,7 +283,7 @@ I am not going into the details of the tinc configuration now, because I am goin
 
 <p>That we have the name of tinc network device is important for the configuration of the Hypriot Cluster Lab which we gonna use in the next section.</p>
 
-<h2 id="easy-swarming-with-the-hypriot-cluster-lab:42ed33cefda8a6f74e4e47b0527e1f17">Easy swarming with the Hypriot Cluster Lab</h2>
+<h2 id="easy-swarming-with-the-hypriot-cluster-lab">Easy swarming with the Hypriot Cluster Lab</h2>
 
 <p>The <a href="https://github.com/hypriot/cluster-lab">Hypriot Cluster Lab</a> is the second reason why it is so easy to set up our 100 node Jenkins cluster.
 The Cluster Lab helps us to set up a Docker Swarm Cluster without any manual configuration in minutes.</p>
@@ -427,7 +426,7 @@ Name: 4b3fd589316c
 For instance we can see the number of nodes we have as well as the total number of CPUs and RAM we do have in the cluster: 24 CPUs and a whopping amount of 82 GB of RAM.
 That&rsquo;s nice isn&rsquo;t it?</p>
 
-<h2 id="starting-a-100-nodes-jenkins-cluster-with-docker-compose:42ed33cefda8a6f74e4e47b0527e1f17">Starting a 100 Nodes Jenkins cluster with Docker-Compose</h2>
+<h2 id="starting-a-100-nodes-jenkins-cluster-with-docker-compose">Starting a 100 Nodes Jenkins cluster with Docker-Compose</h2>
 
 <p>Ok, now comes the last reason why it is so fast and easy to set up 100 node Jenkins cluster.
 The reason is called <a href="https://docs.docker.com/compose/">Docker-Compose</a> and makes it ridiculous easy to get multi-container applications up and running.</p>
@@ -515,13 +514,11 @@ We can do that with the <code>inspect</code> subcommand of the Scaleway CLI:</p>
 
 <p>You should see a page similar to</p>
 
-<p><img src="/images/100-nodes-jenkins/jenkins01.jpg" alt="Docker Swarm" />
-</p>
+<p><img src="/images/100-nodes-jenkins/jenkins01.jpg" alt="Docker Swarm" /></p>
 
 <p>And at <a href="http://212.47.225.127:8080/computer">http://212.47.225.127:8080/computer</a> we can find all the slave nodes, too:</p>
 
-<p><img src="/images/100-nodes-jenkins/jenkins02.jpg" alt="Docker Swarm" />
-</p>
+<p><img src="/images/100-nodes-jenkins/jenkins02.jpg" alt="Docker Swarm" /></p>
 
 <p>So to wrap it up I can say that the combination of</p>
 
@@ -540,7 +537,6 @@ We can do that with the <code>inspect</code> subcommand of the Scaleway CLI:</p>
 <p>As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.</p>
 
 <p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

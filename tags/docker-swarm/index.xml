@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker Swarm on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/docker-swarm/</link>
+    <link>https://blog.hypriot.com/tags/docker-swarm/index.xml</link>
     <description>Recent content in Docker Swarm on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/docker-swarm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,7 @@
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
-      <description>
-
-&lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
+      <description>&lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
 As we have not yet written how that works I thought I would do a short blog post on how to use Docker Machine with HypriotOS.&lt;/p&gt;
 
 &lt;p&gt;But that&amp;rsquo;s not all. Yesterday when I watched the DockerCon Keynote Livestream of the new Docker orchestration I wondered how Docker Machine and the new orchestration would work together.&lt;/p&gt;
@@ -25,14 +22,15 @@ As we have not yet written how that works I thought I would do a short blog post
 &lt;p&gt;So just for the fun of it I decided I will explore that a bit, too.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;I am using the latest Docker4Mac with Docker on my notebook and three Raspberry Pi&amp;rsquo;s with HypriotOS 0.8 as hosts for my remote Docker Engines.&lt;/p&gt;
 
 &lt;p&gt;The Docker version on the notebook and on the Pi&amp;rsquo;s is 1.12 RC1. Having the lastest Docker 1.12 is not necessary for the part about Docker Machine, but it is for the part about the new Docker orchestration.&lt;/p&gt;
 
-&lt;h2 id=&#34;docker-machine:85b1180b5e32a76ced09e55169dd699d&#34;&gt;Docker Machine&lt;/h2&gt;
+&lt;h2 id=&#34;docker-machine&#34;&gt;Docker Machine&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;Docker Machine&lt;/a&gt; is used to control remote Docker-Engines as if they were locally installed.&lt;/p&gt;
 
@@ -220,7 +218,7 @@ Insecure Registries:
 &lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi2)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;docker-machine-and-docker-swarm-mode:85b1180b5e32a76ced09e55169dd699d&#34;&gt;Docker Machine and Docker Swarm Mode&lt;/h2&gt;
+&lt;h2 id=&#34;docker-machine-and-docker-swarm-mode&#34;&gt;Docker Machine and Docker Swarm Mode&lt;/h2&gt;
 
 &lt;p&gt;In the past Docker Machine allowed to set up a Docker Swarm cluster with a &lt;a href=&#34;https://docs.docker.com/machine/reference/create/&#34;&gt;number of options&lt;/a&gt; for the &amp;lsquo;create&amp;rsquo; subcommand.&lt;/p&gt;
 
@@ -324,15 +322,13 @@ ID                         NAME             SERVICE        IMAGE                
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -352,21 +348,20 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 &lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;If you remember the example from my last post - it consisted of a microservice application made of a frontend and a couple of backend services.
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Less moving parts - that is great!&lt;/p&gt;
 
@@ -616,8 +611,7 @@ I am really looking forward to find out what else there is in store with the new
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -626,9 +620,7 @@ I am really looking forward to find out what else there is in store with the new
       <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
       
       <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
-      <description>
-
-&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
+      <description>&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
 It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.&lt;/p&gt;
 
 &lt;p&gt;Did you realize the important part of the last sentence was &lt;strong&gt;dynamic&lt;/strong&gt;?&lt;/p&gt;
@@ -636,13 +628,14 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 &lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
 &lt;a href=&#34;https://github.com/gliderlabs/registrator&#34;&gt;Registrator&lt;/a&gt;, &lt;a href=&#34;https://www.consul.io/&#34;&gt;Consul&lt;/a&gt; and &lt;a href=&#34;https://github.com/hashicorp/consul-template&#34;&gt;Consul-Template&lt;/a&gt; to achieve the same kind of functionality.&lt;/p&gt;
 
 &lt;p&gt;So let me show you with a simple microservice example how easy it is to get started with Traefik&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following architecture overview we will have a simple HTTP service that answers incoming HTTP requests.&lt;/p&gt;
 
@@ -652,12 +645,11 @@ Traefik serves as a frontend proxy that loadbalances incoming requests to the av
 &lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
 In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
 
-&lt;h2 id=&#34;creating-a-docker-swarm-cluster:eaccea7a352d1344b842649dc78262ad&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
+&lt;h2 id=&#34;creating-a-docker-swarm-cluster&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
 
 &lt;p&gt;One of fastest and easiest ways to get a Docker Swarm cluster running is to use our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt;.&lt;/p&gt;
 
@@ -665,8 +657,7 @@ In this example each backend service will answer with their individual container
 
 &lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;
 
@@ -722,7 +713,7 @@ Congrats!&lt;/p&gt;
 
 &lt;p&gt;As you made it so far the rest will be a piece of a cake!&lt;/p&gt;
 
-&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik:eaccea7a352d1344b842649dc78262ad&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
+&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
 
 &lt;p&gt;Our example microservice application consists of two parts. The Traefik frontend and the WhoAmI application backend.
 For both parts I have prepared images for you that can be pulled from the Docker Hub.&lt;/p&gt;
@@ -878,8 +869,7 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -888,16 +878,15 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
       <pubDate>Fri, 03 Jul 2015 00:30:45 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/</guid>
-      <description>
+      <description>&lt;p&gt;In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.&lt;/p&gt;
 
-&lt;p&gt;In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.&lt;/p&gt;
-
-&lt;p&gt;We have built a little &amp;ldquo;Pi Tower&amp;rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.&lt;/p&gt;
+&lt;p&gt;We have built a little &amp;ldquo;Pi Tower&amp;rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.
+&lt;/p&gt;
 
 &lt;p&gt;As you can see in the pictures below we have mounted the three Raspberry Pi&amp;rsquo;s on top of a 5-port D-Link GBit switch. All four devices get their power from an Anker 4-port USB charger.
 This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only one power plug and one external network connector.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Pi Tower&lt;/div&gt;
 
 
@@ -962,9 +951,9 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -1030,11 +1019,11 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;For your convenience we have prepared a &lt;a href=&#34;http://www.amazon.de/gp/registry/wishlist/BCGEW9W3V8GM/ref=cm_wl_rlist_go_o&#34;&gt;small shopping list&lt;/a&gt; of all the components we used at Amazon.&lt;/p&gt;
 
-&lt;h2 id=&#34;pre-requisites:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Pre-requisites&lt;/h2&gt;
+&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
 
 &lt;p&gt;For this tutorial we will run all steps from a Mac. To do this we need three tools.&lt;/p&gt;
 
@@ -1044,7 +1033,7 @@ This makes a very solid but portable &amp;ldquo;Pi Tower&amp;rdquo; with only on
 &lt;li&gt;The Docker Machine binary with the hypriot driver&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;flash-all-sd-cards:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Flash all SD cards&lt;/h2&gt;
+&lt;h2 id=&#34;flash-all-sd-cards&#34;&gt;Flash all SD cards&lt;/h2&gt;
 
 &lt;p&gt;First we want to install the SD cards with Docker preinstalled.
 On a Mac or Linux machine we can use our little &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash command line tool&lt;/a&gt; to prepare the three SD cards with these simple commands:&lt;/p&gt;
@@ -1056,7 +1045,7 @@ $ flash --hostname pi3 http://downloads.hypriot.com/hypriot-rpi-20150416-201537.
 
 &lt;p&gt;Now insert the SD cards into all Raspberry Pi&amp;rsquo;s and boot them. They will come up with different host names after a while.&lt;/p&gt;
 
-&lt;h2 id=&#34;retrieve-ip-addresses:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Retrieve IP addresses&lt;/h2&gt;
+&lt;h2 id=&#34;retrieve-ip-addresses&#34;&gt;Retrieve IP addresses&lt;/h2&gt;
 
 &lt;p&gt;Our SD card image also starts the avahi-daemon to announce the hostname through mDNS, so each Pi is reachable with &lt;code&gt;pi1.local&lt;/code&gt;, &lt;code&gt;pi2.local&lt;/code&gt; and &lt;code&gt;pi3.local&lt;/code&gt;.
 Docker Machine cannot resolve these hostnames at the moment, so we have to retrieve the IP addresses for the Raspberry Pi&amp;rsquo;s manually.&lt;/p&gt;
@@ -1068,7 +1057,7 @@ $ ping -c 1 pi3.local
 
 &lt;p&gt;For this example we assume that the three IP adresses are &lt;code&gt;192.168.1.101&lt;/code&gt;, &lt;code&gt;102&lt;/code&gt; and &lt;code&gt;103&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;insert-ssh-public-key:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Insert SSH public key&lt;/h2&gt;
+&lt;h2 id=&#34;insert-ssh-public-key&#34;&gt;Insert SSH public key&lt;/h2&gt;
 
 &lt;p&gt;Docker Machine connects to each Raspberry Pi through SSH. You have to insert your public SSH key to avoid entering the password of the &lt;code&gt;root&lt;/code&gt; user.
 To insert the SSH public key into a remote machine there is a tool called &lt;code&gt;ssh-copy-id&lt;/code&gt;. You might have to install it first.&lt;/p&gt;
@@ -1080,7 +1069,7 @@ $ ssh-copy-id root@192.168.1.103
 
 &lt;p&gt;For each of the above commands you have to enter the password &lt;code&gt;hypriot&lt;/code&gt; for the user &lt;code&gt;root&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;create-docker-machines:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create Docker Machines&lt;/h2&gt;
+&lt;h2 id=&#34;create-docker-machines&#34;&gt;Create Docker Machines&lt;/h2&gt;
 
 &lt;p&gt;For the next step we use our Docker Machine driver to connect to the Raspberry Pi Hypriot devices.
 Our hypriot driver is not yet integrated into the official Docker Machine binary.
@@ -1093,7 +1082,7 @@ $ chmod +x ./docker-machine
 &lt;p&gt;Download the binary into the current directory and make it executable. You may move it
 into another directory in your PATH to use it from other directories.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-swarm-token:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create Swarm Token&lt;/h3&gt;
+&lt;h3 id=&#34;create-swarm-token&#34;&gt;Create Swarm Token&lt;/h3&gt;
 
 &lt;p&gt;A Docker Swarm cluster uses a unique Cluster ID which allows the individual swarm agents to find each other.
 We need such a Cluster ID to build our Docker Swarm.&lt;/p&gt;
@@ -1113,7 +1102,7 @@ $ echo $TOKEN
 with &lt;code&gt;docker run --rm hypriot/rpi-swarm create&lt;/code&gt;.
 We simply used the shell commands above to skip this chicken or egg problem.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-the-swarm-master:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create the Swarm Master&lt;/h3&gt;
+&lt;h3 id=&#34;create-the-swarm-master&#34;&gt;Create the Swarm Master&lt;/h3&gt;
 
 &lt;p&gt;Now we create the Docker Swarm Master on the first Raspberry Pi with our generated Cluster ID&lt;/p&gt;
 
@@ -1140,7 +1129,7 @@ Nodes: 1
 
 &lt;p&gt;We now have successfully set up a lonely Swarm Manager. Let&amp;rsquo;s start some more Raspberry Pi&amp;rsquo;s to prevent the Swarm Manager from feeling lonely.&lt;/p&gt;
 
-&lt;h3 id=&#34;create-the-swarm-agents:89caca6f537cb35a7331e4245fcac0e7&#34;&gt;Create the Swarm agents&lt;/h3&gt;
+&lt;h3 id=&#34;create-the-swarm-agents&#34;&gt;Create the Swarm agents&lt;/h3&gt;
 
 &lt;p&gt;For the rest of the Raspberry Pi&amp;rsquo;s we also create Docker Machine connections with the same Cluster ID.
 This time we run docker-machine without the &lt;code&gt;--swarm-master&lt;/code&gt; option to just spin up a Swarm Agent container in each Pi.&lt;/p&gt;
@@ -1194,8 +1183,7 @@ Have a look at the &lt;a href=&#34;https://docs.docker.com/swarm/&#34;&gt;offici
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Stefan&lt;/p&gt;
-</description>
+&lt;p&gt;Stefan&lt;/p&gt;</description>
     </item>
     
   </channel>

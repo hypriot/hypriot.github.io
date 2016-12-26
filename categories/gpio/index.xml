@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gpio on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/gpio/</link>
+    <link>https://blog.hypriot.com/categories/gpio/index.xml</link>
     <description>Recent content in Gpio on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Mar 2016 17:31:10 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/gpio/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,14 +14,13 @@
       <pubDate>Sun, 13 Mar 2016 17:31:10 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/traffic-light/</guid>
-      <description>
+      <description>&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
 
-&lt;p&gt;My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/traffic-light.png&#34; alt=&#34;Traffic light wiring&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;the-hardware:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The hardware&lt;/h2&gt;
+&lt;h2 id=&#34;the-hardware&#34;&gt;The hardware&lt;/h2&gt;
 
 &lt;p&gt;First we have to build the curcuit. To follow this tutorial you need these parts&lt;/p&gt;
 
@@ -39,27 +37,27 @@
 &lt;li&gt;cables&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;the-software:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;The software&lt;/h2&gt;
+&lt;h2 id=&#34;the-software&#34;&gt;The software&lt;/h2&gt;
 
 &lt;p&gt;The application is written in Python and it is based on the blog post &lt;a href=&#34;http://www.bobrathbone.com/pi_traffic_led.htm&#34;&gt;Raspberry PI Traffic Lights&lt;/a&gt; by Bob Rathbone. I have added some more LEDs and changed it to our local traffic light scheme. You can find the full source code &lt;a href=&#34;https://github.com/StefanScherer/docker-rpi-traffic-light&#34;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;defining-the-gpio-pins:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Defining the GPIO pins&lt;/h3&gt;
+&lt;h3 id=&#34;defining-the-gpio-pins&#34;&gt;Defining the GPIO pins&lt;/h3&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=16:30&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;initializing-the-gpio-ports:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Initializing the GPIO ports&lt;/h3&gt;
+&lt;h3 id=&#34;initializing-the-gpio-ports&#34;&gt;Initializing the GPIO ports&lt;/h3&gt;
 
 &lt;p&gt;At the beginning of the app we initialize the GPIO ports and turn off all LEDs. They may turned on from aborting a previous run.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=31:48&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;main-loop:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Main loop&lt;/h3&gt;
+&lt;h3 id=&#34;main-loop&#34;&gt;Main loop&lt;/h3&gt;
 
 &lt;p&gt;The main loop begins with green lights for the cars. In this state the button for the pedestrian crossing is checked.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/pedestrian-crossing.py?slice=49:64&amp;footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h3 id=&#34;pedestrian-crossing:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pedestrian crossing&lt;/h3&gt;
+&lt;h3 id=&#34;pedestrian-crossing&#34;&gt;Pedestrian crossing&lt;/h3&gt;
 
 &lt;p&gt;After the button has been pressed the next code block just changes the LEDs for the cars to red, green for pedestrians and back again.&lt;/p&gt;
 
@@ -67,14 +65,13 @@
 
 &lt;p&gt;That completes the whole app. I could explain how a traffic light works and my daughter could play with it for a while. This could be the whole story, but as I&amp;rsquo;ve deployed my app with Docker there is another story behind the story.&lt;/p&gt;
 
-&lt;h1 id=&#34;dockerize-all-the-things:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerize all the things&lt;/h1&gt;
+&lt;h1 id=&#34;dockerize-all-the-things&#34;&gt;Dockerize all the things&lt;/h1&gt;
 
 &lt;p&gt;I want to save my work and make it reproducible for me and others. So beside putting the source code into a GitHub repo I also dockerized the application development and deployment. With the help of Docker and the Docker tools it is very easy to develop from eg. a MacBook.&lt;/p&gt;
 
 &lt;p&gt;Even after months and other projects it is easy to spin up that application again as there is a standardized way. There also is no need to backup the SD image and write down what you had to install on your Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_development.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the diagram your Notebook should have the following tools installed.&lt;/p&gt;
 
@@ -87,33 +84,33 @@
 
 &lt;p&gt;I don&amp;rsquo;t get into the details on how to connect your Notebook with the Docker Engine on the Raspberry Pi. This is part of a &lt;a href=&#34;https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/&#34;&gt;previous blog post&lt;/a&gt; how to use docker-machine for that.&lt;/p&gt;
 
-&lt;h2 id=&#34;dockerfile:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Dockerfile&lt;/h2&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 
 &lt;p&gt;To build the Docker image we need a Dockerfile. We use a Python base image and install the needed tools and dependencies. Then we add the application source code and define the command to execute.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/Dockerfile?footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h2 id=&#34;docker-compose-yml:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;docker-compose.yml&lt;/h2&gt;
+&lt;h2 id=&#34;docker-compose-yml&#34;&gt;docker-compose.yml&lt;/h2&gt;
 
 &lt;p&gt;Docker Compose can be used to simplify running the container. With the docker-compose.yml we can document all the parameters needed to start the container. The file is versioned in Git so we do not forget how to run this container.&lt;/p&gt;
 
 &lt;script src=&#34;https://gist-it.appspot.com/github/StefanScherer/docker-rpi-traffic-light/raw/master/docker-compose.yml?footer=minimal&#34;&gt;&lt;/script&gt;
 
-&lt;h2 id=&#34;developing-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Developing the app&lt;/h2&gt;
+&lt;h2 id=&#34;developing-the-app&#34;&gt;Developing the app&lt;/h2&gt;
 
 &lt;p&gt;When you develop the app or want to modify the source code the Docker image has to be rebuilt with the new code. To do this just run this command&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker-compose build
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;running-the-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running the app&lt;/h2&gt;
+&lt;h2 id=&#34;running-the-app&#34;&gt;Running the app&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;docker-compose up
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If you want to stop the app again, just press &lt;code&gt;CTRL+C&lt;/code&gt;. You may have to press it twice to kill the app.&lt;/p&gt;
 
-&lt;h2 id=&#34;running-permanently:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Running permanently&lt;/h2&gt;
+&lt;h2 id=&#34;running-permanently&#34;&gt;Running permanently&lt;/h2&gt;
 
 &lt;p&gt;You can run the application automatically by adding &lt;code&gt;-d&lt;/code&gt;. The docker-compose.yml also sets the restart policy to always, so the container is starting right after booting the Raspberry Pi. This is very useful for such hardware projects which should start automatically after turning on your Pi.&lt;/p&gt;
 
@@ -125,14 +122,13 @@
 &lt;pre&gt;&lt;code&gt;docker-compose kill
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;sharing-the-dockerized-app:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing the dockerized app&lt;/h2&gt;
+&lt;h2 id=&#34;sharing-the-dockerized-app&#34;&gt;Sharing the dockerized app&lt;/h2&gt;
 
 &lt;p&gt;The advantage of using Docker is to easily share the dockerized app with others. As the developer of an app you just push the Docker image with to the Docker Hub. Others can pull this Docker image from there and run it without to know which tools and dependencies to install.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traffic-light/mac_rpi_docker_push.png&#34; alt=&#34;Developing for RPi from a Mac&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;pushing-the-docker-image:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Pushing the Docker image&lt;/h3&gt;
+&lt;h3 id=&#34;pushing-the-docker-image&#34;&gt;Pushing the Docker image&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;docker images
 docker tag dockerrpitrafficlight_trafficlight stefanscherer/rpi-traffic-light
@@ -141,7 +137,7 @@ docker push stefanscherer/rpi-traffic-light
 
 &lt;p&gt;The Docker image is send sent to the Docker Hub. My example is available as image &lt;a href=&#34;https://hub.docker.com/r/stefanscherer/rpi-traffic-light/&#34;&gt;stefanscherer/rpi-traffic-light&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;sharing-with-others:36e2dfd970af1a18eb3decac8ff94950&#34;&gt;Sharing with Others&lt;/h2&gt;
+&lt;h2 id=&#34;sharing-with-others&#34;&gt;Sharing with Others&lt;/h2&gt;
 
 &lt;p&gt;If someone else wants to build the traffic light and run your application, she has to use this little modified docker-compose.yml to pull the published Docker image instead of building it herself.&lt;/p&gt;
 
@@ -170,7 +166,7 @@ services:
 
 &lt;p&gt;In this way any app can be published in the same way, regardless the programming language used.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Building a traffic light with Raspberry Pi 3&lt;/div&gt;
 
 
@@ -280,9 +276,9 @@ services:
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -348,12 +344,11 @@ services:
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -362,28 +357,27 @@ services:
       <pubDate>Tue, 14 Apr 2015 13:25:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/drive-neopixels-in-docker/</guid>
-      <description>
+      <description>&lt;p&gt;In our &lt;a href=&#34;https://blog.hypriot.com/post/lets-get-physical/&#34;&gt;last blog post&lt;/a&gt; we showed you how to interact with the GPIO ports and how to turn on one LED. Now for some more magic lights we create a little Node.js application that drives a NeoPixel LED strip from Adafruit in a Docker container.&lt;/p&gt;
 
-&lt;p&gt;In our &lt;a href=&#34;https://blog.hypriot.com/post/lets-get-physical/&#34;&gt;last blog post&lt;/a&gt; we showed you how to interact with the GPIO ports and how to turn on one LED. Now for some more magic lights we create a little Node.js application that drives a NeoPixel LED strip from Adafruit in a Docker container.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Thanks to the latest improvements now both Raspberry Pi B/B+ and the new Pi 2 B can  drive the NeoPixel LED strips from Adafruit with just a level shifter. So it&amp;rsquo;s time to put this into Docker for easier deployment.&lt;/p&gt;
 
 &lt;p&gt;The NeoPixel (or WS2812) LED&amp;rsquo;s are programmable RGB LED&amp;rsquo;s that receive their RGB value with a single serial wire.&lt;/p&gt;
 
-&lt;h2 id=&#34;wiring:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Wiring&lt;/h2&gt;
+&lt;h2 id=&#34;wiring&#34;&gt;Wiring&lt;/h2&gt;
 
 &lt;p&gt;Let&amp;rsquo;s have a look at the wiring first. The Raspberry Pi can create the serial signal on GPIO Pin 18 trough PWM/DMA. But the signal level has to be shifted from 3.3V to 5V for the LED strip. I have used a Adafruit Level Shifter Breakout Board, but a 74AHCT125 level converter could be used as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/rpi-levelshifter-neopixel_Steckplatine.png&#34; alt=&#34;wiring diagram&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/rpi-levelshifter-neopixel_Steckplatine.png&#34; alt=&#34;wiring diagram&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Do not power the NeoPixels directly from your Raspberry Pi as the 5V output could not source enough current to light many pixels. This could damage your Raspberry Pi!&lt;/strong&gt; For my tests with only eight pixels it is ok to use the 5V from the Pi, but be warned!&lt;/p&gt;
 
-&lt;h2 id=&#34;the-code:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;The code&lt;/h2&gt;
+&lt;h2 id=&#34;the-code&#34;&gt;The code&lt;/h2&gt;
 
 &lt;p&gt;First we create the &lt;code&gt;package.json&lt;/code&gt; file with a dependency to the &lt;code&gt;rpi-ws281x-native&lt;/code&gt; Node.js module that supports all Raspberry Pi versions to drive the NeoPixels.&lt;/p&gt;
 
-&lt;h3 id=&#34;package-json:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;package.json&lt;/h3&gt;
+&lt;h3 id=&#34;package-json&#34;&gt;package.json&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
   &amp;quot;name&amp;quot;: &amp;quot;rpi-node-neopixel-example&amp;quot;,
@@ -397,7 +391,7 @@ services:
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;server-js:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;server.js&lt;/h3&gt;
+&lt;h3 id=&#34;server-js&#34;&gt;server.js&lt;/h3&gt;
 
 &lt;p&gt;Now we implement a Node.js sample that does some color magic. We have reduced the brightness of the LED&amp;rsquo;s a little bit.&lt;/p&gt;
 
@@ -466,21 +460,21 @@ function color(r, g, b) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;dockerfile:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Dockerfile&lt;/h3&gt;
+&lt;h3 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h3&gt;
 
 &lt;p&gt;The &lt;code&gt;Dockerfile&lt;/code&gt; is very simple here as we use the &lt;code&gt;onbuild&lt;/code&gt; version of our &lt;a href=&#34;https://registry.hub.docker.com/u/hypriot/rpi-iojs/&#34;&gt;hypriot/rpi-iojs&lt;/a&gt; Docker image.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;FROM hypriot/rpi-iojs:onbuild
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;build-the-docker-image:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Build the Docker image&lt;/h2&gt;
+&lt;h2 id=&#34;build-the-docker-image&#34;&gt;Build the Docker image&lt;/h2&gt;
 
 &lt;p&gt;We now have all parts together and are ready to build the docker image with this command&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker build -t node-neopixel .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;run-the-docker-container:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Run the Docker container&lt;/h2&gt;
+&lt;h2 id=&#34;run-the-docker-container&#34;&gt;Run the Docker container&lt;/h2&gt;
 
 &lt;p&gt;Now it is time to turn on the NeoPixel LED&amp;rsquo;s by running the container&lt;/p&gt;
 
@@ -492,19 +486,17 @@ function color(r, g, b) {
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --privileged -d node-neopixel
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/neopixel640.gif&#34; alt=&#34;Let there be lights!&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/neopixel/neopixel640.gif&#34; alt=&#34;Let there be lights!&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You can find the complete Node.js example on GitHub at &lt;a href=&#34;https://github.com/hypriot/rpi-node-neopixel-example&#34;&gt;https://github.com/hypriot/rpi-node-neopixel-example&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion:463cf4b0db949da92d2a7ea79ab0611f&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Now you are ready to start your NeoPixel project on your Raspberry Pi and deploy it with Docker.&lt;/p&gt;
 
 &lt;p&gt;To learn more about NeoPixels head over to the excellent &lt;a href=&#34;https://learn.adafruit.com/adafruit-neopixel-uberguide/overview&#34;&gt;Adafruit&amp;rsquo;s NeoPixel Überguide&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-</description>
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -513,9 +505,9 @@ function color(r, g, b) {
       <pubDate>Thu, 09 Apr 2015 16:49:33 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/lets-get-physical/</guid>
-      <description>
+      <description>&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&amp;rsquo;s see and get physical&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;To keep the tutorial simple we will use the binary from the &lt;a href=&#34;http://wiringpi.com&#34;&gt;wiringPi&lt;/a&gt; project within a Docker container. This command line tool can be used to read and write the GPIO (General Purpose Input/Output) pins of the Raspberry Pi.&lt;/p&gt;
 
@@ -524,23 +516,21 @@ function color(r, g, b) {
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull hypriot/rpi-gpio
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;turn-an-led-on-and-off:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn an LED on and off&lt;/h2&gt;
+&lt;h2 id=&#34;turn-an-led-on-and-off&#34;&gt;Turn an LED on and off&lt;/h2&gt;
 
 &lt;p&gt;In a first little example we just want to turn an LED on and off. You need only a few components to try it yourself.&lt;/p&gt;
 
 &lt;p&gt;See the wiring diagram on how to connect the LED and the 220Ω resistor to your Raspberry Pi for the following examples. We use the 11th (BCM GPIO 17 / wiringPi Pin 0) and 9th (Ground) Pin of the Raspberry Pi B/B+ or Pi 2 B.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Steckplatine.svg&#34; alt=&#34;wiringPi LED Pin 0&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And here is the circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-LED-Pin0_Schaltplan.svg&#34; alt=&#34;wiringPi LED Pin 0 circuit&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can use these commands:&lt;/p&gt;
 
-&lt;h3 id=&#34;get-status-of-all-gpios:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
+&lt;h3 id=&#34;get-status-of-all-gpios&#34;&gt;Get status of all GPIOs&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio readall
 &lt;/code&gt;&lt;/pre&gt;
@@ -575,7 +565,7 @@ function color(r, g, b) {
  +-----+-----+---------+------+---+---Pi 2---+---+------+---------+-----+-----+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;set-mode-to-output:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Set mode to output&lt;/h3&gt;
+&lt;h3 id=&#34;set-mode-to-output&#34;&gt;Set mode to output&lt;/h3&gt;
 
 &lt;p&gt;To turn on LED&amp;rsquo;s or switch other outputs you have to set the corresponding GPIO pin to output mode with&lt;/p&gt;
 
@@ -584,36 +574,34 @@ function color(r, g, b) {
 
 &lt;p&gt;This has to be done only once after reboot.&lt;/p&gt;
 
-&lt;h3 id=&#34;turn-on-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn on the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-on-the-led&#34;&gt;Turn on the LED&lt;/h3&gt;
 
 &lt;p&gt;Now we can turn on the LED with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 on
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;turn-off-the-led:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Turn off the LED&lt;/h3&gt;
+&lt;h3 id=&#34;turn-off-the-led&#34;&gt;Turn off the LED&lt;/h3&gt;
 
 &lt;p&gt;or off with&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run --rm --cap-add SYS_RAWIO --device /dev/mem hypriot/rpi-gpio write 0 off
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;read-a-button-from-gpio:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read a button from GPIO&lt;/h2&gt;
+&lt;h2 id=&#34;read-a-button-from-gpio&#34;&gt;Read a button from GPIO&lt;/h2&gt;
 
 &lt;p&gt;In another example we attach a button to the Raspberry Pi and read the state from the 12th pin (BCM GPIO 18, wiringPi Pin 1).
 The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor is connected to 9th Pin (Ground).&lt;/p&gt;
 
 &lt;p&gt;The wiring diagram shows how to connect all parts. You need a push button, a 1kΩ resistor for pull down and a 10kΩ resistor to connect to the Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Steckplatine.svg&#34; alt=&#34;wiringPi Button on Pin 1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And here is the corresponding circuit diagram:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/gpio/wiringPi-Button-Pin1_Schaltplan.svg&#34; alt=&#34;wiringPi Button on Pin 1 circuit&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;read-button-state:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Read button state&lt;/h3&gt;
+&lt;h3 id=&#34;read-button-state&#34;&gt;Read button state&lt;/h3&gt;
 
 &lt;p&gt;To get the status of just the 1th GPIO use this command&lt;/p&gt;
 
@@ -623,7 +611,7 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;The command returns &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; as a result of the input state.&lt;/p&gt;
 
-&lt;h2 id=&#34;conclusion:ea2b0cf3ad09b4d9c9d4cc88763964bd&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;In this blog post we showed you how easily you can use the GPIO ports of the Raspberry Pi from a Docker container with a simple command line tool.&lt;/p&gt;
 
@@ -631,8 +619,7 @@ The button is also connected to the 2nd Pin (3.3 V) and the pull down resistor i
 
 &lt;p&gt;If you want to learn more about the GPIO pins you can use the excellent &lt;a href=&#34;http://pi.gadgetoid.com/pinout&#34;&gt;interactive Raspberry Pi Pinout guide&lt;/a&gt; from Gadgetoid.&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;
-</description>
+&lt;p&gt;As always use the comments below to give us feedback and share the blog post on Twitter or Facebook.&lt;/p&gt;</description>
     </item>
     
   </channel>

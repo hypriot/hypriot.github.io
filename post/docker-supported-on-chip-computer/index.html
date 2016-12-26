@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,27 +81,24 @@
   <div class="post">
     <h1>Docker is supported on the $9 C.H.I.P. computer</h1>
     <span class="post-date">Sun, Dec 11, 2016</span>
-    
-
-<p>I guess you&rsquo;re already knowing, one of the cheapest but powerful ARM boards is the $9 C.H.I.P. computer from Next Thing Co. <a href="https://twitter.com/nextthingco">@NextThingCo</a>. It has an ARMv7 1GHz CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
-<img src="/images/install-docker-on-chip-computer/chip-photo2.jpg" alt="chip-photo" />
-</p>
+    <p>I guess you&rsquo;re already knowing, one of the cheapest but powerful ARM boards is the $9 C.H.I.P. computer from Next Thing Co. <a href="https://twitter.com/nextthingco">@NextThingCo</a>. It has an ARMv7 1GHz CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
+<img src="/images/install-docker-on-chip-computer/chip-photo2.jpg" alt="chip-photo" /></p>
 
 <p>Some time ago I wrote a detailed blog post about how to <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">Install Docker 1.12 on the $9 C.H.I.P. computer</a> with the help of a custom Linux kernel which I built from source for this purpose and included all the necessary kernel modules which are required to run Docker. As an outlook I mentioned that one of the kernel developers from <a href="https://twitter.com/nextthingco">@NextThingCo</a>, namely Wynter Woods <a href="https://twitter.com/zerotri">@zerotri</a>, is working to support Docker officially.</p>
 
 <p>Kernel development and testing takes time and finally here it is!<br>
 <strong>Docker is running on the C.H.I.P. with their latest standard kernel!</strong></p>
 
-<p><img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" />
-</p>
+<p>
+<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" /></p>
 
-<h3 id="short-overview:db97de66cf60c20e1811a4239cd5d3d4">Short overview</h3>
+<h3 id="short-overview">Short overview</h3>
 
 <p>With the new Docker-enabled Linux kernel for the C.H.I.P. it&rsquo;s really easy to install and use Docker on these tiny cute ARM devices. Basically you just have to update/upgrade to the latest software packages through the standard <code>apt</code> package management commands, have to install Docker and you&rsquo;re good to go.</p>
 
 <p>As I&rsquo;ve already covered all these steps in detail in my post <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">Install Docker 1.12 on the $9 C.H.I.P. computer</a>, we can take a shortcut and I&rsquo;m explaining only the new and shorter steps.</p>
 
-<h3 id="necessary-steps-to-install-docker:db97de66cf60c20e1811a4239cd5d3d4">Necessary steps to install Docker</h3>
+<h3 id="necessary-steps-to-install-docker">Necessary steps to install Docker</h3>
 
 <ol>
 <li>Flash the latest available firmware (see <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">last post</a>)</li>
@@ -114,7 +111,7 @@
 <li>Run your first Docker Container on the C.H.I.P.</li>
 </ol>
 
-<h4 id="step-5-checking-the-os-and-linux-kernel-version:db97de66cf60c20e1811a4239cd5d3d4">Step 5: Checking the OS and Linux kernel version</h4>
+<h4 id="step-5-checking-the-os-and-linux-kernel-version">Step 5: Checking the OS and Linux kernel version</h4>
 
 <p>Here I&rsquo;ve flashed the C.H.I.P. with the latest available firmware</p>
 
@@ -124,7 +121,7 @@ Linux chip 4.4.13-ntc-mlc #1 SMP Thu Nov 3 01:28:54 UTC 2016 armv7l GNU/Linux
 
 <p>and we can see it&rsquo;s running a Linux kernel version <code>4.4.13-ntc-mlc</code> which is compiled at <code>Thu Nov 3 01:28:54 UTC 2016</code>. If you&rsquo;ve flashed your device weeks or months before, you could maybe see a different and older kernel version.</p>
 
-<h4 id="step-6-upgrade-the-linux-kernel-and-operating-system:db97de66cf60c20e1811a4239cd5d3d4">Step 6: Upgrade the Linux kernel and operating system</h4>
+<h4 id="step-6-upgrade-the-linux-kernel-and-operating-system">Step 6: Upgrade the Linux kernel and operating system</h4>
 
 <p>The new Docker-enabled Linux kernel for the C.H.I.P. computer is already available in the standard APT package repository, but it&rsquo;s not yet included in the latest firmware you can flash with the <a href="http://flash.getchip.com/">C.H.I.P. Flasher</a>.</p>
 
@@ -163,7 +160,7 @@ Linux chip 4.4.13-ntc-mlc #1 SMP Tue Dec 6 21:38:00 UTC 2016 armv7l GNU/Linux
 
 <p>the new Linux kernel has the same version, but a newer build time from <code>Tue Dec 6 21:38:00 UTC 2016</code>.</p>
 
-<h4 id="step-6-install-the-docker-engine-the-official-way:db97de66cf60c20e1811a4239cd5d3d4">Step 6: Install the Docker Engine the official way</h4>
+<h4 id="step-6-install-the-docker-engine-the-official-way">Step 6: Install the Docker Engine the official way</h4>
 
 <p>To install Docker the official way is quite easy today because we can use the APT packages and install scripts directly provided by the <a href="https://github.com/docker/docker">Docker project</a>. And Debian for ARMv7 is one of the officially supported OS.</p>
 
@@ -262,7 +259,7 @@ Insecure Registries:
 
 <p>Finally we could see, the latest Docker Engine v1.12.2 for Debian/ARMv7 is now installed and is successfully running.</p>
 
-<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p:db97de66cf60c20e1811a4239cd5d3d4">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
+<h4 id="step-8-run-your-first-docker-container-on-the-c-h-i-p">Step 8: Run your first Docker Container on the C.H.I.P.</h4>
 
 <p>As a last step we&rsquo;d like to start a first Docker container, a small web server.</p>
 
@@ -283,10 +280,9 @@ fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
 <pre><code>open http://192.168.2.112
 </code></pre>
 
-<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" />
-</p>
+<p><img src="/images/install-docker-on-chip-computer/first-container-on-chip.jpg" alt="first-container-on-chip" /></p>
 
-<h3 id="using-latest-rc-of-docker-engine:db97de66cf60c20e1811a4239cd5d3d4">Using latest RC of Docker Engine</h3>
+<h3 id="using-latest-rc-of-docker-engine">Using latest RC of Docker Engine</h3>
 
 <p>If you&rsquo;d like to get the latest Docker Engine for testing, like release candidates, you can install it pretty easily with</p>
 
@@ -324,7 +320,7 @@ Server:
  Experimental: false
 </code></pre>
 
-<h3 id="tl-dr-install-docker-on-the-c-h-i-p-computer:db97de66cf60c20e1811a4239cd5d3d4">TL;DR - Install Docker on the C.H.I.P. computer</h3>
+<h3 id="tl-dr-install-docker-on-the-c-h-i-p-computer">TL;DR - Install Docker on the C.H.I.P. computer</h3>
 
 <p>For all the impatient users, these are the minimal steps to install the latest Linux kernel and the latest Docker Engine on the C.H.I.P. computer.</p>
 
@@ -336,20 +332,19 @@ curl -sSL https://get.docker.com | sh
 
 <p>DONE !!!!</p>
 
-<h3 id="acknowledgments:db97de66cf60c20e1811a4239cd5d3d4">Acknowledgments</h3>
+<h3 id="acknowledgments">Acknowledgments</h3>
 
 <p>Again, I like to thank Wynter Woods <a href="https://twitter.com/zerotri">@zerotri</a> from <a href="https://twitter.com/nextthingco">@NextThingCo</a> for his efforts and hard work to include all the Linux kernel changes necessary to run the Docker Engine pretty slick on the C.H.I.P. computer. It&rsquo;s so great to see when all the changes will be accepted and implemented in the upstream version, so everybody can use the new features without spending too much time.</p>
 
 <p>That&rsquo;s the important point to work in opensource, contributing back so that all users benefit from the results!</p>
 
-<h3 id="feedback-please:db97de66cf60c20e1811a4239cd5d3d4">Feedback, please</h3>
+<h3 id="feedback-please">Feedback, please</h3>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

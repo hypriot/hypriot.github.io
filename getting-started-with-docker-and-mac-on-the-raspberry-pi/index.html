@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -103,7 +103,7 @@ In our case the software we wanna use is Docker.</p>
 To use the image you first have to download and transfer it to your SD card. Transferring an image to an SD card is often referred to as <em>flashing</em>.
 Afterwards you just have to insert the flashed SD card into your Raspberry Pi and start it up.</p>
 
-<h3 id="download-the-hypriot-docker-sd-card-image:ca4b4a19668a2ec6a58c5af490c910c5">Download the Hypriot Docker SD card image</h3>
+<h3 id="download-the-hypriot-docker-sd-card-image">Download the Hypriot Docker SD card image</h3>
 
 <p>Download our latest SD card image from the <a href="/downloads/">download page</a>.</p>
 
@@ -122,7 +122,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 <p>After the file is unzipped you will have a new file with an <strong>.img</strong> extension.
 In the next step we will flash this file onto your SD card.</p>
 
-<h3 id="flash-the-downloaded-image-to-your-sd-card:ca4b4a19668a2ec6a58c5af490c910c5">Flash the downloaded image to your SD card</h3>
+<h3 id="flash-the-downloaded-image-to-your-sd-card">Flash the downloaded image to your SD card</h3>
 
 <p>First put your SD card into the computer. Then in the terminal type</p>
 
@@ -131,8 +131,7 @@ In the next step we will flash this file onto your SD card.</p>
 
 <p>You should see a list of all your disks like this:</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/diskutil-list.png" alt="disktuil-list" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/diskutil-list.png" alt="disktuil-list" /></p>
 
 <p>Now identify the SD card. Look at the fourth column which shows the size of the devices of your workstation.
 One item in the list should have a size that is very close to the size of your SD card.
@@ -146,8 +145,7 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 
 <p>As a result you should see</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/unmount.png" alt="Screenshot unmounted" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/unmount.png" alt="Screenshot unmounted" /></p>
 
 <p>Now we are ready to flash the SD card. We are going to use the <code>dd</code> command for this.</p>
 
@@ -165,12 +163,11 @@ Here the identifier is <code>/dev/disk5</code>.</p>
 Depending on your hardware and the performance of your SD card it can take up to five minutes to flash the image.
 When the <code>dd</code> is finished, you should get an output like this:</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/dd-success.png" alt="after-dd-success" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/dd-success.png" alt="after-dd-success" /></p>
 
 <p>Finally unmount the SD card again in the same way as before.</p>
 
-<h3 id="start-your-raspberry-pi-with-the-sd-card:ca4b4a19668a2ec6a58c5af490c910c5">Start your Raspberry Pi with the SD card</h3>
+<h3 id="start-your-raspberry-pi-with-the-sd-card">Start your Raspberry Pi with the SD card</h3>
 
 <p>Boot your Raspberry Pi by</p>
 
@@ -183,7 +180,7 @@ When the <code>dd</code> is finished, you should get an output like this:</p>
 <p>After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.</p>
 
-<h3 id="ensure-everything-works:ca4b4a19668a2ec6a58c5af490c910c5">Ensure everything works</h3>
+<h3 id="ensure-everything-works">Ensure everything works</h3>
 
 <p>To check if Docker is actually running we need to log into the Raspberry Pi.</p>
 
@@ -200,8 +197,7 @@ One way is to use the <code>nmap</code> command.</p>
 
 <p>As you can see in the following screenshot our IP address is <code>192.168.0.101</code>.</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/own-ip-address.png" alt="own-ip-address" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/own-ip-address.png" alt="own-ip-address" /></p>
 
 <p>Then replace the IP address in front of the <code>/24</code> with yours and type</p>
 
@@ -224,8 +220,7 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>If everything went fine you should now see the <em>HypriotOS</em> command line prompt waiting for your input.</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png" alt="hypriot-ssh-prompt-after-login" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/hypriot-ssh-prompt-after-login.png" alt="hypriot-ssh-prompt-after-login" /></p>
 
 <p>Finally check if the Docker Service is running by typing</p>
 
@@ -234,8 +229,7 @@ Replace the IP address after the <code>@</code> with the one of your Raspberry P
 
 <p>The output of the <code>docker info</code> command should look similar to:</p>
 
-<p><img src="/images/blog_post_getting-started/mac-screenies/docker-info.png" alt="docker-info" />
-</p>
+<p><img src="/images/blog_post_getting-started/mac-screenies/docker-info.png" alt="docker-info" /></p>
 
 <p><strong>Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!</strong> :)</p>
 

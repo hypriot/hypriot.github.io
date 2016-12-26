@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,13 +81,13 @@
   <div class="post">
     <h1>Static Website Generation on Steriods with Docker</h1>
     <span class="post-date">Tue, Jun 30, 2015</span>
-    
-
-<p>Within the blogging community static site generators have been an exceptional hot topic in the last couple of years (at least before Docker appeared).
+    <p>Within the blogging community static site generators have been an exceptional hot topic in the last couple of years (at least before Docker appeared).
 There are even <a href="https://www.staticgen.com/">whole projects</a> dedicated to giving an overview of the most popular static site generators.</p>
 
 <p>One of the first static site generators that got really popular was <a href="https://github.com/jekyll/jekyll/commits/master">Jekyll</a>, which was conceived by <a href="http://tom.preston-werner.com/">Tom Preston-Werner</a> of Github fame.
 Typically static site generators transform input (e.g. text in a lightweight markup language such as Markdown or reStructuredText) to static HTML with the help of templates and filters.</p>
+
+<p></p>
 
 <p>There are several advantages to this approach - to name just a few:</p>
 
@@ -103,13 +103,12 @@ Typically static site generators transform input (e.g. text in a lightweight mar
 <p>Out of these static site generators <a href="http://gohugo.io/">Hugo</a> is our favorite. Hugo is written in <a href="http://golang.org/">Go</a> and is focused on speed and performance.
 We are using Hugo to generate this very blog&hellip; :)</p>
 
-<p><img src="/images/hugo/hugo-logo.png" alt="hugo-logo" />
-</p>
+<p><img src="/images/hugo/hugo-logo.png" alt="hugo-logo" /></p>
 
 <p>What we like most is that Hugo is basically just one binary. That makes it really easy to use Hugo in a Docker container.
 And - surprise - that is exactly what we did. You can find the prepared image on the <a href="https://registry.hub.docker.com/u/hypriot/rpi-hugo/">Docker Hub</a>.</p>
 
-<h2 id="setting-up-hugo:208d73d31f997ec1e4befc58fff83e1c">Setting up Hugo</h2>
+<h2 id="setting-up-hugo">Setting up Hugo</h2>
 
 <p>To get started with Hugo you need a Raspberry Pi with a running Docker engine.
 The best way to get there is with our <a href="/getting-started-with-docker-on-your-arm-device/">Getting Started Guide</a>.</p>
@@ -129,7 +128,7 @@ The best way to get there is with our <a href="/getting-started-with-docker-on-y
 <pre><code>cd awesome-blog
 </code></pre>
 
-<h2 id="create-a-new-site:208d73d31f997ec1e4befc58fff83e1c">Create a new site</h2>
+<h2 id="create-a-new-site">Create a new site</h2>
 
 <p>First create a new site by</p>
 
@@ -144,10 +143,9 @@ Next we need to download some nifty themes for our new site.</p>
 
 <p>If you execute <code>ls</code> you should see a folder structure similar to the one in the following screenshot:</p>
 
-<p><img src="/images/hugo/hugo-files-after-new-site.png" alt="hugo-files-after-new-site" />
-</p>
+<p><img src="/images/hugo/hugo-files-after-new-site.png" alt="hugo-files-after-new-site" /></p>
 
-<h2 id="create-a-new-article:208d73d31f997ec1e4befc58fff83e1c">Create a new article</h2>
+<h2 id="create-a-new-article">Create a new article</h2>
 
 <p>To create a new article run the following commands:</p>
 
@@ -161,7 +159,7 @@ It will also mount the current directory into the container at <code>/www</code>
 <p><code>hugo new</code> creates a new markdown document in the subfolder <code>post</code>. With the <code>echo</code> command we add a Hello-World message to our blog post.
 You can further edit this document with the editor of your choice.</p>
 
-<h2 id="live-preview:208d73d31f997ec1e4befc58fff83e1c">Live preview</h2>
+<h2 id="live-preview">Live preview</h2>
 
 <p>To see a live preview of your new awesome blog run</p>
 
@@ -171,10 +169,9 @@ You can further edit this document with the editor of your choice.</p>
 <p>You can now open your browser and go to <code>http://&lt;ip of your pi&gt;:1313</code> to preview your new blog.
 Whenever you change any of your documents, Hugo will regenerate the HTML and reload the resulting webpage in your browser.</p>
 
-<p><img src="/images/hugo/preview.png" alt="preview" />
-</p>
+<p><img src="/images/hugo/preview.png" alt="preview" /></p>
 
-<h2 id="build-the-final-html-pages:208d73d31f997ec1e4befc58fff83e1c">Build the final HTML pages</h2>
+<h2 id="build-the-final-html-pages">Build the final HTML pages</h2>
 
 <p>To get the final HTML pages for publication you just need to run Hugo without any options.</p>
 
@@ -186,7 +183,7 @@ Now you can just open <code>public/index.html</code> with a browser or upload th
 
 <p>You can learn more about Hugo and how to use it on it&rsquo;s <a href="http://gohugo.io/overview/introduction/">documentation website</a>.</p>
 
-<h2 id="how-we-use-hugo:208d73d31f997ec1e4befc58fff83e1c">How we use Hugo</h2>
+<h2 id="how-we-use-hugo">How we use Hugo</h2>
 
 <p>Right at the beginning when we started blogging about Docker on ARM we were faced with several challenges.
 We failed to address these challenges with our first blogging platform - Posthaven - and soon switched to Hugo.
@@ -207,7 +204,6 @@ What else would you wanna use for instant Blogger-(ähm Docker-) Bliss?</p>
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Govinda &amp; Andreas</p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

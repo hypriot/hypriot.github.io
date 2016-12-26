@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bamberg on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/bamberg/</link>
+    <link>https://blog.hypriot.com/tags/bamberg/index.xml</link>
     <description>Recent content in Bamberg on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Jan 2016 21:47:24 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/bamberg/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -19,7 +18,9 @@
 
 &lt;p&gt;This is the summary of the first Docker meetup that we organized in cooperation with University of Bamberg. As a supplement to this event yesterday, we share the pictures and the slides of the presentation.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 
 
 
@@ -129,7 +130,7 @@
 
 
 &lt;/div&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
@@ -207,8 +208,7 @@
 &lt;br /&gt;&lt;br /&gt;
 The next Docker Meetup will take place on February the 25th. Save the date! &lt;a href=&#34;http://www.meetup.com/Docker-Bamberg/&#34;&gt;Details are available here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

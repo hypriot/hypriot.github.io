@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scaleway on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/scaleway/</link>
+    <link>https://blog.hypriot.com/tags/scaleway/index.xml</link>
     <description>Recent content in Scaleway on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Mar 2016 23:00:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/scaleway/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,7 @@
       <pubDate>Sun, 20 Mar 2016 23:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/</guid>
-      <description>
-
-&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
+      <description>&lt;p&gt;A week ago Scaleway announced their new C2 server. I was so excited to see that they were introducing new ARM C2 servers with 8 CPUs and 32 GB of RAM. Wow!
 Not until I logged in and did &lt;code&gt;lscpu&lt;/code&gt; did I realize that those servers were &amp;ldquo;just&amp;rdquo; Intel Atom servers.&lt;/p&gt;
 
 &lt;p&gt;A bit disappointed I thought what to do now? In my enthusiasm I had spun up 3 servers with 82 GB of RAM and 24 CPUs.
@@ -28,12 +25,13 @@ Still with my thoughts firmly rooted in the &lt;a href=&#34;https://blog.docker.
 &lt;p&gt;You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/scaleway.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;There are couple of reasons why it was so simple.&lt;/p&gt;
 
-&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
+&lt;h2 id=&#34;meet-the-new-scaleway-c2-servers&#34;&gt;Meet the new Scaleway C2 servers&lt;/h2&gt;
 
 &lt;p&gt;The first reason is that I was using the new Scaleway Cloud servers.&lt;/p&gt;
 
@@ -218,7 +216,7 @@ I am not going into the details of the tinc configuration now, because I am goin
 
 &lt;p&gt;That we have the name of tinc network device is important for the configuration of the Hypriot Cluster Lab which we gonna use in the next section.&lt;/p&gt;
 
-&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
+&lt;h2 id=&#34;easy-swarming-with-the-hypriot-cluster-lab&#34;&gt;Easy swarming with the Hypriot Cluster Lab&lt;/h2&gt;
 
 &lt;p&gt;The &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; is the second reason why it is so easy to set up our 100 node Jenkins cluster.
 The Cluster Lab helps us to set up a Docker Swarm Cluster without any manual configuration in minutes.&lt;/p&gt;
@@ -361,7 +359,7 @@ Name: 4b3fd589316c
 For instance we can see the number of nodes we have as well as the total number of CPUs and RAM we do have in the cluster: 24 CPUs and a whopping amount of 82 GB of RAM.
 That&amp;rsquo;s nice isn&amp;rsquo;t it?&lt;/p&gt;
 
-&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose:42ed33cefda8a6f74e4e47b0527e1f17&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
+&lt;h2 id=&#34;starting-a-100-nodes-jenkins-cluster-with-docker-compose&#34;&gt;Starting a 100 Nodes Jenkins cluster with Docker-Compose&lt;/h2&gt;
 
 &lt;p&gt;Ok, now comes the last reason why it is so fast and easy to set up 100 node Jenkins cluster.
 The reason is called &lt;a href=&#34;https://docs.docker.com/compose/&#34;&gt;Docker-Compose&lt;/a&gt; and makes it ridiculous easy to get multi-container applications up and running.&lt;/p&gt;
@@ -449,13 +447,11 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;You should see a page similar to&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins01.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And at &lt;a href=&#34;http://212.47.225.127:8080/computer&#34;&gt;http://212.47.225.127:8080/computer&lt;/a&gt; we can find all the slave nodes, too:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/100-nodes-jenkins/jenkins02.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So to wrap it up I can say that the combination of&lt;/p&gt;
 
@@ -473,8 +469,7 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
 
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -483,9 +478,7 @@ We can do that with the &lt;code&gt;inspect&lt;/code&gt; subcommand of the Scale
       <pubDate>Fri, 05 Feb 2016 16:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/test-build-and-package-docker-for-arm-the-official-way/</guid>
-      <description>
-
-&lt;p&gt;With the recent release of Docker 1.10.0 it is a good time to talk about &lt;strong&gt;Docker on ARM&lt;/strong&gt;.
+      <description>&lt;p&gt;With the recent release of Docker 1.10.0 it is a good time to talk about &lt;strong&gt;Docker on ARM&lt;/strong&gt;.
 As many of you know our mission is to make Docker (and container technology) a first class citizen on ARM devices.&lt;/p&gt;
 
 &lt;p&gt;With &lt;a href=&#34;http://blog.docker.com/2016/02/docker-1-10/&#34;&gt;Docker 1.10.0&lt;/a&gt; it is finally possible to build &lt;strong&gt;Docker for ARM&lt;/strong&gt; from the offical Docker repository.&lt;/p&gt;
@@ -496,10 +489,11 @@ And it is a first important step towards offical support for Docker on ARM.&lt;/
 &lt;p&gt;In this blog post I am going to walk you through all the steps that are needed to test, build and package Docker on ARM.
 And as an extra bonus I am showing you how to do this on the most advanced ARM on-demand cloud-platform ever.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/scaleway_armserver.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;preparation-first-we-need-suiteable-arm-hardware:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Preparation: First we need suiteable ARM hardware&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;preparation-first-we-need-suiteable-arm-hardware&#34;&gt;Preparation: First we need suiteable ARM hardware&lt;/h2&gt;
 
 &lt;p&gt;Our friends at Scaleway make it really easy and cheap to get your hands on powerful ARM hardware with their ARM on-demand cloud platform.
 Using an ARM server costs only 0,006 € per hour and you only pay when a server is actually running.&lt;/p&gt;
@@ -519,14 +513,12 @@ Using the Scaleway Docker image is just a reliable and fast way to get us starte
 
 &lt;p&gt;In the &lt;strong&gt;Web-GUI&lt;/strong&gt; just select the &amp;ldquo;Server&amp;rdquo; menu entry on the left and click the &amp;ldquo;Create&amp;rdquo;-button.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/create_server.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the following dialogue choose the &amp;ldquo;Image Hub&amp;rdquo; tab and search for &amp;ldquo;docker&amp;rdquo;.&lt;br /&gt;
 Select the &amp;ldquo;Docker 1.9.1&amp;rdquo; image and you are good.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/arm-support/sw_webgui_choose_an_image.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The same can be done with the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli&#34;&gt;Scaleway Command Line Interface&lt;/a&gt;, too.
 Download the latest version for your operating system from the &lt;a href=&#34;https://github.com/scaleway/scaleway-cli/releases/tag/v1.7.1&#34;&gt;release page&lt;/a&gt;.&lt;/p&gt;
@@ -643,7 +635,7 @@ Server:
 
 &lt;p&gt;Seems, we now have everthing ready for the second part of this blog post.&lt;/p&gt;
 
-&lt;h2 id=&#34;test-build-and-package-docker-for-arm:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Test, build and package Docker for ARM&lt;/h2&gt;
+&lt;h2 id=&#34;test-build-and-package-docker-for-arm&#34;&gt;Test, build and package Docker for ARM&lt;/h2&gt;
 
 &lt;p&gt;Congrats, you already finished the difficult part!&lt;/p&gt;
 
@@ -675,7 +667,7 @@ It is based on the &lt;code&gt;Dockerfile&lt;/code&gt; that you will find in the
 &lt;p&gt;With Docker 1.10.0 you will find that there is another Dockerfile present&amp;hellip; one with an &lt;code&gt;.armhf&lt;/code&gt; extension.
 This one is used to build an ARM compatible Docker development image.&lt;/p&gt;
 
-&lt;h3 id=&#34;building-the-docker-development-image:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Building the Docker development image&lt;/h3&gt;
+&lt;h3 id=&#34;building-the-docker-development-image&#34;&gt;Building the Docker development image&lt;/h3&gt;
 
 &lt;p&gt;Creating the Docker development image can take a long time as lots of software gets downloaded, compiled and installed.
 The good news is that this is usually only needed once.&lt;/p&gt;
@@ -693,7 +685,7 @@ docker-dev          master              2ac07dec8c9a        14 minutes ago      
 &lt;p&gt;If all went well we should now see an image that is named &lt;code&gt;docker-dev&lt;/code&gt;.
 With this out of the way we can now proceed to the next step.&lt;/p&gt;
 
-&lt;h3 id=&#34;testing-docker:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Testing Docker&lt;/h3&gt;
+&lt;h3 id=&#34;testing-docker&#34;&gt;Testing Docker&lt;/h3&gt;
 
 &lt;p&gt;There are two types of tests that we can run: &lt;strong&gt;unit-tests&lt;/strong&gt; and &lt;strong&gt;integration-tests&lt;/strong&gt;.
 To ensure that a certain Docker version really works we need to ensure that all the tests are passing.&lt;/p&gt;
@@ -721,7 +713,7 @@ But that time is worth waiting as there are more than 1,100 tests that already w
 
 &lt;p&gt;When all tests are green we might as well go to the next step.&lt;/p&gt;
 
-&lt;h3 id=&#34;building-a-new-docker-binary:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Building a new Docker binary&lt;/h3&gt;
+&lt;h3 id=&#34;building-a-new-docker-binary&#34;&gt;Building a new Docker binary&lt;/h3&gt;
 
 &lt;p&gt;Building a new Docker binary is really fast compared to running the tests.&lt;/p&gt;
 
@@ -753,7 +745,7 @@ Client:
 &lt;p&gt;But shipping a plain binary is not very cool, is it?
 So shall we make a Debian package as well?&lt;/p&gt;
 
-&lt;h3 id=&#34;building-a-docker-debian-package:7190f76dff60ef5d0c44976a259ce00e&#34;&gt;Building a Docker Debian package&lt;/h3&gt;
+&lt;h3 id=&#34;building-a-docker-debian-package&#34;&gt;Building a Docker Debian package&lt;/h3&gt;
 
 &lt;p&gt;The command for creating a Debian package is just another make command:&lt;/p&gt;
 
@@ -784,8 +776,7 @@ While Docker ARM support is still only partially there, more is to come soon.&lt
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=11042427&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

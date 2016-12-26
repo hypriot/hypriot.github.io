@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shieldtv on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/shieldtv/</link>
+    <link>https://blog.hypriot.com/categories/shieldtv/index.xml</link>
     <description>Recent content in Shieldtv on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jan 2016 16:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/shieldtv/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,6 +20,8 @@ On top of that it is one of the first 64-bit ARM boards that can be bought for a
 
 &lt;p&gt;Regular readers of our blog know that it is not in Dieter&amp;rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
 Read on to learn what happened next&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Last December he started the work to get Docker running on the ShieldTV and &lt;a href=&#34;https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/&#34;&gt;described his journey&lt;/a&gt; on our blog.
 The gist of it is that it was quite an involved process of creating his own custom Debian based operating system that supported building Go and Docker for ARM64.&lt;/p&gt;
@@ -72,8 +73,7 @@ A highlevel comparision of both devices can be found at &lt;a href=&#34;http://w
 
 &lt;p&gt;Overall the relation of the different repositories now looks like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-xxx/hypriotos_buildpipeline.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All these changes also redefined for us what HypriotOS is all about.&lt;/p&gt;
 
@@ -81,7 +81,7 @@ A highlevel comparision of both devices can be found at &lt;a href=&#34;http://w
 &lt;em&gt;&amp;ldquo;HypriotOS is a minimal operating system for the Raspberry Pi 1 &amp;amp; 2 that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Our new mission statement is:&lt;/strong&gt;&lt;br /&gt;
-&lt;em&gt;&amp;ldquo;HypriotOS is a minimal Debian-based operating system for &lt;strong&gt;many popular IoT devices&lt;/strong&gt; that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+*&amp;ldquo;HypriotOS is a minimal Debian-based operating system for &lt;strong&gt;many popular IoT devices&lt;/strong&gt; that provides an optimized environment for running Docker. It is very easy to install and use. HypriotOS prides itself for coming with very recent versions of the Linux kernel and all included software.&amp;rdquo;*&lt;/p&gt;
 
 &lt;p&gt;It is just a small change but it will have big implications.&lt;/p&gt;
 
@@ -112,8 +112,7 @@ Help us to get your favourite ARM board supported by HypriotOS!&lt;/p&gt;
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.
 You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombinator.com/item?id=10926502&#34;&gt;HackerNews&lt;/a&gt; or vote it up if you find it interesting.&lt;/p&gt;
 
-&lt;p&gt;Govinda aka &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@&lt;em&gt;beagile&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda aka &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@&lt;em&gt;beagile&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -122,17 +121,14 @@ You also might wanna discuss this article on &lt;a href=&#34;https://news.ycombi
       <pubDate>Mon, 28 Dec 2015 09:00:00 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/</guid>
-      <description>
-
-&lt;p&gt;I don&amp;rsquo;t really know how this happened. Again. :(&lt;br /&gt;
+      <description>&lt;p&gt;I don&amp;rsquo;t really know how this happened. Again. :(&lt;br /&gt;
 Somehow over and over again these little ARM devices and maker devboards end up on my desk.&lt;/p&gt;
 
 &lt;p&gt;So what is it this time?&lt;/p&gt;
 
 &lt;p&gt;Well, look at this beauty because words cannot even begin to describe it:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Alright, start breathing again.&lt;/p&gt;
 
@@ -149,7 +145,9 @@ As you all know Docker pirates love to be ARMed with little explosive stuff - an
 &lt;p&gt;So my son won&amp;rsquo;t get to play any games soon because &lt;strong&gt;I need&lt;/strong&gt; to get Docker running on this little beauty.
 A device engineered for performance and made to game. So, let&amp;rsquo;s start playing&amp;hellip;&lt;/p&gt;
 
-&lt;h3 id=&#34;how-it-all-started:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;How it all started&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;how-it-all-started&#34;&gt;How it all started&lt;/h3&gt;
 
 &lt;p&gt;This spring, I was really happy to see Jen-Hsun Huang, CEO of Nvidia Corp. announcing a great new &lt;a href=&#34;https://www.youtube.com/watch?v=1q30y_pfz5Q&#34;&gt;gaming console&lt;/a&gt; - the &lt;a href=&#34;http://shield.nvidia.com/android-tv&#34;&gt;Nvidia ShieldTV&lt;/a&gt;.
 It&amp;rsquo;s basically a 4K AndroidTV gaming machine and SmartTV device for the living room that easily connects to your big TV screen.&lt;/p&gt;
@@ -159,15 +157,14 @@ For fast and efficient graphics, Nvidia has included 256 Maxwell GPU cores as we
 
 &lt;p&gt;Looking at the Tegra X1 chip, it&amp;rsquo;s dominated by the 256x CUDA GPU cores. Can you find the CPU cores? They are pretty hard to find. ;-)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-tegra-x1-chip.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All in all, this device has a lot of CPU power and an incredible amount of GPU power as well - especially for a low-cost device &lt;a href=&#34;http://www.amazon.com/NVIDIA-SHIELD-Remote/dp/B013HJ13V0/ref=sr_1_3?ie=UTF8&amp;amp;qid=1451218402&amp;amp;sr=8-3&amp;amp;keywords=nvidia+shield&#34;&gt;at just $199.99&lt;/a&gt;.
 It is easy to imagine that the ShieldTV could be used for so much more than just simple media streaming and gaming.&lt;/p&gt;
 
 &lt;p&gt;But how?&lt;/p&gt;
 
-&lt;h3 id=&#34;in-the-beginning-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;In the beginning there was &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;in-the-beginning-there-was&#34;&gt;In the beginning there was &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;&amp;hellip; Android&lt;/strong&gt;. Yeah, that is the strange operating system from Google that comes preinstalled with the Nvidia ShieldTV.&lt;/p&gt;
 
@@ -178,14 +175,13 @@ Linux for instance - if we were only able to hack the ShieldTV and install a Lin
 
 &lt;p&gt;It turned out that this is everything but easy.&lt;/p&gt;
 
-&lt;h3 id=&#34;then-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;Then there was &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;then-there-was&#34;&gt;Then there was &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;&amp;hellip; Ubuntu&lt;/strong&gt;. A few weeks ago I was able to install a basic Ubuntu 14.04 provided by Nvidia for their development boards.
 This so called &lt;a href=&#34;https://developer.nvidia.com/embedded/linux-tegra&#34;&gt;Nvidia Linux For Tegra (L4T)&lt;/a&gt; is running a 64-bit kernel, but does only provide a 32-bit root file system.
 Nvidia really? What a bummer. Hopefully they will change this in the future.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-ubuntu.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Later on, I created a Debian Jessie root file system directly from upstream, which is compiled for the ARM64 architecture.
 Combining the standard Nvidia 64-bit kernel and a Debian Jessie root file system, I am able to boot the ShieldTV into a pure 64-bit Linux system - HELL YEAH, that&amp;rsquo;s it!&lt;/p&gt;
@@ -193,26 +189,24 @@ Combining the standard Nvidia 64-bit kernel and a Debian Jessie root file system
 &lt;p&gt;Building the basic root file system was easy, but fixing all the network issues and Systemd settings was a real challenge.
 Fortunately I got a lot of help from Andreas (another member of our Hypriot crew), who managed to fix them all.&lt;/p&gt;
 
-&lt;h3 id=&#34;and-after-some-more-hard-work-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;And after some more hard work there was &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;and-after-some-more-hard-work-there-was&#34;&gt;And after some more hard work there was &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;&amp;hellip; HypriotOS&lt;/strong&gt;. As a result the ShieldTV is now booting into a pure 64-bit environment in less than ten seconds.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-arm64.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see the Nvidia ShieldTV is running our new 64-bit HypriotOS system on four CPU cores and has almost three gigabyte of memory available.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-hypriotos-htop.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;in-the-end-there-was:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;In the end there was &amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;in-the-end-there-was&#34;&gt;In the end there was &amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;&amp;hellip; Docker&lt;/strong&gt;. This is the final piece that I wanted to get running. A first step in this direction is to get &lt;strong&gt;Go 1.5.1&lt;/strong&gt; and its build dependencies compiled.
 After that it was a walk in the park to get the latest &lt;strong&gt;Docker v1.10.0-dev&lt;/strong&gt; compiled.&lt;/p&gt;
 
 &lt;p&gt;The only annoying thing that remains right now is that we still have an old 3.10.61 kernel that is not optimized for running Docker.&lt;/p&gt;
 
-&lt;h3 id=&#34;damn-it-the-last-20-are-always-the-toughest:c306f860d159b9e8165ccb1c8378bdfe&#34;&gt;Damn it! The last 20% are always the toughest&amp;hellip;&lt;/h3&gt;
+&lt;h3 id=&#34;damn-it-the-last-20-are-always-the-toughest&#34;&gt;Damn it! The last 20% are always the toughest&amp;hellip;&lt;/h3&gt;
 
 &lt;p&gt;The last few days I tried to build a custom Linux kernel for the ShieldTV that has all the right kernel settings for Docker enabled.
 But I had no luck at all.&lt;/p&gt;
@@ -224,20 +218,17 @@ And as you can imagine, debugging some kernel and boot issues without having a s
 Yesterday I was finally lucky enough to get almost all of the important kernel settings for Docker working im my custom 3.10.61 Linux kernel.
 Honestly, this is quite an old kernel version and far from being perfect for Docker but it works for now and the Docker Engine is running the first time on this great device!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So let&amp;rsquo;s spin up a Docker image or two! Funny enough even a Docker image that was built for the Raspberry Pi can run on ARM64.
 Who can remember it? This is exactly the same web server container I was demoing live on stage at &lt;a href=&#34;https://blog.hypriot.com/post/dockercon2015/&#34;&gt;DockerCon 2015 in San Francisco&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-3.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Maybe it is more interesting to run a real ARM64 Docker image to proof that our ARM 64-bit Docker engine is working just fine.
 So here we go&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-running-docker-4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;That is already pretty impressive, but there is still a lot to do.&lt;/p&gt;
 
@@ -245,8 +236,7 @@ So here we go&amp;hellip;&lt;/p&gt;
 This means we need a really easy way to flash and install HypriotOS on the ShieldTV similar to how we do it for the Raspberry Pi.
 And all the included components should be really up-to-date: the Linux kernel (4.x) and of course all of the Docker tools as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-shieldtv/nvidia-shieldtv-on-my-desktop.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Maybe there are some of you who - after reading this article - want to get started hacking on the ShieldTV, too.
 We really would appreciate getting some help here to move faster.
@@ -254,8 +244,7 @@ That&amp;rsquo;s why we will publish the technical details in the coming weeks, 
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Andreas &lt;a href=&#34;https://twitter.com/firecyberice&#34;&gt;@firecyberice&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; &amp;amp; Andreas &lt;a href=&#34;https://twitter.com/firecyberice&#34;&gt;@firecyberice&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

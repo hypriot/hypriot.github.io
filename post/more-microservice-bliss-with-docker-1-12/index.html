@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -92,21 +92,20 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 <p>Let&rsquo;s see how this new thing works&hellip;</p>
 
 <p><img src="/images/more-microservices/swarm.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/thewakingdragon/">Brent M</a></div></p>
+
+<p></p>
 
 <p>If you remember the example from my last post - it consisted of a microservice application made of a frontend and a couple of backend services.
 The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
 And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.</p>
 
-<p><img src="/images/traefik/microsservice_example_end.jpg" alt="Traffic" />
-</p>
+<p><img src="/images/traefik/microsservice_example_end.jpg" alt="Traffic" /></p>
 
 <p>The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
 The architecture from above is now slimmed down considerably and looks like this:</p>
 
-<p><img src="/images/more-microservices/architecture_with_swarm.jpg" alt="With Swarm" />
-</p>
+<p><img src="/images/more-microservices/architecture_with_swarm.jpg" alt="With Swarm" /></p>
 
 <p>Less moving parts - that is great!</p>
 
@@ -357,7 +356,6 @@ I am really looking forward to find out what else there is in store with the new
 <p>As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.</p>
 
 <p>Govinda <a href="https://twitter.com/_beagile_">@_beagile__</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

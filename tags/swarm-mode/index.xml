@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Swarm Mode on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/swarm-mode/</link>
+    <link>https://blog.hypriot.com/tags/swarm-mode/index.xml</link>
     <description>Recent content in Swarm Mode on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jun 2016 13:49:00 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/swarm-mode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,7 @@
       <pubDate>Tue, 21 Jun 2016 13:49:00 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/</guid>
-      <description>
-
-&lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
+      <description>&lt;p&gt;In the last couple of days there were some users on our Gitter channel having problems accessing their Raspberry Pi&amp;rsquo;s with HypriotOS via Docker Machine.
 As we have not yet written how that works I thought I would do a short blog post on how to use Docker Machine with HypriotOS.&lt;/p&gt;
 
 &lt;p&gt;But that&amp;rsquo;s not all. Yesterday when I watched the DockerCon Keynote Livestream of the new Docker orchestration I wondered how Docker Machine and the new orchestration would work together.&lt;/p&gt;
@@ -25,14 +22,15 @@ As we have not yet written how that works I thought I would do a short blog post
 &lt;p&gt;So just for the fun of it I decided I will explore that a bit, too.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/swarm_machines.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;I am using the latest Docker4Mac with Docker on my notebook and three Raspberry Pi&amp;rsquo;s with HypriotOS 0.8 as hosts for my remote Docker Engines.&lt;/p&gt;
 
 &lt;p&gt;The Docker version on the notebook and on the Pi&amp;rsquo;s is 1.12 RC1. Having the lastest Docker 1.12 is not necessary for the part about Docker Machine, but it is for the part about the new Docker orchestration.&lt;/p&gt;
 
-&lt;h2 id=&#34;docker-machine:85b1180b5e32a76ced09e55169dd699d&#34;&gt;Docker Machine&lt;/h2&gt;
+&lt;h2 id=&#34;docker-machine&#34;&gt;Docker Machine&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://docs.docker.com/machine/&#34;&gt;Docker Machine&lt;/a&gt; is used to control remote Docker-Engines as if they were locally installed.&lt;/p&gt;
 
@@ -220,7 +218,7 @@ Insecure Registries:
 &lt;pre&gt;&lt;code&gt;$ eval $(docker-machine env pi2)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;docker-machine-and-docker-swarm-mode:85b1180b5e32a76ced09e55169dd699d&#34;&gt;Docker Machine and Docker Swarm Mode&lt;/h2&gt;
+&lt;h2 id=&#34;docker-machine-and-docker-swarm-mode&#34;&gt;Docker Machine and Docker Swarm Mode&lt;/h2&gt;
 
 &lt;p&gt;In the past Docker Machine allowed to set up a Docker Swarm cluster with a &lt;a href=&#34;https://docs.docker.com/machine/reference/create/&#34;&gt;number of options&lt;/a&gt; for the &amp;lsquo;create&amp;rsquo; subcommand.&lt;/p&gt;
 
@@ -324,15 +322,13 @@ ID                         NAME             SERVICE        IMAGE                
 
 &lt;p&gt;We are then rewarded with this neat little website:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

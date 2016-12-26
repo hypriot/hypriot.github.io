@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -133,7 +133,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 </tbody>
 </table>
 
-<h3 id="download-the-hypriot-docker-sd-card-image:f9c6c9c0ab05c0ca238dff8f082f6e17">Download the Hypriot Docker SD card image</h3>
+<h3 id="download-the-hypriot-docker-sd-card-image">Download the Hypriot Docker SD card image</h3>
 
 <p>Download our latest SD card image from the <a href="/downloads/">download page</a>.</p>
 
@@ -142,7 +142,7 @@ Afterwards you just have to insert the flashed SD card into your Raspberry Pi an
 <p>After 7-zip is finished with extracting you will have a file with a <strong>.img</strong> extension.
 In the next step we will flash this file onto your SD card.</p>
 
-<h3 id="flash-the-downloaded-image-to-your-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17">Flash the downloaded image to your SD card</h3>
+<h3 id="flash-the-downloaded-image-to-your-sd-card">Flash the downloaded image to your SD card</h3>
 
 <p>To start the flashing process right-click on the <em>Win32 Disk Imager</em> application which we installed earlier and click on <em>Run as administrator</em>. You will see a window asking for permissions. Grant them.</p>
 
@@ -151,8 +151,7 @@ In the next step we will flash this file onto your SD card.</p>
 <p>Next to the blue folder button, you will find a dropdown menu in which you can select your SD card.
 To double check the device letter open your Windows Explorer and locate the SD card drive.</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/image-writer-opened.png" alt="image-writer" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/image-writer-opened.png" alt="image-writer" /></p>
 
 <p>Finally click on <strong>write</strong> which will flash the SD card image to the SD card.</p>
 
@@ -160,10 +159,9 @@ To double check the device letter open your Windows Explorer and locate the SD c
 In order to eject the SD card use the <em>secure eject</em> function in the menu next to your system clock.
 This is usually in the very bottom right corner of your screen.</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/eject-sd-card.png" alt="eject-sd" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/eject-sd-card.png" alt="eject-sd" /></p>
 
-<h3 id="start-your-raspberry-pi-with-the-sd-card:f9c6c9c0ab05c0ca238dff8f082f6e17">Start your Raspberry Pi with the SD card</h3>
+<h3 id="start-your-raspberry-pi-with-the-sd-card">Start your Raspberry Pi with the SD card</h3>
 
 <p>Boot your Raspberry Pi by</p>
 
@@ -176,7 +174,7 @@ This is usually in the very bottom right corner of your screen.</p>
 <p>After finishing the last step your Raspberry Pi will boot and the LEDs should start blinking.
 The very first boot will take one to three minutes as the file system will be resized.</p>
 
-<h3 id="ensure-everything-works:f9c6c9c0ab05c0ca238dff8f082f6e17">Ensure everything works</h3>
+<h3 id="ensure-everything-works">Ensure everything works</h3>
 
 <p>To check if Docker is actually running we need to log into the Raspberry Pi via <em>PuTTY</em>.</p>
 
@@ -191,29 +189,25 @@ Type the following command into this field but replace the IP address in front o
 
 <p>As a result you should see this:</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG" alt="zenmap-scan-result" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/zenmap-scan-result.PNG" alt="zenmap-scan-result" /></p>
 
 <p><em>Zenmap</em> list all active hosts within your local network.
 In order to find the Raspberry Pi click the button <em>filter hosts</em> at the bottom of the <em>Zenmap</em> and type in <em>black</em>.
 Now the first line of the list should show the IP address of your Raspberry Pi.</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png" alt="zenmap-with-filter-with-marker" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/zenmap-with-filter-with-marker.png" alt="zenmap-with-filter-with-marker" /></p>
 
 <p>Since we now know where to find the Raspberry Pi within your network it is time to start <em>PuTTY</em> to establish a SSH connection to your Raspberry Pi.</p>
 
 <p>After starting <em>PuTTY</em> type in the IP address we determined into the field <em>Host Name</em>. With a click on the button <em>Open</em> the connection will be established.</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-settings.png" alt="Screenshot-putty-login" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-settings.png" alt="Screenshot-putty-login" /></p>
 
 <p>In the new window which just opened type <code>pirate</code> as login name and hit <em>Enter</em>. Next you will be asked for a password. Type <code>hypriot</code> and hit <em>Enter</em> again.</p>
 
 <p>If everything went fine you should now see the <em>HypriotOS</em> command line prompt waiting for your input. It should look like this:</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-login.png" alt="putty-window-login" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-login.png" alt="putty-window-login" /></p>
 
 <p>Finally to check if the Docker service is running type</p>
 
@@ -222,8 +216,7 @@ Now the first line of the list should show the IP address of your Raspberry Pi.<
 
 <p>The output of the <code>docker info</code> command should look similar to:</p>
 
-<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png" alt="docker-info" />
-</p>
+<p><img src="/images/blog_post_getting-started/windows-screenies/putty-window-docker-info.png" alt="docker-info" /></p>
 
 <p><strong>Congratulations! You have succeeded in getting Docker running on your Raspberry Pi!</strong> :)</p>
 

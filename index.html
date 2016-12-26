@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
+	<meta name="generator" content="Hugo 0.18" />
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -55,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -88,14 +89,12 @@
         <span class="post-date">Sun, Dec 11, 2016</span>
 
         <p>I guess you&rsquo;re already knowing, one of the cheapest but powerful ARM boards is the $9 C.H.I.P. computer from Next Thing Co. <a href="https://twitter.com/nextthingco">@NextThingCo</a>. It has an ARMv7 1GHz CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
-<img src="/images/install-docker-on-chip-computer/chip-photo2.jpg" alt="chip-photo" />
-</p>
+<img src="/images/install-docker-on-chip-computer/chip-photo2.jpg" alt="chip-photo" /></p>
 
 <p>Some time ago I wrote a detailed blog post about how to <a href="http://blog.hypriot.com/post/install-docker-on-chip-computer/">Install Docker 1.12 on the $9 C.H.I.P. computer</a> with the help of a custom Linux kernel which I built from source for this purpose and included all the necessary kernel modules which are required to run Docker. As an outlook I mentioned that one of the kernel developers from <a href="https://twitter.com/nextthingco">@NextThingCo</a>, namely Wynter Woods <a href="https://twitter.com/zerotri">@zerotri</a>, is working to support Docker officially.</p>
 
 <p>Kernel development and testing takes time and finally here it is!<br>
 <strong>Docker is running on the C.H.I.P. with their latest standard kernel!</strong></p>
-
         
         <div class="read-more-link">
           <a href="/post/docker-supported-on-chip-computer/">Read More…</a>
@@ -116,13 +115,12 @@
 Dirty COW is a <a href="http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/">race condition in Linux</a> arising from how Copy-On-Write (the COW in the name) is handled by the kernel&rsquo;s memory subsystem&rsquo;s use of private mappings.</p>
 
 <p>The really dangerous point here is, it can be used to <a href="http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/">escape Docker containers</a>.
-<img src="/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg" alt="dirty-cow-001" />
-</p>
+<img src="/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg" alt="dirty-cow-001" /></p>
 
 <p>So, we&rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!</p>
 
-<p>No matter if you&rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&hellip;</p>
-
+<p>No matter if you&rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&hellip;
+</p>
         
         <div class="read-more-link">
           <a href="/post/fix-dirty-cow-on-raspberry-pi/">Read More…</a>
@@ -144,9 +142,9 @@ these services inside Docker containers. From time to time I want to see or
 manage one of these containers. But I&rsquo;m too lazy to get to my laptop and use
 the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Docker engine with a web browser. Let&rsquo;s have a look at both.</p>
 
-<p><img src="/images/dockerui-portainer/portainer-docker.png" alt="Portainer" />
-</p>
+<p><img src="/images/dockerui-portainer/portainer-docker.png" alt="Portainer" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/new-docker-ui-portainer/">Read More…</a>
@@ -167,9 +165,9 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
 <p>These two news combined beg for testing the new capabilities in reality.</p>
 
-<p><img src="/images/high-availability-testing/high-availability-docker-swarm.png" alt="SwarmClusterHA" />
-</p>
+<p><img src="/images/high-availability-testing/high-availability-docker-swarm.png" alt="SwarmClusterHA" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/high-availability-with-docker/">Read More…</a>
@@ -188,11 +186,11 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
         <p>With the new SwarmMode in Docker 1.12 it is really damn easy to build a Docker Swarm and connect different ARM devices to an IoT cluster.</p>
 
-<p><img src="/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg" alt="swarm-chip-flashing1.jpg" />
-</p>
+<p><img src="/images/deploy-swarm-on-chip-with-docker-machine/swarm-chip-flashing1.jpg" alt="swarm-chip-flashing1.jpg" /></p>
 
 <p>So let&rsquo;s connect a few of the $9 C.H.I.P. computers and a Raspberry Pi Zero all through a WiFi network&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/deploy-swarm-on-chip-with-docker-machine/">Read More…</a>
@@ -210,13 +208,13 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
         <span class="post-date">Sat, Sep 3, 2016</span>
 
         <p>Did you see the successfully launch of a really cheap ARM board for $9 only - the C.H.I.P. computer? It has an ARMv7 CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
-<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" />
-</p>
+<img src="/images/install-docker-on-chip-computer/chip-and-banana.jpg" alt="chip-and-banana" /></p>
 
 <p>With these awesome features built-in it would be really a great device to run Docker containers if only the recent Linux kernel 4.4  has the correct modules included, but it doesn&rsquo;t - what a bummer!</p>
 
 <p>But with spending a lot of time in building a custom Linux kernel and tweaking &amp; testing I was finally able to install the latest Docker Engine for ARM on the C.H.I.P. &mdash; and as a result you can easily follow this tutorial and within a few minutes only you can run your first Docker container on this cute ARM board&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/install-docker-on-chip-computer/">Read More…</a>
@@ -237,9 +235,9 @@ the Docker CLI for that. There are two nice Docker UI&rsquo;s to access your Doc
 
 <p>For this major release we&rsquo;ve taken an especially great deal of trouble. Out of the box, you not only get the breaking features of the Docker Engine 1.12.1 and the latest versions of Docker Compose and Docker Machine, but also many improvements that enhance the performance, reliability and usability.</p>
 
-<p><img src="/images/release-1-0/docker_pirate_650px_full-width.jpg" alt="Raspberry Pi 3" />
-</p>
+<p><img src="/images/release-1-0/docker_pirate_650px_full-width.jpg" alt="Raspberry Pi 3" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/releasing-HypriotOS-1-0/">Read More…</a>
@@ -264,11 +262,11 @@ and the associated Debian packages. For instance: they&rsquo;d like to hack on s
 a Raspberry Pi itself. Beware: while it&rsquo;s not too complicated it will require
 a large amount of time!</p>
 
-<p><img src="/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg" alt="Docker on Raspberry" />
-</p>
+<p><img src="/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg" alt="Docker on Raspberry" /></p>
 
 <p>So, let&rsquo;s get started. Follow me down the <em>Rabbit Hole</em>&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/building-docker-directly-on-a-raspberry-pi/">Read More…</a>
@@ -293,9 +291,9 @@ As we have not yet written how that works I thought I would do a short blog post
 <p>So just for the fun of it I decided I will explore that a bit, too.</p>
 
 <p><img src="/images/docker-machine/swarm_machines.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/thewakingdragon/">Brent M</a></div></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/">Read More…</a>
@@ -323,9 +321,9 @@ It makes setting up a Docker Swarm Cluster a really simple and straigtforward ta
 <p>Let&rsquo;s see how this new thing works&hellip;</p>
 
 <p><img src="/images/more-microservices/swarm.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/thewakingdragon/">Brent M</a></div></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/more-microservice-bliss-with-docker-1-12/">Read More…</a>
@@ -349,9 +347,9 @@ There were talks, workshops and many interesting tinker projects at display to d
 
 <p>It comes as no suprise that Docker was a hot topic at the PiAndMore conference, too.</p>
 
-<p><img src="/images/piandmore/piandmore_loves_docker.jpg" alt="PiAndMore" />
-</p>
+<p><img src="/images/piandmore/piandmore_loves_docker.jpg" alt="PiAndMore" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-was-well-received-at-piandmore/">Read More…</a>
@@ -376,14 +374,14 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 <p>What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.</p>
 
-<p><img src="/images/traefik/architecture.png" alt="Traffic" />
-</p>
+<p><img src="/images/traefik/architecture.png" alt="Traffic" /></p>
 
 <p>With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
 <a href="https://github.com/gliderlabs/registrator">Registrator</a>, <a href="https://www.consul.io/">Consul</a> and <a href="https://github.com/hashicorp/consul-template">Consul-Template</a> to achieve the same kind of functionality.</p>
 
 <p>So let me show you with a simple microservice example how easy it is to get started with Traefik&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/microservices-bliss-with-docker-and-traefik/">Read More…</a>
@@ -402,9 +400,9 @@ So whenever a Docker container is started or stopped Traefik knows about it and 
 
         <p>Our cooperation with University of Bamberg pays off once again: We had the chance to present our Hypriot Cluster Lab at <a href="http://ict-2016.org/">ICT 2016</a>, the International Conference on Telecommunications. There, we were able to show the Hypriot Cluster Lab to the attendees, who were mainly scientific researchers from all over the globe.</p>
 
-<p><img src="/images/ict-2016-greece/ict_logo.jpg" alt="IoT-requirements" />
-</p>
+<p><img src="/images/ict-2016-greece/ict_logo.jpg" alt="IoT-requirements" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/talk_ict_2016_international_conference_telecommunications/">Read More…</a>
@@ -425,9 +423,9 @@ So whenever a Docker container is started or stopped Traefik knows about it and 
 
 <p>We have also moved every build step out in the cloud to use the &ldquo;programmable internet&rdquo; to build and test everything with just a <strong>git push</strong>.</p>
 
-<p><img src="/images/making-of-hypriotos/hypriotos-release.png" alt="release process" />
-</p>
+<p><img src="/images/making-of-hypriotos/hypriotos-release.png" alt="release process" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/making-of-hypriotos/">Read More…</a>
@@ -456,9 +454,9 @@ We also integrated the Hypriot Cluster-Lab into this release, which makes it rea
 <p>And that&rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &hellip; :)</p>
 
 <p><img src="/images/hypriotos-barbossa/iceberg.jpg" alt="Raspberry Pi 3" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/davidw/">David</a></div></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/hypriotos-barbossa-for-raspberry-pi-3/">Read More…</a>
@@ -481,11 +479,11 @@ looks like an unbelievable <strong>extraterrestrial technology</strong> from out
 <p>This cannot be true, it must be a fake, right?<br />
 Or, is this maybe just a <strong>cheap magic trick</strong>?</p>
 
-<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage.jpg" alt="Docker for Windows" />
-</p>
+<p><img src="/images/close-encounters-of-the-third-kind/docker4win-arm-webpage.jpg" alt="Docker for Windows" /></p>
 
 <p>Nope, believe me, that&rsquo;s really true&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/close-encounters-of-the-third-kind/">Read More…</a>
@@ -511,9 +509,9 @@ Installing or updating Docker or other Docker goodies like Docker-Compose from t
 
 <p>In this post I gonna show you what you need to know to get started with this repository.</p>
 
-<p><img src="/images/packagecloud/packagecloud_io_wide.jpg" alt="Raspberry Pi Workshop in Brussels" />
-</p>
+<p><img src="/images/packagecloud/packagecloud_io_wide.jpg" alt="Raspberry Pi Workshop in Brussels" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/your-number-one-source-for-docker-on-arm/">Read More…</a>
@@ -545,11 +543,11 @@ token within a few hours only.</p>
 <p>Here I&rsquo;d like to give you a first insight view how to install and use &ldquo;Docker for Mac&rdquo;
 with a basic walk-through on my MacBook Pro running the very latest OS X 10.11.4.</p>
 
-<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" />
-</p>
+<p><img src="/images/first-touch-down-with-docker-for-mac/docker4mac-copy-app.jpg" alt="Docker for Mac" /></p>
 
 <p>So, please join me on this journey&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/first-touch-down-with-docker-for-mac/">Read More…</a>
@@ -566,11 +564,11 @@ with a basic walk-through on my MacBook Pro running the very latest OS X 10.11.4
 
         <span class="post-date">Thu, Mar 24, 2016</span>
 
-        <p><img src="/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg" alt="one-of-its-kind birthday cake" />
-</p>
+        <p><img src="/images/dockerbday-review/docker_birthday_cake_white-bg.jpeg" alt="one-of-its-kind birthday cake" /></p>
 
 <p>Once in a while everyone should have a break from work and party hard. I am not saying that this event was a break for our Hypriot Team, but we definitely celebrated as real pirates do: With a worn-out sabre and rum, on board of a three-storey cake ship.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-birthday-party-review/">Read More…</a>
@@ -596,9 +594,9 @@ Raspberry Pi&rsquo;s and the time to assemble all the parts together. The projec
 completed within an hour only, and makes so much fun, too - especially when you can
 share this as quality time with your kids.</p>
 
-<p><img src="/images/picocluster-kits/picocluster-3node-pdu-tower.jpg" alt="PicoCluster 3-node" />
-</p>
+<p><img src="/images/picocluster-kits/picocluster-3node-pdu-tower.jpg" alt="PicoCluster 3-node" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/lets-build-a-pi-docker-picocluster/">Read More…</a>
@@ -621,9 +619,9 @@ share this as quality time with your kids.</p>
 
 <p>And of course we from Hypriot are in the thick of it.</p>
 
-<p><img src="/images/come-to-birthday-party/docker-mini-cake-cover.jpg" alt="Come to the Docker Birthday Party 2016" />
-</p>
+<p><img src="/images/come-to-birthday-party/docker-mini-cake-cover.jpg" alt="Come to the Docker Birthday Party 2016" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-birthday-party-announcement/">Read More…</a>
@@ -651,9 +649,9 @@ Still with my thoughts firmly rooted in the <a href="https://blog.docker.com/201
 <p>You might not believe me, but I was able to set up a 100 node Jenkins Cluster in less than 10 minutes.
 And you can do that, too.</p>
 
-<p><img src="/images/100-nodes-jenkins/scaleway.jpg" alt="Docker Swarm" />
-</p>
+<p><img src="/images/100-nodes-jenkins/scaleway.jpg" alt="Docker Swarm" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/setting-up-100-nodes-jenkins-cluster-with-docker-swarm-in-less-than-10-minutes/">Read More…</a>
@@ -678,9 +676,9 @@ The very same devices that power the upcoming IoT revolution.</p>
 
 <p>Turns out it is really amazing what you can do with Docker on those tiny machines.</p>
 
-<p><img src="/images/raspberry-pi-workshop/docker_workshop.jpg" alt="Raspberry Pi Workshop in Brussels" />
-</p>
+<p><img src="/images/raspberry-pi-workshop/docker_workshop.jpg" alt="Raspberry Pi Workshop in Brussels" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-on-arm-workshops/">Read More…</a>
@@ -713,9 +711,9 @@ the first time on this powerful device.</p>
 <p>So let&rsquo;s get started and for our second episode we connect the ClearFog Pro to a
 MacBookPro and powering this thing up&hellip;</p>
 
-<p><img src="/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg" alt="ClearFog Pro Eth2 Cabled" />
-</p>
+<p><img src="/images/clearfog-pro-part2/clearfog-pro-eth2-cabled.jpg" alt="ClearFog Pro Eth2 Cabled" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/clearfog-pro-part-2-lets-run-docker/">Read More…</a>
@@ -738,9 +736,9 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 <p>To illustrate this use case we are going to create a Docker image that allows us to read the data from a temperature sensor.</p>
 
 <p><img src="/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/tmib/3336410263/in/photolist-65PYwT-hKwdXx-6Gvfse-8sZyde-hKwe8n-bsrVBM-aTuQm-suTVL-4keeLT-9HAaQv-6owaBS-pcKw75-ktYU9-7fCvHx-aMp4hZ-9CJPmM-5kQCwW-9uhoBD-i6h8R-8eACxB-73fGHE-ecUmhW-4ayKHW-coQnPs-x2g2w-qTtWEg-6afv15-7zQM2j-coQoDf-6uLDRM-5srT3L-hpQH9p-q1QZca-9S8ygg-mHCs1e-aZ3SJT-b3ejpi-qvDRpB-mBUjjp-mJTYFr-nhZUoo-6dRUnb-9tuUnt-eMRL2K-6K6ars-dhBwB7-5Cr4jF-5rq6uU-yzubv-q7g6xP">tmib_seattle</a></div></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-sensor-fu-on-a-raspberry-pi/">Read More…</a>
@@ -768,11 +766,10 @@ and get Docker running on this Marvell ARMADA powered Single Board Computer (SBC
 the technical specifications of the ClearFog Pro in order to get to know this neat
 little device.</p>
 
-<p><img src="/images/clearfog-pro-intro/clearfog-pro-overview.jpg" alt="ClearFog Pro Overview" />
+<p><img src="/images/clearfog-pro-intro/clearfog-pro-overview.jpg" alt="ClearFog Pro Overview" /></p>
+
+<p>But be prepared, this one is really a powerful beast&hellip;
 </p>
-
-<p>But be prepared, this one is really a powerful beast&hellip;</p>
-
         
         <div class="read-more-link">
           <a href="/post/introducing-the-clearfog-pro-router-board/">Read More…</a>
@@ -791,9 +788,9 @@ little device.</p>
 
         <p>My seven year old asked me how does a traffic light work. Before explaining too much we put some LEDs and wires together and did a hands-on tutorial. Finally we had a pedestrian crossing with a push button controlled by an app - of course - running dockerized on a Raspberry Pi 3.</p>
 
-<p><img src="/images/traffic-light/traffic-light.png" alt="Traffic light wiring" />
-</p>
+<p><img src="/images/traffic-light/traffic-light.png" alt="Traffic light wiring" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/traffic-light/">Read More…</a>
@@ -818,9 +815,9 @@ little device.</p>
 Follow along to learn how this is possible.</p>
 
 <p><img src="/images/swarm-cluster-lab/cluster_lab.jpg" alt="Docker Swarm" />
-
 <div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV">SNRE Labs</a></div></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/exciting-docker-swarm-experiments-in-the-hypriot-cluster-lab/">Read More…</a>
@@ -839,9 +836,9 @@ Follow along to learn how this is possible.</p>
 
         <p>This week is dedicated to <a href="https://blog.docker.com/2016/03/swarmweek-join-your-first-swarm/">Docker #SwarmWeek</a>. In this tutorial we show you how easy it is to setup a Docker Swarm with HypriotOS and the standard <code>docker-machine</code> binary.</p>
 
-<p><img src="/images/how-to-setup-rpi-docker-swarm/docker-swarm-logo.png" alt="Docker Swarm" />
-</p>
+<p><img src="/images/how-to-setup-rpi-docker-swarm/docker-swarm-logo.png" alt="Docker Swarm" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/how-to-setup-rpi-docker-swarm/">Read More…</a>
@@ -860,9 +857,9 @@ Follow along to learn how this is possible.</p>
 
         <p>We&rsquo;ve just prepared a new beta release of HypriotOS 0.7.0 Berry which is based upon an updated 0.6.1 Hector. Feel free to check it out: /downloads/.</p>
 
-<p><img src="/images/hypriotos-berry-rpi3/IMG_0763.jpeg" alt="Raspberry Pi 3" />
-</p>
+<p><img src="/images/hypriotos-berry-rpi3/IMG_0763.jpeg" alt="Raspberry Pi 3" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/new-hypriotos-berry-with-rpi3-support/">Read More…</a>
@@ -881,13 +878,13 @@ Follow along to learn how this is possible.</p>
 
         <p>Today morning we finally got our Raspberry Pi 3&rsquo;s from ThePiHut. They have been overwhelmed by the number of orders.</p>
 
-<p><img src="/images/rpi3-onboard-wifi/thepihut-delivery.jpg" alt="ThePiHut delivery" />
-</p>
+<p><img src="/images/rpi3-onboard-wifi/thepihut-delivery.jpg" alt="ThePiHut delivery" /></p>
 
 <p>While waiting for the delivery we already heard from our community that the current HypriotOS SD image does not boot.</p>
 
 <p>But with some little tweaks the first people have started running Docker containers with HypriotOS. We will update our image builder soon and publish a new HypriotOS image for an easy out-of-the-box experience.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/run-docker-rpi3-with-wifi/">Read More…</a>
@@ -909,9 +906,9 @@ you operate your data center at lower costs and gives you the ability to scale
 your business even faster. In this article we demonstrate the technical ground
 work of compiling Docker and bootstrapping all the necessary development tools.</p>
 
-<p><img src="/images/hisilicon/d02-hisilicon.jpg" alt="D02 HiSilicon" />
-</p>
+<p><img src="/images/hisilicon/d02-hisilicon.jpg" alt="D02 HiSilicon" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/">Read More…</a>
@@ -939,9 +936,9 @@ And it is a first important step towards offical support for Docker on ARM.</p>
 <p>In this blog post I am going to walk you through all the steps that are needed to test, build and package Docker on ARM.
 And as an extra bonus I am showing you how to do this on the most advanced ARM on-demand cloud-platform ever.</p>
 
-<p><img src="/images/arm-support/scaleway_armserver.jpg" alt="" />
-</p>
+<p><img src="/images/arm-support/scaleway_armserver.jpg" alt="" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/test-build-and-package-docker-for-arm-the-official-way/">Read More…</a>
@@ -958,8 +955,7 @@ And as an extra bonus I am showing you how to do this on the most advanced ARM o
 
         <span class="post-date">Mon, Jan 25, 2016</span>
 
-        <p><img src="/images/pine-a64/close_up_front_pine_06.jpg" alt="" />
-</p>
+        <p><img src="/images/pine-a64/close_up_front_pine_06.jpg" alt="" /></p>
 
 <p>Last Saturday one of the more promising <a href="https://www.kickstarter.com/projects/pine64/pine-a64-first-15-64-bit-single-board-super-comput">Kickstarter campaigns</a>
 that piqued our curiosity ended after 44 days and was able to raise <strong>1.7 million dollars</strong>.
@@ -976,6 +972,7 @@ Next comes the much more expensive <a href="http://www.slashgear.com/amd-starts-
 <p>All in all that means that the Pine A64 is the most affordable way to lay your hands on real 64-bit ARM hardware - and that by a long shot!
 So what can you actually do with such a device?</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/the-pine-a64-is-about-to-become=the-cheapest-ARM-64-bit-platform-to-run-Docker/">Read More…</a>
@@ -999,6 +996,7 @@ On top of that it is one of the first 64-bit ARM boards that can be bought for a
 <p>Regular readers of our blog know that it is not in Dieter&rsquo;s nature to resist the Sirens voices of such an appealing beauty for long.
 Read on to learn what happened next&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/">Read More…</a>
@@ -1019,6 +1017,7 @@ Read on to learn what happened next&hellip;</p>
 
 <p>This is the summary of the first Docker meetup that we organized in cooperation with University of Bamberg. As a supplement to this event yesterday, we share the pictures and the slides of the presentation.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/first_docker_meetup_university_bamberg/">Read More…</a>
@@ -1050,6 +1049,7 @@ for everybody to build and use the Go compiler in a consistent and reproducible 
 
 <p>So let&rsquo;s get started with building your own Go environment on ARM&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/how-to-compile-go-on-arm/">Read More…</a>
@@ -1073,8 +1073,7 @@ Somehow over and over again these little ARM devices and maker devboards end up 
 
 <p>Well, look at this beauty because words cannot even begin to describe it:</p>
 
-<p><img src="/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg" alt="" />
-</p>
+<p><img src="/images/nvidia-shieldtv/docker-on-nvidia-shieldtv.jpg" alt="" /></p>
 
 <p>Alright, start breathing again.</p>
 
@@ -1091,6 +1090,7 @@ As you all know Docker pirates love to be ARMed with little explosive stuff - an
 <p>So my son won&rsquo;t get to play any games soon because <strong>I need</strong> to get Docker running on this little beauty.
 A device engineered for performance and made to game. So, let&rsquo;s start playing&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/">Read More…</a>
@@ -1117,9 +1117,9 @@ You would have needed specific knowledge and lots of time to manually configure 
 
 <p>May we introduce to you the newest member of the Hypriot family: <strong>The Hypriot Cluster Lab!</strong></p>
 
-<p><img src="/images/cluster-lab-release-v01/cluster_lab.png" alt="" />
-</p>
+<p><img src="/images/cluster-lab-release-v01/cluster_lab.png" alt="" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/introducing-hypriot-cluster-lab-docker-clustering-as-easy-as-it-gets/">Read More…</a>
@@ -1137,7 +1137,6 @@ You would have needed specific knowledge and lots of time to manually configure 
         <span class="post-date">Mon, Dec 7, 2015</span>
 
         <p>Today we are proud to present a guest contribution from the community. Marcel Großmann, a research assistant at the University of Bamberg, Germany, shows in a short test that the hardware family on which our ARMed Docker runs is probably much larger than we ever thought. But rather than anticipating the punch line, let&rsquo;s give the word to him!</p>
-
         
         <div class="read-more-link">
           <a href="/post/family_arm_hardware_for_docker_more_children/">Read More…</a>
@@ -1160,9 +1159,7 @@ We are really happy that we were able to finish our new release called &ldquo;He
 <p>If you like a personal demo of what&rsquo;s in store for &ldquo;Hector&rdquo; just ping @Quintus23M on Twitter and meet him in person at DockerCon EU.
 Dieter and Andreas brought their treasure chest filled with Raspberry Pi&rsquo;s to Barcelona and are eager to show off a bit.</p>
 
-<p><img src="/images/hector-release/testing.jpg" alt="" />
-</p>
-
+<p><img src="/images/hector-release/testing.jpg" alt="" /></p>
         
         <div class="read-more-link">
           <a href="/post/just-in-time-for-DockerCon-EU-a-shipload-of-new-Docker-ARM-goodies/">Read More…</a>
@@ -1183,9 +1180,9 @@ Dieter and Andreas brought their treasure chest filled with Raspberry Pi&rsquo;s
 It is the ultimate Docker playground with Docker Engine, Docker Compose, Docker Swarm and Docker Machine preinstalled.
 This image now also supports the new 7&rdquo; Raspberry Pi Touch Display out-of-the-box. So we thought, wouldn&rsquo;t it be cool to have Kitematic running directly on your Raspberry Pi? And yes, we did it.</p>
 
-<p><img src="/images/kitematic-on-pi/teaser.jpg" alt="" />
-</p>
+<p><img src="/images/kitematic-on-pi/teaser.jpg" alt="" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/a-touch-of-magic-controlling-kitematic-with-a-touch-display-on-the-raspberry-pi/">Read More…</a>
@@ -1208,9 +1205,9 @@ This image now also supports the new 7&rdquo; Raspberry Pi Touch Display out-of-
 
 <p>It is - more than ever - <strong>the ultimate Docker playground for the Raspberry Pi 1 &amp; 2</strong>.</p>
 
-<p><img src="/images/jessie-release/one-to-rule-them-all_blog.jpg" alt="" />
-</p>
+<p><img src="/images/jessie-release/one-to-rule-them-all_blog.jpg" alt="" /></p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/get-your-all-in-one-docker-playground-now-hypriotos-reloaded/">Read More…</a>
@@ -1232,8 +1229,8 @@ It is the ultimate Docker playground for the Raspberry Pi 1 &amp; 2.</p>
 
 <p>This image builds on the <a href="/post/rc1-jessie-with-brand-new-kernel-and-docker/">RC1 we released roughly two weeks ago</a> and fixes a couple of issues that were reported by our community.</p>
 
-<p>We also upgraded the included firmware as well as the Linux-Kernel- and the Docker-Version.</p>
-
+<p>We also upgraded the included firmware as well as the Linux-Kernel- and the Docker-Version.
+</p>
         
         <div class="read-more-link">
           <a href="/post/rc2-jessie-with-brand-new-kernel-and-docker-and-display-support/">Read More…</a>
@@ -1254,8 +1251,8 @@ It is the ultimate Docker playground for the Raspberry Pi 1 &amp; 2.</p>
 It is the ultimate Docker playground for the Raspberry Pi 1 &amp; 2.</p>
 
 <p>This image builds on the <a href="/post/moving-docker-from-wheezy-to-jessie/">Beta Version we published six weeks ago</a> and fixes a couple of issues that were reported by our community.
-The positiv feedback we got spurred us on to make this release even better.</p>
-
+The positiv feedback we got spurred us on to make this release even better.
+</p>
         
         <div class="read-more-link">
           <a href="/post/rc1-jessie-with-brand-new-kernel-and-docker/">Read More…</a>
@@ -1274,6 +1271,7 @@ The positiv feedback we got spurred us on to make this release even better.</p>
 
         <p>I just want to share some screenshots with you. Today I have played with Kitematic on a Windows Server 2016 TP3 and made it talk to the Windows Docker Engine. Yes, no VirtualBox in between. Just starting native Windows Containers from the Kitematic interface.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/kitematic-meets-windows-docker/">Read More…</a>
@@ -1292,6 +1290,7 @@ The positiv feedback we got spurred us on to make this release even better.</p>
 
         <p>The great ARMed flood has begun. Especially for the sake of the IoT, every day new tiny devices pop up all around the world. And since most of these devices are build on top of the ARM architecture, with each new device, ARM gets more important compared to the x86 architecture proposed by Intel/AMD. Maybe you even need to run your next app on ARM! Thus better be prepared and port apps to ARM, it&rsquo;s basically just one step to take.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/port_dockerfiles_to_arm/">Read More…</a>
@@ -1310,6 +1309,7 @@ The positiv feedback we got spurred us on to make this release even better.</p>
 
         <p>If you followed our guides about <a href="/post/run-your-own-github-like-service-with-docker/">setting up a git service</a> or about <a href="/post/static-website-generation-on-steriods-with-docker/">setting up a blog</a> on your Raspberry Pi, you might want to access these services from the internet. In most cases, this requires three steps to be done. We will show how to take them successfully.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/access_your_raspberry_pi_from_the_internet/">Read More…</a>
@@ -1329,8 +1329,8 @@ The positiv feedback we got spurred us on to make this release even better.</p>
         <p><strong>What’s even better then Wheezy? Yes, your right - that’s Jessie.</strong></p>
 
 <p>And that’s not only because we very much like what crazy stuff <em><a href="https://blog.jessfraz.com/">Jessie</a></em> is doing with Docker.
-No, it’s because <em>Jessie</em> is <a href="http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/">the next version of the Debian operating system</a> that forms the foundation of our SD card image.</p>
-
+No, it’s because <em>Jessie</em> is <a href="http://arstechnica.com/information-technology/2015/05/debian-8-linuxs-most-reliable-distro-makes-its-biggest-change-since-1993/">the next version of the Debian operating system</a> that forms the foundation of our SD card image.
+</p>
         
         <div class="read-more-link">
           <a href="/post/moving-docker-from-wheezy-to-jessie/">Read More…</a>
@@ -1349,8 +1349,8 @@ No, it’s because <em>Jessie</em> is <a href="http://arstechnica.com/informatio
 
         <p>In this blog post we show you how easy it is to install Swarm on your Raspberry Pi and how to set up a Raspberry Pi Swarm cluster with the help of Docker Machine.</p>
 
-<p>We have built a little &ldquo;Pi Tower&rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.</p>
-
+<p>We have built a little &ldquo;Pi Tower&rdquo; with three Raspberry Pi 2 model B and combined them into a Docker Swarm cluster.
+</p>
         
         <div class="read-more-link">
           <a href="/post/let-docker-swarm-all-over-your-raspberry-pi-cluster/">Read More…</a>
@@ -1373,6 +1373,7 @@ There are even <a href="https://www.staticgen.com/">whole projects</a> dedicated
 <p>One of the first static site generators that got really popular was <a href="https://github.com/jekyll/jekyll/commits/master">Jekyll</a>, which was conceived by <a href="http://tom.preston-werner.com/">Tom Preston-Werner</a> of Github fame.
 Typically static site generators transform input (e.g. text in a lightweight markup language such as Markdown or reStructuredText) to static HTML with the help of templates and filters.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/static-website-generation-on-steriods-with-docker/">Read More…</a>
@@ -1391,9 +1392,6 @@ Typically static site generators transform input (e.g. text in a lightweight mar
 
         <p><a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> have taken the world by storm.
 No serious developer today can afford not to <a href="https://www.atlassian.com/git/tutorials/">know how to work with Git</a>.</p>
-
-<p>But what if you do not want to have your code in the cloud? What if you want to host your code repositories yourself?</p>
-
         
         <div class="read-more-link">
           <a href="/post/run-your-own-github-like-service-with-docker/">Read More…</a>
@@ -1413,6 +1411,7 @@ No serious developer today can afford not to <a href="https://www.atlassian.com/
         <p>Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Francisco,CA (USA).
 The goal of the demo was to show that Docker is a really lightweight &ldquo;virtualization&rdquo; solution that can be easily run on small IoT devices.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/dockercon2015/">Read More…</a>
@@ -1430,8 +1429,8 @@ The goal of the demo was to show that Docker is a really lightweight &ldquo;virt
         <span class="post-date">Fri, May 15, 2015</span>
 
         <p>The last couple of days Mathias Renner and I were busy creating a comprehensive <a href="/getting-started">Getting Started guide for Docker on the Raspberry Pi</a>.
-Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.</p>
-
+Our goal was to give users easy to understand step by step instructions on how to get Docker running on a Raspberry Pi.
+</p>
         
         <div class="read-more-link">
           <a href="/post/brand-new-getting-started-guide/">Read More…</a>
@@ -1451,6 +1450,7 @@ Our goal was to give users easy to understand step by step instructions on how t
         <p>After nearly two months of development Docker 1.6.0 was finally released into the wild.
 Being right on the heels of the Docker team we were able to create an ARM compatible version within minutes and of course you can download it here as a Debian package.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-1-6-is-finally-released-into-the-wild/">Read More…</a>
@@ -1467,8 +1467,8 @@ Being right on the heels of the Docker team we were able to create an ARM compat
 
         <span class="post-date">Wed, Apr 15, 2015</span>
 
-        <p>In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.</p>
-
+        <p>In this post we show you the first steps how easy it is using Kitematic to control a Docker engine running on a Raspberry Pi. Finally we demostrate in a small screencast how to run an unbelievable amount of 101 web servers on a single Raspberry Pi 2.
+</p>
         
         <div class="read-more-link">
           <a href="/post/connect-kitematic-to-external-docker-engine/">Read More…</a>
@@ -1487,6 +1487,7 @@ Being right on the heels of the Docker team we were able to create an ARM compat
 
         <p>In our <a href="/post/lets-get-physical/">last blog post</a> we showed you how to interact with the GPIO ports and how to turn on one LED. Now for some more magic lights we create a little Node.js application that drives a NeoPixel LED strip from Adafruit in a Docker container.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/drive-neopixels-in-docker/">Read More…</a>
@@ -1505,6 +1506,7 @@ Being right on the heels of the Docker team we were able to create an ARM compat
 
         <p>With Docker on the Raspberry Pi we are able to connect cloud tools with IoT devices. So how can we interact with the real world from inside a Docker container? Let&rsquo;s see and get physical&hellip;</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/lets-get-physical/">Read More…</a>
@@ -1526,6 +1528,7 @@ Being right on the heels of the Docker team we were able to create an ARM compat
 <p>To demonstrate the benefits of Docker Compose we are going to create a simple Node.js &ldquo;Hello World&rdquo; application which will run on three Docker Node.js containers.
 HTTP requests will be distributed to these Node.js nodes by an HAProxy instance running on another Docker container.</p>
 
+<p></p>
         
         <div class="read-more-link">
           <a href="/post/docker-compose-nodejs-haproxy/">Read More…</a>
@@ -1542,8 +1545,8 @@ HTTP requests will be distributed to these Node.js nodes by an HAProxy instance 
 
         <span class="post-date">Tue, Mar 31, 2015</span>
 
-        <p>If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.</p>
-
+        <p>If you like to stay on the cutting edge of things as much as we do you will be happy to hear that there is an easy way to test drive Docker 1.6 RC2 on your Raspberry Pi.
+</p>
         
         <div class="read-more-link">
           <a href="/post/docker-1-dot-6-release-candidate-ready-for-arm/">Read More…</a>
@@ -1563,8 +1566,8 @@ HTTP requests will be distributed to these Node.js nodes by an HAProxy instance 
         <p>Time is running and it is nearly a month since we released our last ARM Docker SD card image for the Raspberry Pi.
 Listening to our users and having some ideas of our own we are back again with our latest version of HypriotOS.</p>
 
-<p>We dubbed it &ldquo;<strong>Jack</strong>&rdquo; as every proper software release should have a fitting <a href="http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/">code name</a>.</p>
-
+<p>We dubbed it &ldquo;<strong>Jack</strong>&rdquo; as every proper software release should have a fitting <a href="http://royal.pingdom.com/2010/05/27/the-developer-obsession-with-code-names-114-interesting-examples/">code name</a>.
+</p>
         
         <div class="read-more-link">
           <a href="/post/hypriotos-back-again-with-docker-on-arm/">Read More…</a>
@@ -1582,8 +1585,8 @@ Listening to our users and having some ideas of our own we are back again with o
         <span class="post-date">Fri, Mar 27, 2015</span>
 
         <p>Today we made the move and switched our blog from <a href="http://posthaven.com">Posthaven</a> to <a href="http://gohugo.io/">Hugo</a>.
-And that after having published only three blog posts. You might ask yourself why?</p>
-
+And that after having published only three blog posts. You might ask yourself why?
+</p>
         
         <div class="read-more-link">
           <a href="/post/moved-from-posthaven-to-hugo/">Read More…</a>
@@ -1602,8 +1605,8 @@ And that after having published only three blog posts. You might ask yourself wh
 
         <p>Nearly two weeks ago we have been blown away by the positive feedback we got for <a href="/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1">our first Raspberry Pi SD card image</a>. It allowed people to get up and running with Docker on the Raspberry Pi in no time.</p>
 
-<p>The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.</p>
-
+<p>The positive feedback we received and the fact that two days later Docker 1.5.0 was released did motivate us to create an improved version of our Get-Docker-Up-And-Running-On-Your-Pi-In-No-Time SD card image.
+</p>
         
         <div class="read-more-link">
           <a href="/post/heavily-armed-after-major-upgrade-raspberry-pi-with-docker-1-dot-5-0/">Read More…</a>
@@ -1624,7 +1627,6 @@ And that after having published only three blog posts. You might ask yourself wh
 
 <p><img src="/images/gallery/hypriot-on-the-docker-website/docker_community.jpg" alt="Hypriot on the Docker Website" />
 </p>
-
         
       </div>
     
@@ -1637,7 +1639,9 @@ And that after having published only three blog posts. You might ask yourself wh
 
         <span class="post-date">Sun, Feb 8, 2015</span>
 
-        If you have not been living under a rock last week you probably heard that the Raspberry Pi Foundation did release a second generation Raspberry Pi on the 2th of February. The last generation being a huge success with 4 million devices sold at the end of 2014 the success story is likely to continue with a new Raspberry Pi 2 Model B in 2015. Pi 2 has the same form factor as the previous Pi 1 Model B+ and is completely compatible with Pi 1 - which is good news for everybody who already owns a Pi 1.
+        If you have not been living under a rock last week you probably heard that the Raspberry Pi Foundation did release a second generation Raspberry Pi on the 2th of February.
+The last generation being a huge success with 4 million devices sold at the end of 2014 the success story is likely to continue with a new Raspberry Pi 2 Model B in 2015.
+Pi 2 has the same form factor as the previous Pi 1 Model B+ and is completely compatible with Pi 1 - which is good news for everybody who already owns a Pi 1.
         
         <div class="read-more-link">
           <a href="/post/kick-ass-raspberry-pi-2-having-a-forbidden-love-affair-with-docker-1-dot-4-1/">Read More…</a>

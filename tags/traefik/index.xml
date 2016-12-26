@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Traefik on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/traefik/</link>
+    <link>https://blog.hypriot.com/tags/traefik/index.xml</link>
     <description>Recent content in Traefik on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jun 2016 09:15:00 +0000</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,9 +14,7 @@
       <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
       
       <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
-      <description>
-
-&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
+      <description>&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
 It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.&lt;/p&gt;
 
 &lt;p&gt;Did you realize the important part of the last sentence was &lt;strong&gt;dynamic&lt;/strong&gt;?&lt;/p&gt;
@@ -25,13 +22,14 @@ It is meant to act as frontend proxy for microservices that are provided by a dy
 &lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
 So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
 &lt;a href=&#34;https://github.com/gliderlabs/registrator&#34;&gt;Registrator&lt;/a&gt;, &lt;a href=&#34;https://www.consul.io/&#34;&gt;Consul&lt;/a&gt; and &lt;a href=&#34;https://github.com/hashicorp/consul-template&#34;&gt;Consul-Template&lt;/a&gt; to achieve the same kind of functionality.&lt;/p&gt;
 
 &lt;p&gt;So let me show you with a simple microservice example how easy it is to get started with Traefik&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see in the following architecture overview we will have a simple HTTP service that answers incoming HTTP requests.&lt;/p&gt;
 
@@ -41,12 +39,11 @@ Traefik serves as a frontend proxy that loadbalances incoming requests to the av
 &lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
 In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
 
-&lt;h2 id=&#34;creating-a-docker-swarm-cluster:eaccea7a352d1344b842649dc78262ad&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
+&lt;h2 id=&#34;creating-a-docker-swarm-cluster&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
 
 &lt;p&gt;One of fastest and easiest ways to get a Docker Swarm cluster running is to use our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt;.&lt;/p&gt;
 
@@ -54,8 +51,7 @@ In this example each backend service will answer with their individual container
 
 &lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;
 
@@ -111,7 +107,7 @@ Congrats!&lt;/p&gt;
 
 &lt;p&gt;As you made it so far the rest will be a piece of a cake!&lt;/p&gt;
 
-&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik:eaccea7a352d1344b842649dc78262ad&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
+&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
 
 &lt;p&gt;Our example microservice application consists of two parts. The Traefik frontend and the WhoAmI application backend.
 For both parts I have prepared images for you that can be pulled from the Docker Hub.&lt;/p&gt;
@@ -267,8 +263,7 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -56,13 +56,13 @@
       
         <li><a href="/downloads/"> DOWNLOADS </a></li>
       
-        <li><a href="/faq/"> FAQ </a></li>
+        <li><a href="/faq"> FAQ </a></li>
       
         <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
       
-        <li><a href="/about/"> ABOUT US </a></li>
+        <li><a href="/about"> ABOUT US </a></li>
       
-        <li><a href="/crew/"> CREW </a></li>
+        <li><a href="/crew"> CREW </a></li>
       
     </ul>
 
@@ -81,20 +81,18 @@
   <div class="post">
     <h1>Fix Dirty COW on Raspberry Pi the Docker way</h1>
     <span class="post-date">Tue, Nov 1, 2016</span>
-    
-
-<p>Have you seen the latest reports about the Linux kernel security vulnerability called &ldquo;Dirty COW&rdquo;?
+    <p>Have you seen the latest reports about the Linux kernel security vulnerability called &ldquo;Dirty COW&rdquo;?
 Dirty COW is a <a href="http://www.theregister.co.uk/2016/10/21/linux_privilege_escalation_hole/">race condition in Linux</a> arising from how Copy-On-Write (the COW in the name) is handled by the kernel&rsquo;s memory subsystem&rsquo;s use of private mappings.</p>
 
 <p>The really dangerous point here is, it can be used to <a href="http://www.theregister.co.uk/2016/11/01/docker_user_havent_patched_dirty_cow_yet_bad_news/">escape Docker containers</a>.
-<img src="/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg" alt="dirty-cow-001" />
-</p>
+<img src="/images/fix-dirty-cow-on-raspberry-pi/dirty-cow-001.jpg" alt="dirty-cow-001" /></p>
 
 <p>So, we&rsquo;re encourage you to immediately fix it with upgrading your Linux kernel on the Raspberry Pi !!!</p>
 
-<p>No matter if you&rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&hellip;</p>
+<p>No matter if you&rsquo;re running an official Raspbian or HypriotOS, please upgrade your Linux kernel to be safe again&hellip;
+</p>
 
-<h3 id="tl-dr-fast-fixing:3be4aa7cb9bc4e1cf6956202774eb827">TL;DR - Fast Fixing</h3>
+<h3 id="tl-dr-fast-fixing">TL;DR - Fast Fixing</h3>
 
 <p>For all the impatient users, here are the essential steps to upgrade your Linux kernel in an easy way on your Raspberry Pi:</p>
 
@@ -107,7 +105,7 @@ $ sudo reboot
 
 <p>For both operating systems it requires a system reboot to exchange the running Linux kernel in memory. But once you&rsquo;ve done these easy steps you have successfully fixed the Dirty COW vulnerability.</p>
 
-<h3 id="testing-for-dirty-cow-with-the-help-of-docker:3be4aa7cb9bc4e1cf6956202774eb827">Testing for Dirty COW with the help of Docker</h3>
+<h3 id="testing-for-dirty-cow-with-the-help-of-docker">Testing for Dirty COW with the help of Docker</h3>
 
 <p>If you&rsquo;d like to know whether your system is vulnerable against Dirty COW you can easily run a test with the help of a Docker Image. The complete source code can be found in my Github repo <a href="https://github.com/DieterReuter/rpi-dirtycow">DieterReuter/rpi-dirtycow</a>, so you can build everything on your own, too.</p>
 
@@ -260,7 +258,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 
 <p><em>Note:</em> This is another great advantage by Docker - get rid of all the tools we don&rsquo;t need anymore.</p>
 
-<h3 id="conclusion-upgrade-your-system-regularly:3be4aa7cb9bc4e1cf6956202774eb827">Conclusion: upgrade your system regularly</h3>
+<h3 id="conclusion-upgrade-your-system-regularly">Conclusion: upgrade your system regularly</h3>
 
 <p>Your Raspberry Pi system is now SAFE again. In the future don&rsquo;t forget to upgrade it from time to time. On both operating systems, Raspbian and HypriotOS, you can do the upgrade procedure with these few commands:</p>
 
@@ -292,14 +290,13 @@ HypriotOS/armv7: pirate@black-pearl in ~
 
 <p>That&rsquo;s all and STAY SAFE !!!</p>
 
-<h3 id="feedback-please:3be4aa7cb9bc4e1cf6956202774eb827">Feedback, please</h3>
+<h3 id="feedback-please">Feedback, please</h3>
 
 <p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
 
 <p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
 
 <p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
-
     <div class="social-sharing">
   
 <div class="social-sharing-twitter" style="float: left;">

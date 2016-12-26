@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dockercon2015 on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/dockercon2015/</link>
+    <link>https://blog.hypriot.com/categories/dockercon2015/index.xml</link>
     <description>Recent content in Dockercon2015 on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2015 01:30:34 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/dockercon2015/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,12 +14,12 @@
       <pubDate>Wed, 24 Jun 2015 01:30:34 +0200</pubDate>
       
       <guid>https://blog.hypriot.com/post/dockercon2015/</guid>
-      <description>
-
-&lt;p&gt;Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Francisco,CA (USA).
+      <description>&lt;p&gt;Hypriot had a short demo session (16:45 - 17:15 PDT) on the second day of the DockerCon 2015 in San Francisco,CA (USA).
 The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;virtualization&amp;rdquo; solution that can be easily run on small IoT devices.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;div class=&#34;gallery clearfix&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
 &lt;div class=&#34;title&#34;&gt;Dieter Reuter from the Hypriot team at DockerCon 2015&lt;/div&gt;
 
 
@@ -70,9 +69,9 @@ The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;
 
 
 &lt;/div&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/photoswipe.css&#34;&gt;
 &lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.hypriot.com/css/default-skin/default-skin.css&#34;&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe.min.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;https://blog.hypriot.com/js/photoswipe-ui-default.min.js&#34;&gt;&lt;/script&gt;
@@ -138,7 +137,7 @@ The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;
 
 
 &lt;script&gt;initPhotoSwipeFromDOM(&#39;.gallery&#39;);&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/131966874&#34; width=&#34;600&#34; height=&#34;450&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt; &lt;p&gt;&lt;a href=&#34;https://vimeo.com/131966874&#34;&gt;DockerCon2015 - Scale down to the minimum&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user38425431&#34;&gt;hypriot&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
 
@@ -146,7 +145,7 @@ The goal of the demo was to show that Docker is a really lightweight &amp;ldquo;
 These changes allowed us to start up hundreds of containers on a Raspberry Pi in just a couple of minutes. How awesome is that?
 If that is possible on a small device imagine how Docker runs on a big server&amp;hellip; :)&lt;/p&gt;
 
-&lt;h3 id=&#34;the-hypriot-dockercon-challenge:08dbaaf64a7259b7390848cf1e42575f&#34;&gt;The Hypriot-DockerCon-Challenge&lt;/h3&gt;
+&lt;h3 id=&#34;the-hypriot-dockercon-challenge&#34;&gt;The Hypriot-DockerCon-Challenge&lt;/h3&gt;
 
 &lt;p&gt;Even with this jaw-dropping result we think there is room for improvement.
 That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve the performance even more and remove remaining roadblocks!&lt;/p&gt;
@@ -183,8 +182,7 @@ That is why &lt;strong&gt;we challenge you&lt;/strong&gt; to help us to improve 
 
 &lt;p&gt;Hope we did wet your appetite. Happy hacking and have fun!&lt;/p&gt;
 
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-</description>
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;</description>
     </item>
     
   </channel>

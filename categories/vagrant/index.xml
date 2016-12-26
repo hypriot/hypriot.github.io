@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vagrant on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/vagrant/</link>
+    <link>https://blog.hypriot.com/categories/vagrant/index.xml</link>
     <description>Recent content in Vagrant on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Mar 2016 23:00:00 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -23,8 +22,9 @@
 Follow along to learn how this is possible.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/swarm-cluster-lab/cluster_lab.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/snre/10579433974/in/photolist-h7Sn93-4A4CPY-cr7gZ3-ySfs-Q2aKL-Q2GvM-akjGfr-6cX1D7-7Z4GYE-8XKoBo-82k2PZ-5J8yhX-7Sct35-h7SfKJ-h7SmSb-h7S44X-5J8y5a-4Y8HsH-p1Sz3h-4A4wom-4Bw54x-gQ23WX-iKWTQA-8D8m59-6PgZhg-8tKzAS-4kvY6K-9kaX8z-54x1BV-5xh7Sb-bLXPYZ-4zQ8mN-7KjCAt-MSdyd-qAw4Hw-awH1nc-4tKyxG-5wWtGU-4LMU7v-7NkBns-9a3pwX-h7Tuik-iAjqa-rvTgXa-h7S5uT-h7Shc1-qL7ofi-a18dLe-5RVXPz-8gLV&#34;&gt;SNRE Labs&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;The Hypriot Cluster Lab has already been there for while as an easy way to set up a Swarm Cluster on Raspberry Pi&amp;rsquo;s.
 The basic idea was to have a SD card image that can be used to boot up a couple of Pi&amp;rsquo;s who then automatically form a Swarm Cluster.
@@ -211,8 +211,7 @@ That was easy, was it?&lt;/p&gt;
 
 &lt;p&gt;As always, use the comments below to give us feedback, discuss this post on &lt;a href=&#34;https://news.ycombinator.com/item?id=11263205&#34;&gt;HackerNews&lt;/a&gt; and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

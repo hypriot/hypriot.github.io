@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dht22 on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/tags/dht22/</link>
+    <link>https://blog.hypriot.com/tags/dht22/index.xml</link>
     <description>Recent content in Dht22 on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Mar 2016 23:02:30 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/tags/dht22/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,8 +20,9 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 &lt;p&gt;To illustrate this use case we are going to create a Docker image that allows us to read the data from a temperature sensor.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-
 &lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/tmib/3336410263/in/photolist-65PYwT-hKwdXx-6Gvfse-8sZyde-hKwe8n-bsrVBM-aTuQm-suTVL-4keeLT-9HAaQv-6owaBS-pcKw75-ktYU9-7fCvHx-aMp4hZ-9CJPmM-5kQCwW-9uhoBD-i6h8R-8eACxB-73fGHE-ecUmhW-4ayKHW-coQnPs-x2g2w-qTtWEg-6afv15-7zQM2j-coQoDf-6uLDRM-5srT3L-hpQH9p-q1QZca-9S8ygg-mHCs1e-aZ3SJT-b3ejpi-qvDRpB-mBUjjp-mJTYFr-nhZUoo-6dRUnb-9tuUnt-eMRL2K-6K6ars-dhBwB7-5Cr4jF-5rq6uU-yzubv-q7g6xP&#34;&gt;tmib_seattle&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;To follow along you gonna need:&lt;/p&gt;
 
@@ -34,8 +34,7 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 
 &lt;p&gt;From the hardware side we need to first attach the sensor to our Raspberry Pi.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature_sensor.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/temperature_sensor.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Looking at the picture of the sensor from left to right we need to attach&lt;/p&gt;
 
@@ -47,8 +46,7 @@ Interestingly enough Docker is a perfect tool for managing and distributing IoT 
 
 &lt;p&gt;The information in brackets corresponds to the pin numbers in this &lt;a href=&#34;http://raspi.tv/wp-content/uploads/2013/07/Rev2-GPIO-bold.jpg&#34;&gt;GPIO overview image&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/sensor_connected_to_pi.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-sensor-fu-on-a-raspberry-pi/sensor_connected_to_pi.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;After our hardware is settled we need to look at the software side of things.&lt;/p&gt;
 
@@ -164,8 +162,7 @@ Humidity = 35.00 % Temperature = 22.00 *C
 
 &lt;p&gt;That&amp;rsquo;s it. As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

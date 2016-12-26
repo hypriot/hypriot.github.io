@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Huawei on Docker Pirates ARMed with explosive stuff</title>
-    <link>https://blog.hypriot.com/categories/huawei/</link>
+    <link>https://blog.hypriot.com/categories/huawei/index.xml</link>
     <description>Recent content in Huawei on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Mar 2016 15:59:56 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/categories/huawei/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,17 +14,16 @@
       <pubDate>Tue, 01 Mar 2016 15:59:56 +0100</pubDate>
       
       <guid>https://blog.hypriot.com/post/getting-docker-running-on-a-high-density-armv8-server-from-hisilicon/</guid>
-      <description>
-
-&lt;p&gt;Running Docker containers on the latest high-density ARMv8 cloud servers lets
+      <description>&lt;p&gt;Running Docker containers on the latest high-density ARMv8 cloud servers lets
 you operate your data center at lower costs and gives you the ability to scale
 your business even faster. In this article we demonstrate the technical ground
 work of compiling Docker and bootstrapping all the necessary development tools.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-hisilicon.jpg&#34; alt=&#34;D02 HiSilicon&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;introduction:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;We at Hypriot are working hard to bring the Docker container technology to all major
 ARM platforms. This journey started almost 15 months ago, when we tried to use
@@ -37,7 +35,7 @@ a subsidiary of Huawei, contacted me and asked for help to get Docker running on
 their brand-new ARMv8 development board. We agreed on a collaboration and I got remote access to a
 &lt;a href=&#34;http://www.cnx-software.com/2015/02/16/hisilicon-d02-armv8-server-board/&#34;&gt;16-core ARMv8 Cortex-A57 machine&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;why-are-armv8-and-docker-a-perfect-fit:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Why are ARMv8 and Docker a perfect fit ?&lt;/h3&gt;
+&lt;h3 id=&#34;why-are-armv8-and-docker-a-perfect-fit&#34;&gt;Why are ARMv8 and Docker a perfect fit ?&lt;/h3&gt;
 
 &lt;p&gt;With the hyper-growth that the major cloud service providers face, one of the biggest
 challenges is to scale the computing power of their data centers to keep up with demand.
@@ -55,10 +53,9 @@ most out of our data center resources.&lt;/p&gt;
 
 &lt;p&gt;One of the first new ARMv8 servers is the D02 development board from HiSilicon.&lt;/p&gt;
 
-&lt;h3 id=&#34;hisilicon-d02-development-board-specs:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;HiSilicon D02 development board specs&lt;/h3&gt;
+&lt;h3 id=&#34;hisilicon-d02-development-board-specs&#34;&gt;HiSilicon D02 development board specs&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board.png&#34; alt=&#34;D02 Board&#34; /&gt;&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -131,7 +128,7 @@ most out of our data center resources.&lt;/p&gt;
 
 &lt;tr&gt;
 &lt;td&gt;LAN&lt;/td&gt;
-&lt;td&gt;2x &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;100&lt;/sub&gt;/1000Mbps Ethernet ports&lt;/td&gt;
+&lt;td&gt;2x 10/100/1000Mbps Ethernet ports&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -141,16 +138,15 @@ most out of our data center resources.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hisilicon/d02-board-rear-panel.png&#34; alt=&#34;D02 Board rear panel&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The HiSilicon D02 board uses the UEFI/Kernel/Ubuntu rootfs, which is available for download at &lt;a href=&#34;http://open-estuary.org/&#34;&gt;http://open-estuary.org/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;step-by-step-to-a-working-docker-installation:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Step-by-Step to a working Docker installation&lt;/h3&gt;
+&lt;h3 id=&#34;step-by-step-to-a-working-docker-installation&#34;&gt;Step-by-Step to a working Docker installation&lt;/h3&gt;
 
 &lt;p&gt;TLDR; Go 1.6 and Docker 1.10.2 are running on ARMv8&lt;/p&gt;
 
-&lt;h4 id=&#34;getting-to-know-the-installed-linux-os-and-the-armv8-hardware:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Getting to know the installed Linux OS and the ARMv8 hardware&lt;/h4&gt;
+&lt;h4 id=&#34;getting-to-know-the-installed-linux-os-and-the-armv8-hardware&#34;&gt;Getting to know the installed Linux OS and the ARMv8 hardware&lt;/h4&gt;
 
 &lt;p&gt;As a first step when I&amp;rsquo;m connecting to a new ARM board I&amp;rsquo;d like to get some details
 about the operating system and the hardware itself. With this known details it&amp;rsquo;s
@@ -277,7 +273,7 @@ this hardware revision the board is only populated with a single CPU.&lt;/p&gt;
 &lt;li&gt;a recent Linux 4.1.6 kernel&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;installing-and-compiling-the-latest-go-version:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Installing and compiling the latest Go version&lt;/h4&gt;
+&lt;h4 id=&#34;installing-and-compiling-the-latest-go-version&#34;&gt;Installing and compiling the latest Go version&lt;/h4&gt;
 
 &lt;p&gt;To compile Docker we need the very latest version of Go,
 which is currently Go 1.6. You can find all available Go versions at
@@ -368,7 +364,7 @@ ii  golang-src                       2:1.3.3-1ubuntu4                  arm64    
 &lt;p&gt;With a couple of commands we were able to install and compile the latest Go v1.6
 compiler and it&amp;rsquo;s now ready to use.&lt;/p&gt;
 
-&lt;h4 id=&#34;bootstrapping-the-docker-engine-the-first-time:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Bootstrapping the Docker Engine the first time&lt;/h4&gt;
+&lt;h4 id=&#34;bootstrapping-the-docker-engine-the-first-time&#34;&gt;Bootstrapping the Docker Engine the first time&lt;/h4&gt;
 
 &lt;p&gt;In order to compile Docker directly on our development board, we have to know the
 different methods, how we can and how we should compile the Docker Engine.&lt;/p&gt;
@@ -462,7 +458,7 @@ Client:
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;installing-the-docker-engine-on-armv8:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Installing the Docker Engine on ARMv8&lt;/h4&gt;
+&lt;h4 id=&#34;installing-the-docker-engine-on-armv8&#34;&gt;Installing the Docker Engine on ARMv8&lt;/h4&gt;
 
 &lt;p&gt;To run Docker efficiently on a Linux OS, we first need to know if our Linux kernel supports
 all the necessary kernel modules and is compiled with all the important kernel settings.
@@ -743,7 +739,7 @@ WantedBy=multi-user.target
 &lt;p&gt;We now have a running Docker Engine with the latest stable release v1.10.2 on our
 ARMv8 board.&lt;/p&gt;
 
-&lt;h4 id=&#34;compiling-the-docker-engine-the-official-way:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Compiling the Docker Engine the official way&lt;/h4&gt;
+&lt;h4 id=&#34;compiling-the-docker-engine-the-official-way&#34;&gt;Compiling the Docker Engine the official way&lt;/h4&gt;
 
 &lt;p&gt;With a running Docker Engine in place we can now start creating Docker the
 official way. The recommended way is to compile Docker within a Docker container.&lt;/p&gt;
@@ -817,7 +813,7 @@ Error response from daemon: client is newer than server (client API version: 1.2
 &lt;p&gt;We now have a Docker Engine built the official way. The resulting binary is statically
 linked and can be used immediately on our HiSilicon D02 development board.&lt;/p&gt;
 
-&lt;h4 id=&#34;updating-the-docker-engine-on-armv8-server:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Updating the Docker Engine on ARMv8 server&lt;/h4&gt;
+&lt;h4 id=&#34;updating-the-docker-engine-on-armv8-server&#34;&gt;Updating the Docker Engine on ARMv8 server&lt;/h4&gt;
 
 &lt;p&gt;To use the new binary we just need to exchange it and restart the Docker Engine.&lt;/p&gt;
 
@@ -904,7 +900,7 @@ official and recommended way. This gives us an absolutely clean workflow and
 results in reproducible builds. The complete build environment is fully
 isolated within a Docker image and the builds are pretty fast, too.&lt;/p&gt;
 
-&lt;h3 id=&#34;conclusion:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Conclusion&lt;/h3&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;As you can see, the latest release of the Docker Engine v1.10.2 is running on this
 ARMv8 development board pretty well. But right now the ARMv8 architecture is not officially
@@ -919,13 +915,12 @@ and verified automatically.&lt;/p&gt;
 &lt;p&gt;After this walkthrough I hope you can clearly see that the Docker container technology
 is almost ready for the new generation of high-density ARMv8 cloud servers.&lt;/p&gt;
 
-&lt;h3 id=&#34;feedback-please:02ffd27077a29b8225e4d8825fa873eb&#34;&gt;Feedback please!&lt;/h3&gt;
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback please!&lt;/h3&gt;
 
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt;
 or tweet your thoughts and ideas on this tutorial at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
