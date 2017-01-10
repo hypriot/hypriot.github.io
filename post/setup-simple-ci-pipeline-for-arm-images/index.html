@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Setup a simple CI pipeline to build Docker images for ARM &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2017 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Setup a simple CI pipeline to build Docker images for ARM</h1>
+    <span class="post-date">Tue, Jan 10, 2017</span>
+    <p>Recently I did an experiment: Can we build Docker images for ARM on ordinary cloud CI services that only provide Intel CPU&rsquo;s?</p>
+
+<p>The idea was to get rid of self hosted CI build agents that you have to care for. If you want to provide an ARM Docker image for an open source project your task is to build it and not to setup and maintain a whole pipeline for it.</p>
+
+<p><img src="/images/setup-simple-ci-pipeline-for-arm-images/github_yaml_arm.png" alt="GitHub + YAML = ARM Docker image" /></p>
+
+<p></p>
+
+<h3 id="background">Background</h3>
+
+<p>We at Hypriot have created several Dockerfiles for open source tools like <a href="https://github.com/hypriot/rpi-mysql">MySQL</a>, <a href="https://github.com/hypriot/rpi-traefik">Træfɪk</a> or <a href="https://github.com/hypriot/rpi-node">Node.js</a> to make them available as Docker images for your ARM devices.</p>
+
+<p>Building such images and maintaining them over a longer period of time you have to care for updates. We are happy to receive pull requests from our community that help us updating the Dockerfiles.
+But sometimes it happended that our ARM CI pipeline went offline and we had to put in some time and effort to fix it. There were pull requests lying around for some time without any CI checks.</p>
+
+<p>To get out of this trap I wanted a simpler CI pipeline without self hosted build agents. There are several cloud CI services like Travis, Codeship, Circle and so on, but they all only offer you Intel based CPU&rsquo;s.</p>
+
+<p>But they have one thing in common: Just add a YAML file to your GitHub repo, connect it to their CI servers and you are done. There must be a way to use this convenient way for our ARM builds.</p>
+
+<h3 id="qemu-for-the-rescue">QEMU for the rescue</h3>
+
+<p>There are some blog posts how to use QEMU to emulate ARM on Intel CPU&rsquo;s and many have even tried to build Docker images. I followed these tutorials, but many steps were needed to set up everything and it looked very complex.</p>
+
+<p>But after some hours of investigation I found out that all comes down to just two things:</p>
+
+<ol>
+<li>An Intel binary of QEMU for ARM must exist in the base Docker image</li>
+<li>The QEMU binary must be registered in the CI build agent</li>
+</ol>
+
+<p>Fortunately both steps can be done in a very simple way.</p>
+
+<h3 id="choose-a-base-image-with-qemu-binary">Choose a base image with QEMU binary</h3>
+
+<p>The Raspbian Docker images from <a href="https://resin.io">Resin</a> already have the QEMU binary in it. As these are the most common base images used you are already prepared.</p>
+
+<p>So if you use the following line in your <code>Dockerfile</code></p>
+
+<pre><code class="language-Dockerfile">FROM resin/rpi-raspbian
+</code></pre>
+
+<p>you are done with the first step. But what about Alpine? Well we have created a similar - still small - Docker image <a href="https://github.com/hypriot/rpi-alpine">hypriot/rpi-alpine</a> that uses the &ldquo;official&rdquo; <a href="https://hub.docker.com/r/armhf/alpine/">armhf/alpine</a> image and just append the QEMU binary. If you want to build ARM Alpine images just use this line:</p>
+
+<pre><code class="language-Dockerfile">FROM hypriot/rpi-alpine
+</code></pre>
+
+<h3 id="register-qemu-in-the-build-agent">Register QEMU in the build agent</h3>
+
+<p>The next step is to register QEMU in the build agent. There is a Docker image available that can do this for us in just one line:</p>
+
+<pre><code class="language-bash">docker run --rm --privileged multiarch/qemu-user-static:register --reset
+</code></pre>
+
+<p>That&rsquo;s it. Just add this line to your YAML file before the other docker commands.</p>
+
+<h3 id="travis-builds-mysql-arm-image">Travis builds MySQL ARM image</h3>
+
+<p>I have done the tests with Travis CI to build ARM images. But if you prefer another cloud CI services that offers Docker builds, it should be the same.</p>
+
+<p>So let&rsquo;s put all pieces together and have a look at the final <code>.travis.yml</code> file that is used to build the <a href="https://github.com/hypriot/rpi-mysql">hypriot/rpi-mysql</a> Docker image for ARM.</p>
+
+<pre><code>sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t hypriot/rpi-mysql .
+# test image
+- docker run hypriot/rpi-mysql mysql --version
+# push image
+- &gt;
+  if [ &quot;$TRAVIS_BRANCH&quot; == &quot;master&quot; ] &amp;&amp; [ &quot;$TRAVIS_PULL_REQUEST&quot; == &quot;false&quot; ]; then
+    docker login -u=&quot;$DOCKER_USER&quot; -p=&quot;$DOCKER_PASS&quot;
+    TAG=$(grep &quot;ENV MYSQL_VERSION&quot; Dockerfile | awk 'NF&gt;1{print $NF}')
+    docker tag hypriot/rpi-mysql hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql
+  fi
+</code></pre>
+
+<p>The only difference to an Intel build is to just register QEMU here. The rest is activating Docker builds and do a simple docker build, test, push of that image.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>You only have to remember two things to let the cloud build your ARM images:</p>
+
+<ol>
+<li><code>FROM resin/rpi-raspbian</code></li>
+<li><code>docker run --rm --privileged multiarch/qemu-user-static:register --reset</code></li>
+</ol>
+
+<p>We are using this setup for more and more GitHub repos to gain speed and respond to pull requests much faster.</p>
+
+<p>For example we also are using <a href="https://github.com/hypriot/rpi-node/blob/33d6ea9bebeca9bf31abac1b5dbc66a9f9902184/.travis.yml#L5-L8">matrix builds</a> for all major versions of Node.js to build new Docker images with Travis.</p>
+
+<h3 id="feedback-please">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

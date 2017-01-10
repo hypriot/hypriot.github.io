@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Travis on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/tags/travis/index.xml</link>
+    <description>Recent content in Travis on Docker Pirates ARMed with explosive stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://blog.hypriot.com/tags/travis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Setup a simple CI pipeline to build Docker images for ARM</title>
+      <link>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</link>
+      <pubDate>Tue, 10 Jan 2017 07:25:23 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</guid>
+      <description>&lt;p&gt;Recently I did an experiment: Can we build Docker images for ARM on ordinary cloud CI services that only provide Intel CPU&amp;rsquo;s?&lt;/p&gt;
+
+&lt;p&gt;The idea was to get rid of self hosted CI build agents that you have to care for. If you want to provide an ARM Docker image for an open source project your task is to build it and not to setup and maintain a whole pipeline for it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/setup-simple-ci-pipeline-for-arm-images/github_yaml_arm.png&#34; alt=&#34;GitHub + YAML = ARM Docker image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;We at Hypriot have created several Dockerfiles for open source tools like &lt;a href=&#34;https://github.com/hypriot/rpi-mysql&#34;&gt;MySQL&lt;/a&gt;, &lt;a href=&#34;https://github.com/hypriot/rpi-traefik&#34;&gt;Træfɪk&lt;/a&gt; or &lt;a href=&#34;https://github.com/hypriot/rpi-node&#34;&gt;Node.js&lt;/a&gt; to make them available as Docker images for your ARM devices.&lt;/p&gt;
+
+&lt;p&gt;Building such images and maintaining them over a longer period of time you have to care for updates. We are happy to receive pull requests from our community that help us updating the Dockerfiles.
+But sometimes it happended that our ARM CI pipeline went offline and we had to put in some time and effort to fix it. There were pull requests lying around for some time without any CI checks.&lt;/p&gt;
+
+&lt;p&gt;To get out of this trap I wanted a simpler CI pipeline without self hosted build agents. There are several cloud CI services like Travis, Codeship, Circle and so on, but they all only offer you Intel based CPU&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;But they have one thing in common: Just add a YAML file to your GitHub repo, connect it to their CI servers and you are done. There must be a way to use this convenient way for our ARM builds.&lt;/p&gt;
+
+&lt;h3 id=&#34;qemu-for-the-rescue&#34;&gt;QEMU for the rescue&lt;/h3&gt;
+
+&lt;p&gt;There are some blog posts how to use QEMU to emulate ARM on Intel CPU&amp;rsquo;s and many have even tried to build Docker images. I followed these tutorials, but many steps were needed to set up everything and it looked very complex.&lt;/p&gt;
+
+&lt;p&gt;But after some hours of investigation I found out that all comes down to just two things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;An Intel binary of QEMU for ARM must exist in the base Docker image&lt;/li&gt;
+&lt;li&gt;The QEMU binary must be registered in the CI build agent&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Fortunately both steps can be done in a very simple way.&lt;/p&gt;
+
+&lt;h3 id=&#34;choose-a-base-image-with-qemu-binary&#34;&gt;Choose a base image with QEMU binary&lt;/h3&gt;
+
+&lt;p&gt;The Raspbian Docker images from &lt;a href=&#34;https://resin.io&#34;&gt;Resin&lt;/a&gt; already have the QEMU binary in it. As these are the most common base images used you are already prepared.&lt;/p&gt;
+
+&lt;p&gt;So if you use the following line in your &lt;code&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Dockerfile&#34;&gt;FROM resin/rpi-raspbian
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you are done with the first step. But what about Alpine? Well we have created a similar - still small - Docker image &lt;a href=&#34;https://github.com/hypriot/rpi-alpine&#34;&gt;hypriot/rpi-alpine&lt;/a&gt; that uses the &amp;ldquo;official&amp;rdquo; &lt;a href=&#34;https://hub.docker.com/r/armhf/alpine/&#34;&gt;armhf/alpine&lt;/a&gt; image and just append the QEMU binary. If you want to build ARM Alpine images just use this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Dockerfile&#34;&gt;FROM hypriot/rpi-alpine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;register-qemu-in-the-build-agent&#34;&gt;Register QEMU in the build agent&lt;/h3&gt;
+
+&lt;p&gt;The next step is to register QEMU in the build agent. There is a Docker image available that can do this for us in just one line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run --rm --privileged multiarch/qemu-user-static:register --reset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. Just add this line to your YAML file before the other docker commands.&lt;/p&gt;
+
+&lt;h3 id=&#34;travis-builds-mysql-arm-image&#34;&gt;Travis builds MySQL ARM image&lt;/h3&gt;
+
+&lt;p&gt;I have done the tests with Travis CI to build ARM images. But if you prefer another cloud CI services that offers Docker builds, it should be the same.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s put all pieces together and have a look at the final &lt;code&gt;.travis.yml&lt;/code&gt; file that is used to build the &lt;a href=&#34;https://github.com/hypriot/rpi-mysql&#34;&gt;hypriot/rpi-mysql&lt;/a&gt; Docker image for ARM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t hypriot/rpi-mysql .
+# test image
+- docker run hypriot/rpi-mysql mysql --version
+# push image
+- &amp;gt;
+  if [ &amp;quot;$TRAVIS_BRANCH&amp;quot; == &amp;quot;master&amp;quot; ] &amp;amp;&amp;amp; [ &amp;quot;$TRAVIS_PULL_REQUEST&amp;quot; == &amp;quot;false&amp;quot; ]; then
+    docker login -u=&amp;quot;$DOCKER_USER&amp;quot; -p=&amp;quot;$DOCKER_PASS&amp;quot;
+    TAG=$(grep &amp;quot;ENV MYSQL_VERSION&amp;quot; Dockerfile | awk &#39;NF&amp;gt;1{print $NF}&#39;)
+    docker tag hypriot/rpi-mysql hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql
+  fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The only difference to an Intel build is to just register QEMU here. The rest is activating Docker builds and do a simple docker build, test, push of that image.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;You only have to remember two things to let the cloud build your ARM images:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;FROM resin/rpi-raspbian&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run --rm --privileged multiarch/qemu-user-static:register --reset&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We are using this setup for more and more GitHub repos to gain speed and respond to pull requests much faster.&lt;/p&gt;
+
+&lt;p&gt;For example we also are using &lt;a href=&#34;https://github.com/hypriot/rpi-node/blob/33d6ea9bebeca9bf31abac1b5dbc66a9f9902184/.travis.yml#L5-L8&#34;&gt;matrix builds&lt;/a&gt; for all major versions of Node.js to build new Docker images with Travis.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

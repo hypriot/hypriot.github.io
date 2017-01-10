@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</loc>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/docker-supported-on-chip-computer/</loc>
     <lastmod>2016-12-11T13:22:15+01:00</lastmod>
   </url>
@@ -363,13 +368,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -602,13 +607,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -674,7 +679,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1298,7 +1303,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1322,13 +1327,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/raspberry-pi/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/raspberry-pi/</loc>
-    <lastmod>2016-12-11T13:22:15+01:00</lastmod>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1490,6 +1495,18 @@
   <url>
     <loc>https://blog.hypriot.com/categories/traffic-light/</loc>
     <lastmod>2016-03-13T17:31:10+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/tags/travis/</loc>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/travis/</loc>
+    <lastmod>2017-01-10T07:25:23+02:00</lastmod>
     <priority>0</priority>
   </url>
   

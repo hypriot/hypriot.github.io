@@ -9,6 +9,119 @@
     <atom:link href="https://blog.hypriot.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Setup a simple CI pipeline to build Docker images for ARM</title>
+      <link>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</link>
+      <pubDate>Tue, 10 Jan 2017 07:25:23 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</guid>
+      <description>&lt;p&gt;Recently I did an experiment: Can we build Docker images for ARM on ordinary cloud CI services that only provide Intel CPU&amp;rsquo;s?&lt;/p&gt;
+
+&lt;p&gt;The idea was to get rid of self hosted CI build agents that you have to care for. If you want to provide an ARM Docker image for an open source project your task is to build it and not to setup and maintain a whole pipeline for it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/setup-simple-ci-pipeline-for-arm-images/github_yaml_arm.png&#34; alt=&#34;GitHub + YAML = ARM Docker image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;We at Hypriot have created several Dockerfiles for open source tools like &lt;a href=&#34;https://github.com/hypriot/rpi-mysql&#34;&gt;MySQL&lt;/a&gt;, &lt;a href=&#34;https://github.com/hypriot/rpi-traefik&#34;&gt;Træfɪk&lt;/a&gt; or &lt;a href=&#34;https://github.com/hypriot/rpi-node&#34;&gt;Node.js&lt;/a&gt; to make them available as Docker images for your ARM devices.&lt;/p&gt;
+
+&lt;p&gt;Building such images and maintaining them over a longer period of time you have to care for updates. We are happy to receive pull requests from our community that help us updating the Dockerfiles.
+But sometimes it happended that our ARM CI pipeline went offline and we had to put in some time and effort to fix it. There were pull requests lying around for some time without any CI checks.&lt;/p&gt;
+
+&lt;p&gt;To get out of this trap I wanted a simpler CI pipeline without self hosted build agents. There are several cloud CI services like Travis, Codeship, Circle and so on, but they all only offer you Intel based CPU&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;But they have one thing in common: Just add a YAML file to your GitHub repo, connect it to their CI servers and you are done. There must be a way to use this convenient way for our ARM builds.&lt;/p&gt;
+
+&lt;h3 id=&#34;qemu-for-the-rescue&#34;&gt;QEMU for the rescue&lt;/h3&gt;
+
+&lt;p&gt;There are some blog posts how to use QEMU to emulate ARM on Intel CPU&amp;rsquo;s and many have even tried to build Docker images. I followed these tutorials, but many steps were needed to set up everything and it looked very complex.&lt;/p&gt;
+
+&lt;p&gt;But after some hours of investigation I found out that all comes down to just two things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;An Intel binary of QEMU for ARM must exist in the base Docker image&lt;/li&gt;
+&lt;li&gt;The QEMU binary must be registered in the CI build agent&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Fortunately both steps can be done in a very simple way.&lt;/p&gt;
+
+&lt;h3 id=&#34;choose-a-base-image-with-qemu-binary&#34;&gt;Choose a base image with QEMU binary&lt;/h3&gt;
+
+&lt;p&gt;The Raspbian Docker images from &lt;a href=&#34;https://resin.io&#34;&gt;Resin&lt;/a&gt; already have the QEMU binary in it. As these are the most common base images used you are already prepared.&lt;/p&gt;
+
+&lt;p&gt;So if you use the following line in your &lt;code&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Dockerfile&#34;&gt;FROM resin/rpi-raspbian
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you are done with the first step. But what about Alpine? Well we have created a similar - still small - Docker image &lt;a href=&#34;https://github.com/hypriot/rpi-alpine&#34;&gt;hypriot/rpi-alpine&lt;/a&gt; that uses the &amp;ldquo;official&amp;rdquo; &lt;a href=&#34;https://hub.docker.com/r/armhf/alpine/&#34;&gt;armhf/alpine&lt;/a&gt; image and just append the QEMU binary. If you want to build ARM Alpine images just use this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Dockerfile&#34;&gt;FROM hypriot/rpi-alpine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;register-qemu-in-the-build-agent&#34;&gt;Register QEMU in the build agent&lt;/h3&gt;
+
+&lt;p&gt;The next step is to register QEMU in the build agent. There is a Docker image available that can do this for us in just one line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run --rm --privileged multiarch/qemu-user-static:register --reset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. Just add this line to your YAML file before the other docker commands.&lt;/p&gt;
+
+&lt;h3 id=&#34;travis-builds-mysql-arm-image&#34;&gt;Travis builds MySQL ARM image&lt;/h3&gt;
+
+&lt;p&gt;I have done the tests with Travis CI to build ARM images. But if you prefer another cloud CI services that offers Docker builds, it should be the same.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s put all pieces together and have a look at the final &lt;code&gt;.travis.yml&lt;/code&gt; file that is used to build the &lt;a href=&#34;https://github.com/hypriot/rpi-mysql&#34;&gt;hypriot/rpi-mysql&lt;/a&gt; Docker image for ARM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t hypriot/rpi-mysql .
+# test image
+- docker run hypriot/rpi-mysql mysql --version
+# push image
+- &amp;gt;
+  if [ &amp;quot;$TRAVIS_BRANCH&amp;quot; == &amp;quot;master&amp;quot; ] &amp;amp;&amp;amp; [ &amp;quot;$TRAVIS_PULL_REQUEST&amp;quot; == &amp;quot;false&amp;quot; ]; then
+    docker login -u=&amp;quot;$DOCKER_USER&amp;quot; -p=&amp;quot;$DOCKER_PASS&amp;quot;
+    TAG=$(grep &amp;quot;ENV MYSQL_VERSION&amp;quot; Dockerfile | awk &#39;NF&amp;gt;1{print $NF}&#39;)
+    docker tag hypriot/rpi-mysql hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql:$TAG
+    docker push hypriot/rpi-mysql
+  fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The only difference to an Intel build is to just register QEMU here. The rest is activating Docker builds and do a simple docker build, test, push of that image.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;You only have to remember two things to let the cloud build your ARM images:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;FROM resin/rpi-raspbian&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run --rm --privileged multiarch/qemu-user-static:register --reset&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We are using this setup for more and more GitHub repos to gain speed and respond to pull requests much faster.&lt;/p&gt;
+
+&lt;p&gt;For example we also are using &lt;a href=&#34;https://github.com/hypriot/rpi-node/blob/33d6ea9bebeca9bf31abac1b5dbc66a9f9902184/.travis.yml#L5-L8&#34;&gt;matrix builds&lt;/a&gt; for all major versions of Node.js to build new Docker images with Travis.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker is supported on the $9 C.H.I.P. computer</title>
       <link>https://blog.hypriot.com/post/docker-supported-on-chip-computer/</link>
       <pubDate>Sun, 11 Dec 2016 13:22:15 +0100</pubDate>
@@ -2812,119 +2925,6 @@ The other boards are still a work in progress - any help is welcome from the com
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>HypriotOS 0.8.0 Barbossa for Raspberry Pi 3</title>
-      <link>https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</link>
-      <pubDate>Wed, 25 May 2016 03:30:00 +0000</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</guid>
-      <description>&lt;p&gt;While it is quite hard to make something better that is already good, we feel that we were able to just do that with our latest release of HypriotOS.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HypriotOS is the easiest and fastest way to get you started with Docker on ARM and IoT devices.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It is the perfect playground for your first steps with Docker and it allows you to move to advanced stuff like Docker Clustering without breaking a sweat, too.&lt;/p&gt;
-
-&lt;p&gt;This is possible because we included a lot of the tools that make the Docker ecosystem awesome - for instance Docker Compose or Docker Swarm - out of the box.
-We also integrated the Hypriot Cluster-Lab into this release, which makes it really easy and painless to set up complex Docker Clusters.&lt;/p&gt;
-
-&lt;p&gt;And that&amp;rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &amp;hellip; :)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-barbossa/iceberg.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
-&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/davidw/&#34;&gt;David&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;features-at-a-glance&#34;&gt;Features at a glance&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;support for Raspberry Pi Zero, 1, 2 and 3&lt;/li&gt;
-&lt;li&gt;Linux kernel 4.4.10&lt;/li&gt;
-&lt;li&gt;Docker Engine 1.11.1&lt;/li&gt;
-&lt;li&gt;Docker Compose 1.7.1&lt;/li&gt;
-&lt;li&gt;Docker Machine 0.7.0&lt;/li&gt;
-&lt;li&gt;Docker Swarm 1.2.2&lt;/li&gt;
-&lt;li&gt;Cluster-Lab 0.2.12&lt;/li&gt;
-&lt;li&gt;device-init 0.1.7&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;updated-docker-and-docker-tools&#34;&gt;Updated Docker and Docker-Tools&lt;/h2&gt;
-
-&lt;p&gt;Compared to our latest HypriotOS Berry 0.7 we did upgrade the Docker Engine to v1.11 which now has several binaries instead of one.
-Besides the original Docker binary there is now also a Containerd and a runC binary. Containerd is basically a supervisor for individual containers that are run by runC.&lt;/p&gt;
-
-&lt;p&gt;The main reasons for splitting up the Docker binary were the efforts of Docker to support the &lt;a href=&#34;https://www.opencontainers.org/&#34;&gt;standardization of container technology&lt;/a&gt; and to make it easier to maintain the existing technology stack.
-You can get a good overview about these changes in the &lt;a href=&#34;https://blog.docker.com/2016/04/docker-engine-1-11-runc/&#34;&gt;blog post&lt;/a&gt; announcing the release of Docker 1.11.&lt;/p&gt;
-
-&lt;p&gt;And there is also a very interesting deep dive into the details of those changes:&lt;/p&gt;
-
-&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/QL8F2MLCybo&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&#34;full-raspberry-pi-3-support&#34;&gt;Full Raspberry Pi 3 Support&lt;/h2&gt;
-
-&lt;p&gt;Noteworthy is also that we now have full support for the Raspberry Pi 3.&lt;/p&gt;
-
-&lt;p&gt;With the help of our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash-tool&lt;/a&gt; it is really easy to bring a Raspberry Pi 3 online with only WiFi network connectivity:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash --ssid MyNetworkName --password SomeSecret https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that you can usually connect to your Pi by:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The password is &amp;lsquo;hypriot&amp;rsquo;. And that&amp;rsquo;s it.&lt;/p&gt;
-
-&lt;p&gt;By the way this also works if you attach an external WiFi adapter to a Raspberry Pi Zero, 1 and 2.&lt;/p&gt;
-
-&lt;h2 id=&#34;customizing-your-raspberry-pi-configuration&#34;&gt;Customizing your Raspberry Pi Configuration&lt;/h2&gt;
-
-&lt;p&gt;The ability to customize the hostname of your Pi, to add WiFi credentials and more is made possible by a small tool of ours called &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In previous versions we used a tool called &lt;a href=&#34;https://github.com/adafruit/Adafruit-Occi&#34;&gt;occi&lt;/a&gt; from Adafruit to allow hostname and WiFi customization.&lt;/p&gt;
-
-&lt;p&gt;In this release we removed it and replaced it with device-init.&lt;/p&gt;
-
-&lt;p&gt;device-init is a small programm that is started when your Raspberry Pi boots and it allows to customize a couple of settings.
-It takes its configuration from a file called &amp;lsquo;device-init.yaml&amp;rsquo; which is located in the /boot directory.&lt;/p&gt;
-
-&lt;p&gt;This /boot directory is basically a small FAT partition on the SD card that contains HypriotOS.
-It can be easily accessed from your host computer before you boot your Pi. You can edit the &amp;lsquo;device-init.yaml&amp;rsquo; file directly with a text editor or by using the flash tool as demonstrated above.&lt;/p&gt;
-
-&lt;p&gt;We are going to add more features - like adding public ssh keys, setting the locale or timezone - to device-init step by step in the next weeks.&lt;/p&gt;
-
-&lt;h2 id=&#34;hypriot-cluster-lab&#34;&gt;Hypriot Cluster-Lab&lt;/h2&gt;
-
-&lt;p&gt;We added the Hypriot Cluster-Lab to the image, too.&lt;/p&gt;
-
-&lt;p&gt;It is disabled by default, but can easily be enabled when you flash the image:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash --clusterlab true https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Setting this options starts the Cluster-Lab on boot.&lt;/p&gt;
-
-&lt;p&gt;By flashing a couple of SD cards with different hostnames and Cluster-Lab enabled you can get a fully working Docker Swarm cluster up and running in minutes.
-The individual machines will find themselves automatically and form a Swarm cluster.&lt;/p&gt;
-
-&lt;p&gt;You can read more about the Hypriot Cluster-Lab and why it is awesome on &lt;a href=&#34;https://github.com/hypriot/cluster-lab/&#34;&gt;its website&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can download the new release in our &lt;a href=&#34;https://blog.hypriot.com/downloads&#34;&gt;download section&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you encounter any problems with this new release please open up issues in one of the following repositories:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;https://github.com/hypriot/image-builder-rpi&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;https://github.com/hypriot/cluster-lab&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;https://github.com/hypriot/device-init&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;There is also our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter-Chat&lt;/a&gt; were you&amp;rsquo;ll find a very friendly community that always likes to help.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
