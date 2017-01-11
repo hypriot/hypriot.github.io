@@ -6,8 +6,269 @@
     <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jan 2017 07:25:23 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jan 2017 14:03:34 +0100</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Setup Kubernetes on a Raspberry Pi Cluster easily the official way!</title>
+      <link>https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/</link>
+      <pubDate>Thu, 12 Jan 2017 14:03:34 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;kubernetes.io&#34;&gt;Kubernetes&lt;/a&gt; shares the pole position with Docker in the category &amp;ldquo;orchestration solutions for Raspberry Pi cluster&amp;rdquo;.
+However it&amp;rsquo;s setup process has been elaborate – until &lt;a href=&#34;http://blog.kubernetes.io/2016/09/how-we-made-kubernetes-easy-to-install.html&#34;&gt;v1.4 with the kubeadm announcement&lt;/a&gt;.
+With that effort, Kubernetes changed this game completely and can be up and running officially within no time.&lt;/p&gt;
+
+&lt;p&gt;I am very happy to announce that this blog post has been written in collaboration with &lt;a href=&#34;https://github.com/luxas&#34;&gt;Lucas Käldström&lt;/a&gt;, an independent maintainer of Kubernetes (his story is very interesting,  you can read it in a &lt;a href=&#34;https://www.cncf.io/blog/2016/11/29/diversity-scholarship-series-programming-journey-becoming-kubernetes-maintainer&#34;&gt;CNCF blogpost&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/raspberry-pi-cluster.png&#34; alt=&#34;SwarmClusterHA&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-kubernetes&#34;&gt;Why Kubernetes?&lt;/h2&gt;
+
+&lt;p&gt;As shown in my recent &lt;a href=&#34;http://www.slideshare.net/MathiasRenner/high-availability-performance-of-kubernetes-and-docker-swarm-on-a-raspberry-pi-cluster/&#34;&gt;talk&lt;/a&gt;, there are many software suites available to manage a cluster of computers. There is Kubernetes, Docker Swarm, Mesos, OpenStack, Hadoop YARN, Nomad&amp;hellip; just to name a few.&lt;/p&gt;
+
+&lt;p&gt;However, at Hypriot we have always been in love with tiny devices. So when working with an orchestrator, the maximum power we wanna use is what&amp;rsquo;s provided by a Raspberry Pi. Why? We have IoT networks in mind that will hold a large share in tomorrow&amp;rsquo;s IT infrastructure. At their edges, the power required for large orchestrators simply is not available.&lt;/p&gt;
+
+&lt;p&gt;This boundary of resources leads to several requirements that need to be checked before we start getting our hands dirty with an orchestrator:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lightweight:&lt;/strong&gt; Software should be fit on a Raspberry Pi or smaller. As proofed in my talk mentioned above, Kubernetes painlessly runs on a Raspberry Pi.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ARM compatible:&lt;/strong&gt; Since the ARM CPU architecture is designed for low energy consumption but still able to deliver a decent portion of power, the Raspberry Pi runs an ARM CPU. Thanks to Lucas, Kubernetes is ARM compatible.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;General purpose:&lt;/strong&gt; Hadoop or Apache Spark are great for data analysis. But what if your use case changes? We prefer general purpose software that allows to run &lt;strong&gt;anything&lt;/strong&gt;. Kubernetes uses a container runtime (with Docker as the 100% supported runtime for the time being) that allows to run whatever you want.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Production ready:&lt;/strong&gt; Since we compare Kubernetes against a production ready Docker suite, let&amp;rsquo;s be fair and only choose equivalents. Kubernetes itself is production ready, and while the ARM port has some small issues, it&amp;rsquo;s working exactly as expected when going the official kubeadm route, which also will mature with time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, Kubernetes seems to be a compelling competitor to Docker Swarm. Let&amp;rsquo;s get our hands on it!&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;wait-what-about-kubernetes-on-arm&#34;&gt;Wait – what about &lt;em&gt;Kubernetes-on-ARM&lt;/em&gt;?&lt;/h2&gt;
+
+&lt;p&gt;If you followed the discussion of Kubernetes on ARM for some time, you probably know about Lucas&amp;rsquo; project &lt;a href=&#34;https://github.com/luxas/kubernetes-on-arm&#34;&gt;kubernetes-on-ARM&lt;/a&gt;. Since the beginning of the movement to bring Kubernetes on ARM in 2015, this project has always been the most stable and updated.&lt;/p&gt;
+
+&lt;p&gt;However, during 2016, Lucas&amp;rsquo; contributions have successfully been merged into official Kubernetes repositories, such that there is no point any more for using the kubernetes-on-ARM project.
+In fact, the features of that project are far behind of what&amp;rsquo;s now implemented in the official repos, &lt;strong&gt;and that has been Lucas&amp;rsquo; goal from the beginning.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So if you&amp;rsquo;re up to using Kubernetes, please stick to the official repos now. And as of the kubeadm documentation, &lt;strong&gt;the following setup is considered official for Kubernetes on ARM.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;at-first-flash-hypriotos-on-your-sd-cards&#34;&gt;At first: Flash HypriotOS on your SD cards&lt;/h2&gt;
+
+&lt;p&gt;As hardware, take at least two Raspberry Pis and make sure they are connected to each other and to the Internet.&lt;/p&gt;
+
+&lt;p&gt;First, we need an operating system. Download and flash &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;HypriotOS&lt;/a&gt;. The fastest way to download and flash HypriotOS on your SD cards is by using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash --hostname node01 https://github.com/hypriot/image-builder-rpi/releases/download/v1.1.3/hypriotos-rpi-v1.1.3.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Provision all Raspberry Pis you have like this and boot them up.&lt;/p&gt;
+
+&lt;p&gt;Afterwards, SSH into the Raspberry Pis with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@node01.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password &lt;code&gt;hypriot&lt;/code&gt; will grant you access.&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;install-kubernetes&#34;&gt;Install Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;The installation requries root privileges. Retrieve them by&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo su -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To install Kubernetes and its dependencies, only some commands are required.
+First, trust the kubernetes APT key and add the official APT Kubernetes repository on every node:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+$ echo &amp;quot;deb http://apt.kubernetes.io/ kubernetes-xenial main&amp;quot; &amp;gt; /etc/apt/sources.list.d/kubernetes.list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip; and then just install &lt;code&gt;kubeadm&lt;/code&gt; on every node:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ apt-get update &amp;amp;&amp;amp; apt-get install -y kubeadm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After the previous command has been finished, initialize Kubernetes on the &lt;strong&gt;master node&lt;/strong&gt; with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubeadm init --pod-network-cidr 10.244.0.0/16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is important that you add the &lt;code&gt;--pod-network-cidr&lt;/code&gt; command as given here, because we will use &lt;a href=&#34;https://coreos.com/flannel/docs/latest/&#34;&gt;flannel&lt;/a&gt;. Read the next notes about flannel if you wanna know why.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Some notes about flannel&lt;/strong&gt;: We picked flannel here because that’s the only available solution for ARM at the moment (this is subject to change in the future though).&lt;/p&gt;
+
+&lt;p&gt;flannel can use and is using in this example the Kubernetes API to store metadata about the Pod CIDR allocations, and therefore we need to tell &lt;em&gt;Kubernetes&lt;/em&gt; first which subnet we want to use.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you are connected via WIFI instead of Ethernet, add &lt;code&gt;--api-advertise-addresses=&amp;lt;wifi-ip-address&amp;gt;&lt;/code&gt; as parameter to &lt;code&gt;kubeadm init&lt;/code&gt; in order to publish Kubernetes&amp;rsquo; API via WiFi. Feel free to explore the other options that exist for &lt;code&gt;kubeadm init&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;After Kubernetes has been initialized, the last lines of your terminal should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/init.png&#34; alt=&#34;init&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, as told by that output, let all other nodes join the cluster via the given &lt;code&gt;kubeadm join&lt;/code&gt; command. It will look something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubeadm join --token=bb14ca.e8bbbedf40c58788 192.168.0.34
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After some seconds, you should see all nodes in your cluster when executing the following &lt;strong&gt;on the master node&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your terminal should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/get-nodes.png&#34; alt=&#34;k8S&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, &lt;strong&gt;we need to setup flannel as the Pod network driver&lt;/strong&gt;. Run this &lt;strong&gt;on the master node&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/coreos/flannel/master/Documentation/kube-flannel.yml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your terminal should look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/flannel.png&#34; alt=&#34;k8S&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then wait until all flannel and all other cluster-internal Pods are &lt;code&gt;Running&lt;/code&gt; before you continue:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl get po --all-namespaces
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nice, it seems like they are all &lt;code&gt;Running&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/show-namespaces.png&#34; alt=&#34;show-namespaces&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s all for the setup of Kubernetes! Next, let&amp;rsquo;s actually spin up a service on the cluster!&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;test-your-setup-with-a-tiny-service&#34;&gt;Test your setup with a tiny service&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start a simple service so see if the cluster actually can publish a service:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl run hypriot --image=hypriot/rpi-busybox-httpd --replicas=3 --port=80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command starts set of containers called &lt;strong&gt;hypriot&lt;/strong&gt; from the image &lt;strong&gt;hypriot/rpi-busybox-httpd&lt;/strong&gt; and defines the port the container listens on at &lt;strong&gt;80&lt;/strong&gt;. The service will be &lt;strong&gt;replicated with 3 containers&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, expose the Pods in the above created Deployment in a Service with a stable name and IP:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl expose deployment hypriot --port 80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Great! Now, let&amp;rsquo;s check if all three desired containers are up and running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl get endpoints hypriot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see three endpoints (= containers) like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/show-endpoints.png&#34; alt=&#34;show-endpoints&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo; curl one of them to see if the service is up:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/curl-service.png&#34; alt=&#34;curl-service&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The HTML is the response of the service. Good, it&amp;rsquo;s up and running! Next, let&amp;rsquo;s see how we can access it from outside the cluster!&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;finally-access-your-service-from-outside-the-cluster&#34;&gt;Finally access your service from outside the cluster&lt;/h2&gt;
+
+&lt;p&gt;We will now deploy an example Ingress Controller to manage incoming requests from the outside world onto our tiny service. Also, in this example we we&amp;rsquo;ll use &lt;a href=&#34;traefik.io&#34;&gt;Traefik&lt;/a&gt; as load balancer. Read the following notes if you wanna know more about Ingress and Traefik.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;In contrast to Docker Swarm, Kubernetes itself does not provide an option to define a specific port that you can use to access a service&lt;/strong&gt;. According to Lucas is this an important design decision; routing of incoming requests should be handled by a third party, such as a load balancer or a webserver, but not by the core product. The core Kubernetes should be lean and extensible, and encourage others to build tools on top of it for their specific needs.&lt;/p&gt;
+
+&lt;p&gt;Regarding load balancers in front of a cluster, there is &lt;a href=&#34;http://kubernetes.io/docs/user-guide/ingress/&#34;&gt;the Ingress API object&lt;/a&gt; and some sample &lt;a href=&#34;https://github.com/kubernetes/ingress&#34;&gt;Ingress Controllers&lt;/a&gt;. Ingress is a built-in way of exposing Services to the outside world via an Ingress Controller that anyone can build. An &lt;em&gt;Ingress rule&lt;/em&gt; defines how traffic should flow from the node the Ingress controller runs on to services inside of the cluster.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;First, let&amp;rsquo;s deploy traefik as load balancer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/hypriot/rpi-traefik/master/traefik-k8s-example.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Label the node you want to be the load balancer. Then the Traefik Ingress Controller will land on the node you specified. Run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl label node &amp;lt;load balancer-node&amp;gt; nginx-controller=traefik
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, create an Ingress object that makes Traefik load balance traffic on port &lt;code&gt;80&lt;/code&gt; to the &lt;code&gt;hypriot&lt;/code&gt; service:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat &amp;gt; hypriot-ingress.yaml &amp;lt;&amp;lt;EOF
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hypriot
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hypriot
+          servicePort: 80
+EOF
+$ kubectl apply -f hypriot-ingress.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Visit the loadbalancing node&amp;rsquo;s IP address in your browser and you should see a nice web page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/hypriot-website.png&#34; alt=&#34;curl-service&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t see a website there yet, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl get pods
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip; and make sure all hypriot Pods are in the &lt;code&gt;Running&lt;/code&gt; state.&lt;/p&gt;
+
+&lt;p&gt;Wait until you see that all Pods are running, and a nice Hypriot website should appear!&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;tear-down-the-cluster&#34;&gt;Tear down the cluster&lt;/h2&gt;
+
+&lt;p&gt;If you wanna reset the whole cluster to the state after a fresh install, just run this on each node:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubeadm reset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;optional-deploy-the-kubernetes-dashboard&#34;&gt;Optional: Deploy the Kubernetes dashboard&lt;/h2&gt;
+
+&lt;p&gt;The dashboard is a wonderful interface to visualize the state of the cluster. Start it with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following command provides the port that the dashboard is exposed at on every node with the NodePort function of Services, which is another way to expose your Services to the outside of your cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl -n kube-system get service kubernetes-dashboard -o template --template=&amp;quot;{{ (index .spec.ports 0).nodePort }}&amp;quot; | xargs echo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then you can checkout the dashboard on any node&amp;rsquo;s IP address on that port!&lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-like-a-follow-up&#34;&gt;You like a follow-up?&lt;/h2&gt;
+
+&lt;p&gt;It was our goal to show that Kubernetes indeed works well on ARM (and ARM 64-bit!). For more examples including the AMD64 platform, check out the &lt;a href=&#34;http://kubernetes.io/docs/getting-started-guides/kubeadm/&#34;&gt;official kubeadm documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We might follow-up this blog post with a more in-depth post about the current and planned state of Kubernetes officially on ARM and more, so stay tuned and tell Lucas if that&amp;rsquo;s something you&amp;rsquo;re interested in reading.&lt;/p&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;Mathias Renner&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/kubernetesonarm&#34;&gt;Lucas Käldström&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Setup a simple CI pipeline to build Docker images for ARM</title>
@@ -2847,85 +3108,6 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 &lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Making of HypriotOS</title>
-      <link>https://blog.hypriot.com/post/making-of-hypriotos/</link>
-      <pubDate>Wed, 25 May 2016 18:03:32 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/making-of-hypriotos/</guid>
-      <description>&lt;p&gt;Today we have released a new version of HypriotOS &amp;ldquo;Barbossa&amp;rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&amp;rsquo;s. Beginning with this release we have &lt;strong&gt;open sourced every step&lt;/strong&gt; to build each parts, from the kernel and root filesystem up to the SD card image.&lt;/p&gt;
-
-&lt;p&gt;We have also moved every build step out in the cloud to use the &amp;ldquo;programmable internet&amp;rdquo; to build and test everything with just a &lt;strong&gt;git push&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-release.png&#34; alt=&#34;release process&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;This diagram above shows the release process of a new SD card image for any of the new HypriotOS supported ARM boards. We have moved all building steps to Cloud services. This helps us all to build any SD card without the need to have the specific ARM board. And this also &lt;strong&gt;enables the community to contribute&lt;/strong&gt; to all our repos with pull requests.&lt;/p&gt;
-
-&lt;h2 id=&#34;ci-driven-builds&#34;&gt;CI driven builds&lt;/h2&gt;
-
-&lt;p&gt;To build the SD card images in the Cloud we have chosen a mixture of &lt;strong&gt;Travis CI&lt;/strong&gt; and &lt;strong&gt;CircleCI&lt;/strong&gt; as the Docker support fits our needs. Only where we need ARM servers to built natively we have our own &lt;strong&gt;Drone&lt;/strong&gt; and &lt;strong&gt;Jenkins&lt;/strong&gt; servers running on Scaleway C1 servers.&lt;/p&gt;
-
-&lt;p&gt;The build process downloads some other artifacts like the root filesystem for the specific ARM CPU type and installs further DEB packages like the &lt;strong&gt;Linux kernel&lt;/strong&gt;, the &lt;strong&gt;Docker Engine&lt;/strong&gt; and &lt;strong&gt;Docker Compose&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;After each build Travis also runs &lt;strong&gt;Serverspec&lt;/strong&gt; tests against the SD card image to have a minimal test of the generated output.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/travis-serverspec-tests.png&#34; alt=&#34;travis serverspec tests&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When we trigger a release build, Travis deploys the newly generated SD card image to the &lt;strong&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;GitHub releases&lt;/a&gt;&lt;/strong&gt; page. You can find releases, as well as pre-releases of upcoming versions there.&lt;/p&gt;
-
-&lt;h2 id=&#34;join-the-movement&#34;&gt;Join the movement&lt;/h2&gt;
-
-&lt;p&gt;The advantage of open sourcing is that the community can give us feedback and sometimes even start contributing back. The SD card image can be built locally on your Linux or Mac notebook as well. So you also are able to build a SD card image without having the device.&lt;/p&gt;
-
-&lt;p&gt;As we love Docker the build process runs in a Docker Container. This simplifies the setup on your local machine. Each GitHub repository has a README with the steps needed to build and test the specific HypriotOS SD card image.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-local-build.png&#34; alt=&#34;local build&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The normal workflow looks like this&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git clone&lt;/code&gt; - get the repo you want to build&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make docker-machine&lt;/code&gt; - create a local VM with Docker&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make sd-image&lt;/code&gt; - build the SD card image within a Docker Container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;flash sd-card*.zip&lt;/code&gt; - flash the new SD card image and boot your ARM device.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOARD=ip make test-integration&lt;/code&gt; - run Serverspec tests if everything is fine&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have added over &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/tree/master/builder/test-integration/spec&#34;&gt;200 Serverspec tests&lt;/a&gt; to ensure the Docker tools, Kernel and additional packages are installed correctly. You can even run these tests for the latest release to check if it is working for you as well.
-This enables everyone to make changes to the code base and send us Pull Requests without breaking other parts.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Pull Requests&lt;/strong&gt; are tested with &lt;strong&gt;Travis CI&lt;/strong&gt; of course, so we can see if it works well.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/github-pr-success.png&#34; alt=&#34;pull request successful&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As there are several GitHub repositories involved to build the SD card image we use &lt;strong&gt;Waffle.io&lt;/strong&gt; to have and overview of all issues, pull requests and tasks to do for a release.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/waffle.png&#34; alt=&#34;waffle board&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next&lt;/h2&gt;
-
-&lt;p&gt;We also started to add more boards and created new GitHub repos for each. But we focused on the Raspberry Pi to finish the &amp;ldquo;Barbossa&amp;rdquo; release. Here is a list of boards we have started to support:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;Raspberry Pi Zero, 1, 2, 3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1&#34;&gt;ODROID C1/C1+&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-xu4&#34;&gt;ODROID XU3/XU4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c2&#34;&gt;ODROID C2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-bananapi&#34;&gt;Banana Pi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Pine A64, &amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will pick one of these boards next to add all features of &amp;ldquo;Barbossa&amp;rdquo; to have a great Docker experience with it.
-The other boards are still a work in progress - any help is welcome from the community!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Setup Kubernetes on a Raspberry Pi Cluster easily the official way! &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2017 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Setup Kubernetes on a Raspberry Pi Cluster easily the official way!</h1>
+    <span class="post-date">Thu, Jan 12, 2017</span>
+    <p><a href="kubernetes.io">Kubernetes</a> shares the pole position with Docker in the category &ldquo;orchestration solutions for Raspberry Pi cluster&rdquo;.
+However it&rsquo;s setup process has been elaborate – until <a href="http://blog.kubernetes.io/2016/09/how-we-made-kubernetes-easy-to-install.html">v1.4 with the kubeadm announcement</a>.
+With that effort, Kubernetes changed this game completely and can be up and running officially within no time.</p>
+
+<p>I am very happy to announce that this blog post has been written in collaboration with <a href="https://github.com/luxas">Lucas Käldström</a>, an independent maintainer of Kubernetes (his story is very interesting,  you can read it in a <a href="https://www.cncf.io/blog/2016/11/29/diversity-scholarship-series-programming-journey-becoming-kubernetes-maintainer">CNCF blogpost</a>).</p>
+
+<p><img src="/images/kubernetes-setup-cluster/raspberry-pi-cluster.png" alt="SwarmClusterHA" /></p>
+
+<p></p>
+
+<h2 id="why-kubernetes">Why Kubernetes?</h2>
+
+<p>As shown in my recent <a href="http://www.slideshare.net/MathiasRenner/high-availability-performance-of-kubernetes-and-docker-swarm-on-a-raspberry-pi-cluster/">talk</a>, there are many software suites available to manage a cluster of computers. There is Kubernetes, Docker Swarm, Mesos, OpenStack, Hadoop YARN, Nomad&hellip; just to name a few.</p>
+
+<p>However, at Hypriot we have always been in love with tiny devices. So when working with an orchestrator, the maximum power we wanna use is what&rsquo;s provided by a Raspberry Pi. Why? We have IoT networks in mind that will hold a large share in tomorrow&rsquo;s IT infrastructure. At their edges, the power required for large orchestrators simply is not available.</p>
+
+<p>This boundary of resources leads to several requirements that need to be checked before we start getting our hands dirty with an orchestrator:</p>
+
+<ul>
+<li><strong>Lightweight:</strong> Software should be fit on a Raspberry Pi or smaller. As proofed in my talk mentioned above, Kubernetes painlessly runs on a Raspberry Pi.</li>
+<li><strong>ARM compatible:</strong> Since the ARM CPU architecture is designed for low energy consumption but still able to deliver a decent portion of power, the Raspberry Pi runs an ARM CPU. Thanks to Lucas, Kubernetes is ARM compatible.</li>
+<li><strong>General purpose:</strong> Hadoop or Apache Spark are great for data analysis. But what if your use case changes? We prefer general purpose software that allows to run <strong>anything</strong>. Kubernetes uses a container runtime (with Docker as the 100% supported runtime for the time being) that allows to run whatever you want.</li>
+<li><strong>Production ready:</strong> Since we compare Kubernetes against a production ready Docker suite, let&rsquo;s be fair and only choose equivalents. Kubernetes itself is production ready, and while the ARM port has some small issues, it&rsquo;s working exactly as expected when going the official kubeadm route, which also will mature with time.</li>
+</ul>
+
+<p>So, Kubernetes seems to be a compelling competitor to Docker Swarm. Let&rsquo;s get our hands on it!</p>
+
+<p></br></p>
+
+<h2 id="wait-what-about-kubernetes-on-arm">Wait – what about <em>Kubernetes-on-ARM</em>?</h2>
+
+<p>If you followed the discussion of Kubernetes on ARM for some time, you probably know about Lucas&rsquo; project <a href="https://github.com/luxas/kubernetes-on-arm">kubernetes-on-ARM</a>. Since the beginning of the movement to bring Kubernetes on ARM in 2015, this project has always been the most stable and updated.</p>
+
+<p>However, during 2016, Lucas&rsquo; contributions have successfully been merged into official Kubernetes repositories, such that there is no point any more for using the kubernetes-on-ARM project.
+In fact, the features of that project are far behind of what&rsquo;s now implemented in the official repos, <strong>and that has been Lucas&rsquo; goal from the beginning.</strong></p>
+
+<p>So if you&rsquo;re up to using Kubernetes, please stick to the official repos now. And as of the kubeadm documentation, <strong>the following setup is considered official for Kubernetes on ARM.</strong></p>
+
+<p></br></p>
+
+<h2 id="at-first-flash-hypriotos-on-your-sd-cards">At first: Flash HypriotOS on your SD cards</h2>
+
+<p>As hardware, take at least two Raspberry Pis and make sure they are connected to each other and to the Internet.</p>
+
+<p>First, we need an operating system. Download and flash <a href="https://github.com/hypriot/image-builder-rpi/releases">HypriotOS</a>. The fastest way to download and flash HypriotOS on your SD cards is by using our <a href="https://github.com/hypriot/flash">flash tool</a> like so:</p>
+
+<pre><code>flash --hostname node01 https://github.com/hypriot/image-builder-rpi/releases/download/v1.1.3/hypriotos-rpi-v1.1.3.img.zip
+</code></pre>
+
+<p>Provision all Raspberry Pis you have like this and boot them up.</p>
+
+<p>Afterwards, SSH into the Raspberry Pis with</p>
+
+<pre><code>ssh pirate@node01.local
+</code></pre>
+
+<p>The password <code>hypriot</code> will grant you access.</p>
+
+<p></br></p>
+
+<h2 id="install-kubernetes">Install Kubernetes</h2>
+
+<p>The installation requries root privileges. Retrieve them by</p>
+
+<pre><code>sudo su -
+</code></pre>
+
+<p>To install Kubernetes and its dependencies, only some commands are required.
+First, trust the kubernetes APT key and add the official APT Kubernetes repository on every node:</p>
+
+<pre><code>$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+$ echo &quot;deb http://apt.kubernetes.io/ kubernetes-xenial main&quot; &gt; /etc/apt/sources.list.d/kubernetes.list
+</code></pre>
+
+<p>&hellip; and then just install <code>kubeadm</code> on every node:</p>
+
+<pre><code>$ apt-get update &amp;&amp; apt-get install -y kubeadm
+</code></pre>
+
+<p>After the previous command has been finished, initialize Kubernetes on the <strong>master node</strong> with</p>
+
+<pre><code>$ kubeadm init --pod-network-cidr 10.244.0.0/16
+</code></pre>
+
+<p>It is important that you add the <code>--pod-network-cidr</code> command as given here, because we will use <a href="https://coreos.com/flannel/docs/latest/">flannel</a>. Read the next notes about flannel if you wanna know why.</p>
+
+<blockquote>
+<p><strong>Some notes about flannel</strong>: We picked flannel here because that’s the only available solution for ARM at the moment (this is subject to change in the future though).</p>
+
+<p>flannel can use and is using in this example the Kubernetes API to store metadata about the Pod CIDR allocations, and therefore we need to tell <em>Kubernetes</em> first which subnet we want to use.</p>
+</blockquote>
+
+<p>If you are connected via WIFI instead of Ethernet, add <code>--api-advertise-addresses=&lt;wifi-ip-address&gt;</code> as parameter to <code>kubeadm init</code> in order to publish Kubernetes&rsquo; API via WiFi. Feel free to explore the other options that exist for <code>kubeadm init</code>.</p>
+
+<p>After Kubernetes has been initialized, the last lines of your terminal should look like this:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/init.png" alt="init" /></p>
+
+<p>Next, as told by that output, let all other nodes join the cluster via the given <code>kubeadm join</code> command. It will look something like:</p>
+
+<pre><code>$ kubeadm join --token=bb14ca.e8bbbedf40c58788 192.168.0.34
+</code></pre>
+
+<p>After some seconds, you should see all nodes in your cluster when executing the following <strong>on the master node</strong>:</p>
+
+<pre><code>$ kubectl get nodes
+</code></pre>
+
+<p>Your terminal should look like this:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/get-nodes.png" alt="k8S" /></p>
+
+<p>Finally, <strong>we need to setup flannel as the Pod network driver</strong>. Run this <strong>on the master node</strong>:</p>
+
+<pre><code>$ curl -sSL https://rawgit.com/coreos/flannel/master/Documentation/kube-flannel.yml | sed &quot;s/amd64/arm/g&quot; | kubectl create -f -
+</code></pre>
+
+<p>Your terminal should look like this:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/flannel.png" alt="k8S" /></p>
+
+<p>Then wait until all flannel and all other cluster-internal Pods are <code>Running</code> before you continue:</p>
+
+<pre><code>$ kubectl get po --all-namespaces
+</code></pre>
+
+<p>Nice, it seems like they are all <code>Running</code>:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/show-namespaces.png" alt="show-namespaces" /></p>
+
+<p>That&rsquo;s all for the setup of Kubernetes! Next, let&rsquo;s actually spin up a service on the cluster!</p>
+
+<p></br></p>
+
+<h2 id="test-your-setup-with-a-tiny-service">Test your setup with a tiny service</h2>
+
+<p>Let&rsquo;s start a simple service so see if the cluster actually can publish a service:</p>
+
+<pre><code>$ kubectl run hypriot --image=hypriot/rpi-busybox-httpd --replicas=3 --port=80
+</code></pre>
+
+<p>This command starts set of containers called <strong>hypriot</strong> from the image <strong>hypriot/rpi-busybox-httpd</strong> and defines the port the container listens on at <strong>80</strong>. The service will be <strong>replicated with 3 containers</strong>.</p>
+
+<p>Next, expose the Pods in the above created Deployment in a Service with a stable name and IP:</p>
+
+<pre><code>$ kubectl expose deployment hypriot --port 80
+</code></pre>
+
+<p>Great! Now, let&rsquo;s check if all three desired containers are up and running:</p>
+
+<pre><code>$ kubectl get endpoints hypriot
+</code></pre>
+
+<p>You should see three endpoints (= containers) like this:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/show-endpoints.png" alt="show-endpoints" /></p>
+
+<p>Let&rsquo; curl one of them to see if the service is up:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/curl-service.png" alt="curl-service" /></p>
+
+<p>The HTML is the response of the service. Good, it&rsquo;s up and running! Next, let&rsquo;s see how we can access it from outside the cluster!</p>
+
+<p></br></p>
+
+<h2 id="finally-access-your-service-from-outside-the-cluster">Finally access your service from outside the cluster</h2>
+
+<p>We will now deploy an example Ingress Controller to manage incoming requests from the outside world onto our tiny service. Also, in this example we we&rsquo;ll use <a href="traefik.io">Traefik</a> as load balancer. Read the following notes if you wanna know more about Ingress and Traefik.</p>
+
+<blockquote>
+<p><strong>In contrast to Docker Swarm, Kubernetes itself does not provide an option to define a specific port that you can use to access a service</strong>. According to Lucas is this an important design decision; routing of incoming requests should be handled by a third party, such as a load balancer or a webserver, but not by the core product. The core Kubernetes should be lean and extensible, and encourage others to build tools on top of it for their specific needs.</p>
+
+<p>Regarding load balancers in front of a cluster, there is <a href="http://kubernetes.io/docs/user-guide/ingress/">the Ingress API object</a> and some sample <a href="https://github.com/kubernetes/ingress">Ingress Controllers</a>. Ingress is a built-in way of exposing Services to the outside world via an Ingress Controller that anyone can build. An <em>Ingress rule</em> defines how traffic should flow from the node the Ingress controller runs on to services inside of the cluster.</p>
+</blockquote>
+
+<p>First, let&rsquo;s deploy traefik as load balancer:</p>
+
+<pre><code>$ kubectl apply -f https://raw.githubusercontent.com/hypriot/rpi-traefik/master/traefik-k8s-example.yaml
+</code></pre>
+
+<p>Label the node you want to be the load balancer. Then the Traefik Ingress Controller will land on the node you specified. Run:</p>
+
+<pre><code>$ kubectl label node &lt;load balancer-node&gt; nginx-controller=traefik
+</code></pre>
+
+<p>Lastly, create an Ingress object that makes Traefik load balance traffic on port <code>80</code> to the <code>hypriot</code> service:</p>
+
+<pre><code>$ cat &gt; hypriot-ingress.yaml &lt;&lt;EOF
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hypriot
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hypriot
+          servicePort: 80
+EOF
+$ kubectl apply -f hypriot-ingress.yaml
+</code></pre>
+
+<p>Visit the loadbalancing node&rsquo;s IP address in your browser and you should see a nice web page:</p>
+
+<p><img src="/images/kubernetes-setup-cluster/hypriot-website.png" alt="curl-service" /></p>
+
+<p>If you don&rsquo;t see a website there yet, run:</p>
+
+<pre><code>$ kubectl get pods
+</code></pre>
+
+<p>&hellip; and make sure all hypriot Pods are in the <code>Running</code> state.</p>
+
+<p>Wait until you see that all Pods are running, and a nice Hypriot website should appear!</p>
+
+<p></br></p>
+
+<h2 id="tear-down-the-cluster">Tear down the cluster</h2>
+
+<p>If you wanna reset the whole cluster to the state after a fresh install, just run this on each node:</p>
+
+<pre><code>$ kubeadm reset
+</code></pre>
+
+<p></br></p>
+
+<h2 id="optional-deploy-the-kubernetes-dashboard">Optional: Deploy the Kubernetes dashboard</h2>
+
+<p>The dashboard is a wonderful interface to visualize the state of the cluster. Start it with:</p>
+
+<pre><code>$ curl -sSL https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml | sed &quot;s/amd64/arm/g&quot; | kubectl create -f -
+</code></pre>
+
+<p>The following command provides the port that the dashboard is exposed at on every node with the NodePort function of Services, which is another way to expose your Services to the outside of your cluster:</p>
+
+<pre><code>$ kubectl -n kube-system get service kubernetes-dashboard -o template --template=&quot;{{ (index .spec.ports 0).nodePort }}&quot; | xargs echo
+</code></pre>
+
+<p>Then you can checkout the dashboard on any node&rsquo;s IP address on that port!</p>
+
+<p></br></p>
+
+<h2 id="you-like-a-follow-up">You like a follow-up?</h2>
+
+<p>It was our goal to show that Kubernetes indeed works well on ARM (and ARM 64-bit!). For more examples including the AMD64 platform, check out the <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">official kubeadm documentation</a>.</p>
+
+<p>We might follow-up this blog post with a more in-depth post about the current and planned state of Kubernetes officially on ARM and more, so stay tuned and tell Lucas if that&rsquo;s something you&rsquo;re interested in reading.</p>
+
+<p>As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.</p>
+
+<p><a href="https://twitter.com/MathiasRenner">Mathias Renner</a> and <a href="https://twitter.com/kubernetesonarm">Lucas Käldström</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>
