@@ -182,7 +182,7 @@ $ echo &amp;quot;deb http://apt.kubernetes.io/ kubernetes-xenial main&amp;quot; 
 
 &lt;h2 id=&#34;finally-access-your-service-from-outside-the-cluster&#34;&gt;Finally access your service from outside the cluster&lt;/h2&gt;
 
-&lt;p&gt;We will now deploy an example Ingress Controller to manage incoming requests from the outside world onto our tiny service. Also, in this example we we&amp;rsquo;ll use &lt;a href=&#34;traefik.io&#34;&gt;Traefik&lt;/a&gt; as load balancer. Read the following notes if you wanna know more about Ingress and Traefik.&lt;/p&gt;
+&lt;p&gt;We will now deploy an example Ingress Controller to manage incoming requests from the outside world onto our tiny service. Also, in this example we we&amp;rsquo;ll use &lt;a href=&#34;https://traefik.io&#34;&gt;Traefik&lt;/a&gt; as load balancer. Read the following notes if you wanna know more about Ingress and Traefik.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;In contrast to Docker Swarm, Kubernetes itself does not provide an option to define a specific port that you can use to access a service&lt;/strong&gt;. According to Lucas is this an important design decision; routing of incoming requests should be handled by a third party, such as a load balancer or a webserver, but not by the core product. The core Kubernetes should be lean and extensible, and encourage others to build tools on top of it for their specific needs.&lt;/p&gt;
