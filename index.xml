@@ -241,6 +241,8 @@ $ kubectl apply -f hypriot-ingress.yaml
 &lt;pre&gt;&lt;code&gt;$ kubeadm reset
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;In addition, it is recommended to delete some additional files &lt;a href=&#34;http://stackoverflow.com/questions/41359224/kubernetes-failed-to-setup-network-for-pod-after-executed-kubeadm-reset/41372829#41372829&#34;&gt;as it is mentioned here&lt;/a&gt;.&lt;/p&gt;
+
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;optional-deploy-the-kubernetes-dashboard&#34;&gt;Optional: Deploy the Kubernetes dashboard&lt;/h2&gt;
