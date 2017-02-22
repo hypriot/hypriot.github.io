@@ -9,6 +9,126 @@
     <atom:link href="https://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s build the smallest possible Docker image</title>
+      <link>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</link>
+      <pubDate>Wed, 22 Feb 2017 09:18:35 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</guid>
+      <description>&lt;p&gt;Imagine what happens if we&amp;rsquo;re starting to use Docker containers on IoT devices. On small and slow devices with limited system resources and connected via a damn slow network connection we do have to care differently on how to build and ship our apps. In these circumstances it pays off and it&amp;rsquo;s absolutely essential to optimize our applications and the resulting Docker images for size.&lt;/p&gt;
+
+&lt;p&gt;SIZE DOES MATTER&lt;/p&gt;
+
+&lt;p&gt;If we&amp;rsquo;re doing it right we&amp;rsquo;ll get a lot of benefits such as blasting fast download speed for updating to a new or more secured version. On wireless networks we are also reducing the costs for data transfers as well.&lt;/p&gt;
+
+&lt;p&gt;According to my &lt;a href=&#34;https://twitter.com/quintus23m/status/834132186211180544&#34;&gt;tweet&lt;/a&gt; I&amp;rsquo;d like to start a new Docker challenge:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How small is the smallest Docker image we could build, which prints a &amp;ldquo;Hello Docker World!&amp;rdquo;?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Sometimes developing directly on an IoT device can be pretty hard or nearly impossible due to the lack of enough system resources. These resources can be the amount of memory, disk space or CPU capacity - or it can be just a limited network connectivity over a low-bandwith 64kbit/sec wireless network.&lt;/p&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s assume we do have a Raspberry Pi already deployed in the field and this IoT device has such a low-bandwidth network connection. We&amp;rsquo;re preparing our developing system to run on a bare-metal cloud server and we are transfering our build artefacts as ready-to-run Docker images regularly with each and every new release in a DevOps driven manner. For this reason we&amp;rsquo;d like to speed up the deployment with minimized Docker image sizes.&lt;/p&gt;
+
+&lt;p&gt;Wait, I thought a Docker image can be pretty heavy with up to 1 GByte or even larger? Well, that could happen if we&amp;rsquo;re packing a whole Operating System like Ubuntu or Debian into our Docker images. But as we&amp;rsquo;re building an IoT application we should take care about that situation. A Docker image can instead be build with an app consisting of a statically linked binary and when we start it as a Docker container it will run a single Linux process only.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-our-app-in-arm-assembly&#34;&gt;Creating our App in ARM assembly&lt;/h3&gt;
+
+&lt;p&gt;TL;DR all the source code and build instructions can be found in this public &lt;a href=&#34;https://github.com/DieterReuter/dockerchallenge-smallest-image&#34;&gt;GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is my starting example of an assembly program which just prints a single static text string. It is written in ARM assembly language and should be compiled into a really small binary we can run on any ARMv7 device.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat hello.S
+.data
+msg:
+    .ascii      &amp;quot;Hello Docker World!\n&amp;quot;
+len = . - msg
+
+.text
+
+.globl _start
+_start:
+    /* syscall write(int fd, const void *buf, size_t count) */
+    mov     %r0, $1     /* fd -&amp;gt; stdout */
+    ldr     %r1, =msg   /* buf -&amp;gt; msg */
+    ldr     %r2, =len   /* count -&amp;gt; len(msg) */
+    mov     %r7, $4     /* write is syscall #4 */
+    swi     $0          /* invoke syscall */
+
+    /* syscall exit(int status) */
+    mov     %r0, $0     /* status -&amp;gt; 0 */
+    mov     %r7, $1     /* exit is syscall #1 */
+    swi     $0          /* invoke syscall */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s compile and link it as a static program&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ as -o hello.o hello.S
+$ ld -s -o hello hello.o
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Show details about the binary&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ file hello
+hello: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now as we do have our app as a single binary program, we can build our smallest Docker image easily from scratch. This new Docker image consists only our binary and nothing else of other components at all. But you have to know this only works if the binary is statically linked and has all necessary tools baked in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat Dockerfile.armhf
+FROM scratch
+ADD hello /hello
+CMD [&amp;quot;/hello&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Building the Docker image&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t dieterreuter/hello -f Dockerfile.armhf .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;starting-point&#34;&gt;Starting point&lt;/h3&gt;
+
+&lt;p&gt;With all the details I&amp;rsquo;ve shown above in this blog post I finally built a first super-small Docker image with an indicated size of 452 Bytes only.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+dieterreuter/hello           latest              b961df9c849e        27 hours ago        452 B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Starting this Docker container on a Raspberry Pi (or another ARMv7 machine) will print the requested text string.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run dieterreuter/hello
+Hello Docker World!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Well, if you&amp;rsquo;re working with &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;Docker-for-Mac&lt;/a&gt; or &lt;a href=&#34;https://docs.docker.com/docker-for-windows/&#34;&gt;Docker-for-Windows&lt;/a&gt; you should try to run this command, too. I guess you&amp;rsquo;ll be surprised what happens on your Intel based system when you start this Docker container which is containing an ARM binary. But this is a topic for another future blog post.&lt;/p&gt;
+
+&lt;h3 id=&#34;challenge-details&#34;&gt;Challenge details&lt;/h3&gt;
+
+&lt;p&gt;There are not many rules for this challenge, but let&amp;rsquo;s give you some hints:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;the Docker image should output the text &amp;ldquo;Hello Docker World!&amp;rdquo; on the console&lt;/li&gt;
+&lt;li&gt;we measure the size of the Docker image with &lt;code&gt;docker images&lt;/code&gt; or &lt;code&gt;docker image ls&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;feel free to use a CPU architecture of your choice: Intel, ARMv7, ARMv8/AARCH64, &amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Please publish your results on DockerHub, source codes on GitHub and tweet about it on Twitter with the hashtag #DockerChallenge. The goal of this challenge is to get familiar with the techniques to build minimal sized Docker images not only for IoT use cases, to understand the fact that a Docker container can be just a single process, and that this process can be really extremely small itself. On the way we&amp;rsquo;ll learn to take care about all the necessary steps to reduce the size and how we can optimize our development workflow as well.&lt;/p&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s start the journey&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Setup a simple CI pipeline to build Docker images for ARM</title>
       <link>https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/</link>
       <pubDate>Tue, 10 Jan 2017 07:25:23 +0200</pubDate>
@@ -2873,80 +2993,6 @@ Then you should register for the Docker BETA program at &lt;a href=&#34;https://
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Your No. 1 source for Docker on ARM</title>
-      <link>https://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</link>
-      <pubDate>Mon, 28 Mar 2016 22:00:00 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/</guid>
-      <description>&lt;p&gt;Besides our &lt;a href=&#34;https://blog.hypriot.com/downloads/&#34;&gt;Download section&lt;/a&gt; we do have another source for getting the latest and greatest Docker for ARM.&lt;br /&gt;
-It is a debian package repository hosted at &lt;a href=&#34;https://packagecloud.io/&#34;&gt;packagecloud.io&lt;/a&gt; that contains lots of the stuff from our Download section.&lt;/p&gt;
-
-&lt;p&gt;Despite having a package repository for a couple of months now, it seems many people do not know it.
-I guess that&amp;rsquo;s our own fault because we never spoke about it - we only added it to our prepared SD card images. :)
-Installing or updating Docker or other Docker goodies like Docker-Compose from this repository can be done by a simple &lt;code&gt;apt-get install&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this post I gonna show you what you need to know to get started with this repository.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/packagecloud/packagecloud_io_wide.jpg&#34; alt=&#34;Raspberry Pi Workshop in Brussels&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Packagecloud.io is a really great service for hosting different types of packages (DEBs, RPMs, Ruby Gems).
-You get detailed download/usage statistics and can manage all your packages easily with a Web-GUI or with an API.&lt;/p&gt;
-
-&lt;p&gt;The last point was what convinced us to use packagecloud.io as it allows us to upload our packages directly from our Continuous Integration systems.
-Many popular CI systems offer build-in packagecloud support - for instance Travis or Circle-CI.&lt;/p&gt;
-
-&lt;p&gt;Our packagecloud repository is conveniently named &amp;ldquo;Schatzkiste&amp;rdquo; and supports Debian-based Linux distributions.&lt;/p&gt;
-
-&lt;p&gt;To use it you need to configure &amp;lsquo;apt&amp;rsquo; first by executing:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -s https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you want to know what this script does you can look up the &lt;a href=&#34;https://packagecloud.io/Hypriot/Schatzkiste/install&#34;&gt;source of this script&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It installs &amp;lsquo;apt-transport-https&amp;rsquo; for connecting securely to our repository, adds the packagecloud GPG key to &amp;lsquo;apt&amp;rsquo; and then adds our &amp;lsquo;Schatzkiste&amp;rsquo;-repository sources to &amp;lsquo;/etc/apt/sources.list.d/Hypriot_Schatzkiste.list&amp;rsquo;.&lt;br /&gt;
-Afterwards it updates the package sources via &amp;lsquo;apt-get update&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;From there you are ready to search for the latest Docker via&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ apt-cache madison docker-hypriot
-docker-hypriot |   1.10.3-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |   1.10.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.9.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.9.0-2 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.3-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.8.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.7.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.2-2 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.2-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.1-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.6.0-1 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-docker-hypriot |    1.5.0-7 | https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy/main armhf Packages
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;lsquo;apt-cache madison&amp;rsquo; will list all the available version for package &amp;lsquo;docker-hypriot&amp;rsquo; and as you can see the latest Docker 1.10.3 is already there, too.&lt;/p&gt;
-
-&lt;p&gt;Install it with&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ apt-get install docker-hypriot=1.10.3-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So I want to close this blog post with a huge thank you to the packagecloud.io guys as they are hosting our packages for free.&lt;/p&gt;
-
-&lt;p&gt;I highly recommend their service as it can be so tedious and time-consuming to setup your own repository properly - I have been there myself.&lt;/p&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share this post on Twitter, Google or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

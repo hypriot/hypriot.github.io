@@ -9,6 +9,126 @@
     <atom:link href="https://blog.hypriot.com/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s build the smallest possible Docker image</title>
+      <link>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</link>
+      <pubDate>Wed, 22 Feb 2017 09:18:35 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</guid>
+      <description>&lt;p&gt;Imagine what happens if we&amp;rsquo;re starting to use Docker containers on IoT devices. On small and slow devices with limited system resources and connected via a damn slow network connection we do have to care differently on how to build and ship our apps. In these circumstances it pays off and it&amp;rsquo;s absolutely essential to optimize our applications and the resulting Docker images for size.&lt;/p&gt;
+
+&lt;p&gt;SIZE DOES MATTER&lt;/p&gt;
+
+&lt;p&gt;If we&amp;rsquo;re doing it right we&amp;rsquo;ll get a lot of benefits such as blasting fast download speed for updating to a new or more secured version. On wireless networks we are also reducing the costs for data transfers as well.&lt;/p&gt;
+
+&lt;p&gt;According to my &lt;a href=&#34;https://twitter.com/quintus23m/status/834132186211180544&#34;&gt;tweet&lt;/a&gt; I&amp;rsquo;d like to start a new Docker challenge:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How small is the smallest Docker image we could build, which prints a &amp;ldquo;Hello Docker World!&amp;rdquo;?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Sometimes developing directly on an IoT device can be pretty hard or nearly impossible due to the lack of enough system resources. These resources can be the amount of memory, disk space or CPU capacity - or it can be just a limited network connectivity over a low-bandwith 64kbit/sec wireless network.&lt;/p&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s assume we do have a Raspberry Pi already deployed in the field and this IoT device has such a low-bandwidth network connection. We&amp;rsquo;re preparing our developing system to run on a bare-metal cloud server and we are transfering our build artefacts as ready-to-run Docker images regularly with each and every new release in a DevOps driven manner. For this reason we&amp;rsquo;d like to speed up the deployment with minimized Docker image sizes.&lt;/p&gt;
+
+&lt;p&gt;Wait, I thought a Docker image can be pretty heavy with up to 1 GByte or even larger? Well, that could happen if we&amp;rsquo;re packing a whole Operating System like Ubuntu or Debian into our Docker images. But as we&amp;rsquo;re building an IoT application we should take care about that situation. A Docker image can instead be build with an app consisting of a statically linked binary and when we start it as a Docker container it will run a single Linux process only.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-our-app-in-arm-assembly&#34;&gt;Creating our App in ARM assembly&lt;/h3&gt;
+
+&lt;p&gt;TL;DR all the source code and build instructions can be found in this public &lt;a href=&#34;https://github.com/DieterReuter/dockerchallenge-smallest-image&#34;&gt;GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is my starting example of an assembly program which just prints a single static text string. It is written in ARM assembly language and should be compiled into a really small binary we can run on any ARMv7 device.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat hello.S
+.data
+msg:
+    .ascii      &amp;quot;Hello Docker World!\n&amp;quot;
+len = . - msg
+
+.text
+
+.globl _start
+_start:
+    /* syscall write(int fd, const void *buf, size_t count) */
+    mov     %r0, $1     /* fd -&amp;gt; stdout */
+    ldr     %r1, =msg   /* buf -&amp;gt; msg */
+    ldr     %r2, =len   /* count -&amp;gt; len(msg) */
+    mov     %r7, $4     /* write is syscall #4 */
+    swi     $0          /* invoke syscall */
+
+    /* syscall exit(int status) */
+    mov     %r0, $0     /* status -&amp;gt; 0 */
+    mov     %r7, $1     /* exit is syscall #1 */
+    swi     $0          /* invoke syscall */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s compile and link it as a static program&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ as -o hello.o hello.S
+$ ld -s -o hello hello.o
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Show details about the binary&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ file hello
+hello: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now as we do have our app as a single binary program, we can build our smallest Docker image easily from scratch. This new Docker image consists only our binary and nothing else of other components at all. But you have to know this only works if the binary is statically linked and has all necessary tools baked in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat Dockerfile.armhf
+FROM scratch
+ADD hello /hello
+CMD [&amp;quot;/hello&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Building the Docker image&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t dieterreuter/hello -f Dockerfile.armhf .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;starting-point&#34;&gt;Starting point&lt;/h3&gt;
+
+&lt;p&gt;With all the details I&amp;rsquo;ve shown above in this blog post I finally built a first super-small Docker image with an indicated size of 452 Bytes only.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+dieterreuter/hello           latest              b961df9c849e        27 hours ago        452 B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Starting this Docker container on a Raspberry Pi (or another ARMv7 machine) will print the requested text string.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker run dieterreuter/hello
+Hello Docker World!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Well, if you&amp;rsquo;re working with &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;Docker-for-Mac&lt;/a&gt; or &lt;a href=&#34;https://docs.docker.com/docker-for-windows/&#34;&gt;Docker-for-Windows&lt;/a&gt; you should try to run this command, too. I guess you&amp;rsquo;ll be surprised what happens on your Intel based system when you start this Docker container which is containing an ARM binary. But this is a topic for another future blog post.&lt;/p&gt;
+
+&lt;h3 id=&#34;challenge-details&#34;&gt;Challenge details&lt;/h3&gt;
+
+&lt;p&gt;There are not many rules for this challenge, but let&amp;rsquo;s give you some hints:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;the Docker image should output the text &amp;ldquo;Hello Docker World!&amp;rdquo; on the console&lt;/li&gt;
+&lt;li&gt;we measure the size of the Docker image with &lt;code&gt;docker images&lt;/code&gt; or &lt;code&gt;docker image ls&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;feel free to use a CPU architecture of your choice: Intel, ARMv7, ARMv8/AARCH64, &amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Please publish your results on DockerHub, source codes on GitHub and tweet about it on Twitter with the hashtag #DockerChallenge. The goal of this challenge is to get familiar with the techniques to build minimal sized Docker images not only for IoT use cases, to understand the fact that a Docker container can be just a single process, and that this process can be really extremely small itself. On the way we&amp;rsquo;ll learn to take care about all the necessary steps to reduce the size and how we can optimize our development workflow as well.&lt;/p&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s start the journey&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Setup Kubernetes on a Raspberry Pi Cluster easily the official way!</title>
       <link>https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/</link>
       <pubDate>Wed, 11 Jan 2017 14:03:34 +0100</pubDate>
@@ -3051,119 +3171,6 @@ The other boards are still a work in progress - any help is welcome from the com
 &lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
 
 &lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>HypriotOS 0.8.0 Barbossa for Raspberry Pi 3</title>
-      <link>https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</link>
-      <pubDate>Wed, 25 May 2016 03:30:00 +0000</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/</guid>
-      <description>&lt;p&gt;While it is quite hard to make something better that is already good, we feel that we were able to just do that with our latest release of HypriotOS.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HypriotOS is the easiest and fastest way to get you started with Docker on ARM and IoT devices.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It is the perfect playground for your first steps with Docker and it allows you to move to advanced stuff like Docker Clustering without breaking a sweat, too.&lt;/p&gt;
-
-&lt;p&gt;This is possible because we included a lot of the tools that make the Docker ecosystem awesome - for instance Docker Compose or Docker Swarm - out of the box.
-We also integrated the Hypriot Cluster-Lab into this release, which makes it really easy and painless to set up complex Docker Clusters.&lt;/p&gt;
-
-&lt;p&gt;And that&amp;rsquo;s just the tip of the iceberg. So read on to get all the glory details of this new release &amp;hellip; :)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/hypriotos-barbossa/iceberg.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;
-&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/davidw/&#34;&gt;David&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;features-at-a-glance&#34;&gt;Features at a glance&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;support for Raspberry Pi Zero, 1, 2 and 3&lt;/li&gt;
-&lt;li&gt;Linux kernel 4.4.10&lt;/li&gt;
-&lt;li&gt;Docker Engine 1.11.1&lt;/li&gt;
-&lt;li&gt;Docker Compose 1.7.1&lt;/li&gt;
-&lt;li&gt;Docker Machine 0.7.0&lt;/li&gt;
-&lt;li&gt;Docker Swarm 1.2.2&lt;/li&gt;
-&lt;li&gt;Cluster-Lab 0.2.12&lt;/li&gt;
-&lt;li&gt;device-init 0.1.7&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;updated-docker-and-docker-tools&#34;&gt;Updated Docker and Docker-Tools&lt;/h2&gt;
-
-&lt;p&gt;Compared to our latest HypriotOS Berry 0.7 we did upgrade the Docker Engine to v1.11 which now has several binaries instead of one.
-Besides the original Docker binary there is now also a Containerd and a runC binary. Containerd is basically a supervisor for individual containers that are run by runC.&lt;/p&gt;
-
-&lt;p&gt;The main reasons for splitting up the Docker binary were the efforts of Docker to support the &lt;a href=&#34;https://www.opencontainers.org/&#34;&gt;standardization of container technology&lt;/a&gt; and to make it easier to maintain the existing technology stack.
-You can get a good overview about these changes in the &lt;a href=&#34;https://blog.docker.com/2016/04/docker-engine-1-11-runc/&#34;&gt;blog post&lt;/a&gt; announcing the release of Docker 1.11.&lt;/p&gt;
-
-&lt;p&gt;And there is also a very interesting deep dive into the details of those changes:&lt;/p&gt;
-
-&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/QL8F2MLCybo&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&#34;full-raspberry-pi-3-support&#34;&gt;Full Raspberry Pi 3 Support&lt;/h2&gt;
-
-&lt;p&gt;Noteworthy is also that we now have full support for the Raspberry Pi 3.&lt;/p&gt;
-
-&lt;p&gt;With the help of our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash-tool&lt;/a&gt; it is really easy to bring a Raspberry Pi 3 online with only WiFi network connectivity:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash --ssid MyNetworkName --password SomeSecret https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that you can usually connect to your Pi by:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The password is &amp;lsquo;hypriot&amp;rsquo;. And that&amp;rsquo;s it.&lt;/p&gt;
-
-&lt;p&gt;By the way this also works if you attach an external WiFi adapter to a Raspberry Pi Zero, 1 and 2.&lt;/p&gt;
-
-&lt;h2 id=&#34;customizing-your-raspberry-pi-configuration&#34;&gt;Customizing your Raspberry Pi Configuration&lt;/h2&gt;
-
-&lt;p&gt;The ability to customize the hostname of your Pi, to add WiFi credentials and more is made possible by a small tool of ours called &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In previous versions we used a tool called &lt;a href=&#34;https://github.com/adafruit/Adafruit-Occi&#34;&gt;occi&lt;/a&gt; from Adafruit to allow hostname and WiFi customization.&lt;/p&gt;
-
-&lt;p&gt;In this release we removed it and replaced it with device-init.&lt;/p&gt;
-
-&lt;p&gt;device-init is a small programm that is started when your Raspberry Pi boots and it allows to customize a couple of settings.
-It takes its configuration from a file called &amp;lsquo;device-init.yaml&amp;rsquo; which is located in the /boot directory.&lt;/p&gt;
-
-&lt;p&gt;This /boot directory is basically a small FAT partition on the SD card that contains HypriotOS.
-It can be easily accessed from your host computer before you boot your Pi. You can edit the &amp;lsquo;device-init.yaml&amp;rsquo; file directly with a text editor or by using the flash tool as demonstrated above.&lt;/p&gt;
-
-&lt;p&gt;We are going to add more features - like adding public ssh keys, setting the locale or timezone - to device-init step by step in the next weeks.&lt;/p&gt;
-
-&lt;h2 id=&#34;hypriot-cluster-lab&#34;&gt;Hypriot Cluster-Lab&lt;/h2&gt;
-
-&lt;p&gt;We added the Hypriot Cluster-Lab to the image, too.&lt;/p&gt;
-
-&lt;p&gt;It is disabled by default, but can easily be enabled when you flash the image:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash --clusterlab true https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Setting this options starts the Cluster-Lab on boot.&lt;/p&gt;
-
-&lt;p&gt;By flashing a couple of SD cards with different hostnames and Cluster-Lab enabled you can get a fully working Docker Swarm cluster up and running in minutes.
-The individual machines will find themselves automatically and form a Swarm cluster.&lt;/p&gt;
-
-&lt;p&gt;You can read more about the Hypriot Cluster-Lab and why it is awesome on &lt;a href=&#34;https://github.com/hypriot/cluster-lab/&#34;&gt;its website&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can download the new release in our &lt;a href=&#34;https://blog.hypriot.com/downloads&#34;&gt;download section&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you encounter any problems with this new release please open up issues in one of the following repositories:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;https://github.com/hypriot/image-builder-rpi&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;https://github.com/hypriot/cluster-lab&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;https://github.com/hypriot/device-init&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;There is also our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter-Chat&lt;/a&gt; were you&amp;rsquo;ll find a very friendly community that always likes to help.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
