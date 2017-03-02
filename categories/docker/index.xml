@@ -9,6 +9,81 @@
     <atom:link href="https://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Building a 64bit Docker OS for the Raspberry Pi 3</title>
+      <link>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</link>
+      <pubDate>Thu, 02 Mar 2017 11:28:42 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m happy to announce the start of a &amp;ldquo;short&amp;rdquo; workshop were I&amp;rsquo;m going through all the steps to build a complete 64bit operating system for the Raspberry Pi 3. This 64bit HypriotOS is mainly focused on running Docker containers easily on this popular DIY and IoT device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/e/e6/Raspberry-Pi-3-Flat-Top.jpg&#34; alt=&#34;Raspi3-Image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;ll see that I&amp;rsquo;m using Docker heavily for each and every build step, because it really helps us a lot to run a local build with &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;Docker-for-Mac&lt;/a&gt; or later on the cloud build servers at &lt;a href=&#34;https://travis-ci.org&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/building-a-64bit-docker-os-for-rpi3/bee42-workshop.jpg&#34; alt=&#34;bee42-workshop.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This workshop is sponsored by &lt;a href=&#34;http://bee42.com&#34;&gt;bee42 solutions&lt;/a&gt; &lt;a href=&#34;https://twitter.com/bee42solutions&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bee42solutions&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background-and-contents&#34;&gt;Background and Contents&lt;/h3&gt;
+
+&lt;p&gt;As you may already know, a complete Linux operating system consists of several important building blocks and I&amp;rsquo;d like to show you how to build all of these step by step.&lt;/p&gt;
+
+&lt;p&gt;For this purpose I&amp;rsquo;m not going to reinvent the wheel and so I&amp;rsquo;ll reuse all of the existing parts which are already published by the Raspberry Pi Organisation, by the Debian Linux project and will add some more glue code.&lt;/p&gt;
+
+&lt;p&gt;At the end you should have learned how to build all the necessary parts and how to automatically create a finished SD card image which could be flashed on an empty SD card. Then boot your Raspberry Pi 3 with and in less than a minute you have a fully running Docker Engine on a Debian-based 64bit Linux OS.&lt;/p&gt;
+
+&lt;p&gt;Here is a short overview of the contents of the workshop:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 1: Bootloader&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 2: Kernel&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 3: Root filesystem&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 4: SD Card Image&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, that&amp;rsquo;s enough for explaining the background of this workshop. For more informations please follow along the details I&amp;rsquo;ll publish on the coming tweets at Twitter and in the GitHub repos until all the parts of this workshop are finished and available as OpenSource.&lt;/p&gt;
+
+&lt;p&gt;Please be aware that this OS is in a development phase and far from being perfect. So you are encouraged to help me with reporting issues and filing pull-requests to add features and fix bugs.&lt;/p&gt;
+
+&lt;h3 id=&#34;further-links&#34;&gt;Further Links&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to publish all the details and steps to build the new operating system in a public GitHub repo. All other details and necessary GitHub repos will be linked here in this section as a future reference.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workshop Repo&lt;/strong&gt; &lt;a href=&#34;https://github.com/bee42/workshop-raspberrypi-64bit-os&#34;&gt;https://github.com/bee42/workshop-raspberrypi-64bit-os&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So please stay tuned, this link list will be extended over the next few days.&lt;/p&gt;
+
+&lt;h3 id=&#34;acknowledgments&#34;&gt;Acknowledgments&lt;/h3&gt;
+
+&lt;p&gt;Please follow along the detailed tweets about this workshop via&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; &lt;a href=&#34;https://twitter.com/Quintus23M&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @Quintus23M&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt; &lt;a href=&#34;https://twitter.com/HypriotTweets&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @HypriotTweets&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/bee42solutions&#34;&gt;@bee42solutions&lt;/a&gt; &lt;a href=&#34;https://twitter.com/bee42solutions&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bee42solutions&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Special thanks goes to &lt;a href=&#34;http://bee42.com&#34;&gt;bee42 solutions&lt;/a&gt; for giving me the time to work on this awesome topic to build a complete Docker-enabled 64bit OS for the Raspberry Pi 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/building-a-64bit-docker-os-for-rpi3/bee42-logo.jpg&#34; alt=&#34;bee42-logo.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s build the smallest possible Docker image</title>
       <link>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</link>
       <pubDate>Wed, 22 Feb 2017 09:18:35 +0100</pubDate>
@@ -2917,264 +2992,6 @@ Actually I had a really hard time to pry my colleague Andreas from the event whe
 
 &lt;p&gt;So if you happen to be near Trier next year when the next PiAndMore takes place make sure to pay them a visit.
 It is most certainly worth it!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Microservices Bliss with Docker and Traefik</title>
-      <link>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</link>
-      <pubDate>Tue, 07 Jun 2016 09:15:00 +0000</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/</guid>
-      <description>&lt;p&gt;A couple of weeks ago I found this really nice and neat HTTP reverse proxy called &lt;a href=&#34;https://docs.traefik.io/&#34;&gt;Traefik&lt;/a&gt;.
-It is meant to act as frontend proxy for microservices that are provided by a dynamic backend like Docker.&lt;/p&gt;
-
-&lt;p&gt;Did you realize the important part of the last sentence was &lt;strong&gt;dynamic&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;p&gt;What makes Traefik really special is its ability of adding and removing container backend services by listening to Docker events.
-So whenever a Docker container is started or stopped Traefik knows about it and adds the container to its list of active backend services.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/architecture.png&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With this ability Traefik can replace much more complicated setups based on Nginx or HAProxy that have to use additional tools like
-&lt;a href=&#34;https://github.com/gliderlabs/registrator&#34;&gt;Registrator&lt;/a&gt;, &lt;a href=&#34;https://www.consul.io/&#34;&gt;Consul&lt;/a&gt; and &lt;a href=&#34;https://github.com/hashicorp/consul-template&#34;&gt;Consul-Template&lt;/a&gt; to achieve the same kind of functionality.&lt;/p&gt;
-
-&lt;p&gt;So let me show you with a simple microservice example how easy it is to get started with Traefik&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see in the following architecture overview we will have a simple HTTP service that answers incoming HTTP requests.&lt;/p&gt;
-
-&lt;p&gt;We have multiple backend services that are running on different physical nodes for high availability and loadbalancing reasons.
-Traefik serves as a frontend proxy that loadbalances incoming requests to the available backend services.&lt;/p&gt;
-
-&lt;p&gt;Traefik as well as the backend services will run on top of a Docker Swarm cluster as containers.
-In this example each backend service will answer with their individual container ID to make it easy to see which one answered.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So to get started we need a running Docker Swarm Cluster first.&lt;/p&gt;
-
-&lt;h2 id=&#34;creating-a-docker-swarm-cluster&#34;&gt;Creating a Docker Swarm Cluster&lt;/h2&gt;
-
-&lt;p&gt;One of fastest and easiest ways to get a Docker Swarm cluster running is to use our &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As the Cluster Lab comes already preinstalled with out latest HypriotOS &amp;ldquo;Barbossa&amp;rdquo; release for the Raspberr Pi I will show you how to set up a Swarm Cluster with that.&lt;/p&gt;
-
-&lt;p&gt;To follow along you will need at least three Raspberry Pi&amp;rsquo;s. I will use my Pico-Cluster with five nodes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/picocluster.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The first step is flashing the necessary SD card images with HypriotOS.&lt;/p&gt;
-
-&lt;p&gt;Clone the Hypriot flash repository and change into the appropriate folder for the operating system you are using to flash the SD cards.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/hypriot/flash.gi://github.com/hypriot/flash.git
-$ cd flash/Darwin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With the flash tool ready we now can prepare the SD card for our &lt;strong&gt;leader node&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./flash --hostname cl-leader https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Repeat the process for the &lt;strong&gt;follower nodes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for i in {1..4} do; ./flash --hostname cl-follower${i} https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.0/hypriotos-rpi-v0.8.0.img.zip; done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;While the SD cards for the follower nodes are still being flashed you can already start the leader node.&lt;/p&gt;
-
-&lt;p&gt;SSH into the leader and become root user:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ssh pirate@cl-leader.local
-$ sudo su
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To make the Cluster Lab work with Traefik we need to update to the most recent version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ apt-get update
-$ apt-get install hypriot-cluster-lab=0.2.13-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then start the Hypriot Cluster Lab with verbose output logging enabled:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ VERBOSE=true cluster-lab start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;While the Cluster Lab starts you can see how it configures itself and does a number of self-tests.
-If not all steps are green stop it and start it again. If that fails, too, have a look at our &lt;a href=&#34;https://github.com/hypriot/cluster-lab#troubleshooting&#34;&gt;troubleshooting section&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;After the leader node is ready, it is time to boot the rest of our nodes and update and start the Cluster Lab in the same fashion.
-So go ahead and come back when your are done.&lt;/p&gt;
-
-&lt;p&gt;Allright, We can now check if we really have a healthy five nodes Swarm Cluster by executing the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DOCKER_HOST=tcp://192.168.200.1:2378 docker info | grep Nodes
-Nodes: 5
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And voila we now really have five nodes in our cluster.
-Congrats!&lt;/p&gt;
-
-&lt;p&gt;As you made it so far the rest will be a piece of a cake!&lt;/p&gt;
-
-&lt;h3 id=&#34;setting-up-our-microservice-app-with-traefik&#34;&gt;Setting up our microservice app with Traefik&lt;/h3&gt;
-
-&lt;p&gt;Our example microservice application consists of two parts. The Traefik frontend and the WhoAmI application backend.
-For both parts I have prepared images for you that can be pulled from the Docker Hub.&lt;/p&gt;
-
-&lt;p&gt;The Traefik image is called &lt;a href=&#34;https://hub.docker.com/r/hypriot/rpi-traefik/&#34;&gt;hypriot/rpi-traefik&lt;/a&gt; and the WhoAmI image is called &lt;a href=&#34;https://hub.docker.com/r/hypriot/rpi-whoami/&#34;&gt;hypriot/rpi-whoami&lt;/a&gt;.
-The Dockerfiles for both images can be found on Github in the &lt;a href=&#34;https://github.com/hypriot&#34;&gt;related repositories&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Because both Dockerfiles are a fine example of how easy it is to create Docker images for Golang based software I will
-show them here, too.&lt;/p&gt;
-
-&lt;p&gt;Dockerfile for &amp;ldquo;rpi-traefik&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM hypriot/rpi-alpine-scratch
-RUN apk update &amp;amp;&amp;amp;\
-    apk upgrade &amp;amp;&amp;amp;\
-    apk add ca-certificates &amp;amp;&amp;amp;\
-    rm -rf /var/cache/apk/*
-ADD https://github.com/containous/traefik/releases/download/v1.0.0-beta.771/traefik_linux-arm /traefik
-RUN chmod +x /traefik
-EXPOSE 80 8080
-ENTRYPOINT [&amp;quot;/traefik&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here we just add the Traefik binary on top of an Alpine linux image. The result is an image that is already quite small with about 41 MB.
-It propably could be made even smaller by ensuring that the Traefik binary is compiled as a static binary and then putting it into an empty scratch image.&lt;/p&gt;
-
-&lt;p&gt;You can see how this can be done with the next Dockerfile for the WhoAmI image:&lt;/p&gt;
-
-&lt;p&gt;Dockerfile for &amp;ldquo;rpi-whoami&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM scratch
-
-ADD http /http
-
-ENV PORT 8000
-EXPOSE 8000
-
-CMD [&amp;quot;/http&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With about 3 MB the resulting image is really small.&lt;/p&gt;
-
-&lt;p&gt;Well, now it is time to put this all together in a Docker Compose application.&lt;/p&gt;
-
-&lt;p&gt;Clone the following repository on you cluster leader:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/hypriot/rpi-cluster-lab-demos
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When the cloning is finished change into the &amp;lsquo;traefik&amp;rsquo; folder and use Docker Compose to start our application on top of our little Docker Swarm cluster:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd rpi-cluster-lab-demos/traefik
-$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose up -d
-Creating network &amp;quot;traefik_default&amp;quot; with the default driver
-Creating traefik_traefik_1
-Creating traefik_whoami_1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With this command Docker Compose should start two containers.
-One Traefik container on our leader and one WhoAmi container on one of our follower nodes.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s check if that really happened:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ DOCKER_HOST=tcp://192.168.200.1:2378 docker ps | grep &#39;traefik\|whoami&#39;
-cba8d9a7d8f7        hypriot/rpi-whoami         &amp;quot;/http&amp;quot;                  About a minute ago   Up About a minute   8000/tcp                                                 cl-follower1/traefik_whoami_1
-7dc2b48a24e2        hypriot/rpi-traefik        &amp;quot;/traefik --web --doc&amp;quot;   About a minute ago   Up About a minute   192.168.200.1:80-&amp;gt;80/tcp, 192.168.200.1:8080-&amp;gt;8080/tcp   cl-leader/traefik_traefik_1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Looks good. So let&amp;rsquo;s test our application by flinging some HTTP request towards our frontend:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for i in {1..5}; do curl -H Host:whoami.docker.localhost http://192.168.200.1; done
-I&#39;am f72892c9187c
-I&#39;am f72892c9187c
-I&#39;am f72892c9187c
-I&#39;am f72892c9187c
-I&#39;am f72892c9187c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see it is always the same backend container which is responding and that&amp;rsquo;s just as it should be.&lt;/p&gt;
-
-&lt;p&gt;Next we are going to increase the number of backend containers with the help of Docker Compose scale command.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose scale whoami=5
-Creating and starting traefik_whoami_2 ... done
-Creating and starting traefik_whoami_3 ... done
-Creating and starting traefik_whoami_4 ... done
-Creating and starting traefik_whoami_5 ... done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can watch as Docker Compose tells Docker Swarm to spin up more containers.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s verify again if we now have five backend containers running:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for i in {1..5}; do curl -H Host:whoami.docker.localhost http://192.168.200.1; done
-I&#39;m 5d829fecbdaa
-I&#39;m 5eb115353885
-I&#39;m e0313ac24554
-I&#39;m 642b5d2c8d09
-I&#39;m f72892c9187c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Perfect. Obviously Traefik did recognise that we started more containers and made them available to the frontend automatically.&lt;/p&gt;
-
-&lt;p&gt;We can see what happened by looking at the logs of the Traefik container:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose logs traefik
-...
-traefik_1  | time=&amp;quot;2016-06-07T06:50:38Z&amp;quot; level=debug msg=&amp;quot;Configuration received from provider docker: {\&amp;quot;backends\&amp;quot;:{\&amp;quot;backend-whoami\&amp;quot;:{\&amp;quot;servers\&amp;quot;:{\&amp;quot;server-traefik_whoami_1\&amp;quot;:{\&amp;quot;url\&amp;quot;:\&amp;quot;http://10.0.0.3:8000\&amp;quot;,\&amp;quot;weight\&amp;quot;:1},\&amp;quot;server-traefik_whoami_2\&amp;quot;:{\&amp;quot;url\&amp;quot;:\&amp;quot;http://10.0.0.5:8000\&amp;quot;,\&amp;quot;weight\&amp;quot;:1},\&amp;quot;server-traefik_whoami_3\&amp;quot;:{\&amp;quot;url\&amp;quot;:\&amp;quot;http://10.0.0.6:8000\&amp;quot;,\&amp;quot;weight\&amp;quot;:1},\&amp;quot;server-traefik_whoami_4\&amp;quot;:{\&amp;quot;url\&amp;quot;:\&amp;quot;http://10.0.0.4:8000\&amp;quot;,\&amp;quot;weight\&amp;quot;:1},\&amp;quot;server-traefik_whoami_5\&amp;quot;:{\&amp;quot;url\&amp;quot;:\&amp;quot;http://10.0.0.7:8000\&amp;quot;,\&amp;quot;weight\&amp;quot;:1}}}},\&amp;quot;frontends\&amp;quot;:{\&amp;quot;frontend-Host-whoami-docker-localhost\&amp;quot;:{\&amp;quot;backend\&amp;quot;:\&amp;quot;backend-whoami\&amp;quot;,\&amp;quot;routes\&amp;quot;:{\&amp;quot;route-frontend-Host-whoami-docker-localhost\&amp;quot;:{\&amp;quot;rule\&amp;quot;:\&amp;quot;Host:whoami.docker.localhost\&amp;quot;}},\&amp;quot;passHostHeader\&amp;quot;:true}}}&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:38Z&amp;quot; level=debug msg=&amp;quot;Last docker config received less than 2s, waiting...&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Waited for docker config, OK&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating frontend frontend-Host-whoami-docker-localhost&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Wiring frontend frontend-Host-whoami-docker-localhost to entryPoint http&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating route route-frontend-Host-whoami-docker-localhost Host:whoami.docker.localhost&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating backend backend-whoami&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating load-balancer wrr&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating server server-traefik_whoami_4 at http://10.0.0.4:8000 with weight 1&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating server server-traefik_whoami_3 at http://10.0.0.6:8000 with weight 1&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating server server-traefik_whoami_2 at http://10.0.0.5:8000 with weight 1&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating server server-traefik_whoami_1 at http://10.0.0.3:8000 with weight 1&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=debug msg=&amp;quot;Creating server server-traefik_whoami_5 at http://10.0.0.7:8000 with weight 1&amp;quot;
-traefik_1  | time=&amp;quot;2016-06-07T06:50:40Z&amp;quot; level=info msg=&amp;quot;Server configuration reloaded on :80&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Looking at the logs we can now clearly see how Traefik catched the Docker event and how it reacted.&lt;/p&gt;
-
-&lt;p&gt;Isnt&amp;rsquo; awesome?&lt;/p&gt;
-
-&lt;p&gt;OK. So this was basically our quick tour on how to do set up a simple microservice example with Docker and Traefik.&lt;/p&gt;
-
-&lt;p&gt;The only thing that is left for us now is to clean up again.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ DOCKER_HOST=tcp://192.168.200.1:2378 docker-compose down -v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Did you notice the &amp;lsquo;-v&amp;rsquo; option? This seems to be really important as it cleans up all the containers including the overlay network that was created for us.
-Without the &amp;lsquo;-v&amp;rsquo; option we would get an error the next time we start the application again with Docker Compose.&lt;/p&gt;
-
-&lt;p&gt;It is also a good idea to stop the Cluster Lab on all nodes before you switch of your Raspberry Pi&amp;rsquo;s.&lt;/p&gt;
-
-&lt;p&gt;So do a&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cluster-lab stop
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;on all your cluster nodes.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s just amazing how many interesting technologies we used in this small blog post.
-And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t it?&lt;/p&gt;
-
-&lt;p&gt;That is mostly due to the work the &lt;a href=&#34;https://github.com/hypriot/cluster-lab&#34;&gt;Hypriot Cluster Lab&lt;/a&gt; does for us and of course under the hood it is the Docker-Engine, Docker-Swarm and Docker-Compose that let&amp;rsquo;s us do so much with so little effort.&lt;/p&gt;
-
-&lt;p&gt;So make sure to give our Hypriot Cluster Lab a spin and try some of the examples in our &lt;a href=&#34;https://github.com/hypriot/rpi-cluster-lab-demos&#34;&gt;Hypriot Cluster Lab Demos&lt;/a&gt; repository or add some of your own. Pull requests are always welcome.&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 

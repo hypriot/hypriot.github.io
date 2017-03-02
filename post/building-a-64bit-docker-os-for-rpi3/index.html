@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Building a 64bit Docker OS for the Raspberry Pi 3 &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2017 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Building a 64bit Docker OS for the Raspberry Pi 3</h1>
+    <span class="post-date">Thu, Mar 2, 2017</span>
+    <p>I&rsquo;m happy to announce the start of a &ldquo;short&rdquo; workshop were I&rsquo;m going through all the steps to build a complete 64bit operating system for the Raspberry Pi 3. This 64bit HypriotOS is mainly focused on running Docker containers easily on this popular DIY and IoT device.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Raspberry-Pi-3-Flat-Top.jpg" alt="Raspi3-Image" /></p>
+
+<p>You&rsquo;ll see that I&rsquo;m using Docker heavily for each and every build step, because it really helps us a lot to run a local build with <a href="https://docs.docker.com/docker-for-mac/">Docker-for-Mac</a> or later on the cloud build servers at <a href="https://travis-ci.org">Travis CI</a>.</p>
+
+<p><img src="/images/building-a-64bit-docker-os-for-rpi3/bee42-workshop.jpg" alt="bee42-workshop.jpg" /></p>
+
+<p>This workshop is sponsored by <a href="http://bee42.com">bee42 solutions</a> <a href="https://twitter.com/bee42solutions" class="twitter-follow-button" data-show-count="false">Follow @bee42solutions</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p></p>
+
+<h3 id="background-and-contents">Background and Contents</h3>
+
+<p>As you may already know, a complete Linux operating system consists of several important building blocks and I&rsquo;d like to show you how to build all of these step by step.</p>
+
+<p>For this purpose I&rsquo;m not going to reinvent the wheel and so I&rsquo;ll reuse all of the existing parts which are already published by the Raspberry Pi Organisation, by the Debian Linux project and will add some more glue code.</p>
+
+<p>At the end you should have learned how to build all the necessary parts and how to automatically create a finished SD card image which could be flashed on an empty SD card. Then boot your Raspberry Pi 3 with and in less than a minute you have a fully running Docker Engine on a Debian-based 64bit Linux OS.</p>
+
+<p>Here is a short overview of the contents of the workshop:</p>
+
+<ul>
+<li><p><strong>Part 1: Bootloader</strong></p></li>
+
+<li><p><strong>Part 2: Kernel</strong></p></li>
+
+<li><p><strong>Part 3: Root filesystem</strong></p></li>
+
+<li><p><strong>Part 4: SD Card Image</strong></p></li>
+</ul>
+
+<p>So, that&rsquo;s enough for explaining the background of this workshop. For more informations please follow along the details I&rsquo;ll publish on the coming tweets at Twitter and in the GitHub repos until all the parts of this workshop are finished and available as OpenSource.</p>
+
+<p>Please be aware that this OS is in a development phase and far from being perfect. So you are encouraged to help me with reporting issues and filing pull-requests to add features and fix bugs.</p>
+
+<h3 id="further-links">Further Links</h3>
+
+<p>I&rsquo;m going to publish all the details and steps to build the new operating system in a public GitHub repo. All other details and necessary GitHub repos will be linked here in this section as a future reference.</p>
+
+<ul>
+<li><strong>Workshop Repo</strong> <a href="https://github.com/bee42/workshop-raspberrypi-64bit-os">https://github.com/bee42/workshop-raspberrypi-64bit-os</a></li>
+</ul>
+
+<p>So please stay tuned, this link list will be extended over the next few days.</p>
+
+<h3 id="acknowledgments">Acknowledgments</h3>
+
+<p>Please follow along the detailed tweets about this workshop via</p>
+
+<ul>
+<li><a href="https://twitter.com/Quintus23M">@Quintus23M</a> <a href="https://twitter.com/Quintus23M" class="twitter-follow-button" data-show-count="false">Follow @Quintus23M</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+<li><a href="https://twitter.com/HypriotTweets">@HypriotTweets</a> <a href="https://twitter.com/HypriotTweets" class="twitter-follow-button" data-show-count="false">Follow @HypriotTweets</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+<li><a href="https://twitter.com/bee42solutions">@bee42solutions</a> <a href="https://twitter.com/bee42solutions" class="twitter-follow-button" data-show-count="false">Follow @bee42solutions</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+</ul>
+
+<p>Special thanks goes to <a href="http://bee42.com">bee42 solutions</a> for giving me the time to work on this awesome topic to build a complete Docker-enabled 64bit OS for the Raspberry Pi 3.</p>
+
+<p><img src="/images/building-a-64bit-docker-os-for-rpi3/bee42-logo.jpg" alt="bee42-logo.jpg" /></p>
+
+<h3 id="feedback-please">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

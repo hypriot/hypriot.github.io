@@ -9,6 +9,81 @@
     <atom:link href="https://blog.hypriot.com/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Building a 64bit Docker OS for the Raspberry Pi 3</title>
+      <link>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</link>
+      <pubDate>Thu, 02 Mar 2017 11:28:42 +0100</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m happy to announce the start of a &amp;ldquo;short&amp;rdquo; workshop were I&amp;rsquo;m going through all the steps to build a complete 64bit operating system for the Raspberry Pi 3. This 64bit HypriotOS is mainly focused on running Docker containers easily on this popular DIY and IoT device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/e/e6/Raspberry-Pi-3-Flat-Top.jpg&#34; alt=&#34;Raspi3-Image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;ll see that I&amp;rsquo;m using Docker heavily for each and every build step, because it really helps us a lot to run a local build with &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;Docker-for-Mac&lt;/a&gt; or later on the cloud build servers at &lt;a href=&#34;https://travis-ci.org&#34;&gt;Travis CI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/building-a-64bit-docker-os-for-rpi3/bee42-workshop.jpg&#34; alt=&#34;bee42-workshop.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This workshop is sponsored by &lt;a href=&#34;http://bee42.com&#34;&gt;bee42 solutions&lt;/a&gt; &lt;a href=&#34;https://twitter.com/bee42solutions&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bee42solutions&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background-and-contents&#34;&gt;Background and Contents&lt;/h3&gt;
+
+&lt;p&gt;As you may already know, a complete Linux operating system consists of several important building blocks and I&amp;rsquo;d like to show you how to build all of these step by step.&lt;/p&gt;
+
+&lt;p&gt;For this purpose I&amp;rsquo;m not going to reinvent the wheel and so I&amp;rsquo;ll reuse all of the existing parts which are already published by the Raspberry Pi Organisation, by the Debian Linux project and will add some more glue code.&lt;/p&gt;
+
+&lt;p&gt;At the end you should have learned how to build all the necessary parts and how to automatically create a finished SD card image which could be flashed on an empty SD card. Then boot your Raspberry Pi 3 with and in less than a minute you have a fully running Docker Engine on a Debian-based 64bit Linux OS.&lt;/p&gt;
+
+&lt;p&gt;Here is a short overview of the contents of the workshop:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 1: Bootloader&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 2: Kernel&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 3: Root filesystem&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Part 4: SD Card Image&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, that&amp;rsquo;s enough for explaining the background of this workshop. For more informations please follow along the details I&amp;rsquo;ll publish on the coming tweets at Twitter and in the GitHub repos until all the parts of this workshop are finished and available as OpenSource.&lt;/p&gt;
+
+&lt;p&gt;Please be aware that this OS is in a development phase and far from being perfect. So you are encouraged to help me with reporting issues and filing pull-requests to add features and fix bugs.&lt;/p&gt;
+
+&lt;h3 id=&#34;further-links&#34;&gt;Further Links&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to publish all the details and steps to build the new operating system in a public GitHub repo. All other details and necessary GitHub repos will be linked here in this section as a future reference.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workshop Repo&lt;/strong&gt; &lt;a href=&#34;https://github.com/bee42/workshop-raspberrypi-64bit-os&#34;&gt;https://github.com/bee42/workshop-raspberrypi-64bit-os&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So please stay tuned, this link list will be extended over the next few days.&lt;/p&gt;
+
+&lt;h3 id=&#34;acknowledgments&#34;&gt;Acknowledgments&lt;/h3&gt;
+
+&lt;p&gt;Please follow along the detailed tweets about this workshop via&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt; &lt;a href=&#34;https://twitter.com/Quintus23M&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @Quintus23M&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt; &lt;a href=&#34;https://twitter.com/HypriotTweets&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @HypriotTweets&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/bee42solutions&#34;&gt;@bee42solutions&lt;/a&gt; &lt;a href=&#34;https://twitter.com/bee42solutions&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bee42solutions&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Special thanks goes to &lt;a href=&#34;http://bee42.com&#34;&gt;bee42 solutions&lt;/a&gt; for giving me the time to work on this awesome topic to build a complete Docker-enabled 64bit OS for the Raspberry Pi 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/building-a-64bit-docker-os-for-rpi3/bee42-logo.jpg&#34; alt=&#34;bee42-logo.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s build the smallest possible Docker image</title>
       <link>https://blog.hypriot.com/post/build-smallest-possible-docker-image/</link>
       <pubDate>Wed, 22 Feb 2017 09:18:35 +0100</pubDate>
@@ -3096,85 +3171,6 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
 &lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Making of HypriotOS</title>
-      <link>https://blog.hypriot.com/post/making-of-hypriotos/</link>
-      <pubDate>Wed, 25 May 2016 18:03:32 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/making-of-hypriotos/</guid>
-      <description>&lt;p&gt;Today we have released a new version of HypriotOS &amp;ldquo;Barbossa&amp;rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&amp;rsquo;s. Beginning with this release we have &lt;strong&gt;open sourced every step&lt;/strong&gt; to build each parts, from the kernel and root filesystem up to the SD card image.&lt;/p&gt;
-
-&lt;p&gt;We have also moved every build step out in the cloud to use the &amp;ldquo;programmable internet&amp;rdquo; to build and test everything with just a &lt;strong&gt;git push&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-release.png&#34; alt=&#34;release process&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;This diagram above shows the release process of a new SD card image for any of the new HypriotOS supported ARM boards. We have moved all building steps to Cloud services. This helps us all to build any SD card without the need to have the specific ARM board. And this also &lt;strong&gt;enables the community to contribute&lt;/strong&gt; to all our repos with pull requests.&lt;/p&gt;
-
-&lt;h2 id=&#34;ci-driven-builds&#34;&gt;CI driven builds&lt;/h2&gt;
-
-&lt;p&gt;To build the SD card images in the Cloud we have chosen a mixture of &lt;strong&gt;Travis CI&lt;/strong&gt; and &lt;strong&gt;CircleCI&lt;/strong&gt; as the Docker support fits our needs. Only where we need ARM servers to built natively we have our own &lt;strong&gt;Drone&lt;/strong&gt; and &lt;strong&gt;Jenkins&lt;/strong&gt; servers running on Scaleway C1 servers.&lt;/p&gt;
-
-&lt;p&gt;The build process downloads some other artifacts like the root filesystem for the specific ARM CPU type and installs further DEB packages like the &lt;strong&gt;Linux kernel&lt;/strong&gt;, the &lt;strong&gt;Docker Engine&lt;/strong&gt; and &lt;strong&gt;Docker Compose&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;After each build Travis also runs &lt;strong&gt;Serverspec&lt;/strong&gt; tests against the SD card image to have a minimal test of the generated output.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/travis-serverspec-tests.png&#34; alt=&#34;travis serverspec tests&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When we trigger a release build, Travis deploys the newly generated SD card image to the &lt;strong&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;GitHub releases&lt;/a&gt;&lt;/strong&gt; page. You can find releases, as well as pre-releases of upcoming versions there.&lt;/p&gt;
-
-&lt;h2 id=&#34;join-the-movement&#34;&gt;Join the movement&lt;/h2&gt;
-
-&lt;p&gt;The advantage of open sourcing is that the community can give us feedback and sometimes even start contributing back. The SD card image can be built locally on your Linux or Mac notebook as well. So you also are able to build a SD card image without having the device.&lt;/p&gt;
-
-&lt;p&gt;As we love Docker the build process runs in a Docker Container. This simplifies the setup on your local machine. Each GitHub repository has a README with the steps needed to build and test the specific HypriotOS SD card image.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-local-build.png&#34; alt=&#34;local build&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The normal workflow looks like this&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git clone&lt;/code&gt; - get the repo you want to build&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make docker-machine&lt;/code&gt; - create a local VM with Docker&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make sd-image&lt;/code&gt; - build the SD card image within a Docker Container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;flash sd-card*.zip&lt;/code&gt; - flash the new SD card image and boot your ARM device.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOARD=ip make test-integration&lt;/code&gt; - run Serverspec tests if everything is fine&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have added over &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/tree/master/builder/test-integration/spec&#34;&gt;200 Serverspec tests&lt;/a&gt; to ensure the Docker tools, Kernel and additional packages are installed correctly. You can even run these tests for the latest release to check if it is working for you as well.
-This enables everyone to make changes to the code base and send us Pull Requests without breaking other parts.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Pull Requests&lt;/strong&gt; are tested with &lt;strong&gt;Travis CI&lt;/strong&gt; of course, so we can see if it works well.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/github-pr-success.png&#34; alt=&#34;pull request successful&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As there are several GitHub repositories involved to build the SD card image we use &lt;strong&gt;Waffle.io&lt;/strong&gt; to have and overview of all issues, pull requests and tasks to do for a release.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/waffle.png&#34; alt=&#34;waffle board&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next&lt;/h2&gt;
-
-&lt;p&gt;We also started to add more boards and created new GitHub repos for each. But we focused on the Raspberry Pi to finish the &amp;ldquo;Barbossa&amp;rdquo; release. Here is a list of boards we have started to support:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;Raspberry Pi Zero, 1, 2, 3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1&#34;&gt;ODROID C1/C1+&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-xu4&#34;&gt;ODROID XU3/XU4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c2&#34;&gt;ODROID C2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-bananapi&#34;&gt;Banana Pi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Pine A64, &amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will pick one of these boards next to add all features of &amp;ldquo;Barbossa&amp;rdquo; to have a great Docker experience with it.
-The other boards are still a work in progress - any help is welcome from the community!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
