@@ -260,7 +260,7 @@ In fact, the features of that project are far behind of what&amp;rsquo;s now imp
 
 &lt;p&gt;First, we need an operating system. Download and flash &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;HypriotOS&lt;/a&gt;. The fastest way to download and flash HypriotOS on your SD cards is by using our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; like so:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;flash --hostname node01 https://github.com/hypriot/image-builder-rpi/releases/download/v1.1.3/hypriotos-rpi-v1.1.3.img.zip
+&lt;pre&gt;&lt;code&gt;flash --hostname node01 https://github.com/hypriot/image-builder-rpi/releases/download/v1.4.0/hypriotos-rpi-v1.4.0.img.zip
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Provision all Raspberry Pis you have like this and boot them up.&lt;/p&gt;
