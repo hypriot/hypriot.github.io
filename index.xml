@@ -312,6 +312,13 @@ $ echo &amp;quot;deb http://apt.kubernetes.io/ kubernetes-xenial main&amp;quot; 
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/init.png&#34; alt=&#34;init&#34; /&gt;&lt;/p&gt;
 
+&lt;p&gt;To start using your cluster, you need to run (as a regular user):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo cp /etc/kubernetes/admin.conf $HOME/
+$ sudo chown $(id -u):$(id -g) $HOME/admin.conf
+$ export KUBECONFIG=$HOME/admin.conf
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;Next, as told by that output, let all other nodes join the cluster via the given &lt;code&gt;kubeadm join&lt;/code&gt; command. It will look something like:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ kubeadm join --token=bb14ca.e8bbbedf40c58788 192.168.0.34
