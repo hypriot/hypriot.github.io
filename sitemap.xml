@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/dockerconaustin2017/</loc>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</loc>
     <lastmod>2017-03-02T11:28:42+01:00</lastmod>
   </url>
@@ -407,13 +412,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -670,13 +675,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -742,7 +747,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -760,13 +765,19 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/dockercon/</loc>
-    <lastmod>2015-06-24T01:30:34+02:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/dockercon-2015/</loc>
     <lastmod>2015-06-24T01:30:34+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/dockercon-2017/</loc>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1384,7 +1395,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1408,13 +1419,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/raspberry-pi/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/raspberry-pi/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
     <priority>0</priority>
   </url>
   

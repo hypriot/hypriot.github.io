@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> DockerCon 2017 Demo: Monitoring Docker Swarm with LED&#39;s &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2017 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>DockerCon 2017 Demo: Monitoring Docker Swarm with LED&#39;s</h1>
+    <span class="post-date">Thu, Apr 20, 2017</span>
+    <p>At DockerCon 2017 in Austin I gave a presentation of a Raspberry Pi cluster mixed with some UP boards. The audience really liked the visual effects of the Docker Swarm scaling a service up and down. So I show you some background details what you need to run that demo on your Raspberry Pi cluster as well.</p>
+
+<p><img src="/images/dockercon2017/stage2.jpg" alt="PiCloud at DockerCon Austin" /></p>
+
+<p></p>
+
+<p>All the effort played off to build that cluster, to find out how to drive LED&rsquo;s in swarm mode, to put it into my bag and go through customs on my flight from Germany to Austin, Texas. It really was fun to show this the audience and everybody liked it.</p>
+
+<p>To enable you to replay the demo with some Pimoroni Blinkt! LED&rsquo;s and Raspberry Pi - regardless if you only have Pi Zeros I want to show you the Docker images I used and the commands to show the scaling demo.</p>
+
+<p>The Docker image <a href="https://hub.docker.com/r/stefanscherer/monitor/">stefanscherer/monitor</a> is available on the Docker Hub. It is a multi-architecture image that can be used on Linux with Intel or ARM CPU&rsquo;s.</p>
+
+<p>So just create a Docker swarm with the usual commands <code>docker swarm init</code> and then join some other workers with the swarm token shown in your terminal.</p>
+
+<h2 id="start-the-led-monitor">Start the LED monitor</h2>
+
+<p>First we have to start the LED monitor as a service so that it is running on each node of the Docker swarm. The option <code>--mode global</code> will do this and start one instance on each node. We have to bind mount both the Docker socket and a part of the file system into the container so it can access the <code>/sys/class/fs</code> file system.</p>
+
+<pre><code class="language-bash">docker service create --name monitor --mode global \
+  --restart-condition any --mount type=bind,src=/sys,dst=/sys \
+  --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  stefanscherer/monitor:1.1.0
+</code></pre>
+
+<p>Now we are all set to play with scaling an example service.</p>
+
+<h2 id="scale-up">Scale up</h2>
+
+<p>There is another multi-arch image that I used for the scaling demo. It is the &ldquo;whoami&rdquo; web service that responds the container&rsquo;s hostname.</p>
+
+<p>First we create the service with</p>
+
+<pre><code class="language-bash">docker service create --name whoami stefanscherer/whoami:1.1.0
+</code></pre>
+
+<p>As said this works with any Raspberry Pi or the UP board that has an Intel Atom CPU.
+After the image has been downloaded the LED monitor should show one yellow LED lighting up.</p>
+
+<p>Now scale the service a little more eg. to the number of nodes you have to have one LED lighting up per node.</p>
+
+<pre><code class="language-bash">docker service scale whoami=4
+</code></pre>
+
+<p>Then scale it up a little more</p>
+
+<pre><code class="language-bash">docker service scale whoami=16
+</code></pre>
+
+<p><img src="/images/dockercon2017/scale-up.gif" alt="Scale up" /></p>
+
+<p>And then light up all the LED&rsquo;s by scaling up to the number of LED&rsquo;s you have.</p>
+
+<pre><code class="language-bash">docker service scale whoami=32
+</code></pre>
+
+<h2 id="rolling-update">Rolling update</h2>
+
+<p>Another thing that can be visualized is a rolling update. The LED monitor shows each container with a yellow color for version 1.1.0 of the service and blue for version 1.2.0.</p>
+
+<p>So start the rolling update by specifing <code>--update-parallelism</code> with the number of containers that should be replaced in one step. So Docker Swarm kills that number of containers and starts the new version of it before stopping the next bulk of containers. Use the <code>--image</code> option to specifiy the new version that should be used by the whoami service.</p>
+
+<pre><code class="language-bash">docker service update --update-parallelism 5 \
+  --image stefanscherer/whoami:1.2.0 whoami
+</code></pre>
+
+<p>Now watch what happens. Each destroyed container lights up red and then dims. After a while Docker swarm manager starts the new version and so new LED&rsquo;s with blue light up. After a while all LED&rsquo;s have changed from yellow (version 1.1.0) to blue (version 1.2.0). And while this rolling update is going on you still can use this &ldquo;whoami&rdquo; service by curl&rsquo;ing it.</p>
+
+<p><img src="/images/dockercon2017/rolling-update.gif" alt="Rolling update" /></p>
+
+<h2 id="scale-down-to-one">Scale down to one</h2>
+
+<p>Another nice effect is to scale down the service back to one as all LED&rsquo;s will flash up in red and only one LED remains blue.</p>
+
+<pre><code class="language-bash">docker service scale whoami=1
+</code></pre>
+
+<p><img src="/images/dockercon2017/scale-down-to-one.gif" alt="Scale down to one" /></p>
+
+<p>Hope I did make you curious to try it out on your own cluster. Happy hacking and have fun! If you want to improve the visual effects have a look at the Node.js sources in the <a href="https://github.com/StefanScherer/swarm-monitor">GitHub repo</a>. Rewrite it in Golang or anything else and suprise me with other nice visual effects.</p>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/dockerconaustin2017/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/dockerconaustin2017/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/dockerconaustin2017/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dockercon 2017 on Docker Pirates ARMed with explosive stuff</title>
+    <link>https://blog.hypriot.com/categories/dockercon-2017/index.xml</link>
+    <description>Recent content in Dockercon 2017 on Docker Pirates ARMed with explosive stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://blog.hypriot.com/categories/dockercon-2017/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>DockerCon 2017 Demo: Monitoring Docker Swarm with LED&#39;s</title>
+      <link>https://blog.hypriot.com/post/dockerconaustin2017/</link>
+      <pubDate>Thu, 20 Apr 2017 14:30:34 -0600</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/dockerconaustin2017/</guid>
+      <description>&lt;p&gt;At DockerCon 2017 in Austin I gave a presentation of a Raspberry Pi cluster mixed with some UP boards. The audience really liked the visual effects of the Docker Swarm scaling a service up and down. So I show you some background details what you need to run that demo on your Raspberry Pi cluster as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockercon2017/stage2.jpg&#34; alt=&#34;PiCloud at DockerCon Austin&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;All the effort played off to build that cluster, to find out how to drive LED&amp;rsquo;s in swarm mode, to put it into my bag and go through customs on my flight from Germany to Austin, Texas. It really was fun to show this the audience and everybody liked it.&lt;/p&gt;
+
+&lt;p&gt;To enable you to replay the demo with some Pimoroni Blinkt! LED&amp;rsquo;s and Raspberry Pi - regardless if you only have Pi Zeros I want to show you the Docker images I used and the commands to show the scaling demo.&lt;/p&gt;
+
+&lt;p&gt;The Docker image &lt;a href=&#34;https://hub.docker.com/r/stefanscherer/monitor/&#34;&gt;stefanscherer/monitor&lt;/a&gt; is available on the Docker Hub. It is a multi-architecture image that can be used on Linux with Intel or ARM CPU&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;So just create a Docker swarm with the usual commands &lt;code&gt;docker swarm init&lt;/code&gt; and then join some other workers with the swarm token shown in your terminal.&lt;/p&gt;
+
+&lt;h2 id=&#34;start-the-led-monitor&#34;&gt;Start the LED monitor&lt;/h2&gt;
+
+&lt;p&gt;First we have to start the LED monitor as a service so that it is running on each node of the Docker swarm. The option &lt;code&gt;--mode global&lt;/code&gt; will do this and start one instance on each node. We have to bind mount both the Docker socket and a part of the file system into the container so it can access the &lt;code&gt;/sys/class/fs&lt;/code&gt; file system.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service create --name monitor --mode global \
+  --restart-condition any --mount type=bind,src=/sys,dst=/sys \
+  --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  stefanscherer/monitor:1.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we are all set to play with scaling an example service.&lt;/p&gt;
+
+&lt;h2 id=&#34;scale-up&#34;&gt;Scale up&lt;/h2&gt;
+
+&lt;p&gt;There is another multi-arch image that I used for the scaling demo. It is the &amp;ldquo;whoami&amp;rdquo; web service that responds the container&amp;rsquo;s hostname.&lt;/p&gt;
+
+&lt;p&gt;First we create the service with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service create --name whoami stefanscherer/whoami:1.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As said this works with any Raspberry Pi or the UP board that has an Intel Atom CPU.
+After the image has been downloaded the LED monitor should show one yellow LED lighting up.&lt;/p&gt;
+
+&lt;p&gt;Now scale the service a little more eg. to the number of nodes you have to have one LED lighting up per node.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service scale whoami=4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then scale it up a little more&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service scale whoami=16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockercon2017/scale-up.gif&#34; alt=&#34;Scale up&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And then light up all the LED&amp;rsquo;s by scaling up to the number of LED&amp;rsquo;s you have.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service scale whoami=32
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;rolling-update&#34;&gt;Rolling update&lt;/h2&gt;
+
+&lt;p&gt;Another thing that can be visualized is a rolling update. The LED monitor shows each container with a yellow color for version 1.1.0 of the service and blue for version 1.2.0.&lt;/p&gt;
+
+&lt;p&gt;So start the rolling update by specifing &lt;code&gt;--update-parallelism&lt;/code&gt; with the number of containers that should be replaced in one step. So Docker Swarm kills that number of containers and starts the new version of it before stopping the next bulk of containers. Use the &lt;code&gt;--image&lt;/code&gt; option to specifiy the new version that should be used by the whoami service.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service update --update-parallelism 5 \
+  --image stefanscherer/whoami:1.2.0 whoami
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now watch what happens. Each destroyed container lights up red and then dims. After a while Docker swarm manager starts the new version and so new LED&amp;rsquo;s with blue light up. After a while all LED&amp;rsquo;s have changed from yellow (version 1.1.0) to blue (version 1.2.0). And while this rolling update is going on you still can use this &amp;ldquo;whoami&amp;rdquo; service by curl&amp;rsquo;ing it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockercon2017/rolling-update.gif&#34; alt=&#34;Rolling update&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;scale-down-to-one&#34;&gt;Scale down to one&lt;/h2&gt;
+
+&lt;p&gt;Another nice effect is to scale down the service back to one as all LED&amp;rsquo;s will flash up in red and only one LED remains blue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker service scale whoami=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/dockercon2017/scale-down-to-one.gif&#34; alt=&#34;Scale down to one&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope I did make you curious to try it out on your own cluster. Happy hacking and have fun! If you want to improve the visual effects have a look at the Node.js sources in the &lt;a href=&#34;https://github.com/StefanScherer/swarm-monitor&#34;&gt;GitHub repo&lt;/a&gt;. Rewrite it in Golang or anything else and suprise me with other nice visual effects.&lt;/p&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
