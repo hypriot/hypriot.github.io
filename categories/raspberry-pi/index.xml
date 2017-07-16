@@ -425,7 +425,8 @@ $ export KUBECONFIG=$HOME/admin.conf
 
 &lt;p&gt;Finally, &lt;strong&gt;we need to setup flannel as the Pod network driver&lt;/strong&gt;. Run this &lt;strong&gt;on the master node&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/coreos/flannel/v0.7.0/Documentation/kube-flannel.yml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
+&lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel-rbac.yml | kubectl create -f -
+$ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.yml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Your terminal should look like this:&lt;/p&gt;
