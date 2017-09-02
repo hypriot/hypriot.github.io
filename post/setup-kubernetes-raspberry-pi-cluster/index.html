@@ -200,7 +200,7 @@ $ export KUBECONFIG=$HOME/admin.conf
 
 <p><img src="/images/kubernetes-setup-cluster/get-nodes.png" alt="k8S" /></p>
 
-<p>Finally, <strong>we need to setup flannel as the Pod network driver</strong>. Run this <strong>on the master node</strong>:</p>
+<p>Finally, <strong>we need to setup flannel v0.7.1 as the Pod network driver</strong>. Do not use <a href="https://github.com/coreos/flannel/releases/tag/v0.8.0">v0.8.0</a> due to a known <a href="https://github.com/coreos/flannel/issues/773">bug</a> that can cause a <code>CrashLoopBackOff</code> error. Run this <strong>on the master node</strong>:</p>
 
 <pre><code>$ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel-rbac.yml | kubectl create -f -
 $ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.yml | sed &quot;s/amd64/arm/g&quot; | kubectl create -f -

@@ -424,7 +424,7 @@ $ export KUBECONFIG=$HOME/admin.conf
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/get-nodes.png&#34; alt=&#34;k8S&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Finally, &lt;strong&gt;we need to setup flannel as the Pod network driver&lt;/strong&gt;. Run this &lt;strong&gt;on the master node&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Finally, &lt;strong&gt;we need to setup flannel v0.7.1 as the Pod network driver&lt;/strong&gt;. Do not use &lt;a href=&#34;https://github.com/coreos/flannel/releases/tag/v0.8.0&#34;&gt;v0.8.0&lt;/a&gt; due to a known &lt;a href=&#34;https://github.com/coreos/flannel/issues/773&#34;&gt;bug&lt;/a&gt; that can cause a &lt;code&gt;CrashLoopBackOff&lt;/code&gt; error. Run this &lt;strong&gt;on the master node&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel-rbac.yml | kubectl create -f -
 $ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.yml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
