@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</loc>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/dockerconaustin2017/</loc>
     <lastmod>2017-04-20T14:30:34-06:00</lastmod>
   </url>
@@ -412,13 +417,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -436,13 +441,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm64/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm64/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -584,6 +589,12 @@
   </url>
   
   <url>
+    <loc>https://blog.hypriot.com/tags/cloud-init/</loc>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/tags/cluster/</loc>
     <lastmod>2017-01-11T14:03:34+01:00</lastmod>
     <priority>0</priority>
@@ -675,13 +686,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -747,7 +758,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -830,6 +841,12 @@
   <url>
     <loc>https://blog.hypriot.com/tags/eletronics/</loc>
     <lastmod>2015-04-09T16:49:33+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/tags/external/</loc>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1395,7 +1412,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1419,13 +1436,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/raspberry-pi/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/raspberry-pi/</loc>
-    <lastmod>2017-04-20T14:30:34-06:00</lastmod>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1468,6 +1485,12 @@
   <url>
     <loc>https://blog.hypriot.com/tags/repository/</loc>
     <lastmod>2016-03-28T22:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/tags/rpi-64/</loc>
+    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
     <priority>0</priority>
   </url>
   

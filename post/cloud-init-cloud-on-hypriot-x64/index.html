@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Bootstrapping a Cloud with Cloud-Init and HypriotOS &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+    </ul>
+
+    <p>&copy; 2017 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Bootstrapping a Cloud with Cloud-Init and HypriotOS</h1>
+    <span class="post-date">Sun, Oct 29, 2017</span>
+    <blockquote>
+<p>Things may come to those who wait, but only the things left by those who hustle.</p>
+</blockquote>
+
+<p>Over the last year, a lot has happened in the Raspberry Pi and Docker communities, there are Docker Captains helping lead the charge, one of those, <a href="https://twitter.com/Quintus23M">Dieter Reuter</a> really has been pushing the cause for ARM64 support with both Raspberry Pi 3 and LinuxKit. He isn&rsquo;t a single man army, the rest of the <a href="http://blog.hypriot.com/crew/">Docker Pirates</a> over at <a href="http://blog.hypriot.com/">Hypriot</a> has been doing some awesome things as well!</p>
+
+<p>Building on the backs of these outstanding community members, I was finally able to spin up a Raspberry Pi, exactly like I do in the &ldquo;real world&rdquo;, just turn it on, let it self-configure, then software just runs.</p>
+
+<p></p>
+
+<p>A lot of this is really about having <a href="http://cloudinit.readthedocs.io/en/latest/index.html">cloud-init </a> available in the HypriotOS 64bit images thanks to another Pirate <a href="https://twitter.com/stefscherer">Stefan Scherer</a>. In the &ldquo;cloud world&rdquo;, you spin up instances, give it some user-data, then when it boots, the machines self-configures based on the instance meta-data and the user-data provided.</p>
+
+<h2 id="before">Before</h2>
+
+<p>Before we talk about the &ldquo;new&rdquo; pirate way, let&rsquo;t talk about the &ldquo;old&rdquo; non-pirate way.</p>
+
+<ul>
+<li>Download Raspbian Lite (the easiest for nubbies like me)</li>
+<li>Flash said image to an SD Card</li>
+<li>Optionally re-mount SD Card and monkey some stuff around</li>
+<li>Put the card in your RPi</li>
+<li>Power up the RPi</li>
+<li>If you don&rsquo;t have avahi/bonjour, go find the IP in your router</li>
+<li>SSH into the server</li>
+<li>Update Packages</li>
+<li>Run <code>raspi-config</code> and modify some junk</li>
+<li>Reboot</li>
+<li>Install Docker</li>
+<li>Initialize Docker Swarm</li>
+<li>Configure <a href="http://portainer.io">Portainer</a> service (if not, are you broken?)</li>
+<li>&ldquo;try&rdquo; and find some images you can run on arm</li>
+<li>Cheer at your glory based nginx hello world page!</li>
+<li>Figure out how to use automation tools like Ansible to make your life easier when you need a cluster</li>
+<li>Bang head on desk learning so much&hellip;</li>
+<li>Do victory dances when you created a bunch of automation around setting up servers</li>
+<li>Go find out what the community is doing</li>
+</ul>
+
+<p>It is at that point, when the community really is an awesome place. Given the latest <a href="https://github.com/DieterReuter/image-builder-rpi64/releases/tag/v20171013-172949">HypriotOS-rpi64</a>, the <a href="https://github.com/hypriot/flash">flash</a> utility (also from Hypriot), Docker images now being multi-architecture supported through the <a href="https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md">manifest v2 API</a> and Docker pushing to get all the <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">supported images covering a lot of architectures</a>, life begins to get much <strong>much</strong> easier.</p>
+
+<hr />
+
+<p><strong>DISCLAIMER</strong>: Before we continue, we need to talk about ARM 64 naming issues.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/ARM_architecture#64.2F32-bit_architecture">ARM is complicated</a> when it comes to the latest version of the architecture (v8). A lot of the distros still haven&rsquo;t settled on what to call it, and you will find a lot of differences: <code>AArch64</code> and <code>ARM64v8</code> being the two most popular. When in doubt, do what <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">Docker does</a>.</p>
+
+<hr />
+
+<h2 id="after">After</h2>
+
+<p>Now that we got that out of the way, let&rsquo;s get into some code. Given the list of <code>arm64v8</code> images in the <a href="https://hub.docker.com/u/arm64v8/">Docker registry</a> I wanted to find something that would be interesting. Luckily, I was able to find <a href="https://nextcloud.com/">NextCloud</a>. I have no idea if this software is worth keeping around, but it was something I could play with, try to break, reboot to see if it lives, and have something to play with when I succeed!</p>
+
+<h3 id="user-data">User Data</h3>
+
+<p>The first thing we need to do, is create our <code>user-data</code> file. This will be placed inside of our SD card when we flash it and instruct <code>cloud-init</code> what to do when the system boots for the first time.</p>
+
+<p>It should be noted, that at this time, the cloud-init version available for Debian distribution is <a href="http://cloudinit.readthedocs.io/en/0.7.9/">0.7.9</a>, not the 17.1 you would have thought (as latest). Currently only Ubuntu is the only distribution I know of that is using 17.1.</p>
+
+<p>The next important fact to know is that the Data Source we are utilizing is the <a href="http://cloudinit.readthedocs.io/en/0.7.9/topics/datasources/nocloud.html">NoCloud</a> data source. This basically means (in the 0.7.9 and below version) that the <code>user-data</code> and <code>meta-data</code> are on the local file system, not pulled from a remote resource or other means.</p>
+
+<p>The <code>user-data</code> file is simply a YAML file, you can get a lot more complicated, but for the sake of simplicity, let&rsquo;s just call it a YAML file.</p>
+
+<p>The <code>user-data</code> for this project:</p>
+
+<pre><code class="language-yaml">#cloud-config
+# vim: syntax=yaml
+#
+
+hostname: nextcloud-pi64
+manage_etc_hosts: true
+
+resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&quot;/&quot;]
+    ignore_growroot_disabled: false
+
+users:
+  - name: pirate
+    gecos: &quot;Hypriot Pirate&quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+
+locale: &quot;en_US.UTF-8&quot;
+timezone: &quot;America/Los_Angeles&quot;
+
+write_files:
+    - path: &quot;/etc/docker/daemon.json&quot;
+      owner: &quot;root:root&quot;
+      content: |
+        {
+          &quot;labels&quot;: [ &quot;os=linux&quot;, &quot;arch=arm64&quot; ],
+          &quot;experimental&quot;: true
+        }
+
+runcmd:
+  - [ systemctl, restart, avahi-daemon ]
+  - [ systemctl, restart, docker ]
+  - [docker, swarm, init ]
+  - [
+      docker, service, create, 
+      &quot;--detach=false&quot;, 
+      &quot;--name&quot;, &quot;portainer&quot;, 
+      &quot;--publish&quot;, &quot;9000:9000&quot;, 
+      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;, 
+      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;, 
+      &quot;portainer/portainer&quot;, &quot;-H&quot;, &quot;unix:///var/run/docker.sock&quot;, &quot;--no-auth&quot;
+    ]
+  - [mkdir, &quot;-p&quot;, &quot;/var/cloud/data&quot; ]
+  - [setfacl, &quot;-m&quot;, &quot;u:www-data:rwx&quot;, &quot;/var/cloud/data&quot; ]
+  - [
+      docker, service, create, 
+      &quot;--detach=false&quot;, 
+      &quot;--name&quot;, &quot;nextcloud&quot;, 
+      &quot;--publish&quot;, &quot;80:80&quot;, 
+      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;, 
+      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;, 
+      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;, 
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;, 
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;, 
+      &quot;nextcloud:latest&quot; 
+    ]
+</code></pre>
+
+<p>It is extremely important that before you flash this to a disk and attempt to boot, that you run this file through a YAML linter. There are some good ones <a href="http://www.yamllint.com/">available online</a>, but you should never use an online linter if your <code>user-data</code> contains real passwords or SSH keys, you can&rsquo;t trust if they store the YAML or not on the server side.</p>
+
+<p>Now, let&rsquo;s break this down into somewhat readable chunks&hellip;</p>
+
+<h4 id="configure-host-name">Configure Host Name</h4>
+
+<p>This will simply configure your hostname of the machine as well as make sure that <code>/etc/hosts</code> is appropriately updated. You can specify an <code>fqdn</code> here, as you will see below. However, the hostname in this file isn&rsquo;t super important, as we will use the <code>--hostname</code> option with the flash utility later to change this when we write the image.</p>
+
+<pre><code class="language-yaml">hostname: nextcloud-pi64
+manage_etc_hosts: true
+</code></pre>
+
+<h4 id="resize-file-system">Resize File System</h4>
+
+<p>This is something that had plagued RPi users for years, finally at some point the foundation images included this on first boot, but the wonderful thing about <code>cloud-init</code> is it already had this built in. You &ldquo;really&rdquo; don&rsquo;t need these settings in the file, I put these here to show that this is just built in functionality for <code>cloud-init</code>.</p>
+
+<pre><code class="language-yaml">resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&quot;/&quot;]
+    ignore_growroot_disabled: false
+</code></pre>
+
+<h4 id="create-users">Create Users</h4>
+
+<p>Creating users is pretty simple, plop in an array element, give it some information, and your off to the races. The below is actually what is in the default <code>cloud-init</code> for the HypriotOS image if you don&rsquo;t overwrite it.  You can actually do a lot more with this, including adding SSH keys. Check out the <a href="http://cloudinit.readthedocs.io/en/0.7.9/topics/modules.html#users-and-groups">users documentation</a></p>
+
+<pre><code class="language-yaml">users:
+  - name: pirate
+    gecos: &quot;Hypriot Pirate&quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+</code></pre>
+
+<h4 id="update-and-add-packages">Update and Add Packages</h4>
+
+<p>Because we live in a world of ever updating software, you really don&rsquo;t know what is out of date in your image. This ensures that on first boot, all packages are updated. Additionally, you can install additional packages you might need. In this case I am installing NTP (there is a better way to do this, but there is an outstanding issue with it atm). Additionally, we instruct <code>cloud-init</code> to reboot the server if the updates require one.</p>
+
+<pre><code class="language-yaml">package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+</code></pre>
+
+<p>NTP missing from the HypriotOS image is something I will be bringing up with the team to get fixed in the future!</p>
+
+<h4 id="set-localized-settings">Set Localized Settings</h4>
+
+<p>These will setup your server in your correct part of the world. The Raspbian comes with UK as default, at least HypriotOS came with a sane UTC default, but sometimes you just want your local time. This is definitely one of those time savers where most people used <code>raspi-config</code> to set these (horrible horrible menus).</p>
+
+<pre><code class="language-yaml">locale: &quot;en_US.UTF-8&quot;
+timezone: &quot;America/Los_Angeles&quot;
+</code></pre>
+
+<p>This is something I feel like you should also be able to configure in the flash utility, and will be bringing it up as well with the Pirates.</p>
+
+<h4 id="write-some-arbitrary-files">Write some arbitrary files</h4>
+
+<p>The power to create files on boot&hellip; This simple file output below is configuring docker labels as well as doing the (currently required) experimental features flag. This will require a Docker daemon restart, but we will cover that soon enough!</p>
+
+<pre><code class="language-yaml">write_files:
+    - path: &quot;/etc/docker/daemon.json&quot;
+      owner: &quot;root:root&quot;
+      content: |
+        {
+          &quot;labels&quot;: [ &quot;os=linux&quot;, &quot;arch=arm64&quot; ],
+          &quot;experimental&quot;: true
+        }
+</code></pre>
+
+<h4 id="run-a-bunch-of-commands">Run a bunch of commands</h4>
+
+<p>There are actually a few ways to run commands in <code>cloud-init</code>, this is the most used, because it is the last thing that is done during initialization.</p>
+
+<p>In this, we are essentially restarting Docker and avahi to pickup our configuration changes, initializing Docker Swarm, running good ol Portainer (so we can see what is going on without SSH).</p>
+
+<p>The last steps are all specific to NextCloud. I create a new directory to store the files and SQL Lite database, set permissions for the <code>www-data</code> user since NextCloud is using Apache, and running as a known user, we need to give that specific user permissions, and finally bootstrap NextCloud to self-configure and initialize.</p>
+
+<pre><code class="language-yaml">runcmd:
+  # Pickup the hostname changes
+  - [ systemctl, restart, avahi-daemon ]
+  
+  # Pickup the daemon.json changes
+  - [ systemctl, restart, docker ]
+  
+  # Init a swarm, because why not
+  - [docker, swarm, init ]
+  
+  # Run portainer, so we can see our logs and control stuff from a UI
+  - [
+      docker, service, create, 
+      &quot;--detach=false&quot;, 
+      &quot;--name&quot;, &quot;portainer&quot;, 
+      &quot;--publish&quot;, &quot;9000:9000&quot;, 
+      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;, 
+      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;, 
+      &quot;portainer/portainer&quot;, &quot;-H&quot;, &quot;unix:///var/run/docker.sock&quot;, &quot;--no-auth&quot;
+    ]
+
+  # Create a specific directory to store all the data, 
+  # this way you could mount an external drive later (coming soon!)
+  - [mkdir, &quot;-p&quot;, &quot;/var/cloud/data&quot; ]
+
+  # This gives the nextcloud permissions to write to this directory 
+  # since it runs as www-data
+  - [setfacl, &quot;-m&quot;, &quot;u:www-data:rwx&quot;, &quot;/var/cloud/data&quot; ]
+
+  # Create the nextcloud instance configuring it on startup 
+  # - you should change the user/password below to something less obvious 
+  # or use the config UI
+  - [
+      docker, service, create, 
+      &quot;--detach=false&quot;, 
+      &quot;--name&quot;, &quot;nextcloud&quot;, 
+      &quot;--publish&quot;, &quot;80:80&quot;, 
+      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;, 
+      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;, 
+      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;, 
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;, 
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;, 
+      &quot;nextcloud:latest&quot; 
+    ]
+</code></pre>
+
+<p>There are some important bits here, the <code>SQLITE_DATABASE=&lt;name&gt;</code> is actually what triggers the &ldquo;auto-configure&rdquo; option, without that, the <code>NEXTCLOUD_*</code> variables are ignored, despite what the documentation says.</p>
+
+<h3 id="flash">FLASH</h3>
+
+<p>If you don&rsquo;t know about this utility yet, please head over to the <a href="https://github.com/hypriot/flash">github repo</a> and check it out.</p>
+
+<p>Good, your back, now lets see my command line I use to run this on my Ubuntu 16.x Server.</p>
+
+<p>The following statements will install the prerequisites for flash, download the script, download this blog posts <code>user-data.yml</code> file, then attempt to flash the image to an SD card.</p>
+
+<p>I highly recommend using a 32 or 64 GB flash card for this project, because if you decide to keep this cloud around, you might want to store one or two things in it.</p>
+
+<p>When prompted, insert your SD flash card into an available USB slot, then choose the right one, and verify the right one. You really don&rsquo;t want DD to mount/flash/unmount your main drive.</p>
+
+<pre><code class="language-bash">sudo apt-get install pv unzip hdparm
+curl -O https://raw.githubusercontent.com/hypriot/flash/master/$(uname -s)/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+
+# Just make sure the existing is gone
+rm ./user-data.yml
+
+# Download this yaml from this repo
+curl -O https://gist.githubusercontent.com/RenEvo/6a9e244b670df334c42578b8fe95400b/raw/user-data.yml
+
+// flash it
+flash \
+  --hostname mycloud.home.renevo.com \
+  --userdata ./user-data.yml \
+  https://github.com/DieterReuter/image-builder-rpi64/releases/download/v20171013-172949/hypriotos-rpi64-v20171013-172949.img.zip
+</code></pre>
+
+<p>When finished, pull out that sweet SD card, and let&rsquo;s get ready to plug in.</p>
+
+<h3 id="boot-and-forget">Boot and Forget</h3>
+
+<p>For this, I simply put the SD card into a random RPi3 I had laying around, plugged in a network cable to my switch and the RPi, and then applied power to it.</p>
+
+<p>This is really where the waiting game begins, the RPi is going to boot up, self-name, self-update, possible reboot, pull down some Docker images, bootstrap a Docker Swarm, run Portainer, then finally&hellip; start a personal cloud.</p>
+
+<p>At the time of writing this, you are still going to have to go fish out your IP from DNS unless you are on Mac or Linux with avahi, at that case, you can just navigate to <code>http://&lt;hostname&gt;.local</code> or <code>http://&lt;hostname&gt;</code> if you used an fqdn like I did. There are actually ways to get the RPi to phone home when it is finished bootstrapping, but I am going to save that for another post!</p>
+
+<p>So, after you get some coffee, you can try navigating to your RPi on port 9000 with your browser, that should get you into the Portainer instance without any type of authentication (don&rsquo;t do this in a real environment please, go read the docs on securing it).</p>
+
+<p>After you go get a snack and take a short walk, you can try navigating to your RPi on port 80 with your browser, once you get prompted, login with user: <code>pirate</code> and password: <code>hypriot</code> to get access to your cloud. Click close on the annoying modal about downloading sync programs, and there you have it&hellip; Your own personal cloud, bootstrapped from a simple YAML file, without you ever having to SSH into your PI.</p>
+
+<p>Here is the fun part, you can reflash that anytime you want to recreate the exact same baseline SD card image.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This was a lot of fun for me, and without having to actually figure out some nitty gritty details, not over documenting things, and getting prepared to write this post, it realistically took me about 10 minutes to go from downloading the OS image to running NextCloud on my RPi. And that is all due to the hard work of the community, and especially the Docker Pirates at Hypriot, and to them, I thank you.</p>
+
+<p>I plan to continue playing with this, potentially updating the server to use an external USB drive for data and auto-mounting it on boot, possible setup a GlusterFS and run them in a small 2 or 3 node cluster, and call it my PiCloud.</p>
+
+<p>Who knows, it&rsquo;s all about having fun and experimenting right?</p>
+
+<p>All the samples can be <a href="https://gist.github.com/RenEvo/6a9e244b670df334c42578b8fe95400b">found on on GitHub</a>.</p>
+
+<h2 id="about-me">About Me</h2>
+
+<blockquote>
+<p>Who is this guy, and why is he posting on this blog?</p>
+</blockquote>
+
+<p>My name is <a href="https://twitter.com/TribalTom">Tom Anderson</a>, I am a Senior II Cloud Software Engineer by day at a killer gaming company, and by night I am a father, musician, tinkerer, and still&hellip; a hobbiest programmer of all the things. Dieter Reuter was nice enough to ask me to guest post this topic, and I just felt it had to be done! The Pirates have given so much to the community, I felt I needed to give a little something back.</p>
+
+<p>Additionally, I build and talk about some things I think are cool on my own blog <a href="http://tomanderson.me">tomanderson.me</a>, feel free to stop by and say hi!</p>
+
+<p>Finally, because legaleeze and stuff&hellip; All opinions here are my own, and do not reflect the opinions of Blizzard Entertainment.</p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

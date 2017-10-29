@@ -9,6 +9,348 @@
     <atom:link href="https://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Bootstrapping a Cloud with Cloud-Init and HypriotOS</title>
+      <link>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</link>
+      <pubDate>Sun, 29 Oct 2017 00:14:00 -0700</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Things may come to those who wait, but only the things left by those who hustle.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Over the last year, a lot has happened in the Raspberry Pi and Docker communities, there are Docker Captains helping lead the charge, one of those, &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;Dieter Reuter&lt;/a&gt; really has been pushing the cause for ARM64 support with both Raspberry Pi 3 and LinuxKit. He isn&amp;rsquo;t a single man army, the rest of the &lt;a href=&#34;http://blog.hypriot.com/crew/&#34;&gt;Docker Pirates&lt;/a&gt; over at &lt;a href=&#34;http://blog.hypriot.com/&#34;&gt;Hypriot&lt;/a&gt; has been doing some awesome things as well!&lt;/p&gt;
+
+&lt;p&gt;Building on the backs of these outstanding community members, I was finally able to spin up a Raspberry Pi, exactly like I do in the &amp;ldquo;real world&amp;rdquo;, just turn it on, let it self-configure, then software just runs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;A lot of this is really about having &lt;a href=&#34;http://cloudinit.readthedocs.io/en/latest/index.html&#34;&gt;cloud-init &lt;/a&gt; available in the HypriotOS 64bit images thanks to another Pirate &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;Stefan Scherer&lt;/a&gt;. In the &amp;ldquo;cloud world&amp;rdquo;, you spin up instances, give it some user-data, then when it boots, the machines self-configures based on the instance meta-data and the user-data provided.&lt;/p&gt;
+
+&lt;h2 id=&#34;before&#34;&gt;Before&lt;/h2&gt;
+
+&lt;p&gt;Before we talk about the &amp;ldquo;new&amp;rdquo; pirate way, let&amp;rsquo;t talk about the &amp;ldquo;old&amp;rdquo; non-pirate way.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download Raspbian Lite (the easiest for nubbies like me)&lt;/li&gt;
+&lt;li&gt;Flash said image to an SD Card&lt;/li&gt;
+&lt;li&gt;Optionally re-mount SD Card and monkey some stuff around&lt;/li&gt;
+&lt;li&gt;Put the card in your RPi&lt;/li&gt;
+&lt;li&gt;Power up the RPi&lt;/li&gt;
+&lt;li&gt;If you don&amp;rsquo;t have avahi/bonjour, go find the IP in your router&lt;/li&gt;
+&lt;li&gt;SSH into the server&lt;/li&gt;
+&lt;li&gt;Update Packages&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;raspi-config&lt;/code&gt; and modify some junk&lt;/li&gt;
+&lt;li&gt;Reboot&lt;/li&gt;
+&lt;li&gt;Install Docker&lt;/li&gt;
+&lt;li&gt;Initialize Docker Swarm&lt;/li&gt;
+&lt;li&gt;Configure &lt;a href=&#34;http://portainer.io&#34;&gt;Portainer&lt;/a&gt; service (if not, are you broken?)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;try&amp;rdquo; and find some images you can run on arm&lt;/li&gt;
+&lt;li&gt;Cheer at your glory based nginx hello world page!&lt;/li&gt;
+&lt;li&gt;Figure out how to use automation tools like Ansible to make your life easier when you need a cluster&lt;/li&gt;
+&lt;li&gt;Bang head on desk learning so much&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Do victory dances when you created a bunch of automation around setting up servers&lt;/li&gt;
+&lt;li&gt;Go find out what the community is doing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is at that point, when the community really is an awesome place. Given the latest &lt;a href=&#34;https://github.com/DieterReuter/image-builder-rpi64/releases/tag/v20171013-172949&#34;&gt;HypriotOS-rpi64&lt;/a&gt;, the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash&lt;/a&gt; utility (also from Hypriot), Docker images now being multi-architecture supported through the &lt;a href=&#34;https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md&#34;&gt;manifest v2 API&lt;/a&gt; and Docker pushing to get all the &lt;a href=&#34;https://github.com/docker-library/official-images#architectures-other-than-amd64&#34;&gt;supported images covering a lot of architectures&lt;/a&gt;, life begins to get much &lt;strong&gt;much&lt;/strong&gt; easier.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: Before we continue, we need to talk about ARM 64 naming issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/ARM_architecture#64.2F32-bit_architecture&#34;&gt;ARM is complicated&lt;/a&gt; when it comes to the latest version of the architecture (v8). A lot of the distros still haven&amp;rsquo;t settled on what to call it, and you will find a lot of differences: &lt;code&gt;AArch64&lt;/code&gt; and &lt;code&gt;ARM64v8&lt;/code&gt; being the two most popular. When in doubt, do what &lt;a href=&#34;https://github.com/docker-library/official-images#architectures-other-than-amd64&#34;&gt;Docker does&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;after&#34;&gt;After&lt;/h2&gt;
+
+&lt;p&gt;Now that we got that out of the way, let&amp;rsquo;s get into some code. Given the list of &lt;code&gt;arm64v8&lt;/code&gt; images in the &lt;a href=&#34;https://hub.docker.com/u/arm64v8/&#34;&gt;Docker registry&lt;/a&gt; I wanted to find something that would be interesting. Luckily, I was able to find &lt;a href=&#34;https://nextcloud.com/&#34;&gt;NextCloud&lt;/a&gt;. I have no idea if this software is worth keeping around, but it was something I could play with, try to break, reboot to see if it lives, and have something to play with when I succeed!&lt;/p&gt;
+
+&lt;h3 id=&#34;user-data&#34;&gt;User Data&lt;/h3&gt;
+
+&lt;p&gt;The first thing we need to do, is create our &lt;code&gt;user-data&lt;/code&gt; file. This will be placed inside of our SD card when we flash it and instruct &lt;code&gt;cloud-init&lt;/code&gt; what to do when the system boots for the first time.&lt;/p&gt;
+
+&lt;p&gt;It should be noted, that at this time, the cloud-init version available for Debian distribution is &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/&#34;&gt;0.7.9&lt;/a&gt;, not the 17.1 you would have thought (as latest). Currently only Ubuntu is the only distribution I know of that is using 17.1.&lt;/p&gt;
+
+&lt;p&gt;The next important fact to know is that the Data Source we are utilizing is the &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/topics/datasources/nocloud.html&#34;&gt;NoCloud&lt;/a&gt; data source. This basically means (in the 0.7.9 and below version) that the &lt;code&gt;user-data&lt;/code&gt; and &lt;code&gt;meta-data&lt;/code&gt; are on the local file system, not pulled from a remote resource or other means.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;user-data&lt;/code&gt; file is simply a YAML file, you can get a lot more complicated, but for the sake of simplicity, let&amp;rsquo;s just call it a YAML file.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;user-data&lt;/code&gt; for this project:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;#cloud-config
+# vim: syntax=yaml
+#
+
+hostname: nextcloud-pi64
+manage_etc_hosts: true
+
+resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&amp;quot;/&amp;quot;]
+    ignore_growroot_disabled: false
+
+users:
+  - name: pirate
+    gecos: &amp;quot;Hypriot Pirate&amp;quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+
+locale: &amp;quot;en_US.UTF-8&amp;quot;
+timezone: &amp;quot;America/Los_Angeles&amp;quot;
+
+write_files:
+    - path: &amp;quot;/etc/docker/daemon.json&amp;quot;
+      owner: &amp;quot;root:root&amp;quot;
+      content: |
+        {
+          &amp;quot;labels&amp;quot;: [ &amp;quot;os=linux&amp;quot;, &amp;quot;arch=arm64&amp;quot; ],
+          &amp;quot;experimental&amp;quot;: true
+        }
+
+runcmd:
+  - [ systemctl, restart, avahi-daemon ]
+  - [ systemctl, restart, docker ]
+  - [docker, swarm, init ]
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;portainer&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;9000:9000&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=portainer_data,dst=/data&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&amp;quot;, 
+      &amp;quot;portainer/portainer&amp;quot;, &amp;quot;-H&amp;quot;, &amp;quot;unix:///var/run/docker.sock&amp;quot;, &amp;quot;--no-auth&amp;quot;
+    ]
+  - [mkdir, &amp;quot;-p&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+  - [setfacl, &amp;quot;-m&amp;quot;, &amp;quot;u:www-data:rwx&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;nextcloud&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;80:80&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=nextcloud,dst=/var/www/html&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;SQLITE_DATABASE=nextcloud&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_USER=pirate&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&amp;quot;, 
+      &amp;quot;nextcloud:latest&amp;quot; 
+    ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is extremely important that before you flash this to a disk and attempt to boot, that you run this file through a YAML linter. There are some good ones &lt;a href=&#34;http://www.yamllint.com/&#34;&gt;available online&lt;/a&gt;, but you should never use an online linter if your &lt;code&gt;user-data&lt;/code&gt; contains real passwords or SSH keys, you can&amp;rsquo;t trust if they store the YAML or not on the server side.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s break this down into somewhat readable chunks&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;configure-host-name&#34;&gt;Configure Host Name&lt;/h4&gt;
+
+&lt;p&gt;This will simply configure your hostname of the machine as well as make sure that &lt;code&gt;/etc/hosts&lt;/code&gt; is appropriately updated. You can specify an &lt;code&gt;fqdn&lt;/code&gt; here, as you will see below. However, the hostname in this file isn&amp;rsquo;t super important, as we will use the &lt;code&gt;--hostname&lt;/code&gt; option with the flash utility later to change this when we write the image.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;hostname: nextcloud-pi64
+manage_etc_hosts: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;resize-file-system&#34;&gt;Resize File System&lt;/h4&gt;
+
+&lt;p&gt;This is something that had plagued RPi users for years, finally at some point the foundation images included this on first boot, but the wonderful thing about &lt;code&gt;cloud-init&lt;/code&gt; is it already had this built in. You &amp;ldquo;really&amp;rdquo; don&amp;rsquo;t need these settings in the file, I put these here to show that this is just built in functionality for &lt;code&gt;cloud-init&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&amp;quot;/&amp;quot;]
+    ignore_growroot_disabled: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;create-users&#34;&gt;Create Users&lt;/h4&gt;
+
+&lt;p&gt;Creating users is pretty simple, plop in an array element, give it some information, and your off to the races. The below is actually what is in the default &lt;code&gt;cloud-init&lt;/code&gt; for the HypriotOS image if you don&amp;rsquo;t overwrite it.  You can actually do a lot more with this, including adding SSH keys. Check out the &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/topics/modules.html#users-and-groups&#34;&gt;users documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;users:
+  - name: pirate
+    gecos: &amp;quot;Hypriot Pirate&amp;quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;update-and-add-packages&#34;&gt;Update and Add Packages&lt;/h4&gt;
+
+&lt;p&gt;Because we live in a world of ever updating software, you really don&amp;rsquo;t know what is out of date in your image. This ensures that on first boot, all packages are updated. Additionally, you can install additional packages you might need. In this case I am installing NTP (there is a better way to do this, but there is an outstanding issue with it atm). Additionally, we instruct &lt;code&gt;cloud-init&lt;/code&gt; to reboot the server if the updates require one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NTP missing from the HypriotOS image is something I will be bringing up with the team to get fixed in the future!&lt;/p&gt;
+
+&lt;h4 id=&#34;set-localized-settings&#34;&gt;Set Localized Settings&lt;/h4&gt;
+
+&lt;p&gt;These will setup your server in your correct part of the world. The Raspbian comes with UK as default, at least HypriotOS came with a sane UTC default, but sometimes you just want your local time. This is definitely one of those time savers where most people used &lt;code&gt;raspi-config&lt;/code&gt; to set these (horrible horrible menus).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;locale: &amp;quot;en_US.UTF-8&amp;quot;
+timezone: &amp;quot;America/Los_Angeles&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is something I feel like you should also be able to configure in the flash utility, and will be bringing it up as well with the Pirates.&lt;/p&gt;
+
+&lt;h4 id=&#34;write-some-arbitrary-files&#34;&gt;Write some arbitrary files&lt;/h4&gt;
+
+&lt;p&gt;The power to create files on boot&amp;hellip; This simple file output below is configuring docker labels as well as doing the (currently required) experimental features flag. This will require a Docker daemon restart, but we will cover that soon enough!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;write_files:
+    - path: &amp;quot;/etc/docker/daemon.json&amp;quot;
+      owner: &amp;quot;root:root&amp;quot;
+      content: |
+        {
+          &amp;quot;labels&amp;quot;: [ &amp;quot;os=linux&amp;quot;, &amp;quot;arch=arm64&amp;quot; ],
+          &amp;quot;experimental&amp;quot;: true
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;run-a-bunch-of-commands&#34;&gt;Run a bunch of commands&lt;/h4&gt;
+
+&lt;p&gt;There are actually a few ways to run commands in &lt;code&gt;cloud-init&lt;/code&gt;, this is the most used, because it is the last thing that is done during initialization.&lt;/p&gt;
+
+&lt;p&gt;In this, we are essentially restarting Docker and avahi to pickup our configuration changes, initializing Docker Swarm, running good ol Portainer (so we can see what is going on without SSH).&lt;/p&gt;
+
+&lt;p&gt;The last steps are all specific to NextCloud. I create a new directory to store the files and SQL Lite database, set permissions for the &lt;code&gt;www-data&lt;/code&gt; user since NextCloud is using Apache, and running as a known user, we need to give that specific user permissions, and finally bootstrap NextCloud to self-configure and initialize.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;runcmd:
+  # Pickup the hostname changes
+  - [ systemctl, restart, avahi-daemon ]
+  
+  # Pickup the daemon.json changes
+  - [ systemctl, restart, docker ]
+  
+  # Init a swarm, because why not
+  - [docker, swarm, init ]
+  
+  # Run portainer, so we can see our logs and control stuff from a UI
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;portainer&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;9000:9000&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=portainer_data,dst=/data&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&amp;quot;, 
+      &amp;quot;portainer/portainer&amp;quot;, &amp;quot;-H&amp;quot;, &amp;quot;unix:///var/run/docker.sock&amp;quot;, &amp;quot;--no-auth&amp;quot;
+    ]
+
+  # Create a specific directory to store all the data, 
+  # this way you could mount an external drive later (coming soon!)
+  - [mkdir, &amp;quot;-p&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+
+  # This gives the nextcloud permissions to write to this directory 
+  # since it runs as www-data
+  - [setfacl, &amp;quot;-m&amp;quot;, &amp;quot;u:www-data:rwx&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+
+  # Create the nextcloud instance configuring it on startup 
+  # - you should change the user/password below to something less obvious 
+  # or use the config UI
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;nextcloud&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;80:80&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=nextcloud,dst=/var/www/html&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;SQLITE_DATABASE=nextcloud&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_USER=pirate&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&amp;quot;, 
+      &amp;quot;nextcloud:latest&amp;quot; 
+    ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are some important bits here, the &lt;code&gt;SQLITE_DATABASE=&amp;lt;name&amp;gt;&lt;/code&gt; is actually what triggers the &amp;ldquo;auto-configure&amp;rdquo; option, without that, the &lt;code&gt;NEXTCLOUD_*&lt;/code&gt; variables are ignored, despite what the documentation says.&lt;/p&gt;
+
+&lt;h3 id=&#34;flash&#34;&gt;FLASH&lt;/h3&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t know about this utility yet, please head over to the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;github repo&lt;/a&gt; and check it out.&lt;/p&gt;
+
+&lt;p&gt;Good, your back, now lets see my command line I use to run this on my Ubuntu 16.x Server.&lt;/p&gt;
+
+&lt;p&gt;The following statements will install the prerequisites for flash, download the script, download this blog posts &lt;code&gt;user-data.yml&lt;/code&gt; file, then attempt to flash the image to an SD card.&lt;/p&gt;
+
+&lt;p&gt;I highly recommend using a 32 or 64 GB flash card for this project, because if you decide to keep this cloud around, you might want to store one or two things in it.&lt;/p&gt;
+
+&lt;p&gt;When prompted, insert your SD flash card into an available USB slot, then choose the right one, and verify the right one. You really don&amp;rsquo;t want DD to mount/flash/unmount your main drive.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install pv unzip hdparm
+curl -O https://raw.githubusercontent.com/hypriot/flash/master/$(uname -s)/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+
+# Just make sure the existing is gone
+rm ./user-data.yml
+
+# Download this yaml from this repo
+curl -O https://gist.githubusercontent.com/RenEvo/6a9e244b670df334c42578b8fe95400b/raw/user-data.yml
+
+// flash it
+flash \
+  --hostname mycloud.home.renevo.com \
+  --userdata ./user-data.yml \
+  https://github.com/DieterReuter/image-builder-rpi64/releases/download/v20171013-172949/hypriotos-rpi64-v20171013-172949.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When finished, pull out that sweet SD card, and let&amp;rsquo;s get ready to plug in.&lt;/p&gt;
+
+&lt;h3 id=&#34;boot-and-forget&#34;&gt;Boot and Forget&lt;/h3&gt;
+
+&lt;p&gt;For this, I simply put the SD card into a random RPi3 I had laying around, plugged in a network cable to my switch and the RPi, and then applied power to it.&lt;/p&gt;
+
+&lt;p&gt;This is really where the waiting game begins, the RPi is going to boot up, self-name, self-update, possible reboot, pull down some Docker images, bootstrap a Docker Swarm, run Portainer, then finally&amp;hellip; start a personal cloud.&lt;/p&gt;
+
+&lt;p&gt;At the time of writing this, you are still going to have to go fish out your IP from DNS unless you are on Mac or Linux with avahi, at that case, you can just navigate to &lt;code&gt;http://&amp;lt;hostname&amp;gt;.local&lt;/code&gt; or &lt;code&gt;http://&amp;lt;hostname&amp;gt;&lt;/code&gt; if you used an fqdn like I did. There are actually ways to get the RPi to phone home when it is finished bootstrapping, but I am going to save that for another post!&lt;/p&gt;
+
+&lt;p&gt;So, after you get some coffee, you can try navigating to your RPi on port 9000 with your browser, that should get you into the Portainer instance without any type of authentication (don&amp;rsquo;t do this in a real environment please, go read the docs on securing it).&lt;/p&gt;
+
+&lt;p&gt;After you go get a snack and take a short walk, you can try navigating to your RPi on port 80 with your browser, once you get prompted, login with user: &lt;code&gt;pirate&lt;/code&gt; and password: &lt;code&gt;hypriot&lt;/code&gt; to get access to your cloud. Click close on the annoying modal about downloading sync programs, and there you have it&amp;hellip; Your own personal cloud, bootstrapped from a simple YAML file, without you ever having to SSH into your PI.&lt;/p&gt;
+
+&lt;p&gt;Here is the fun part, you can reflash that anytime you want to recreate the exact same baseline SD card image.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This was a lot of fun for me, and without having to actually figure out some nitty gritty details, not over documenting things, and getting prepared to write this post, it realistically took me about 10 minutes to go from downloading the OS image to running NextCloud on my RPi. And that is all due to the hard work of the community, and especially the Docker Pirates at Hypriot, and to them, I thank you.&lt;/p&gt;
+
+&lt;p&gt;I plan to continue playing with this, potentially updating the server to use an external USB drive for data and auto-mounting it on boot, possible setup a GlusterFS and run them in a small 2 or 3 node cluster, and call it my PiCloud.&lt;/p&gt;
+
+&lt;p&gt;Who knows, it&amp;rsquo;s all about having fun and experimenting right?&lt;/p&gt;
+
+&lt;p&gt;All the samples can be &lt;a href=&#34;https://gist.github.com/RenEvo/6a9e244b670df334c42578b8fe95400b&#34;&gt;found on on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Who is this guy, and why is he posting on this blog?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;My name is &lt;a href=&#34;https://twitter.com/TribalTom&#34;&gt;Tom Anderson&lt;/a&gt;, I am a Senior II Cloud Software Engineer by day at a killer gaming company, and by night I am a father, musician, tinkerer, and still&amp;hellip; a hobbiest programmer of all the things. Dieter Reuter was nice enough to ask me to guest post this topic, and I just felt it had to be done! The Pirates have given so much to the community, I felt I needed to give a little something back.&lt;/p&gt;
+
+&lt;p&gt;Additionally, I build and talk about some things I think are cool on my own blog &lt;a href=&#34;http://tomanderson.me&#34;&gt;tomanderson.me&lt;/a&gt;, feel free to stop by and say hi!&lt;/p&gt;
+
+&lt;p&gt;Finally, because legaleeze and stuff&amp;hellip; All opinions here are my own, and do not reflect the opinions of Blizzard Entertainment.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>DockerCon 2017 Demo: Monitoring Docker Swarm with LED&#39;s</title>
       <link>https://blog.hypriot.com/post/dockerconaustin2017/</link>
       <pubDate>Thu, 20 Apr 2017 14:30:34 -0600</pubDate>
@@ -2877,85 +3219,6 @@ And it wasn&amp;rsquo;t to hard to get them running together, wasn&amp;rsquo;t i
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
 &lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Making of HypriotOS</title>
-      <link>https://blog.hypriot.com/post/making-of-hypriotos/</link>
-      <pubDate>Wed, 25 May 2016 18:03:32 +0100</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/making-of-hypriotos/</guid>
-      <description>&lt;p&gt;Today we have released a new version of HypriotOS &amp;ldquo;Barbossa&amp;rdquo; - the SD card image with a ready-to-go Docker toolset for all Raspberry Pi&amp;rsquo;s. Beginning with this release we have &lt;strong&gt;open sourced every step&lt;/strong&gt; to build each parts, from the kernel and root filesystem up to the SD card image.&lt;/p&gt;
-
-&lt;p&gt;We have also moved every build step out in the cloud to use the &amp;ldquo;programmable internet&amp;rdquo; to build and test everything with just a &lt;strong&gt;git push&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-release.png&#34; alt=&#34;release process&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;This diagram above shows the release process of a new SD card image for any of the new HypriotOS supported ARM boards. We have moved all building steps to Cloud services. This helps us all to build any SD card without the need to have the specific ARM board. And this also &lt;strong&gt;enables the community to contribute&lt;/strong&gt; to all our repos with pull requests.&lt;/p&gt;
-
-&lt;h2 id=&#34;ci-driven-builds&#34;&gt;CI driven builds&lt;/h2&gt;
-
-&lt;p&gt;To build the SD card images in the Cloud we have chosen a mixture of &lt;strong&gt;Travis CI&lt;/strong&gt; and &lt;strong&gt;CircleCI&lt;/strong&gt; as the Docker support fits our needs. Only where we need ARM servers to built natively we have our own &lt;strong&gt;Drone&lt;/strong&gt; and &lt;strong&gt;Jenkins&lt;/strong&gt; servers running on Scaleway C1 servers.&lt;/p&gt;
-
-&lt;p&gt;The build process downloads some other artifacts like the root filesystem for the specific ARM CPU type and installs further DEB packages like the &lt;strong&gt;Linux kernel&lt;/strong&gt;, the &lt;strong&gt;Docker Engine&lt;/strong&gt; and &lt;strong&gt;Docker Compose&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;After each build Travis also runs &lt;strong&gt;Serverspec&lt;/strong&gt; tests against the SD card image to have a minimal test of the generated output.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/travis-serverspec-tests.png&#34; alt=&#34;travis serverspec tests&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When we trigger a release build, Travis deploys the newly generated SD card image to the &lt;strong&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases&#34;&gt;GitHub releases&lt;/a&gt;&lt;/strong&gt; page. You can find releases, as well as pre-releases of upcoming versions there.&lt;/p&gt;
-
-&lt;h2 id=&#34;join-the-movement&#34;&gt;Join the movement&lt;/h2&gt;
-
-&lt;p&gt;The advantage of open sourcing is that the community can give us feedback and sometimes even start contributing back. The SD card image can be built locally on your Linux or Mac notebook as well. So you also are able to build a SD card image without having the device.&lt;/p&gt;
-
-&lt;p&gt;As we love Docker the build process runs in a Docker Container. This simplifies the setup on your local machine. Each GitHub repository has a README with the steps needed to build and test the specific HypriotOS SD card image.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/hypriotos-local-build.png&#34; alt=&#34;local build&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The normal workflow looks like this&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git clone&lt;/code&gt; - get the repo you want to build&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make docker-machine&lt;/code&gt; - create a local VM with Docker&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make sd-image&lt;/code&gt; - build the SD card image within a Docker Container&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;flash sd-card*.zip&lt;/code&gt; - flash the new SD card image and boot your ARM device.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOARD=ip make test-integration&lt;/code&gt; - run Serverspec tests if everything is fine&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have added over &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/tree/master/builder/test-integration/spec&#34;&gt;200 Serverspec tests&lt;/a&gt; to ensure the Docker tools, Kernel and additional packages are installed correctly. You can even run these tests for the latest release to check if it is working for you as well.
-This enables everyone to make changes to the code base and send us Pull Requests without breaking other parts.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Pull Requests&lt;/strong&gt; are tested with &lt;strong&gt;Travis CI&lt;/strong&gt; of course, so we can see if it works well.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/github-pr-success.png&#34; alt=&#34;pull request successful&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As there are several GitHub repositories involved to build the SD card image we use &lt;strong&gt;Waffle.io&lt;/strong&gt; to have and overview of all issues, pull requests and tasks to do for a release.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/making-of-hypriotos/waffle.png&#34; alt=&#34;waffle board&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next&lt;/h2&gt;
-
-&lt;p&gt;We also started to add more boards and created new GitHub repos for each. But we focused on the Raspberry Pi to finish the &amp;ldquo;Barbossa&amp;rdquo; release. Here is a list of boards we have started to support:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-rpi&#34;&gt;Raspberry Pi Zero, 1, 2, 3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c1&#34;&gt;ODROID C1/C1+&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-xu4&#34;&gt;ODROID XU3/XU4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-odroid-c2&#34;&gt;ODROID C2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-bananapi&#34;&gt;Banana Pi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/hypriot/image-builder-nvidia-shieldtv&#34;&gt;NVIDIA ShieldTV&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Pine A64, &amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will pick one of these boards next to add all features of &amp;ldquo;Barbossa&amp;rdquo; to have a great Docker experience with it.
-The other boards are still a work in progress - any help is welcome from the community!&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

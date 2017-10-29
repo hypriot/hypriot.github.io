@@ -9,6 +9,348 @@
     <atom:link href="https://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Bootstrapping a Cloud with Cloud-Init and HypriotOS</title>
+      <link>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</link>
+      <pubDate>Sun, 29 Oct 2017 00:14:00 -0700</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Things may come to those who wait, but only the things left by those who hustle.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Over the last year, a lot has happened in the Raspberry Pi and Docker communities, there are Docker Captains helping lead the charge, one of those, &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;Dieter Reuter&lt;/a&gt; really has been pushing the cause for ARM64 support with both Raspberry Pi 3 and LinuxKit. He isn&amp;rsquo;t a single man army, the rest of the &lt;a href=&#34;http://blog.hypriot.com/crew/&#34;&gt;Docker Pirates&lt;/a&gt; over at &lt;a href=&#34;http://blog.hypriot.com/&#34;&gt;Hypriot&lt;/a&gt; has been doing some awesome things as well!&lt;/p&gt;
+
+&lt;p&gt;Building on the backs of these outstanding community members, I was finally able to spin up a Raspberry Pi, exactly like I do in the &amp;ldquo;real world&amp;rdquo;, just turn it on, let it self-configure, then software just runs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;A lot of this is really about having &lt;a href=&#34;http://cloudinit.readthedocs.io/en/latest/index.html&#34;&gt;cloud-init &lt;/a&gt; available in the HypriotOS 64bit images thanks to another Pirate &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;Stefan Scherer&lt;/a&gt;. In the &amp;ldquo;cloud world&amp;rdquo;, you spin up instances, give it some user-data, then when it boots, the machines self-configures based on the instance meta-data and the user-data provided.&lt;/p&gt;
+
+&lt;h2 id=&#34;before&#34;&gt;Before&lt;/h2&gt;
+
+&lt;p&gt;Before we talk about the &amp;ldquo;new&amp;rdquo; pirate way, let&amp;rsquo;t talk about the &amp;ldquo;old&amp;rdquo; non-pirate way.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download Raspbian Lite (the easiest for nubbies like me)&lt;/li&gt;
+&lt;li&gt;Flash said image to an SD Card&lt;/li&gt;
+&lt;li&gt;Optionally re-mount SD Card and monkey some stuff around&lt;/li&gt;
+&lt;li&gt;Put the card in your RPi&lt;/li&gt;
+&lt;li&gt;Power up the RPi&lt;/li&gt;
+&lt;li&gt;If you don&amp;rsquo;t have avahi/bonjour, go find the IP in your router&lt;/li&gt;
+&lt;li&gt;SSH into the server&lt;/li&gt;
+&lt;li&gt;Update Packages&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;raspi-config&lt;/code&gt; and modify some junk&lt;/li&gt;
+&lt;li&gt;Reboot&lt;/li&gt;
+&lt;li&gt;Install Docker&lt;/li&gt;
+&lt;li&gt;Initialize Docker Swarm&lt;/li&gt;
+&lt;li&gt;Configure &lt;a href=&#34;http://portainer.io&#34;&gt;Portainer&lt;/a&gt; service (if not, are you broken?)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;try&amp;rdquo; and find some images you can run on arm&lt;/li&gt;
+&lt;li&gt;Cheer at your glory based nginx hello world page!&lt;/li&gt;
+&lt;li&gt;Figure out how to use automation tools like Ansible to make your life easier when you need a cluster&lt;/li&gt;
+&lt;li&gt;Bang head on desk learning so much&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Do victory dances when you created a bunch of automation around setting up servers&lt;/li&gt;
+&lt;li&gt;Go find out what the community is doing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is at that point, when the community really is an awesome place. Given the latest &lt;a href=&#34;https://github.com/DieterReuter/image-builder-rpi64/releases/tag/v20171013-172949&#34;&gt;HypriotOS-rpi64&lt;/a&gt;, the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash&lt;/a&gt; utility (also from Hypriot), Docker images now being multi-architecture supported through the &lt;a href=&#34;https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md&#34;&gt;manifest v2 API&lt;/a&gt; and Docker pushing to get all the &lt;a href=&#34;https://github.com/docker-library/official-images#architectures-other-than-amd64&#34;&gt;supported images covering a lot of architectures&lt;/a&gt;, life begins to get much &lt;strong&gt;much&lt;/strong&gt; easier.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;: Before we continue, we need to talk about ARM 64 naming issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/ARM_architecture#64.2F32-bit_architecture&#34;&gt;ARM is complicated&lt;/a&gt; when it comes to the latest version of the architecture (v8). A lot of the distros still haven&amp;rsquo;t settled on what to call it, and you will find a lot of differences: &lt;code&gt;AArch64&lt;/code&gt; and &lt;code&gt;ARM64v8&lt;/code&gt; being the two most popular. When in doubt, do what &lt;a href=&#34;https://github.com/docker-library/official-images#architectures-other-than-amd64&#34;&gt;Docker does&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;after&#34;&gt;After&lt;/h2&gt;
+
+&lt;p&gt;Now that we got that out of the way, let&amp;rsquo;s get into some code. Given the list of &lt;code&gt;arm64v8&lt;/code&gt; images in the &lt;a href=&#34;https://hub.docker.com/u/arm64v8/&#34;&gt;Docker registry&lt;/a&gt; I wanted to find something that would be interesting. Luckily, I was able to find &lt;a href=&#34;https://nextcloud.com/&#34;&gt;NextCloud&lt;/a&gt;. I have no idea if this software is worth keeping around, but it was something I could play with, try to break, reboot to see if it lives, and have something to play with when I succeed!&lt;/p&gt;
+
+&lt;h3 id=&#34;user-data&#34;&gt;User Data&lt;/h3&gt;
+
+&lt;p&gt;The first thing we need to do, is create our &lt;code&gt;user-data&lt;/code&gt; file. This will be placed inside of our SD card when we flash it and instruct &lt;code&gt;cloud-init&lt;/code&gt; what to do when the system boots for the first time.&lt;/p&gt;
+
+&lt;p&gt;It should be noted, that at this time, the cloud-init version available for Debian distribution is &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/&#34;&gt;0.7.9&lt;/a&gt;, not the 17.1 you would have thought (as latest). Currently only Ubuntu is the only distribution I know of that is using 17.1.&lt;/p&gt;
+
+&lt;p&gt;The next important fact to know is that the Data Source we are utilizing is the &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/topics/datasources/nocloud.html&#34;&gt;NoCloud&lt;/a&gt; data source. This basically means (in the 0.7.9 and below version) that the &lt;code&gt;user-data&lt;/code&gt; and &lt;code&gt;meta-data&lt;/code&gt; are on the local file system, not pulled from a remote resource or other means.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;user-data&lt;/code&gt; file is simply a YAML file, you can get a lot more complicated, but for the sake of simplicity, let&amp;rsquo;s just call it a YAML file.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;user-data&lt;/code&gt; for this project:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;#cloud-config
+# vim: syntax=yaml
+#
+
+hostname: nextcloud-pi64
+manage_etc_hosts: true
+
+resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&amp;quot;/&amp;quot;]
+    ignore_growroot_disabled: false
+
+users:
+  - name: pirate
+    gecos: &amp;quot;Hypriot Pirate&amp;quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+
+locale: &amp;quot;en_US.UTF-8&amp;quot;
+timezone: &amp;quot;America/Los_Angeles&amp;quot;
+
+write_files:
+    - path: &amp;quot;/etc/docker/daemon.json&amp;quot;
+      owner: &amp;quot;root:root&amp;quot;
+      content: |
+        {
+          &amp;quot;labels&amp;quot;: [ &amp;quot;os=linux&amp;quot;, &amp;quot;arch=arm64&amp;quot; ],
+          &amp;quot;experimental&amp;quot;: true
+        }
+
+runcmd:
+  - [ systemctl, restart, avahi-daemon ]
+  - [ systemctl, restart, docker ]
+  - [docker, swarm, init ]
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;portainer&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;9000:9000&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=portainer_data,dst=/data&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&amp;quot;, 
+      &amp;quot;portainer/portainer&amp;quot;, &amp;quot;-H&amp;quot;, &amp;quot;unix:///var/run/docker.sock&amp;quot;, &amp;quot;--no-auth&amp;quot;
+    ]
+  - [mkdir, &amp;quot;-p&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+  - [setfacl, &amp;quot;-m&amp;quot;, &amp;quot;u:www-data:rwx&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;nextcloud&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;80:80&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=nextcloud,dst=/var/www/html&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;SQLITE_DATABASE=nextcloud&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_USER=pirate&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&amp;quot;, 
+      &amp;quot;nextcloud:latest&amp;quot; 
+    ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is extremely important that before you flash this to a disk and attempt to boot, that you run this file through a YAML linter. There are some good ones &lt;a href=&#34;http://www.yamllint.com/&#34;&gt;available online&lt;/a&gt;, but you should never use an online linter if your &lt;code&gt;user-data&lt;/code&gt; contains real passwords or SSH keys, you can&amp;rsquo;t trust if they store the YAML or not on the server side.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s break this down into somewhat readable chunks&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;configure-host-name&#34;&gt;Configure Host Name&lt;/h4&gt;
+
+&lt;p&gt;This will simply configure your hostname of the machine as well as make sure that &lt;code&gt;/etc/hosts&lt;/code&gt; is appropriately updated. You can specify an &lt;code&gt;fqdn&lt;/code&gt; here, as you will see below. However, the hostname in this file isn&amp;rsquo;t super important, as we will use the &lt;code&gt;--hostname&lt;/code&gt; option with the flash utility later to change this when we write the image.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;hostname: nextcloud-pi64
+manage_etc_hosts: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;resize-file-system&#34;&gt;Resize File System&lt;/h4&gt;
+
+&lt;p&gt;This is something that had plagued RPi users for years, finally at some point the foundation images included this on first boot, but the wonderful thing about &lt;code&gt;cloud-init&lt;/code&gt; is it already had this built in. You &amp;ldquo;really&amp;rdquo; don&amp;rsquo;t need these settings in the file, I put these here to show that this is just built in functionality for &lt;code&gt;cloud-init&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;resize_rootfs: true
+growpart:
+    mode: auto
+    devices: [&amp;quot;/&amp;quot;]
+    ignore_growroot_disabled: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;create-users&#34;&gt;Create Users&lt;/h4&gt;
+
+&lt;p&gt;Creating users is pretty simple, plop in an array element, give it some information, and your off to the races. The below is actually what is in the default &lt;code&gt;cloud-init&lt;/code&gt; for the HypriotOS image if you don&amp;rsquo;t overwrite it.  You can actually do a lot more with this, including adding SSH keys. Check out the &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/topics/modules.html#users-and-groups&#34;&gt;users documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;users:
+  - name: pirate
+    gecos: &amp;quot;Hypriot Pirate&amp;quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;update-and-add-packages&#34;&gt;Update and Add Packages&lt;/h4&gt;
+
+&lt;p&gt;Because we live in a world of ever updating software, you really don&amp;rsquo;t know what is out of date in your image. This ensures that on first boot, all packages are updated. Additionally, you can install additional packages you might need. In this case I am installing NTP (there is a better way to do this, but there is an outstanding issue with it atm). Additionally, we instruct &lt;code&gt;cloud-init&lt;/code&gt; to reboot the server if the updates require one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - ntp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NTP missing from the HypriotOS image is something I will be bringing up with the team to get fixed in the future!&lt;/p&gt;
+
+&lt;h4 id=&#34;set-localized-settings&#34;&gt;Set Localized Settings&lt;/h4&gt;
+
+&lt;p&gt;These will setup your server in your correct part of the world. The Raspbian comes with UK as default, at least HypriotOS came with a sane UTC default, but sometimes you just want your local time. This is definitely one of those time savers where most people used &lt;code&gt;raspi-config&lt;/code&gt; to set these (horrible horrible menus).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;locale: &amp;quot;en_US.UTF-8&amp;quot;
+timezone: &amp;quot;America/Los_Angeles&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is something I feel like you should also be able to configure in the flash utility, and will be bringing it up as well with the Pirates.&lt;/p&gt;
+
+&lt;h4 id=&#34;write-some-arbitrary-files&#34;&gt;Write some arbitrary files&lt;/h4&gt;
+
+&lt;p&gt;The power to create files on boot&amp;hellip; This simple file output below is configuring docker labels as well as doing the (currently required) experimental features flag. This will require a Docker daemon restart, but we will cover that soon enough!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;write_files:
+    - path: &amp;quot;/etc/docker/daemon.json&amp;quot;
+      owner: &amp;quot;root:root&amp;quot;
+      content: |
+        {
+          &amp;quot;labels&amp;quot;: [ &amp;quot;os=linux&amp;quot;, &amp;quot;arch=arm64&amp;quot; ],
+          &amp;quot;experimental&amp;quot;: true
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;run-a-bunch-of-commands&#34;&gt;Run a bunch of commands&lt;/h4&gt;
+
+&lt;p&gt;There are actually a few ways to run commands in &lt;code&gt;cloud-init&lt;/code&gt;, this is the most used, because it is the last thing that is done during initialization.&lt;/p&gt;
+
+&lt;p&gt;In this, we are essentially restarting Docker and avahi to pickup our configuration changes, initializing Docker Swarm, running good ol Portainer (so we can see what is going on without SSH).&lt;/p&gt;
+
+&lt;p&gt;The last steps are all specific to NextCloud. I create a new directory to store the files and SQL Lite database, set permissions for the &lt;code&gt;www-data&lt;/code&gt; user since NextCloud is using Apache, and running as a known user, we need to give that specific user permissions, and finally bootstrap NextCloud to self-configure and initialize.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;runcmd:
+  # Pickup the hostname changes
+  - [ systemctl, restart, avahi-daemon ]
+  
+  # Pickup the daemon.json changes
+  - [ systemctl, restart, docker ]
+  
+  # Init a swarm, because why not
+  - [docker, swarm, init ]
+  
+  # Run portainer, so we can see our logs and control stuff from a UI
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;portainer&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;9000:9000&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=portainer_data,dst=/data&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&amp;quot;, 
+      &amp;quot;portainer/portainer&amp;quot;, &amp;quot;-H&amp;quot;, &amp;quot;unix:///var/run/docker.sock&amp;quot;, &amp;quot;--no-auth&amp;quot;
+    ]
+
+  # Create a specific directory to store all the data, 
+  # this way you could mount an external drive later (coming soon!)
+  - [mkdir, &amp;quot;-p&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+
+  # This gives the nextcloud permissions to write to this directory 
+  # since it runs as www-data
+  - [setfacl, &amp;quot;-m&amp;quot;, &amp;quot;u:www-data:rwx&amp;quot;, &amp;quot;/var/cloud/data&amp;quot; ]
+
+  # Create the nextcloud instance configuring it on startup 
+  # - you should change the user/password below to something less obvious 
+  # or use the config UI
+  - [
+      docker, service, create, 
+      &amp;quot;--detach=false&amp;quot;, 
+      &amp;quot;--name&amp;quot;, &amp;quot;nextcloud&amp;quot;, 
+      &amp;quot;--publish&amp;quot;, &amp;quot;80:80&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=volume,src=nextcloud,dst=/var/www/html&amp;quot;, 
+      &amp;quot;--mount&amp;quot;, &amp;quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;SQLITE_DATABASE=nextcloud&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_USER=pirate&amp;quot;, 
+      &amp;quot;--env&amp;quot;, &amp;quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&amp;quot;, 
+      &amp;quot;nextcloud:latest&amp;quot; 
+    ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are some important bits here, the &lt;code&gt;SQLITE_DATABASE=&amp;lt;name&amp;gt;&lt;/code&gt; is actually what triggers the &amp;ldquo;auto-configure&amp;rdquo; option, without that, the &lt;code&gt;NEXTCLOUD_*&lt;/code&gt; variables are ignored, despite what the documentation says.&lt;/p&gt;
+
+&lt;h3 id=&#34;flash&#34;&gt;FLASH&lt;/h3&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t know about this utility yet, please head over to the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;github repo&lt;/a&gt; and check it out.&lt;/p&gt;
+
+&lt;p&gt;Good, your back, now lets see my command line I use to run this on my Ubuntu 16.x Server.&lt;/p&gt;
+
+&lt;p&gt;The following statements will install the prerequisites for flash, download the script, download this blog posts &lt;code&gt;user-data.yml&lt;/code&gt; file, then attempt to flash the image to an SD card.&lt;/p&gt;
+
+&lt;p&gt;I highly recommend using a 32 or 64 GB flash card for this project, because if you decide to keep this cloud around, you might want to store one or two things in it.&lt;/p&gt;
+
+&lt;p&gt;When prompted, insert your SD flash card into an available USB slot, then choose the right one, and verify the right one. You really don&amp;rsquo;t want DD to mount/flash/unmount your main drive.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install pv unzip hdparm
+curl -O https://raw.githubusercontent.com/hypriot/flash/master/$(uname -s)/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+
+# Just make sure the existing is gone
+rm ./user-data.yml
+
+# Download this yaml from this repo
+curl -O https://gist.githubusercontent.com/RenEvo/6a9e244b670df334c42578b8fe95400b/raw/user-data.yml
+
+// flash it
+flash \
+  --hostname mycloud.home.renevo.com \
+  --userdata ./user-data.yml \
+  https://github.com/DieterReuter/image-builder-rpi64/releases/download/v20171013-172949/hypriotos-rpi64-v20171013-172949.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When finished, pull out that sweet SD card, and let&amp;rsquo;s get ready to plug in.&lt;/p&gt;
+
+&lt;h3 id=&#34;boot-and-forget&#34;&gt;Boot and Forget&lt;/h3&gt;
+
+&lt;p&gt;For this, I simply put the SD card into a random RPi3 I had laying around, plugged in a network cable to my switch and the RPi, and then applied power to it.&lt;/p&gt;
+
+&lt;p&gt;This is really where the waiting game begins, the RPi is going to boot up, self-name, self-update, possible reboot, pull down some Docker images, bootstrap a Docker Swarm, run Portainer, then finally&amp;hellip; start a personal cloud.&lt;/p&gt;
+
+&lt;p&gt;At the time of writing this, you are still going to have to go fish out your IP from DNS unless you are on Mac or Linux with avahi, at that case, you can just navigate to &lt;code&gt;http://&amp;lt;hostname&amp;gt;.local&lt;/code&gt; or &lt;code&gt;http://&amp;lt;hostname&amp;gt;&lt;/code&gt; if you used an fqdn like I did. There are actually ways to get the RPi to phone home when it is finished bootstrapping, but I am going to save that for another post!&lt;/p&gt;
+
+&lt;p&gt;So, after you get some coffee, you can try navigating to your RPi on port 9000 with your browser, that should get you into the Portainer instance without any type of authentication (don&amp;rsquo;t do this in a real environment please, go read the docs on securing it).&lt;/p&gt;
+
+&lt;p&gt;After you go get a snack and take a short walk, you can try navigating to your RPi on port 80 with your browser, once you get prompted, login with user: &lt;code&gt;pirate&lt;/code&gt; and password: &lt;code&gt;hypriot&lt;/code&gt; to get access to your cloud. Click close on the annoying modal about downloading sync programs, and there you have it&amp;hellip; Your own personal cloud, bootstrapped from a simple YAML file, without you ever having to SSH into your PI.&lt;/p&gt;
+
+&lt;p&gt;Here is the fun part, you can reflash that anytime you want to recreate the exact same baseline SD card image.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This was a lot of fun for me, and without having to actually figure out some nitty gritty details, not over documenting things, and getting prepared to write this post, it realistically took me about 10 minutes to go from downloading the OS image to running NextCloud on my RPi. And that is all due to the hard work of the community, and especially the Docker Pirates at Hypriot, and to them, I thank you.&lt;/p&gt;
+
+&lt;p&gt;I plan to continue playing with this, potentially updating the server to use an external USB drive for data and auto-mounting it on boot, possible setup a GlusterFS and run them in a small 2 or 3 node cluster, and call it my PiCloud.&lt;/p&gt;
+
+&lt;p&gt;Who knows, it&amp;rsquo;s all about having fun and experimenting right?&lt;/p&gt;
+
+&lt;p&gt;All the samples can be &lt;a href=&#34;https://gist.github.com/RenEvo/6a9e244b670df334c42578b8fe95400b&#34;&gt;found on on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Who is this guy, and why is he posting on this blog?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;My name is &lt;a href=&#34;https://twitter.com/TribalTom&#34;&gt;Tom Anderson&lt;/a&gt;, I am a Senior II Cloud Software Engineer by day at a killer gaming company, and by night I am a father, musician, tinkerer, and still&amp;hellip; a hobbiest programmer of all the things. Dieter Reuter was nice enough to ask me to guest post this topic, and I just felt it had to be done! The Pirates have given so much to the community, I felt I needed to give a little something back.&lt;/p&gt;
+
+&lt;p&gt;Additionally, I build and talk about some things I think are cool on my own blog &lt;a href=&#34;http://tomanderson.me&#34;&gt;tomanderson.me&lt;/a&gt;, feel free to stop by and say hi!&lt;/p&gt;
+
+&lt;p&gt;Finally, because legaleeze and stuff&amp;hellip; All opinions here are my own, and do not reflect the opinions of Blizzard Entertainment.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>DockerCon 2017 Demo: Monitoring Docker Swarm with LED&#39;s</title>
       <link>https://blog.hypriot.com/post/dockerconaustin2017/</link>
       <pubDate>Thu, 20 Apr 2017 14:30:34 -0600</pubDate>
@@ -2746,289 +3088,6 @@ ID                         NAME             SERVICE        IMAGE                
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/docker-machine/hypriot-http.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hope this tour was fun and gave you a feeling for the power that comes with Docker Machine.&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>More Microservices Bliss with Docker 1.12 and Swarm only</title>
-      <link>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</link>
-      <pubDate>Mon, 20 Jun 2016 21:49:00 +0200</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/more-microservice-bliss-with-docker-1-12/</guid>
-      <description>&lt;p&gt;A couple of days ago I wrote a &lt;a href=&#34;https://blog.hypriot.com/post/microservices-bliss-with-docker-and-traefik/&#34;&gt;blog post&lt;/a&gt; about how easy it is to get a microservice application up and running with Docker and a HTTP proxy called Traefik.
-I explained how awesome Traefik is because it makes complex setups with HAProxy, Registrator, Consul, etc. a thing of the past.&lt;/p&gt;
-
-&lt;p&gt;I really thought it couldn&amp;rsquo;t get much easier. Oh boy - was I wrong!&lt;/p&gt;
-
-&lt;p&gt;Today as part of the Docker opening keynote Docker demostrated an evolution of Docker Swarm that simplifies this whole scenario even more.
-It makes setting up a Docker Swarm Cluster a really simple and straigtforward task.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see how this new thing works&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/swarm.jpg&#34; alt=&#34;Docker Swarm&#34; /&gt;
-&lt;div style=&#34;text-align:right; font-size: smaller&#34;&gt;Image courtesy of &lt;a href=&#34;https://www.flickr.com/photos/thewakingdragon/&#34;&gt;Brent M&lt;/a&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;If you remember the example from my last post - it consisted of a microservice application made of a frontend and a couple of backend services.
-The frontend was a Traefik HTTP proxy that routed the requests to the backend services.
-And the backend for the sake of simplicity was just a simple Go-based HTTP webserver that returned the ID of the containers it was running within.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/traefik/microsservice_example_end.jpg&#34; alt=&#34;Traffic&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The new Docker Swarm removes the need for a separate HTTP proxy in front of our application containers.
-The architecture from above is now slimmed down considerably and looks like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/more-microservices/architecture_with_swarm.jpg&#34; alt=&#34;With Swarm&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Less moving parts - that is great!&lt;/p&gt;
-
-&lt;p&gt;Still we get built-in loadbalancing to our backend services. We even can access those services from every node in our cluster.
-Docker Swarm has a kind of built-in mesh routing integrated that takes care of routing requests to the appropriate backend containers.&lt;/p&gt;
-
-&lt;p&gt;With all the new functionality one could assume that setting up a Docker Swarm cluster got even more complicated than before.
-But to the contrary - it got much easier - and that by leaps and bounds.&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t believe me? Just follow along.&lt;/p&gt;
-
-&lt;p&gt;As you might have guessed, we are doing this on Raspberry Pi cluster again.
-I am using a homegrown version of Docker 1.12 that I installed on my Raspberry Pi.
-Hopefully when Docker 1.12 is not a release candidate anymore we will have a version for you ready, too.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see what we have:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker version
-Client:
- Version:      1.12.0-rc1
- API version:  1.24
- Go version:   go1.6.2
- Git commit:   1f136c1-unsupported
- Built:        Wed Jun 15 15:35:51 2016
- OS/Arch:      linux/arm
-
-Server:
- Version:      1.12.0-rc1
- API version:  1.24
- Go version:   go1.6.2
- Git commit:   1f136c1-unsupported
- Built:        Wed Jun 15 15:35:51 2016
- OS/Arch:      linux/arm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Great. Docker 1.12 RC1 is ready. We should have everything we need to get started.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see if we can find out if we have same new features hidden in our Docker CLI.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker
-Usage: docker [OPTIONS] COMMAND [arg...]
-       docker [ --help | -v | --version ]
-
-A self-sufficient runtime for containers.
-    ...
-    service   Manage Docker services
-    ...
-    stats     Display a live stream of container(s) resource usage statistics
-    ...
-    swarm     Manage Docker Swarm
-    ...
-    update    Update configuration of one or more containers
-
-Run &#39;docker COMMAND --help&#39; for more information on a command.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I removed the lines of the command output that have not changed compared to the previous release. What remains though is still pretty interesting&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;We now seem to have a &amp;lsquo;docker swarm&amp;rsquo; command.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see what it is all about&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker swarm
-
-Usage:  docker swarm COMMAND
-
-Manage Docker Swarm
-
-Options:
-      --help   Print usage
-
-Commands:
-  init        Initialize a Swarm.
-  join        Join a Swarm as a node and/or manager.
-  update      update the Swarm.
-  leave       Leave a Swarm.
-  inspect     Inspect the Swarm
-
-Run &#39;docker swarm COMMAND --help&#39; for more information on a command.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So &amp;lsquo;Initialize a Swarm.&amp;rsquo; seems to be exactly what we want. Let&amp;rsquo;s start with this one.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker swarm init
-Swarm initialized: current node (1njlvzi9rk2syv3xojw217o0g) is now a manager.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that we have a Swarm manger node running it is time to add some more nodes to the cluster.&lt;br /&gt;
-And it is really simple as well.&lt;/p&gt;
-
-&lt;p&gt;Just go to another node of your cluster and execute:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi1 $ docker swarm join pi6:2377
-This node joined a Swarm as a worker.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With this command we basically just tell new nodes that they should join the Swarm Manager node on which we created the inital Swarm cluster.
-In the background Docker Swarm now does some work for us.&lt;/p&gt;
-
-&lt;p&gt;For instance it sets up encrypted communication channels between the cluster nodes. We do not need to manage TLS certificates on our own.&lt;/p&gt;
-
-&lt;p&gt;Everybody who knows how involved it could be to get a Docker Swarm cluster up running in the past should realize how easy it is now.&lt;/p&gt;
-
-&lt;p&gt;Still we are not yet finished.&lt;/p&gt;
-
-&lt;p&gt;A &amp;lsquo;docker info&amp;rsquo; on our Swarm Manager node reveals some interesting tidbits.
-Again I removed the uninteresting parts for brevity.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker info
-...
-Swarm: active
- NodeID: 1njlvzi9rk2syv3xojw217o0g
- IsManager: Yes
- Managers: 1
- Nodes: 2
- CACertHash: sha256:de4e2bff3b63700aad01df97bbe0397f131aabed5fabb7732283f044472323fc
-...
-Kernel Version: 4.4.10-hypriotos-v7+
-Operating System: Raspbian GNU/Linux 8 (jessie)
-OSType: linux
-Architecture: armv7l
-CPUs: 4
-Total Memory: 925.4 MiB
-Name: pi6
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see we now have a new &amp;lsquo;Swarm&amp;rsquo; part in the &amp;lsquo;docker info&amp;rsquo; output.
-It tells us that our current node is a Swarm Manager node and that the cluster is composed of two cluster nodes in total.&lt;/p&gt;
-
-&lt;p&gt;On our second node it looks a bit different as it is not a Manager node:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Swarm: active
- NodeID: 3fmwt4taurwxczr2icboojz8g
- IsManager: No
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Until now we just have an interesting, but still very empty Swarm cluster.
-Let&amp;rsquo;s change that.&lt;/p&gt;
-
-&lt;p&gt;Before we start let me introduce you to the concept of a service that is also new abstraction with Docker 1.12.
-You might have seen a hint of it already in the output of the Docker command above.
-Yes, it is the &amp;lsquo;docker service&amp;rsquo; command that I am talking about.
-A Docker service is basically just a bit of software running in a container that offers its &amp;lsquo;service&amp;rsquo; to the outside world and runs on a Swarm cluster.&lt;/p&gt;
-
-&lt;p&gt;Such a service can consist of just one container or of multiple containers.
-In the latter case we get high availability and/or loadbalancing for our service out of the box.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s create such a service based on our &amp;lsquo;whoami&amp;rsquo; image from my last blog post.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker service create --name whoami -p 80:8000 hypriot/rpi-whoami
-buy0q65lw7nshm76kvy5imxk3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With the help of the &amp;lsquo;docker swarm ls&amp;rsquo; command we can check the status of our new service.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker service ls
-ID            NAME    SCALE  IMAGE               COMMAND
-buy0q65lw7ns  whoami  1      hypriot/rpi-whoami
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Let&amp;rsquo;s check if we can request the index page from our whoami container by sending I http request via curl to the ip of eth0 network interface.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ curl http://192.168.178.24
-I&#39;m 1b6df814c654
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And it is working. Awesome!&lt;/p&gt;
-
-&lt;p&gt;Those who followed along with keen eyes will have noticed the &amp;lsquo;SCALE&amp;rsquo; part in the header line of the &amp;lsquo;docker swarm ls&amp;rsquo; command.
-It seems as we can scale our service somehow.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker service scale whoami=5
-whoami scaled to 5
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;OK. Let&amp;rsquo;s check what we have now:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker service ls
-ID            NAME    SCALE  IMAGE               COMMAND
-buy0q65lw7ns  whoami  5      hypriot/rpi-whoami
-
-root@pi6 $ for i in {1..5}; do curl http://192.168.178.24; done
-I&#39;m 8db1657e8517
-I&#39;m e1863a2be88d
-I&#39;m 1b6df814c654
-I&#39;m 8db1657e8517
-I&#39;m e1863a2be88d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is pretty neat.&lt;/p&gt;
-
-&lt;p&gt;But this is not just way more simple than the old Swarm, it also feels much more snappier and faster when executing commands.
-And remember I am working on Raspberry Pi&amp;rsquo;s and not on a beefy server like you would propably work on.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see how this looks from the perspective of an individual Docker engine.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi6 $ docker ps
-CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
-e1863a2be88d        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             2 minutes ago       Up 2 minutes        8000/tcp            whoami.4.0lg12zndbal72exqe08r9wvpg
-8db1657e8517        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             2 minutes ago       Up 2 minutes        8000/tcp            whoami.5.5z6mvsrdy73m5w24icgsqc8i2
-1b6df814c654        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.1.bg4qlpiye6h6uxyf8cmkwuh52
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see from the five containers that were started three reside on &amp;lsquo;pi6&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see if we can find the rest:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi1 docker ps
-CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
-db411a119c0a        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             6 minutes ago       Up 6 minutes        8000/tcp            whoami.2.2tf7yhmx9haol7e2b7xib2emj
-0a4bf32fa9c4        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             6 minutes ago       Up 6 minutes        8000/tcp            whoami.3.2r6mm091c2ybr0f9jz4qaxw9k
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So what happens when I just leave the Swarm cluster on &amp;lsquo;pi1&amp;rsquo;?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@pi1 docker swarm leave
-Node left the default swarm.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now I should be two containers short, right?&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see what we have on our remaining node:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker ps
-CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS               NAMES
-58620e3d533c        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             46 seconds ago      Up 43 seconds       8000/tcp            whoami.2.cgc4e2ixulc2f3ehr4laoursg
-acc9b523f434        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             46 seconds ago      Up 43 seconds       8000/tcp            whoami.3.67bhlo3nwgehthi3bg5bfdzue
-e1863a2be88d        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.4.0lg12zndbal72exqe08r9wvpg
-8db1657e8517        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             8 minutes ago       Up 8 minutes        8000/tcp            whoami.5.5z6mvsrdy73m5w24icgsqc8i2
-1b6df814c654        hypriot/rpi-whoami:latest   &amp;quot;/http&amp;quot;             15 minutes ago      Up 14 minutes       8000/tcp            whoami.1.bg4qlpiye6h6uxyf8cmkwuh52
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What we witnessed here is the same what would have happened if we just had a failing &amp;lsquo;pi1&amp;rsquo; node.
-All the containers that were running on node &amp;lsquo;pi1&amp;rsquo; were migrated to the remaining cluster nodes automatically.
-That&amp;rsquo;s pretty impressive.&lt;/p&gt;
-
-&lt;p&gt;So to recap what we just did:&lt;br /&gt;
-We created a small dynamic microservice applications with just the plain Docker.
-Docker Swarm is now integrated into the Docker-Engine instead of being a separate piece of software.
-In many cases this makes a separate proxy for the backend services of your application obsolete. No more nginx, HAProxy or Traefik. Sorry to see you go&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Despite having fewer moving parts we now have additional load balancing and high availability features built-in.
-I am really looking forward to find out what else there is in store with the new Docker Swarm and how it works together with Docker Compose.&lt;/p&gt;
-
-&lt;p&gt;But that&amp;rsquo;s a story for another day&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
