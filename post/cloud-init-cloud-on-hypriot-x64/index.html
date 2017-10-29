@@ -87,6 +87,9 @@
 
 <p>Over the last year, a lot has happened in the Raspberry Pi and Docker communities, there are Docker Captains helping lead the charge, one of those, <a href="https://twitter.com/Quintus23M">Dieter Reuter</a> really has been pushing the cause for ARM64 support with both Raspberry Pi 3 and LinuxKit. He isn&rsquo;t a single man army, the rest of the <a href="http://blog.hypriot.com/crew/">Docker Pirates</a> over at <a href="http://blog.hypriot.com/">Hypriot</a> have been doing some awesome things as well!</p>
 
+<p><img src="/images/cloud-init/brown-airplanes.jpg" alt="airplanes" />
+<div style="text-align:right; font-size: smaller">Image courtesy of <a href="https://www.flickr.com/photos/horiavarlan/5019447085/in/photolist-8DxYK8-6RFbEf-6RFfrw-6RLCGd-6RAH6n-6RF9gf-6RATnx-6RGCKM-6RB7L2-6REXqA-6T4VEQ-6RBeKg-brFbp6-6RAZU8-6RGwNk-6RAiLD-6RBgp6-6RLAvm-6RBbwM-6RAE5e-6RLJVj-6RLFdN-6RBsmr-6RFxxw-6RLJrY-6RFvGJ-6RFtZS-6REvrf-6RENUY-6RFwCC-6RGBEn-6RGz9n-6RFpb3-6RFzo1-if9tn-9NF66y-84UZy9-6RFew9-6RFq2m-6RLHWJ-6T4Wd9-9NChKc-6RAZ5V-9NCiK8-6T5Lbf-6RAUfp-6RBhb6-9NF3UW-9NF979-9NFaFW">Horia Varlan</a></div></p>
+
 <p>Building on the backs of these outstanding community members, I was finally able to spin up a Raspberry Pi, exactly like I do in the &ldquo;real world&rdquo;, just turn it on, let it self-configure, then software just runs.</p>
 
 <p></p>
@@ -192,27 +195,27 @@ runcmd:
   - [ systemctl, restart, docker ]
   - [docker, swarm, init ]
   - [
-      docker, service, create, 
-      &quot;--detach=false&quot;, 
-      &quot;--name&quot;, &quot;portainer&quot;, 
-      &quot;--publish&quot;, &quot;9000:9000&quot;, 
-      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;, 
-      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;, 
+      docker, service, create,
+      &quot;--detach=false&quot;,
+      &quot;--name&quot;, &quot;portainer&quot;,
+      &quot;--publish&quot;, &quot;9000:9000&quot;,
+      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;,
+      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;,
       &quot;portainer/portainer&quot;, &quot;-H&quot;, &quot;unix:///var/run/docker.sock&quot;, &quot;--no-auth&quot;
     ]
   - [mkdir, &quot;-p&quot;, &quot;/var/cloud/data&quot; ]
   - [setfacl, &quot;-m&quot;, &quot;u:www-data:rwx&quot;, &quot;/var/cloud/data&quot; ]
   - [
-      docker, service, create, 
-      &quot;--detach=false&quot;, 
-      &quot;--name&quot;, &quot;nextcloud&quot;, 
-      &quot;--publish&quot;, &quot;80:80&quot;, 
-      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;, 
-      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;, 
-      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;, 
-      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;, 
-      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;, 
-      &quot;nextcloud:latest&quot; 
+      docker, service, create,
+      &quot;--detach=false&quot;,
+      &quot;--name&quot;, &quot;nextcloud&quot;,
+      &quot;--publish&quot;, &quot;80:80&quot;,
+      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;,
+      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;,
+      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;,
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;,
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;,
+      &quot;nextcloud:latest&quot;
     ]
 </code></pre>
 
@@ -303,46 +306,46 @@ timezone: &quot;America/Los_Angeles&quot;
 <pre><code class="language-yaml">runcmd:
   # Pickup the hostname changes
   - [ systemctl, restart, avahi-daemon ]
-  
+
   # Pickup the daemon.json changes
   - [ systemctl, restart, docker ]
-  
+
   # Init a swarm, because why not
   - [docker, swarm, init ]
-  
+
   # Run portainer, so we can see our logs and control stuff from a UI
   - [
-      docker, service, create, 
-      &quot;--detach=false&quot;, 
-      &quot;--name&quot;, &quot;portainer&quot;, 
-      &quot;--publish&quot;, &quot;9000:9000&quot;, 
-      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;, 
-      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;, 
+      docker, service, create,
+      &quot;--detach=false&quot;,
+      &quot;--name&quot;, &quot;portainer&quot;,
+      &quot;--publish&quot;, &quot;9000:9000&quot;,
+      &quot;--mount&quot;, &quot;type=volume,src=portainer_data,dst=/data&quot;,
+      &quot;--mount&quot;, &quot;type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock&quot;,
       &quot;portainer/portainer&quot;, &quot;-H&quot;, &quot;unix:///var/run/docker.sock&quot;, &quot;--no-auth&quot;
     ]
 
-  # Create a specific directory to store all the data, 
+  # Create a specific directory to store all the data,
   # this way you could mount an external drive later (coming soon!)
   - [mkdir, &quot;-p&quot;, &quot;/var/cloud/data&quot; ]
 
-  # This gives the nextcloud permissions to write to this directory 
+  # This gives the nextcloud permissions to write to this directory
   # since it runs as www-data
   - [setfacl, &quot;-m&quot;, &quot;u:www-data:rwx&quot;, &quot;/var/cloud/data&quot; ]
 
-  # Create the nextcloud instance configuring it on startup 
-  # - you should change the user/password below to something less obvious 
+  # Create the nextcloud instance configuring it on startup
+  # - you should change the user/password below to something less obvious
   # or use the config UI
   - [
-      docker, service, create, 
-      &quot;--detach=false&quot;, 
-      &quot;--name&quot;, &quot;nextcloud&quot;, 
-      &quot;--publish&quot;, &quot;80:80&quot;, 
-      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;, 
-      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;, 
-      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;, 
-      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;, 
-      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;, 
-      &quot;nextcloud:latest&quot; 
+      docker, service, create,
+      &quot;--detach=false&quot;,
+      &quot;--name&quot;, &quot;nextcloud&quot;,
+      &quot;--publish&quot;, &quot;80:80&quot;,
+      &quot;--mount&quot;, &quot;type=volume,src=nextcloud,dst=/var/www/html&quot;,
+      &quot;--mount&quot;, &quot;type=bind,src=//var/cloud/data,dst=/var/www/html/data&quot;,
+      &quot;--env&quot;, &quot;SQLITE_DATABASE=nextcloud&quot;,
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_USER=pirate&quot;,
+      &quot;--env&quot;, &quot;NEXTCLOUD_ADMIN_PASSWORD=hypriot&quot;,
+      &quot;nextcloud:latest&quot;
     ]
 </code></pre>
 
