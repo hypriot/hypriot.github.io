@@ -814,7 +814,7 @@ $ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/show-endpoints.png&#34; alt=&#34;show-endpoints&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo; curl one of them to see if the service is up:&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s curl one of them to see if the service is up:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/kubernetes-setup-cluster/curl-service.png&#34; alt=&#34;curl-service&#34; /&gt;&lt;/p&gt;
 
@@ -827,7 +827,7 @@ $ curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.
 &lt;p&gt;We will now deploy an example Ingress Controller to manage incoming requests from the outside world onto our tiny service. Also, in this example we we&amp;rsquo;ll use &lt;a href=&#34;https://traefik.io&#34;&gt;Traefik&lt;/a&gt; as load balancer. Read the following notes if you wanna know more about Ingress and Traefik.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;In contrast to Docker Swarm, Kubernetes itself does not provide an option to define a specific port that you can use to access a service&lt;/strong&gt;. According to Lucas is this an important design decision; routing of incoming requests should be handled by a third party, such as a load balancer or a webserver, but not by the core product. The core Kubernetes should be lean and extensible, and encourage others to build tools on top of it for their specific needs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;In contrast to Docker Swarm, Kubernetes itself does not provide an option to define a specific port that you can use to access a service&lt;/strong&gt;. According to Lucas this is an important design decision; routing of incoming requests should be handled by a third party, such as a load balancer or a webserver, but not by the core product. The core Kubernetes should be lean and extensible, and encourage others to build tools on top of it for their specific needs.&lt;/p&gt;
 
 &lt;p&gt;Regarding load balancers in front of a cluster, there is &lt;a href=&#34;http://kubernetes.io/docs/user-guide/ingress/&#34;&gt;the Ingress API object&lt;/a&gt; and some sample &lt;a href=&#34;https://github.com/kubernetes/ingress&#34;&gt;Ingress Controllers&lt;/a&gt;. Ingress is a built-in way of exposing Services to the outside world via an Ingress Controller that anyone can build. An &lt;em&gt;Ingress rule&lt;/em&gt; defines how traffic should flow from the node the Ingress controller runs on to services inside of the cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
