@@ -891,7 +891,12 @@ $ kubectl apply -f hypriot-ingress.yaml
 
 &lt;p&gt;The dashboard is a wonderful interface to visualize the state of the cluster. Start it with:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ curl -sSL https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml | sed &amp;quot;s/amd64/arm/g&amp;quot; | kubectl create -f -
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard-arm.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Edit the kubernetes-dashboard service to use &lt;code&gt;type: ClusterIP&lt;/code&gt; to &lt;code&gt;type: NodePort&lt;/code&gt;, see &lt;a href=&#34;https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above&#34;&gt;Accessing Kubernetes Dashboard&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl -n kube-system edit service kubernetes-dashboard
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The following command provides the port that the dashboard is exposed at on every node with the NodePort function of Services, which is another way to expose your Services to the outside of your cluster:&lt;/p&gt;
@@ -899,7 +904,12 @@ $ kubectl apply -f hypriot-ingress.yaml
 &lt;pre&gt;&lt;code&gt;$ kubectl -n kube-system get service kubernetes-dashboard -o template --template=&amp;quot;{{ (index .spec.ports 0).nodePort }}&amp;quot; | xargs echo
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Then you can checkout the dashboard on any node&amp;rsquo;s IP address on that port!&lt;/p&gt;
+&lt;p&gt;Then you can checkout the dashboard on any node&amp;rsquo;s IP address on that port! Make sure to use &lt;code&gt;https&lt;/code&gt; when accessing the dashboard, for example if running on port &lt;code&gt;31657&lt;/code&gt; access it at &lt;code&gt;https://node:31657&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Newer versions of the Kubernetes Dashboard require either a &lt;code&gt;Kubeconfig&lt;/code&gt; or &lt;code&gt;Token&lt;/code&gt; to view information on the dashboard. &lt;a href=&#34;https://github.com/kubernetes/dashboard/wiki/Access-control#introduction&#34;&gt;Bearer tokens&lt;/a&gt; are recommended to setup proper permissions for a user, but to test the &lt;code&gt;replicaset-controller-token&lt;/code&gt; Token may be used to test.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl -n kube-system describe secret `kubectl -n kube-system get secret | grep replicaset-controller-token | awk &#39;{print $1}&#39;` | grep token: | awk &#39;{print $2}&#39;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 

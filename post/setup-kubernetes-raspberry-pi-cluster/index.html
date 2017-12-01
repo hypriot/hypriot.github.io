@@ -323,7 +323,12 @@ $ kubectl apply -f hypriot-ingress.yaml
 
 <p>The dashboard is a wonderful interface to visualize the state of the cluster. Start it with:</p>
 
-<pre><code>$ curl -sSL https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml | sed &quot;s/amd64/arm/g&quot; | kubectl create -f -
+<pre><code>$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard-arm.yaml
+</code></pre>
+
+<p>Edit the kubernetes-dashboard service to use <code>type: ClusterIP</code> to <code>type: NodePort</code>, see <a href="https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above">Accessing Kubernetes Dashboard</a> for more details.</p>
+
+<pre><code>$ kubectl -n kube-system edit service kubernetes-dashboard
 </code></pre>
 
 <p>The following command provides the port that the dashboard is exposed at on every node with the NodePort function of Services, which is another way to expose your Services to the outside of your cluster:</p>
@@ -331,7 +336,12 @@ $ kubectl apply -f hypriot-ingress.yaml
 <pre><code>$ kubectl -n kube-system get service kubernetes-dashboard -o template --template=&quot;{{ (index .spec.ports 0).nodePort }}&quot; | xargs echo
 </code></pre>
 
-<p>Then you can checkout the dashboard on any node&rsquo;s IP address on that port!</p>
+<p>Then you can checkout the dashboard on any node&rsquo;s IP address on that port! Make sure to use <code>https</code> when accessing the dashboard, for example if running on port <code>31657</code> access it at <code>https://node:31657</code>.</p>
+
+<p>Newer versions of the Kubernetes Dashboard require either a <code>Kubeconfig</code> or <code>Token</code> to view information on the dashboard. <a href="https://github.com/kubernetes/dashboard/wiki/Access-control#introduction">Bearer tokens</a> are recommended to setup proper permissions for a user, but to test the <code>replicaset-controller-token</code> Token may be used to test.</p>
+
+<pre><code>kubectl -n kube-system describe secret `kubectl -n kube-system get secret | grep replicaset-controller-token | awk '{print $1}'` | grep token: | awk '{print $2}'
+</code></pre>
 
 <p></br></p>
 
