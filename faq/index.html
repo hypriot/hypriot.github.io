@@ -112,19 +112,19 @@
 
 <h3 id="how-can-i-change-the-hostname">How can I change the hostname?</h3>
 
-<p>We use <a href="https://github.com/hypriot/device-init">device-init</a> to automatically change some settings on every boot.</p>
+<p>Starting with HypriotOS 1.7 we use <a href="http://cloudinit.readthedocs.io/en/0.7.9/index.html">cloud-init</a> to automatically change some settings on every boot.</p>
 
-<p>Just edit the <code>/boot/device-init.yaml</code> file with an editor</p>
+<p>Just edit the <code>/boot/user-data</code> file with an editor</p>
 
-<pre><code class="language-bash">sudo nano /boot/device-init.yaml
+<pre><code class="language-bash">sudo nano /boot/user-data
 </code></pre>
 
 <p>and change the line with <code>hostname:</code></p>
 
-<pre><code class="language-yaml">hostname: &quot;black-pearl&quot;
+<pre><code class="language-yaml">hostname: black-pearl
 </code></pre>
 
-<p>After a reboot the device boots up with the new hostname. See more details about the <a href="https://github.com/hypriot/device-init#the-bootdevice-inityaml">device-init.yaml</a> file.</p>
+<p>After a reboot the device boots up with the new hostname. See more details about the <code>user-data</code> file in the blog post <a href="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/">Bootstrapping a Cloud with Cloud-Init and HypriotOS</a>.</p>
 
 <h3 id="how-can-i-boot-a-raspberry-pi-zero">How can I boot a Raspberry Pi Zero?</h3>
 
@@ -132,7 +132,7 @@
 
 <p>Run our flash script with the following options to have a wireless out-of-the-box experience on first boot.</p>
 
-<pre><code>flash --bootconf config-no-uart.txt --config wifi.yaml hypriotos-rpi-v1.4.0.img.zip
+<pre><code>flash --bootconf config-no-uart.txt --userdata wifi.yaml hypriotos-rpi-v1.7.1.img.zip
 </code></pre>
 
 <p>You need two config files that will be copied after flashing the SD card.</p>
@@ -153,12 +153,55 @@ dtparam=audio=on
 
 <p>wifi.yaml</p>
 
-<pre><code class="language-yaml">hostname: black-pearl
-wifi:
-  interfaces:
-    wlan0:
-      ssid: &quot;MyNetwork&quot;
-      password: &quot;secret_password&quot;
+<pre><code class="language-yaml">#cloud-config
+
+# Set your hostname here, the manage_etc_hosts will update the hosts file entries as well
+hostname: black-pearl
+manage_etc_hosts: true
+
+# You could modify this for your own user information
+users:
+  - name: pirate
+    gecos: &quot;Hypriot Pirate&quot;
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker,video
+    plain_text_passwd: hypriot
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+
+package_upgrade: false
+
+# # WiFi connect to HotSpot
+# # - use `wpa_passphrase SSID PASSWORD` to encrypt the psk
+write_files:
+  - content: |
+      allow-hotplug wlan0
+      iface wlan0 inet dhcp
+      wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+      iface default inet dhcp
+    path: /etc/network/interfaces.d/wlan0
+  - content: |
+      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+      update_config=1
+      network={
+      ssid=&quot;your-ssid&quot;
+      psk=&quot;your-preshared-key&quot;
+      proto=RSN
+      key_mgmt=WPA-PSK
+      pairwise=CCMP
+      auth_alg=OPEN
+      }
+    path: /etc/wpa_supplicant/wpa_supplicant.conf
+
+# These commands will be ran once on first boot only
+runcmd:
+  # Pickup the hostname changes
+  - 'systemctl restart avahi-daemon'
+
+  # Activate WiFi interface
+  - 'ifup wlan0'
 </code></pre>
 
 <p>After turning on your Raspberry Pi Zero it should be connected to your WiFi and reachable at <code>black-pearl.local</code> (or your hostname of choice).</p>
