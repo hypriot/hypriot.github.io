@@ -112,9 +112,9 @@
 
 <h3 id="how-can-i-change-the-hostname">How can I change the hostname?</h3>
 
-<p>Starting with HypriotOS 1.7 we use <a href="http://cloudinit.readthedocs.io/en/0.7.9/index.html">cloud-init</a> to automatically change some settings on every boot.</p>
+<p>Starting with HypriotOS 1.7 we use <a href="http://cloudinit.readthedocs.io/en/0.7.9/index.html">cloud-init</a> to automatically change some settings on first boot.</p>
 
-<p>Just edit the <code>/boot/user-data</code> file with an editor</p>
+<p>Just edit the <code>/boot/user-data</code> file with an editor before you flash the SD image.</p>
 
 <pre><code class="language-bash">sudo nano /boot/user-data
 </code></pre>
@@ -124,32 +124,21 @@
 <pre><code class="language-yaml">hostname: black-pearl
 </code></pre>
 
-<p>After a reboot the device boots up with the new hostname. See more details about the <code>user-data</code> file in the blog post <a href="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/">Bootstrapping a Cloud with Cloud-Init and HypriotOS</a>.</p>
+<p>At the first boot the device comes up with the new hostname. See more details about the <code>user-data</code> file in the blog post <a href="https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/">Bootstrapping a Cloud with Cloud-Init and HypriotOS</a>.
+After the first boot you can change the hostname as usual on any Linux box.</p>
+
+<p><a name="wifi"></a></p>
 
 <h3 id="how-can-i-boot-a-raspberry-pi-zero">How can I boot a Raspberry Pi Zero?</h3>
 
-<p>To configure and boot a Raspberry Pi Zero without a mini HDMI adapter you can prepare everything before the first boot. To turn on the onboard WiFi you have to disable the UART which is used by default to connect to your RPi with an USB2Serial adapter.</p>
+<p>To configure and boot a Raspberry Pi Zero without a mini HDMI adapter you can prepare everything before the first boot.</p>
 
 <p>Run our flash script with the following options to have a wireless out-of-the-box experience on first boot.</p>
 
-<pre><code>flash --bootconf config-no-uart.txt --userdata wifi.yaml hypriotos-rpi-v1.7.1.img.zip
+<pre><code>flash --userdata wifi.yaml hypriotos-rpi-v1.8.0.img.zip
 </code></pre>
 
-<p>You need two config files that will be copied after flashing the SD card.</p>
-
-<p>config-no-uart.txt</p>
-
-<pre><code>hdmi_force_hotplug=1
-enable_uart=0
-
-# camera settings, see http://elinux.org/RPiconfig#Camera
-start_x=1
-disable_camera_led=1
-gpu_mem=128
-
-# Enable audio (added by raspberrypi-sys-mods)
-dtparam=audio=on
-</code></pre>
+<p>You can also use the <code>--hostname</code> option to adjust the hostname per flash command without changing your <code>wifi.yml</code> template. This is super convenient if you want to flash a whole cluster of Raspberry Pi&rsquo;s.</p>
 
 <p>wifi.yaml</p>
 

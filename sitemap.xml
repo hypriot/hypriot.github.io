@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/releasing-HypriotOS-1-8/</loc>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/cloud-init-cloud-on-hypriot-x64/</loc>
     <lastmod>2017-10-29T00:14:00-07:00</lastmod>
   </url>
@@ -417,13 +422,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -686,13 +691,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -758,7 +763,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1412,7 +1417,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1436,13 +1441,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/raspberry-pi/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/raspberry-pi/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2018-03-27T16:30:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
