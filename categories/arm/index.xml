@@ -9,6 +9,45 @@
     <atom:link href="https://blog.hypriot.com/categories/arm/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Buy us a beer! We now accept donations.</title>
+      <link>https://blog.hypriot.com/post/donation-liberapay-support-contribute/</link>
+      <pubDate>Tue, 29 May 2018 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/donation-liberapay-support-contribute/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Many of our users have asked for it for quite a long time. Now, we finally took the time to setup a donation option.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/donations/liberapay-hypriot.png&#34; alt=&#34;Donations Screenshot Liberpay&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we startet Hypriot in 2015, we received great attention from a growing community around Docker on ARMed devices. We received many &amp;ldquo;Kudos&amp;rdquo; and nice words. Even though we really greatly appreciate this until today, words do not enable us to pay our infrastructure bills.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-we-do-with-your-donation&#34;&gt;What we do with your donation&lt;/h2&gt;
+
+&lt;p&gt;Open source software might seem to be &amp;ldquo;free&amp;rdquo; (as in free beer) at first sight - that&amp;rsquo;s a fallacy. Its development, testing and deployment requires a huuuge amount of scarce time, ARMed hardware for testing, costs for service providers that help us throughout the software lifecycle, and costs for software licenses.&lt;/p&gt;
+
+&lt;p&gt;Today, everything at Hypriot we do in our leasure time and pay for related bills with our private wallet. It would be great if we could at least cover our basic costs for infrastructure. Many parts of our infrastructure are free of charge for us because many service providers for e.g. build pipelines or Github support open source projects (our software is 100% open source). However, some providers do not offer free subscriptions for open source projects. We&amp;rsquo;ll use your donation to cover the bills from them.&lt;/p&gt;
+
+&lt;p&gt;If the infrastructure costs are completely funded, we&amp;rsquo;ll use the surplus to enjoy a good beer during our hacking sessions :-)&lt;/p&gt;
+
+&lt;h2 id=&#34;why-liberpay&#34;&gt;Why Liberpay?&lt;/h2&gt;
+
+&lt;p&gt;Liberapay is a relativley new and trendy donation platform for free software projects. The unique thing about ths platform: &lt;strong&gt;it pays its bills for development by receiving donations on its own platform&lt;/strong&gt;! As transaction fees for payments this platform only invoices for the fees they are charged by their financial provider. In addition, Liberapay is fully open source and based within the European Union. Using software stemming from within the EU got more important with the advent of the new data protection regulation.&lt;/p&gt;
+
+&lt;p&gt;Thus Liberapay offers several advantages over other popular platforms like Patreon (closed source, high transaction fees, not EU based).&lt;/p&gt;
+
+&lt;h2 id=&#34;buy-us-at-least-a-little-beer&#34;&gt;Buy us at least a little beer!&lt;/h2&gt;
+
+&lt;p&gt;If many of our community only provide little portions, the sum can be high. Just click on the following button, create an account and charge the account with some euros or dollars. Finally, set a little amount you donate to us.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://liberapay.com/Hypriot/donate&#34;&gt;&lt;img alt=&#34;Donate using Liberapay&#34; src=&#34;https://liberapay.com/assets/widgets/donate.svg&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We look forward to gather experience with Liberapay and especially for the first one who sets a donation!&lt;/p&gt;
+
+&lt;p&gt;@MathiasRenner at &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;Twitter&lt;/a&gt; or on &lt;a href=&#34;ttps://mastodon.social/@mathiasrenner&#34;&gt;Mastodon&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Releasing HypriotOS 1.8.0: Raspberry Pi 3 B&#43;, Stretch and more</title>
       <link>https://blog.hypriot.com/post/releasing-HypriotOS-1-8/</link>
       <pubDate>Tue, 27 Mar 2018 16:30:00 +0200</pubDate>
@@ -3001,68 +3040,6 @@ In many cases this makes a separate proxy for the backend services of your appli
 I am really looking forward to find out what else there is in store with the new Docker Swarm and how it works together with Docker Compose.&lt;/p&gt;
 
 &lt;p&gt;But that&amp;rsquo;s a story for another day&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
-
-&lt;p&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile__&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Docker was well received at Germany&#39;s biggest Raspberry Pi Jam</title>
-      <link>https://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</link>
-      <pubDate>Mon, 13 Jun 2016 09:21:00 +0000</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/docker-was-well-received-at-piandmore/</guid>
-      <description>&lt;p&gt;Last Saturday Germany&amp;rsquo;s biggest Raspberry Pi community event - &lt;a href=&#34;http://piandmore.de/en&#34;&gt;the PiAndMore&lt;/a&gt; - took place for the 9th time.&lt;/p&gt;
-
-&lt;p&gt;In cooperation with the University of Trier the organizers were able to provide a broad range of activities.
-There were talks, workshops and many interesting tinker projects at display to delight even the most demanding maker heart.&lt;/p&gt;
-
-&lt;p&gt;It comes as no suprise that Docker was a hot topic at the PiAndMore conference, too.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/piandmore_loves_docker.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;docker-and-the-raspberry-pi-a-dream-team&#34;&gt;Docker and the Raspberry Pi - a dream team?&lt;/h2&gt;
-
-&lt;p&gt;The Docker Pirates were invited to give a talk about &lt;a href=&#34;http://www.slideshare.net/GovindaFichtner/docker-and-raspberry-pi-a-dream-team&#34;&gt;Docker on the Raspberry Pi&lt;/a&gt;.&lt;br /&gt;
-Despite being one of the first talks at nine o&amp;rsquo;clock in the morning it was well visited.&lt;/p&gt;
-
-&lt;p&gt;After some inital technical problems with the local power supply, network and beamer (yeah - all three!) the talk went well.&lt;/p&gt;
-
-&lt;p&gt;I started by giving a short introduction to Docker and finished with a live demo on our 5 node Pico-Cluster.
-Starting with some basic Docker Fu the demo soon gathered speed and I showed how to use Docker Compose and Swarm to get a
-two tiered microservice architecture up and running in less then 5 minutes.&lt;/p&gt;
-
-&lt;p&gt;Here is a recording of the talk made by &lt;a href=&#34;https://call-a-tux.de/&#34;&gt;Call-a-Tux&lt;/a&gt;:
-&lt;iframe id=&#34;ytplayer&#34; type=&#34;text/html&#34; width=&#34;1000&#34; height=&#34;560&#34; src=&#34;http://www.youtube.com/embed/9xAkILSdlxE&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;docker-workshop&#34;&gt;Docker Workshop&lt;/h2&gt;
-
-&lt;p&gt;It seems the talk was able to whet the appetite of the audience as many joined the two hour workshop later.
-Soon all seats were taken and the attendees embarked on a whirlwind tour through HypriotOS and Docker.&lt;/p&gt;
-
-&lt;p&gt;Thanks to &lt;a href=&#34;https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/&#34;&gt;HypriotOS&lt;/a&gt; and our convenient &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; everybody was able to start with Docker in no time.&lt;br /&gt;
-After learning the basic Docker commands everybody started to feel like a real Docker Pirate.&lt;/p&gt;
-
-&lt;p&gt;From there it was mostly smooth sailing and we even started to manage our containers with Docker Compose and Swarm.&lt;/p&gt;
-
-&lt;p&gt;In the end the workshop was rounded off by an excursion into the realm of Dockerfiles and how to build our own Docker images.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/workshop.jpg&#34; alt=&#34;PiAndMore&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It was really nice to see so many people get excited about Docker and ask so many curious questions.
-Later when I walked through the exhibition part of the conference I even learned that many people came to PiAndMore specifically because of the Docker talk and workshop.&lt;/p&gt;
-
-&lt;p&gt;All in all it was awesome being at the PiAndMore conference.
-It was really well organized and had a very nice nerdy feel about it.
-Actually I had a really hard time to pry my colleague Andreas from the event when we finally had to leave to drive home.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/piandmore/organizers_docker_pirates.jpg&#34; alt=&#34;PiAndMore Having fun&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So if you happen to be near Trier next year when the next PiAndMore takes place make sure to pay them a visit.
-It is most certainly worth it!&lt;/p&gt;
 
 &lt;p&gt;As always use the comments below to give us feedback and share the news about this release on Twitter, Facebook or Google+.&lt;/p&gt;
 
