@@ -64,6 +64,8 @@
       
         <li><a href="/crew"> CREW </a></li>
       
+        <li><a href="https://blog.hypriot.com/post/donation-liberapay-support-contribute/"> DONATE </a></li>
+      
     </ul>
 
     <p>&copy; 2018 Hypriot </p>
