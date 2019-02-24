@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Releasing HypriotOS 1.10.0: Raspberry Pi 3 B&#43;, Stretch and more &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+        <li><a href="https://blog.hypriot.com/post/donation-liberapay-support-contribute/"> DONATE </a></li>
+      
+    </ul>
+
+    <p>&copy; 2019 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Releasing HypriotOS 1.10.0: Raspberry Pi 3 B&#43;, Stretch and more</h1>
+    <span class="post-date">Sun, Feb 24, 2019</span>
+    <p><strong>We&rsquo;re proud to announce our 1.10.0 release of HypriotOS - the fastest way to get Docker up and running on any Raspberry Pi.</strong></p>
+
+<p><img src="/images/release-1-10/hypriotos-1.10.0-docker-18.06.3.png" alt="Raspberry Pi Zero with Docker 18.06.3" /></p>
+
+<p></p>
+
+<h2 id="features-of-hypriotos">Features of HypriotOS</h2>
+
+<p><strong>Latest Docker Engine 18.06.3-ce</strong> </br>
+You can use the latest features of the freshly-baked Docker Engine 18.06.3-ce that is still warm. It includes the Swarm Mode, which allows high availability of services in a multi-node cluster within just a few simple commands.
+This version contains a fix for the <a href="https://blog.docker.com/2019/02/docker-security-update-cve-2018-5736-and-container-security-best-practices/">CVE-2019-5736</a> in runC.</p>
+
+<p><strong>Up to date with Raspbian Lite</strong> </br>
+You can run HypriotOS with an up-to-date OS and Linux kernel which is in sync with the current Raspbian Lite running a Linux kernel 4.14.98.</p>
+
+<p><strong>Support for the complete Raspberry Pi family</strong> </br>
+You can run HypriotOS on every model of the Raspberry Pi family - we&rsquo;re supporting Pi 1, 2, 3, the 3 B+, Zero and even the Compute Module.</p>
+
+<p><strong>Easy flashing and configuration</strong> </br>
+We improved our <a href="https://github.com/hypriot/flash">flash tool</a>, which puts HypriotOS onto a SD card that is ready to boot from with a single command. With additional command line options you can customize HypriotOS during the flash operation to have the best out-of-the-box first-boot experience.
+HypriotOS includes <a href="http://cloudinit.readthedocs.io/en/0.7.9/">cloud-init</a>, which makes the first boot of your Raspberry Pi customizable and you even are able connecting it to your Wi-Fi network during boot.
+After booting, you can find the Raspberry Pi at your network with a simple <code>ping black-pearl.local</code> – no more searching for IP addresses required thanks to the integrated Avahi service discovery.</p>
+
+<p><strong>Enhanced security out of the box</strong> </br>
+We think that security should be shipped out-of-the-box. We make HypriotOS more secure without you even noticing it. For instance, there is no built-in &ldquo;root&rdquo; user. Also, the default user &ldquo;pirate&rdquo; (password &ldquo;hypriot&rdquo;) is can be customized or removed before the first boot. Just look at the file <code>/boot/user-data</code>. You can add your public SSH key, disable password logins and specify a different user account before you even boot your Raspberry Pi. WiFi can be customized and enabled to have Docker up and running through the air without attaching a keyboard and monitor.</p>
+
+<p><strong>Smaller than Raspbian Lite</strong> </br>
+Even though HypriotOS 1.10.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian (&ldquo;Raspbian Lite&rdquo;).</p>
+
+<p>Please see all details in the <a href="https://github.com/hypriot/image-builder-rpi/releases/tag/v1.10.0">release notes</a>.</p>
+
+<h2 id="quick-start">Quick start</h2>
+
+<p><strong>Download our <a href="https://github.com/hypriot/flash">flash tool</a></strong></p>
+
+<pre><code>curl -O https://raw.githubusercontent.com/hypriot/flash/2.2.0/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+</code></pre>
+
+<p><strong>Now run this command to flash HypriotOS 1.10.0</strong></p>
+
+<pre><code>flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+</code></pre>
+
+<p><strong>Afterwards, put the SD card into the Raspberry Pi and power it. That&rsquo;s all to get HypriotOS up and running!</strong></p>
+
+<h3 id="next-steps">Next steps</h3>
+
+<p>If you want to connect to the Raspberry Pi, run</p>
+
+<pre><code>ssh pirate@black-pearl.local
+</code></pre>
+
+<p>with password &ldquo;hypriot&rdquo;.</p>
+
+<h3 id="flash-with-wi-fi-settings-for-pi-zero">Flash with Wi-Fi settings for Pi Zero</h3>
+
+<p>If you want the Raspberry Pi Zero (or Pi 3) to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit <code>/boot/user-data</code> of the SD card and have a look at <a href="https://blog.hypriot.com/faq/#wifi">our FAQ</a>. Alternatively, checkout the parameters of the <a href="https://github.com/hypriot/flash">Hypriot flash tool</a> that also allows you to define your own cloud-init user-data template file which will be copied onto the SD image for you:</p>
+
+<pre><code>flash -n myHOSTNAME -u wifi.yml https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+</code></pre>
+
+<h2 id="feedback-please">Feedback, please</h2>
+
+<p>As always, use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<ul>
+<li>Stefan <a href="https://twitter.com/stefscherer">@stefscherer</a></li>
+</ul>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/releasing-HypriotOS-1-10/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/releasing-HypriotOS-1-10/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/releasing-HypriotOS-1-10/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

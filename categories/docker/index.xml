@@ -9,6 +9,86 @@
     <atom:link href="https://blog.hypriot.com/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Releasing HypriotOS 1.10.0: Raspberry Pi 3 B&#43;, Stretch and more</title>
+      <link>https://blog.hypriot.com/post/releasing-HypriotOS-1-10/</link>
+      <pubDate>Sun, 24 Feb 2019 16:01:00 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/releasing-HypriotOS-1-10/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;We&amp;rsquo;re proud to announce our 1.10.0 release of HypriotOS - the fastest way to get Docker up and running on any Raspberry Pi.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/release-1-10/hypriotos-1.10.0-docker-18.06.3.png&#34; alt=&#34;Raspberry Pi Zero with Docker 18.06.3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;features-of-hypriotos&#34;&gt;Features of HypriotOS&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Latest Docker Engine 18.06.3-ce&lt;/strong&gt; &lt;/br&gt;
+You can use the latest features of the freshly-baked Docker Engine 18.06.3-ce that is still warm. It includes the Swarm Mode, which allows high availability of services in a multi-node cluster within just a few simple commands.
+This version contains a fix for the &lt;a href=&#34;https://blog.docker.com/2019/02/docker-security-update-cve-2018-5736-and-container-security-best-practices/&#34;&gt;CVE-2019-5736&lt;/a&gt; in runC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Up to date with Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
+You can run HypriotOS with an up-to-date OS and Linux kernel which is in sync with the current Raspbian Lite running a Linux kernel 4.14.98.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Support for the complete Raspberry Pi family&lt;/strong&gt; &lt;/br&gt;
+You can run HypriotOS on every model of the Raspberry Pi family - we&amp;rsquo;re supporting Pi 1, 2, 3, the 3 B+, Zero and even the Compute Module.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Easy flashing and configuration&lt;/strong&gt; &lt;/br&gt;
+We improved our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;, which puts HypriotOS onto a SD card that is ready to boot from with a single command. With additional command line options you can customize HypriotOS during the flash operation to have the best out-of-the-box first-boot experience.
+HypriotOS includes &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/&#34;&gt;cloud-init&lt;/a&gt;, which makes the first boot of your Raspberry Pi customizable and you even are able connecting it to your Wi-Fi network during boot.
+After booting, you can find the Raspberry Pi at your network with a simple &lt;code&gt;ping black-pearl.local&lt;/code&gt; – no more searching for IP addresses required thanks to the integrated Avahi service discovery.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Enhanced security out of the box&lt;/strong&gt; &lt;/br&gt;
+We think that security should be shipped out-of-the-box. We make HypriotOS more secure without you even noticing it. For instance, there is no built-in &amp;ldquo;root&amp;rdquo; user. Also, the default user &amp;ldquo;pirate&amp;rdquo; (password &amp;ldquo;hypriot&amp;rdquo;) is can be customized or removed before the first boot. Just look at the file &lt;code&gt;/boot/user-data&lt;/code&gt;. You can add your public SSH key, disable password logins and specify a different user account before you even boot your Raspberry Pi. WiFi can be customized and enabled to have Docker up and running through the air without attaching a keyboard and monitor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Smaller than Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
+Even though HypriotOS 1.10.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian (&amp;ldquo;Raspbian Lite&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.10.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Download our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -O https://raw.githubusercontent.com/hypriot/flash/2.2.0/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Now run this command to flash HypriotOS 1.10.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Afterwards, put the SD card into the Raspberry Pi and power it. That&amp;rsquo;s all to get HypriotOS up and running!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
+
+&lt;p&gt;If you want to connect to the Raspberry Pi, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with password &amp;ldquo;hypriot&amp;rdquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;flash-with-wi-fi-settings-for-pi-zero&#34;&gt;Flash with Wi-Fi settings for Pi Zero&lt;/h3&gt;
+
+&lt;p&gt;If you want the Raspberry Pi Zero (or Pi 3) to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit &lt;code&gt;/boot/user-data&lt;/code&gt; of the SD card and have a look at &lt;a href=&#34;https://blog.hypriot.com/faq/#wifi&#34;&gt;our FAQ&lt;/a&gt;. Alternatively, checkout the parameters of the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;Hypriot flash tool&lt;/a&gt; that also allows you to define your own cloud-init user-data template file which will be copied onto the SD image for you:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -u wifi.yml https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h2&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>We now accept donations. Buy us a beer!</title>
       <link>https://blog.hypriot.com/post/donation-liberapay-support-contribute/</link>
       <pubDate>Tue, 29 May 2018 16:30:00 +0200</pubDate>
@@ -2607,88 +2687,6 @@ reboot
 &lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Releasing HypriotOS 1.0.0 &#34;Blackbeard&#34;</title>
-      <link>https://blog.hypriot.com/post/releasing-HypriotOS-1-0/</link>
-      <pubDate>Sun, 21 Aug 2016 12:30:00 +0200</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/releasing-HypriotOS-1-0/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Today we proudly present our 1.0.0 release of HypriotOS – a container OS that takes you from Zero to Docker within 5 Minutes only, on any device of the complete Raspberry Pi family.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;For this major release we&amp;rsquo;ve taken an especially great deal of trouble. Out of the box, you not only get the breaking features of the Docker Engine 1.12.1 and the latest versions of Docker Compose and Docker Machine, but also many improvements that enhance the performance, reliability and usability.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/release-1-0/docker_pirate_650px_full-width.jpg&#34; alt=&#34;Raspberry Pi 3&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Therefore, this release illustrates very much how we work as Hypriot Team: We don&amp;rsquo;t stop after a &lt;code&gt;docker run&lt;/code&gt; just works on a Raspberry Pi. Meanwhile this has been possible for a long time. We only stop, when we went all the way down the rabbit whole and identified all adjusting screws of the operating system that can be used to improve the &lt;strong&gt;performance, reliability and usability&lt;/strong&gt; to run containers efficiently on ARM. Just to name a few examples: we include a Linux Kernel that is optimized for running Docker, we set all recommended configuration settings stated by Docker (and more), and provide tools that make the process of downloading HypriotOS and flashing it on a SD card super easy (see our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;As a result, you can be sure that we fine-tuned all adjusting screws to ensure we provide not some container OS, but an awesome one.&lt;/p&gt;
-
-&lt;h2 id=&#34;feature-highlights-of-hypriotos&#34;&gt;Feature Highlights of HypriotOS&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Latest Docker Engine 1.12.1 with Swarm Mode&lt;/strong&gt; &lt;/br&gt;
-You can get your hands on the new features of the freshly-baked Engine Docker 1.12.1 that is still warm. It includes the new Swarm Mode, which allows high availability of services in a multi-node cluster within just a few commands.
-&lt;a href=&#34;https://blog.docker.com/2016/07/swarm-mode-on-a-raspberry-pi-cluster/&#34;&gt;See this short video how it works.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Support for the complete Raspberry Pi family&lt;/strong&gt; &lt;/br&gt;
-You can run HypriotOS on each and every model of the Raspberry Pi family - we&amp;rsquo;re supporting Pi 1, 2, 3, Zero and even the Compute Module. Thus, all Raspberry Pi devices ever built are fully supported. This is possible through the dual kernels for ARMv6 and ARMv7 architecure we included on the SD card. Guess what: you can even switch your SD card from one Pi model to the other and it just works.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Easy flashing and configuration&lt;/strong&gt; &lt;/br&gt;
-We improved our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;, which puts HypriotOS onto a SD card that is ready to boot from with a single command. After you flashed the SD card, you can store the settings of your environment, e.g. Wi-Fi connection parameters into a configuration file on the SD card &lt;code&gt;/boot/device-init.yaml&lt;/code&gt;. HypriotOS includes &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;device-init&lt;/a&gt;, which makes your Raspberry Pi directly connecting to your Wi-Fi network after booting.
-After booting, you can find the Raspberry Pi at your network with a simple &lt;code&gt;ping black-pearl.local&lt;/code&gt; – no more searching for IP addresses required thanks to the integrated Avahi service discovery.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Enhanced security out of the box&lt;/strong&gt; &lt;/br&gt;
-We think that security should be shipped out-of-the-box. We make HypriotOS more secure without you even noticing it. For instance, there is no built-in &amp;ldquo;root&amp;rdquo; user any more. Also, the default user &amp;ldquo;pirate&amp;rdquo; (password &amp;ldquo;hypriot&amp;rdquo;) is able to run Docker commands directly, which usually requires sudo rights. For an even better security, we strongly recommend to change the default user password and to restrict SSH access to pre-shared keys only with disabling SSH password authentication.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Maximum performance out of the box&lt;/strong&gt; &lt;/br&gt;
-As with security, running Docker with high performance comes out-of-the-box with HypriotOS. This includes faster booting times (15-17 sec.), an optimized file system to support more Inodes, minimal memory footprint and disk usage, and the reliable overlay storage driver for Docker by default.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Now 50% smaller in size, even smaller than Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
-Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian (&amp;ldquo;Raspbian Lite&amp;rdquo;). We achieved this mainly by reducing the cache&amp;rsquo;s footprint and leaving out some unused packages, so you won&amp;rsquo;t miss any features you are used to. You just need to download only 232 MB instead of 504 MB as before. With this improvements the minimum disk usage is reduced down to 600 MB.&lt;/p&gt;
-
-&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.0.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Download our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt; and run&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.0.0/hypriotos-rpi-v1.0.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Afterwards, put the SD card into the Raspberry Pi and power it. That&amp;rsquo;s all to get HypriotOS up and running!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
-
-&lt;p&gt;If you wanna connect to the Raspberry Pi, run&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;with password &amp;ldquo;hypriot&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;If you want the Raspberry Pi to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit &lt;code&gt;/boot/device-init.yaml&lt;/code&gt; of the SD card and have a look at the &lt;a href=&#34;https://github.com/hypriot/device-init&#34;&gt;documentation of device-init&lt;/a&gt;. Alternatively, checkout the parameters of the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;Hypriot flash tool&lt;/a&gt; that also allows you to define configurations. Really, it&amp;rsquo;s just so damn easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -s mySSID -p myWIFIPASSWORD https://github.com/hypriot/image-builder-rpi/releases/download/v1.0.0/hypriotos-rpi-v1.0.0.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h2&gt;
-
-&lt;p&gt;As always, use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Your Hypriot Team:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Andreas &lt;a href=&#34;https://twitter.com/firecyberice&#34;&gt;@firecyberice&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Govinda &lt;a href=&#34;https://twitter.com/_beagile_&#34;&gt;@_beagile_&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
   </channel>

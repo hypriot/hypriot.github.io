@@ -68,7 +68,7 @@
       
     </ul>
 
-    <p>&copy; 2018 Hypriot </p>
+    <p>&copy; 2019 Hypriot </p>
     <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
     <div class="edit-github" id="edit-github-id">
         <p>

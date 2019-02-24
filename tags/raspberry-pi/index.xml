@@ -9,6 +9,86 @@
     <atom:link href="https://blog.hypriot.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Releasing HypriotOS 1.10.0: Raspberry Pi 3 B&#43;, Stretch and more</title>
+      <link>https://blog.hypriot.com/post/releasing-HypriotOS-1-10/</link>
+      <pubDate>Sun, 24 Feb 2019 16:01:00 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/releasing-HypriotOS-1-10/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;We&amp;rsquo;re proud to announce our 1.10.0 release of HypriotOS - the fastest way to get Docker up and running on any Raspberry Pi.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/release-1-10/hypriotos-1.10.0-docker-18.06.3.png&#34; alt=&#34;Raspberry Pi Zero with Docker 18.06.3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;features-of-hypriotos&#34;&gt;Features of HypriotOS&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Latest Docker Engine 18.06.3-ce&lt;/strong&gt; &lt;/br&gt;
+You can use the latest features of the freshly-baked Docker Engine 18.06.3-ce that is still warm. It includes the Swarm Mode, which allows high availability of services in a multi-node cluster within just a few simple commands.
+This version contains a fix for the &lt;a href=&#34;https://blog.docker.com/2019/02/docker-security-update-cve-2018-5736-and-container-security-best-practices/&#34;&gt;CVE-2019-5736&lt;/a&gt; in runC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Up to date with Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
+You can run HypriotOS with an up-to-date OS and Linux kernel which is in sync with the current Raspbian Lite running a Linux kernel 4.14.98.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Support for the complete Raspberry Pi family&lt;/strong&gt; &lt;/br&gt;
+You can run HypriotOS on every model of the Raspberry Pi family - we&amp;rsquo;re supporting Pi 1, 2, 3, the 3 B+, Zero and even the Compute Module.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Easy flashing and configuration&lt;/strong&gt; &lt;/br&gt;
+We improved our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;, which puts HypriotOS onto a SD card that is ready to boot from with a single command. With additional command line options you can customize HypriotOS during the flash operation to have the best out-of-the-box first-boot experience.
+HypriotOS includes &lt;a href=&#34;http://cloudinit.readthedocs.io/en/0.7.9/&#34;&gt;cloud-init&lt;/a&gt;, which makes the first boot of your Raspberry Pi customizable and you even are able connecting it to your Wi-Fi network during boot.
+After booting, you can find the Raspberry Pi at your network with a simple &lt;code&gt;ping black-pearl.local&lt;/code&gt; – no more searching for IP addresses required thanks to the integrated Avahi service discovery.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Enhanced security out of the box&lt;/strong&gt; &lt;/br&gt;
+We think that security should be shipped out-of-the-box. We make HypriotOS more secure without you even noticing it. For instance, there is no built-in &amp;ldquo;root&amp;rdquo; user. Also, the default user &amp;ldquo;pirate&amp;rdquo; (password &amp;ldquo;hypriot&amp;rdquo;) is can be customized or removed before the first boot. Just look at the file &lt;code&gt;/boot/user-data&lt;/code&gt;. You can add your public SSH key, disable password logins and specify a different user account before you even boot your Raspberry Pi. WiFi can be customized and enabled to have Docker up and running through the air without attaching a keyboard and monitor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Smaller than Raspbian Lite&lt;/strong&gt; &lt;/br&gt;
+Even though HypriotOS 1.10.0 is fully packed with the complete and latest Docker tool set, it now comes at a size smaller than the tiniest version of Raspbian (&amp;ldquo;Raspbian Lite&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;Please see all details in the &lt;a href=&#34;https://github.com/hypriot/image-builder-rpi/releases/tag/v1.10.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Download our &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;flash tool&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -O https://raw.githubusercontent.com/hypriot/flash/2.2.0/flash
+chmod +x flash
+sudo mv flash /usr/local/bin/flash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Now run this command to flash HypriotOS 1.10.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Afterwards, put the SD card into the Raspberry Pi and power it. That&amp;rsquo;s all to get HypriotOS up and running!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
+
+&lt;p&gt;If you want to connect to the Raspberry Pi, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh pirate@black-pearl.local
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with password &amp;ldquo;hypriot&amp;rdquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;flash-with-wi-fi-settings-for-pi-zero&#34;&gt;Flash with Wi-Fi settings for Pi Zero&lt;/h3&gt;
+
+&lt;p&gt;If you want the Raspberry Pi Zero (or Pi 3) to connect directly to your Wi-Fi after boot, change the hostname of the Raspberry Pi and more, edit &lt;code&gt;/boot/user-data&lt;/code&gt; of the SD card and have a look at &lt;a href=&#34;https://blog.hypriot.com/faq/#wifi&#34;&gt;our FAQ&lt;/a&gt;. Alternatively, checkout the parameters of the &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;Hypriot flash tool&lt;/a&gt; that also allows you to define your own cloud-init user-data template file which will be copied onto the SD image for you:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flash -n myHOSTNAME -u wifi.yml https://github.com/hypriot/image-builder-rpi/releases/download/v1.10.0/hypriotos-rpi-v1.10.0.img.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h2&gt;
+
+&lt;p&gt;As always, use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>We now accept donations. Buy us a beer!</title>
       <link>https://blog.hypriot.com/post/donation-liberapay-support-contribute/</link>
       <pubDate>Tue, 29 May 2018 16:30:00 +0200</pubDate>
@@ -2606,240 +2686,6 @@ Even though HypriotOS 1.0.0 is fully packed with the complete and latest Docker 
 &lt;li&gt;Mathias &lt;a href=&#34;https://twitter.com/MathiasRenner&#34;&gt;@MathiasRenner&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Stefan &lt;a href=&#34;https://twitter.com/stefscherer&#34;&gt;@stefscherer&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Building Docker 1.12 on a Raspberry Pi</title>
-      <link>https://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/</link>
-      <pubDate>Sun, 31 Jul 2016 15:24:03 +0200</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/building-docker-directly-on-a-raspberry-pi/</guid>
-      <description>&lt;p&gt;Over time many of our users have asked us exactly how we build the Docker Engine
-and the associated Debian packages. For instance: they&amp;rsquo;d like to hack on some
- new features and need the latest software releases as soon as possible.&lt;/p&gt;
-
-&lt;p&gt;Here I&amp;rsquo;ll share all the details on building the latest Docker version - even on
-a Raspberry Pi itself. Beware: while it&amp;rsquo;s not too complicated it will require
-a large amount of time!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/build-docker-on-raspberrypi/docker-on-raspberrypi.jpg&#34; alt=&#34;Docker on Raspberry&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So, let&amp;rsquo;s get started. Follow me down the &lt;em&gt;Rabbit Hole&lt;/em&gt;&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
-
-&lt;p&gt;The goal of this tutorial is to give you all the details you need to build the
-Docker Engine yourself on your cool and fast $35 super-computer (the Raspberry Pi).&lt;/p&gt;
-
-&lt;h3 id=&#34;prepare-the-build-environment&#34;&gt;Prepare the Build Environment&lt;/h3&gt;
-
-&lt;p&gt;Before we begin this arduous task have to prepare our build environment for what
-will be a large, long-running workload.&lt;/p&gt;
-
-&lt;h4 id=&#34;hardware-and-software-requirements&#34;&gt;Hardware and Software Requirements&lt;/h4&gt;
-
-&lt;p&gt;For building the Docker Engine in the recommended way we need a Linux computer which
-already has a recent version of Docker running. Yeah, the Docker Engine will be build
-inside of a Docker container to get a consistent and reproducible build environment.
-As this requires some CPU power and disk space, I&amp;rsquo;m giving you here the minimal
-specs for the hardware.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Raspberry Pi 3 (a Pi 2 will work, but the build process will take even longer!)&lt;/li&gt;
-&lt;li&gt;16 GByte SD card (8 GByte is not enough!)&lt;/li&gt;
-&lt;li&gt;enabled swap space (1 GByte of memory is not sufficient!)&lt;/li&gt;
-&lt;li&gt;Docker Engine 1.11&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;installing-the-build-environment&#34;&gt;Installing the Build Environment&lt;/h4&gt;
-
-&lt;p&gt;As you will see, setting up the build environment is damn easy, because we&amp;rsquo;ll just
-use the latest release of HypriotOS which has the required Docker Engine 1.11.1
-already pre-installed. These steps here are done on OS X, on a Linux or Windows
-box it&amp;rsquo;s a little bit different.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Step 1:&lt;/em&gt; install HypriotOS 0.8.2 on a SD card&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ flash https://github.com/hypriot/image-builder-rpi/releases/download/v0.8.2/hypriotos-rpi-v0.8.2.img.zip
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now boot the Raspberry Pi 3 with the newly flashed SD card.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Step 2:&lt;/em&gt; deploy SSH keys&lt;/p&gt;
-
-&lt;p&gt;(Note: login credentials are username=pirate, password=hypriot)&lt;/p&gt;
-
-&lt;p&gt;First, wait until the Raspberry Pi is booted up and is visible on the network
-to gather it&amp;rsquo;s IP address.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ping -c 1 black-pearl.local
-PING black-pearl.local (192.168.2.113): 56 data bytes
-64 bytes from 192.168.2.113: icmp_seq=0 ttl=64 time=5.697 ms
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Second, deploy your standard SSH keys to the Raspberry Pi.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ssh-add
-$ ssh-keygen -R 192.168.2.113
-$ ssh-copy-id pirate@192.168.2.113
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we&amp;rsquo;re able to login into the Raspberry Pi without using a password.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ssh pirate@192.168.2.113
-
-$ uname -a
-Linux black-pearl 4.4.15-hypriotos-v7+ #1 SMP PREEMPT Mon Jul 25 08:46:52 UTC 2016 armv7l GNU/Linux
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Step 3:&lt;/em&gt; install some build dependencies&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
-$ sudo apt-get install -y make
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Step 4:&lt;/em&gt; using a swap file&lt;/p&gt;
-
-&lt;p&gt;This will create and use a default 2x 1GByte swap file at /var/swap.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install -y dphys-swapfile
-$ ls -alh /var/swap
--rw------- 1 root root 1.8G Jul 30 17:58 /var/swap
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If we need a larger swap file, we could edit the config file &lt;code&gt;/etc/dphys-swapfile&lt;/code&gt;,
-but for our use case the default 1.8 GByte swap file is sufficient.&lt;/p&gt;
-
-&lt;h3 id=&#34;clone-the-docker-repo&#34;&gt;Clone the Docker repo&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/docker/docker.git
-$ cd docker
-$ git checkout v1.12.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, we&amp;rsquo;re using a tagged release for Docker to build this exact version.&lt;/p&gt;
-
-&lt;h3 id=&#34;how-to-apply-some-extra-pull-requests&#34;&gt;How to apply some extra Pull Requests&lt;/h3&gt;
-
-&lt;p&gt;Just to be honest, right now the build process for Docker v1.12.0 will fail on ARM.
-This is a known issue and will be fixed hopefully soon. But luckily there is already
-a &lt;a href=&#34;https://github.com/docker/docker/pull/25192&#34;&gt;pull request&lt;/a&gt;
-which enables us to build the Docker .deb packages. This gives me
-the change to explain how you can easily apply a PR on top of a release version.&lt;/p&gt;
-
-&lt;p&gt;So, let&amp;rsquo;s cherry pick this specific pull request.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git fetch origin pull/25192/head:fix-manpages-on-arm
-$ git cherry-pick fix-manpages-on-arm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And finally let&amp;rsquo;s check if everything is OK with the git history.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;commit e15322b4fcb173674fd62a329a51b0756f02d503
-Author: Daniel Nephin &amp;lt;dnephin@docker.com&amp;gt;
-Date:   Thu Jul 28 14:53:08 2016 -0400
-
-    Fix the man/Dockerfile for arm
-
-    Signed-off-by: Daniel Nephin &amp;lt;dnephin@docker.com&amp;gt;
-
-commit 8eab29edd820017901796eb60d4bea28d760f16f
-Author: Tibor Vass &amp;lt;tibor@docker.com&amp;gt;
-Date:   Wed Jul 27 16:35:10 2016 -0700
-
-    Bump VERSION to v1.12.0
-
-    Signed-off-by: Tibor Vass &amp;lt;tibor@docker.com&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, the second last commit is the release commit for the official v1.12.0
-version of the Docker Engine. The last commit is from the applied PR.&lt;/p&gt;
-
-&lt;h3 id=&#34;run-the-build&#34;&gt;Run the build&lt;/h3&gt;
-
-&lt;p&gt;And here comes the magic: we&amp;rsquo;ll start the build process and then have to wait
-for a really long time for it to finish.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ time make deb
-
-...
-real	350m48.228s
-user	0m22.140s
-sys	0m4.870s
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The complete build process takes almost 6 hours on a fast Raspberry Pi 3, but finally
-we&amp;rsquo;ll get the Docker Engine v1.12.0 build for a few different ARM operating systems.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls -al ~/docker/bundles/1.12.0/build-deb/*/*.deb
--rw-r--r-- 1 root root 15933554 Jul 31 10:46 /home/pirate/docker/bundles/1.12.0/build-deb/debian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb
--rw-r--r-- 1 root root 15945462 Jul 31 12:28 /home/pirate/docker/bundles/1.12.0/build-deb/raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb
--rw-r--r-- 1 root root 15915910 Jul 31 13:40 /home/pirate/docker/bundles/1.12.0/build-deb/ubuntu-trusty/docker-engine_1.12.0-0~trusty_armhf.deb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To install the Docker Engine on our Raspberry Pi&amp;rsquo;s, we just pick&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;raspbian-jessie/docker-engine_1.12.0-0~jessie_armhf.deb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here is the install process on HypriotOS:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get purge -y docker-hypriot
-$ sudo dpkg -i docker-engine_1.12.0-0~jessie_armhf.deb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And now we do have the latest release version v1.12.0 of the Docker Engine running
-on our Raspberry Pi.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker version
-Client:
- Version:      1.12.0
- API version:  1.24
- Go version:   go1.6.3
- Git commit:   e15322b4f
- Built:        Sun Jul 31 11:41:45 2016
- OS/Arch:      linux/arm
-
-Server:
- Version:      1.12.0
- API version:  1.24
- Go version:   go1.6.3
- Git commit:   e15322b4f
- Built:        Sun Jul 31 11:41:45 2016
- OS/Arch:      linux/arm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;what-other-build-options-can-be-used&#34;&gt;What other build options can be used?&lt;/h3&gt;
-
-&lt;p&gt;Some Raspberry Pi owners such as &lt;a href=&#34;http://blog.alexellis.io/&#34;&gt;Alex Ellis&lt;/a&gt; run Docker on &lt;a href=&#34;http://archlinuxarm.org&#34;&gt;Arch Linux for ARM (ALARM)&lt;/a&gt; or other compatible Linux distributions. For most non-Debian
-distributions it makes sense to build a static binary with the below command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd ~/docker
-$ time make binary
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will find the binary files in the &lt;code&gt;bundles&lt;/code&gt; folder and can then move then to &lt;code&gt;/usr/bin&lt;/code&gt; or &lt;code&gt;/usr/local/bin&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;lessons-learned&#34;&gt;Lessons learned&lt;/h3&gt;
-
-&lt;p&gt;With the right Raspberry Pi OS and the Docker Engine already pre-installed, it&amp;rsquo;s
-pretty easy and straight forward to build the next version of the Docker Engine
-directly and natively on a standard Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;I strongly recommend to use the faster Raspberry Pi 3 and a SD card of at least
-16 GByte, with a smaller SD card the build will crash after some hours and you
-have to start all over again!&lt;/p&gt;
-
-&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Edits by &lt;a href=&#34;http://twitter.com/alexellisuk&#34;&gt;Alex Ellis&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
