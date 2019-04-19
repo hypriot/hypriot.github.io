@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/nvidia-jetson-nano-intro/</loc>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/releasing-HypriotOS-1-10/</loc>
     <lastmod>2019-02-24T16:01:00+02:00</lastmod>
   </url>
@@ -404,25 +409,25 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/64bit/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/64bit/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/tags/aarch64/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/aarch64/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -432,13 +437,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -456,13 +461,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/arm64/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/arm64/</loc>
-    <lastmod>2017-10-29T00:14:00-07:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -665,13 +670,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/container/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/container/</loc>
-    <lastmod>2017-03-02T11:28:42+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -701,13 +706,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -773,7 +778,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1110,6 +1115,18 @@
   </url>
   
   <url>
+    <loc>https://blog.hypriot.com/tags/jetson/</loc>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/jetson/</loc>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/tags/k8s/</loc>
     <lastmod>2017-01-11T14:03:34+01:00</lastmod>
     <priority>0</priority>
@@ -1236,6 +1253,18 @@
   </url>
   
   <url>
+    <loc>https://blog.hypriot.com/tags/nano/</loc>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/nano/</loc>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/categories/neopixels/</loc>
     <lastmod>2015-04-14T13:25:33+01:00</lastmod>
     <priority>0</priority>
@@ -1261,13 +1290,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/nvidia/</loc>
-    <lastmod>2015-12-28T09:00:00+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/nvidia/</loc>
-    <lastmod>2015-12-28T09:00:00+01:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1427,7 +1456,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2019-02-24T16:01:00+02:00</lastmod>
+    <lastmod>2019-04-19T14:16:25+02:00</lastmod>
     <priority>0</priority>
   </url>
   

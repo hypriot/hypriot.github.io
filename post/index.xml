@@ -6,8 +6,300 @@
     <description>Recent content in Posts on Docker Pirates ARMed with explosive stuff</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Feb 2019 16:01:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 14:16:25 +0200</lastBuildDate>
     <atom:link href="https://blog.hypriot.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>NVIDIA Jetson Nano Developer Kit - Introduction</title>
+      <link>https://blog.hypriot.com/post/nvidia-jetson-nano-intro/</link>
+      <pubDate>Fri, 19 Apr 2019 14:16:25 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/nvidia-jetson-nano-intro/</guid>
+      <description>&lt;p&gt;Let me introduce the brand new &lt;strong&gt;NVIDIA Jetson Nano Developer Kit&lt;/strong&gt;, which is basically a quad-core 64bit ARM Cortex-A57 CPU with 128 GPU cores - suitable for all kinds of maker ideas: AI, Robotics, and of course for running Docker Containers&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Box.jpg&#34; alt=&#34;Jetson-Nano-Box.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;unboxing&#34;&gt;Unboxing&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s unbox the board and do the initial configuration&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Upacked.jpg&#34; alt=&#34;Jetson-Nano-Upacked.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When opening the box we&amp;rsquo;ll find the board itself and a short getting started flyer which heads us to the NVIDIA website &lt;a href=&#34;https://NVIDIA.com/JetsonNano-Start&#34;&gt;https://NVIDIA.com/JetsonNano-Start&lt;/a&gt; where we can find all basic information about the new DevKit.&lt;/p&gt;
+
+&lt;p&gt;Please note, there are no other parts included in the DevKit. So, in order to use the DevKit you&amp;rsquo;ll need some additional accessories:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MicroSD card (at least 16GByte)&lt;/li&gt;
+&lt;li&gt;Monitor with HDMI or DisplayPort connector&lt;/li&gt;
+&lt;li&gt;HDMI or DisplayPort cable to connect to the monitor&lt;/li&gt;
+&lt;li&gt;USB Keyboard and Mouse&lt;/li&gt;
+&lt;li&gt;Micro-USB power supply (5V, 2Amps for 10 watts)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
+
+&lt;p&gt;Following the official documentation &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit&#34;&gt;Getting Started With Jetson Nano Developer Kit&lt;/a&gt; we have to download and flash the SD card. I don&amp;rsquo;t want to repeat these basic steps here, because it&amp;rsquo;s covered in great detail directy in the official NVIDIA tutorial &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write&#34;&gt;Write Image to the microSD Card&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When downloading the SD card image, please be aware this one isn&amp;rsquo;t small at all. The download is a zipped image file of 5 GByte of compressed data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ls -alh jetson-nano-sd-r32.1-2019-03-18.zip
+-rw-r--r--@ 1 dieter  staff   5.3G Mar 15 22:49 jetson-nano-sd-r32.1-2019-03-18.zip 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The SD card image is a huge 12 GByte data blob. I would strongly recommend to use a SD card size with at least 32 GByte, with the recommended 16 GByte minimum you won&amp;rsquo;t get really happy. So, please do yourself a favour and get a 32 or 64 GByte SD card.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ls -alh jetson-nano-sd-r32.1-2019-03-18.img
+-rwxr-xr-x  1 dieter  staff    12G Mar 15 19:19 jetson-nano-sd-r32.1-2019-03-18.img
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For flashing the SD card image you could also use the Hypriot &lt;code&gt;flash&lt;/code&gt; tool, which can be found here &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;. That&amp;rsquo;s exactly what I did from macOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ flash --device /dev/disk2 jetson-nano-sd-r32.1-2019-03-18.img
+
+Is /dev/disk2 correct? y
+Unmounting /dev/disk2 ...
+Unmount of all volumes on disk2 was successful
+Unmount of all volumes on disk2 was successful
+Flashing jetson-nano-sd-r32.1-2019-03-18.img to /dev/rdisk2 ...
+Password:
+12.0GiB 0:03:58 [51.6MiB/s] [=======================================================================================&amp;gt;] 100%
+0+196608 records in
+0+196608 records out
+12884901888 bytes transferred in 234.213296 secs (55013537 bytes/sec)
+Mounting Disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now our SD card is flashed with the latest image version, which is from March 18th 2019 as of time of this writing. But before using the SD card to boot up the NVIDIA Jetson Nano device, let&amp;rsquo;s have a short look at what&amp;rsquo;s on the SD card. Please, re-insert the SD card and list the current partitions. On macOS it looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ diskutil list /dev/disk2
+/dev/disk2 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *64.0 GB    disk2
+   1:           Linux Filesystem                         12.9 GB    disk2s1
+   2:           Linux Filesystem                         131.1 KB   disk2s2
+   3:           Linux Filesystem                         458.8 KB   disk2s3
+   4:           Linux Filesystem                         589.8 KB   disk2s4
+   5:           Linux Filesystem                         65.5 KB    disk2s5
+   6:           Linux Filesystem                         196.6 KB   disk2s6
+   7:           Linux Filesystem                         589.8 KB   disk2s7
+   8:           Linux Filesystem                         65.5 KB    disk2s8
+   9:           Linux Filesystem                         655.4 KB   disk2s9
+  10:           Linux Filesystem                         458.8 KB   disk2s10
+  11:           Linux Filesystem                         131.1 KB   disk2s11
+  12:           Linux Filesystem                         81.9 KB    disk2s12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK, we&amp;rsquo;ll find at least 12 different partitions from NVIDIA. Currently we don&amp;rsquo;t look into all the details, maybe we can do this as part of a future blog post. For now we just know, 12 partitions are here and therefore flashing should be successful.&lt;/p&gt;
+
+&lt;h3 id=&#34;initial-configuration&#34;&gt;Initial Configuration&lt;/h3&gt;
+
+&lt;p&gt;For &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#setup&#34;&gt;Setup and First Boot&lt;/a&gt; of the NVIDIA Jetson Nano DevKit you need to attach a computer display, mouse and keyboard. All these steps are well documented at the NVIDIA web site, just following the prior hyperlink.&lt;/p&gt;
+
+&lt;p&gt;Then power up the board with the Micro-USB power supply and follow the tutorial. This procedure will take a few minutes and then you&amp;rsquo;ll have a fully configured desktop system up and running which is based upon Ubuntu 18.04 LTS.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Board-Closeup.jpg&#34; alt=&#34;Jetson-Nano-Board-Closeup.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As I already said, the initial configuration of the Nano board has to be done interactively with the help of a computer monitor, mouse and keyboard. It&amp;rsquo;s really straight forward and consists of the following steps and settings. I also did a short video of this initial setup, so it&amp;rsquo;s maybe a little bit easier for you to follow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Settings:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Accept NVIDIA End User License Agreements: YES&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select system language: ENGLISH&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select keyboard layout: ENGLISH (US)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select location/timezone: BERLIN&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set username: pirate&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set computer name: jetson-nano&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set password: hypriot&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[Here is the video link: NVIDIA-Jetson-Nano&amp;ndash;Initial-Setup &lt;strong&gt;Coming soon!&lt;/strong&gt;]&lt;/p&gt;
+
+&lt;p&gt;At the end we login with the defined username &amp;ldquo;pirate&amp;rdquo; and get this nice Ubuntu desktop on our computer monitor. Yes, it&amp;rsquo;s really a fully Linux desktop system running on a 64bit ARM Cortex A57 board with 4 GByte of memory!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop.jpg&#34; alt=&#34;jetson-desktop.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;running-docker&#34;&gt;Running Docker&lt;/h3&gt;
+
+&lt;p&gt;TL;DR &lt;strong&gt;Docker is running out-of-the-box on the NVIDIA Jetson Nano board!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;[Here is the video link: NVIDIA-Jetson-Nano&amp;ndash;Running-Docker &lt;strong&gt;Coming soon!&lt;/strong&gt;]&lt;/p&gt;
+
+&lt;p&gt;As soon as the Jetson Nano board is configured and attached with an ethernet network cable, we can also discover it on the network with ping. Just use the computer name you defined. Here I used &lt;code&gt;jetson-nano&lt;/code&gt;, or you have to add &lt;code&gt;.local&lt;/code&gt;, this depends on your router setup. But just trying both it&amp;rsquo;s easy to do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ping -c 3 jetson-nano
+PING jetson-nano.lan (192.168.7.158): 56 data bytes
+64 bytes from 192.168.7.158: icmp_seq=0 ttl=64 time=1.786 ms
+64 bytes from 192.168.7.158: icmp_seq=1 ttl=64 time=1.954 ms
+64 bytes from 192.168.7.158: icmp_seq=2 ttl=64 time=2.227 ms
+
+--- jetson-nano.lan ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 1.786/1.989/2.227/0.182 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ping -c 3 jetson-nano.local
+PING jetson-nano.local (192.168.7.158): 56 data bytes
+64 bytes from 192.168.7.158: icmp_seq=0 ttl=64 time=1.338 ms
+64 bytes from 192.168.7.158: icmp_seq=1 ttl=64 time=2.198 ms
+64 bytes from 192.168.7.158: icmp_seq=2 ttl=64 time=1.964 ms
+
+--- jetson-nano.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 1.338/1.833/2.198/0.363 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First, I&amp;rsquo;m going to check the kernel version.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140-tegra #1 SMP PREEMPT Wed Mar 13 00:32:22 PDT 2019 aarch64 aarch64 aarch64 GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We do have a LTS 4.9 kernel available on the Jetson Nano, which is pretty OK for running Docker and Containers.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s check if there is already a Docker Engine preinstalled.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker version
+[sudo] password for pirate:
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.1
+ Git commit:        e68fc7a
+ Built:             Fri Jan 25 14:35:17 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.1
+  Git commit:       e68fc7a
+  Built:            Thu Jan 24 10:49:48 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And show what details we&amp;rsquo;ll get from a &lt;code&gt;docker info&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker info
+Containers: 2
+ Running: 2
+ Paused: 0
+ Stopped: 0
+Images: 1
+Server Version: 18.06.1-ce
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version:  (expected: 468a545b9edcd5932818eb9de8e72413e616e86e)
+runc version: N/A (expected: 69663f0bd4b60df09991c08812a60108003fa340)
+init version: v0.18.0 (expected: fec3683b971d9c3ef73f284f176672c44b448662)
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.140-tegra
+Operating System: Ubuntu 18.04.2 LTS
+OSType: linux
+Architecture: aarch64
+CPUs: 4
+Total Memory: 3.868GiB
+Name: jetson-nano
+ID: CR66:D4BV:6TQC:GI4I:CXLP:EQMK:NK2P:FUFM:OATD:5F6M:J657:LU5T
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is another screenshot directly from the Jetson Nano desktop with running the &lt;code&gt;docker version&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop-docker.jpg&#34; alt=&#34;jetson-desktop-docker.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;starting-a-docker-container-for-arm&#34;&gt;Starting a Docker Container for ARM&lt;/h3&gt;
+
+&lt;p&gt;Pull a first Docker Image which should run on ARM, here I&amp;rsquo;m going to use a Docker Image I did created almost four years ago for the Raspberry Pi and showcased live on stage at DockerCon 2015 in San Francisco, see &lt;a href=&#34;https://blog.hypriot.com/post/dockercon2015/&#34;&gt;Hypriot-Demo and challenge at DockerCon 2015&lt;/a&gt;. As this is an 32bit ARM image, let&amp;rsquo;s see if it works out-of-the-box on this brandnew Jetson Nano board.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker pull hypriot/rpi-busybox-httpd
+Using default tag: latest
+latest: Pulling from hypriot/rpi-busybox-httpd
+c74a9c6a645f: Already exists
+6f1938f6d8ae: Already exists
+e1347d4747a6: Already exists
+a3ed95caeb02: Already exists
+Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
+Status: Image is up to date for hypriot/rpi-busybox-httpd:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Docker Image is pulled directly from Docker Hub and we can have a closer look, it&amp;rsquo;s pretty small in size with 2.16MByte only and it is already 3 years old.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-busybox-httpd   latest              fbd9685c5ffc        3 years ago         2.16MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s see how it runs on the Jetson Nano.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker run -d -p 8000:80 hypriot/rpi-busybox-httpd
+ed6e7838c9af3f73e6f7129e7c38bf369bb9a33aa67a3b160b1f1c6c7251b2b2
+
+pirate@jetson-nano:~$ sudo docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                  NAMES
+ed6e7838c9af        hypriot/rpi-busybox-httpd   &amp;quot;/bin/busybox httpd …&amp;quot;   8 seconds ago       Up 7 seconds        0.0.0.0:8000-&amp;gt;80/tcp   laughing_lalande
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Opening up a web browser with the URL &lt;code&gt;http://192.168.7.158:8000&lt;/code&gt; and we should see the web page served by our Docker container running on the NVIDIA Jetson Nano.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/docker-container-webpage.jpg&#34; alt=&#34;docker-container-webpage.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is another screenshot directly from the Jetson Nano desktop and a Chromium browser window which is showing our webpage served from the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop-container-webpage.jpg&#34; alt=&#34;jetson-desktop-container-webpage.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SUCCESS:&lt;/strong&gt; Docker Engine 18.06.1-CE is preinstalled on the brandnew NVIDIA Jetson Nano board and even old 32bit ARM Docker Images are running easily!&lt;/p&gt;
+
+&lt;h3 id=&#34;recap&#34;&gt;Recap&lt;/h3&gt;
+
+&lt;p&gt;As you can see, there is already a fully running version of the Docker Engine preinstalled on the official SD card image for the NVIDIA Jetson Nano board. The Linux kernel 4.9.x has all the basic features enabled to run containers locally.&lt;/p&gt;
+
+&lt;p&gt;So, Docker just works out-of-the-box and you are able to use Docker Images right away. Even 32bit Docker images are able to run on this board because it&amp;rsquo;s based upon an ARM Cortex A57 CPU and this one is capable to run 64bit and 32bit ARM instructions.&lt;/p&gt;
+
+&lt;p&gt;If you want to learn more general details about the NVIDIA Jetson Nano Developer Kit, please visit the JetsonHacks website at &lt;a href=&#34;https://www.jetsonhacks.com/2019/03/25/nvidia-jetson-nano-developer-kit/&#34;&gt;https://www.jetsonhacks.com/2019/03/25/nvidia-jetson-nano-developer-kit/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Releasing HypriotOS 1.10.0: Docker 18.06.3 CE from Raspberry Pi Zero to 3 B&#43;</title>
@@ -2290,396 +2582,6 @@ ctggddtwrg0ybrwpa52heaz9c    swarm-chip02   Ready   Active        Reachable
 &lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
 
 &lt;p&gt;With this hardware setup we&amp;rsquo;ve now built a network of seven ARM devices for IoT which are all connected through WiFi. All the control traffic between the nodes are secured be default and can be centrally controlled through the Swarm managers and we can connect them securely from a local computer via Docker Machine. The ARM boards can be spread out in your house and can run different tasks as Docker containers&amp;hellip; but these details I&amp;rsquo;d like to cover in a future blog post.&lt;/p&gt;
-
-&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
-
-&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
-
-&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Install Docker 1.12 on the $9 C.H.I.P. computer</title>
-      <link>https://blog.hypriot.com/post/install-docker-on-chip-computer/</link>
-      <pubDate>Sat, 03 Sep 2016 22:53:12 +0200</pubDate>
-      
-      <guid>https://blog.hypriot.com/post/install-docker-on-chip-computer/</guid>
-      <description>&lt;p&gt;Did you see the successfully launch of a really cheap ARM board for $9 only - the C.H.I.P. computer? It has an ARMv7 CPU with 512 MByte of main memory, 4 GByte flash memory as disk storage and is equipped with onboard WiFi and bluetooth as well.
-&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/chip-and-banana.jpg&#34; alt=&#34;chip-and-banana&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With these awesome features built-in it would be really a great device to run Docker containers if only the recent Linux kernel 4.4  has the correct modules included, but it doesn&amp;rsquo;t - what a bummer!&lt;/p&gt;
-
-&lt;p&gt;But with spending a lot of time in building a custom Linux kernel and tweaking &amp;amp; testing I was finally able to install the latest Docker Engine for ARM on the C.H.I.P. &amp;mdash; and as a result you can easily follow this tutorial and within a few minutes only you can run your first Docker container on this cute ARM board&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/chip-photo.jpg&#34; alt=&#34;chip-photo&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
-
-&lt;p&gt;Preparing your operating system and your Linux kernel to be able to run the Docker Engine efficiently can be a hard thing and can consume a lot of labor time.&lt;/p&gt;
-
-&lt;p&gt;Fortunately in this tutorial I&amp;rsquo;ll show you the basic steps to get Docker running on the $9 C.H.I.P. computer, so every normal user should be able to do it on her own within a short time only - even without the need being an expert in this area. And if you&amp;rsquo;re in a hurry you can skip most of the tutorial and go straight ahead to the &lt;code&gt;Lessons learned - TL;DR&lt;/code&gt; section and install Docker with just two single commands.&lt;/p&gt;
-
-&lt;h3 id=&#34;necessary-steps-to-install-docker&#34;&gt;Necessary steps to install Docker&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Flash the latest available firmware&lt;/li&gt;
-&lt;li&gt;Connect to the C.H.I.P. via USB or UART console cable&lt;/li&gt;
-&lt;li&gt;Configure WiFi connection&lt;/li&gt;
-&lt;li&gt;Configure SSH to access the C.H.I.P.&lt;/li&gt;
-&lt;li&gt;Checking the OS and Linux kernel version&lt;/li&gt;
-&lt;li&gt;Install the Docker Engine 1.12.1 the easy way&lt;/li&gt;
-&lt;li&gt;Upgrade the Linux kernel to a custom built version&lt;/li&gt;
-&lt;li&gt;Run your first Docker Container on the C.H.I.P.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;step-1-flash-the-latest-available-firmware&#34;&gt;Step 1: Flash the latest available firmware&lt;/h4&gt;
-
-&lt;p&gt;Use a Chrome browser and flash the latest firmware and OS on your C.H.I.P. computer. For detailed instructions go to the appropriate web site at &lt;a href=&#34;http://flash.getchip.com/&#34;&gt;http://flash.getchip.com/&lt;/a&gt;.
-&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/flash-getchip-com.jpg&#34; alt=&#34;flash-getchip-com&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To run Docker on the C.H.I.P. we&amp;rsquo;re using the OS image for &lt;code&gt;Debian Headless 4.4&lt;/code&gt;, which is a server installation without any GUI and thus it&amp;rsquo;s quite smaller is size, so we do have more space left for running apps and Docker containers.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Pro Tip:&lt;/strong&gt; You can even see all the detailed log messages while flashing via an UART console cable:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;...
-Starting download of 6291508 bytes
-................................................
-downloading of 6291508 bytes finished
-Flashing sparse image on partition UBI at offset 0x26800000 (ID: 10)
-start 0x9a00 blkcnt 0x180 partition 0x400 size 0x7fc00
-Writing at offset 0x26800000
-New offset 0x27400000
-........ wrote 384 blocks to &#39;UBI&#39;
-
-*****************[ FLASHING DONE ]*****************
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/chip-successfully-flashed.jpg&#34; alt=&#34;chip-successfully-flashed&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;step-2-connect-to-the-c-h-i-p-via-usb-or-uart-console-cable&#34;&gt;Step 2: Connect to the C.H.I.P. via USB or UART console cable&lt;/h4&gt;
-
-&lt;p&gt;Once the C.H.I.P. is successfully flashed you can connect it directly with an USB cable to a Mac or Linux machine. The C.H.I.P. is getting power over the USB cable and connects via an USB serial console driver, so you can easily connect to.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s see if we can find the booted C.H.I.P. on the USB wire:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ls -al /dev/cu.usb*
-crw-rw-rw-  1 root  wheel   20, 159 Sep  3 16:52 /dev/cu.usbmodem141113
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Note 1:&lt;/em&gt; you have to wait a few minutes until the device can be detected as the C.H.I.P. has to be fully booted. &lt;br&gt;
-&lt;em&gt;Note 2:&lt;/em&gt; it&amp;rsquo;s strongly recommended to use a powered USB hub, otherwise you&amp;rsquo;ll hit some power problems and the C.H.I.P. can&amp;rsquo;t access or can immediately shuts off&lt;/p&gt;
-
-&lt;p&gt;Now we can connect to the ARM device via the &lt;code&gt;screen&lt;/code&gt; utility:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo screen /dev/cu.usbmodem141113
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alternatively, and this is my preferred way, you can attach an UART console cable (e.g. from &lt;a href=&#34;https://www.adafruit.com/product/954&#34;&gt;AdaFruit&lt;/a&gt;) which is typically shown as a device on the Mac like &lt;code&gt;/dev/cu.usbserial&lt;/code&gt;. With this setup you can even watch the complete boot logs of the C.H.I.P. computer and you are able to see all early boot messages from U-Boot and from loading and starting the Linux kernel. This gives you all details in case there are any problems and issues with a homegrown kernel.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo screen /dev/cu.usbserial 115200
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once you get to the login message, you can use username &lt;code&gt;root&lt;/code&gt; and password &lt;code&gt;chip&lt;/code&gt; to login:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Debian GNU/Linux 8 chip ttyS0
-
-chip login: root
-Password:
-Linux chip 4.4.11-ntc #1 SMP Sat May 28 00:27:07 UTC 2016 armv7l
-
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-root@chip:~#
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;step-3-configure-wifi-connection&#34;&gt;Step 3: Configure WiFi connection&lt;/h4&gt;
-
-&lt;p&gt;Following the instruction here &lt;a href=&#34;http://docs.getchip.com/chip.html#wifi-connection&#34;&gt;http://docs.getchip.com/chip.html#wifi-connection&lt;/a&gt; you can list all the available WiFi networks and then connect the C.H.I.P. to your preferred network.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi list
-*  SSID         MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
-   HITRON-FEE0  Infra  11    54 Mbit/s  67      ▂▄▆_  WPA2
-   WLAN-R46VFR  Infra  1     54 Mbit/s  65      ▂▄▆_  WPA2
-   My ASUS      Infra  6     54 Mbit/s  64      ▂▄▆_  WPA2
-   WLAN-718297  Infra  1     54 Mbit/s  59      ▂▄▆_  WPA2
-   WLAN-MCQYPS  Infra  1     54 Mbit/s  30      ▂___  WPA2
-   Telekom_FON  Infra  1     54 Mbit/s  27      ▂___  --
-
-*  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Connect to the WiFi station with the SSID &lt;code&gt;mySSID&lt;/code&gt; and password &lt;code&gt;myPASSWORD&lt;/code&gt;, please insert you own SSID and PASSWORD. In this example I&amp;rsquo;m using the SSID &lt;code&gt;WLAN-R46VFR&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi connect &#39;WLAN-R46VFR&#39; password &#39;**********&#39; ifname wlan0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once you are connected you can see the &amp;lsquo;*&amp;rsquo; in front of your connected WiFi network:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi list
-*  SSID         MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
-   HITRON-FEE0  Infra  11    54 Mbit/s  67      ▂▄▆_  WPA2
-   My ASUS      Infra  6     54 Mbit/s  64      ▂▄▆_  WPA2
-   WLAN-718297  Infra  1     54 Mbit/s  59      ▂▄▆_  WPA2
-   WLAN-MCQYPS  Infra  1     54 Mbit/s  30      ▂___  WPA2
-   Telekom_FON  Infra  1     54 Mbit/s  27      ▂___  --
-*  WLAN-R46VFR  Infra  1     54 Mbit/s  100     ▂▄▆█  WPA2
-
-*  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And the C.H.I.P. should have got an IP address from the DHCP server:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ifconfig wlan0
-wlan0     Link encap:Ethernet  HWaddr cc:79:cf:20:6d:d8
-          inet addr:192.168.2.112  Bcast:192.168.2.255  Mask:255.255.255.0
-          inet6 addr: fe80::ce79:cfff:fe20:6dd8/64 Scope:Link
-          inet6 addr: 2003:86:8c18:1a37:ce79:cfff:fe20:6dd8/64 Scope:Global
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:119 errors:0 dropped:1 overruns:0 frame:0
-          TX packets:102 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:24656 (24.0 KiB)  TX bytes:16973 (16.5 KiB)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we&amp;rsquo;re connected to the network and can access the internet and the C.H.I.P. can be reached from our Mac or Linux machine.&lt;/p&gt;
-
-&lt;h4 id=&#34;step-4-configure-ssh-to-access-the-c-h-i-p&#34;&gt;Step 4: Configure SSH to access the C.H.I.P.&lt;/h4&gt;
-
-&lt;p&gt;Here we have to use the same username &lt;code&gt;root&lt;/code&gt; and password &lt;code&gt;chip&lt;/code&gt; to login via SSH:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh-add
-ssh-keygen -R 192.168.2.112
-ssh-copy-id root@192.168.2.112
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally we can login to the C.H.I.P. computer via SSH:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh root@192.168.2.112
-
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-Last login: Thu Jan  1 00:32:25 1970
--bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
-root@chip:~#
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;step-5-checking-the-os-and-linux-kernel-version&#34;&gt;Step 5: Checking the OS and Linux kernel version&lt;/h4&gt;
-
-&lt;p&gt;As a first step we&amp;rsquo;d like to check the current Linux kernel version and operating system.&lt;/p&gt;
-
-&lt;p&gt;Kernel version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uname -a
-Linux chip 4.4.11-ntc #1 SMP Sat May 28 00:27:07 UTC 2016 armv7l GNU/Linux
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Operating system:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat /etc/os-release
-PRETTY_NAME=&amp;quot;Debian GNU/Linux 8 (jessie)&amp;quot;
-NAME=&amp;quot;Debian GNU/Linux&amp;quot;
-VERSION_ID=&amp;quot;8&amp;quot;
-VERSION=&amp;quot;8 (jessie)&amp;quot;
-ID=debian
-HOME_URL=&amp;quot;http://www.debian.org/&amp;quot;
-SUPPORT_URL=&amp;quot;http://www.debian.org/support&amp;quot;
-BUG_REPORT_URL=&amp;quot;https://bugs.debian.org/&amp;quot;
-BUILD_ID=Wed Jun  1 05:34:36 UTC 2016
-VARIANT=&amp;quot;Debian on C.H.I.P&amp;quot;
-VARIANT_ID=SERVER
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;step-6-install-the-docker-engine-1-12-1-the-easy-way&#34;&gt;Step 6: Install the Docker Engine 1.12.1 the easy way&lt;/h4&gt;
-
-&lt;p&gt;In order to install Docker I&amp;rsquo;ve prepared a complete installation script which can be downloaded and executed in a single command line. I&amp;rsquo;ve you&amp;rsquo;re interested into the details you should check the script at &lt;a href=&#34;https://github.com/DieterReuter/arm-docker-fixes/blob/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# install Docker
-curl -sSL https://github.com/DieterReuter/arm-docker-fixes/raw/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh | bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;At the end of running the install script we&amp;rsquo;ll see some errors occurred and the start of the Docker Engine has failed.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;...
-Errors were encountered while processing:
- docker-engine
-E: Sub-process /usr/bin/dpkg returned an error code (1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is OK for now as it just indicates the default Linux kernel isn&amp;rsquo;t able to run Docker on the C.H.I.P. and we have to build and install a custom Linux kernel which has all the necessary kernel settings for Docker enabled.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;rsquo;re interested in analyzing these errors in more detail you can run the command &lt;code&gt;systemctl status docker.service&lt;/code&gt; and you&amp;rsquo;ll get more detailed log messages from &lt;code&gt;systemd&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@chip:~# systemctl status docker.service -l
-● docker.service - Docker Application Container Engine
-   Loaded: loaded (/etc/systemd/system/docker.service; enabled)
-   Active: failed (Result: exit-code) since Sat 2016-09-03 13:20:49 UTC; 2min 23s ago
-     Docs: https://docs.docker.com
- Main PID: 10840 (code=exited, status=1/FAILURE)
-
-Sep 03 13:20:48 chip dockerd[10840]: time=&amp;quot;2016-09-03T13:20:48.580271961Z&amp;quot; level=info msg=&amp;quot;libcontainerd: new containerd process, pid: 10848&amp;quot;
-Sep 03 13:20:49 chip dockerd[10840]: time=&amp;quot;2016-09-03T13:20:49.652832502Z&amp;quot; level=error msg=&amp;quot;&#39;overlay&#39; not found as a supported filesystem on this host. Please ensure kernel is new enough and has overlay support loaded.&amp;quot;
-Sep 03 13:20:49 chip dockerd[10840]: time=&amp;quot;2016-09-03T13:20:49.656854332Z&amp;quot; level=fatal msg=&amp;quot;Error starting daemon: error initializing graphdriver: driver not supported&amp;quot;
-Sep 03 13:20:49 chip systemd[1]: docker.service: main process exited, code=exited, status=1/FAILURE
-Sep 03 13:20:49 chip systemd[1]: Failed to start Docker Application Container Engine.
-Sep 03 13:20:49 chip systemd[1]: Unit docker.service entered failed state.
-Sep 03 13:20:50 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue &#39;Delegate&#39; in section &#39;Service&#39;
-Sep 03 13:20:52 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue &#39;Delegate&#39; in section &#39;Service&#39;
-Sep 03 13:20:53 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue &#39;Delegate&#39; in section &#39;Service&#39;
-Sep 03 13:20:54 chip systemd[1]: [/etc/systemd/system/docker.service:24] Unknown lvalue &#39;Delegate&#39; in section &#39;Service&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;step-7-upgrade-the-linux-kernel-to-a-custom-built-version&#34;&gt;Step 7: Upgrade the Linux kernel to a custom built version&lt;/h4&gt;
-
-&lt;p&gt;In order to keep this tutorial short and easy to follow, I&amp;rsquo;d like to use an already prepared custom kernel which has nearly all the possible kernel modules and settings enabled to run the Docker Engine in an optimized way on the C.H.I.P. computer.&lt;/p&gt;
-
-&lt;p&gt;Therefore we only have to install our new Linux kernel and have to reboot the system to activate it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# install custom Linux Kernel and reboot
-curl -sSL https://github.com/hypriot/binary-downloads/releases/download/chip-kernel-4.4.11/4.4.11-hypriotos.tar.bz2 | tar xvfj - -C /
-reboot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After rebooting we&amp;rsquo;re going to check the kernel version again:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;uname -a
-Linux chip 4.4.11-hypriotos #1 SMP Mon Aug 29 19:18:49 UTC 2016 armv7l GNU/Linux
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Check the Docker client version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker -v
-Docker version 1.12.1, build 23cf638
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Check the Docker server version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker version
-Client:
- Version:      1.12.1
- API version:  1.24
- Go version:   go1.6.3
- Git commit:   23cf638
- Built:        Thu Aug 18 05:31:15 2016
- OS/Arch:      linux/arm
-
-Server:
- Version:      1.12.1
- API version:  1.24
- Go version:   go1.6.3
- Git commit:   23cf638
- Built:        Thu Aug 18 05:31:15 2016
- OS/Arch:      linux/arm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Getting the detailed informations about the Docker Engine:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker info
-Containers: 0
- Running: 0
- Paused: 0
- Stopped: 0
-Images: 0
-Server Version: 1.12.1
-Storage Driver: overlay
- Backing Filesystem: &amp;lt;unknown&amp;gt;
-Logging Driver: json-file
-Cgroup Driver: cgroupfs
-Plugins:
- Volume: local
- Network: null host bridge overlay
-Swarm: inactive
-Runtimes: runc
-Default Runtime: runc
-Security Options:
-Kernel Version: 4.4.11-hypriotos
-Operating System: Debian GNU/Linux 8 (jessie)
-OSType: linux
-Architecture: armv7l
-CPUs: 1
-Total Memory: 491 MiB
-Name: chip
-ID: SSJ5:7OTQ:BCAZ:4MDL:VEW6:VKND:3J6W:UI3O:UTBB:7H5V:LQ4W:ABRP
-Docker Root Dir: /var/lib/docker
-Debug Mode (client): false
-Debug Mode (server): false
-Registry: https://index.docker.io/v1/
-Insecure Registries:
- 127.0.0.0/8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally we could see, the latest Docker Engine v1.12.1 is now installed and is successfully running.&lt;/p&gt;
-
-&lt;h4 id=&#34;step-8-run-your-first-docker-container-on-the-c-h-i-p&#34;&gt;Step 8: Run your first Docker Container on the C.H.I.P.&lt;/h4&gt;
-
-&lt;p&gt;As a last step we&amp;rsquo;d like to start a first Docker container, a small web server.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -d -p 80:80 hypriot/rpi-busybox-httpd
-Unable to find image &#39;hypriot/rpi-busybox-httpd:latest&#39; locally
-latest: Pulling from hypriot/rpi-busybox-httpd
-c74a9c6a645f: Pull complete
-6f1938f6d8ae: Pull complete
-e1347d4747a6: Pull complete
-a3ed95caeb02: Pull complete
-Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
-Status: Downloaded newer image for hypriot/rpi-busybox-httpd:latest
-fec2773baaec570ba8b6e00296dfd11b4b4768d1b51e574d851968b9225b9d22
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now start your web browser and point it to the website from our Docker container.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;open http://192.168.2.112
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/install-docker-on-chip-computer/first-container-on-chip.jpg&#34; alt=&#34;first-container-on-chip&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Additional tip:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;After installing some packages via &lt;code&gt;apt-get&lt;/code&gt; it&amp;rsquo;s a good idea to clean the APT cache from time to time and save disk space.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@chip:~# apt-get clean
-root@chip:~# df -h
-Filesystem      Size  Used Avail Use% Mounted on
-ubi0:rootfs     3.7G  373M  3.3G  11% /
-devtmpfs        213M     0  213M   0% /dev
-tmpfs           246M     0  246M   0% /dev/shm
-tmpfs           246M  6.7M  239M   3% /run
-tmpfs           5.0M  4.0K  5.0M   1% /run/lock
-tmpfs           246M     0  246M   0% /sys/fs/cgroup
-tmpfs            50M     0   50M   0% /run/user/0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;lessons-learned-tl-dr&#34;&gt;Lessons learned - TL;DR&lt;/h3&gt;
-
-&lt;p&gt;Currently the C.H.I.P. isn&amp;rsquo;t able to run Docker out-of-the-box, but it just needs to install a custom built Linux kernel to prepare this awesome ARM board to run Docker easily. And now we&amp;rsquo;re able to install the officially built Docker Engine from the Docker project&amp;rsquo;s APT repository.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/em&gt; &lt;BR&gt;
-these are the only commands you need to install Docker&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# install Docker
-curl -sSL https://github.com/DieterReuter/arm-docker-fixes/raw/master/002-fix-install-docker-on-chip-computer/apply-fix-002.sh | bash
-
-# install custom Linux Kernel and reboot
-curl -sSL https://github.com/hypriot/binary-downloads/releases/download/chip-kernel-4.4.11/4.4.11-hypriotos.tar.bz2 | tar xvfj - -C /
-reboot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And the best thing is, according to this &lt;a href=&#34;https://twitter.com/zerotri/status/771218366845497344&#34;&gt;tweet&lt;/a&gt;, the developers at &lt;a href=&#34;https://twitter.com/nextthingco&#34;&gt;@NextThingCo&lt;/a&gt; have already started to include all the required kernel settings into the standard OS images. So we can expect that the Docker Engine can be installed in the future even without tweaking the Linux kernel.&lt;/p&gt;
-
-&lt;h3 id=&#34;outlook&#34;&gt;Outlook&lt;/h3&gt;
-
-&lt;p&gt;As I told you at the beginning of this tutorial, these are just the basic steps for a normal user to install and use Docker on the C.H.I.P. computer. But if you&amp;rsquo;re interested in all the technical details behind the scene, how to check and analyze your Linux kernel and how to optimize it for running Docker efficiently, then please drop me a comment or tweet me and I&amp;rsquo;ll write even more about all the technical details so you can follow the path along on to an expert level too. With these skills you then should be able to install Docker on any Linux-based ARM device.&lt;/p&gt;
 
 &lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
 

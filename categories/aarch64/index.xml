@@ -9,6 +9,298 @@
     <atom:link href="https://blog.hypriot.com/categories/aarch64/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>NVIDIA Jetson Nano Developer Kit - Introduction</title>
+      <link>https://blog.hypriot.com/post/nvidia-jetson-nano-intro/</link>
+      <pubDate>Fri, 19 Apr 2019 14:16:25 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/nvidia-jetson-nano-intro/</guid>
+      <description>&lt;p&gt;Let me introduce the brand new &lt;strong&gt;NVIDIA Jetson Nano Developer Kit&lt;/strong&gt;, which is basically a quad-core 64bit ARM Cortex-A57 CPU with 128 GPU cores - suitable for all kinds of maker ideas: AI, Robotics, and of course for running Docker Containers&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Box.jpg&#34; alt=&#34;Jetson-Nano-Box.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;unboxing&#34;&gt;Unboxing&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s unbox the board and do the initial configuration&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Upacked.jpg&#34; alt=&#34;Jetson-Nano-Upacked.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When opening the box we&amp;rsquo;ll find the board itself and a short getting started flyer which heads us to the NVIDIA website &lt;a href=&#34;https://NVIDIA.com/JetsonNano-Start&#34;&gt;https://NVIDIA.com/JetsonNano-Start&lt;/a&gt; where we can find all basic information about the new DevKit.&lt;/p&gt;
+
+&lt;p&gt;Please note, there are no other parts included in the DevKit. So, in order to use the DevKit you&amp;rsquo;ll need some additional accessories:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MicroSD card (at least 16GByte)&lt;/li&gt;
+&lt;li&gt;Monitor with HDMI or DisplayPort connector&lt;/li&gt;
+&lt;li&gt;HDMI or DisplayPort cable to connect to the monitor&lt;/li&gt;
+&lt;li&gt;USB Keyboard and Mouse&lt;/li&gt;
+&lt;li&gt;Micro-USB power supply (5V, 2Amps for 10 watts)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
+
+&lt;p&gt;Following the official documentation &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit&#34;&gt;Getting Started With Jetson Nano Developer Kit&lt;/a&gt; we have to download and flash the SD card. I don&amp;rsquo;t want to repeat these basic steps here, because it&amp;rsquo;s covered in great detail directy in the official NVIDIA tutorial &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write&#34;&gt;Write Image to the microSD Card&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When downloading the SD card image, please be aware this one isn&amp;rsquo;t small at all. The download is a zipped image file of 5 GByte of compressed data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ls -alh jetson-nano-sd-r32.1-2019-03-18.zip
+-rw-r--r--@ 1 dieter  staff   5.3G Mar 15 22:49 jetson-nano-sd-r32.1-2019-03-18.zip 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The SD card image is a huge 12 GByte data blob. I would strongly recommend to use a SD card size with at least 32 GByte, with the recommended 16 GByte minimum you won&amp;rsquo;t get really happy. So, please do yourself a favour and get a 32 or 64 GByte SD card.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ls -alh jetson-nano-sd-r32.1-2019-03-18.img
+-rwxr-xr-x  1 dieter  staff    12G Mar 15 19:19 jetson-nano-sd-r32.1-2019-03-18.img
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For flashing the SD card image you could also use the Hypriot &lt;code&gt;flash&lt;/code&gt; tool, which can be found here &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;. That&amp;rsquo;s exactly what I did from macOS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ flash --device /dev/disk2 jetson-nano-sd-r32.1-2019-03-18.img
+
+Is /dev/disk2 correct? y
+Unmounting /dev/disk2 ...
+Unmount of all volumes on disk2 was successful
+Unmount of all volumes on disk2 was successful
+Flashing jetson-nano-sd-r32.1-2019-03-18.img to /dev/rdisk2 ...
+Password:
+12.0GiB 0:03:58 [51.6MiB/s] [=======================================================================================&amp;gt;] 100%
+0+196608 records in
+0+196608 records out
+12884901888 bytes transferred in 234.213296 secs (55013537 bytes/sec)
+Mounting Disk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now our SD card is flashed with the latest image version, which is from March 18th 2019 as of time of this writing. But before using the SD card to boot up the NVIDIA Jetson Nano device, let&amp;rsquo;s have a short look at what&amp;rsquo;s on the SD card. Please, re-insert the SD card and list the current partitions. On macOS it looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ diskutil list /dev/disk2
+/dev/disk2 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *64.0 GB    disk2
+   1:           Linux Filesystem                         12.9 GB    disk2s1
+   2:           Linux Filesystem                         131.1 KB   disk2s2
+   3:           Linux Filesystem                         458.8 KB   disk2s3
+   4:           Linux Filesystem                         589.8 KB   disk2s4
+   5:           Linux Filesystem                         65.5 KB    disk2s5
+   6:           Linux Filesystem                         196.6 KB   disk2s6
+   7:           Linux Filesystem                         589.8 KB   disk2s7
+   8:           Linux Filesystem                         65.5 KB    disk2s8
+   9:           Linux Filesystem                         655.4 KB   disk2s9
+  10:           Linux Filesystem                         458.8 KB   disk2s10
+  11:           Linux Filesystem                         131.1 KB   disk2s11
+  12:           Linux Filesystem                         81.9 KB    disk2s12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK, we&amp;rsquo;ll find at least 12 different partitions from NVIDIA. Currently we don&amp;rsquo;t look into all the details, maybe we can do this as part of a future blog post. For now we just know, 12 partitions are here and therefore flashing should be successful.&lt;/p&gt;
+
+&lt;h3 id=&#34;initial-configuration&#34;&gt;Initial Configuration&lt;/h3&gt;
+
+&lt;p&gt;For &lt;a href=&#34;https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#setup&#34;&gt;Setup and First Boot&lt;/a&gt; of the NVIDIA Jetson Nano DevKit you need to attach a computer display, mouse and keyboard. All these steps are well documented at the NVIDIA web site, just following the prior hyperlink.&lt;/p&gt;
+
+&lt;p&gt;Then power up the board with the Micro-USB power supply and follow the tutorial. This procedure will take a few minutes and then you&amp;rsquo;ll have a fully configured desktop system up and running which is based upon Ubuntu 18.04 LTS.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/Jetson-Nano-Board-Closeup.jpg&#34; alt=&#34;Jetson-Nano-Board-Closeup.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As I already said, the initial configuration of the Nano board has to be done interactively with the help of a computer monitor, mouse and keyboard. It&amp;rsquo;s really straight forward and consists of the following steps and settings. I also did a short video of this initial setup, so it&amp;rsquo;s maybe a little bit easier for you to follow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Settings:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Accept NVIDIA End User License Agreements: YES&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select system language: ENGLISH&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select keyboard layout: ENGLISH (US)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select location/timezone: BERLIN&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set username: pirate&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set computer name: jetson-nano&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set password: hypriot&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[Here is the video link: NVIDIA-Jetson-Nano&amp;ndash;Initial-Setup &lt;strong&gt;Coming soon!&lt;/strong&gt;]&lt;/p&gt;
+
+&lt;p&gt;At the end we login with the defined username &amp;ldquo;pirate&amp;rdquo; and get this nice Ubuntu desktop on our computer monitor. Yes, it&amp;rsquo;s really a fully Linux desktop system running on a 64bit ARM Cortex A57 board with 4 GByte of memory!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop.jpg&#34; alt=&#34;jetson-desktop.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;running-docker&#34;&gt;Running Docker&lt;/h3&gt;
+
+&lt;p&gt;TL;DR &lt;strong&gt;Docker is running out-of-the-box on the NVIDIA Jetson Nano board!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;[Here is the video link: NVIDIA-Jetson-Nano&amp;ndash;Running-Docker &lt;strong&gt;Coming soon!&lt;/strong&gt;]&lt;/p&gt;
+
+&lt;p&gt;As soon as the Jetson Nano board is configured and attached with an ethernet network cable, we can also discover it on the network with ping. Just use the computer name you defined. Here I used &lt;code&gt;jetson-nano&lt;/code&gt;, or you have to add &lt;code&gt;.local&lt;/code&gt;, this depends on your router setup. But just trying both it&amp;rsquo;s easy to do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ping -c 3 jetson-nano
+PING jetson-nano.lan (192.168.7.158): 56 data bytes
+64 bytes from 192.168.7.158: icmp_seq=0 ttl=64 time=1.786 ms
+64 bytes from 192.168.7.158: icmp_seq=1 ttl=64 time=1.954 ms
+64 bytes from 192.168.7.158: icmp_seq=2 ttl=64 time=2.227 ms
+
+--- jetson-nano.lan ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 1.786/1.989/2.227/0.182 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ping -c 3 jetson-nano.local
+PING jetson-nano.local (192.168.7.158): 56 data bytes
+64 bytes from 192.168.7.158: icmp_seq=0 ttl=64 time=1.338 ms
+64 bytes from 192.168.7.158: icmp_seq=1 ttl=64 time=2.198 ms
+64 bytes from 192.168.7.158: icmp_seq=2 ttl=64 time=1.964 ms
+
+--- jetson-nano.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 1.338/1.833/2.198/0.363 ms
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First, I&amp;rsquo;m going to check the kernel version.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140-tegra #1 SMP PREEMPT Wed Mar 13 00:32:22 PDT 2019 aarch64 aarch64 aarch64 GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We do have a LTS 4.9 kernel available on the Jetson Nano, which is pretty OK for running Docker and Containers.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s check if there is already a Docker Engine preinstalled.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker version
+[sudo] password for pirate:
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.1
+ Git commit:        e68fc7a
+ Built:             Fri Jan 25 14:35:17 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.1
+  Git commit:       e68fc7a
+  Built:            Thu Jan 24 10:49:48 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And show what details we&amp;rsquo;ll get from a &lt;code&gt;docker info&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker info
+Containers: 2
+ Running: 2
+ Paused: 0
+ Stopped: 0
+Images: 1
+Server Version: 18.06.1-ce
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version:  (expected: 468a545b9edcd5932818eb9de8e72413e616e86e)
+runc version: N/A (expected: 69663f0bd4b60df09991c08812a60108003fa340)
+init version: v0.18.0 (expected: fec3683b971d9c3ef73f284f176672c44b448662)
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.140-tegra
+Operating System: Ubuntu 18.04.2 LTS
+OSType: linux
+Architecture: aarch64
+CPUs: 4
+Total Memory: 3.868GiB
+Name: jetson-nano
+ID: CR66:D4BV:6TQC:GI4I:CXLP:EQMK:NK2P:FUFM:OATD:5F6M:J657:LU5T
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is another screenshot directly from the Jetson Nano desktop with running the &lt;code&gt;docker version&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop-docker.jpg&#34; alt=&#34;jetson-desktop-docker.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;starting-a-docker-container-for-arm&#34;&gt;Starting a Docker Container for ARM&lt;/h3&gt;
+
+&lt;p&gt;Pull a first Docker Image which should run on ARM, here I&amp;rsquo;m going to use a Docker Image I did created almost four years ago for the Raspberry Pi and showcased live on stage at DockerCon 2015 in San Francisco, see &lt;a href=&#34;https://blog.hypriot.com/post/dockercon2015/&#34;&gt;Hypriot-Demo and challenge at DockerCon 2015&lt;/a&gt;. As this is an 32bit ARM image, let&amp;rsquo;s see if it works out-of-the-box on this brandnew Jetson Nano board.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker pull hypriot/rpi-busybox-httpd
+Using default tag: latest
+latest: Pulling from hypriot/rpi-busybox-httpd
+c74a9c6a645f: Already exists
+6f1938f6d8ae: Already exists
+e1347d4747a6: Already exists
+a3ed95caeb02: Already exists
+Digest: sha256:c00342f952d97628bf5dda457d3b409c37df687c859df82b9424f61264f54cd1
+Status: Image is up to date for hypriot/rpi-busybox-httpd:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Docker Image is pulled directly from Docker Hub and we can have a closer look, it&amp;rsquo;s pretty small in size with 2.16MByte only and it is already 3 years old.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hypriot/rpi-busybox-httpd   latest              fbd9685c5ffc        3 years ago         2.16MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s see how it runs on the Jetson Nano.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo docker run -d -p 8000:80 hypriot/rpi-busybox-httpd
+ed6e7838c9af3f73e6f7129e7c38bf369bb9a33aa67a3b160b1f1c6c7251b2b2
+
+pirate@jetson-nano:~$ sudo docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                  NAMES
+ed6e7838c9af        hypriot/rpi-busybox-httpd   &amp;quot;/bin/busybox httpd …&amp;quot;   8 seconds ago       Up 7 seconds        0.0.0.0:8000-&amp;gt;80/tcp   laughing_lalande
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Opening up a web browser with the URL &lt;code&gt;http://192.168.7.158:8000&lt;/code&gt; and we should see the web page served by our Docker container running on the NVIDIA Jetson Nano.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/docker-container-webpage.jpg&#34; alt=&#34;docker-container-webpage.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is another screenshot directly from the Jetson Nano desktop and a Chromium browser window which is showing our webpage served from the Docker container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-intro/jetson-desktop-container-webpage.jpg&#34; alt=&#34;jetson-desktop-container-webpage.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SUCCESS:&lt;/strong&gt; Docker Engine 18.06.1-CE is preinstalled on the brandnew NVIDIA Jetson Nano board and even old 32bit ARM Docker Images are running easily!&lt;/p&gt;
+
+&lt;h3 id=&#34;recap&#34;&gt;Recap&lt;/h3&gt;
+
+&lt;p&gt;As you can see, there is already a fully running version of the Docker Engine preinstalled on the official SD card image for the NVIDIA Jetson Nano board. The Linux kernel 4.9.x has all the basic features enabled to run containers locally.&lt;/p&gt;
+
+&lt;p&gt;So, Docker just works out-of-the-box and you are able to use Docker Images right away. Even 32bit Docker images are able to run on this board because it&amp;rsquo;s based upon an ARM Cortex A57 CPU and this one is capable to run 64bit and 32bit ARM instructions.&lt;/p&gt;
+
+&lt;p&gt;If you want to learn more general details about the NVIDIA Jetson Nano Developer Kit, please visit the JetsonHacks website at &lt;a href=&#34;https://www.jetsonhacks.com/2019/03/25/nvidia-jetson-nano-developer-kit/&#34;&gt;https://www.jetsonhacks.com/2019/03/25/nvidia-jetson-nano-developer-kit/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Building a 64bit Docker OS for the Raspberry Pi 3</title>
       <link>https://blog.hypriot.com/post/building-a-64bit-docker-os-for-rpi3/</link>
       <pubDate>Thu, 02 Mar 2017 11:28:42 +0100</pubDate>
