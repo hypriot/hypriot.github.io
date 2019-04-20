@@ -9,6 +9,305 @@
     <atom:link href="https://blog.hypriot.com/categories/nvidia/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>NVIDIA Jetson Nano - Upgrade Docker Engine</title>
+      <link>https://blog.hypriot.com/post/nvidia-jetson-nano-upgrade-docker/</link>
+      <pubDate>Sat, 20 Apr 2019 13:47:52 +0200</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/nvidia-jetson-nano-upgrade-docker/</guid>
+      <description>&lt;p&gt;In our last blogposts about the &lt;a href=&#34;https://blog.hypriot.com/post/nvidia-jetson-nano-intro/&#34;&gt;NVIDIA Jetson Nano Developer Kit - Introduction&lt;/a&gt; and &lt;a href=&#34;https://blog.hypriot.com/post/nvidia-jetson-nano-install-docker-compose/&#34;&gt;NVIDIA Jetson Nano - Install Docker Compose&lt;/a&gt; we digged into the brand-new &lt;strong&gt;NVIDIA Jetson Nano Developer Kit&lt;/strong&gt; and we know, that Docker 18.06.1-CE is already installed, but&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-docker-ce/jetson-desktop-login.jpg&#34; alt=&#34;jetson-desktop-login.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But, this isn&amp;rsquo;t the latest available version of the Docker Engine. So, I&amp;rsquo;d like to point you to a few different options on how to upgrade the Docker Engine to the very latest available version for the NVIDIA Jetson Nano.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;check-the-current-docker-version&#34;&gt;Check the current Docker Version&lt;/h3&gt;
+
+&lt;p&gt;For this tutorial I&amp;rsquo;m starting again with a freshly flashed SD card image.&lt;/p&gt;
+
+&lt;p&gt;Flashing from macOS just takes a few minutes with the Hypriot flash utility, which can be found here &lt;a href=&#34;https://github.com/hypriot/flash&#34;&gt;https://github.com/hypriot/flash&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ time flash --device /dev/disk2 jetson-nano-sd-r32.1-2019-03-18.img
+
+Is /dev/disk2 correct? y
+Unmounting /dev/disk2 ...
+Unmount of all volumes on disk2 was successful
+Unmount of all volumes on disk2 was successful
+Flashing jetson-nano-sd-r32.1-2019-03-18.img to /dev/rdisk2 ...
+12.0GiB 0:03:40 [55.8MiB/s] [=======================================================================================&amp;gt;] 100%
+0+196608 records in
+0+196608 records out
+12884901888 bytes transferred in 220.275160 secs (58494575 bytes/sec)
+Mounting Disk
+
+real	3m47.866s
+user	0m1.648s
+sys	0m30.921s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we have to attach a computer monitor via HDMI cable, mouse and keyboard and of course an Ethernet cable in order to get an internet connect. Now connecting to a micro-USB power supply and follow the instruction on the screen to perform the initial setup of the NVIDIA Jetson Nano Developer Kit. This will take around 5 to 10 minutes and we do have a new Ubuntu 18.04 desktop running on that nice 64bit ARM Cortex-A57 developer board.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro-Tip on using Docker client:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As we have seen in the last blogpost, we have to use sudo when we&amp;rsquo;re calling a docker command in the shell. This can be easily resolved, we only have to issue the following command ones.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo usermod -aG docker pirate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, log out and log in again or just start a new shell and we don&amp;rsquo;t have to use sudo any more for our docker commands.&lt;/p&gt;
+
+&lt;p&gt;Show the current version of the Docker Engine installed on the Nano.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.1
+ Git commit:        e68fc7a
+ Built:             Fri Jan 25 14:35:17 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.1
+  Git commit:       e68fc7a
+  Built:            Thu Jan 24 10:49:48 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And here we see the version &lt;code&gt;18.06.1-ce&lt;/code&gt; of the Docker Engine, which is installed on the Nano SD card image &lt;code&gt;jetson-nano-sd-r32.1-2019-03-18.img&lt;/code&gt;. And yes, this is by far not the latest nor the securest available version at all.&lt;/p&gt;
+
+&lt;h3 id=&#34;upgrade-docker-engine&#34;&gt;Upgrade Docker Engine&lt;/h3&gt;
+
+&lt;p&gt;As we&amp;rsquo;ve seen in the previous section, the installed Docker Engine version is 18.06.01-ce. Now let&amp;rsquo;s verify if there is already a newer version available.&lt;/p&gt;
+
+&lt;p&gt;We can just use the apt utility from the Ubuntu package manager to determine the installed versions of any of the installed software packages. Here on Ubuntu 18.04 the Docker Engine is installed through the &lt;code&gt;docker.io&lt;/code&gt; package.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ apt list --installed | grep docker.io
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+docker.io/bionic-security,now 18.06.1-0ubuntu1.2~18.04.1 arm64 [installed,upgradable to: 18.09.2-0ubuntu1~18.04.1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can see the newer Docker version 18.09.2 is already available in the Ubuntu repository, so we&amp;rsquo;re going to upgrade the software package &lt;code&gt;docker.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ sudo apt-get --only-upgrade install docker.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At the end we were able to upgrade the Docker Engine to the very latest version which is provided by the Ubuntu repository.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.09.2
+ API version:       1.39
+ Go version:        go1.10.4
+ Git commit:        6247962
+ Built:             Tue Feb 26 23:51:35 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.09.2
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.4
+  Git commit:       6247962
+  Built:            Wed Feb 13 00:24:14 2019
+  OS/Arch:          linux/arm64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally we have upgraded the Docker Engine to version 18.09.2. Please keep in mind, this version of the Docker Engine is provided by the Ubuntu repository. Maybe there is even a newer version available directly from the Docker open source project.&lt;/p&gt;
+
+&lt;h3 id=&#34;recommendation-install-official-docker-engine-ce&#34;&gt;Recommendation: Install official Docker Engine CE&lt;/h3&gt;
+
+&lt;p&gt;For this step I can truely recommend to use the official Docker documentation for the Community Edition. For installing Docker Engine CE on Ubuntu you can directly follow the detailled steps at &lt;a href=&#34;https://docs.docker.com/install/linux/docker-ce/ubuntu/&#34;&gt;https://docs.docker.com/install/linux/docker-ce/ubuntu/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As you can see later, Docker Engine CE is also available for ARM 64bit on Ubuntu 18.04 LTS. It&amp;rsquo;s not too complicated to set it up, just follow the installation steps in this documentation and within a few minutes you have installed the official Docker Engine!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt; Uninstall old versions&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo apt-get remove docker docker-engine docker.io containerd runc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt; Set up the repository&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 1. Update the apt package index:
+$ sudo apt-get update
+
+# 2. Install packages to allow apt to use a repository over HTTPS:
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+# 3. Add Docker’s official GPG key:
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo apt-key fingerprint 0EBFCD88
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) &amp;lt;docker@docker.com&amp;gt;
+sub   rsa4096 2017-02-22 [S]
+
+# 4. Use the following command to set up the stable repository:
+#    here select the commands for &amp;quot;arm64&amp;quot;
+$ sudo add-apt-repository \
+   &amp;quot;deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Alternatively you can also select the &amp;quot;edge&amp;quot; channel for the very latest version
+$ sudo add-apt-repository \
+   &amp;quot;deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   edge&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3:&lt;/strong&gt; Install Docker CE&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 1. Update the apt package index.
+$ sudo apt-get update
+
+# 2. Install the latest version of Docker CE and containerd
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+# 3. Add user &amp;quot;pirate&amp;quot; to the group &amp;quot;docker&amp;quot;, so we don&#39;t need sudo
+$ sudo usermod -aG docker pirate
+# Now logout and login again
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt; Show the installed Docker Engine version&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.09.5
+ API version:       1.39
+ Go version:        go1.10.8
+ Git commit:        e8ff056
+ Built:             Thu Apr 11 04:48:27 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.5
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.8
+  Git commit:       e8ff056
+  Built:            Thu Apr 11 04:11:17 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 5:&lt;/strong&gt; Run the &lt;code&gt;docker info&lt;/code&gt; command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 18.09.5
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bb71b10fd8f58240ca47fbb579b9d1028eea7c84
+runc version: 2b18fe1d885ee5083ef9f0838fee39b62d653e30
+init version: fec3683
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.140-tegra
+Operating System: Ubuntu 18.04.2 LTS
+OSType: linux
+Architecture: aarch64
+CPUs: 4
+Total Memory: 3.868GiB
+Name: jetson-nano
+ID: 4JER:EIWM:QFNF:6N2C:YUW3:YES2:RSP5:Z4D2:7PKI:YAOT:G5O7:5N25
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+Product License: Community Engine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 6:&lt;/strong&gt;  Start first Docker container&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ docker run hello-world
+Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library/hello-world
+3b4173355427: Pull complete
+Digest: sha256:92695bc579f31df7a63da6922075d0666e565ceccad16b59c3374d2cf4e8e50e
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &amp;quot;hello-world&amp;quot; image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/nvidia-jetson-nano-docker-ce/jetson-desktop-docker-ce.jpg&#34; alt=&#34;jetson-desktop-docker-ce.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;As you could see, on the Jetson Nano DevKit there is already a version of the Docker Engine installed and it&amp;rsquo;s maintained by the Ubuntu project. But this is not the latest version available and it will not get updated fast enough to include all important security fixes in time.&lt;/p&gt;
+
+&lt;p&gt;Therefore I&amp;rsquo;d like to strongly recommend to use the Docker Engine CE from the official Docker project. It&amp;rsquo;s well maintained and updated in time. All installation steps and options are also extremely well documented at &lt;a href=&#34;https://docs.docker.com/install/linux/docker-ce/ubuntu/&#34;&gt;https://docs.docker.com/install/linux/docker-ce/ubuntu/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And in case you need more help or having some technical questions about running Docker on an ARM 64bit system like the NVIDIA Jetson Nano, there is an &lt;code&gt;arm&lt;/code&gt; Slack channel available for you at the &lt;a href=&#34;https://dockercommunity.slack.com/messages/C2293P89Y&#34;&gt;DockerCommunity Slack&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>NVIDIA Jetson Nano - Install Docker Compose</title>
       <link>https://blog.hypriot.com/post/nvidia-jetson-nano-install-docker-compose/</link>
       <pubDate>Sat, 20 Apr 2019 09:51:52 +0200</pubDate>

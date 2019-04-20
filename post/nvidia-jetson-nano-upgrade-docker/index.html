@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> NVIDIA Jetson Nano - Upgrade Docker Engine &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+        <li><a href="https://blog.hypriot.com/post/donation-liberapay-support-contribute/"> DONATE </a></li>
+      
+    </ul>
+
+    <p>&copy; 2019 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>NVIDIA Jetson Nano - Upgrade Docker Engine</h1>
+    <span class="post-date">Sat, Apr 20, 2019</span>
+    <p>In our last blogposts about the <a href="https://blog.hypriot.com/post/nvidia-jetson-nano-intro/">NVIDIA Jetson Nano Developer Kit - Introduction</a> and <a href="https://blog.hypriot.com/post/nvidia-jetson-nano-install-docker-compose/">NVIDIA Jetson Nano - Install Docker Compose</a> we digged into the brand-new <strong>NVIDIA Jetson Nano Developer Kit</strong> and we know, that Docker 18.06.1-CE is already installed, but&hellip;</p>
+
+<p><img src="/images/nvidia-jetson-nano-docker-ce/jetson-desktop-login.jpg" alt="jetson-desktop-login.jpg" /></p>
+
+<p>But, this isn&rsquo;t the latest available version of the Docker Engine. So, I&rsquo;d like to point you to a few different options on how to upgrade the Docker Engine to the very latest available version for the NVIDIA Jetson Nano.</p>
+
+<p></p>
+
+<h3 id="check-the-current-docker-version">Check the current Docker Version</h3>
+
+<p>For this tutorial I&rsquo;m starting again with a freshly flashed SD card image.</p>
+
+<p>Flashing from macOS just takes a few minutes with the Hypriot flash utility, which can be found here <a href="https://github.com/hypriot/flash">https://github.com/hypriot/flash</a>.</p>
+
+<pre><code class="language-bash">$ time flash --device /dev/disk2 jetson-nano-sd-r32.1-2019-03-18.img
+
+Is /dev/disk2 correct? y
+Unmounting /dev/disk2 ...
+Unmount of all volumes on disk2 was successful
+Unmount of all volumes on disk2 was successful
+Flashing jetson-nano-sd-r32.1-2019-03-18.img to /dev/rdisk2 ...
+12.0GiB 0:03:40 [55.8MiB/s] [=======================================================================================&gt;] 100%
+0+196608 records in
+0+196608 records out
+12884901888 bytes transferred in 220.275160 secs (58494575 bytes/sec)
+Mounting Disk
+
+real	3m47.866s
+user	0m1.648s
+sys	0m30.921s
+</code></pre>
+
+<p>Next we have to attach a computer monitor via HDMI cable, mouse and keyboard and of course an Ethernet cable in order to get an internet connect. Now connecting to a micro-USB power supply and follow the instruction on the screen to perform the initial setup of the NVIDIA Jetson Nano Developer Kit. This will take around 5 to 10 minutes and we do have a new Ubuntu 18.04 desktop running on that nice 64bit ARM Cortex-A57 developer board.</p>
+
+<p><strong>Pro-Tip on using Docker client:</strong></p>
+
+<p>As we have seen in the last blogpost, we have to use sudo when we&rsquo;re calling a docker command in the shell. This can be easily resolved, we only have to issue the following command ones.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ sudo usermod -aG docker pirate
+</code></pre>
+
+<p>Next, log out and log in again or just start a new shell and we don&rsquo;t have to use sudo any more for our docker commands.</p>
+
+<p>Show the current version of the Docker Engine installed on the Nano.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.1
+ Git commit:        e68fc7a
+ Built:             Fri Jan 25 14:35:17 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.06.1-ce
+  API version:      1.38 (minimum version 1.12)
+  Go version:       go1.10.1
+  Git commit:       e68fc7a
+  Built:            Thu Jan 24 10:49:48 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+</code></pre>
+
+<p>And here we see the version <code>18.06.1-ce</code> of the Docker Engine, which is installed on the Nano SD card image <code>jetson-nano-sd-r32.1-2019-03-18.img</code>. And yes, this is by far not the latest nor the securest available version at all.</p>
+
+<h3 id="upgrade-docker-engine">Upgrade Docker Engine</h3>
+
+<p>As we&rsquo;ve seen in the previous section, the installed Docker Engine version is 18.06.01-ce. Now let&rsquo;s verify if there is already a newer version available.</p>
+
+<p>We can just use the apt utility from the Ubuntu package manager to determine the installed versions of any of the installed software packages. Here on Ubuntu 18.04 the Docker Engine is installed through the <code>docker.io</code> package.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ apt list --installed | grep docker.io
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+docker.io/bionic-security,now 18.06.1-0ubuntu1.2~18.04.1 arm64 [installed,upgradable to: 18.09.2-0ubuntu1~18.04.1]
+</code></pre>
+
+<p>We can see the newer Docker version 18.09.2 is already available in the Ubuntu repository, so we&rsquo;re going to upgrade the software package <code>docker.io</code>.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ sudo apt-get --only-upgrade install docker.io
+</code></pre>
+
+<p>At the end we were able to upgrade the Docker Engine to the very latest version which is provided by the Ubuntu repository.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.09.2
+ API version:       1.39
+ Go version:        go1.10.4
+ Git commit:        6247962
+ Built:             Tue Feb 26 23:51:35 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server:
+ Engine:
+  Version:          18.09.2
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.4
+  Git commit:       6247962
+  Built:            Wed Feb 13 00:24:14 2019
+  OS/Arch:          linux/arm64
+</code></pre>
+
+<p>Finally we have upgraded the Docker Engine to version 18.09.2. Please keep in mind, this version of the Docker Engine is provided by the Ubuntu repository. Maybe there is even a newer version available directly from the Docker open source project.</p>
+
+<h3 id="recommendation-install-official-docker-engine-ce">Recommendation: Install official Docker Engine CE</h3>
+
+<p>For this step I can truely recommend to use the official Docker documentation for the Community Edition. For installing Docker Engine CE on Ubuntu you can directly follow the detailled steps at <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a>.</p>
+
+<p>As you can see later, Docker Engine CE is also available for ARM 64bit on Ubuntu 18.04 LTS. It&rsquo;s not too complicated to set it up, just follow the installation steps in this documentation and within a few minutes you have installed the official Docker Engine!</p>
+
+<p><strong>Step 1:</strong> Uninstall old versions</p>
+
+<pre><code class="language-bash">$ sudo apt-get remove docker docker-engine docker.io containerd runc
+</code></pre>
+
+<p><strong>Step 2:</strong> Set up the repository</p>
+
+<pre><code class="language-bash"># 1. Update the apt package index:
+$ sudo apt-get update
+
+# 2. Install packages to allow apt to use a repository over HTTPS:
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+# 3. Add Docker’s official GPG key:
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo apt-key fingerprint 0EBFCD88
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   rsa4096 2017-02-22 [S]
+
+# 4. Use the following command to set up the stable repository:
+#    here select the commands for &quot;arm64&quot;
+$ sudo add-apt-repository \
+   &quot;deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+</code></pre>
+
+<pre><code class="language-bash"># Alternatively you can also select the &quot;edge&quot; channel for the very latest version
+$ sudo add-apt-repository \
+   &quot;deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   edge&quot;
+</code></pre>
+
+<p><strong>Step 3:</strong> Install Docker CE</p>
+
+<pre><code class="language-bash"># 1. Update the apt package index.
+$ sudo apt-get update
+
+# 2. Install the latest version of Docker CE and containerd
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+# 3. Add user &quot;pirate&quot; to the group &quot;docker&quot;, so we don't need sudo
+$ sudo usermod -aG docker pirate
+# Now logout and login again
+</code></pre>
+
+<p><strong>Step 4:</strong> Show the installed Docker Engine version</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ docker version
+Client:
+ Version:           18.09.5
+ API version:       1.39
+ Go version:        go1.10.8
+ Git commit:        e8ff056
+ Built:             Thu Apr 11 04:48:27 2019
+ OS/Arch:           linux/arm64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.5
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.8
+  Git commit:       e8ff056
+  Built:            Thu Apr 11 04:11:17 2019
+  OS/Arch:          linux/arm64
+  Experimental:     false
+</code></pre>
+
+<p><strong>Step 5:</strong> Run the <code>docker info</code> command</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 18.09.5
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bb71b10fd8f58240ca47fbb579b9d1028eea7c84
+runc version: 2b18fe1d885ee5083ef9f0838fee39b62d653e30
+init version: fec3683
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.140-tegra
+Operating System: Ubuntu 18.04.2 LTS
+OSType: linux
+Architecture: aarch64
+CPUs: 4
+Total Memory: 3.868GiB
+Name: jetson-nano
+ID: 4JER:EIWM:QFNF:6N2C:YUW3:YES2:RSP5:Z4D2:7PKI:YAOT:G5O7:5N25
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+Product License: Community Engine
+</code></pre>
+
+<p><strong>Step 6:</strong>  Start first Docker container</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+3b4173355427: Pull complete
+Digest: sha256:92695bc579f31df7a63da6922075d0666e565ceccad16b59c3374d2cf4e8e50e
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+
+<p><img src="/images/nvidia-jetson-nano-docker-ce/jetson-desktop-docker-ce.jpg" alt="jetson-desktop-docker-ce.jpg" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>As you could see, on the Jetson Nano DevKit there is already a version of the Docker Engine installed and it&rsquo;s maintained by the Ubuntu project. But this is not the latest version available and it will not get updated fast enough to include all important security fixes in time.</p>
+
+<p>Therefore I&rsquo;d like to strongly recommend to use the Docker Engine CE from the official Docker project. It&rsquo;s well maintained and updated in time. All installation steps and options are also extremely well documented at <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a>.</p>
+
+<p>And in case you need more help or having some technical questions about running Docker on an ARM 64bit system like the NVIDIA Jetson Nano, there is an <code>arm</code> Slack channel available for you at the <a href="https://dockercommunity.slack.com/messages/C2293P89Y">DockerCommunity Slack</a>.</p>
+
+<h3 id="feedback-please">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/nvidia-jetson-nano-upgrade-docker/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/nvidia-jetson-nano-upgrade-docker/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/nvidia-jetson-nano-upgrade-docker/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>
