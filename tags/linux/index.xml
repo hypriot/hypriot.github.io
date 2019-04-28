@@ -9,6 +9,229 @@
     <atom:link href="https://blog.hypriot.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Verify your Linux Kernel for Container Compatibility</title>
+      <link>https://blog.hypriot.com/post/verify-kernel-container-compatibility/</link>
+      <pubDate>Sun, 28 Apr 2019 08:48:50 -0700</pubDate>
+      
+      <guid>https://blog.hypriot.com/post/verify-kernel-container-compatibility/</guid>
+      <description>&lt;p&gt;Are you sure whether your Linux kernel is able to run Containers in an optimal way, or if there are still some missing kernel settings which will lead to some strange issues in the future?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/verify-kernel-container-compatibility/400px-NewTux.svg.png&#34; alt=&#34;400px-NewTux.svg.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Normally you don&amp;rsquo;t have to bother about this question. When you&amp;rsquo;re using Docker and Containers on a modern Linux system or on a public cloud offering, this has been already optimized by the Linux distribution or your cloud provider. But when you start using Containers on Embedded Devices you should verify this carefully.&lt;/p&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s learn how easy it is to verify it by yourself&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;how-can-i-verify-the-linux-kernel-for-container-compatibility&#34;&gt;How can I verify the Linux Kernel for Container Compatibility?&lt;/h3&gt;
+
+&lt;p&gt;Typically this is really an easy task, as soon as you know the right tools.&lt;/p&gt;
+
+&lt;p&gt;For running Containers you&amp;rsquo;ll need some basic settings applied to your Linux kernel. Some settings are mandatory and some others are optional and only used for specific use cases. But let&amp;rsquo;s see how we can use the right tools.&lt;/p&gt;
+
+&lt;p&gt;At the Docker open source project you can find a great bash script which does all these tests on your Linux kernel configuration and tells you within a few seconds all the required details. The script is able to read the kernel config live from a running kernel or directly from a kernel .config file as well. Now you can imagine you can verify the container compatibility also from a remote device.&lt;/p&gt;
+
+&lt;h4 id=&#34;download-check-config-sh-script&#34;&gt;Download &lt;code&gt;check-config.sh&lt;/code&gt; script&lt;/h4&gt;
+
+&lt;p&gt;Let&amp;rsquo;s download the bash script &lt;a href=&#34;https://github.com/moby/moby/blob/master/contrib/check-config.sh&#34;&gt;check-config.sh&lt;/a&gt; directly from the Moby project (yes, this is the new name for the Docker open source project).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget https://github.com/moby/moby/raw/master/contrib/check-config.sh
+$ chmod +x check-config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;verify-the-linux-kernel-directly&#34;&gt;Verify the Linux Kernel directly&lt;/h4&gt;
+
+&lt;p&gt;If you have your Linux system available you can download and run the script directly without any parameters.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ./check-config.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then you&amp;rsquo;ll get a detailled output with all kernel settings which are important for running containers.&lt;/p&gt;
+
+&lt;p&gt;If you want to verify a kernel from a remote system, you could also first extract the Linux kernel config on this system and analyse it later.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# extract the .config from a running kernel
+$ zcat /proc/config.gz &amp;gt; kernel.config
+
+$ ls -al kernel.config
+-rw-rw-r-- 1 pirate pirate 165739 Apr 28 07:26 kernel.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Hint:&lt;/strong&gt; On some Linux systems like Raspbian for the Raspberry Pi, the kernel .config is only available as a kernel module. Then you have to load the module first, using the command &lt;code&gt;sudo modprobe configs&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;verify-the-linux-kernel-from-a-config-file&#34;&gt;Verify the Linux Kernel from a .config file&lt;/h4&gt;
+
+&lt;p&gt;The kernel .config is a readable configuration file which is used to compile a new Linux kernel. Typically it will get embedded into your new kernel and therefore you can read it from the running kernel. It&amp;rsquo;s available as a file at &lt;code&gt;/proc/config.gz&lt;/code&gt; in a compressed form, so we have to use &lt;code&gt;zcat&lt;/code&gt; to extract the .config file in clear text.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ zcat /proc/config.gz | head -10
+#
+# Automatically generated file; DO NOT EDIT.
+# Linux/arm64 4.9.140 Kernel Configuration
+#
+CONFIG_ARM64=y
+CONFIG_64BIT=y
+CONFIG_ARCH_PHYS_ADDR_T_64BIT=y
+CONFIG_MMU=y
+CONFIG_DEBUG_RODATA=y
+CONFIG_ARM64_PAGE_SHIFT=12
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, let&amp;rsquo;s run the &lt;code&gt;check-config.sh&lt;/code&gt; script again and read all kernel configs from the file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ./check-config.sh kernel.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;verify-the-linux-kernel-on-nvidia-jetson-nano-devkit&#34;&gt;Verify the Linux Kernel on NVIDIA Jetson Nano DevKit&lt;/h3&gt;
+
+&lt;p&gt;As a real life example let&amp;rsquo;s now verify the Linux kernel of the brand-new Jetson Nano DevKit from NVIDIA. I already wrote a blogpost about how to install Linux for the Nano board, see here &lt;a href=&#34;https://blog.hypriot.com/post/nvidia-jetson-nano-intro/&#34;&gt;NVIDIA Jetson Nano Developer Kit - Introduction&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First we&amp;rsquo;ll check the Linux kernel version and we can see, it&amp;rsquo;s a current LTS kernel 4.9.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140-tegra #1 SMP PREEMPT Wed Mar 13 00:32:22 PDT 2019 aarch64 aarch64 aarch64 GNU/Linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s run the &lt;code&gt;check-config.sh&lt;/code&gt; script on the Nano and determine all the Container related kernel settings. We&amp;rsquo;ll get the complete output as colored text. From the screenshots here we can clearly see which of the required and optional kernel settings are already applied for the Nano&amp;rsquo;s Linux kernel.&lt;/p&gt;
+
+&lt;p&gt;In the first section &amp;ldquo;Generally Necessary&amp;rdquo; all the mandatory kernel settings are listed, and for the Nano this is completely green, all is perfect.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/verify-kernel-container-compatibility/kernel-checkconfig-nano1.jpg&#34; alt=&#34;kernel-checkconfig-nano1.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then in the second section &amp;ldquo;Optional Features&amp;rdquo; we can see that most Container related settings are applied, but a few are missing.&lt;/p&gt;
+
+&lt;p&gt;Not all of these are really important to have, but when we look into the &amp;ldquo;Network Drivers&amp;rdquo; I would recommend to include all in the kernel to avoid issues. For example, if you want to use Docker Swarm mode you have to know that &lt;code&gt;CONFIG_IPVLAN&lt;/code&gt; is mandatory - this kernel can&amp;rsquo;t run Swarm mode correctly!&lt;/p&gt;
+
+&lt;p&gt;For &amp;ldquo;Storage Drivers&amp;rdquo; you can typically ignore the missing settings for &lt;code&gt;aufs&lt;/code&gt; and &lt;code&gt;zfs&lt;/code&gt; as long as you don&amp;rsquo;t required to use these, same is true for &lt;code&gt;devicemapper&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://blog.hypriot.com/images/verify-kernel-container-compatibility/kernel-checkconfig-nano2.jpg&#34; alt=&#34;kernel-checkconfig-nano2.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;rsquo;d also like to present the output as pure ASCII text so you can easily analyse (search, copy&amp;amp;paste) it later.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pirate@jetson-nano:~$ ./check-config.sh
+info: reading kernel config from /proc/config.gz ...
+
+Generally Necessary:
+- cgroup hierarchy: properly mounted [/sys/fs/cgroup]
+- CONFIG_NAMESPACES: enabled
+- CONFIG_NET_NS: enabled
+- CONFIG_PID_NS: enabled
+- CONFIG_IPC_NS: enabled
+- CONFIG_UTS_NS: enabled
+- CONFIG_CGROUPS: enabled
+- CONFIG_CGROUP_CPUACCT: enabled
+- CONFIG_CGROUP_DEVICE: enabled
+- CONFIG_CGROUP_FREEZER: enabled
+- CONFIG_CGROUP_SCHED: enabled
+- CONFIG_CPUSETS: enabled
+- CONFIG_MEMCG: enabled
+- CONFIG_KEYS: enabled
+- CONFIG_VETH: enabled (as module)
+- CONFIG_BRIDGE: enabled
+- CONFIG_BRIDGE_NETFILTER: enabled (as module)
+- CONFIG_NF_NAT_IPV4: enabled (as module)
+- CONFIG_IP_NF_FILTER: enabled (as module)
+- CONFIG_IP_NF_TARGET_MASQUERADE: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_ADDRTYPE: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_CONNTRACK: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_IPVS: enabled (as module)
+- CONFIG_IP_NF_NAT: enabled (as module)
+- CONFIG_NF_NAT: enabled (as module)
+- CONFIG_NF_NAT_NEEDED: enabled
+- CONFIG_POSIX_MQUEUE: enabled
+
+Optional Features:
+- CONFIG_USER_NS: enabled
+- CONFIG_SECCOMP: enabled
+- CONFIG_CGROUP_PIDS: enabled
+- CONFIG_MEMCG_SWAP: enabled
+- CONFIG_MEMCG_SWAP_ENABLED: enabled
+    (cgroup swap accounting is currently enabled)
+- CONFIG_BLK_CGROUP: enabled
+- CONFIG_BLK_DEV_THROTTLING: enabled
+- CONFIG_IOSCHED_CFQ: enabled
+- CONFIG_CFQ_GROUP_IOSCHED: missing
+- CONFIG_CGROUP_PERF: enabled
+- CONFIG_CGROUP_HUGETLB: missing
+- CONFIG_NET_CLS_CGROUP: enabled
+- CONFIG_CGROUP_NET_PRIO: enabled
+- CONFIG_CFS_BANDWIDTH: enabled
+- CONFIG_FAIR_GROUP_SCHED: enabled
+- CONFIG_RT_GROUP_SCHED: enabled
+- CONFIG_IP_NF_TARGET_REDIRECT: missing
+- CONFIG_IP_VS: enabled (as module)
+- CONFIG_IP_VS_NFCT: enabled
+- CONFIG_IP_VS_PROTO_TCP: missing
+- CONFIG_IP_VS_PROTO_UDP: missing
+- CONFIG_IP_VS_RR: enabled (as module)
+- CONFIG_EXT4_FS: enabled
+- CONFIG_EXT4_FS_POSIX_ACL: enabled
+- CONFIG_EXT4_FS_SECURITY: enabled
+- Network Drivers:
+  - &amp;quot;overlay&amp;quot;:
+    - CONFIG_VXLAN: enabled
+      Optional (for encrypted networks):
+      - CONFIG_CRYPTO: enabled
+      - CONFIG_CRYPTO_AEAD: enabled
+      - CONFIG_CRYPTO_GCM: enabled
+      - CONFIG_CRYPTO_SEQIV: enabled
+      - CONFIG_CRYPTO_GHASH: enabled
+      - CONFIG_XFRM: enabled
+      - CONFIG_XFRM_USER: enabled
+      - CONFIG_XFRM_ALGO: enabled
+      - CONFIG_INET_ESP: missing
+      - CONFIG_INET_XFRM_MODE_TRANSPORT: enabled
+  - &amp;quot;ipvlan&amp;quot;:
+    - CONFIG_IPVLAN: missing
+  - &amp;quot;macvlan&amp;quot;:
+    - CONFIG_MACVLAN: enabled (as module)
+    - CONFIG_DUMMY: enabled
+  - &amp;quot;ftp,tftp client in container&amp;quot;:
+    - CONFIG_NF_NAT_FTP: enabled (as module)
+    - CONFIG_NF_CONNTRACK_FTP: enabled (as module)
+    - CONFIG_NF_NAT_TFTP: enabled (as module)
+    - CONFIG_NF_CONNTRACK_TFTP: enabled (as module)
+- Storage Drivers:
+  - &amp;quot;aufs&amp;quot;:
+    - CONFIG_AUFS_FS: missing
+  - &amp;quot;btrfs&amp;quot;:
+    - CONFIG_BTRFS_FS: enabled (as module)
+    - CONFIG_BTRFS_FS_POSIX_ACL: enabled
+  - &amp;quot;devicemapper&amp;quot;:
+    - CONFIG_BLK_DEV_DM: enabled
+    - CONFIG_DM_THIN_PROVISIONING: missing
+  - &amp;quot;overlay&amp;quot;:
+    - CONFIG_OVERLAY_FS: enabled (as module)
+  - &amp;quot;zfs&amp;quot;:
+    - /dev/zfs: missing
+    - zfs command: missing
+    - zpool command: missing
+
+Limits:
+- /proc/sys/kernel/keys/root_maxkeys: 1000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;With these easy steps we&amp;rsquo;ve covered in this short blogpost, you&amp;rsquo;re now able to verify if the Linux kernel you&amp;rsquo;re using is able to run Docker, containerd, Kubernetes or k3s in an optimal way.&lt;/p&gt;
+
+&lt;p&gt;Just keep this in mind whenever you&amp;rsquo;re discovering some strange errors with your Container Run-Time on a new Linux system. This is especially important when you run Containers on an Embedded Device. We&amp;rsquo;ve discovered a lot of missing kernel settings in the early days with the Raspberry Pi. Even today the Raspberry Pi kernel which comes with the default Raspbian is not fully optimized to run Containers, therefore the image built from HypriotOS is still a better alternative when you wish to run Containers on these devices.&lt;/p&gt;
+
+&lt;p&gt;And even when Docker runs out-of-the-box on a brandnew device like it does on the Jetson Nano, it&amp;rsquo;s always a good idea to verify the Linux kernel - prior to get into some strange errors.&lt;/p&gt;
+
+&lt;p&gt;In a later blogpost we&amp;rsquo;ll optimize the stock Linux kernel for the brand-new NVIDIA Jetson Nano DevKit and we&amp;rsquo;ll show you how to build your own customized kernel for this great board.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback-please&#34;&gt;Feedback, please&lt;/h3&gt;
+
+&lt;p&gt;As always use the comments below to give us feedback and share it on Twitter or Facebook.&lt;/p&gt;
+
+&lt;p&gt;Please send us your feedback on our &lt;a href=&#34;https://gitter.im/hypriot/talk&#34;&gt;Gitter channel&lt;/a&gt; or tweet your thoughts and ideas on this project at &lt;a href=&#34;https://twitter.com/HypriotTweets&#34;&gt;@HypriotTweets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dieter &lt;a href=&#34;https://twitter.com/Quintus23M&#34;&gt;@Quintus23M&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker Engine on Intel Linux runs Arm Containers</title>
       <link>https://blog.hypriot.com/post/docker-intel-runs-arm-containers/</link>
       <pubDate>Sat, 27 Apr 2019 10:48:50 -0700</pubDate>

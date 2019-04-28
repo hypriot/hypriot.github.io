@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Verify your Linux Kernel for Container Compatibility &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+        <li><a href="https://blog.hypriot.com/post/donation-liberapay-support-contribute/"> DONATE </a></li>
+      
+    </ul>
+
+    <p>&copy; 2019 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Verify your Linux Kernel for Container Compatibility</h1>
+    <span class="post-date">Sun, Apr 28, 2019</span>
+    <p>Are you sure whether your Linux kernel is able to run Containers in an optimal way, or if there are still some missing kernel settings which will lead to some strange issues in the future?</p>
+
+<p><img src="/images/verify-kernel-container-compatibility/400px-NewTux.svg.png" alt="400px-NewTux.svg.png" /></p>
+
+<p>Normally you don&rsquo;t have to bother about this question. When you&rsquo;re using Docker and Containers on a modern Linux system or on a public cloud offering, this has been already optimized by the Linux distribution or your cloud provider. But when you start using Containers on Embedded Devices you should verify this carefully.</p>
+
+<p>So, let&rsquo;s learn how easy it is to verify it by yourself&hellip;</p>
+
+<p></p>
+
+<h3 id="how-can-i-verify-the-linux-kernel-for-container-compatibility">How can I verify the Linux Kernel for Container Compatibility?</h3>
+
+<p>Typically this is really an easy task, as soon as you know the right tools.</p>
+
+<p>For running Containers you&rsquo;ll need some basic settings applied to your Linux kernel. Some settings are mandatory and some others are optional and only used for specific use cases. But let&rsquo;s see how we can use the right tools.</p>
+
+<p>At the Docker open source project you can find a great bash script which does all these tests on your Linux kernel configuration and tells you within a few seconds all the required details. The script is able to read the kernel config live from a running kernel or directly from a kernel .config file as well. Now you can imagine you can verify the container compatibility also from a remote device.</p>
+
+<h4 id="download-check-config-sh-script">Download <code>check-config.sh</code> script</h4>
+
+<p>Let&rsquo;s download the bash script <a href="https://github.com/moby/moby/blob/master/contrib/check-config.sh">check-config.sh</a> directly from the Moby project (yes, this is the new name for the Docker open source project).</p>
+
+<pre><code class="language-bash">$ wget https://github.com/moby/moby/raw/master/contrib/check-config.sh
+$ chmod +x check-config.sh
+</code></pre>
+
+<h4 id="verify-the-linux-kernel-directly">Verify the Linux Kernel directly</h4>
+
+<p>If you have your Linux system available you can download and run the script directly without any parameters.</p>
+
+<pre><code class="language-bash">$ ./check-config.sh
+</code></pre>
+
+<p>Then you&rsquo;ll get a detailled output with all kernel settings which are important for running containers.</p>
+
+<p>If you want to verify a kernel from a remote system, you could also first extract the Linux kernel config on this system and analyse it later.</p>
+
+<pre><code class="language-bash"># extract the .config from a running kernel
+$ zcat /proc/config.gz &gt; kernel.config
+
+$ ls -al kernel.config
+-rw-rw-r-- 1 pirate pirate 165739 Apr 28 07:26 kernel.config
+</code></pre>
+
+<p><strong>Hint:</strong> On some Linux systems like Raspbian for the Raspberry Pi, the kernel .config is only available as a kernel module. Then you have to load the module first, using the command <code>sudo modprobe configs</code>.</p>
+
+<h4 id="verify-the-linux-kernel-from-a-config-file">Verify the Linux Kernel from a .config file</h4>
+
+<p>The kernel .config is a readable configuration file which is used to compile a new Linux kernel. Typically it will get embedded into your new kernel and therefore you can read it from the running kernel. It&rsquo;s available as a file at <code>/proc/config.gz</code> in a compressed form, so we have to use <code>zcat</code> to extract the .config file in clear text.</p>
+
+<pre><code class="language-bash">$ zcat /proc/config.gz | head -10
+#
+# Automatically generated file; DO NOT EDIT.
+# Linux/arm64 4.9.140 Kernel Configuration
+#
+CONFIG_ARM64=y
+CONFIG_64BIT=y
+CONFIG_ARCH_PHYS_ADDR_T_64BIT=y
+CONFIG_MMU=y
+CONFIG_DEBUG_RODATA=y
+CONFIG_ARM64_PAGE_SHIFT=12
+...
+</code></pre>
+
+<p>Next, let&rsquo;s run the <code>check-config.sh</code> script again and read all kernel configs from the file.</p>
+
+<pre><code class="language-bash">$ ./check-config.sh kernel.config
+</code></pre>
+
+<h3 id="verify-the-linux-kernel-on-nvidia-jetson-nano-devkit">Verify the Linux Kernel on NVIDIA Jetson Nano DevKit</h3>
+
+<p>As a real life example let&rsquo;s now verify the Linux kernel of the brand-new Jetson Nano DevKit from NVIDIA. I already wrote a blogpost about how to install Linux for the Nano board, see here <a href="https://blog.hypriot.com/post/nvidia-jetson-nano-intro/">NVIDIA Jetson Nano Developer Kit - Introduction</a>.</p>
+
+<p>First we&rsquo;ll check the Linux kernel version and we can see, it&rsquo;s a current LTS kernel 4.9.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140-tegra #1 SMP PREEMPT Wed Mar 13 00:32:22 PDT 2019 aarch64 aarch64 aarch64 GNU/Linux
+</code></pre>
+
+<p>Now, let&rsquo;s run the <code>check-config.sh</code> script on the Nano and determine all the Container related kernel settings. We&rsquo;ll get the complete output as colored text. From the screenshots here we can clearly see which of the required and optional kernel settings are already applied for the Nano&rsquo;s Linux kernel.</p>
+
+<p>In the first section &ldquo;Generally Necessary&rdquo; all the mandatory kernel settings are listed, and for the Nano this is completely green, all is perfect.</p>
+
+<p><img src="/images/verify-kernel-container-compatibility/kernel-checkconfig-nano1.jpg" alt="kernel-checkconfig-nano1.jpg" /></p>
+
+<p>Then in the second section &ldquo;Optional Features&rdquo; we can see that most Container related settings are applied, but a few are missing.</p>
+
+<p>Not all of these are really important to have, but when we look into the &ldquo;Network Drivers&rdquo; I would recommend to include all in the kernel to avoid issues. For example, if you want to use Docker Swarm mode you have to know that <code>CONFIG_IPVLAN</code> is mandatory - this kernel can&rsquo;t run Swarm mode correctly!</p>
+
+<p>For &ldquo;Storage Drivers&rdquo; you can typically ignore the missing settings for <code>aufs</code> and <code>zfs</code> as long as you don&rsquo;t required to use these, same is true for <code>devicemapper</code>.</p>
+
+<p><img src="/images/verify-kernel-container-compatibility/kernel-checkconfig-nano2.jpg" alt="kernel-checkconfig-nano2.jpg" /></p>
+
+<p>Here I&rsquo;d also like to present the output as pure ASCII text so you can easily analyse (search, copy&amp;paste) it later.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ ./check-config.sh
+info: reading kernel config from /proc/config.gz ...
+
+Generally Necessary:
+- cgroup hierarchy: properly mounted [/sys/fs/cgroup]
+- CONFIG_NAMESPACES: enabled
+- CONFIG_NET_NS: enabled
+- CONFIG_PID_NS: enabled
+- CONFIG_IPC_NS: enabled
+- CONFIG_UTS_NS: enabled
+- CONFIG_CGROUPS: enabled
+- CONFIG_CGROUP_CPUACCT: enabled
+- CONFIG_CGROUP_DEVICE: enabled
+- CONFIG_CGROUP_FREEZER: enabled
+- CONFIG_CGROUP_SCHED: enabled
+- CONFIG_CPUSETS: enabled
+- CONFIG_MEMCG: enabled
+- CONFIG_KEYS: enabled
+- CONFIG_VETH: enabled (as module)
+- CONFIG_BRIDGE: enabled
+- CONFIG_BRIDGE_NETFILTER: enabled (as module)
+- CONFIG_NF_NAT_IPV4: enabled (as module)
+- CONFIG_IP_NF_FILTER: enabled (as module)
+- CONFIG_IP_NF_TARGET_MASQUERADE: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_ADDRTYPE: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_CONNTRACK: enabled (as module)
+- CONFIG_NETFILTER_XT_MATCH_IPVS: enabled (as module)
+- CONFIG_IP_NF_NAT: enabled (as module)
+- CONFIG_NF_NAT: enabled (as module)
+- CONFIG_NF_NAT_NEEDED: enabled
+- CONFIG_POSIX_MQUEUE: enabled
+
+Optional Features:
+- CONFIG_USER_NS: enabled
+- CONFIG_SECCOMP: enabled
+- CONFIG_CGROUP_PIDS: enabled
+- CONFIG_MEMCG_SWAP: enabled
+- CONFIG_MEMCG_SWAP_ENABLED: enabled
+    (cgroup swap accounting is currently enabled)
+- CONFIG_BLK_CGROUP: enabled
+- CONFIG_BLK_DEV_THROTTLING: enabled
+- CONFIG_IOSCHED_CFQ: enabled
+- CONFIG_CFQ_GROUP_IOSCHED: missing
+- CONFIG_CGROUP_PERF: enabled
+- CONFIG_CGROUP_HUGETLB: missing
+- CONFIG_NET_CLS_CGROUP: enabled
+- CONFIG_CGROUP_NET_PRIO: enabled
+- CONFIG_CFS_BANDWIDTH: enabled
+- CONFIG_FAIR_GROUP_SCHED: enabled
+- CONFIG_RT_GROUP_SCHED: enabled
+- CONFIG_IP_NF_TARGET_REDIRECT: missing
+- CONFIG_IP_VS: enabled (as module)
+- CONFIG_IP_VS_NFCT: enabled
+- CONFIG_IP_VS_PROTO_TCP: missing
+- CONFIG_IP_VS_PROTO_UDP: missing
+- CONFIG_IP_VS_RR: enabled (as module)
+- CONFIG_EXT4_FS: enabled
+- CONFIG_EXT4_FS_POSIX_ACL: enabled
+- CONFIG_EXT4_FS_SECURITY: enabled
+- Network Drivers:
+  - &quot;overlay&quot;:
+    - CONFIG_VXLAN: enabled
+      Optional (for encrypted networks):
+      - CONFIG_CRYPTO: enabled
+      - CONFIG_CRYPTO_AEAD: enabled
+      - CONFIG_CRYPTO_GCM: enabled
+      - CONFIG_CRYPTO_SEQIV: enabled
+      - CONFIG_CRYPTO_GHASH: enabled
+      - CONFIG_XFRM: enabled
+      - CONFIG_XFRM_USER: enabled
+      - CONFIG_XFRM_ALGO: enabled
+      - CONFIG_INET_ESP: missing
+      - CONFIG_INET_XFRM_MODE_TRANSPORT: enabled
+  - &quot;ipvlan&quot;:
+    - CONFIG_IPVLAN: missing
+  - &quot;macvlan&quot;:
+    - CONFIG_MACVLAN: enabled (as module)
+    - CONFIG_DUMMY: enabled
+  - &quot;ftp,tftp client in container&quot;:
+    - CONFIG_NF_NAT_FTP: enabled (as module)
+    - CONFIG_NF_CONNTRACK_FTP: enabled (as module)
+    - CONFIG_NF_NAT_TFTP: enabled (as module)
+    - CONFIG_NF_CONNTRACK_TFTP: enabled (as module)
+- Storage Drivers:
+  - &quot;aufs&quot;:
+    - CONFIG_AUFS_FS: missing
+  - &quot;btrfs&quot;:
+    - CONFIG_BTRFS_FS: enabled (as module)
+    - CONFIG_BTRFS_FS_POSIX_ACL: enabled
+  - &quot;devicemapper&quot;:
+    - CONFIG_BLK_DEV_DM: enabled
+    - CONFIG_DM_THIN_PROVISIONING: missing
+  - &quot;overlay&quot;:
+    - CONFIG_OVERLAY_FS: enabled (as module)
+  - &quot;zfs&quot;:
+    - /dev/zfs: missing
+    - zfs command: missing
+    - zpool command: missing
+
+Limits:
+- /proc/sys/kernel/keys/root_maxkeys: 1000000
+</code></pre>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>With these easy steps we&rsquo;ve covered in this short blogpost, you&rsquo;re now able to verify if the Linux kernel you&rsquo;re using is able to run Docker, containerd, Kubernetes or k3s in an optimal way.</p>
+
+<p>Just keep this in mind whenever you&rsquo;re discovering some strange errors with your Container Run-Time on a new Linux system. This is especially important when you run Containers on an Embedded Device. We&rsquo;ve discovered a lot of missing kernel settings in the early days with the Raspberry Pi. Even today the Raspberry Pi kernel which comes with the default Raspbian is not fully optimized to run Containers, therefore the image built from HypriotOS is still a better alternative when you wish to run Containers on these devices.</p>
+
+<p>And even when Docker runs out-of-the-box on a brandnew device like it does on the Jetson Nano, it&rsquo;s always a good idea to verify the Linux kernel - prior to get into some strange errors.</p>
+
+<p>In a later blogpost we&rsquo;ll optimize the stock Linux kernel for the brand-new NVIDIA Jetson Nano DevKit and we&rsquo;ll show you how to build your own customized kernel for this great board.</p>
+
+<h3 id="feedback-please">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/verify-kernel-container-compatibility/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/verify-kernel-container-compatibility/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/verify-kernel-container-compatibility/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>
