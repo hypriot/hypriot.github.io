@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> NVIDIA Jetson Nano - Docker optimized Linux Kernel &middot; Docker Pirates ARMed with explosive stuff </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/hypriot.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Docker Pirates ARMed with explosive stuff" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59194692-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-logo">
+      <a href="/"><img src="/images/logo_tr.png" /></a>
+    </div>
+    <div class="sidebar-about">
+      <h1><a href="/">Docker Pirates ARMed with explosive stuff</a></h1>
+      <p class="lead">
+       Roaming the seven seas in search for golden container plunder. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">HOME</a> </li>
+      
+        <li><a href="/getting-started-with-docker-on-your-arm-device/"> GETTING STARTED </a></li>
+      
+        <li><a href="/downloads/"> DOWNLOADS </a></li>
+      
+        <li><a href="/faq"> FAQ </a></li>
+      
+        <li><a href="https://gitter.im/hypriot/talk"> COMMUNITY </a></li>
+      
+        <li><a href="/about"> ABOUT US </a></li>
+      
+        <li><a href="/crew"> CREW </a></li>
+      
+        <li><a href="https://blog.hypriot.com/post/donation-liberapay-support-contribute/"> DONATE </a></li>
+      
+    </ul>
+
+    <p>&copy; 2019 Hypriot </p>
+    <p><a href="/legal_notice" style="font-size: 1rem;">Legal Notice</a></p>
+    <div class="edit-github" id="edit-github-id">
+        <p>
+          <a href="https://github.com/hypriot/blog"><img src="/images/github-logo.png" style="float:left; width:9%; height:9%; padding-right: 8px; padding-top: 6px; align: center; ">Edit this blog on GitHub</img></a>
+        </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>NVIDIA Jetson Nano - Docker optimized Linux Kernel</h1>
+    <span class="post-date">Sat, May 4, 2019</span>
+    <p>Despite the fact that the NVIDIA Jetson Nano DevKit comes with Docker Engine preinstalled and you can run containers just out-of-the-box on this great AI and Robotics enabled board, there are still some important kernel settings missing to run Docker Swarm mode, Kubernetes or k3s correctly.</p>
+
+<p><img src="/images/nvidia-jetson-nano-build-kernel-docker-optimized/jetson-nano-board-docker-whale.jpg" alt="jetson-nano-board-docker-whale.jpg" /></p>
+
+<p>So, let&rsquo;s try to fix this&hellip;</p>
+
+<p></p>
+
+<h3 id="analyzing-the-linux-kernel">Analyzing the Linux Kernel</h3>
+
+<p>In my last blogpost <a href="https://blog.hypriot.com/post/verify-kernel-container-compatibility/">Verify your Linux Kernel for Container Compatibility</a>, I already shared all the details how you can easily verify the Linux kernel for all Container related kernel settings. So, this first part of analyzing the capabilities of the stock Linux kernel 4.9.x provided by NVIDIA is already done and documented. And this was an easy task as well, so everyone who&rsquo;s interested in these details can repeat the task at his/her own device.</p>
+
+<p>Let&rsquo;s recap what we did found. Especially there is one important setting which will be used for networking. This feature called &ldquo;IPVLAN&rdquo;, is required for Docker Swarm mode and it&rsquo;s also used for networking in Kubernetes and k3s.</p>
+
+<h3 id="building-your-own-linux-kernel">Building your own Linux Kernel</h3>
+
+<p>Anyway, even when we&rsquo;d like to include or change only a single kernel setting, we have to customize the kernel configuration and have to compile and build our own Linux kernel. This is typically a common task for a desktop Linux system, but can be pretty ugly and cumbersome if you have to build the kernel for an Embedded Device.</p>
+
+<p>When we look back to all the other NVIDIA Jetson boards, like the TK1, TX1 and TX2, this requires a second Linux machine, running Ubuntu 14.04 or 16.04 on an Intel CPU. Then setting up a complete build system for cross-compiling and all these stuff. Honestly, this is a well-known approach for an Embedded Developer, but the good thing now for the Jetson Nano DevKit this is not required any more.</p>
+
+<p>Here the good news: you can customize and build your own Linux kernel directly on the Jetson Nano DevKit! You only need an internet connection and some time to perform all steps on your own. BTW, and this is another chance to learn something new.</p>
+
+<h3 id="preparing-the-build-environment">Preparing the Build Environment</h3>
+
+<p>Before we&rsquo;re able to compile the Linux kernel on the Jetson Nano, we have to make sure we do have all required build tools installed. Here is all it takes, with a fast internet connection this is done within a few minutes only.</p>
+
+<pre><code class="language-bash">$ sudo apt-get update
+$ sudo apt-get install -y libncurses5-dev
+</code></pre>
+
+<h3 id="download-linux-kernel-sources-for-jetson-nano">Download Linux Kernel Sources for Jetson Nano</h3>
+
+<p>Next, we&rsquo;ll need to find and download the sources for the Linux kernel for the Jetson Nano DevKit directly from the NVIDIA website. The current version as writing this blogpost is NVIDIA Linux4Tegra Release r32.1 or short L4T 32.1. Just follow this link <a href="https://developer.nvidia.com/embedded/linux-tegra">https://developer.nvidia.com/embedded/linux-tegra</a> and select at topic &ldquo;32.1 Driver Details&rdquo; the referenced download link for &ldquo;Jetson Nano&rdquo;, &ldquo;SOURCES&rdquo; and &ldquo;BSP Sources&rdquo;.</p>
+
+<p>We can also directly download this package to the Jetson Nano. But please be aware that this download link can change over time, so verify it carefully.</p>
+
+<pre><code class="language-bash">$ cd
+$ mkdir -p nano-bsp-sources
+$ cd nano-bsp-sources
+$ wget https://developer.download.nvidia.com/embedded/L4T/r32_Release_v1.0/jetson-nano/BSP/Jetson-Nano-public_sources.tbz2
+$ ls -alh Jetson-Nano-public_sources.tbz2
+-rw-rw-r-- 1 pirate pirate 133M Mar 16 06:46 Jetson-Nano-public_sources.tbz2
+</code></pre>
+
+<p>Now extract the kernel source package &ldquo;kernel_src.tbz2&rdquo; from the downloaded file.</p>
+
+<pre><code class="language-bash">$ tar xvf Jetson-Nano-public_sources.tbz2 public_sources/kernel_src.tbz2
+$ mv public_sources/kernel_src.tbz2 ~/
+$ cd
+$ ls -alh ~/kernel_src.tbz2
+-rw-r--r-- 1 pirate pirate 117M Mar 13 08:45 /home/pirate/kernel_src.tbz2
+</code></pre>
+
+<p>You may now free some disk space and remove all the downloads, as we don&rsquo;t need it any more.</p>
+
+<pre><code class="language-bash">$ rm -fr ~/nano-bsp-sources/
+</code></pre>
+
+<p>Last step, please extract the kernel source tree.</p>
+
+<pre><code class="language-bash">$ cd
+$ tar xvf ./kernel_src.tbz2
+</code></pre>
+
+<h3 id="compile-the-default-linux-kernel">Compile the default Linux Kernel</h3>
+
+<p>Cool, we have now all the Linux kernel source tree for the Jetson Nano DevKit downloaded and extracted.</p>
+
+<p>As the next step, I&rsquo;d recommend to first compile the default unmodified kernel in order to verify that we do have all the build dependencies installed and this way, we&rsquo;ll also get familiar with the kernel compiling.</p>
+
+<p>Before we can start the compile job, we have to make sure to use the correct kernel configuration file. This file &ldquo;.config&rdquo; is missing in the provided kernel source tree, but we can directly get it from our running Linux kernel on the Jetson Nano. This .config file can be found as kernel file at &ldquo;/proc/config.gz&rdquo; in a compressed form.</p>
+
+<pre><code class="language-bash">$ cd ~/kernel/kernel-4.9
+$ zcat /proc/config.gz &gt; .config
+</code></pre>
+
+<p>Now, let&rsquo;s verify the content of the Linux kernel .config file.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~/kernel/kernel-4.9$ head -10 .config
+#
+# Automatically generated file; DO NOT EDIT.
+# Linux/arm64 4.9.140 Kernel Configuration
+#
+CONFIG_ARM64=y
+CONFIG_64BIT=y
+CONFIG_ARCH_PHYS_ADDR_T_64BIT=y
+CONFIG_MMU=y
+CONFIG_DEBUG_RODATA=y
+CONFIG_ARM64_PAGE_SHIFT=12
+...
+</code></pre>
+
+<p>As you can see, it&rsquo;s a Kernel Configuration for Linux kernel version 4.9.140 and for ARM 64-bit architecture.</p>
+
+<p>Start the kernel compile job. As we do have 4x cores available on the Nano, we&rsquo;d like to keep the CPU busy and using 5x parallel compile tasks.</p>
+
+<pre><code class="language-bash">$ make prepare
+$ make modules_prepare
+
+# Use 5x parallel compile tasks
+# Compile kernel as an image file
+$ time make -j5 Image
+...
+real	28m13,235s
+user	91m48,700s
+sys	7m46,240s
+
+# List newly compiled kernel image
+$ ls -alh arch/arm64/boot/Image
+-rw-rw-r-- 1 pirate pirate 33M May  4 00:14 arch/arm64/boot/Image
+
+# Compile all kernel modules
+$ time make -j5 modules
+...
+real	29m15,621s
+user	92m41,176s
+sys	8m18,404s
+</code></pre>
+
+<p>The Nano CPU&rsquo;s are pretty busy while compiling the kernel and kernel modules.</p>
+
+<p><img src="/images/nvidia-jetson-nano-build-kernel-docker-optimized/jetson-nano-board-compile-kernel.jpg" alt="jetson-nano-board-compile-kernel.jpg" /></p>
+
+<p>The build/compile job will take around 60 minutes in total, but the good thing is, all happens directly on your Jetson Nano DevKit. No other expensive equipment is required at all, just an internet connection and some of your time.</p>
+
+<h3 id="install-our-newly-built-linux-kernel-and-modules">Install our newly built Linux Kernel and Modules</h3>
+
+<p>After these pretty long compile jobs for generating our own Linux kernel and kernel modules, we are ready to install the kernel and verify if it&rsquo;s able to boot correctly. Therefore we should make a backup of the old kernel first, then install the new kernel and also install all newly built kernel modules.</p>
+
+<p>Before we install the new kernel and boot the Jetson Nano, let&rsquo;s check the default Linux kernel version. Then we can compare it later to our own kernel.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140-tegra #1 SMP PREEMPT Wed Mar 13 00:32:22 PDT 2019 aarch64 aarch64 aarch64 GNU/Linux
+</code></pre>
+
+<p>Here is also a ASCIINEMA recording of a <code>check-config.sh</code> verification done with the default kernel.
+<a href="https://asciinema.org/a/244237?t=0:44"><img src="https://asciinema.org/a/244237.svg" alt="asciicast" /></a></p>
+
+<p>As we can see, we do have a Linux kernel version &ldquo;4.9.140-tegra&rdquo;. This one was compiled at &ldquo;Wed Mar 13 00:32:22 PDT 2019&rdquo; and it&rsquo;s the default kernel provided by NVIDIA for the Jetson Nano.</p>
+
+<p>Now, install our new kernel and kernel modules.</p>
+
+<pre><code class="language-bash"># Backup the old kernel image file
+$ sudo cp /boot/Image /boot/Image.original
+
+# Install modules and kernel image
+$ cd ~/kernel/kernel-4.9
+$ sudo make modules_install
+$ sudo cp arch/arm64/boot/Image /boot/Image
+
+# Verify the kernel images
+pirate@jetson-nano:~/kernel/kernel-4.9$ ls -alh /boot/Image*
+-rw-r--r-- 1 root root 33M May  4 00:55 /boot/Image
+-rw-r--r-- 1 root root 33M May  4 00:49 /boot/Image.original
+</code></pre>
+
+<p>Now, reboot the Nano and check the kernel again.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140 #1 SMP PREEMPT Sat May 4 00:12:56 CEST 2019 aarch64 aarch64 aarch64 GNU/Linux
+</code></pre>
+
+<p>As you can see, our newly compiled kernel is working. The kernel version has changed to &ldquo;4.9.140&rdquo;, note the missing trailing &ldquo;-tegra&rdquo; which indicates this build is a custom build. And the compile date/time has also changed to &ldquo;Sat May 4 00:12:56 CEST 2019&rdquo;.</p>
+
+<p><strong>Hint:</strong> Please remember, every time you do change a kernel setting and compile a new kernel, you have to install the kernel image file AND the kernel modules.</p>
+
+<h3 id="customizing-the-linux-kernel-configuration">Customizing the Linux Kernel Configuration</h3>
+
+<p>When it comes to the point to modify or customize the Linux kernel configuration, then this can get pretty complicated when you don&rsquo;t know where to start. First of all, it&rsquo;s a very bad idea to edit the .config file directly with an editor. Please, NEVER DO THIS - seriously!</p>
+
+<p>The correct way to customize the kernel .config file is, to use the right tooling. One tool which is already built-in and available even in your bash shell (works also via ssh), is the tool <code>menuconfig</code>. Therefore we already installed the build dependency &ldquo;libncurses5-dev&rdquo; at the beginning.</p>
+
+<p>I don&rsquo;t want to go into all details on how to use <code>menuconfig</code>, therefore here are the basic commands to start it and then I did recorded an ASCIINEMA to change the setting for &ldquo;IPVLAN&rdquo;. I think then you&rsquo;ll should get a good idea how this works.</p>
+
+<pre><code class="language-bash"># Backup the kernel config
+$ cd ~/kernel/kernel-4.9
+$ cp .config kernel.config.original
+
+$ make menuconfig
+</code></pre>
+
+<p>ASCIINEMA recording on how to include the &ldquo;IPVLAN&rdquo; kernel setting.
+<a href="https://asciinema.org/a/244246?t=1:15"><img src="https://asciinema.org/a/244246.svg" alt="asciicast" /></a></p>
+
+<p>Finally let&rsquo;s re-compile the kernel and the kernel modules and install them, like we did before.</p>
+
+<pre><code class="language-bash">$ cd ~/kernel/kernel-4.9
+
+# Prepare the kernel build
+$ make prepare
+$ make modules_prepare
+
+# Compile kernel image and kernel modules
+$ time make -j5 Image
+$ time make -j5 modules
+
+# Install modules and kernel image
+$ sudo make modules_install
+$ sudo cp arch/arm64/boot/Image /boot/Image
+</code></pre>
+
+<p>Reboot the Nano and check the kernel again.</p>
+
+<h3 id="fast-forward-fully-container-optimized-kernel-configuration">Fast Forward - Fully Container Optimized Kernel Configuration</h3>
+
+<p>As you have learned here in this tutorial, you&rsquo;re now able to apply more and more settings to your kernel configuration. But this will take some time for sure.</p>
+
+<p>In order to save you a lot of time and efforts, I&rsquo;ve already optimized the Linux kernel in all details. Here you can find a public <a href="https://gist.githubusercontent.com/DieterReuter/a7d07445c9d62b45d9151c22b446c59b/">Gist at Github</a> with my resulting kernel .config. You can download it directly to your Nano and compile your own Linux kernel with this configuration.</p>
+
+<pre><code class="language-bash"># Download the fully container optimized kernel configuration file
+$ cd ~/kernel/kernel-4.9
+$ wget https://gist.githubusercontent.com/DieterReuter/a7d07445c9d62b45d9151c22b446c59b/raw/6decc91cc764ec0be8582186a34f60ea83fa89db/kernel.config.fully-container-optimized 
+$ cp kernel.config.fully-container-optimized .config
+
+# Prepare the kernel build
+$ make prepare
+$ make modules_prepare
+
+# Compile kernel image and kernel modules
+$ time make -j5 Image
+$ time make -j5 modules
+
+# Install modules and kernel image
+$ sudo make modules_install
+$ sudo cp arch/arm64/boot/Image /boot/Image
+</code></pre>
+
+<p>Now, reboot the Nano and check the kernel again.</p>
+
+<pre><code class="language-bash">pirate@jetson-nano:~$ uname -a
+Linux jetson-nano 4.9.140 #2 SMP PREEMPT Sat May 4 02:17:23 CEST 2019 aarch64 aarch64 aarch64 GNU/Linux
+
+pirate@jetson-nano:~$ ls -al /boot/Image*
+-rw-r--r-- 1 root root 34381832 May  4 03:13 /boot/Image
+-rw-r--r-- 1 root root 34048008 May  4 00:49 /boot/Image.original
+</code></pre>
+
+<p>ASCIINEMA recording of the final run of <code>check-config.sh</code> with the fully optimized kernel for running Containers on the Jetson Nano DevKit.
+<a href="https://asciinema.org/a/244250?t=1:13"><img src="https://asciinema.org/a/244250.svg" alt="asciicast" /></a></p>
+
+<p><strong>Result: An almost perfect Linux kernel to run Containers on the NVIDIA Jetson Nano!</strong></p>
+
+<p><img src="/images/nvidia-jetson-nano-build-kernel-docker-optimized/jetson-nano-board-docker-running2.jpg" alt="jetson-nano-board-docker-running2.jpg" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>As you could learn with this short, but highly technical tutorial, you&rsquo;re able to compile your own customized Linux kernel directly on the Jetson Nano DevKit without the need of an additional and maybe expensiv development machine. All can be done within an hour or two, and you have now the ability to change kernel settings whenever you want to. Just customize the kernel .config file, compile a new kernel and kernel modules and install it on your Nano.</p>
+
+<p>This way you&rsquo;re now able to optimize the kernel for all your needs. For running Containers on the Nano with the help of Docker, Kubernetes or k3s, you&rsquo;re now well prepared and know how to do this by yourself.</p>
+
+<p>Once the Linux kernel is fully optimized with all important Container related kernel settings, you can run Docker Swarm mode, Kubernetes and k3s with all features on that great ARM board from NVIDIA.</p>
+
+<p>Finally, May the 4th be with You!
+<img src="/images/nvidia-jetson-nano-build-kernel-docker-optimized/may-the-4th-be-with-you.jpg" alt="may-the-4th-be-with-you.jpg" /></p>
+
+<h3 id="feedback-please">Feedback, please</h3>
+
+<p>As always use the comments below to give us feedback and share it on Twitter or Facebook.</p>
+
+<p>Please send us your feedback on our <a href="https://gitter.im/hypriot/talk">Gitter channel</a> or tweet your thoughts and ideas on this project at <a href="https://twitter.com/HypriotTweets">@HypriotTweets</a>.</p>
+
+<p>Dieter <a href="https://twitter.com/Quintus23M">@Quintus23M</a></p>
+    <div class="social-sharing">
+  
+<div class="social-sharing-twitter" style="float: left;">
+  <a class="twitter-share-button"
+    href="https://twitter.com/share"
+    data-url="https://blog.hypriot.com/post/nvidia-jetson-nano-build-kernel-docker-optimized/"
+    data-lang="en"
+    data-show-count="true"
+    data-via="HypriotTweets">
+  Tweet
+  </a>
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+</div>
+
+  
+<div class="social-sharing-facebook" style="float: left;">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=599115553447708";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-share-button" data-href="https://blog.hypriot.com/post/nvidia-jetson-nano-build-kernel-docker-optimized/" data-layout="button_count"></div>
+</div>
+
+  
+<div class="social-sharing-google">
+  <script >
+    window.___gcfg = {
+      lang: 'en-US',
+      parsetags: 'onload'
+    };
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <div class="g-plus" data-action="share" data-annotation="bubble" data-width="200" data-href="https://blog.hypriot.com/post/nvidia-jetson-nano-build-kernel-docker-optimized/"></div>
+</div>
+
+</div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'hypriot';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hypriot.com/post/nvidia-jetson-nano-build-kernel-docker-optimized/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/post/verify-kernel-container-compatibility/</loc>
     <lastmod>2019-04-28T08:48:50-07:00</lastmod>
   </url>
@@ -666,13 +671,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/compatibility/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/compatibility/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -702,13 +707,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/container/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/container/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -738,13 +743,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/docker/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/docker/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -810,7 +815,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1141,6 +1146,18 @@
   </url>
   
   <url>
+    <loc>https://blog.hypriot.com/tags/ipvlan/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/ipvlan/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/tags/jenkins/</loc>
     <lastmod>2016-03-20T23:00:00+01:00</lastmod>
     <priority>0</priority>
@@ -1159,26 +1176,38 @@
   </url>
   
   <url>
+    <loc>https://blog.hypriot.com/tags/k3s/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/k3s/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hypriot.com/tags/k8s/</loc>
-    <lastmod>2017-01-11T14:03:34+01:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/k8s/</loc>
-    <lastmod>2017-01-11T14:03:34+01:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/tags/kernel/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/kernel/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1196,13 +1225,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/kubernetes/</loc>
-    <lastmod>2017-01-11T14:03:34+01:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/kubernetes/</loc>
-    <lastmod>2017-01-11T14:03:34+01:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1220,13 +1249,13 @@
   
   <url>
     <loc>https://blog.hypriot.com/tags/linux/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.hypriot.com/categories/linux/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1323,6 +1352,18 @@
   <url>
     <loc>https://blog.hypriot.com/tags/netherlands/</loc>
     <lastmod>2016-03-17T00:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/tags/networking/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hypriot.com/categories/networking/</loc>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1506,7 +1547,7 @@
   
   <url>
     <loc>https://blog.hypriot.com/post/</loc>
-    <lastmod>2019-04-28T08:48:50-07:00</lastmod>
+    <lastmod>2019-05-04T03:57:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
