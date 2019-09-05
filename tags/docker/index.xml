@@ -2512,7 +2512,7 @@ In fact, the features of that project are far behind of what&amp;rsquo;s now imp
 
 &lt;h2 id=&#34;install-kubernetes&#34;&gt;Install Kubernetes&lt;/h2&gt;
 
-&lt;p&gt;The installation requries root privileges. Retrieve them by&lt;/p&gt;
+&lt;p&gt;The installation requires root privileges. Retrieve them by&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;sudo su -
 &lt;/code&gt;&lt;/pre&gt;
